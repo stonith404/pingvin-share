@@ -10,6 +10,7 @@ import {
 import { Dropzone as MantineDropzone, DropzoneStatus } from "@mantine/dropzone";
 import React, { Dispatch, ForwardedRef, SetStateAction, useRef } from "react";
 import { CloudUpload, Upload } from "tabler-icons-react";
+import toast from "../../utils/toast.util";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -57,6 +58,10 @@ const Dropzone = ({
   return (
     <div className={classes.wrapper}>
       <MantineDropzone
+        maxSize={parseInt(process.env["NEXT_PUBLIC_MAX_FILE_SIZE"] as string)}
+        onReject={(e) => {
+          toast.error(e[0].errors[0].message);
+        }}
         disabled={isUploading}
         openRef={openRef as ForwardedRef<() => void>}
         onDrop={(files) => {

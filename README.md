@@ -37,6 +37,7 @@ To set up the frontend of Pingvin Share follow these steps.
 2.  Rename the `.env.example` file to `.env`
 3.  Paste the key in the `.env` file
 4.  Change `APPWRITE_HOST` in the `.env` file to the host where your Appwrite instance runs
+5.  Change `NEXT_PUBLIC_MAX_FILE_SIZE` in the `.env` file to the max file size limit you want
 
 Start the frontend:
 
