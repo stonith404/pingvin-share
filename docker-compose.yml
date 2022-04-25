@@ -1,0 +1,8 @@
+version: '3.3'
+services:
+    pingvin-share:
+        ports:
+            - '3000:3000'
+        image: stonith404/pingvin-share
+        build:
+          context: ./
