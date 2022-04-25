@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "init:appwrite": "cd .setup && npm install && npx ts-node index.ts"
+    "init:appwrite": "cd .setup && npm install && npx ts-node index.ts",
+    "deploy": "docker buildx build -t git.elias.li/stonith404/pingvin-share:latest --platform linux/amd64,linux/arm64  --push ."
   },
   "dependencies": {
     "@mantine/core": "^4.1.3",

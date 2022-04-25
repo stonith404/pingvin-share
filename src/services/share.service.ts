@@ -3,14 +3,14 @@ import { AppwriteFileWithPreview } from "../types/File.type";
 
 const get = async (shareId: string, password?: string) => {
   return (
-    await axios.post(`http://localhost:3000/api/share/${shareId}`, { password })
+    await axios.post(`/api/share/${shareId}`, { password })
   ).data as AppwriteFileWithPreview[];
 };
 
 const authenticateWithPassword = async (shareId: string, password?: string) => {
   return (
     await axios.post(
-      `http://localhost:3000/api/share/${shareId}/enterPassword`,
+      `/api/share/${shareId}/enterPassword`,
       { password }
     )
   ).data as AppwriteFileWithPreview[];
