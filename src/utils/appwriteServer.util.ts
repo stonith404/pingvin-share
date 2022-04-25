@@ -4,7 +4,7 @@ import sdk from "node-appwrite";
 const client = new sdk.Client();
 
 client
-  .setEndpoint(process.env["APPWRITE_HOST"] as string)
+  .setEndpoint(process.env["NEXT_PUBLIC_APPWRITE_HOST"] as string)
   .setProject("pingvin-share")
   .setKey(process.env["APPWRITE_FUNCTION_API_KEY"] as string);
 
