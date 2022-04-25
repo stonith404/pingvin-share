@@ -4,7 +4,7 @@ Pingvin Share is a selfhosted file sharing plattform made for the [Appwrite Hack
 
 ## Showcase
 
-https://pingvin-share.demo.eliasschneider.com
+https://pingvin-share.dev.eliasschneider.com
 
 <img src="assets/screenshots/home.png" width="700"/>
 
