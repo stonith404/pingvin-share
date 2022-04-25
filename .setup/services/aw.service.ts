@@ -3,7 +3,7 @@ const aw = () => {
   let client = new sdk.Client();
 
   client
-    .setEndpoint(process.env["NEXT_PUBLIC_APPWRITE_HOST"])
+    .setEndpoint(process.env["APPWRITE_HOST"])
     .setProject("pingvin-share")
     .setKey(process.env["APPWRITE_API_KEY"])
     .setSelfSigned();

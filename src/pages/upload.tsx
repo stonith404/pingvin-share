@@ -52,7 +52,7 @@ const Upload = () => {
             showCompletedUploadModal(
               modals,
               `${window.location.origin}/share/${bucketId}`,
-              new Date(Date.now()).toLocaleString()
+              new Date(Date.now() + expiration * 60 * 1000).toLocaleString()
             );
           }
         },
