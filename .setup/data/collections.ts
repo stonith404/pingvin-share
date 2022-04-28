@@ -55,7 +55,14 @@ export default [
         default: false,
       },
     ],
-    indexes: [],
+    indexes: [
+      {
+        key: "expiresAt",
+        type: "key",
+        attributes: ["expiresAt"],
+        orders: ["ASC"],
+      },
+    ],
   },
   {
     $id: "shareSecurity",
