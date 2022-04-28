@@ -15,6 +15,7 @@ import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import * as yup from "yup";
+import shareService from "../../services/share.service";
 
 const showCreateUploadModal = (
   modals: ModalsContextProps,
@@ -57,16 +58,20 @@ const Body = ({
 
   return (
     <form
-      onSubmit={form.onSubmit((values) => {
-        modals.closeAll();
-        uploadCallback(values.link, parseInt(values.expiration), {
-          password: values.password,
-          maxVisitors: values.maxVisitors,
-        });
+      onSubmit={form.onSubmit(async (values) => {
+        if (await shareService.isIdAlreadyInUse(values.link)) {
+          form.setFieldError("link", "Link already in use.");
+        } else {
+          modals.closeAll();
+          uploadCallback(values.link, parseInt(values.expiration), {
+            password: values.password,
+            maxVisitors: values.maxVisitors,
+          });
+        }
       })}
     >
       <Group direction="column" grow>
-        <Grid align="flex-end">
+        <Grid align={form.errors.link ? "center" : "flex-end"}>
           <Col xs={9}>
             <TextInput
               variant="filled"

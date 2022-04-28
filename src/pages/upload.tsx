@@ -26,43 +26,54 @@ const Upload = () => {
     security: { password?: string; maxVisitors?: number }
   ) => {
     setisUploading(true);
+    try {
+      files.forEach((file) => {
+        file.uploadingState = "inProgress";
+      });
 
-    const bucketId = JSON.parse(
-      (
-        await aw.functions.createExecution(
-          "createShare",
-          JSON.stringify({ id, security, expiration }),
-          false
-        )
-      ).stdout
-    ).id;
-    for (let i = 0; i < files.length; i++) {
-      files[i].uploadingState = "inProgress";
-      setFiles([...files]);
-      aw.storage.createFile(bucketId, "unique()", files[i]).then(
-        async () => {
-          files[i].uploadingState = "finished";
-          setFiles([...files]);
-          if (!files.some((f) => f.uploadingState == "inProgress")) {
-            await aw.functions.createExecution(
-              "finishShare",
-              JSON.stringify({ id }),
-              false
-            ),
-              setisUploading(false);
-            showCompletedUploadModal(
-              modals,
-              `${window.location.origin}/share/${bucketId}`,
-              new Date(Date.now() + expiration * 60 * 1000).toLocaleString()
-            );
+      const bucketId = JSON.parse(
+        (
+          await aw.functions.createExecution(
+            "createShare",
+            JSON.stringify({ id, security, expiration }),
+            false
+          )
+        ).stdout
+      ).id;
+      for (let i = 0; i < files.length; i++) {
+        setFiles([...files]);
+        aw.storage.createFile(bucketId, "unique()", files[i]).then(
+          async () => {
+            files[i].uploadingState = "finished";
+            setFiles([...files]);
+            if (!files.some((f) => f.uploadingState == "inProgress")) {
+              await aw.functions.createExecution(
+                "finishShare",
+                JSON.stringify({ id }),
+                false
+              ),
+                setisUploading(false);
+              showCompletedUploadModal(
+                modals,
+                `${window.location.origin}/share/${bucketId}`,
+                new Date(Date.now() + expiration * 60 * 1000).toLocaleString()
+              );
+              setFiles([]);
+            }
+          },
+          (error) => {
+            files[i].uploadingState = undefined;
+            throw error;
           }
-        },
-        (error) => {
-          files[i].uploadingState = undefined;
-          toast.error(error.message);
-          setisUploading(false);
-        }
-      );
+        );
+      }
+    } catch (e: any) {
+      setisUploading(false);
+      if (e.message) {
+        toast.error(e.message);
+      } else {
+        toast.error("An unknown error occurred.");
+      }
     }
   };
 
