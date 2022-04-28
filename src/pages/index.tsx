@@ -14,6 +14,7 @@ import React, { useContext } from "react";
 import { Check } from "tabler-icons-react";
 import { IsSignedInContext } from "../utils/auth.util";
 import Image from "next/image";
+import Meta from "../components/Meta";
 const useStyles = createStyles((theme) => ({
   inner: {
     display: "flex",
@@ -74,7 +75,8 @@ export default function Home() {
     router.replace("/upload");
   } else {
     return (
-      <div>
+      <>
+        <Meta title="Home" />
         <Container>
           <div className={classes.inner}>
             <div className={classes.content}>
@@ -143,7 +145,7 @@ export default function Home() {
             </Group>
           </div>
         </Container>
-      </div>
+      </>
     );
   }
 }

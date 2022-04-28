@@ -1,6 +1,7 @@
 import { useModals } from "@mantine/modals";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Meta from "../../components/Meta";
 import FileList from "../../components/share/FileList";
 import showEnterPasswordModal from "../../components/share/showEnterPasswordModal";
 import showShareNotFoundModal from "../../components/share/showShareNotFoundModal";
@@ -41,13 +42,14 @@ const Share = () => {
   }, []);
 
   return (
-    <div>
+    <>
+      <Meta title={`Share ${shareId}`} />
       <FileList
         files={shareList}
         shareId={shareId}
         isLoading={shareList.length == 0}
       />
-    </div>
+    </>
   );
 };
 

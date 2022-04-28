@@ -3,6 +3,7 @@ import { useModals } from "@mantine/modals";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import { Link, Mail } from "tabler-icons-react";
+import Meta from "../components/Meta";
 import Dropzone from "../components/upload/Dropzone";
 import FileList from "../components/upload/FileList";
 import showCompletedUploadModal from "../components/upload/showCompletedUploadModal";
@@ -70,6 +71,7 @@ const Upload = () => {
   } else {
     return (
       <>
+        <Meta title="Upload" />
         <Group position="right" mb={20}>
           <div>
             <Menu
