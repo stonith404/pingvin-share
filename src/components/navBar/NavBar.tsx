@@ -87,7 +87,7 @@ const Header = () => {
         <NextLink href="/">
           <Group>
             <Image
-              src="/logo.svg"
+              src="/img/logo.svg"
               alt="Pinvgin Share Logo"
               height={40}
               width={40}

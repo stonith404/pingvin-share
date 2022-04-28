@@ -1,4 +1,4 @@
-# <div align="center"><img  src="./public/logo.svg" width="40"/> </br>Pingvin Share</div>
+# <div align="center"><img  src="./public/img/logo.svg" width="40"/> </br>Pingvin Share</div>
 
 Pingvin Share is a selfhosted file sharing plattform made for the [Appwrite Hackathon](https://dev.to/devteam/announcing-the-appwrite-hackathon-on-dev-1oc0).
 

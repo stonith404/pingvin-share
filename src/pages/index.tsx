@@ -137,7 +137,7 @@ export default function Home() {
             </div>
             <Group className={classes.image} align="center">
               <Image
-                src="/logo.svg"
+                src="/img/logo.svg"
                 alt="Pingvin Share Logo"
                 width={200}
                 height={200}
