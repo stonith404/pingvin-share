@@ -22,7 +22,6 @@ export default () => {
       execute: ["role:all"],
       name: "Finish Share",
       runtime: "node-16.0",
-      deployment: "625db8ded97874b96590",
       vars: {
         APPWRITE_FUNCTION_ENDPOINT: host,
         APPWRITE_FUNCTION_API_KEY: process.env["APPWRITE_FUNCTION_API_KEY"],
@@ -33,11 +32,13 @@ export default () => {
     },
     {
       $id: "cleanShares",
+      execute: [],
       name: "Clean Shares",
       runtime: "node-16.0",
-      path: "functions/cleanShares",
-      entrypoint: "src/index.js",
-      execute: ["role:all"],
+      vars: {
+        APPWRITE_FUNCTION_ENDPOINT: host,
+        APPWRITE_FUNCTION_API_KEY: process.env["APPWRITE_FUNCTION_API_KEY"],
+      },
       events: [],
       schedule: "30,59 * * * *",
       timeout: 60,
