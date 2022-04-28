@@ -1,9 +1,9 @@
 import { createContext } from "react";
 import aw from "./appwrite.util";
 
-const isSignedIn = async() => {
+const isSignedIn = async () => {
   try {
-   await aw.account.get();
+    await aw.account.get();
     return true;
   } catch {
     return false;
