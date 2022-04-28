@@ -34,3 +34,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 .env
+
+# PWA
+/public/workbox-*
+/public/sw.*
