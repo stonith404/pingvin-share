@@ -19,7 +19,7 @@ export const checkSecurity = async (
     .getDocument<SecurityDocument>("shareSecurity", shareDocument.securityID)
     .then((securityDocument) => {
       if (securityDocument.maxVisitors) {
-        if (shareDocument.visitorCount > securityDocument.maxVisitors) {
+        if (shareDocument.visitorCount >= securityDocument.maxVisitors) {
           throw "visitor_limit_exceeded";
         }
       }

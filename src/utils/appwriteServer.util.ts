@@ -7,7 +7,9 @@ client
   .setEndpoint(
     (process.env["NEXT_PUBLIC_APPWRITE_HOST"] as string).replace(
       "localhost",
-      "host.docker.internal"
+      process.env.NODE_ENV == "production"
+        ? "host.docker.internal"
+        : "localhost"
     )
   )
   .setProject("pingvin-share")
