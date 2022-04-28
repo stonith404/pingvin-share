@@ -34,7 +34,6 @@ const useStyles = createStyles((theme) => ({
 
   title: {
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     fontSize: 44,
     lineHeight: 1.2,
     fontWeight: 900,
@@ -51,8 +50,6 @@ const useStyles = createStyles((theme) => ({
   },
 
   image: {
-    flex: 1,
-
     [theme.fn.smallerThan("md")]: {
       display: "none",
     },
@@ -136,13 +133,14 @@ export default function Home() {
                 </Button>
               </Group>
             </div>
-            <Image
-              src="/logo.svg"
-              alt="Pingvin Share Logo"
-              width={200}
-              height={200}
-              className={classes.image}
-            />
+            <Group className={classes.image} align="center">
+              <Image
+                src="/logo.svg"
+                alt="Pingvin Share Logo"
+                width={200}
+                height={200}
+              />
+            </Group>
           </div>
         </Container>
       </div>
