@@ -19,7 +19,7 @@ const createProject = async () => {
   });
 };
 
-const addPlatform = async (hostname : string) => {
+const addPlatform = async (hostname: string) => {
   await api().post("/projects/pingvin-share/platforms", {
     type: "web",
     name: "Pingvin Share Web Frontend",
@@ -69,7 +69,17 @@ const createCollections = async () => {
         );
       }
     }
+    // Wait until the indexes are created
     for (const index of indexes) {
+      const getStatus = async () =>
+        (
+          await aw().database.getAttribute(collection.$id, index.key)
+        ).status.toString();
+
+      while ((await getStatus()) == "processing") {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+      }
+
       aw().database.createIndex(
         collection.$id,
         index.key,
