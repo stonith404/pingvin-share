@@ -17,7 +17,7 @@ const FileList = ({
   };
 
   const rows = files.map((file, i) => (
-    <tr key={file.name}>
+    <tr key={i}>
       <td>{file.name}</td>
       <td>{file.type}</td>
       <td>{bytesToSize(file.size)}</td>

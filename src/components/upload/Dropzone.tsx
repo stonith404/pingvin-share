@@ -65,7 +65,11 @@ const Dropzone = ({
         disabled={isUploading}
         openRef={openRef as ForwardedRef<() => void>}
         onDrop={(files) => {
-          setFiles(files);
+          if (files.length > 100) {
+            toast.error("You can't upload more than 100 files per share.");
+          } else {
+            setFiles(files);
+          }
         }}
         className={classes.dropzone}
         radius="md"

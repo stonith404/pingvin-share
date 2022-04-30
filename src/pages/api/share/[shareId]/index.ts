@@ -20,7 +20,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   addVisitorCount(shareId);
 
-  const fileListWithoutPreview = (await awServer.storage.listFiles(shareId))
+  const fileListWithoutPreview = (await awServer.storage.listFiles(shareId, undefined, 100))
     .files;
 
   for (const file of fileListWithoutPreview) {
