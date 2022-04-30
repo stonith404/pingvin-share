@@ -50,6 +50,12 @@ Without docker:
 1. Run `npm install`
 2. Run `npm run build && npm run start`
 
+
+## Known issues / Limitations
+Pingvin Share is currently in beta and there are issues and limitations that should be fixed in the future.
+- `DownloadAll` generates the zip file on the client side. This takes alot of time. Because of that I temporarily limited this function to maximal 150 MB.
+- If a user knows the share id, he can list and download the files directly from the Appwrite API even if the share is secured by a password or a visitor limit.
+
 ## Contribute
 
 You're very welcome to contribute to Pingvin Share!

@@ -1,7 +1,7 @@
-import { ActionIcon, Skeleton, Table } from "@mantine/core";
+import { ActionIcon, Loader, Skeleton, Table } from "@mantine/core";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { Download } from "tabler-icons-react";
+import { CircleCheck, Download } from "tabler-icons-react";
 import { AppwriteFileWithPreview } from "../../types/File.type";
 import aw from "../../utils/appwrite.util";
 import { bytesToSize } from "../../utils/math/byteToSize.util";
@@ -50,14 +50,22 @@ const FileList = ({
       <td>{file.name}</td>
       <td>{bytesToSize(file.sizeOriginal)}</td>
       <td>
-        <ActionIcon
-          size={25}
-          onClick={() =>
-            router.push(aw.storage.getFileDownload(shareId, file.$id))
-          }
-        >
-          <Download />
-        </ActionIcon>
+        {file.uploadingState ? (
+          file.uploadingState != "finished" ? (
+            <Loader size={22} />
+          ) : (
+            <CircleCheck color="green" size={22} />
+          )
+        ) : (
+          <ActionIcon
+            size={25}
+            onClick={() =>
+              router.push(aw.storage.getFileDownload(shareId, file.$id))
+            }
+          >
+            <Download />
+          </ActionIcon>
+        )}
       </td>
     </tr>
   ));

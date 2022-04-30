@@ -3,5 +3,7 @@ import { Models } from "appwrite";
 export type FileUpload = File & { uploadingState?: UploadState };
 export type UploadState = "finished" | "inProgress" | undefined;
 
-export type AppwriteFileWithPreview = Models.File & { preview: Buffer };
-
+export interface AppwriteFileWithPreview extends Models.File {
+  uploadingState?: UploadState;
+  preview: Buffer;
+}
