@@ -14,6 +14,11 @@ import rl from "readline-sync";
         defaultInput: "http://localhost/v1",
       }
     );
+    process.env["APPWRITE_HOST"] = process.env["APPWRITE_HOST"].replace(
+      "localhost",
+      "host.docker.internal"
+    );
+
     console.info("Authenticate...");
     process.env["APPWRITE_USER_TOKEN"] = await authService.getToken();
 

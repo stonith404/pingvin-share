@@ -45,6 +45,7 @@ Pingvin Share is currently in beta and there are issues and limitations that sho
 
 - `DownloadAll` generates the zip file on the client side. This takes alot of time. Because of that I temporarily limited this function to maximal 150 MB.
 - If a user knows the share id, he can list and download the files directly from the Appwrite API even if the share is secured by a password or a visitor limit.
+- Because NextJS injects environments variables at build time, the website must be rebuilt when an environment variable changes. At the moment the container rebuilts the website after every restart. This takes some time.
 
 ## Contribute
 
