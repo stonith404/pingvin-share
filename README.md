@@ -20,39 +20,29 @@ Pingvin Share uses Appwrite as backend. You have to install and setup Appwrite f
 2.  Create an Account on your Appwrite instance
 3.  Change the `_APP_STORAGE_LIMIT` variable in the `.env` file of Appwrite to your prefered max size limit per share
 
-### 2. Setup script
+### 2. Frontend
 
-To setup the backend structure of Pingvin Share you have to run the setup script.
+First of all you have to start the Docker container.
 
-1.  [Install Node](https://nodejs.org/en/download/)
-2.  Clone the repository with `git clone https://github.com/stonith404/pingvin-share`
-3.  Visit the repository directory with `cd pingvin-share`
-4.  Run `npm run init:appwrite`
+1. Clone the `docker-compose.yml` file and the `.env.example` file from this repository
+2. Rename the `.env.example` file to `.env`
+3. Start the container with `docker-compose up -d`
 
-### 3. Frontend
+The container is now running. Now you have to setup the Appwrite structure, but no worries I made a setup script.
 
-To set up the frontend of Pingvin Share follow these steps.
+To start the script run `docker-compose exec pingvin-share node scripts/setup.js`.
+
+You're almost done, now you have to change your environment variables that they fit to your setup.
 
 1.  Go to your Appwrite console, visit "API Keys" and copy the "Functions API Key" secret to your clipboard.
-2.  Rename the `.env.example` file to `.env`
-3.  Paste the key in the `.env` file
-4.  Change `NEXT_PUBLIC_APPWRITE_HOST` in the `.env` file to the host where your Appwrite instance runs
-5.  Change `NEXT_PUBLIC_MAX_FILE_SIZE` in the `.env` file to the max file size limit you want
-
-Start the frontend:
-
-With docker:
-
-1. Run `docker-compose up -d --build`
-
-Without docker:
-
-1. Run `npm install`
-2. Run `npm run build && npm run start`
-
+2.  Paste the key to the `APPWRITE_FUNCTION_API_KEY` variable in the `.env` file
+3.  Change `NEXT_PUBLIC_APPWRITE_HOST` in the `.env` file to the host where your Appwrite instance runs
+4.  Change `NEXT_PUBLIC_MAX_FILE_SIZE` in the `.env` file to the max file size limit you want
 
 ## Known issues / Limitations
+
 Pingvin Share is currently in beta and there are issues and limitations that should be fixed in the future.
+
 - `DownloadAll` generates the zip file on the client side. This takes alot of time. Because of that I temporarily limited this function to maximal 150 MB.
 - If a user knows the share id, he can list and download the files directly from the Appwrite API even if the share is secured by a password or a visitor limit.
 

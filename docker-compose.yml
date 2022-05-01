@@ -4,5 +4,7 @@ services:
         ports:
             - '3000:3000'
         image: stonith404/pingvin-share
-        build:
-          context: ./
+        environment:
+            - APPWRITE_FUNCTION_API_KEY=${APPWRITE_FUNCTION_API_KEY}
+            - NEXT_PUBLIC_APPWRITE_HOST=${NEXT_PUBLIC_APPWRITE_HOST}
+            - NEXT_PUBLIC_MAX_FILE_SIZE=${NEXT_PUBLIC_MAX_FILE_SIZE}
