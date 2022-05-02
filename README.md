@@ -1,4 +1,4 @@
-# <div align="center"><img  src="./public/img/logo.svg" width="40"/> </br>Pingvin Share</div>
+# <div align="center"><img  src="https://user-images.githubusercontent.com/58886915/166198400-c2134044-1198-4647-a8b6-da9c4a204c68.svg" width="40"/> </br>Pingvin Share</div>
 
 Pingvin Share is a selfhosted file sharing plattform made for the [Appwrite Hackathon](https://dev.to/devteam/announcing-the-appwrite-hackathon-on-dev-1oc0).
 
@@ -6,7 +6,7 @@ Pingvin Share is a selfhosted file sharing plattform made for the [Appwrite Hack
 
 https://pingvin-share.dev.eliasschneider.com
 
-<img src="assets/screenshots/home.png" width="700"/>
+<img src="https://user-images.githubusercontent.com/58886915/166198353-4a7a1905-c185-4d54-b2fd-2dee67966ba0.png" width="700"/>
 
 ## Setup
 
