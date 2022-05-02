@@ -67,11 +67,11 @@ const Header = () => {
   const items = links.map((link) => {
     if (link) {
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      useEffect(() => {
-        if (window.location.pathname == link.link) {
-          setActive(link.link);
-        }
-      });
+      // useEffect(() => {
+      //   if (window.location.pathname == link.link) {
+      //     setActive(link.link);
+      //   }
+      // });
       return (
         <NextLink
           key={link.label}

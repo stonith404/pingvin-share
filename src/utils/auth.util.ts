@@ -10,7 +10,7 @@ const isSignedIn = async () => {
   }
 };
 
-export const IsSignedInContext = createContext(false);
+export const IsSignedInContext = createContext(true);
 
 export default {
   isSignedIn,

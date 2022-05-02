@@ -15,6 +15,7 @@ import { Check } from "tabler-icons-react";
 import { IsSignedInContext } from "../utils/auth.util";
 import Image from "next/image";
 import Meta from "../components/Meta";
+import { useConfig } from "../utils/config.util";
 const useStyles = createStyles((theme) => ({
   inner: {
     display: "flex",
@@ -69,10 +70,13 @@ const useStyles = createStyles((theme) => ({
 
 export default function Home() {
   const isSignedIn = useContext(IsSignedInContext);
+  const config = useConfig();
   const { classes } = useStyles();
   const router = useRouter();
   if (isSignedIn) {
     router.replace("/upload");
+  } else if (config.PUBLIC_DISABLE_HOME_PAGE) {
+    router.replace("/auth/signIn");
   } else {
     return (
       <>

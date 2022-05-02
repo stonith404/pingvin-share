@@ -19,28 +19,31 @@ import authUtil, { IsSignedInContext } from "../utils/auth.util";
 import configUtil, { ConfigContext } from "../utils/config.util";
 import { GlobalLoadingContext } from "../utils/loading.util";
 
-function App(props: AppProps & { colorScheme: ColorScheme }) {
-  const { Component, pageProps } = props;
+let environmentVariables: any = {};
 
+function App(
+  props: AppProps & { colorScheme: ColorScheme; environmentVariables: any }
+) {
+  const { Component, pageProps } = props;
   const [colorScheme, setColorScheme] = useState<ColorScheme>(
     props.colorScheme
   );
   const [isLoading, setIsLoading] = useState(true);
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const [environmentVariables, setEnvironmentVariables] = useState<any>({});
+
+  if (Object.keys(props.environmentVariables).length != 0) {
+    environmentVariables = props.environmentVariables;
+  }
 
   const getInitalData = async () => {
     setIsLoading(true);
-    const environmentVariables = await configUtil.getGonfig();
     aw.setEndpoint(environmentVariables.APPWRITE_HOST);
-    setEnvironmentVariables(environmentVariables);
     setIsSignedIn(await authUtil.isSignedIn());
     setIsLoading(false);
   };
   useEffect(() => {
     getInitalData();
   }, []);
-
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS theme={globalStyle}>
       <ThemeProvider colorScheme={colorScheme} setColorScheme={setColorScheme}>
@@ -70,6 +73,9 @@ function App(props: AppProps & { colorScheme: ColorScheme }) {
 
 export default App;
 
-App.getInitialProps = ({ ctx }: { ctx: GetServerSidePropsContext }) => ({
-  colorScheme: getCookie("mantine-color-scheme", ctx) || "light",
-});
+App.getInitialProps = ({ ctx }: { ctx: GetServerSidePropsContext }) => {
+  return {
+    environmentVariables: configUtil.getGonfig(),
+    colorScheme: getCookie("mantine-color-scheme", ctx) || "light",
+  };
+};
