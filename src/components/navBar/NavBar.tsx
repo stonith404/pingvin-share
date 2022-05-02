@@ -15,6 +15,7 @@ import React, { useContext, useEffect, useState } from "react";
 import headerStyle from "../../styles/header.style";
 import aw from "../../utils/appwrite.util";
 import { IsSignedInContext } from "../../utils/auth.util";
+import { useConfig } from "../../utils/config.util";
 import ToggleThemeButton from "./ToggleThemeButton";
 
 type Link = {
@@ -23,62 +24,67 @@ type Link = {
   action?: () => Promise<void>;
 };
 
-const authenticatedLinks: Link[] = [
-  {
-    link: "/upload",
-    label: "Upload",
-  },
-  {
-    label: "Sign out",
-    action: async () => {
-      await aw.account.deleteSession("current");
-      window.location.reload();
-    },
-  },
-];
-
-const unauthenticatedLinks: Link[] = [
-  {
-    link: "/",
-    label: "Home",
-  },
-  {
-    link: "/auth/signUp",
-    label: "Sign up",
-  },
-  {
-    link: "/auth/signIn",
-    label: "Sign in",
-  },
-];
-
 const Header = () => {
   const [opened, toggleOpened] = useBooleanToggle(false);
   const [active, setActive] = useState<string>();
   const isSignedIn = useContext(IsSignedInContext);
+  const config = useConfig();
   const { classes, cx } = headerStyle();
+
+  const authenticatedLinks: Link[] = [
+    {
+      link: "/upload",
+      label: "Upload",
+    },
+    {
+      label: "Sign out",
+      action: async () => {
+        await aw.account.deleteSession("current");
+        window.location.reload();
+      },
+    },
+  ];
+
+  const unauthenticatedLinks: Link[] | undefined = [
+    {
+      link: "/",
+      label: "Home",
+    },
+    {
+      link: "/auth/signIn",
+      label: "Sign in",
+    },
+  ];
+
+  if (!config.DISABLE_REGISTRATION)
+    unauthenticatedLinks.push({
+      link: "/auth/signUp",
+      label: "Sign up",
+    });
 
   const links = isSignedIn ? authenticatedLinks : unauthenticatedLinks;
 
   const items = links.map((link) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useEffect(() => {
-      if (window.location.pathname == link.link) {
-        setActive(link.link);
-      }
-    });
-    return (
-      <NextLink
-        key={link.label}
-        href={link.link ?? ""}
-        onClick={link.action}
-        className={cx(classes.link, {
-          [classes.linkActive]: link.link && active === link.link,
-        })}
-      >
-        {link.label}
-      </NextLink>
-    );
+    if (link) {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useEffect(() => {
+        if (window.location.pathname == link.link) {
+          setActive(link.link);
+        }
+      });
+      return (
+        <NextLink
+          key={link.label}
+          href={link.link ?? ""}
+          onClick={link.action}
+          className={cx(classes.link, {
+            [classes.linkActive]: link.link && active === link.link,
+          })}
+        >
+          {link.label}
+        </NextLink>
+      );
+    }
   });
 
   return (

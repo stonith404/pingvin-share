@@ -56,7 +56,6 @@ const Dropzone = ({
   const config = useConfig()
   const { classes } = useStyles();
   const openRef = useRef<() => void>();
-
   return (
     <div className={classes.wrapper}>
       <MantineDropzone

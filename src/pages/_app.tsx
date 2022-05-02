@@ -27,13 +27,13 @@ function App(props: AppProps & { colorScheme: ColorScheme }) {
   );
   const [isLoading, setIsLoading] = useState(true);
   const [isSignedIn, setIsSignedIn] = useState(false);
-
-  let environmentVariables: any = {};
+  const [environmentVariables, setEnvironmentVariables] = useState<any>({});
 
   const getInitalData = async () => {
     setIsLoading(true);
-    environmentVariables = await configUtil.getGonfig();
+    const environmentVariables = await configUtil.getGonfig();
     aw.setEndpoint(environmentVariables.APPWRITE_HOST);
+    setEnvironmentVariables(environmentVariables);
     setIsSignedIn(await authUtil.isSignedIn());
     setIsLoading(false);
   };

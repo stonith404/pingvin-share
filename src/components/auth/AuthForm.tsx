@@ -11,9 +11,11 @@ import {
 import { useForm, yupResolver } from "@mantine/form";
 import * as yup from "yup";
 import aw from "../../utils/appwrite.util";
+import { useConfig } from "../../utils/config.util";
 import toast from "../../utils/toast.util";
 
 const AuthForm = ({ mode }: { mode: "signUp" | "signIn" }) => {
+  const config = useConfig();
   const validationSchema = yup.object().shape({
     email: yup.string().email().required(),
     password: yup.string().min(8).required(),
@@ -39,7 +41,6 @@ const AuthForm = ({ mode }: { mode: "signUp" | "signIn" }) => {
       .then(() => signIn(email, password))
       .catch((e) => toast.error(e.message));
   };
-
   return (
     <Container size={420} my={40}>
       <Title
@@ -51,15 +52,16 @@ const AuthForm = ({ mode }: { mode: "signUp" | "signIn" }) => {
       >
         {mode == "signUp" ? "Sign up" : "Welcome back"}
       </Title>
-      <Text color="dimmed" size="sm" align="center" mt={5}>
-        {mode == "signUp"
-          ? "You have an account already?"
-          : "You don't have an account yet?"}{" "}
-        <Anchor href={mode == "signUp" ? "signIn" : "signUp"} size="sm">
-          {mode == "signUp" ? "Sign in" : "Sign up"}
-        </Anchor>
-      </Text>
-
+      {!config.DISABLE_REGISTRATION && (
+        <Text color="dimmed" size="sm" align="center" mt={5}>
+          {mode == "signUp"
+            ? "You have an account already?"
+            : "You don't have an account yet?"}{" "}
+          <Anchor href={mode == "signUp" ? "signIn" : "signUp"} size="sm">
+            {mode == "signUp" ? "Sign in" : "Sign up"}
+          </Anchor>
+        </Text>
+      )}
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
         <form
           onSubmit={form.onSubmit((values) =>

@@ -76,7 +76,6 @@ const Upload = () => {
       }
     }
   };
-
   if (!isSignedIn) {
     router.replace("/");
   } else {
