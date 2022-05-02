@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "start:docker": "docker build -t pingvin-share:latest . && docker run pingvin-share:latest",
     "init:appwrite": "cd .setup && npm install && npx ts-node index.ts",
     "deploy": "docker buildx build -t stonith404/pingvin-share --platform linux/amd64,linux/arm64  --push ."
   },

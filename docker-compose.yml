@@ -6,5 +6,5 @@ services:
         image: stonith404/pingvin-share
         environment:
             - APPWRITE_FUNCTION_API_KEY=${APPWRITE_FUNCTION_API_KEY}
-            - NEXT_PUBLIC_APPWRITE_HOST=${NEXT_PUBLIC_APPWRITE_HOST}
-            - NEXT_PUBLIC_MAX_FILE_SIZE=${NEXT_PUBLIC_MAX_FILE_SIZE}
+            - PUBLIC_APPWRITE_HOST=${PUBLIC_APPWRITE_HOST}
+            - PUBLIC_MAX_FILE_SIZE=${PUBLIC_MAX_FILE_SIZE}

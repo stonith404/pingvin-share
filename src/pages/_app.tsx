@@ -14,7 +14,9 @@ import "../../styles/globals.css";
 import ThemeProvider from "../components/mantine/ThemeProvider";
 import Header from "../components/navBar/NavBar";
 import globalStyle from "../styles/global.style";
+import aw from "../utils/appwrite.util";
 import authUtil, { IsSignedInContext } from "../utils/auth.util";
+import configUtil, { ConfigContext } from "../utils/config.util";
 import { GlobalLoadingContext } from "../utils/loading.util";
 
 function App(props: AppProps & { colorScheme: ColorScheme }) {
@@ -26,13 +28,17 @@ function App(props: AppProps & { colorScheme: ColorScheme }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isSignedIn, setIsSignedIn] = useState(false);
 
-  const checkIfSignedIn = async () => {
+  let environmentVariables: any = {};
+
+  const getInitalData = async () => {
     setIsLoading(true);
+    environmentVariables = await configUtil.getGonfig();
+    aw.setEndpoint(environmentVariables.APPWRITE_HOST);
     setIsSignedIn(await authUtil.isSignedIn());
     setIsLoading(false);
   };
   useEffect(() => {
-    checkIfSignedIn();
+    getInitalData();
   }, []);
 
   return (
@@ -44,13 +50,15 @@ function App(props: AppProps & { colorScheme: ColorScheme }) {
               {isLoading ? (
                 <LoadingOverlay visible overlayOpacity={1} />
               ) : (
-                <IsSignedInContext.Provider value={isSignedIn}>
-                  <LoadingOverlay visible={isLoading} overlayOpacity={1} />
-                  <Header />
-                  <Container>
-                    <Component {...pageProps} />
-                  </Container>
-                </IsSignedInContext.Provider>
+                <ConfigContext.Provider value={environmentVariables}>
+                  <IsSignedInContext.Provider value={isSignedIn}>
+                    <LoadingOverlay visible={isLoading} overlayOpacity={1} />
+                    <Header />
+                    <Container>
+                      <Component {...pageProps} />
+                    </Container>
+                  </IsSignedInContext.Provider>
+                </ConfigContext.Provider>
               )}
             </GlobalLoadingContext.Provider>
           </ModalsProvider>

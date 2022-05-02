@@ -10,6 +10,7 @@ import {
 import { Dropzone as MantineDropzone, DropzoneStatus } from "@mantine/dropzone";
 import React, { Dispatch, ForwardedRef, SetStateAction, useRef } from "react";
 import { CloudUpload, Upload } from "tabler-icons-react";
+import { useConfig } from "../../utils/config.util";
 import toast from "../../utils/toast.util";
 
 const useStyles = createStyles((theme) => ({
@@ -52,13 +53,14 @@ const Dropzone = ({
   setFiles: Dispatch<SetStateAction<File[]>>;
 }) => {
   const theme = useMantineTheme();
+  const config = useConfig()
   const { classes } = useStyles();
   const openRef = useRef<() => void>();
 
   return (
     <div className={classes.wrapper}>
       <MantineDropzone
-        maxSize={parseInt(process.env["NEXT_PUBLIC_MAX_FILE_SIZE"] as string)}
+        maxSize={parseInt(config.APPWRITE_HOST)}
         onReject={(e) => {
           toast.error(e[0].errors[0].message);
         }}
