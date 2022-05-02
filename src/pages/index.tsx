@@ -75,7 +75,7 @@ export default function Home() {
   const router = useRouter();
   if (isSignedIn) {
     router.replace("/upload");
-  } else if (config.PUBLIC_DISABLE_HOME_PAGE) {
+  } else if (config.DISABLE_HOME_PAGE) {
     router.replace("/auth/signIn");
   } else {
     return (
