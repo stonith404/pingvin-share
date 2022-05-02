@@ -53,13 +53,13 @@ const Dropzone = ({
   setFiles: Dispatch<SetStateAction<File[]>>;
 }) => {
   const theme = useMantineTheme();
-  const config = useConfig()
+  const config = useConfig();
   const { classes } = useStyles();
   const openRef = useRef<() => void>();
   return (
     <div className={classes.wrapper}>
       <MantineDropzone
-        maxSize={parseInt(config.APPWRITE_HOST)}
+        maxSize={config.MAX_FILE_SIZE}
         onReject={(e) => {
           toast.error(e[0].errors[0].message);
         }}
