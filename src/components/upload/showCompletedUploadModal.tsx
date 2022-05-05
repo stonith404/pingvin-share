@@ -11,6 +11,7 @@ import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import { useRouter } from "next/router";
 import { Copy } from "tabler-icons-react";
+import toast from "../../utils/toast.util";
 
 const showCompletedUploadModal = (
   modals: ModalsContextProps,
@@ -36,7 +37,12 @@ const Body = ({ link, expiresAt }: { link: string; expiresAt: string }) => {
         variant="filled"
         value={link}
         rightSection={
-          <ActionIcon onClick={() => clipboard.copy(link)}>
+          <ActionIcon
+            onClick={() => {
+              clipboard.copy(link);
+              toast.success("Your link was copied to the keyboard.");
+            }}
+          >
             <Copy />
           </ActionIcon>
         }
