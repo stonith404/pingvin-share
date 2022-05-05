@@ -99,6 +99,7 @@ const generateFunctionsApiKey = async () => {
       "buckets.read",
       "buckets.write",
       "files.read",
+      "users.read",
     ],
   });
   return res.data.secret;
@@ -142,6 +143,3 @@ export default {
   generateFunctionsApiKey,
   addPlatform,
 };
-function token(token: any) {
-  throw new Error("Function not implemented.");
-}
