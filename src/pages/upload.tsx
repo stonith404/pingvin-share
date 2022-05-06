@@ -11,31 +11,34 @@ import showCreateUploadModal from "../components/upload/showCreateUploadModal";
 import { FileUpload } from "../types/File.type";
 import aw from "../utils/appwrite.util";
 import { IsSignedInContext } from "../utils/auth.util";
+import { useConfig } from "../utils/config.util";
 import toast from "../utils/toast.util";
 
 const Upload = () => {
   const router = useRouter();
   const modals = useModals();
+  const config = useConfig();
   const isSignedIn = useContext(IsSignedInContext);
   const [files, setFiles] = useState<FileUpload[]>([]);
   const [isUploading, setisUploading] = useState(false);
+  let shareMode: "email" | "standard";
 
   const uploadFiles = async (
     id: string,
     expiration: number,
-    security: { password?: string; maxVisitors?: number }
+    security: { password?: string; maxVisitors?: number },
+    emails?: string[]
   ) => {
     setisUploading(true);
     try {
       files.forEach((file) => {
         file.uploadingState = "inProgress";
       });
-
       const bucketId = JSON.parse(
         (
           await aw.functions.createExecution(
             "createShare",
-            JSON.stringify({ id, security, expiration }),
+            JSON.stringify({ id, security, expiration, emails }),
             false
           )
         ).stdout
@@ -56,7 +59,8 @@ const Upload = () => {
               showCompletedUploadModal(
                 modals,
                 `${window.location.origin}/share/${bucketId}`,
-                new Date(Date.now() + expiration * 60 * 1000).toLocaleString()
+                new Date(Date.now() + expiration * 60 * 1000).toLocaleString(),
+                shareMode
               );
               setFiles([]);
             }
@@ -96,11 +100,21 @@ const Upload = () => {
             >
               <Menu.Item
                 icon={<Link size={16} />}
-                onClick={() => showCreateUploadModal(modals, uploadFiles)}
+                onClick={() => {
+                  shareMode = "standard";
+                  showCreateUploadModal(shareMode, modals, uploadFiles);
+                }}
               >
                 Share with link
               </Menu.Item>
-              <Menu.Item disabled icon={<Mail size={16} />}>
+              <Menu.Item
+                disabled={!config.MAIL_SHARE_ENABLED}
+                icon={<Mail size={16} />}
+                onClick={() => {
+                  shareMode = "email";
+                  showCreateUploadModal(shareMode, modals, uploadFiles);
+                }}
+              >
                 Share with email
               </Menu.Item>
             </Menu>

@@ -41,7 +41,7 @@ import rl from "readline-sync";
     console.info("Creating function deployments...");
     await setupService.createFunctionDeployments();
 
-    console.info("Adding frontend url...");
+    console.info("Adding frontend host...");
     await setupService.addPlatform(
       rl.question("Frontend host of Pingvin Share (localhost): ", {
         defaultInput: "localhost",

@@ -8,6 +8,7 @@ import FileList from "../../components/share/FileList";
 import showEnterPasswordModal from "../../components/share/showEnterPasswordModal";
 import showShareNotFoundModal from "../../components/share/showShareNotFoundModal";
 import showVisitorLimitExceededModal from "../../components/share/showVisitorLimitExceededModal";
+import authService from "../../services/auth.service";
 import shareService from "../../services/share.service";
 import { AppwriteFileWithPreview } from "../../types/File.type";
 
@@ -24,7 +25,13 @@ const Share = () => {
     });
   };
 
-  const getFiles = (password?: string) =>
+  const getFiles = async (password?: string) => {
+    try {
+      await authService.createJWT();
+    } catch {
+      //
+    }
+
     shareService
       .get(shareId, password)
       .then((files) => {
@@ -40,6 +47,7 @@ const Share = () => {
           showVisitorLimitExceededModal(modals);
         }
       });
+  };
 
   useEffect(() => {
     getFiles();
@@ -47,7 +55,10 @@ const Share = () => {
 
   return (
     <>
-      <Meta title={`Share ${shareId}`} />
+      <Meta
+        title={`Share ${shareId}`}
+        description="Look what I've shared with you."
+      />
       <Group position="right">
         <DownloadAllButton
           shareId={shareId}

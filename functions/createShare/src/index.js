@@ -4,8 +4,8 @@ const util = require("./util")
 module.exports = async function (req, res) {
   const client = new sdk.Client();
 
-  // You can remove services you don't use
   let database = new sdk.Database(client);
+  let users = new sdk.Users(client);
   let storage = new sdk.Storage(client);
 
   client
@@ -34,6 +34,18 @@ module.exports = async function (req, res) {
     ).$id;
   }
 
+  let userIds;
+  if (payload.emails) {
+    const creatorEmail = (await users.get(userId)).email
+    userIds = []
+    userIds.push(userId)
+    for (const email of payload.emails) {
+      userIds.push((await users.list(`email='${email}'`)).users[0].$id)
+      util.sendMail(email, creatorEmail, payload.id)
+    }
+
+  }
+
   // Create the storage bucket
   await storage.createBucket(
     payload.id,
@@ -48,6 +60,7 @@ module.exports = async function (req, res) {
   // Create document in Shares collection
   await database.createDocument("shares", payload.id, {
     securityID: securityDocumentId,
+    users: userIds,
     createdAt: Date.now(),
     expiresAt: expiration,
   });

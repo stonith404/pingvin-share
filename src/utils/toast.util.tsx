@@ -7,6 +7,7 @@ const error = (message: string) =>
     color: "red",
     radius: "md",
     title: "Error",
+    
     message: message,
   });
 

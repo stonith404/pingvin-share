@@ -10,16 +10,22 @@ export default [
       {
         key: "securityID",
         type: "string",
-        status: "available",
         required: false,
         array: false,
         size: 255,
         default: null,
       },
       {
+        key: "users",
+        type: "string",
+        required: false,
+        array: true,
+        size: 255,
+        default: null,
+      },
+      {
         key: "createdAt",
         type: "integer",
-        status: "available",
         required: true,
         array: false,
         min: 0,
@@ -29,7 +35,6 @@ export default [
       {
         key: "expiresAt",
         type: "integer",
-        status: "available",
         required: true,
         array: false,
         min: 0,
@@ -39,7 +44,6 @@ export default [
       {
         key: "visitorCount",
         type: "integer",
-        status: "available",
         required: false,
         array: false,
         min: 0,
@@ -49,7 +53,6 @@ export default [
       {
         key: "enabled",
         type: "boolean",
-        status: "available",
         required: false,
         array: false,
         default: false,
@@ -75,7 +78,6 @@ export default [
       {
         key: "password",
         type: "string",
-        status: "available",
         required: false,
         array: false,
         size: 128,
@@ -84,7 +86,6 @@ export default [
       {
         key: "maxVisitors",
         type: "integer",
-        status: "available",
         required: false,
         array: false,
         min: 0,

@@ -10,9 +10,18 @@ const isIdAlreadyInUse = async (shareId: string) => {
     .exists as boolean;
 };
 
+const doesUserExist = async (email: string) => {
+  return (await axios.get(`/api/user/exists/${email}`)).data.exists as boolean;
+};
+
 const authenticateWithPassword = async (shareId: string, password?: string) => {
   return (await axios.post(`/api/share/${shareId}/enterPassword`, { password }))
     .data as AppwriteFileWithPreview[];
 };
 
-export default { get, authenticateWithPassword, isIdAlreadyInUse };
+export default {
+  get,
+  authenticateWithPassword,
+  isIdAlreadyInUse,
+  doesUserExist,
+};

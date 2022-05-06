@@ -39,6 +39,14 @@ You're almost done, now you have to change your environment variables that they 
 3.  Change `PUBLIC_APPWRITE_HOST` in the `.env` file to the host where your Appwrite instance runs
 4.  Change `PUBLIC_MAX_FILE_SIZE` in the `.env` file to the max file size limit you want
 
+## Additional configurations
+
+### SMTP
+
+1. Enable `PUBLIC_MAIL_SHARE_ENABLE` in the `.env` file.
+2. Visit your Appwrite console, click on functions and select the `Create Share` function.
+3. At the settings tab change the empty variables to your SMTP setup.
+
 ## Known issues / Limitations
 
 Pingvin Share is currently in beta and there are issues and limitations that should be fixed in the future.

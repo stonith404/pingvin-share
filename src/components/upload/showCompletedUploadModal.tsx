@@ -16,13 +16,21 @@ import toast from "../../utils/toast.util";
 const showCompletedUploadModal = (
   modals: ModalsContextProps,
   link: string,
-  expiresAt: string
+  expiresAt: string,
+  mode: "email" | "standard"
 ) => {
   return modals.openModal({
     closeOnClickOutside: false,
     withCloseButton: false,
     closeOnEscape: false,
-    title: <Title order={4}>Share ready</Title>,
+    title: (
+      <Group grow direction="column" spacing={0}>
+        <Title order={4}>Share ready</Title>
+        {mode == "email" && (
+          <Text size="sm"> Emails were sent to the to invited users.</Text>
+        )}
+      </Group>
+    ),
     children: <Body link={link} expiresAt={expiresAt} />,
   });
 };

@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "docker buildx build -t stonith404/pingvin-share --platform linux/amd64,linux/arm64  --push ."
+    "deploy:latest": "docker buildx build -t stonith404/pingvin-share:latest --platform linux/amd64,linux/arm64  --push .",
+    "deploy:development": "docker buildx build -t stonith404/pingvin-share:development --platform linux/amd64,linux/arm64  --push ."
   },
   "dependencies": {
     "@mantine/core": "^4.2.0",
@@ -19,9 +20,9 @@
     "@mantine/notifications": "^4.2.0",
     "appwrite": "^7.0.0",
     "axios": "^0.26.1",
-    "cookie": "^0.5.0",
     "cookies-next": "^2.0.4",
     "file-saver": "^2.0.5",
+    "jose": "^4.8.1",
     "js-file-download": "^0.4.12",
     "jszip": "^3.9.1",
     "next": "12.1.5",
@@ -42,7 +43,6 @@
     "@types/tar": "^6.1.1",
     "@types/uuid": "^8.3.4",
     "axios": "^0.26.1",
-    "cookie": "^0.5.0",
     "eslint": "8.13.0",
     "eslint-config-next": "12.1.5",
     "node-appwrite": "^5.1.0",

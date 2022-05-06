@@ -6,10 +6,10 @@ export type ShareDocument = {
   expiresAt: number;
   visitorCount: number;
   enabled: boolean;
+  users?: string[];
 } & Models.Document;
 
-
 export type SecurityDocument = {
-    password: string;
-    maxVisitors: number;
-  } & Models.Document;
+  password: string;
+  maxVisitors: number;
+} & Models.Document;
