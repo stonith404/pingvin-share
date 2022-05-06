@@ -23,6 +23,7 @@ RUN ncc build index.ts
 FROM node:16-alpine AS runner
 WORKDIR /opt/app
 ENV NODE_ENV=production
+COPY ./functions ./functions
 COPY --from=builder /opt/app/next.config.js ./
 COPY --from=builder /opt/app/public ./public
 COPY --from=builder /opt/app/.next ./.next

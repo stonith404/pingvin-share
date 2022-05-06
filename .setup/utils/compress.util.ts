@@ -6,7 +6,7 @@ const zipDirectory = (functionName: string) => {
     {
       gzip: true,
       sync: true,
-      cwd: `./../functions/${functionName}`,
+      cwd: `./functions/${functionName}`,
       file: "code.tar.gz",
     },
     ["./"]
