@@ -2,13 +2,20 @@
 
 Pingvin Share is a selfhosted file sharing plattform made for the [Appwrite Hackathon](https://dev.to/devteam/announcing-the-appwrite-hackathon-on-dev-1oc0).
 
-## Showcase
+## 🎪 Showcase
 
-https://pingvin-share.dev.eliasschneider.com
+Demo: https://pingvin-share.dev.eliasschneider.com
 
-<img src="https://user-images.githubusercontent.com/58886915/166198353-4a7a1905-c185-4d54-b2fd-2dee67966ba0.png" width="700"/>
+<img src="https://user-images.githubusercontent.com/58886915/167101708-b85032ad-f5b1-480a-b8d7-ec0096ea2a43.png" width="700"/>
 
-## Setup
+## ✨ Features
+
+- Create a simple share with a link
+- Secure your share with a visitor limit and a password
+- Share your files with specific emails and send an invitation email
+- Dark mode
+
+## ⌨️ Setup
 
 At the moment, the setup is a bit time-consuming. I will improve the setup in the future.
 
@@ -39,7 +46,7 @@ You're almost done, now you have to change your environment variables that they 
 3.  Change `PUBLIC_APPWRITE_HOST` in the `.env` file to the host where your Appwrite instance runs
 4.  Change `PUBLIC_MAX_FILE_SIZE` in the `.env` file to the max file size limit you want
 
-## Additional configurations
+## ⚙️ Additional configurations
 
 ### SMTP
 
@@ -47,14 +54,14 @@ You're almost done, now you have to change your environment variables that they 
 2. Visit your Appwrite console, click on functions and select the `Create Share` function.
 3. At the settings tab change the empty variables to your SMTP setup.
 
-## Known issues / Limitations
+## 💁‍♂️ Known issues / Limitations
 
 Pingvin Share is currently in beta and there are issues and limitations that should be fixed in the future.
 
 - `DownloadAll` generates the zip file on the client side. This takes alot of time. Because of that I temporarily limited this function to maximal 150 MB.
 - If a user knows the share id, he can list and download the files directly from the Appwrite API even if the share is secured by a password or a visitor limit.
 
-## Contribute
+## 🖤 Contribute
 
 You're very welcome to contribute to Pingvin Share!
 Contact me, create an issue or directly create a pull request.
