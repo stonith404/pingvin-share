@@ -35,7 +35,7 @@ module.exports = async function (req, res) {
   }
 
   let userIds;
-  if (payload.emails) {
+  if (payload.emails.length > 0) {
     const creatorEmail = (await users.get(userId)).email
     userIds = []
     userIds.push(userId)

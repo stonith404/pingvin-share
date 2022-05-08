@@ -3,26 +3,28 @@ import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import { useRouter } from "next/router";
 
-const showVisitorLimitExceededModal = (modals: ModalsContextProps) => {
+const showErrorModal = (
+  modals: ModalsContextProps,
+  title: string,
+  text: string
+) => {
   return modals.openModal({
     closeOnClickOutside: false,
     withCloseButton: false,
     closeOnEscape: false,
-    title: <Title order={4}>Visitor limit exceeded</Title>,
+    title: <Title order={4}>{title}</Title>,
 
-    children: <Body />,
+    children: <Body text={text} />,
   });
 };
 
-const Body = () => {
+const Body = ({ text }: { text: string }) => {
   const modals = useModals();
   const router = useRouter();
   return (
     <>
       <Group grow direction="column">
-        <Text size="sm">
-          The visitor count limit from this share has been exceeded.
-        </Text>
+        <Text size="sm">{text}</Text>
         <Button
           onClick={() => {
             modals.closeAll();
@@ -36,4 +38,4 @@ const Body = () => {
   );
 };
 
-export default showVisitorLimitExceededModal;
+export default showErrorModal;

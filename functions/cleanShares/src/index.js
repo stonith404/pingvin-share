@@ -4,7 +4,6 @@ module.exports = async function (req, res) {
   const client = new sdk.Client();
 
   let database = new sdk.Database(client);
-
   let storage = new sdk.Storage(client);
 
   client

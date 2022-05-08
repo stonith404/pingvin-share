@@ -6,8 +6,7 @@ import Meta from "../../components/Meta";
 import DownloadAllButton from "../../components/share/DownloadAllButton";
 import FileList from "../../components/share/FileList";
 import showEnterPasswordModal from "../../components/share/showEnterPasswordModal";
-import showShareNotFoundModal from "../../components/share/showShareNotFoundModal";
-import showVisitorLimitExceededModal from "../../components/share/showVisitorLimitExceededModal";
+import showErrorModal from "../../components/share/showErrorModal";
 import authService from "../../services/auth.service";
 import shareService from "../../services/share.service";
 import { AppwriteFileWithPreview } from "../../types/File.type";
@@ -40,11 +39,27 @@ const Share = () => {
       .catch((e) => {
         const error = e.response.data.message;
         if (e.response.status == 404) {
-          showShareNotFoundModal(modals);
+          showErrorModal(
+            modals,
+            "Not found",
+            "This share can't be found. Please check your link."
+          );
         } else if (error == "password_required") {
           showEnterPasswordModal(modals, submitPassword);
         } else if (error == "visitor_limit_exceeded") {
-          showVisitorLimitExceededModal(modals);
+          showErrorModal(
+            modals,
+            "Visitor limit exceeded",
+            "The visitor limit from this share has been exceeded."
+          );
+        } else if (error == "forbidden") {
+          showErrorModal(
+            modals,
+            "Forbidden",
+            "You're not allowed to see this share. Are you logged in with the correct account?"
+          );
+        } else {
+          showErrorModal(modals, "Error", "An unknown error occurred.");
         }
       });
   };
