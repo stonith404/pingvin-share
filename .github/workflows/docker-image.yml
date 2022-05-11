@@ -1,0 +1,25 @@
+name: Docker Image CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+      - name: install buildx
+        id: buildx
+        uses: crazy-max/ghaction-docker-buildx@v1
+        with:
+          version: latest
+      - name: login to docker registry
+        run: echo "${{ secrets.GHP_TOKEN }}" | docker login ghcr.io -u "${{ secrets.GH_USER }}" --password-stdin
+      - name: build the image
+        run: |
+          docker buildx build --push \
+            --tag ghcr.io/${{ github.repository }}:latest \
+            --platform linux/amd64,linux/arm64 .
