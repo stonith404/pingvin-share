@@ -17,9 +17,9 @@ jobs:
         with:
           version: latest
       - name: login to docker registry
-        run: echo "${{ secrets.GHP_TOKEN }}" | docker login ghcr.io -u "${{ secrets.GH_USER }}" --password-stdin
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login ghcr.io -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
       - name: build the image
         run: |
           docker buildx build --push \
-            --tag ghcr.io/${{ github.repository }}:latest \
+            --tag stonith404/pingvin-share:latest \
             --platform linux/amd64,linux/arm64 .
