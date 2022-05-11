@@ -1,7 +1,8 @@
-import { ActionIcon, Avatar, Menu } from "@mantine/core";
+import { ActionIcon, Avatar, Menu, Switch } from "@mantine/core";
 import { NextLink } from "@mantine/next";
-import { DoorExit, Link } from "tabler-icons-react";
+import { DoorExit, Link, Moon } from "tabler-icons-react";
 import aw from "../../utils/appwrite.util";
+import ToggleThemeButton from "./ToggleThemeButton";
 
 const ActionAvatar = () => {
   return (
@@ -35,6 +36,10 @@ const ActionAvatar = () => {
         icon={<DoorExit size={14} />}
       >
         Sign out
+      </Menu.Item>
+      <Menu.Label>Settings</Menu.Label>
+      <Menu.Item icon={<Moon size={14} />}>
+        <ToggleThemeButton />
       </Menu.Item>
     </Menu>
   );

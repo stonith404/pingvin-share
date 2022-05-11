@@ -1,7 +1,6 @@
 import {
   ColorScheme,
   Container,
-  Group,
   LoadingOverlay,
   MantineProvider,
   Stack,

@@ -5,7 +5,7 @@ export default [
     $write: [],
     name: "Shares",
     enabled: true,
-    permission: "collection",
+    permission: "document",
     attributes: [
       {
         key: "securityID",
