@@ -1,8 +1,10 @@
 import {
   ColorScheme,
   Container,
+  Group,
   LoadingOverlay,
   MantineProvider,
+  Stack,
 } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 import { NotificationsProvider } from "@mantine/notifications";
@@ -11,6 +13,7 @@ import { GetServerSidePropsContext } from "next";
 import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
 import "../../styles/globals.css";
+import Footer from "../components/Footer";
 import ThemeProvider from "../components/mantine/ThemeProvider";
 import Header from "../components/navBar/NavBar";
 import globalStyle from "../styles/global.style";
@@ -56,10 +59,15 @@ function App(
                 <ConfigContext.Provider value={environmentVariables}>
                   <IsSignedInContext.Provider value={isSignedIn}>
                     <LoadingOverlay visible={isLoading} overlayOpacity={1} />
-                    <Header />
-                    <Container>
-                      <Component {...pageProps} />
-                    </Container>
+                    <Stack justify="space-between" sx={{ minHeight: "100vh" }}>
+                      <div>
+                        <Header />
+                        <Container>
+                          <Component {...pageProps} />
+                        </Container>
+                      </div>
+                      <Footer />
+                    </Stack>
                   </IsSignedInContext.Provider>
                 </ConfigContext.Provider>
               )}
