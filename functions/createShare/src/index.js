@@ -63,7 +63,7 @@ module.exports = async function (req, res) {
     users: userIds,
     createdAt: Date.now(),
     expiresAt: expiration,
-  });
+  }, [`user:${userId}`]);
 
   res.json({
     id: payload.id,

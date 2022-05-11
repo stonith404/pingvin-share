@@ -25,6 +25,7 @@
     "jose": "^4.8.1",
     "js-file-download": "^0.4.12",
     "jszip": "^3.9.1",
+    "moment": "^2.29.3",
     "next": "12.1.5",
     "next-pwa": "^5.5.2",
     "node-appwrite": "^5.1.0",

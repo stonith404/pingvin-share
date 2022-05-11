@@ -13,10 +13,9 @@ import { NextLink } from "@mantine/next";
 import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
 import headerStyle from "../../styles/header.style";
-import aw from "../../utils/appwrite.util";
 import { IsSignedInContext } from "../../utils/auth.util";
 import { useConfig } from "../../utils/config.util";
-import ToggleThemeButton from "./ToggleThemeButton";
+import ActionAvatar from "./ActionAvatar";
 
 type Link = {
   link?: string;
@@ -36,25 +35,20 @@ const Header = () => {
       link: "/upload",
       label: "Upload",
     },
-    {
-      label: "Sign out",
-      action: async () => {
-        await aw.account.deleteSession("current");
-        window.location.reload();
-      },
-    },
   ];
 
   const unauthenticatedLinks: Link[] | undefined = [
-    {
-      link: "/",
-      label: "Home",
-    },
     {
       link: "/auth/signIn",
       label: "Sign in",
     },
   ];
+
+  if (!config.DISABLE_HOME_PAGE)
+    unauthenticatedLinks.unshift({
+      link: "/",
+      label: "Home",
+    });
 
   if (!config.DISABLE_REGISTRATION)
     unauthenticatedLinks.push({
@@ -67,11 +61,11 @@ const Header = () => {
   const items = links.map((link) => {
     if (link) {
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      // useEffect(() => {
-      //   if (window.location.pathname == link.link) {
-      //     setActive(link.link);
-      //   }
-      // });
+      useEffect(() => {
+        if (window.location.pathname == link.link) {
+          setActive(link.link);
+        }
+      });
       return (
         <NextLink
           key={link.label}
@@ -104,9 +98,8 @@ const Header = () => {
         <Group spacing={5} className={classes.links}>
           {items}
           <Space w={5} />
-          <ToggleThemeButton />
+          {isSignedIn && <ActionAvatar />}
         </Group>
-
         <Burger
           opened={opened}
           onClick={() => toggleOpened()}

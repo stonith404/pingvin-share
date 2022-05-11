@@ -32,7 +32,10 @@ const CreateUploadModalBody = ({
   const modals = useModals();
   const validationSchema = yup.object().shape({
     link: yup.string().required().min(2).max(50),
-    emails: mode == "email" ? yup.array().of(yup.string().email()).min(1) : yup.array(),
+    emails:
+      mode == "email"
+        ? yup.array().of(yup.string().email()).min(1)
+        : yup.array(),
     password: yup.string().min(3).max(100),
     maxVisitors: yup.number().min(1),
   });

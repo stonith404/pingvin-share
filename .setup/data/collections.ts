@@ -65,6 +65,12 @@ export default [
         attributes: ["expiresAt"],
         orders: ["ASC"],
       },
+      {
+        key: "enabled",
+        type: "key",
+        attributes: ["enabled"],
+        orders: ["ASC"],
+      },
     ],
   },
   {

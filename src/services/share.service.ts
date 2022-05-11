@@ -5,6 +5,11 @@ const get = async (shareId: string, password?: string) => {
   return (await axios.post(`/api/share/${shareId}`, { password }))
     .data as AppwriteFileWithPreview[];
 };
+
+const remove = async (shareId: string) => {
+  await axios.delete(`/api/share/${shareId}`);
+};
+
 const isIdAlreadyInUse = async (shareId: string) => {
   return (await axios.get(`/api/share/${shareId}/exists`)).data
     .exists as boolean;
@@ -21,6 +26,7 @@ const authenticateWithPassword = async (shareId: string, password?: string) => {
 
 export default {
   get,
+  remove,
   authenticateWithPassword,
   isIdAlreadyInUse,
   doesUserExist,

@@ -42,6 +42,7 @@ const FileList = ({
           height={30}
           alt={file.name}
           objectFit="cover"
+          style={{ borderRadius: 3 }}
           src={`data:image/png;base64,${new Buffer(file.preview).toString(
             "base64"
           )}`}
