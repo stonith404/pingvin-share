@@ -8,6 +8,7 @@ import {
   Group,
 } from "@mantine/core";
 import Meta from "../components/Meta";
+import { NextLink } from "@mantine/next";
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -46,10 +47,15 @@ const ErrorNotFound = () => {
         <Title align="center" order={3}>
           Oops this page doesn't exist.
         </Title>
-        <Text color="dimmed" align="center" className={classes.description}>
-        </Text>
+        <Text
+          color="dimmed"
+          align="center"
+          className={classes.description}
+        ></Text>
         <Group position="center">
-          <Button variant="light">Bring me back</Button>
+          <Button component={NextLink} href="/" variant="light">
+            Bring me back
+          </Button>
         </Group>
       </Container>
     </>
