@@ -35,7 +35,7 @@ First of all you have to start the Docker container.
 2. Rename the `.env.example` file to `.env`
 3. Start the container with `docker-compose up -d`
 
-The container is now running. Now you have to setup the Appwrite structure, but no worries I made a setup script.
+The container is now running. Now you have to setup the Appwrite structure, but no worries there is a simple setup script.
 
 To run the script run `docker-compose exec pingvin-share node scripts/setup.js`.
 
@@ -44,7 +44,9 @@ You're almost done, now you have to change your environment variables that they 
 1.  Go to your Appwrite console, visit "API Keys" and copy the "Functions API Key" secret to your clipboard.
 2.  Paste the key to the `APPWRITE_FUNCTION_API_KEY` variable in the `.env` file
 3.  Change `PUBLIC_APPWRITE_HOST` in the `.env` file to the host where your Appwrite instance runs
-4.  Change `PUBLIC_MAX_FILE_SIZE` in the `.env` file to the max file size limit you want
+4.  Change the rest of the environment variables in the `.env` that they fit to your preferences
+5.  To save the environment variables run `docker-compose up -d`
+6.  Well done! Get a coffee and enjoy Pingvin Share 🎉
 
 ## ⚙️ Additional configurations
 
