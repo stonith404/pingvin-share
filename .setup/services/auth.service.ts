@@ -3,6 +3,7 @@ import rl from "readline-sync";
 import cookie from "cookie";
 
 const getToken = async () => {
+  console.info("Please enter your Appwrite credentials \n");
   var email = rl.question("Email: ");
   var password = rl.question("Password: ", {
     hideEchoBack: true,
