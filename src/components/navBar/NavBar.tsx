@@ -11,7 +11,7 @@ import {
 import { useBooleanToggle } from "@mantine/hooks";
 import { NextLink } from "@mantine/next";
 import Image from "next/image";
-import React, { useContext, useEffect, useState } from "react";
+import React, { ReactNode, useContext, useEffect, useState } from "react";
 import headerStyle from "../../styles/header.style";
 import { IsSignedInContext } from "../../utils/auth.util";
 import { useConfig } from "../../utils/config.util";
@@ -19,7 +19,8 @@ import ActionAvatar from "./ActionAvatar";
 
 type Link = {
   link?: string;
-  label: string;
+  label?: string;
+  component?: ReactNode;
   action?: () => Promise<void>;
 };
 
@@ -34,6 +35,9 @@ const Header = () => {
     {
       link: "/upload",
       label: "Upload",
+    },
+    {
+      component: <ActionAvatar />,
     },
   ];
 
@@ -59,6 +63,15 @@ const Header = () => {
   const links = isSignedIn ? authenticatedLinks : unauthenticatedLinks;
 
   const items = links.map((link) => {
+    if (link.component) {
+      return (
+        <>
+          <Container pl={5} py={15}>
+            {link.component}
+          </Container>
+        </>
+      );
+    }
     if (link) {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       useEffect(() => {
@@ -97,8 +110,6 @@ const Header = () => {
         </NextLink>
         <Group spacing={5} className={classes.links}>
           {items}
-          <Space w={5} />
-          {isSignedIn && <ActionAvatar />}
         </Group>
         <Burger
           opened={opened}
