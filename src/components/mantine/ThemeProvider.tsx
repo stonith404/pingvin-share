@@ -6,7 +6,7 @@ import {
 import { ModalsProvider } from "@mantine/modals";
 import { setCookies } from "cookies-next";
 import { Dispatch, ReactNode, SetStateAction } from "react";
-import mantineTheme from "../../styles/global.style";
+import mantineTheme from "../../styles/mantine.style";
 
 const ThemeProvider = ({
   children,

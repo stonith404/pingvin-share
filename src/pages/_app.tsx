@@ -11,11 +11,11 @@ import { getCookie } from "cookies-next";
 import { GetServerSidePropsContext } from "next";
 import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
-import "../../styles/globals.css";
 import Footer from "../components/Footer";
 import ThemeProvider from "../components/mantine/ThemeProvider";
 import Header from "../components/navBar/NavBar";
-import globalStyle from "../styles/global.style";
+import GlobalStyle from "../styles/global.style";
+import globalStyle from "../styles/mantine.style";
 import aw from "../utils/appwrite.util";
 import authUtil, { IsSignedInContext } from "../utils/auth.util";
 import configUtil, { ConfigContext } from "../utils/config.util";
@@ -49,6 +49,7 @@ function App(
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS theme={globalStyle}>
       <ThemeProvider colorScheme={colorScheme} setColorScheme={setColorScheme}>
+        <GlobalStyle />
         <NotificationsProvider>
           <ModalsProvider>
             <GlobalLoadingContext.Provider value={{ isLoading, setIsLoading }}>
