@@ -1,4 +1,4 @@
-import { ActionIcon, Avatar, Menu, Switch } from "@mantine/core";
+import { ActionIcon, Avatar, Menu } from "@mantine/core";
 import { NextLink } from "@mantine/next";
 import { DoorExit, Link, Moon } from "tabler-icons-react";
 import aw from "../../utils/appwrite.util";

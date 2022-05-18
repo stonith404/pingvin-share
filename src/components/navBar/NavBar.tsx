@@ -4,7 +4,6 @@ import {
   Group,
   Header as MantineHeader,
   Paper,
-  Space,
   Text,
   Transition,
 } from "@mantine/core";

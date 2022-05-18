@@ -41,7 +41,7 @@ const Upload = () => {
             JSON.stringify({ id, security, expiration, emails }),
             false
           )
-        ).stdout
+        ).response
       ).id;
       for (let i = 0; i < files.length; i++) {
         setFiles([...files]);
