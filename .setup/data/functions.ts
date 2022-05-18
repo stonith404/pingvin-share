@@ -46,7 +46,7 @@ export default () => {
         APPWRITE_FUNCTION_API_KEY: process.env["APPWRITE_FUNCTION_API_KEY"],
       },
       events: [],
-      schedule: "30,59 * * * *",
+      schedule: "00 * * * *",
       timeout: 60,
     },
   ];
