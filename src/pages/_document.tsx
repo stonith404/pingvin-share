@@ -23,12 +23,6 @@ export default class _Document extends Document {
           <Main />
           <NextScript />
         </body>
-        {/* Plausible analytics */}
-        <script
-          defer
-          data-domain="pingvin-share.dev.eliasschneider.com"
-          src="https://analytics.eliasschneider.com/js/plausible.js"
-        ></script>
       </Html>
     );
   }
