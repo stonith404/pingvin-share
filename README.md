@@ -1,5 +1,7 @@
 # <div align="center"><img  src="https://user-images.githubusercontent.com/58886915/166198400-c2134044-1198-4647-a8b6-da9c4a204c68.svg" width="40"/> </br>Pingvin Share</div>
 
+> ⚠️ This project is no longer maintained and only compatible with Apprite version 0.14 and below.
+
 Pingvin Share is a self-hosted file sharing platform made for the [Appwrite Hackathon](https://dev.to/devteam/announcing-the-appwrite-hackathon-on-dev-1oc0).
 
 ## 🎪 Showcase
