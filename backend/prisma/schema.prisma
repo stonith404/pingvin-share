@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  email     String  @unique
+  password  String
+  firstName String?
+  lastName  String?
+
+  shares        Share[]
+  refreshTokens RefreshToken[]
+}
+
+model RefreshToken {
+  token     String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  expiresAt DateTime @default(dbgenerated("NOW() + interval '3 months'"))
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+}
+
+model Share {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  uploadLocked Boolean  @default(false)
+  isZipReady   Boolean  @default(false)
+  views        Int      @default(0)
+  expiration   DateTime
+
+  creatorId String
+  creator   User           @relation(fields: [creatorId], references: [id])
+  security  ShareSecurity?
+  files     File[]
+}
+
+model File {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  name String
+  size String
+
+  shareId String
+  share   Share  @relation(fields: [shareId], references: [id], onDelete: Cascade)
+}
+
+model ShareSecurity {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  password String?
+  maxViews Int?
+
+  shareId String? @unique
+  share   Share?  @relation(fields: [shareId], references: [id], onDelete: Cascade)
+}

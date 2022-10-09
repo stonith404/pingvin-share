@@ -1,14 +1,45 @@
-version: '3.3'
+version: '3.8'
 services:
-    pingvin-share:
-        restart: "unless-stopped"
-        ports:
-            - '3000:3000'
-        image: stonith404/pingvin-share
-        environment:
-            - APPWRITE_FUNCTION_API_KEY=${APPWRITE_FUNCTION_API_KEY}
-            - PUBLIC_APPWRITE_HOST=${PUBLIC_APPWRITE_HOST}
-            - PUBLIC_MAX_FILE_SIZE=${PUBLIC_MAX_FILE_SIZE}
-            - PUBLIC_DISABLE_REGISTRATION=${PUBLIC_DISABLE_REGISTRATION}
-            - PUBLIC_DISABLE_HOME_PAGE=${PUBLIC_DISABLE_HOME_PAGE}
-            - PUBLIC_MAIL_SHARE_ENABLED=${PUBLIC_MAIL_SHARE_ENABLED}
+  db:
+    image: postgres:14.1-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=pingvin-share
+    volumes:
+      - pingvin-share-db:/var/lib/postgresql/data
+  backend:
+    image: pingvin-share/backend
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=${DB_HOST}
+      - DB_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pingvin-share?schema=public
+      - APP_URL=${APP_URL}
+      - ALLOW_REGISTRATION=${ALLOW_REGISTRATION}
+      - MAX_FILE_SIZE=${MAX_FILE_SIZE}
+      - JWT_SECRET=${JWT_SECRET}
+    ports:
+      - '8080:8080'
+    depends_on:
+      - db
+    volumes:
+      - "./uploads:/usr/src/app/uploads"
+  frontend:
+    restart: unless-stopped
+    ports:
+       - '3000:3000'
+    image: pingvin-share/frontend
+    environment:
+       - SHOW_HOME_PAGE=${SHOW_HOME_PAGE}
+       - ALLOW_REGISTRATION=${ALLOW_REGISTRATION}
+       - MAX_FILE_SIZE=${MAX_FILE_SIZE}
+       - BACKEND_URL=${BACKEND_URL}
+    depends_on:
+      - backend
+
+         
+volumes:
+  pingvin-share-db:

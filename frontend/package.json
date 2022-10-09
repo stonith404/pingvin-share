@@ -1,0 +1,45 @@
+{
+  "name": "pingvin-share",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "dotenv next dev",
+    "build": "next build",
+    "start": "dotenv next start",
+    "lint": "next lint",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "dependencies": {
+    "@mantine/core": "^4.2.0",
+    "@mantine/dropzone": "^4.2.0",
+    "@mantine/form": "^4.2.0",
+    "@mantine/hooks": "^4.2.0",
+    "@mantine/modals": "^4.2.0",
+    "@mantine/next": "^4.2.0",
+    "@mantine/notifications": "^4.2.0",
+    "axios": "^0.26.1",
+    "cookies-next": "^2.0.4",
+    "file-saver": "^2.0.5",
+    "jose": "^4.8.1",
+    "moment": "^2.29.3",
+    "next": "12.1.5",
+    "next-http-proxy-middleware": "^1.2.4",
+    "next-pwa": "^5.5.2",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "tabler-icons-react": "^1.44.0",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.23",
+    "@types/react": "18.0.4",
+    "@types/react-dom": "18.0.0",
+    "axios": "^0.26.1",
+    "dotenv-cli": "^6.0.0",
+    "eslint": "8.13.0",
+    "eslint-config-next": "12.1.5",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1",
+    "tar": "^6.1.11",
+    "typescript": "^4.6.3"
+  }
+}
