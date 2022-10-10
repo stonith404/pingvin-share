@@ -1,4 +1,5 @@
 import {
+  Box,
   Burger,
   Container,
   createStyles,
@@ -111,7 +112,7 @@ const NavBar = () => {
   const user = useUser();
   const [opened, toggleOpened] = useDisclosure(false);
 
-  const [authenticatedLinks, setAuthenticatedLinks] = useState<Link[]>([
+  const authenticatedLinks = [
     {
       link: "/upload",
       label: "Upload",
@@ -119,7 +120,7 @@ const NavBar = () => {
     {
       component: <ActionAvatar />,
     },
-  ]);
+  ];
 
   const [unauthenticatedLinks, setUnauthenticatedLinks] = useState<Link[]>([
     {
@@ -149,16 +150,15 @@ const NavBar = () => {
   }, []);
 
   const { classes, cx } = useStyles();
-  console.log(user);
   const items = (
     <>
       {(user ? authenticatedLinks : unauthenticatedLinks).map((link) => {
         if (link.component) {
           return (
             <>
-              <Container pl={5} py={15}>
+              <Box pl={5} py={15}>
                 {link.component}
-              </Container>
+              </Box>
             </>
           );
         }
@@ -185,8 +185,8 @@ const NavBar = () => {
             <Image
               src="/img/logo.svg"
               alt="Pinvgin Share Logo"
-              height={40}
-              width={40}
+              height={35}
+              width={35}
             />
             <Text weight={600}>Pingvin Share</Text>
           </Group>
