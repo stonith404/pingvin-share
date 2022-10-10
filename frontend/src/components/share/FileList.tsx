@@ -35,18 +35,6 @@ const FileList = ({
 
   const rows = files.map((file) => (
     <tr key={file.name}>
-      <td>
-        {/* <Image
-          width={30}
-          height={30}
-          alt={file.name}
-          objectFit="cover"
-          style={{ borderRadius: 3 }}
-          src={`data:image/png;base64,${new Buffer(file.preview).toString(
-            "base64"
-          )}`}
-        ></Image> */}
-      </td>
       <td>{file.name}</td>
       <td>{byteStringToHumanSizeString(file.size)}</td>
       <td>
@@ -74,7 +62,6 @@ const FileList = ({
     <Table>
       <thead>
         <tr>
-          <th></th>
           <th>Name</th>
           <th>Size</th>
           <th></th>

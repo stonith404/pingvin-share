@@ -19,7 +19,6 @@ const FileList = ({
   const rows = files.map((file, i) => (
     <tr key={i}>
       <td>{file.name}</td>
-      <td>{file.type}</td>
       <td>{byteStringToHumanSizeString(file.size.toString())}</td>
       <td>
         {file.uploadingState ? (
@@ -47,7 +46,6 @@ const FileList = ({
       <thead>
         <tr>
           <th>Name</th>
-          <th>Type</th>
           <th>Size</th>
           <th></th>
         </tr>

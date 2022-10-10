@@ -41,7 +41,8 @@ Contact me, create an issue or directly create a pull request.
 
 ### Development setup
 
-#### Database & Backend
+#### Database & Backend
+
 1. Open the `backend`
 2. Duplicate the `.env.example` file, rename the duplicate to `.env` and change the environment variables if needed
 3. Install the dependencies with `npm install`
@@ -50,6 +51,7 @@ Contact me, create an issue or directly create a pull request.
 6. Start the backend with `npm run dev`
 
 #### Frontend
+
 1. Open the `frontend` folder
 2. Duplicate the `.env.example` file, rename the duplicate to `.env` and change the environment variables if needed
 3. Install the dependencies with `npm install`
