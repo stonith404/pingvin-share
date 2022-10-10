@@ -5,6 +5,7 @@ import {
   Group,
   LoadingOverlay,
   Space,
+  Stack,
   Table,
   Text,
   Title,
@@ -39,14 +40,14 @@ const MyShares = () => {
       </Title>
       {shares.length == 0 ? (
         <Center style={{ height: "70vh" }}>
-          <Group direction="column" align="center" spacing={10}>
+          <Stack align="center" spacing={10}>
             <Title order={3}>It's empty here 👀</Title>
             <Text>You don't have any shares.</Text>
             <Space h={5} />
             <Button component={NextLink} href="/upload" variant="light">
               Create one
             </Button>
-          </Group>
+          </Stack>
         </Center>
       ) : (
         <Table>

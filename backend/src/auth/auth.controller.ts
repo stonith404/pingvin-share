@@ -6,7 +6,6 @@ import {
   Post,
 } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
-import { UserDTO } from "src/user/dto/user.dto";
 
 import { AuthService } from "./auth.service";
 import { AuthRegisterDTO } from "./dto/authRegister.dto";

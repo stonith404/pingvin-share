@@ -10,23 +10,21 @@ import {
   UseGuards,
   UseInterceptors,
 } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { Response } from "express";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
 import { FileDownloadGuard } from "src/file/guard/fileDownload.guard";
 import { ShareDTO } from "src/share/dto/share.dto";
+import { ShareOwnerGuard } from "src/share/guard/shareOwner.guard";
 import { ShareSecurityGuard } from "src/share/guard/shareSecurity.guard";
 import { FileService } from "./file.service";
 
 @Controller("shares/:shareId/files")
 export class FileController {
-  constructor(
-    private fileService: FileService,
-    private config: ConfigService
-  ) {}
+  constructor(private fileService: FileService) {}
+
   @Post()
-  @UseGuards(JwtGuard)
+  @UseGuards(JwtGuard, ShareOwnerGuard)
   @UseInterceptors(
     FileInterceptor("file", {
       dest: "./uploads/_temp/",
@@ -43,7 +41,7 @@ export class FileController {
     file: Express.Multer.File,
     @Param("shareId") shareId: string
   ) {
-    return new ShareDTO().from( await this.fileService.create(file, shareId));
+    return new ShareDTO().from(await this.fileService.create(file, shareId));
   }
 
   @Get(":fileId/download")
