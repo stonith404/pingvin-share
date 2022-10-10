@@ -1,7 +1,7 @@
 import { Expose, plainToClass } from "class-transformer";
 import { IsEmail, IsNotEmpty, IsString } from "class-validator";
 
-export class AuthDTO {
+export class UserDTO {
   @Expose()
   id: string;
 
@@ -20,7 +20,7 @@ export class AuthDTO {
   @IsString()
   password: string;
 
-  constructor(partial: Partial<AuthDTO>) {
-    return plainToClass(AuthDTO, partial, { excludeExtraneousValues: true });
+  from(partial: Partial<UserDTO>) {
+    return plainToClass(UserDTO, partial, { excludeExtraneousValues: true });
   }
 }

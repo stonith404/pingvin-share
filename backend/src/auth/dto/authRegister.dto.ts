@@ -1,4 +1,4 @@
 import { PickType } from "@nestjs/swagger";
-import { AuthDTO } from "./auth.dto";
+import { UserDTO } from "src/user/dto/user.dto";
 
-export class AuthRegisterDTO extends AuthDTO {}
+export class AuthRegisterDTO extends UserDTO {}

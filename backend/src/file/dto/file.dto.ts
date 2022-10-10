@@ -16,7 +16,7 @@ export class FileDTO {
 
   share: ShareDTO;
 
-  constructor(partial: Partial<FileDTO>) {
+  from(partial: Partial<FileDTO>) {
     return plainToClass(FileDTO, partial, { excludeExtraneousValues: true });
   }
 }

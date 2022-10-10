@@ -15,6 +15,7 @@ import { FileInterceptor } from "@nestjs/platform-express";
 import { Response } from "express";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
 import { FileDownloadGuard } from "src/file/guard/fileDownload.guard";
+import { ShareDTO } from "src/share/dto/share.dto";
 import { ShareSecurityGuard } from "src/share/guard/shareSecurity.guard";
 import { FileService } from "./file.service";
 
@@ -42,7 +43,7 @@ export class FileController {
     file: Express.Multer.File,
     @Param("shareId") shareId: string
   ) {
-    return await this.fileService.create(file, shareId);
+    return new ShareDTO().from( await this.fileService.create(file, shareId));
   }
 
   @Get(":fileId/download")

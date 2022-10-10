@@ -10,8 +10,8 @@ import { User } from "@prisma/client";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
 import * as argon from "argon2";
 import { PrismaService } from "src/prisma/prisma.service";
-import { AuthDTO } from "./dto/auth.dto";
 import { AuthRegisterDTO } from "./dto/authRegister.dto";
+import { AuthSignInDTO } from "./dto/authSignIn.dto";
 
 @Injectable()
 export class AuthService {
@@ -44,7 +44,7 @@ export class AuthService {
     }
   }
 
-  async signIn(dto: AuthDTO) {
+  async signIn(dto: AuthSignInDTO) {
     const user = await this.prisma.user.findUnique({
       where: {
         email: dto.email,
