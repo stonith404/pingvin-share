@@ -1,9 +1,10 @@
-name: Docker Image CI
+name: Create Docker Image for Backend
 
 on:
-  workflow_dispatch:
   push:
     branches: main
+      paths:
+        - 'backend/**'
 
 jobs:
   build:
@@ -11,15 +12,14 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v2
-      - name: install buildx
-        id: buildx
-        uses: crazy-max/ghaction-docker-buildx@v1
-        with:
-          version: latest
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
       - name: login to docker registry
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
       - name: build the image
         run: |
           docker buildx build --push \
-            --tag stonith404/pingvin-share:latest \
+            --tag stonith404/pingvin-share-backend:latest \
             --platform linux/amd64,linux/arm64 .

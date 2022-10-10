@@ -10,7 +10,7 @@ services:
     volumes:
       - pingvin-share-db:/var/lib/postgresql/data
   backend:
-    image: pingvin-share/backend
+    image: stonith404/pingvin-share-backend
     restart: unless-stopped
     environment:
       - POSTGRES_USER=${DB_USER}
@@ -21,8 +21,6 @@ services:
       - ALLOW_REGISTRATION=${ALLOW_REGISTRATION}
       - MAX_FILE_SIZE=${MAX_FILE_SIZE}
       - JWT_SECRET=${JWT_SECRET}
-    ports:
-      - '8080:8080'
     depends_on:
       - db
     volumes:
@@ -31,7 +29,7 @@ services:
     restart: unless-stopped
     ports:
        - '3000:3000'
-    image: pingvin-share/frontend
+    image: stonith404/pingvin-share-frontend
     environment:
        - SHOW_HOME_PAGE=${SHOW_HOME_PAGE}
        - ALLOW_REGISTRATION=${ALLOW_REGISTRATION}
