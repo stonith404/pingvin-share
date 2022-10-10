@@ -19,10 +19,13 @@ const DownloadAllButton = ({ shareId }: { shareId: string }) => {
       .catch(() => {});
 
     const timer = setInterval(() => {
-      shareService.getMetaData(shareId).then((share) => {
-        setIsZipReady(share.isZipReady);
-        if (share.isZipReady) clearInterval(timer);
-      }).catch(() => {});
+      shareService
+        .getMetaData(shareId)
+        .then((share) => {
+          setIsZipReady(share.isZipReady);
+          if (share.isZipReady) clearInterval(timer);
+        })
+        .catch(() => {});
     }, 5000);
     return () => {
       clearInterval(timer);
@@ -32,7 +35,6 @@ const DownloadAllButton = ({ shareId }: { shareId: string }) => {
   if (!isZipReady)
     return (
       <Tooltip
-        wrapLines
         position="bottom"
         width={220}
         withArrow

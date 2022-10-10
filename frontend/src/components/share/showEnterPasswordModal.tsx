@@ -1,4 +1,4 @@
-import { Button, Group, PasswordInput, Text, Title } from "@mantine/core";
+import { Button, Group, PasswordInput, Stack, Text, Title } from "@mantine/core";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import { useState } from "react";
 
@@ -27,7 +27,7 @@ const Body = ({ submitCallback }: { submitCallback: any }) => {
   const [passwordWrong, setPasswordWrong] = useState(false);
   return (
     <>
-      <Group grow direction="column">
+      <Stack align="stretch">
         <PasswordInput
           variant="filled"
           placeholder="Password"
@@ -50,7 +50,7 @@ const Body = ({ submitCallback }: { submitCallback: any }) => {
         >
           Submit
         </Button>
-      </Group>
+      </Stack>
     </>
   );
 };

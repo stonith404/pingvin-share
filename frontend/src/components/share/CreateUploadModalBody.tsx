@@ -3,10 +3,10 @@ import {
   Button,
   Col,
   Grid,
-  Group,
   NumberInput,
   PasswordInput,
   Select,
+  Stack,
   Text,
   TextInput,
 } from "@mantine/core";
@@ -46,7 +46,7 @@ const CreateUploadModalBody = ({
       maxViews: undefined,
       expiration: "1-day",
     },
-    schema: yupResolver(validationSchema),
+    validate: yupResolver(validationSchema),
   });
 
   return (
@@ -63,7 +63,7 @@ const CreateUploadModalBody = ({
         }
       })}
     >
-      <Group direction="column" grow>
+      <Stack align="stretch">
         <Grid align={form.errors.link ? "center" : "flex-end"}>
           <Col xs={9}>
             <TextInput
@@ -115,10 +115,10 @@ const CreateUploadModalBody = ({
         />
         <Accordion>
           <Accordion.Item
-            label="Security options"
+            value="Security options"
             sx={{ borderBottom: "none" }}
           >
-            <Group direction="column" grow>
+            <Stack align="stretch">
               <PasswordInput
                 variant="filled"
                 placeholder="No password"
@@ -134,11 +134,11 @@ const CreateUploadModalBody = ({
                 label="Maximal views"
                 {...form.getInputProps("maxViews")}
               />
-            </Group>
+            </Stack>
           </Accordion.Item>
         </Accordion>
         <Button type="submit">Share</Button>
-      </Group>
+      </Stack>
     </form>
   );
 };

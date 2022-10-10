@@ -1,4 +1,4 @@
-import { Button, Group, Text, Title } from "@mantine/core";
+import { Button, Group, Stack, Text, Title } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import { useRouter } from "next/router";
@@ -23,7 +23,7 @@ const Body = ({ text }: { text: string }) => {
   const router = useRouter();
   return (
     <>
-      <Group grow direction="column">
+      <Stack align="stretch">
         <Text size="sm">{text}</Text>
         <Button
           onClick={() => {
@@ -33,7 +33,7 @@ const Body = ({ text }: { text: string }) => {
         >
           Go back
         </Button>
-      </Group>
+      </Stack>
     </>
   );
 };

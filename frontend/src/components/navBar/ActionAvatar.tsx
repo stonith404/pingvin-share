@@ -6,40 +6,34 @@ import ToggleThemeButton from "./ToggleThemeButton";
 
 const ActionAvatar = () => {
   return (
-    <Menu
-      control={
+    <Menu>
+      <Menu.Target>
         <ActionIcon>
           <Avatar size={28} radius="xl" />
         </ActionIcon>
-      }
-    >
-      <Menu.Label>My account</Menu.Label>
-      <Menu.Item
-        component={NextLink}
-        href="/account/shares"
-        icon={<Link size={14} />}
-      >
-        Shares
-      </Menu.Item>
-      {/* <Menu.Item
-        component={NextLink}
-        href="/account/shares"
-        icon={<Settings size={14} />}
-      >
-        Settings
-      </Menu.Item> */}
-      <Menu.Item
-        onClick={async () => {
-          await authService.signOut();
-        }}
-        icon={<DoorExit size={14} />}
-      >
-        Sign out
-      </Menu.Item>
-      <Menu.Label>Settings</Menu.Label>
-      <Menu.Item icon={<Moon size={14} />}>
-        <ToggleThemeButton />
-      </Menu.Item>
+      </Menu.Target>
+      <Menu.Dropdown>
+        <Menu.Label>My account</Menu.Label>
+        <Menu.Item
+          component={NextLink}
+          href="/account/shares"
+          icon={<Link size={14} />}
+        >
+          Shares
+        </Menu.Item>
+        <Menu.Item
+          onClick={async () => {
+            authService.signOut();
+          }}
+          icon={<DoorExit size={14} />}
+        >
+          Sign out
+        </Menu.Item>
+        <Menu.Label>Settings</Menu.Label>
+        <Menu.Item icon={<Moon size={14} />}>
+          <ToggleThemeButton />
+        </Menu.Item>
+      </Menu.Dropdown>
     </Menu>
   );
 };

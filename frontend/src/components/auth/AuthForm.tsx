@@ -9,6 +9,7 @@ import {
   Title,
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+import { NextLink } from "@mantine/next";
 import getConfig from "next/config";
 import * as yup from "yup";
 import authService from "../../services/auth.service";
@@ -27,7 +28,7 @@ const AuthForm = ({ mode }: { mode: "signUp" | "signIn" }) => {
       email: "",
       password: "",
     },
-    schema: yupResolver(validationSchema),
+    validate: yupResolver(validationSchema),
   });
 
   const signIn = (email: string, password: string) => {
@@ -59,7 +60,11 @@ const AuthForm = ({ mode }: { mode: "signUp" | "signIn" }) => {
           {mode == "signUp"
             ? "You have an account already?"
             : "You don't have an account yet?"}{" "}
-          <Anchor href={mode == "signUp" ? "signIn" : "signUp"} size="sm">
+          <Anchor
+            component={NextLink}
+            href={mode == "signUp" ? "signIn" : "signUp"}
+            size="sm"
+          >
             {mode == "signUp" ? "Sign in" : "Sign up"}
           </Anchor>
         </Text>

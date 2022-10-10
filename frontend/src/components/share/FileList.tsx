@@ -1,5 +1,4 @@
 import { ActionIcon, Loader, Skeleton, Table } from "@mantine/core";
-import { useRouter } from "next/router";
 import { CircleCheck, Download } from "tabler-icons-react";
 import shareService from "../../services/share.service";
 
@@ -14,8 +13,6 @@ const FileList = ({
   shareId: string;
   isLoading: boolean;
 }) => {
-  const router = useRouter();
-
   const skeletonRows = [...Array(5)].map((c, i) => (
     <tr key={i}>
       <td>

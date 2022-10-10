@@ -1,22 +1,25 @@
 import {
   Burger,
   Container,
+  createStyles,
   Group,
-  Header as MantineHeader,
+  Header,
+  Image,
   Paper,
+  Stack,
   Text,
   Transition,
 } from "@mantine/core";
-import { useBooleanToggle } from "@mantine/hooks";
+import { useDisclosure } from "@mantine/hooks";
 import { NextLink } from "@mantine/next";
 import getConfig from "next/config";
-import Image from "next/image";
 import { ReactNode, useEffect, useState } from "react";
 import useUser from "../../hooks/user.hook";
-import headerStyle from "../../styles/header.style";
 import ActionAvatar from "./ActionAvatar";
 
 const { publicRuntimeConfig } = getConfig();
+
+const HEADER_HEIGHT = 60;
 
 type Link = {
   link?: string;
@@ -25,14 +28,90 @@ type Link = {
   action?: () => Promise<void>;
 };
 
-const Header = () => {
-  const [opened, toggleOpened] = useBooleanToggle(false);
-  const [active, setActive] = useState<string>();
+const useStyles = createStyles((theme) => ({
+  root: {
+    position: "relative",
+    zIndex: 1,
+  },
+
+  dropdown: {
+    position: "absolute",
+    top: HEADER_HEIGHT,
+    left: 0,
+    right: 0,
+    zIndex: 0,
+    borderTopRightRadius: 0,
+    borderTopLeftRadius: 0,
+    borderTopWidth: 0,
+    overflow: "hidden",
+
+    [theme.fn.largerThan("sm")]: {
+      display: "none",
+    },
+  },
+
+  header: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    height: "100%",
+  },
+
+  links: {
+    [theme.fn.smallerThan("sm")]: {
+      display: "none",
+    },
+  },
+
+  burger: {
+    [theme.fn.largerThan("sm")]: {
+      display: "none",
+    },
+  },
+
+  link: {
+    display: "block",
+    lineHeight: 1,
+    padding: "8px 12px",
+    borderRadius: theme.radius.sm,
+    textDecoration: "none",
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[0]
+        : theme.colors.gray[7],
+    fontSize: theme.fontSizes.sm,
+    fontWeight: 500,
+
+    "&:hover": {
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[6]
+          : theme.colors.gray[0],
+    },
+
+    [theme.fn.smallerThan("sm")]: {
+      borderRadius: 0,
+      padding: theme.spacing.md,
+    },
+  },
+
+  linkActive: {
+    "&, &:hover": {
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.fn.rgba(theme.colors[theme.primaryColor][9], 0.25)
+          : theme.colors[theme.primaryColor][0],
+      color:
+        theme.colors[theme.primaryColor][theme.colorScheme === "dark" ? 3 : 7],
+    },
+  },
+}));
+
+const NavBar = () => {
   const user = useUser();
+  const [opened, toggleOpened] = useDisclosure(false);
 
-  const { classes, cx } = headerStyle();
-
-  const authenticatedLinks: Link[] = [
+  const [authenticatedLinks, setAuthenticatedLinks] = useState<Link[]>([
     {
       link: "/upload",
       label: "Upload",
@@ -40,61 +119,66 @@ const Header = () => {
     {
       component: <ActionAvatar />,
     },
-  ];
+  ]);
 
-  const unauthenticatedLinks: Link[] | undefined = [
+  const [unauthenticatedLinks, setUnauthenticatedLinks] = useState<Link[]>([
     {
       link: "/auth/signIn",
       label: "Sign in",
     },
-  ];
+  ]);
 
-  if (publicRuntimeConfig.SHOW_HOME_PAGE == "true")
-    unauthenticatedLinks.unshift({
-      link: "/",
-      label: "Home",
-    });
+  useEffect(() => {
+    if (publicRuntimeConfig.SHOW_HOME_PAGE == "true")
+      setUnauthenticatedLinks((array) => [
+        {
+          link: "/",
+          label: "Home",
+        },
+        ...array,
+      ]);
 
-  if (publicRuntimeConfig.ALLOW_REGISTRATION == "true")
-    unauthenticatedLinks.push({
-      link: "/auth/signUp",
-      label: "Sign up",
-    });
+    if (publicRuntimeConfig.ALLOW_REGISTRATION == "true")
+      setUnauthenticatedLinks((array) => [
+        ...array,
+        {
+          link: "/auth/signUp",
+          label: "Sign up",
+        },
+      ]);
+  }, []);
 
-  const links = user ? authenticatedLinks : unauthenticatedLinks;
-
-  const items = links.map((link, i) => {
-    if (link.component) {
-      return (
-        <Container key={i} pl={5} py={15}>
-          {link.component}
-        </Container>
-      );
-    }
-    if (link) {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      useEffect(() => {
-        if (window.location.pathname == link.link) {
-          setActive(link.link);
+  const { classes, cx } = useStyles();
+  console.log(user);
+  const items = (
+    <>
+      {(user ? authenticatedLinks : unauthenticatedLinks).map((link) => {
+        if (link.component) {
+          return (
+            <>
+              <Container pl={5} py={15}>
+                {link.component}
+              </Container>
+            </>
+          );
         }
-      }, []);
-      return (
-        <NextLink
-          key={link.label}
-          href={link.link ?? ""}
-          onClick={link.action}
-          className={cx(classes.link, {
-            [classes.linkActive]: link.link && active === link.link,
-          })}
-        >
-          {link.label}
-        </NextLink>
-      );
-    }
-  });
-
+        return (
+          <NextLink
+            key={link.label}
+            href={link.link ?? ""}
+            onClick={() => toggleOpened.toggle()}
+            className={cx(classes.link, {
+              [classes.linkActive]: window.location.pathname == link.link,
+            })}
+          >
+            {link.label}
+          </NextLink>
+        );
+      })}
+    </>
+  );
   return (
-    <MantineHeader height={60} mb={20} className={classes.root}>
+    <Header height={HEADER_HEIGHT} mb={40} className={classes.root}>
       <Container className={classes.header}>
         <NextLink href="/">
           <Group>
@@ -108,24 +192,24 @@ const Header = () => {
           </Group>
         </NextLink>
         <Group spacing={5} className={classes.links}>
-          {items}
+          <Group>{items} </Group>
         </Group>
         <Burger
           opened={opened}
-          onClick={() => toggleOpened()}
+          onClick={() => toggleOpened.toggle()}
           className={classes.burger}
           size="sm"
         />
-
         <Transition transition="pop-top-right" duration={200} mounted={opened}>
           {(styles) => (
             <Paper className={classes.dropdown} withBorder style={styles}>
-              {items}
+              <Stack spacing={0}> {items}</Stack>
             </Paper>
           )}
         </Transition>
       </Container>
-    </MantineHeader>
+    </Header>
   );
 };
-export default Header;
+
+export default NavBar;

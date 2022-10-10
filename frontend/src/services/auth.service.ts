@@ -15,6 +15,7 @@ const signUp = async (email: string, password: string) => {
 
 const signOut = () => {
   setCookies("access_token", null);
+  setCookies("refresh_token", null);
   window.location.reload();
 };
 

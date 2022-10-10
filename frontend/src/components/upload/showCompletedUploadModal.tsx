@@ -2,9 +2,10 @@ import {
   ActionIcon,
   Button,
   Group,
+  Stack,
   Text,
   TextInput,
-  Title,
+  Title
 } from "@mantine/core";
 import { useClipboard } from "@mantine/hooks";
 import { useModals } from "@mantine/modals";
@@ -24,9 +25,9 @@ const showCompletedUploadModal = (
     withCloseButton: false,
     closeOnEscape: false,
     title: (
-      <Group grow direction="column" spacing={0}>
+      <Stack align="stretch" spacing={0}>
         <Title order={4}>Share ready</Title>
-      </Group>
+      </Stack>
     ),
     children: <Body share={share} />,
   });
@@ -38,7 +39,7 @@ const Body = ({ share }: { share: Share }) => {
   const router = useRouter();
   const link = `${window.location.origin}/share/${share.id}`;
   return (
-    <Group grow direction="column">
+    <Stack  align="stretch">
       <TextInput
         variant="filled"
         value={link}
@@ -70,7 +71,7 @@ const Body = ({ share }: { share: Share }) => {
       >
         Done
       </Button>
-    </Group>
+    </Stack>
   );
 };
 

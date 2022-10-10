@@ -3,17 +3,17 @@ import {
   Center,
   createStyles,
   Group,
-  MantineTheme,
   Text,
   useMantineTheme,
 } from "@mantine/core";
-import { Dropzone as MantineDropzone, DropzoneStatus } from "@mantine/dropzone";
+import { Dropzone as MantineDropzone } from "@mantine/dropzone";
 import getConfig from "next/config";
-import React, { Dispatch, ForwardedRef, SetStateAction, useRef } from "react";
+import { Dispatch, ForwardedRef, SetStateAction, useRef } from "react";
 import { CloudUpload, Upload } from "tabler-icons-react";
+import { byteStringToHumanSizeString } from "../../utils/math/byteStringToHumanSizeString.util";
 import toast from "../../utils/toast.util";
 
-const { publicRuntimeConfig } = getConfig()
+const { publicRuntimeConfig } = getConfig();
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -38,14 +38,6 @@ const useStyles = createStyles((theme) => ({
     bottom: -20,
   },
 }));
-
-function getActiveColor(status: DropzoneStatus, theme: MantineTheme) {
-  return status.accepted
-    ? theme.colors[theme.primaryColor][6]
-    : theme.colorScheme === "dark"
-    ? theme.colors.dark[2]
-    : theme.black;
-}
 
 const Dropzone = ({
   isUploading,
@@ -76,26 +68,20 @@ const Dropzone = ({
         className={classes.dropzone}
         radius="md"
       >
-        {(status) => (
-          <div style={{ pointerEvents: "none" }}>
-            <Group position="center">
-              <CloudUpload size={50} color={getActiveColor(status, theme)} />
-            </Group>
-            <Text
-              align="center"
-              weight={700}
-              size="lg"
-              mt="xl"
-              sx={{ color: getActiveColor(status, theme) }}
-            >
-              {status.accepted ? "Drop files here" : "Upload files"}
-            </Text>
-            <Text align="center" size="sm" mt="xs" color="dimmed">
-              Drag and drop your files or use the upload button to start your
-              share.
-            </Text>
-          </div>
-        )}
+        <div style={{ pointerEvents: "none" }}>
+          <Group position="center">
+            <CloudUpload size={50} />
+          </Group>
+          <Text align="center" weight={700} size="lg" mt="xl">
+            Upload files
+          </Text>
+          <Text align="center" size="sm" mt="xs" color="dimmed">
+            Drag&apos;n&apos;drop files here to start your share. We can accept
+            only files that are less than{" "}
+            {byteStringToHumanSizeString(publicRuntimeConfig.MAX_FILE_SIZE)} in
+            size.
+          </Text>
+        </div>
       </MantineDropzone>
       <Center>
         <Button
