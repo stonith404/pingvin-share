@@ -16,7 +16,7 @@ import { Check } from "tabler-icons-react";
 import Meta from "../components/Meta";
 import useUser from "../hooks/user.hook";
 
-const { publicRuntimeConfig } = getConfig()
+const { publicRuntimeConfig } = getConfig();
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -106,15 +106,21 @@ export default function Home() {
                 }
               >
                 <List.Item>
-                  <b>Self-Hosted</b> - Host Pingvin Share on your own machine.
+                  <div>
+                    <b>Self-Hosted</b> - Host Pingvin Share on your own machine.
+                  </div>
                 </List.Item>
                 <List.Item>
-                  <b>Privacy</b> - Your files are your files and should never
-                  get into the hands of third parties.
+                  <div>
+                    <b>Privacy</b> - Your files are your files and should never
+                    get into the hands of third parties.
+                  </div>
                 </List.Item>
                 <List.Item>
-                  <b>No annoying file size limit</b> - Upload as big files as
-                  you want. Only your hard drive will be your limit.
+                  <div>
+                    <b>No annoying file size limit</b> - Upload as big files as
+                    you want. Only your hard drive will be your limit.
+                  </div>
                 </List.Item>
               </List>
 
