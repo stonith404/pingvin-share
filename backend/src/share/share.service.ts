@@ -132,14 +132,12 @@ export class ShareService {
     return share;
   }
 
-  async remove(shareId: string, userId: string) {
+  async remove(shareId: string) {
     const share = await this.prisma.share.findUnique({
       where: { id: shareId },
     });
 
     if (!share) throw new NotFoundException("Share not found");
-
-    if (share.creatorId != userId) throw new ForbiddenException();
 
     await this.prisma.share.delete({ where: { id: shareId } });
   }

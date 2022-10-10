@@ -16,6 +16,7 @@ import { MyShareDTO } from "./dto/myShare.dto";
 import { ShareDTO } from "./dto/share.dto";
 import { ShareMetaDataDTO } from "./dto/shareMetaData.dto";
 import { SharePasswordDto } from "./dto/sharePassword.dto";
+import { ShareOwnerGuard } from "./guard/shareOwner.guard";
 import { ShareSecurityGuard } from "./guard/shareSecurity.guard";
 import { ShareService } from "./share.service";
 
@@ -50,14 +51,14 @@ export class ShareController {
   }
 
   @Delete(":id")
-  @UseGuards(JwtGuard)
-  async remove(@Param("id") id: string, @GetUser() user: User) {
-    await this.shareService.remove(id, user.id);
+  @UseGuards(JwtGuard, ShareOwnerGuard)
+  async remove(@Param("id") id: string) {
+    await this.shareService.remove(id);
   }
 
   @Post(":id/complete")
   @HttpCode(202)
-  @UseGuards(JwtGuard)
+  @UseGuards(JwtGuard, ShareOwnerGuard)
   async complete(@Param("id") id: string) {
     return new ShareDTO().from(await this.shareService.complete(id));
   }
