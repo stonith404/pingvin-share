@@ -3,7 +3,7 @@ name: Create Docker Image for Backend
 on:
   push:
     branches: main
-     paths:
+    paths:
       - 'backend/**'
 
 jobs:
