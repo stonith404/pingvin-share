@@ -3,8 +3,8 @@ name: Create Docker Image for Frontend
 on:
   push:
     branches: main
-      paths:
-        - 'frontend/**'
+    paths:
+      - 'frontend/**'
 
 jobs:
   build:
