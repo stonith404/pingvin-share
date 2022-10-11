@@ -1,8 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import httpProxyMiddleware from "next-http-proxy-middleware";
-import getConfig from "next/config";
-
-const { publicRuntimeConfig } = getConfig();
 
 export const config = {
   api: {
@@ -15,5 +12,5 @@ export const config = {
 export default (req: NextApiRequest, res: NextApiResponse) =>
   httpProxyMiddleware(req, res, {
     // You can use the `http-proxy` option
-    target: publicRuntimeConfig.BACKEND_URL,
+    target: "http://localhost:8080",
   });

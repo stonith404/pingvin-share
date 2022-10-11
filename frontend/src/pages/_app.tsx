@@ -91,6 +91,6 @@ export default App;
 
 App.getInitialProps = ({ ctx }: { ctx: GetServerSidePropsContext }) => {
   return {
-    colorScheme: getCookie("color-schema", ctx) || "light",
+    colorScheme: getCookie("color-schema") || "light",
   };
 };

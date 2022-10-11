@@ -1,43 +1,16 @@
 version: '3.8'
 services:
-  db:
-    image: postgres:14.1-alpine
+  pingvin-share:
+    image: stonith404/pingvin-share
     restart: unless-stopped
+    ports:
+      - 3000:3000
     environment:
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=pingvin-share
-    volumes:
-      - pingvin-share-db:/var/lib/postgresql/data
-  backend:
-    image: stonith404/pingvin-share-backend
-    restart: unless-stopped
-    environment:
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - DB_HOST=${DB_HOST}
-      - DB_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pingvin-share?schema=public
       - APP_URL=${APP_URL}
+      - SHOW_HOME_PAGE=${SHOW_HOME_PAGE}
       - ALLOW_REGISTRATION=${ALLOW_REGISTRATION}
       - MAX_FILE_SIZE=${MAX_FILE_SIZE}
       - JWT_SECRET=${JWT_SECRET}
-    depends_on:
-      - db
     volumes:
-      - "./uploads:/usr/src/app/uploads"
-  frontend:
-    restart: unless-stopped
-    ports:
-       - '3000:3000'
-    image: stonith404/pingvin-share-frontend
-    environment:
-       - SHOW_HOME_PAGE=${SHOW_HOME_PAGE}
-       - ALLOW_REGISTRATION=${ALLOW_REGISTRATION}
-       - MAX_FILE_SIZE=${MAX_FILE_SIZE}
-       - BACKEND_URL=${BACKEND_URL}
-    depends_on:
-      - backend
-
-         
-volumes:
-  pingvin-share-db:
+      - "${PWD}/data/uploads:/opt/app/backend/uploads"
+      - "${PWD}/data/pingvin-share.db:/opt/app/backend/prisma/pingvin-share.db"

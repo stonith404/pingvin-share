@@ -1,0 +1,1 @@
+This will be your database, it must exist because Docker can't mount the volume if it doesn't exist.

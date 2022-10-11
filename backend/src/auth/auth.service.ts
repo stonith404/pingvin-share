@@ -6,9 +6,9 @@ import {
 import { ConfigService } from "@nestjs/config";
 import { JwtService } from "@nestjs/jwt";
 import { User } from "@prisma/client";
-
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
 import * as argon from "argon2";
+import * as moment from "moment";
 import { PrismaService } from "src/prisma/prisma.service";
 import { AuthRegisterDTO } from "./dto/authRegister.dto";
 import { AuthSignInDTO } from "./dto/authSignIn.dto";
@@ -87,7 +87,9 @@ export class AuthService {
 
   async createRefreshToken(userId: string) {
     const refreshToken = (
-      await this.prisma.refreshToken.create({ data: { userId } })
+      await this.prisma.refreshToken.create({
+        data: { userId, expiresAt: moment().add(3, "months").toDate() },
+      })
     ).token;
 
     return refreshToken;

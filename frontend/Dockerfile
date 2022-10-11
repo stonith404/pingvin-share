@@ -1,7 +1,6 @@
 FROM node:18-alpine AS deps
 WORKDIR /opt/app
-COPY package.json package-lock.json ./
-RUN npm ci
+
 
 FROM node:18-alpine AS builder
 ENV NODE_ENV=production

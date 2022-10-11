@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DB_URL")
+  provider = "sqlite"
+  url      = "file:./pingvin-share.db"
 }
 
 model User {
@@ -25,7 +25,7 @@ model RefreshToken {
   token     String   @id @default(uuid())
   createdAt DateTime @default(now())
 
-  expiresAt DateTime @default(dbgenerated("NOW() + interval '3 months'"))
+  expiresAt DateTime
 
   userId String
   user   User   @relation(fields: [userId], references: [id])
