@@ -20,17 +20,20 @@ const signOut = () => {
 };
 
 const refreshAccessToken = async () => {
-  const currentAccessToken = getCookie("access_token") as string;
+  try {
+    const currentAccessToken = getCookie("access_token") as string;
+    if (
+      currentAccessToken &&
+      (jose.decodeJwt(currentAccessToken).exp ?? 0) * 1000 <
+        Date.now() + 2 * 60 * 1000
+    ) {
+      const refreshToken = getCookie("refresh_token");
 
-  if (
-    currentAccessToken &&
-    (jose.decodeJwt(currentAccessToken).exp ?? 0) * 1000 <
-      Date.now() + 2 * 60 * 1000
-  ) {
-    const refreshToken = getCookie("refresh_token");
-
-    const response = await api.post("auth/token", { refreshToken });
-    setCookies("access_token", response.data.accessToken);
+      const response = await api.post("auth/token", { refreshToken });
+      setCookies("access_token", response.data.accessToken);
+    }
+  } catch {
+    console.info("Refresh token invalid or expired");
   }
 };
 
