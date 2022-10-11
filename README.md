@@ -21,7 +21,7 @@ Demo: https://pingvin-share.dev.eliasschneider.com
 2. Rename the `.env.example` file to `.env` and change the environment variables so that they fit to your environment. If you need help with the environment variables take a look [here](#environment-variables)
 3. Run `docker-compose up -d`
 
-The website is now listening available on `http://localhost:8080`, have fun with Pingvin Share 🐧!
+The website is now listening available on `http://localhost:3000`, have fun with Pingvin Share 🐧!
 
 ### Environment variables
 
@@ -29,10 +29,10 @@ The website is now listening available on `http://localhost:8080`, have fun with
 | -------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------- |
 | `APP_URL`            | On which URL Pingvin Share is available. E.g http://localhost or https://pingvin-share.com.                           | URL             |
 | `BACKEND_URL`        | Where the backend is listening on your local machine. If you use the default installation, use `http://backend:8080`. | URL             |
-| `SHOW_HOME_PAGE`     | Wether the Pingvin Share home page should be shown.                                                                   | true/false      |
-| `ALLOW_REGISTRATION` | Wether a new user can create a new account.                                                                           | true/false      |
+| `SHOW_HOME_PAGE`     | Whether the Pingvin Share home page should be shown.                                                                   | true/false      |
+| `ALLOW_REGISTRATION` | Whether a new user can create a new account.                                                                           | true/false      |
 | `MAX_FILE_SIZE`      | Maximum allowed size per file in bytes.                                                                               | Number          |
-| `JWT_SECRET`         | Random string to sign the JWT's.                                                                                      | Random string   |
+| `JWT_SECRET`         | Random string to sign the JWT's.                                                                                      | Long random string   |
 
 ## 🖤 Contribute
 
@@ -43,7 +43,7 @@ Contact me, create an issue or directly create a pull request.
 
 #### Database & Backend
 
-1. Open the `backend`
+1. Open the `backend` folder
 2. Duplicate the `.env.example` file, rename the duplicate to `.env` and change the environment variables if needed
 3. Install the dependencies with `npm install`
 4. Start the database by running `docker-compose up -d`
