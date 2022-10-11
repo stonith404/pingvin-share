@@ -37,6 +37,7 @@ function App(
 
   const getInitalData = async () => {
     setIsLoading(true);
+    await authService.refreshAccessToken();
     setUser(await userService.getCurrentUser());
     setIsLoading(false);
   };
@@ -47,7 +48,7 @@ function App(
   }, []);
 
   useEffect(() => {
-    setCookies("mantine-color-scheme", systemTheme, {
+    setCookies("color-schema", systemTheme, {
       maxAge: 60 * 60 * 24 * 30,
     });
     setColorScheme(systemTheme);
@@ -90,6 +91,6 @@ export default App;
 
 App.getInitialProps = ({ ctx }: { ctx: GetServerSidePropsContext }) => {
   return {
-    colorScheme: getCookie("mantine-color-scheme", ctx) || "light",
+    colorScheme: getCookie("color-schema", ctx) || "light",
   };
 };
