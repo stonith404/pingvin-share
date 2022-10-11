@@ -5,7 +5,7 @@ import authService from "../../services/auth.service";
 
 const ActionAvatar = () => {
   return (
-    <Menu>
+    <Menu position="bottom-start" withinPortal>
       <Menu.Target>
         <ActionIcon>
           <Avatar size={28} radius="xl" />
