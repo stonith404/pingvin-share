@@ -36,4 +36,5 @@ yarn-error.log*
 
 # project specific
 /backend/uploads/
-/uploads/
+/data/
+/backend/prisma/pingvin-share.db*

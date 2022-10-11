@@ -8,8 +8,9 @@ import {
 import { useColorScheme } from "@mantine/hooks";
 import { ModalsProvider } from "@mantine/modals";
 import { NotificationsProvider } from "@mantine/notifications";
-import { getCookie, setCookies } from "cookies-next";
+import { setCookies } from "cookies-next";
 import { GetServerSidePropsContext } from "next";
+import cookies from "next-cookies";
 import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
@@ -22,9 +23,7 @@ import globalStyle from "../styles/mantine.style";
 import { CurrentUser } from "../types/user.type";
 import { GlobalLoadingContext } from "../utils/loading.util";
 
-function App(
-  props: AppProps & { colorScheme: ColorScheme; environmentVariables: any }
-) {
+function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
 
   const systemTheme = useColorScheme();
@@ -91,6 +90,6 @@ export default App;
 
 App.getInitialProps = ({ ctx }: { ctx: GetServerSidePropsContext }) => {
   return {
-    colorScheme: getCookie("color-schema", ctx) || "light",
+    colorScheme: cookies(ctx)["color-schema"] || "light",
   };
 };

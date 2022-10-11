@@ -21,20 +21,26 @@ Demo: https://pingvin-share.dev.eliasschneider.com
 
 1. Download the `docker-compose.yml` and `.env.example` file.
 2. Rename the `.env.example` file to `.env` and change the environment variables so that they fit to your environment. If you need help with the environment variables take a look [here](#environment-variables)
-3. Run `docker-compose up -d`
+3. Create a folder in the same folder as your `docker-compose.yml` file named `data` and create a file named `pingvin-share.db` in it.
+4. Run `docker-compose up -d`
 
 The website is now listening available on `http://localhost:3000`, have fun with Pingvin Share 🐧!
 
 ### Environment variables
 
-| Variable             | Description                                                                                                           | Possible values |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------- |
-| `APP_URL`            | On which URL Pingvin Share is available. E.g http://localhost or https://pingvin-share.com.                           | URL             |
-| `BACKEND_URL`        | Where the backend is listening on your local machine. If you use the default installation, use `http://backend:8080`. | URL             |
-| `SHOW_HOME_PAGE`     | Whether the Pingvin Share home page should be shown.                                                                   | true/false      |
-| `ALLOW_REGISTRATION` | Whether a new user can create a new account.                                                                           | true/false      |
-| `MAX_FILE_SIZE`      | Maximum allowed size per file in bytes.                                                                               | Number          |
-| `JWT_SECRET`         | Random string to sign the JWT's.                                                                                      | Long random string   |
+| Variable             | Description                                                                                 | Possible values |
+| -------------------- | ------------------------------------------------------------------------------------------- | --------------- |
+| `APP_URL`            | On which URL Pingvin Share is available. E.g http://localhost or https://pingvin-share.com. | URL             |
+| `SHOW_HOME_PAGE`     | Whether the Pingvin Share home page should be shown.                                         | true/false      |
+| `ALLOW_REGISTRATION` | Whether a new user can create a new account.                                                 | true/false      |
+| `MAX_FILE_SIZE`      | Maximum allowed size per file in bytes.                                                     | Number          |
+| `JWT_SECRET`         | Long random string to sign the JWT's.                                                            | Random string   |
+
+### Upgrade to a new version
+
+Just updated the docker container by running `docker-compose pull && docker-compose up -d`
+
+>Note: If you installed Pingvin Share before it used Sqlite, you unfortunately have to set up the project from scratch again, sorry for that. 
 
 ## 🖤 Contribute
 
@@ -48,9 +54,8 @@ Contact me, create an issue or directly create a pull request.
 1. Open the `backend` folder
 2. Duplicate the `.env.example` file, rename the duplicate to `.env` and change the environment variables if needed
 3. Install the dependencies with `npm install`
-4. Start the database by running `docker-compose up -d`
-5. Push the database schema to the database by running `npx prisma db push`
-6. Start the backend with `npm run dev`
+4. Push the database schema to the database by running `npx prisma db push`
+5. Start the backend with `npm run dev`
 
 #### Frontend
 
