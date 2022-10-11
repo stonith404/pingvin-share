@@ -13,10 +13,6 @@ COPY ./backend .
 RUN npx prisma generate
 RUN npm run build
 
-
-
-
-
 FROM node:18 AS runner
 WORKDIR /opt/app/frontend
 ENV NODE_ENV=production

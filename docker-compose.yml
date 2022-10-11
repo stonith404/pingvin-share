@@ -12,5 +12,4 @@ services:
       - MAX_FILE_SIZE=${MAX_FILE_SIZE}
       - JWT_SECRET=${JWT_SECRET}
     volumes:
-      - "${PWD}/data/uploads:/opt/app/backend/uploads"
-      - "${PWD}/data/pingvin-share.db:/opt/app/backend/prisma/pingvin-share.db"
+      - "${PWD}/data:/opt/app/backend/data"

@@ -27,7 +27,7 @@ export class FileController {
   @UseGuards(JwtGuard, ShareOwnerGuard)
   @UseInterceptors(
     FileInterceptor("file", {
-      dest: "./uploads/_temp/",
+      dest: "./data/uploads/_temp/",
     })
   )
   async create(
