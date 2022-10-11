@@ -114,27 +114,26 @@ const CreateUploadModalBody = ({
           ]}
         />
         <Accordion>
-          <Accordion.Item
-            value="Security options"
-            sx={{ borderBottom: "none" }}
-          >
-            <Stack align="stretch">
-              <PasswordInput
-                variant="filled"
-                placeholder="No password"
-                label="Password protection"
-                {...form.getInputProps("password")}
-              />
-
-              <NumberInput
-                min={1}
-                type="number"
-                variant="filled"
-                placeholder="No limit"
-                label="Maximal views"
-                {...form.getInputProps("maxViews")}
-              />
-            </Stack>
+          <Accordion.Item value="security" sx={{ borderBottom: "none" }}>
+            <Accordion.Control>Security options</Accordion.Control>
+            <Accordion.Panel>
+              <Stack align="stretch">
+                <PasswordInput
+                  variant="filled"
+                  placeholder="No password"
+                  label="Password protection"
+                  {...form.getInputProps("password")}
+                />
+                <NumberInput
+                  min={1}
+                  type="number"
+                  variant="filled"
+                  placeholder="No limit"
+                  label="Maximal views"
+                  {...form.getInputProps("maxViews")}
+                />
+              </Stack>
+            </Accordion.Panel>
           </Accordion.Item>
         </Accordion>
         <Button type="submit">Share</Button>
