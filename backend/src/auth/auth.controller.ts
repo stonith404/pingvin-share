@@ -21,7 +21,7 @@ export class AuthController {
 
   @Post("signUp")
   signUp(@Body() dto: AuthRegisterDTO) {
-    if (!this.config.get("ALLOW_REGISTRATION"))
+    if (this.config.get("ALLOW_REGISTRATION") == "false")
       throw new ForbiddenException("Registration is not allowed");
     return this.authService.signUp(dto);
   }
