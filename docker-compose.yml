@@ -24,7 +24,7 @@ services:
     depends_on:
       - db
     volumes:
-      - "./uploads:/usr/src/app/uploads"
+      - "./uploads:/opt/app/uploads"
   frontend:
     restart: unless-stopped
     ports:
