@@ -11,6 +11,7 @@ import * as archiver from "archiver";
 import * as argon from "argon2";
 import * as fs from "fs";
 import * as moment from "moment";
+import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { CreateShareDTO } from "./dto/createShare.dto";
 
@@ -18,7 +19,7 @@ import { CreateShareDTO } from "./dto/createShare.dto";
 export class ShareService {
   constructor(
     private prisma: PrismaService,
-
+    private fileService: FileService,
     private config: ConfigService,
     private jwtService: JwtService
   ) {}
@@ -139,6 +140,7 @@ export class ShareService {
 
     if (!share) throw new NotFoundException("Share not found");
 
+    await this.fileService.deleteAllFiles(shareId);
     await this.prisma.share.delete({ where: { id: shareId } });
   }
 

@@ -1,5 +1,6 @@
 import { Button, Group } from "@mantine/core";
 import { useModals } from "@mantine/modals";
+import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Meta from "../components/Meta";
@@ -11,6 +12,7 @@ import useUser from "../hooks/user.hook";
 import shareService from "../services/share.service";
 import { FileUpload } from "../types/File.type";
 import { ShareSecurity } from "../types/share.type";
+import toast from "../utils/toast.util";
 
 const Upload = () => {
   const router = useRouter();
@@ -49,10 +51,15 @@ const Upload = () => {
           setFiles([]);
         }
       }
-    } catch {
+    } catch (e) {
       files.forEach((file) => {
         file.uploadingState = undefined;
       });
+      if (axios.isAxiosError(e)) {
+        toast.error(e.response?.data?.message ?? "An unkown error occured.");
+      } else {
+        toast.error("An unkown error occured.");
+      }
       setFiles([...files]);
       setisUploading(false);
     }
