@@ -36,4 +36,4 @@ yarn-error.log*
 
 # project specific
 /backend/uploads/
-/uploads/
+/data/
