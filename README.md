@@ -17,6 +17,8 @@ Demo: https://pingvin-share.dev.eliasschneider.com
 
 ## ⌨️ Setup
 
+> Pleas note that Pingvin Share is in early stage and could include some bugs
+
 1. Download the `docker-compose.yml` and `.env.example` file.
 2. Rename the `.env.example` file to `.env` and change the environment variables so that they fit to your environment. If you need help with the environment variables take a look [here](#environment-variables)
 3. Run `docker-compose up -d`
