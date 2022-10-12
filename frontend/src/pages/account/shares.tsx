@@ -65,7 +65,9 @@ const MyShares = () => {
                 <td>{share.id}</td>
                 <td>{share.views}</td>
                 <td>
-                  {moment(share.expiration).format("MMMM DD YYYY, HH:mm")}
+                  {moment(share.expiration).unix() === 0
+                      ? "Never"
+                      : moment(share.expiration).format("MMMM DD YYYY, HH:mm")}
                 </td>
                 <td>
                   <Group position="right">

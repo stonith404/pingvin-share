@@ -4,7 +4,6 @@ import {
   createStyles,
   Group,
   Text,
-  useMantineTheme,
 } from "@mantine/core";
 import { Dropzone as MantineDropzone } from "@mantine/dropzone";
 import getConfig from "next/config";
@@ -46,7 +45,6 @@ const Dropzone = ({
   isUploading: boolean;
   setFiles: Dispatch<SetStateAction<File[]>>;
 }) => {
-  const theme = useMantineTheme();
   const { classes } = useStyles();
   const openRef = useRef<() => void>();
   return (
