@@ -7,7 +7,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
-  await fs.promises.mkdir("./uploads/_temp", { recursive: true });
+  await fs.promises.mkdir("./data/uploads/_temp", { recursive: true });
 
   app.setGlobalPrefix("api");
   await app.listen(8080);

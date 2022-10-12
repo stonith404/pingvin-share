@@ -8,7 +8,7 @@ export class PrismaService extends PrismaClient {
     super({
       datasources: {
         db: {
-          url: "file:./pingvin-share.db",
+          url: "file:../data/pingvin-share.db",
         },
       },
     });

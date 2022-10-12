@@ -57,7 +57,7 @@ export class ShareService {
   }
 
   async createZip(shareId: string) {
-    const path = `./uploads/shares/${shareId}`;
+    const path = `./data/uploads/shares/${shareId}`;
 
     const files = await this.prisma.file.findMany({ where: { shareId } });
     const archive = archiver("zip", {

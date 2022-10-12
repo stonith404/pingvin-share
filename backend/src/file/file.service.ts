@@ -8,7 +8,6 @@ import { JwtService } from "@nestjs/jwt";
 import { randomUUID } from "crypto";
 import * as fs from "fs";
 import * as mime from "mime-types";
-import { join } from "path";
 import { PrismaService } from "src/prisma/prisma.service";
 
 @Injectable()
@@ -29,10 +28,12 @@ export class FileService {
 
     const fileId = randomUUID();
 
-    await fs.promises.mkdir(`./uploads/shares/${shareId}`, { recursive: true });
+    await fs.promises.mkdir(`./data/uploads/shares/${shareId}`, {
+      recursive: true,
+    });
     fs.promises.rename(
-      `./uploads/_temp/${file.filename}`,
-      `./uploads/shares/${shareId}/${fileId}`
+      `./data/uploads/_temp/${file.filename}`,
+      `./data/uploads/shares/${shareId}/${fileId}`
     );
 
     return await this.prisma.file.create({
@@ -53,7 +54,7 @@ export class FileService {
     if (!fileMetaData) throw new NotFoundException("File not found");
 
     const file = fs.createReadStream(
-      join(process.cwd(), `uploads/shares/${shareId}/${fileId}`)
+      `./data/uploads/shares/${shareId}/${fileId}`
     );
 
     return {
@@ -67,14 +68,14 @@ export class FileService {
   }
 
   async deleteAllFiles(shareId: string) {
-    await fs.promises.rm(`./uploads/shares/${shareId}`, {
+    await fs.promises.rm(`./data/uploads/shares/${shareId}`, {
       recursive: true,
       force: true,
     });
   }
 
   getZip(shareId: string) {
-    return fs.createReadStream(`./uploads/shares/${shareId}/archive.zip`);
+    return fs.createReadStream(`./data/uploads/shares/${shareId}/archive.zip`);
   }
 
   getFileDownloadUrl(shareId: string, fileId: string) {
