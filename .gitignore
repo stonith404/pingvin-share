@@ -37,3 +37,6 @@ yarn-error.log*
 # project specific
 /backend/data/
 /data/
+
+# Jetbrains specific (webstorm)
+.idea/**/**
