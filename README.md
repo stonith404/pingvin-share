@@ -49,9 +49,9 @@ Contact me, create an issue or directly create a pull request.
 
 ### Development setup
 
-#### Database & Backend
+#### Backend
 
-1. Open the `backend`
+1. Open the `backend` folder
 2. Duplicate the `.env.example` file, rename the duplicate to `.env` and change the environment variables if needed
 3. Install the dependencies with `npm install`
 4. Push the database schema to the database by running `npx prisma db push`
@@ -59,9 +59,10 @@ Contact me, create an issue or directly create a pull request.
 
 #### Frontend
 
-1. Open the `frontend` folder
-2. Duplicate the `.env.example` file, rename the duplicate to `.env` and change the environment variables if needed
-3. Install the dependencies with `npm install`
-4. Start the frontend with `npm run dev`
+1. Start the backend first
+2. Open the `frontend` folder
+3. Duplicate the `.env.example` file, rename the duplicate to `.env` and change the environment variables if needed
+4. Install the dependencies with `npm install`
+5. Start the frontend with `npm run dev`
 
 You're all set!
