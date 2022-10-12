@@ -68,10 +68,20 @@ const downloadFile = async (shareId: string, fileId: string) => {
   window.location.href = await getFileDownloadUrl(shareId, fileId);
 };
 
-const uploadFile = async (shareId: string, file: File) => {
+const uploadFile = async (
+  shareId: string,
+  file: File,
+  progressCallBack: (uploadingProgress: number) => void
+) => {
   var formData = new FormData();
   formData.append("file", file);
-  return (await api.post(`shares/${shareId}/files`, formData)).data;
+
+  return (
+    await api.post(`shares/${shareId}/files`, formData, {
+      onUploadProgress: (progressEvent) =>
+        progressCallBack(progressEvent.loaded),
+    })
+  ).data;
 };
 
 export default {

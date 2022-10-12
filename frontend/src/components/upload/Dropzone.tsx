@@ -1,15 +1,9 @@
-import {
-  Button,
-  Center,
-  createStyles,
-  Group,
-  Text,
-  useMantineTheme,
-} from "@mantine/core";
+import { Button, Center, createStyles, Group, Text } from "@mantine/core";
 import { Dropzone as MantineDropzone } from "@mantine/dropzone";
 import getConfig from "next/config";
 import { Dispatch, ForwardedRef, SetStateAction, useRef } from "react";
 import { CloudUpload, Upload } from "tabler-icons-react";
+import { FileUpload } from "../../types/File.type";
 import { byteStringToHumanSizeString } from "../../utils/math/byteStringToHumanSizeString.util";
 import toast from "../../utils/toast.util";
 
@@ -44,9 +38,8 @@ const Dropzone = ({
   setFiles,
 }: {
   isUploading: boolean;
-  setFiles: Dispatch<SetStateAction<File[]>>;
+  setFiles: Dispatch<SetStateAction<FileUpload[]>>;
 }) => {
-  const theme = useMantineTheme();
   const { classes } = useStyles();
   const openRef = useRef<() => void>();
   return (
@@ -62,7 +55,11 @@ const Dropzone = ({
           if (files.length > 100) {
             toast.error("You can't upload more than 100 files per share.");
           } else {
-            setFiles(files);
+            const newFiles = files.map((file) => {
+              (file as FileUpload).uploadingProgress = 0;
+              return file as FileUpload;
+            });
+            setFiles(newFiles);
           }
         }}
         className={classes.dropzone}
