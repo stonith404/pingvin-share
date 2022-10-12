@@ -3,6 +3,9 @@ name: Create Docker Image
 on:
   push:
     branches: main
+    paths:
+      - 'frontend/**'
+      - 'backend/**'
 
 jobs:
   build:
