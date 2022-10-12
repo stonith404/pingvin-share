@@ -11,6 +11,7 @@ import {
   UseInterceptors,
 } from "@nestjs/common";
 import { FileInterceptor } from "@nestjs/platform-express";
+import * as contentDisposition from "content-disposition";
 import { Response } from "express";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
 import { FileDownloadGuard } from "src/file/guard/fileDownload.guard";
@@ -41,6 +42,10 @@ export class FileController {
     file: Express.Multer.File,
     @Param("shareId") shareId: string
   ) {
+    // Fixes file names with special characters
+    file.originalname = Buffer.from(file.originalname, "latin1").toString(
+      "utf8"
+    );
     return new ShareDTO().from(await this.fileService.create(file, shareId));
   }
 
@@ -98,7 +103,7 @@ export class FileController {
     res.set({
       "Content-Type": file.metaData.mimeType,
       "Content-Length": file.metaData.size,
-      "Content-Disposition": `attachment ; filename="${file.metaData.name}"`,
+      "Content-Disposition": contentDisposition(file.metaData.name),
     });
 
     return new StreamableFile(file.file);

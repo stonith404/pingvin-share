@@ -21,6 +21,7 @@
     "argon2": "^0.29.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
+    "content-disposition": "^0.5.4",
     "mime-types": "^2.1.35",
     "moment": "^2.29.4",
     "multer": "^1.4.5-lts.1",
