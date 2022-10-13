@@ -6,7 +6,8 @@
     "dev": "dotenv -- nest start --watch",
     "prod": "npx prisma migrate deploy && dotenv node dist/main",
     "lint": "eslint 'src/**/*.ts'",
-    "format": "prettier --write 'src/**/*.ts'"
+    "format": "prettier --write 'src/**/*.ts'",
+    "test:system": "npx prisma migrate reset -f && pm2 start 'nest start' && sleep 5 && newman run ./test/system/newman-system-tests.json ; pm2 delete 0"
   },
   "dependencies": {
     "@nestjs/common": "^9.1.2",
@@ -50,6 +51,8 @@
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "newman": "^5.3.2",
+    "pm2": "^5.2.2",
     "prettier": "^2.7.1",
     "prisma": "^4.4.0",
     "source-map-support": "^0.5.21",
