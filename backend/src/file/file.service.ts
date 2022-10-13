@@ -100,12 +100,12 @@ export class FileService {
     );
   }
 
-  verifyFileDownloadToken(shareId: string, fileId: string, token: string) {
+  verifyFileDownloadToken(shareId: string, token: string) {
     try {
       const claims = this.jwtService.verify(token, {
         secret: this.config.get("JWT_SECRET"),
       });
-      return claims.shareId == shareId && claims.fileId == fileId;
+      return claims.shareId == shareId;
     } catch {
       return false;
     }

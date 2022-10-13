@@ -31,7 +31,7 @@ const CreateUploadModalBody = ({
       .string()
       .required()
       .min(3)
-      .max(100)
+      .max(50)
       .matches(new RegExp("^[a-zA-Z0-9_-]*$"), {
         message: "Can only contain letters, numbers, underscores and hyphens",
       }),

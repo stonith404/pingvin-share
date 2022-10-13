@@ -44,9 +44,8 @@ const getMyShares = async (): Promise<MyShare[]> => {
   return (await api.get("shares")).data;
 };
 
-const exchangeSharePasswordWithToken = async (id: string, password: string) => {
-  const { token } = (await api.post(`/shares/${id}/password`, { password }))
-    .data;
+const getShareToken = async (id: string, password?: string) => {
+  const { token } = (await api.post(`/shares/${id}/token`, { password })).data;
 
   localStorage.setItem(`share_${id}_token`, token);
 };
@@ -87,7 +86,7 @@ const uploadFile = async (
 export default {
   create,
   completeShare,
-  exchangeSharePasswordWithToken,
+  getShareToken,
   get,
   remove,
   getMetaData,

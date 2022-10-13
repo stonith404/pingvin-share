@@ -15,12 +15,21 @@ const Share = () => {
   const shareId = router.query.shareId as string;
   const [fileList, setFileList] = useState<any[]>([]);
 
-  const submitPassword = async (password: string) => {
+  const getShareToken = async (password?: string) => {
     await shareService
-      .exchangeSharePasswordWithToken(shareId, password)
+      .getShareToken(shareId, password)
       .then(() => {
         modals.closeAll();
         getFiles();
+      })
+      .catch((e) => {
+        if (e.response.data.error == "share_max_views_exceeded") {
+          showErrorModal(
+            modals,
+            "Visitor limit exceeded",
+            "The visitor limit from this share has been exceeded."
+          );
+        }
       });
   };
 
@@ -38,14 +47,10 @@ const Share = () => {
             "Not found",
             "This share can't be found. Please check your link."
           );
+        } else if (error == "share_password_required") {
+          showEnterPasswordModal(modals, getShareToken);
         } else if (error == "share_token_required") {
-          showEnterPasswordModal(modals, submitPassword);
-        } else if (error == "share_max_views_exceeded") {
-          showErrorModal(
-            modals,
-            "Visitor limit exceeded",
-            "The visitor limit from this share has been exceeded."
-          );
+          getShareToken();
         } else if (error == "forbidden") {
           showErrorModal(
             modals,
@@ -69,9 +74,7 @@ const Share = () => {
         description="Look what I've shared with you."
       />
       <Group position="right" mb="lg">
-        <DownloadAllButton
-          shareId={shareId}
-        />
+        <DownloadAllButton shareId={shareId} />
       </Group>
       <FileList
         files={fileList}

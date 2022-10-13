@@ -76,6 +76,9 @@ export class ShareService {
   }
 
   async complete(id: string) {
+    if (await this.isShareCompleted(id))
+      throw new BadRequestException("Share already completed");
+
     const moreThanOneFileInShare =
       (await this.prisma.file.findMany({ where: { shareId: id } })).length != 0;
 
@@ -116,8 +119,6 @@ export class ShareService {
       file["url"] = `http://localhost:8080/file/${file.id}`;
       return file;
     });
-
-    await this.increaseViewCount(share);
 
     return share;
   }
@@ -160,27 +161,36 @@ export class ShareService {
     });
   }
 
-  async exchangeSharePasswordWithToken(shareId: string, password: string) {
-    const sharePassword = (
-      await this.prisma.shareSecurity.findFirst({
-        where: { share: { id: shareId } },
-      })
-    ).password;
+  async getShareToken(shareId: string, password: string) {
+    const share = await this.prisma.share.findFirst({
+      where: { id: shareId },
+      include: {
+        security: true,
+      },
+    });
 
-    if (!(await argon.verify(sharePassword, password)))
+    if (
+      share?.security?.password &&
+      !(await argon.verify(share.security.password, password))
+    )
       throw new ForbiddenException("Wrong password");
 
-    const token = this.generateShareToken(shareId);
+    const token = await this.generateShareToken(shareId);
+    await this.increaseViewCount(share);
     return { token };
   }
 
-  generateShareToken(shareId: string) {
+  async generateShareToken(shareId: string) {
+    const { expiration } = await this.prisma.share.findUnique({
+      where: { id: shareId },
+    });
+    console.log(moment(expiration).diff(new Date(), "seconds"));
     return this.jwtService.sign(
       {
         shareId,
       },
       {
-        expiresIn: "1h",
+        expiresIn: moment(expiration).diff(new Date(), "seconds") + "s",
         secret: this.config.get("JWT_SECRET"),
       }
     );
