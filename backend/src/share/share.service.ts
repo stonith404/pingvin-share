@@ -104,7 +104,7 @@ export class ShareService {
   }
 
   async get(id: string) {
-    let share: any = await this.prisma.share.findUnique({
+    const share : any = await this.prisma.share.findUnique({
       where: { id },
       include: {
         files: true,
@@ -114,11 +114,6 @@ export class ShareService {
 
     if (!share || !share.uploadLocked)
       throw new NotFoundException("Share not found");
-
-    share.files = share.files.map((file) => {
-      file["url"] = `http://localhost:8080/file/${file.id}`;
-      return file;
-    });
 
     return share;
   }
