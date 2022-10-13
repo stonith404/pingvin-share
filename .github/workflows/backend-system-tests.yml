@@ -1,0 +1,21 @@
+name: Backend system tests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  integration-tests:
+    runs-on: ubuntu-latest
+    container: node:18-alpine
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: backend
+      - name: Install Dependencies
+        run: npm install
+      - name: Create .env file
+        run: mv .env.example .env
+      - name: Run Server and Test with Newman
+        run: npm run test:system
