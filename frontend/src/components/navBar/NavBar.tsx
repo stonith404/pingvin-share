@@ -152,14 +152,12 @@ const NavBar = () => {
   const { classes, cx } = useStyles();
   const items = (
     <>
-      {(user ? authenticatedLinks : unauthenticatedLinks).map((link) => {
+      {(user ? authenticatedLinks : unauthenticatedLinks).map((link, i) => {
         if (link.component) {
           return (
-            <>
-              <Box pl={5} py={15}>
-                {link.component}
-              </Box>
-            </>
+            <Box pl={5} py={15} key={i}>
+              {link.component}
+            </Box>
           );
         }
         return (

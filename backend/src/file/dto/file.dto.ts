@@ -11,9 +11,6 @@ export class FileDTO {
   @Expose()
   size: string;
 
-  @Expose()
-  url: boolean;
-
   share: ShareDTO;
 
   from(partial: Partial<FileDTO>) {

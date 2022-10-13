@@ -25,7 +25,7 @@ const DownloadAllButton = ({ shareId }: { shareId: string }) => {
           setIsZipReady(share.isZipReady);
           if (share.isZipReady) clearInterval(timer);
         })
-        .catch(() => {});
+        .catch(() => clearInterval(timer));
     }, 5000);
     return () => {
       clearInterval(timer);

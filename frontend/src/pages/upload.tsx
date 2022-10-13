@@ -28,39 +28,47 @@ const Upload = () => {
     security: ShareSecurity
   ) => {
     setisUploading(true);
-
     try {
-      files.forEach((file) => {
-        file.uploadingState = "inProgress";
-      });
-      setFiles([...files]);
+      setFiles((files) =>
+        files.map((file) => {
+          file.uploadingProgress = 1;
+          return file;
+        })
+      );
       const share = await shareService.create(id, expiration, security);
       for (let i = 0; i < files.length; i++) {
-        await shareService.uploadFile(share.id, files[i]);
+        const progressCallBack = (bytesProgress: number) => {
+          setFiles((files) => {
+            return files.map((file, callbackIndex) => {
+              if (i == callbackIndex) {
+                file.uploadingProgress = Math.round(
+                  (100 * bytesProgress) / files[i].size
+                );
+              }
+              return file;
+            });
+          });
+        };
 
-        files[i].uploadingState = "finished";
-        setFiles([...files]);
-        if (!files.some((f) => f.uploadingState == "inProgress")) {
+        try {
+          await shareService.uploadFile(share.id, files[i], progressCallBack);
+        } catch {
+          files[i].uploadingProgress = -1;
+        }
+
+        if (!files.some((f) => f.uploadingProgress != 100)) {
           await shareService.completeShare(share.id);
           setisUploading(false);
-          showCompletedUploadModal(
-            modals,
-
-            share
-          );
+          showCompletedUploadModal(modals, share);
           setFiles([]);
         }
       }
     } catch (e) {
-      files.forEach((file) => {
-        file.uploadingState = undefined;
-      });
       if (axios.isAxiosError(e)) {
         toast.error(e.response?.data?.message ?? "An unkown error occured.");
       } else {
         toast.error("An unkown error occured.");
       }
-      setFiles([...files]);
       setisUploading(false);
     }
   };

@@ -27,6 +27,7 @@ export class AuthController {
   }
 
   @Post("signIn")
+  @HttpCode(200)
   signIn(@Body() dto: AuthSignInDTO) {
     return this.authService.signIn(dto);
   }

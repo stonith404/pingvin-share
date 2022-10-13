@@ -1,8 +1,9 @@
-import { ActionIcon, Loader, Table } from "@mantine/core";
+import { ActionIcon, Table } from "@mantine/core";
 import { Dispatch, SetStateAction } from "react";
-import { CircleCheck, Trash } from "tabler-icons-react";
+import { Trash } from "tabler-icons-react";
 import { FileUpload } from "../../types/File.type";
 import { byteStringToHumanSizeString } from "../../utils/math/byteStringToHumanSizeString.util";
+import UploadProgressIndicator from "./UploadProgressIndicator";
 
 const FileList = ({
   files,
@@ -15,19 +16,12 @@ const FileList = ({
     files.splice(index, 1);
     setFiles([...files]);
   };
-
   const rows = files.map((file, i) => (
     <tr key={i}>
       <td>{file.name}</td>
       <td>{byteStringToHumanSizeString(file.size.toString())}</td>
       <td>
-        {file.uploadingState ? (
-          file.uploadingState != "finished" ? (
-            <Loader size={22} />
-          ) : (
-            <CircleCheck color="green" size={22} />
-          )
-        ) : (
+        {file.uploadingProgress == 0 ? (
           <ActionIcon
             color="red"
             variant="light"
@@ -36,6 +30,8 @@ const FileList = ({
           >
             <Trash />
           </ActionIcon>
+        ) : (
+          <UploadProgressIndicator progress={file.uploadingProgress} />
         )}
       </td>
     </tr>

@@ -4,8 +4,8 @@ on:
   push:
     branches: main
     paths:
-      - 'frontend/**'
-      - 'backend/**'
+      - "frontend/**"
+      - "backend/**"
 
 jobs:
   build:
@@ -23,4 +23,4 @@ jobs:
         run: |
           docker buildx build --push \
              --tag stonith404/pingvin-share:latest \
-             --platform linux/amd64,linux/arm64 .
+             --platform linux/amd64,linux/arm64,linux/arm/v7 .

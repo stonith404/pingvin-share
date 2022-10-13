@@ -1,16 +1,16 @@
-import { CanActivate, ExecutionContext, Injectable } from "@nestjs/common";
-import { Reflector } from "@nestjs/core";
+import {
+  CanActivate,
+  ExecutionContext,
+  Injectable,
+  NotFoundException,
+} from "@nestjs/common";
 import { User } from "@prisma/client";
 import { Request } from "express";
-import { ExtractJwt } from "passport-jwt";
 import { PrismaService } from "src/prisma/prisma.service";
-import { ShareService } from "src/share/share.service";
 
 @Injectable()
 export class ShareOwnerGuard implements CanActivate {
-  constructor(
-    private prisma: PrismaService
-  ) {}
+  constructor(private prisma: PrismaService) {}
 
   async canActivate(context: ExecutionContext) {
     const request: Request = context.switchToHttp().getRequest();
@@ -26,7 +26,7 @@ export class ShareOwnerGuard implements CanActivate {
       include: { security: true },
     });
 
-
+    if (!share) throw new NotFoundException("Share not found");
 
     return share.creatorId == (request.user as User).id;
   }
