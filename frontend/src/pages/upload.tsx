@@ -56,11 +56,25 @@ const Upload = () => {
           files[i].uploadingProgress = -1;
         }
 
-        if (!files.some((f) => f.uploadingProgress != 100)) {
-          await shareService.completeShare(share.id);
+        if (
+          files.every(
+            (file) =>
+              file.uploadingProgress >= 100 || file.uploadingProgress == -1
+          )
+        ) {
+          const fileErrorCount = files.filter(
+            (file) => file.uploadingProgress == -1
+          ).length;
           setisUploading(false);
-          showCompletedUploadModal(modals, share);
-          setFiles([]);
+          if (fileErrorCount > 0) {
+            toast.error(
+              `${fileErrorCount} file(s) failed to upload. Try again.`
+            );
+          } else {
+            await shareService.completeShare(share.id);
+            showCompletedUploadModal(modals, share);
+            setFiles([]);
+          }
         }
       }
     } catch (e) {
