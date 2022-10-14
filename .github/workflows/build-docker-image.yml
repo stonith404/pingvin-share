@@ -23,4 +23,4 @@ jobs:
         run: |
           docker buildx build --push \
              --tag stonith404/pingvin-share:latest \
-             --platform linux/amd64,linux/arm64,linux/arm/v7 .
+             --platform linux/amd64,linux/arm64 .
