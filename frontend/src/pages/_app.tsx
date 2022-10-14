@@ -8,7 +8,6 @@ import {
 import { useColorScheme } from "@mantine/hooks";
 import { ModalsProvider } from "@mantine/modals";
 import { NotificationsProvider } from "@mantine/notifications";
-import { setCookies } from "cookies-next";
 import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
@@ -41,9 +40,6 @@ function App({ Component, pageProps }: AppProps) {
   }, []);
 
   useEffect(() => {
-    setCookies("color-schema", systemTheme, {
-      maxAge: 60 * 60 * 24 * 30,
-    });
     setColorScheme(systemTheme);
   }, [systemTheme]);
 

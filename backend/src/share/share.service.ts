@@ -99,12 +99,19 @@ export class ShareService {
 
   async getSharesByUser(userId: string) {
     return await this.prisma.share.findMany({
-      where: { creator: { id: userId }, expiration: { gt: new Date() } },
+      where: {
+        creator: { id: userId },
+        expiration: { gt: new Date() },
+        uploadLocked: true,
+      },
+      orderBy: {
+        expiration: "desc",
+      },
     });
   }
 
   async get(id: string) {
-    const share : any = await this.prisma.share.findUnique({
+    const share: any = await this.prisma.share.findUnique({
       where: { id },
       include: {
         files: true,
