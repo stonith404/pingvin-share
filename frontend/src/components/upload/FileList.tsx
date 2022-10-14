@@ -1,6 +1,6 @@
 import { ActionIcon, Table } from "@mantine/core";
 import { Dispatch, SetStateAction } from "react";
-import { Trash } from "tabler-icons-react";
+import { TbTrash } from "react-icons/tb";;
 import { FileUpload } from "../../types/File.type";
 import { byteStringToHumanSizeString } from "../../utils/math/byteStringToHumanSizeString.util";
 import UploadProgressIndicator from "./UploadProgressIndicator";
@@ -28,7 +28,7 @@ const FileList = ({
             size={25}
             onClick={() => remove(i)}
           >
-            <Trash />
+            <TbTrash />
           </ActionIcon>
         ) : (
           <UploadProgressIndicator progress={file.uploadingProgress} />

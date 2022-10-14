@@ -5,7 +5,6 @@ import {
   createStyles,
   Group,
   Header,
-  Image,
   Paper,
   Stack,
   Text,
@@ -16,6 +15,7 @@ import { NextLink } from "@mantine/next";
 import getConfig from "next/config";
 import { ReactNode, useEffect, useState } from "react";
 import useUser from "../../hooks/user.hook";
+import Logo from "../Logo";
 import ActionAvatar from "./ActionAvatar";
 
 const { publicRuntimeConfig } = getConfig();
@@ -180,12 +180,7 @@ const NavBar = () => {
       <Container className={classes.header}>
         <NextLink href="/">
           <Group>
-            <Image
-              src="/img/logo.svg"
-              alt="Pinvgin Share Logo"
-              height={35}
-              width={35}
-            />
+            <Logo height={35} width={35} />
             <Text weight={600}>Pingvin Share</Text>
           </Group>
         </NextLink>

@@ -1,19 +1,18 @@
 import { showNotification } from "@mantine/notifications";
-import { Check, X } from "tabler-icons-react";
-
+import { TbCheck, TbX } from "react-icons/tb";
 const error = (message: string) =>
   showNotification({
-    icon: <X />,
+    icon: <TbX />,
     color: "red",
     radius: "md",
     title: "Error",
-    
+
     message: message,
   });
 
 const success = (message: string) =>
   showNotification({
-    icon: <Check />,
+    icon: <TbCheck />,
     color: "green",
     radius: "md",
     title: "Success",

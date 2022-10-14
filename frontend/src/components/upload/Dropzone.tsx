@@ -2,7 +2,7 @@ import { Button, Center, createStyles, Group, Text } from "@mantine/core";
 import { Dropzone as MantineDropzone } from "@mantine/dropzone";
 import getConfig from "next/config";
 import { Dispatch, ForwardedRef, SetStateAction, useRef } from "react";
-import { CloudUpload, Upload } from "tabler-icons-react";
+import { TbCloudUpload, TbUpload } from "react-icons/tb";;;
 import { FileUpload } from "../../types/File.type";
 import { byteStringToHumanSizeString } from "../../utils/math/byteStringToHumanSizeString.util";
 import toast from "../../utils/toast.util";
@@ -67,7 +67,7 @@ const Dropzone = ({
       >
         <div style={{ pointerEvents: "none" }}>
           <Group position="center">
-            <CloudUpload size={50} />
+            <TbCloudUpload size={50} />
           </Group>
           <Text align="center" weight={700} size="lg" mt="xl">
             Upload files
@@ -89,7 +89,7 @@ const Dropzone = ({
           disabled={isUploading}
           onClick={() => openRef.current && openRef.current()}
         >
-          {<Upload />}
+          {<TbUpload />}
         </Button>
       </Center>
     </div>

@@ -72,7 +72,7 @@ const uploadFile = async (
   file: File,
   progressCallBack: (uploadingProgress: number) => void
 ) => {
-  var formData = new FormData();
+  let formData = new FormData();
   formData.append("file", file);
 
   return (

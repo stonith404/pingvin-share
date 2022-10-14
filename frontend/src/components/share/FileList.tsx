@@ -1,5 +1,5 @@
 import { ActionIcon, Loader, Skeleton, Table } from "@mantine/core";
-import { CircleCheck, Download } from "tabler-icons-react";
+import { TbCircleCheck, TbDownload } from "react-icons/tb";;
 import shareService from "../../services/share.service";
 
 import { byteStringToHumanSizeString } from "../../utils/math/byteStringToHumanSizeString.util";
@@ -39,7 +39,7 @@ const FileList = ({
           file.uploadingState != "finished" ? (
             <Loader size={22} />
           ) : (
-            <CircleCheck color="green" size={22} />
+            <TbCircleCheck color="green" size={22} />
           )
         ) : (
           <ActionIcon
@@ -48,7 +48,7 @@ const FileList = ({
               await shareService.downloadFile(shareId, file.id);
             }}
           >
-            <Download />
+            <TbDownload />
           </ActionIcon>
         )}
       </td>
