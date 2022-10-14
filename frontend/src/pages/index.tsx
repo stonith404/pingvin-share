@@ -12,10 +12,9 @@ import { NextLink } from "@mantine/next";
 import getConfig from "next/config";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { Check } from "tabler-icons-react";
+import { TbCheck } from "react-icons/tb";
 import Meta from "../components/Meta";
 import useUser from "../hooks/user.hook";
-
 const { publicRuntimeConfig } = getConfig();
 
 const useStyles = createStyles((theme) => ({
@@ -101,7 +100,7 @@ export default function Home() {
                 size="sm"
                 icon={
                   <ThemeIcon size={20} radius="xl">
-                    <Check size={12} />
+                    <TbCheck size={12} />
                   </ThemeIcon>
                 }
               >

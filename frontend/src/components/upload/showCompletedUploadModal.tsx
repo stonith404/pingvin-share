@@ -1,25 +1,20 @@
 import {
   ActionIcon,
   Button,
-  Group,
   Stack,
   Text,
   TextInput,
-  Title
+  Title,
 } from "@mantine/core";
 import { useClipboard } from "@mantine/hooks";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import moment from "moment";
 import { useRouter } from "next/router";
-import { Copy } from "tabler-icons-react";
+import { TbCopy } from "react-icons/tb";
 import { Share } from "../../types/share.type";
 import toast from "../../utils/toast.util";
-
-const showCompletedUploadModal = (
-  modals: ModalsContextProps,
-  share: Share,
-) => {
+const showCompletedUploadModal = (modals: ModalsContextProps, share: Share) => {
   return modals.openModal({
     closeOnClickOutside: false,
     withCloseButton: false,
@@ -39,7 +34,7 @@ const Body = ({ share }: { share: Share }) => {
   const router = useRouter();
   const link = `${window.location.origin}/share/${share.id}`;
   return (
-    <Stack  align="stretch">
+    <Stack align="stretch">
       <TextInput
         variant="filled"
         value={link}
@@ -50,7 +45,7 @@ const Body = ({ share }: { share: Share }) => {
               toast.success("Your link was copied to the keyboard.");
             }}
           >
-            <Copy />
+            <TbCopy />
           </ActionIcon>
         }
       />

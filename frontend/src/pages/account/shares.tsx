@@ -16,7 +16,7 @@ import { NextLink } from "@mantine/next";
 import moment from "moment";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Link, Trash } from "tabler-icons-react";
+import { TbLink, TbTrash } from "react-icons/tb";;
 import Meta from "../../components/Meta";
 import useUser from "../../hooks/user.hook";
 import shareService from "../../services/share.service";
@@ -89,7 +89,7 @@ const MyShares = () => {
                           );
                         }}
                       >
-                        <Link />
+                        <TbLink />
                       </ActionIcon>
                       <ActionIcon
                         color="red"
@@ -116,7 +116,7 @@ const MyShares = () => {
                           });
                         }}
                       >
-                        <Trash />
+                        <TbTrash />
                       </ActionIcon>
                     </Group>
                   </td>

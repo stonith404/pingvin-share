@@ -1,6 +1,6 @@
 import { ActionIcon, Avatar, Menu } from "@mantine/core";
 import { NextLink } from "@mantine/next";
-import { DoorExit, Link } from "tabler-icons-react";
+import { TbDoorExit, TbLink } from "react-icons/tb";;
 import authService from "../../services/auth.service";
 
 const ActionAvatar = () => {
@@ -15,7 +15,7 @@ const ActionAvatar = () => {
         <Menu.Item
           component={NextLink}
           href="/account/shares"
-          icon={<Link size={14} />}
+          icon={<TbLink size={14} />}
         >
           My shares
         </Menu.Item>
@@ -23,7 +23,7 @@ const ActionAvatar = () => {
           onClick={async () => {
             authService.signOut();
           }}
-          icon={<DoorExit size={14} />}
+          icon={<TbDoorExit size={14} />}
         >
           Sign out
         </Menu.Item>
