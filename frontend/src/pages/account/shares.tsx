@@ -15,7 +15,7 @@ import { useModals } from "@mantine/modals";
 import { NextLink } from "@mantine/next";
 import moment from "moment";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, Trash } from "tabler-icons-react";
 import Meta from "../../components/Meta";
 import useUser from "../../hooks/user.hook";
@@ -31,9 +31,9 @@ const MyShares = () => {
 
   const [shares, setShares] = useState<MyShare[]>();
 
-  // useEffect(() => {
-  //   shareService.getMyShares().then((shares) => setShares(shares));
-  // }, []);
+  useEffect(() => {
+    shareService.getMyShares().then((shares) => setShares(shares));
+  }, []);
 
   if (!user) {
     router.replace("/");
