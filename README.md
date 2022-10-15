@@ -37,7 +37,7 @@ The website is now listening available on `http://localhost:3000`, have fun with
 
 ### Upgrade to a new version
 
-Just updated the docker container by running `docker-compose pull && docker-compose up -d`
+Just update the docker container by running `docker compose pull && docker compose up -d`
 
 > Note: If you installed Pingvin Share before it used Sqlite, you unfortunately have to set up the project from scratch again, sorry for that.
 
@@ -65,3 +65,7 @@ Contact me, create an issue or directly create a pull request.
 5. Start the frontend with `npm run dev`
 
 You're all set!
+
+### Testing
+
+At the moment we only have system tests for the backend. To run these tests, run `npm run test:system` in the backend folder.

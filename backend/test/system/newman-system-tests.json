@@ -1,0 +1,1542 @@
+{
+	"info": {
+		"_postman_id": "243b0832-3a6a-4389-bb71-4d988c0a86d9",
+		"name": "Pingvin Share Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17822132"
+	},
+	"item": [
+		{
+			"name": "_setup",
+			"item": [
+				{
+					"name": "Sign Up",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.to.have.status(201)){",
+									"    const token = pm.response.json()[\"accessToken\"]",
+									"    pm.collectionVariables.set(\"USER_AUTH_TOKEN\", token)",
+									"",
+									"    // Get user id",
+									"    const jwtPayload = JSON.parse(atob(token.split('.')[1]));",
+									"    const userId = jwtPayload[\"sub\"]",
+									"    pm.collectionVariables.set(\"USER_ID\", userId)",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\" : \"System\",\n    \"lastName\" : \"Test\",\n    \"email\": \"system@test.org\",\n    \"password\": \"J2y8unpJUcJDRv\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/auth/signUp",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"auth",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Sign Up",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", () => {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"pm.test(\"Response contains tokens\", () => {",
+											"    const responseBody = pm.response.json();",
+											"    pm.expect(responseBody).to.have.property(\"accessToken\")",
+											"    pm.expect(responseBody).to.have.property(\"refreshToken\")",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "de",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\" : \"System\",\n    \"lastName\" : \"Test2\",\n    \"email\": \"system2@test.org\",\n    \"password\": \"N44HcHgeuAvfCT\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/auth/signUp",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"auth",
+										"signUp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sign In",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Response contains tokens\", () => {",
+											"    const responseBody = pm.response.json();",
+											"    pm.expect(responseBody).to.have.property(\"accessToken\")",
+											"    pm.expect(responseBody).to.have.property(\"refreshToken\")",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "de",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"system2@test.org\",\n    \"password\": \"N44HcHgeuAvfCT\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/auth/signIn",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"auth",
+										"signIn"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Sign Up - Without email",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "de",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\": \"N44HcHgeuAvfCT\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/auth/signUp",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"auth",
+										"signUp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sign Up - Without password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "de",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"system3@test.org\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/auth/signUp",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"auth",
+										"signUp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sign In - Wrong email",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", () => {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "de",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"wrong-email@test.org\",\n    \"password\": \"N44HcHgeuAvfCT\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/auth/signIn",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"auth",
+										"signIn"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sign In - Wrong password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 401\", () => {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "de",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"system2@test.org\",\n    \"password\": \"wrong-password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/auth/signIn",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"auth",
+										"signIn"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Create Share",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Check share id availability",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",  () => {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Response body correct\", () => {",
+											"    const responseBody = pm.response.json();",
+											"    pm.expect(responseBody.isAvailable).to.be.equal(true)",
+											"    pm.expect(Object.keys(responseBody).length).be.equal(1)",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/shares/isShareIdAvailable/:id",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares",
+										"isShareIdAvailable",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "test-share"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Share",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", () => {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"pm.test(\"Response body correct\", () => {",
+											"    const responseBody = pm.response.json();",
+											"    pm.expect(responseBody).to.have.property(\"id\")",
+											"    pm.expect(responseBody).to.have.property(\"expiration\")",
+											"    pm.expect(Object.keys(responseBody).length).be.equal(2)",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"test-share\",\n    \"expiration\": \"1-day\",\n    \"security\": {\n        \"password\": \"share-password\",\n        \"maxViews\": 1\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/shares",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upload file",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\",  () => {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"pm.test(\"Response body correct\", () => {",
+											"    const responseBody = pm.response.json();",
+											"    pm.expect(responseBody).to.have.property(\"id\")",
+											"    pm.expect(Object.keys(responseBody).length).be.equal(1)",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "./test/system/test-file.txt"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_URL}}/shares/:shareId/files",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares",
+										":shareId",
+										"files"
+									],
+									"variable": [
+										{
+											"key": "shareId",
+											"value": "test-share"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Complete share",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 202\", () => {",
+											"    pm.response.to.have.status(202);",
+											"});",
+											"",
+											"pm.test(\"Response body correct\", () => {",
+											"    const responseBody = pm.response.json();",
+											"    pm.expect(responseBody).to.have.property(\"id\")",
+											"    pm.expect(responseBody).to.have.property(\"expiration\")",
+											"    pm.expect(Object.keys(responseBody).length).be.equal(2)",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/shares/:id/complete",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares",
+										":id",
+										"complete"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "test-share"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Check share id availability - Already exists",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",  () => {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Response body correct\", () => {",
+											"    const responseBody = pm.response.json();",
+											"    pm.expect(responseBody.isAvailable).to.be.equal(false)",
+											"    pm.expect(Object.keys(responseBody).length).be.equal(1)",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/shares/isShareIdAvailable/:id",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares",
+										"isShareIdAvailable",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "test-share"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Share - Already exists",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"test-share\",\n    \"expiration\" : \"2-months\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/shares",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Share - Id less than 3 chars",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"ab\",\n    \"expiration\" : \"2-months\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/shares",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upload file - Share already completed",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "./test/system/test-file.txt"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_URL}}/shares/:shareId/files",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares",
+										":shareId",
+										"files"
+									],
+									"variable": [
+										{
+											"key": "shareId",
+											"value": "test-share"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upload file - Share not found",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", () => {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "./test/system/test-file.txt"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_URL}}/shares/:shareId/files",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares",
+										":shareId",
+										"files"
+									],
+									"variable": [
+										{
+											"key": "shareId",
+											"value": "not-found"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Complete share - Not found",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", () => {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/shares/:id/complete",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares",
+										":id",
+										"complete"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "not-found"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Complete share - Already completed",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/shares/:id/complete",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares",
+										":id",
+										"complete"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "test-share"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Get Share",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Get share token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",  () => {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Response body correct\", () => {",
+											"    const responseBody = pm.response.json();",
+											"    pm.expect(responseBody).to.have.property(\"token\")",
+											"    pm.expect(Object.keys(responseBody).length).be.equal(1)",
+											"});",
+											"",
+											"pm.collectionVariables.set(\"shareToken\", pm.response.json().token)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\" : \"share-password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/shares/:shareId/token",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares",
+										":shareId",
+										"token"
+									],
+									"variable": [
+										{
+											"key": "shareId",
+											"value": "test-share"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get share",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",  () => {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Response contains 1 file\", () => {",
+											"    const responseBody = pm.response.json();",
+											"    pm.expect(responseBody.files.length).be.equal(1)",
+											"});",
+											"",
+											"",
+											"",
+											"pm.collectionVariables.set(\"fileId\", pm.response.json().files[0].id)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Share-Token",
+										"value": "{{shareToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API_URL}}/shares/:shareId",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares",
+										":shareId"
+									],
+									"variable": [
+										{
+											"key": "shareId",
+											"value": "test-share"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get file download url",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let URL = require('url');",
+											"",
+											"pm.test(\"Status code is 200\",  () => {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response body correct\", () => {",
+											"    const responseBody = pm.response.json();",
+											"    pm.expect(responseBody).to.have.property(\"url\")",
+											"    pm.expect(Object.keys(responseBody).length).be.equal(1)",
+											"});",
+											"",
+											"",
+											"const path = URL.parse(pm.response.json().url).path.replace(\"/api/\", \"\")",
+											"",
+											"pm.collectionVariables.set(\"fileDownloadPath\",path )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Share-Token",
+										"value": "{{shareToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "./test/system/test-file.txt"
+										},
+										{
+											"key": "shareId",
+											"value": "868c6a44-fb8c-4768-ad0d-ef22feebc8ea",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_URL}}/shares/:shareId/files/:fileId/download",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares",
+										":shareId",
+										"files",
+										":fileId",
+										"download"
+									],
+									"variable": [
+										{
+											"key": "shareId",
+											"value": "test-share"
+										},
+										{
+											"key": "fileId",
+											"value": "{{fileId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get File",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",  () => {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "./test/system/test-file.txt"
+										},
+										{
+											"key": "shareId",
+											"value": "868c6a44-fb8c-4768-ad0d-ef22feebc8ea",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_URL}}/{{fileDownloadPath}}",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"{{fileDownloadPath}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get zip download url",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let URL = require('url');",
+											"",
+											"pm.test(\"Status code is 200\",  () => {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response body correct\", () => {",
+											"    const responseBody = pm.response.json();",
+											"    pm.expect(responseBody).to.have.property(\"url\")",
+											"    pm.expect(Object.keys(responseBody).length).be.equal(1)",
+											"});",
+											"",
+											"",
+											"const path = URL.parse(pm.response.json().url).path.replace(\"/api/\", \"\")",
+											"",
+											"pm.collectionVariables.set(\"zipDownloadPath\",path )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Share-Token",
+										"value": "{{shareToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "./test/system/test-file.txt"
+										},
+										{
+											"key": "shareId",
+											"value": "868c6a44-fb8c-4768-ad0d-ef22feebc8ea",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_URL}}/shares/:shareId/files/zip/download",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares",
+										":shareId",
+										"files",
+										"zip",
+										"download"
+									],
+									"variable": [
+										{
+											"key": "shareId",
+											"value": "test-share"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Zip",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",  () => {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "./test/system/test-file.txt"
+										},
+										{
+											"key": "shareId",
+											"value": "868c6a44-fb8c-4768-ad0d-ef22feebc8ea",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_URL}}/{{zipDownloadPath}}",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"{{zipDownloadPath}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Get share - No token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 403\",  () => {",
+											"    pm.response.to.have.status(403);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/shares/:shareId",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares",
+										":shareId"
+									],
+									"variable": [
+										{
+											"key": "shareId",
+											"value": "test-share"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get share token - Wrong password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 403\",  () => {",
+											"    pm.response.to.have.status(403);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\" : \"wrong-password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/shares/:shareId/token",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares",
+										":shareId",
+										"token"
+									],
+									"variable": [
+										{
+											"key": "shareId",
+											"value": "test-share"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get share token - Visitor limit exceeded",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 403\",  () => {",
+											"    pm.response.to.have.status(403);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\" : \"share-password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/shares/:shareId/token",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares",
+										":shareId",
+										"token"
+									],
+									"variable": [
+										{
+											"key": "shareId",
+											"value": "test-share"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get file download url - No token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 403\",  () => {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "./test/system/test-file.txt"
+										},
+										{
+											"key": "shareId",
+											"value": "868c6a44-fb8c-4768-ad0d-ef22feebc8ea",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_URL}}/shares/:shareId/files/:fileId/download",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares",
+										":shareId",
+										"files",
+										":fileId",
+										"download"
+									],
+									"variable": [
+										{
+											"key": "shareId",
+											"value": "test-share"
+										},
+										{
+											"key": "fileId",
+											"value": "{{fileId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get zip download url - No token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 403\",  () => {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "./test/system/test-file.txt"
+										},
+										{
+											"key": "shareId",
+											"value": "868c6a44-fb8c-4768-ad0d-ef22feebc8ea",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_URL}}/shares/:shareId/files/zip/download",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares",
+										":shareId",
+										"files",
+										"zip",
+										"download"
+									],
+									"variable": [
+										{
+											"key": "shareId",
+											"value": "test-share"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{USER_AUTH_TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_URL",
+			"value": "http://localhost:8080/api",
+			"type": "string"
+		}
+	]
+}

@@ -1,6 +1,7 @@
-import { Button, Tooltip } from "@mantine/core";
+import { Button } from "@mantine/core";
 import { useEffect, useState } from "react";
 import shareService from "../../services/share.service";
+import toast from "../../utils/toast.util";
 
 const DownloadAllButton = ({ shareId }: { shareId: string }) => {
   const [isZipReady, setIsZipReady] = useState(false);
@@ -25,28 +26,25 @@ const DownloadAllButton = ({ shareId }: { shareId: string }) => {
           setIsZipReady(share.isZipReady);
           if (share.isZipReady) clearInterval(timer);
         })
-        .catch(() => {});
+        .catch(() => clearInterval(timer));
     }, 5000);
     return () => {
       clearInterval(timer);
     };
   }, []);
 
-  if (!isZipReady)
-    return (
-      <Tooltip
-        position="bottom"
-        width={220}
-        withArrow
-        label="The share is preparing. This can take a few minutes."
-      >
-        <Button variant="outline" onClick={downloadAll} disabled>
-          Download all
-        </Button>
-      </Tooltip>
-    );
   return (
-    <Button variant="outline" loading={isLoading} onClick={downloadAll}>
+    <Button
+      variant="outline"
+      loading={isLoading}
+      onClick={() => {
+        if (!isZipReady) {
+          toast.error("The share is preparing. Try again in a few minutes.");
+        } else {
+          downloadAll();
+        }
+      }}
+    >
       Download all
     </Button>
   );

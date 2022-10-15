@@ -12,7 +12,7 @@ import { PrismaService } from "src/prisma/prisma.service";
 import { ShareService } from "src/share/share.service";
 
 @Injectable()
-export class ShareSecurityGuard implements CanActivate {
+export class ShareTokenSecurity implements CanActivate {
   constructor(
     private reflector: Reflector,
     private shareService: ShareService,
@@ -21,7 +21,6 @@ export class ShareSecurityGuard implements CanActivate {
 
   async canActivate(context: ExecutionContext) {
     const request: Request = context.switchToHttp().getRequest();
-    const shareToken = request.get("X-Share-Token");
     const shareId = Object.prototype.hasOwnProperty.call(
       request.params,
       "shareId"
@@ -34,19 +33,13 @@ export class ShareSecurityGuard implements CanActivate {
       include: { security: true },
     });
 
-    if (!share || (moment().isAfter(share.expiration) && moment(share.expiration).unix() !== 0))
+    if (!share || moment().isAfter(share.expiration))
       throw new NotFoundException("Share not found");
 
-    if (share.security?.password && !shareToken)
+    if (share.security?.maxViews && share.security.maxViews <= share.views)
       throw new ForbiddenException(
-        "This share is password protected",
-        "share_password_required"
-      );
-
-    if (!this.shareService.verifyShareToken(shareId, shareToken))
-      throw new ForbiddenException(
-        "Share token required",
-        "share_token_required"
+        "Maximum views exceeded",
+        "share_max_views_exceeded"
       );
 
     return true;

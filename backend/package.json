@@ -6,7 +6,8 @@
     "dev": "dotenv -- nest start --watch",
     "prod": "npx prisma migrate deploy && dotenv node dist/main",
     "lint": "eslint 'src/**/*.ts'",
-    "format": "prettier --write 'src/**/*.ts'"
+    "format": "prettier --write 'src/**/*.ts'",
+    "test:system": "npx prisma migrate reset -f && nest start & sleep 10 && newman run ./test/system/newman-system-tests.json"
   },
   "dependencies": {
     "@nestjs/common": "^9.1.2",
@@ -21,6 +22,7 @@
     "argon2": "^0.29.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
+    "content-disposition": "^0.5.4",
     "mime-types": "^2.1.35",
     "moment": "^2.29.4",
     "multer": "^1.4.5-lts.1",
@@ -44,19 +46,20 @@
     "@types/node": "^18.7.23",
     "@types/passport-jwt": "^3.0.7",
     "@types/supertest": "^2.0.12",
-    "@typescript-eslint/eslint-plugin": "^5.39.0",
-    "@typescript-eslint/parser": "^5.39.0",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
     "cross-env": "^7.0.3",
     "dotenv-cli": "^6.0.0",
-    "eslint": "^8.0.1",
+    "eslint": "^8.25.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "newman": "^5.3.2",
     "prettier": "^2.7.1",
     "prisma": "^4.4.0",
     "source-map-support": "^0.5.21",
     "ts-loader": "^9.4.1",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "4.1.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.8.4"
   }
 }

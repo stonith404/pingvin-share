@@ -44,9 +44,8 @@ const getMyShares = async (): Promise<MyShare[]> => {
   return (await api.get("shares")).data;
 };
 
-const exchangeSharePasswordWithToken = async (id: string, password: string) => {
-  const { token } = (await api.post(`/shares/${id}/password`, { password }))
-    .data;
+const getShareToken = async (id: string, password?: string) => {
+  const { token } = (await api.post(`/shares/${id}/token`, { password })).data;
 
   localStorage.setItem(`share_${id}_token`, token);
 };
@@ -68,16 +67,26 @@ const downloadFile = async (shareId: string, fileId: string) => {
   window.location.href = await getFileDownloadUrl(shareId, fileId);
 };
 
-const uploadFile = async (shareId: string, file: File) => {
-  var formData = new FormData();
+const uploadFile = async (
+  shareId: string,
+  file: File,
+  progressCallBack: (uploadingProgress: number) => void
+) => {
+  let formData = new FormData();
   formData.append("file", file);
-  return (await api.post(`shares/${shareId}/files`, formData)).data;
+
+  return (
+    await api.post(`shares/${shareId}/files`, formData, {
+      onUploadProgress: (progressEvent) =>
+        progressCallBack(progressEvent.loaded),
+    })
+  ).data;
 };
 
 export default {
   create,
   completeShare,
-  exchangeSharePasswordWithToken,
+  getShareToken,
   get,
   remove,
   getMetaData,

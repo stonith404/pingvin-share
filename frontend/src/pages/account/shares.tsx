@@ -1,131 +1,140 @@
 import {
-    ActionIcon,
-    Button,
-    Center,
-    Group,
-    LoadingOverlay,
-    Space,
-    Stack,
-    Table,
-    Text,
-    Title,
+  ActionIcon,
+  Button,
+  Center,
+  Group,
+  LoadingOverlay,
+  Space,
+  Stack,
+  Table,
+  Text,
+  Title,
 } from "@mantine/core";
-import {useClipboard} from "@mantine/hooks";
-import {useModals} from "@mantine/modals";
-import {NextLink} from "@mantine/next";
+import { useClipboard } from "@mantine/hooks";
+import { useModals } from "@mantine/modals";
+import { NextLink } from "@mantine/next";
 import moment from "moment";
-import {useEffect, useState} from "react";
-import {Link, Trash} from "tabler-icons-react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { TbLink, TbTrash } from "react-icons/tb";
 import Meta from "../../components/Meta";
+import useUser from "../../hooks/user.hook";
 import shareService from "../../services/share.service";
-import {MyShare} from "../../types/share.type";
+import { MyShare } from "../../types/share.type";
 import toast from "../../utils/toast.util";
 import getConfig from "next/config";
 
-const {publicRuntimeConfig} = getConfig();
+const { publicRuntimeConfig } = getConfig();
 
 const MyShares = () => {
-    const modals = useModals();
-    const clipboard = useClipboard();
+  const modals = useModals();
+  const clipboard = useClipboard();
+  const router = useRouter();
+  const user = useUser();
 
-    const [shares, setShares] = useState<MyShare[]>();
+  const [shares, setShares] = useState<MyShare[]>();
 
-    useEffect(() => {
-        shareService.getMyShares().then((shares) => setShares(shares));
-    }, []);
+  useEffect(() => {
+    shareService.getMyShares().then((shares) => setShares(shares));
+  }, []);
 
-    if (!shares) return <LoadingOverlay visible/>;
+  if (!user) {
+    router.replace("/");
+  } else {
+    if (!shares) return <LoadingOverlay visible />;
     return (
-        <>
-            <Meta title="My shares"/>
-            <Title mb={30} order={3}>
-                My shares
-            </Title>
-            {shares.length == 0 ? (
-                <Center style={{height: "70vh"}}>
-                    <Stack align="center" spacing={10}>
-                        <Title order={3}>It's empty here 👀</Title>
-                        <Text>You don't have any shares.</Text>
-                        <Space h={5}/>
-                        <Button component={NextLink} href="/upload" variant="light">
-                            Create one
-                        </Button>
-                    </Stack>
-                </Center>
-            ) : (
-                <Table>
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Visitors</th>
-                        <th>Expires at</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {shares.map((share) => (
-                        <tr key={share.id}>
-                            <td>{share.id}</td>
-                            <td>{share.views}</td>
-                            <td>
-                                {moment(share.expiration).unix() === 0
-                                    ? "Never"
-                                    : (publicRuntimeConfig.TWELVE_HOUR_TIME === "true")
-                                        ? moment(share.expiration).format("MMMM Do YYYY, h:mm a")
-                                        : moment(share.expiration).format("MMMM DD YYYY, HH:mm")
-                                }
-                            </td>
-                            <td>
-                                <Group position="right">
-                                    <ActionIcon
-                                        color="victoria"
-                                        variant="light"
-                                        size={25}
-                                        onClick={() => {
-                                            clipboard.copy(
-                                                `${window.location.origin}/share/${share.id}`
-                                            );
-                                            toast.success("Your link was copied to the keyboard.");
-                                        }}
-                                    >
-                                        <Link/>
-                                    </ActionIcon>
-                                    <ActionIcon
-                                        color="red"
-                                        variant="light"
-                                        size={25}
-                                        onClick={() => {
-                                            modals.openConfirmModal({
-                                                title: `Delete share ${share.id}`,
-                                                children: (
-                                                    <Text size="sm">
-                                                        Do you really want to delete this share?
-                                                    </Text>
-                                                ),
-                                                confirmProps: {
-                                                    color: "red",
-                                                },
-                                                labels: {confirm: "Confirm", cancel: "Cancel"},
-                                                onConfirm: () => {
-                                                    shareService.remove(share.id);
-                                                    setShares(
-                                                        shares.filter((item) => item.id !== share.id)
-                                                    );
-                                                },
-                                            });
-                                        }}
-                                    >
-                                        <Trash/>
-                                    </ActionIcon>
-                                </Group>
-                            </td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </Table>
-            )}
-        </>
+      <>
+        <Meta title="My shares" />
+        <Title mb={30} order={3}>
+          My shares
+        </Title>
+        {shares.length == 0 ? (
+          <Center style={{ height: "70vh" }}>
+            <Stack align="center" spacing={10}>
+              <Title order={3}>It's empty here 👀</Title>
+              <Text>You don't have any shares.</Text>
+              <Space h={5} />
+              <Button component={NextLink} href="/upload" variant="light">
+                Create one
+              </Button>
+            </Stack>
+          </Center>
+        ) : (
+          <Table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Visitors</th>
+                <th>Expires at</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {shares.map((share) => (
+                <tr key={share.id}>
+                  <td>{share.id}</td>
+                  <td>{share.views}</td>
+                  <td>
+                    {moment(share.expiration).unix() === 0
+                      ? "Never"
+                      : publicRuntimeConfig.TWELVE_HOUR_TIME === "true"
+                      ? moment(share.expiration).format("MMMM Do YYYY, h:mm a")
+                      : moment(share.expiration).format("MMMM DD YYYY, HH:mm")}
+                  </td>
+                  <td>
+                    <Group position="right">
+                      <ActionIcon
+                        color="victoria"
+                        variant="light"
+                        size={25}
+                        onClick={() => {
+                          clipboard.copy(
+                            `${window.location.origin}/share/${share.id}`
+                          );
+                          toast.success(
+                            "Your link was copied to the keyboard."
+                          );
+                        }}
+                      >
+                        <TbLink />
+                      </ActionIcon>
+                      <ActionIcon
+                        color="red"
+                        variant="light"
+                        size={25}
+                        onClick={() => {
+                          modals.openConfirmModal({
+                            title: `Delete share ${share.id}`,
+                            children: (
+                              <Text size="sm">
+                                Do you really want to delete this share?
+                              </Text>
+                            ),
+                            confirmProps: {
+                              color: "red",
+                            },
+                            labels: { confirm: "Confirm", cancel: "Cancel" },
+                            onConfirm: () => {
+                              shareService.remove(share.id);
+                              setShares(
+                                shares.filter((item) => item.id !== share.id)
+                              );
+                            },
+                          });
+                        }}
+                      >
+                        <TbTrash />
+                      </ActionIcon>
+                    </Group>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        )}
+      </>
     );
+  }
 };
 
 export default MyShares;

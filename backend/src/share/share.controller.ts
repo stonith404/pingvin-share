@@ -18,6 +18,7 @@ import { ShareMetaDataDTO } from "./dto/shareMetaData.dto";
 import { SharePasswordDto } from "./dto/sharePassword.dto";
 import { ShareOwnerGuard } from "./guard/shareOwner.guard";
 import { ShareSecurityGuard } from "./guard/shareSecurity.guard";
+import { ShareTokenSecurity } from "./guard/shareTokenSecurity.guard";
 import { ShareService } from "./share.service";
 
 @Controller("shares")
@@ -68,11 +69,10 @@ export class ShareController {
     return this.shareService.isShareIdAvailable(id);
   }
 
-  @Post(":id/password")
-  async exchangeSharePasswordWithToken(
-    @Param("id") id: string,
-    @Body() body: SharePasswordDto
-  ) {
-    return this.shareService.exchangeSharePasswordWithToken(id, body.password);
+  @HttpCode(200)
+  @UseGuards(ShareTokenSecurity)
+  @Post(":id/token")
+  async getShareToken(@Param("id") id: string, @Body() body: SharePasswordDto) {
+    return this.shareService.getShareToken(id, body.password);
   }
 }
