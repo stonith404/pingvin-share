@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "dotenv next start",
     "lint": "next lint",
-    "format": "prettier --write \"src/**/*.ts\""
+    "format": "prettier --write \"src/**/*.ts*\""
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",

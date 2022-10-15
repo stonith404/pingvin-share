@@ -5,7 +5,10 @@ const Footer = () => {
     <MFooter height="auto" p={10}>
       <Center>
         <Text size="xs" color="dimmed">
-          Made with 🖤 by <Anchor size="xs" href="https://eliasschneider.com" target="_blank">Elias Schneider</Anchor>
+          Made with 🖤 by{" "}
+          <Anchor size="xs" href="https://eliasschneider.com" target="_blank">
+            Elias Schneider
+          </Anchor>
         </Text>
       </Center>
     </MFooter>

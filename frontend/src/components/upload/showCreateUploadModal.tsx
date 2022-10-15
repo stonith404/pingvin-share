@@ -8,14 +8,12 @@ const showCreateUploadModal = (
   uploadCallback: (
     id: string,
     expiration: string,
-    security: ShareSecurity,
+    security: ShareSecurity
   ) => void
 ) => {
   return modals.openModal({
     title: <Title order={4}>Share</Title>,
-    children: (
-      <CreateUploadModalBody uploadCallback={uploadCallback} />
-    ),
+    children: <CreateUploadModalBody uploadCallback={uploadCallback} />,
   });
 };
 
