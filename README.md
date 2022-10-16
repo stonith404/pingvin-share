@@ -12,6 +12,7 @@ Demo: https://pingvin-share.dev.eliasschneider.com
 
 - Create a simple share with a link
 - No file size limit, only your disk will be your limit
+- Set a share expiration
 - Optionally secure your share with a visitor limit and a password
 - Dark mode
 
@@ -43,29 +44,4 @@ Just update the docker container by running `docker compose pull && docker compo
 
 ## 🖤 Contribute
 
-You're very welcome to contribute to Pingvin Share!
-Contact me, create an issue or directly create a pull request.
-
-### Development setup
-
-#### Backend
-
-1. Open the `backend` folder
-2. Duplicate the `.env.example` file, rename the duplicate to `.env` and change the environment variables if needed
-3. Install the dependencies with `npm install`
-4. Push the database schema to the database by running `npx prisma db push`
-5. Start the backend with `npm run dev`
-
-#### Frontend
-
-1. Start the backend first
-2. Open the `frontend` folder
-3. Duplicate the `.env.example` file, rename the duplicate to `.env` and change the environment variables if needed
-4. Install the dependencies with `npm install`
-5. Start the frontend with `npm run dev`
-
-You're all set!
-
-### Testing
-
-At the moment we only have system tests for the backend. To run these tests, run `npm run test:system` in the backend folder.
+You're very welcome to contribute to Pingvin Share! Follow the [contribution guide](/CONTRIBUTING.md) to get started.
