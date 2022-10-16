@@ -6,9 +6,11 @@
     "build": "next build",
     "start": "dotenv next start",
     "lint": "next lint",
-    "format": "prettier --write \"src/**/*.ts\""
+    "format": "prettier --write \"src/**/*.ts*\""
   },
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/server": "^11.10.0",
     "@mantine/core": "^5.5.2",
     "@mantine/dropzone": "^5.5.2",
     "@mantine/form": "^5.5.2",

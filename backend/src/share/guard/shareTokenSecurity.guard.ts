@@ -5,19 +5,13 @@ import {
   Injectable,
   NotFoundException,
 } from "@nestjs/common";
-import { Reflector } from "@nestjs/core";
 import { Request } from "express";
 import * as moment from "moment";
 import { PrismaService } from "src/prisma/prisma.service";
-import { ShareService } from "src/share/share.service";
 
 @Injectable()
 export class ShareTokenSecurity implements CanActivate {
-  constructor(
-    private reflector: Reflector,
-    private shareService: ShareService,
-    private prisma: PrismaService
-  ) {}
+  constructor(private prisma: PrismaService) {}
 
   async canActivate(context: ExecutionContext) {
     const request: Request = context.switchToHttp().getRequest();
@@ -33,7 +27,11 @@ export class ShareTokenSecurity implements CanActivate {
       include: { security: true },
     });
 
-    if (!share || moment().isAfter(share.expiration))
+    if (
+      !share ||
+      (moment().isAfter(share.expiration) &&
+        !moment(share.expiration).isSame(0))
+    )
       throw new NotFoundException("Share not found");
 
     if (share.security?.maxViews && share.security.maxViews <= share.views)

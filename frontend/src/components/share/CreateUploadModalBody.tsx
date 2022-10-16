@@ -2,6 +2,7 @@ import {
   Accordion,
   Button,
   Col,
+  Checkbox,
   Grid,
   NumberInput,
   PasswordInput,
@@ -15,6 +16,33 @@ import { useModals } from "@mantine/modals";
 import * as yup from "yup";
 import shareService from "../../services/share.service";
 import { ShareSecurity } from "../../types/share.type";
+import moment from "moment";
+import getConfig from "next/config";
+
+const { publicRuntimeConfig } = getConfig();
+
+const PreviewExpiration = ({ form }: { form: any }) => {
+  const value = form.values.never_expires
+    ? "never"
+    : form.values.expiration_num + form.values.expiration_unit;
+  if (value === "never") return "This share will never expire.";
+
+  const expirationDate = moment()
+    .add(
+      value.split("-")[0],
+      value.split("-")[1] as moment.unitOfTime.DurationConstructor
+    )
+    .toDate();
+
+  if (publicRuntimeConfig.TWELVE_HOUR_TIME === "true")
+    return `This share will expire on ${moment(expirationDate).format(
+      "MMMM Do YYYY, h:mm a"
+    )}`;
+  else
+    return `This share will expire on ${moment(expirationDate).format(
+      "MMMM DD YYYY, HH:mm"
+    )}`;
+};
 
 const CreateUploadModalBody = ({
   uploadCallback,
@@ -44,7 +72,9 @@ const CreateUploadModalBody = ({
 
       password: undefined,
       maxViews: undefined,
-      expiration: "1-day",
+      expiration_num: 1,
+      expiration_unit: "-days",
+      never_expires: false,
     },
     validate: yupResolver(validationSchema),
   });
@@ -55,7 +85,10 @@ const CreateUploadModalBody = ({
         if (!(await shareService.isShareIdAvailable(values.link))) {
           form.setFieldError("link", "This link is already in use");
         } else {
-          uploadCallback(values.link, values.expiration, {
+          const expiration = form.values.never_expires
+            ? "never"
+            : form.values.expiration_num + form.values.expiration_unit;
+          uploadCallback(values.link, expiration, {
             password: values.password,
             maxViews: values.maxViews,
           });
@@ -91,6 +124,7 @@ const CreateUploadModalBody = ({
         </Grid>
 
         <Text
+          italic
           size="xs"
           sx={(theme) => ({
             color: theme.colors.gray[6],
@@ -99,20 +133,70 @@ const CreateUploadModalBody = ({
           {window.location.origin}/share/
           {form.values.link == "" ? "myAwesomeShare" : form.values.link}
         </Text>
-        <Select
-          label="Expiration"
-          {...form.getInputProps("expiration")}
-          data={[
-            {
-              value: "10-minutes",
-              label: "10 Minutes",
-            },
-            { value: "1-hour", label: "1 Hour" },
-            { value: "1-day", label: "1 Day" },
-            { value: "1-week".toString(), label: "1 Week" },
-            { value: "1-month", label: "1 Month" },
-          ]}
+        <Grid align={form.errors.link ? "center" : "flex-end"}>
+          <Col xs={6}>
+            <NumberInput
+              min={1}
+              max={99999}
+              precision={0}
+              variant="filled"
+              label="Expiration"
+              placeholder="n"
+              disabled={form.values.never_expires}
+              {...form.getInputProps("expiration_num")}
+            />
+          </Col>
+          <Col xs={6}>
+            <Select
+              disabled={form.values.never_expires}
+              {...form.getInputProps("expiration_unit")}
+              data={[
+                // Set the label to singular if the number is 1, else plural
+                {
+                  value: "-minutes",
+                  label:
+                    "Minute" + (form.values.expiration_num == 1 ? "" : "s"),
+                },
+                {
+                  value: "-hours",
+                  label: "Hour" + (form.values.expiration_num == 1 ? "" : "s"),
+                },
+                {
+                  value: "-days",
+                  label: "Day" + (form.values.expiration_num == 1 ? "" : "s"),
+                },
+                {
+                  value: "-weeks",
+                  label: "Week" + (form.values.expiration_num == 1 ? "" : "s"),
+                },
+                {
+                  value: "-months",
+                  label: "Month" + (form.values.expiration_num == 1 ? "" : "s"),
+                },
+                {
+                  value: "-years",
+                  label: "Year" + (form.values.expiration_num == 1 ? "" : "s"),
+                },
+              ]}
+            />
+          </Col>
+        </Grid>
+        <Checkbox
+          label="Never Expires"
+          {...form.getInputProps("never_expires")}
         />
+
+        {/* Preview expiration date text */}
+        <Text
+          italic
+          size="xs"
+          sx={(theme) => ({
+            color: theme.colors.gray[6],
+          })}
+        >
+          {PreviewExpiration({ form })}
+        </Text>
+
         <Accordion>
           <Accordion.Item value="security" sx={{ borderBottom: "none" }}>
             <Accordion.Control>Security options</Accordion.Control>

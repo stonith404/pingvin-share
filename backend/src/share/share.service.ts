@@ -35,16 +35,24 @@ export class ShareService {
       share.security.password = await argon.hash(share.security.password);
     }
 
-    const expirationDate = moment()
-      .add(
-        share.expiration.split("-")[0],
-        share.expiration.split("-")[1] as moment.unitOfTime.DurationConstructor
-      )
-      .toDate();
+    // We have to add an exception for "never" (since moment won't like that)
+    let expirationDate;
+    if (share.expiration !== "never") {
+      expirationDate = moment()
+        .add(
+          share.expiration.split("-")[0],
+          share.expiration.split(
+            "-"
+          )[1] as moment.unitOfTime.DurationConstructor
+        )
+        .toDate();
 
-    // Throw error if expiration date is now
-    if (expirationDate.setMilliseconds(0) == new Date().setMilliseconds(0))
-      throw new BadRequestException("Invalid expiration date");
+      // Throw error if expiration date is now
+      if (expirationDate.setMilliseconds(0) == new Date().setMilliseconds(0))
+        throw new BadRequestException("Invalid expiration date");
+    } else {
+      expirationDate = moment(0).toDate();
+    }
 
     return await this.prisma.share.create({
       data: {
@@ -101,8 +109,12 @@ export class ShareService {
     return await this.prisma.share.findMany({
       where: {
         creator: { id: userId },
-        expiration: { gt: new Date() },
         uploadLocked: true,
+        // We want to grab any shares that are not expired or have their expiration date set to "never" (unix 0)
+        OR: [
+          { expiration: { gt: new Date() } },
+          { expiration: { equals: moment(0).toDate() } },
+        ],
       },
       orderBy: {
         expiration: "desc",
@@ -186,7 +198,6 @@ export class ShareService {
     const { expiration } = await this.prisma.share.findUnique({
       where: { id: shareId },
     });
-    console.log(moment(expiration).diff(new Date(), "seconds"));
     return this.jwtService.sign(
       {
         shareId,
@@ -198,10 +209,16 @@ export class ShareService {
     );
   }
 
-  verifyShareToken(shareId: string, token: string) {
+  async verifyShareToken(shareId: string, token: string) {
+    const { expiration } = await this.prisma.share.findUnique({
+      where: { id: shareId },
+    });
+
     try {
       const claims = this.jwtService.verify(token, {
         secret: this.config.get("JWT_SECRET"),
+        // Ignore expiration if expiration is 0
+        ignoreExpiration: moment(expiration).isSame(0),
       });
 
       return claims.shareId == shareId;

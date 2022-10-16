@@ -1,4 +1,4 @@
-import { Button, Group, PasswordInput, Stack, Text, Title } from "@mantine/core";
+import { Button, PasswordInput, Stack, Text, Title } from "@mantine/core";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import { useState } from "react";
 

@@ -1,5 +1,5 @@
 import { ActionIcon, Loader, Skeleton, Table } from "@mantine/core";
-import { TbCircleCheck, TbDownload } from "react-icons/tb";;
+import { TbCircleCheck, TbDownload } from "react-icons/tb";
 import shareService from "../../services/share.service";
 
 import { byteStringToHumanSizeString } from "../../utils/math/byteStringToHumanSizeString.util";

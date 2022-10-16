@@ -16,12 +16,15 @@ import { NextLink } from "@mantine/next";
 import moment from "moment";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { TbLink, TbTrash } from "react-icons/tb";;
+import { TbLink, TbTrash } from "react-icons/tb";
 import Meta from "../../components/Meta";
 import useUser from "../../hooks/user.hook";
 import shareService from "../../services/share.service";
 import { MyShare } from "../../types/share.type";
 import toast from "../../utils/toast.util";
+import getConfig from "next/config";
+
+const { publicRuntimeConfig } = getConfig();
 
 const MyShares = () => {
   const modals = useModals();
@@ -72,7 +75,11 @@ const MyShares = () => {
                   <td>{share.id}</td>
                   <td>{share.views}</td>
                   <td>
-                    {moment(share.expiration).format("MMMM DD YYYY, HH:mm")}
+                    {moment(share.expiration).unix() === 0
+                      ? "Never"
+                      : publicRuntimeConfig.TWELVE_HOUR_TIME === "true"
+                      ? moment(share.expiration).format("MMMM Do YYYY, h:mm a")
+                      : moment(share.expiration).format("MMMM DD YYYY, HH:mm")}
                   </td>
                   <td>
                     <Group position="right">
