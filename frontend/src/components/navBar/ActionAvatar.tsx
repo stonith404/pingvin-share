@@ -1,6 +1,6 @@
 import { ActionIcon, Avatar, Menu } from "@mantine/core";
 import { NextLink } from "@mantine/next";
-import { TbDoorExit, TbLink } from "react-icons/tb";;
+import { TbDoorExit, TbLink } from "react-icons/tb";
 import authService from "../../services/auth.service";
 
 const ActionAvatar = () => {

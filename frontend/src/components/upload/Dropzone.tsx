@@ -2,7 +2,7 @@ import { Button, Center, createStyles, Group, Text } from "@mantine/core";
 import { Dropzone as MantineDropzone } from "@mantine/dropzone";
 import getConfig from "next/config";
 import { Dispatch, ForwardedRef, SetStateAction, useRef } from "react";
-import { TbCloudUpload, TbUpload } from "react-icons/tb";;;
+import { TbCloudUpload, TbUpload } from "react-icons/tb";
 import { FileUpload } from "../../types/File.type";
 import { byteStringToHumanSizeString } from "../../utils/math/byteStringToHumanSizeString.util";
 import toast from "../../utils/toast.util";

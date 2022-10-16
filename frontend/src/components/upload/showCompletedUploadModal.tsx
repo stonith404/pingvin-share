@@ -10,10 +10,14 @@ import { useClipboard } from "@mantine/hooks";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import moment from "moment";
+import getConfig from "next/config";
 import { useRouter } from "next/router";
 import { TbCopy } from "react-icons/tb";
 import { Share } from "../../types/share.type";
 import toast from "../../utils/toast.util";
+
+const { publicRuntimeConfig } = getConfig();
+
 const showCompletedUploadModal = (modals: ModalsContextProps, share: Share) => {
   return modals.openModal({
     closeOnClickOutside: false,
@@ -55,7 +59,14 @@ const Body = ({ share }: { share: Share }) => {
           color: theme.colors.gray[6],
         })}
       >
-        Your share expires at {moment(share.expiration).format("LLL")}
+        {/* If our share.expiration is timestamp 0, show a different message */}
+        {moment(share.expiration).unix() === 0
+          ? "This share will never expire."
+          : `This share will expire on ${
+              publicRuntimeConfig.TWELVE_HOUR_TIME === "true"
+                ? moment(share.expiration).format("MMMM Do YYYY, h:mm a")
+                : moment(share.expiration).format("MMMM DD YYYY, HH:mm")
+            }`}
       </Text>
 
       <Button

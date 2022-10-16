@@ -1,6 +1,6 @@
 import { ActionIcon, Table } from "@mantine/core";
 import { Dispatch, SetStateAction } from "react";
-import { TbTrash } from "react-icons/tb";;
+import { TbTrash } from "react-icons/tb";
 import { FileUpload } from "../../types/File.type";
 import { byteStringToHumanSizeString } from "../../utils/math/byteStringToHumanSizeString.util";
 import UploadProgressIndicator from "./UploadProgressIndicator";

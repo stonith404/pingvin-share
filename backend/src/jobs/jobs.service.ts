@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { Cron } from "@nestjs/schedule";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
+import * as moment from "moment";
 
 @Injectable()
 export class JobsService {
@@ -13,7 +14,13 @@ export class JobsService {
   @Cron("0 * * * *")
   async deleteExpiredShares() {
     const expiredShares = await this.prisma.share.findMany({
-      where: { expiration: { lt: new Date() } },
+      where: {
+        // We want to remove only shares that have an expiration date less than the current date, but not 0
+        AND: [
+          { expiration: { lt: new Date() } },
+          { expiration: { not: moment(0).toDate() } },
+        ],
+      },
     });
 
     for (const expiredShare of expiredShares) {

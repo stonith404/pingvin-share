@@ -2,7 +2,7 @@ import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { ScheduleModule } from "@nestjs/schedule";
 import { AuthModule } from "./auth/auth.module";
-import { JobsService } from "./auth/jobs/jobs.service";
+import { JobsService } from "./jobs/jobs.service";
 
 import { FileController } from "./file/file.controller";
 import { FileModule } from "./file/file.module";
