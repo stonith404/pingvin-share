@@ -62,11 +62,9 @@ const Body = ({ share }: { share: Share }) => {
         {/* If our share.expiration is timestamp 0, show a different message */}
         {moment(share.expiration).unix() === 0
           ? "This share will never expire."
-          : `This share will expire on ${
-              publicRuntimeConfig.TWELVE_HOUR_TIME === "true"
-                ? moment(share.expiration).format("MMMM Do YYYY, h:mm a")
-                : moment(share.expiration).format("MMMM DD YYYY, HH:mm")
-            }`}
+          : `This share will expire on ${moment(share.expiration).format(
+              "LLL"
+            )}`}
       </Text>
 
       <Button

@@ -6,7 +6,6 @@ const nextConfig = {
     SHOW_HOME_PAGE: process.env.SHOW_HOME_PAGE,
     MAX_FILE_SIZE: process.env.MAX_FILE_SIZE,
     BACKEND_URL: process.env.BACKEND_URL,
-    TWELVE_HOUR_TIME: process.env.TWELVE_HOUR_TIME
   }
 }
 
