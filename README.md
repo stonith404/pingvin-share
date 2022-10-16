@@ -10,11 +10,11 @@ Demo: https://pingvin-share.dev.eliasschneider.com
 
 ## ✨ Features
 
-- Create a simple share with a link
+- Create a share with files that you can access with a link
 - No file size limit, only your disk will be your limit
 - Set a share expiration
 - Optionally secure your share with a visitor limit and a password
-- Dark mode
+- Light & dark mode
 
 ## ⌨️ Setup
 
