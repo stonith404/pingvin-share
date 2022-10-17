@@ -1,11 +1,8 @@
 name: Create Docker Image
 
 on:
-  push:
-    branches: main
-    paths:
-      - "frontend/**"
-      - "backend/**"
+  release:
+    types: [published]
 
 jobs:
   build:
@@ -23,4 +20,5 @@ jobs:
         run: |
           docker buildx build --push \
              --tag stonith404/pingvin-share:latest \
+             --tag stonith404/pingvin-share:${{  github.ref_name }} \
              --platform linux/amd64,linux/arm64 .
