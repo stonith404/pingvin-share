@@ -1,8 +1,8 @@
 import {
   Accordion,
   Button,
-  Col,
   Checkbox,
+  Col,
   Grid,
   NumberInput,
   PasswordInput,
@@ -13,13 +13,10 @@ import {
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
+import moment from "moment";
 import * as yup from "yup";
 import shareService from "../../services/share.service";
 import { ShareSecurity } from "../../types/share.type";
-import moment from "moment";
-import getConfig from "next/config";
-
-const { publicRuntimeConfig } = getConfig();
 
 const PreviewExpiration = ({ form }: { form: any }) => {
   const value = form.values.never_expires
@@ -34,14 +31,7 @@ const PreviewExpiration = ({ form }: { form: any }) => {
     )
     .toDate();
 
-  if (publicRuntimeConfig.TWELVE_HOUR_TIME === "true")
-    return `This share will expire on ${moment(expirationDate).format(
-      "MMMM Do YYYY, h:mm a"
-    )}`;
-  else
-    return `This share will expire on ${moment(expirationDate).format(
-      "MMMM DD YYYY, HH:mm"
-    )}`;
+  return `This share will expire on ${moment(expirationDate).format("LLL")}`;
 };
 
 const CreateUploadModalBody = ({
