@@ -28,6 +28,8 @@ export class ShareOwnerGuard implements CanActivate {
 
     if (!share) throw new NotFoundException("Share not found");
 
+    if(!share.creatorId) return true;
+
     return share.creatorId == (request.user as User).id;
   }
 }

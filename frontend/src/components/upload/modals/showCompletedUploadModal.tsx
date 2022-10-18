@@ -13,8 +13,8 @@ import moment from "moment";
 import getConfig from "next/config";
 import { useRouter } from "next/router";
 import { TbCopy } from "react-icons/tb";
-import { Share } from "../../types/share.type";
-import toast from "../../utils/toast.util";
+import { Share } from "../../../types/share.type";
+import toast from "../../../utils/toast.util";
 
 const { publicRuntimeConfig } = getConfig();
 

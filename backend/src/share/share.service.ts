@@ -24,7 +24,7 @@ export class ShareService {
     private jwtService: JwtService
   ) {}
 
-  async create(share: CreateShareDTO, user: User) {
+  async create(share: CreateShareDTO, user?: User) {
     if (!(await this.isShareIdAvailable(share.id)).isAvailable)
       throw new BadRequestException("Share id already in use");
 
@@ -58,7 +58,7 @@ export class ShareService {
       data: {
         ...share,
         expiration: expirationDate,
-        creator: { connect: { id: user.id } },
+        creator: { connect: user ? { id: user.id } : undefined },
         security: { create: share.security },
       },
     });
@@ -154,6 +154,8 @@ export class ShareService {
     });
 
     if (!share) throw new NotFoundException("Share not found");
+    if (!share.creatorId)
+      throw new ForbiddenException("Anonymous shares can't be deleted");
 
     await this.fileService.deleteAllFiles(shareId);
     await this.prisma.share.delete({ where: { id: shareId } });
