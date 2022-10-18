@@ -3,14 +3,12 @@ import {
   Container,
   LoadingOverlay,
   MantineProvider,
-  Stack,
 } from "@mantine/core";
 import { useColorScheme } from "@mantine/hooks";
 import { ModalsProvider } from "@mantine/modals";
 import { NotificationsProvider } from "@mantine/notifications";
 import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
-import Footer from "../components/Footer";
 import Header from "../components/navBar/NavBar";
 import { UserContext } from "../hooks/user.hook";
 import authService from "../services/auth.service";
@@ -58,15 +56,10 @@ function App({ Component, pageProps }: AppProps) {
             ) : (
               <UserContext.Provider value={user}>
                 <LoadingOverlay visible={isLoading} overlayOpacity={1} />
-                <Stack justify="space-between" sx={{ minHeight: "100vh" }}>
-                  <div>
-                    <Header />
-                    <Container>
-                      <Component {...pageProps} />
-                    </Container>
-                  </div>
-                  <Footer />
-                </Stack>
+                <Header />
+                <Container>
+                  <Component {...pageProps} />
+                </Container>
               </UserContext.Provider>
             )}
           </GlobalLoadingContext.Provider>
