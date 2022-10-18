@@ -1,4 +1,19 @@
-## 0.0.1 (2022-10-17)
+### [0.0.1](https://github.com/stonith404/pingvin-share/compare/4bab33ad8a79302fd94c6d92a3ddf87cdff8b214...v0.0.1) (2022-10-17)
+
+
+### Features
+
+* add `linux/arm/v7` arch for docker image ([d9e5c28](https://github.com/stonith404/pingvin-share/commit/d9e5c286e3b53834276511227f219d0858ca0829))
+* add progress indicator for uploading files ([8c84d50](https://github.com/stonith404/pingvin-share/commit/8c84d50159bdabc75a1199ffdf372b9586f67371))
+* Added "never" expiration date ([56349c6](https://github.com/stonith404/pingvin-share/commit/56349c6f4cc739d07bcf8ad862b0868e09342883))
+* automatically detect hour format ([4e3f6be](https://github.com/stonith404/pingvin-share/commit/4e3f6be8e322929b83a35c7789078260dca9eb58))
+* extract logo to component ([58efc48](https://github.com/stonith404/pingvin-share/commit/58efc48ffa559b4bfa03e381bccb552c8fb830b9))
+* improve share security ([6358ac3](https://github.com/stonith404/pingvin-share/commit/6358ac3918d1af1cc05aca634d9d32a8f35d251f))
+* put db and uploads in same folder ([80cdcda](https://github.com/stonith404/pingvin-share/commit/80cdcda93c385a8f5c1e22c7b84740f5d8119ef1))
+* remove appwrite and add nextjs backend ([4bab33a](https://github.com/stonith404/pingvin-share/commit/4bab33ad8a79302fd94c6d92a3ddf87cdff8b214))
+* remove postgres & use a single docker container ([388ac39](https://github.com/stonith404/pingvin-share/commit/388ac395ba85aae8a91ddfb5f5637a80a3e6f16b))
+* replace tooltip with toast ([a33b5b3](https://github.com/stonith404/pingvin-share/commit/a33b5b37d92071e643a0bf78a9d6ecf29bebc65a))
+* use system color theme ([d902aae](https://github.com/stonith404/pingvin-share/commit/d902aae03ff33d39c733cf1bce88ae58ff4cd888))
 
 
 ### Bug Fixes
@@ -27,20 +42,4 @@
 * system test github action ([a2c9755](https://github.com/stonith404/pingvin-share/commit/a2c9755756932086c63a282330f80e410137b1d9))
 * upload volume path ([7522221](https://github.com/stonith404/pingvin-share/commit/7522221ee163cb0bd6144e7b924c77065f223fb9))
 * wrong environment configuration for `ALLOW_REGISTRATION` ([759db40](https://github.com/stonith404/pingvin-share/commit/759db40ac9f42ff71a795ceec521a7f9531d71c9))
-
-
-### Features
-
-* add `linux/arm/v7` arch for docker image ([d9e5c28](https://github.com/stonith404/pingvin-share/commit/d9e5c286e3b53834276511227f219d0858ca0829))
-* add progress indicator for uploading files ([8c84d50](https://github.com/stonith404/pingvin-share/commit/8c84d50159bdabc75a1199ffdf372b9586f67371))
-* automatically detect hour format ([4e3f6be](https://github.com/stonith404/pingvin-share/commit/4e3f6be8e322929b83a35c7789078260dca9eb58))
-* extract logo to component ([58efc48](https://github.com/stonith404/pingvin-share/commit/58efc48ffa559b4bfa03e381bccb552c8fb830b9))
-* improve share security ([6358ac3](https://github.com/stonith404/pingvin-share/commit/6358ac3918d1af1cc05aca634d9d32a8f35d251f))
-* put db and uploads in same folder ([80cdcda](https://github.com/stonith404/pingvin-share/commit/80cdcda93c385a8f5c1e22c7b84740f5d8119ef1))
-* remove appwrite and add nextjs backend ([4bab33a](https://github.com/stonith404/pingvin-share/commit/4bab33ad8a79302fd94c6d92a3ddf87cdff8b214))
-* remove postgres & use a single docker container ([388ac39](https://github.com/stonith404/pingvin-share/commit/388ac395ba85aae8a91ddfb5f5637a80a3e6f16b))
-* replace tooltip with toast ([a33b5b3](https://github.com/stonith404/pingvin-share/commit/a33b5b37d92071e643a0bf78a9d6ecf29bebc65a))
-* use system color theme ([d902aae](https://github.com/stonith404/pingvin-share/commit/d902aae03ff33d39c733cf1bce88ae58ff4cd888))
-
-
 
