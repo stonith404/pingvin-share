@@ -31,4 +31,4 @@ WORKDIR /opt/app
 RUN npm i -g dotenv-cli
 
 EXPOSE 3000
-CMD cd frontend && dotenv -e .env.development node_modules/.bin/next start & cd backend && npm run prod
+CMD cd frontend && dotenv node_modules/.bin/next start & cd backend && npm run prod

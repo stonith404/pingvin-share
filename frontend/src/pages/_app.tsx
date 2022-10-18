@@ -76,4 +76,9 @@ function App({ Component, pageProps }: AppProps) {
   );
 }
 
+// Ops out of static site generation to use publicRuntimeConfig
+App.getInitialProps = () => {
+  return {};
+};
+
 export default App;
