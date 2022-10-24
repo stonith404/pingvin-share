@@ -8,6 +8,7 @@ import {
   Post,
   UseGuards,
 } from "@nestjs/common";
+import { Throttle } from "@nestjs/throttler";
 import { User } from "@prisma/client";
 import { GetUser } from "src/auth/decorator/getUser.decorator";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
@@ -20,7 +21,6 @@ import { ShareOwnerGuard } from "./guard/shareOwner.guard";
 import { ShareSecurityGuard } from "./guard/shareSecurity.guard";
 import { ShareTokenSecurity } from "./guard/shareTokenSecurity.guard";
 import { ShareService } from "./share.service";
-
 @Controller("shares")
 export class ShareController {
   constructor(private shareService: ShareService) {}
@@ -70,6 +70,7 @@ export class ShareController {
   }
 
   @HttpCode(200)
+  @Throttle(10, 5 * 60)
   @UseGuards(ShareTokenSecurity)
   @Post(":id/token")
   async getShareToken(@Param("id") id: string, @Body() body: SharePasswordDto) {

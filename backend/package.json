@@ -18,6 +18,7 @@
     "@nestjs/platform-express": "^9.1.2",
     "@nestjs/schedule": "^2.1.0",
     "@nestjs/swagger": "^6.1.2",
+    "@nestjs/throttler": "^3.1.0",
     "archiver": "^5.3.1",
     "argon2": "^0.29.1",
     "class-transformer": "^0.5.1",

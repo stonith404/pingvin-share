@@ -6,7 +6,7 @@ import {
   Post,
 } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
-
+import { Throttle } from "@nestjs/throttler";
 import { AuthService } from "./auth.service";
 import { AuthRegisterDTO } from "./dto/authRegister.dto";
 import { AuthSignInDTO } from "./dto/authSignIn.dto";
@@ -19,6 +19,7 @@ export class AuthController {
     private config: ConfigService
   ) {}
 
+  @Throttle(10, 5 * 60)
   @Post("signUp")
   signUp(@Body() dto: AuthRegisterDTO) {
     if (this.config.get("ALLOW_REGISTRATION") == "false")
@@ -26,6 +27,7 @@ export class AuthController {
     return this.authService.signUp(dto);
   }
 
+  @Throttle(10, 5 * 60)
   @Post("signIn")
   @HttpCode(200)
   signIn(@Body() dto: AuthSignInDTO) {

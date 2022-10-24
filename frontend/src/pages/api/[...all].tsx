@@ -8,9 +8,11 @@ export const config = {
   },
 };
 
-// This function can be marked `async` if using `await` inside
-export default (req: NextApiRequest, res: NextApiResponse) =>
-  httpProxyMiddleware(req, res, {
-    // You can use the `http-proxy` option
+export default (req: NextApiRequest, res: NextApiResponse) => {
+  return httpProxyMiddleware(req, res, {
+    headers: {
+      "X-Forwarded-For": req.socket.remoteAddress ?? "",
+    },
     target: "http://localhost:8080",
   });
+};

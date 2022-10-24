@@ -4,6 +4,8 @@ import { ScheduleModule } from "@nestjs/schedule";
 import { AuthModule } from "./auth/auth.module";
 import { JobsService } from "./jobs/jobs.service";
 
+import { APP_GUARD } from "@nestjs/core";
+import { ThrottlerGuard, ThrottlerModule } from "@nestjs/throttler";
 import { FileController } from "./file/file.controller";
 import { FileModule } from "./file/file.module";
 import { PrismaModule } from "./prisma/prisma.module";
@@ -19,9 +21,20 @@ import { UserController } from "./user/user.controller";
     FileModule,
     PrismaModule,
     ConfigModule.forRoot({ isGlobal: true }),
+    ThrottlerModule.forRoot({
+      ttl: 60,
+      limit: 100,
+    }),
     ScheduleModule.forRoot(),
   ],
-  providers: [PrismaService, JobsService],
+  providers: [
+    PrismaService,
+    JobsService,
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
+    },
+  ],
   controllers: [UserController, ShareController, FileController],
 })
 export class AppModule {}
