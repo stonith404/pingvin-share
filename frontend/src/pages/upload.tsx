@@ -1,18 +1,21 @@
 import { Button, Group } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import axios from "axios";
+import getConfig from "next/config";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Meta from "../components/Meta";
 import Dropzone from "../components/upload/Dropzone";
 import FileList from "../components/upload/FileList";
-import showCompletedUploadModal from "../components/upload/showCompletedUploadModal";
-import showCreateUploadModal from "../components/upload/showCreateUploadModal";
+import showCompletedUploadModal from "../components/upload/modals/showCompletedUploadModal";
+import showCreateUploadModal from "../components/upload/modals/showCreateUploadModal";
 import useUser from "../hooks/user.hook";
 import shareService from "../services/share.service";
 import { FileUpload } from "../types/File.type";
 import { ShareSecurity } from "../types/share.type";
 import toast from "../utils/toast.util";
+
+const { publicRuntimeConfig } = getConfig();
 
 const Upload = () => {
   const router = useRouter();
@@ -86,7 +89,7 @@ const Upload = () => {
       setisUploading(false);
     }
   };
-  if (!user) {
+  if (!user && publicRuntimeConfig.ALLOW_UNAUTHENTICATED_SHARES == "false") {
     router.replace("/");
   } else {
     return (

@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 import { TbCheck } from "react-icons/tb";
 import Meta from "../components/Meta";
 import useUser from "../hooks/user.hook";
+
 const { publicRuntimeConfig } = getConfig();
 
 const useStyles = createStyles((theme) => ({
@@ -74,7 +75,7 @@ export default function Home() {
 
   const { classes } = useStyles();
   const router = useRouter();
-  if (user) {
+  if (user || publicRuntimeConfig.ALLOW_UNAUTHENTICATED_SHARES == "true") {
     router.replace("/upload");
   } else if (publicRuntimeConfig.SHOW_HOME_PAGE == "false") {
     router.replace("/auth/signIn");

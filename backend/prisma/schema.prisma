@@ -40,8 +40,8 @@ model Share {
   views        Int      @default(0)
   expiration   DateTime
 
-  creatorId String
-  creator   User           @relation(fields: [creatorId], references: [id])
+  creatorId String?
+  creator   User?           @relation(fields: [creatorId], references: [id])
   security  ShareSecurity?
   files     File[]
 }
