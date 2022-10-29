@@ -3,7 +3,7 @@ import { useModals } from "@mantine/modals";
 import axios from "axios";
 import getConfig from "next/config";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Meta from "../components/Meta";
 import Dropzone from "../components/upload/Dropzone";
 import FileList from "../components/upload/FileList";
@@ -16,6 +16,7 @@ import { ShareSecurity } from "../types/share.type";
 import toast from "../utils/toast.util";
 
 const { publicRuntimeConfig } = getConfig();
+let share: any;
 
 const Upload = () => {
   const router = useRouter();
@@ -38,7 +39,7 @@ const Upload = () => {
           return file;
         })
       );
-      const share = await shareService.create(id, expiration, security);
+      share = await shareService.create(id, expiration, security);
       for (let i = 0; i < files.length; i++) {
         const progressCallBack = (bytesProgress: number) => {
           setFiles((files) => {
@@ -58,27 +59,6 @@ const Upload = () => {
         } catch {
           files[i].uploadingProgress = -1;
         }
-
-        if (
-          files.every(
-            (file) =>
-              file.uploadingProgress >= 100 || file.uploadingProgress == -1
-          )
-        ) {
-          const fileErrorCount = files.filter(
-            (file) => file.uploadingProgress == -1
-          ).length;
-          setisUploading(false);
-          if (fileErrorCount > 0) {
-            toast.error(
-              `${fileErrorCount} file(s) failed to upload. Try again.`
-            );
-          } else {
-            await shareService.completeShare(share.id);
-            showCompletedUploadModal(modals, share);
-            setFiles([]);
-          }
-        }
       }
     } catch (e) {
       if (axios.isAxiosError(e)) {
@@ -89,6 +69,34 @@ const Upload = () => {
       setisUploading(false);
     }
   };
+
+  useEffect(() => {
+    if (
+      files.length > 0 &&
+      files.every(
+        (file) => file.uploadingProgress >= 100 || file.uploadingProgress == -1
+      )
+    ) {
+      console.log(files.length);
+      const fileErrorCount = files.filter(
+        (file) => file.uploadingProgress == -1
+      ).length;
+      setisUploading(false);
+      if (fileErrorCount > 0) {
+        toast.error(`${fileErrorCount} file(s) failed to upload. Try again.`);
+      } else {
+        shareService
+          .completeShare(share.id)
+          .then(() => {
+            showCompletedUploadModal(modals, share);
+            setFiles([]);
+          })
+          .catch(() =>
+            toast.error("An error occured while finishing your share.")
+          );
+      }
+    }
+  }, [files]);
   if (!user && publicRuntimeConfig.ALLOW_UNAUTHENTICATED_SHARES == "false") {
     router.replace("/");
   } else {
