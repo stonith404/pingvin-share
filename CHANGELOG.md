@@ -1,3 +1,20 @@
+## [0.1.0](https://github.com/stonith404/pingvin-share/compare/v0.0.1...v0.1.0) (2022-10-29)
+
+
+### Features
+
+* add rate limiting ([712cfe6](https://github.com/stonith404/pingvin-share/commit/712cfe625a19dc9790cda5fbc2843fed0836b860))
+* allow unauthenticated uploads ([84d29df](https://github.com/stonith404/pingvin-share/commit/84d29dff68d0ea9d76d9a35f9fb7dff95d3dda1b))
+* **frontend:** remove footer ([c52a4d5](https://github.com/stonith404/pingvin-share/commit/c52a4d5e3ad717a10d15b7fe1dbf359b041c0976))
+
+
+### Bug Fixes
+
+* infinite loading when file size is small ([c2ddce6](https://github.com/stonith404/pingvin-share/commit/c2ddce62038e561d292f23fc6089562e64f1ffe9))
+* only show not signed in warning if not signed in ([c6e1f07](https://github.com/stonith404/pingvin-share/commit/c6e1f07f51e9cdd914bb70fb19dd81b90a470563))
+* opt out of static site generation to enable `publicRuntimeConfig` ([239b18c](https://github.com/stonith404/pingvin-share/commit/239b18cdae6367322bcdacb6b2bbaa1028295cc4))
+* visitor count doesn't get incremented ([c8021a4](https://github.com/stonith404/pingvin-share/commit/c8021a42b7fb094e587325bf855fc3133b6b96b0))
+
 ### [0.0.1](https://github.com/stonith404/pingvin-share/compare/4bab33ad8a79302fd94c6d92a3ddf87cdff8b214...v0.0.1) (2022-10-17)
 
 
