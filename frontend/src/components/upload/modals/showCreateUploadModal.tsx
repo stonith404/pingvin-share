@@ -29,6 +29,7 @@ const { publicRuntimeConfig } = getConfig();
 
 const showCreateUploadModal = (
   modals: ModalsContextProps,
+  isSignedIn: boolean,
   uploadCallback: (
     id: string,
     expiration: string,
@@ -37,18 +38,25 @@ const showCreateUploadModal = (
 ) => {
   return modals.openModal({
     title: <Title order={4}>Share</Title>,
-    children: <CreateUploadModalBody uploadCallback={uploadCallback} />,
+    children: (
+      <CreateUploadModalBody
+        isSignedIn={isSignedIn}
+        uploadCallback={uploadCallback}
+      />
+    ),
   });
 };
 
 const CreateUploadModalBody = ({
   uploadCallback,
+  isSignedIn,
 }: {
   uploadCallback: (
     id: string,
     expiration: string,
     security: ShareSecurity
   ) => void;
+  isSignedIn: boolean;
 }) => {
   const modals = useModals();
 
@@ -80,10 +88,9 @@ const CreateUploadModalBody = ({
     },
     validate: yupResolver(validationSchema),
   });
-
   return (
     <Group>
-      {showNotSignedInAlert && (
+      {showNotSignedInAlert && !isSignedIn && (
         <Alert
           withCloseButton
           onClose={() => setShowNotSignedInAlert(false)}

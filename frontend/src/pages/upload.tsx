@@ -99,7 +99,9 @@ const Upload = () => {
           <Button
             loading={isUploading}
             disabled={files.length <= 0}
-            onClick={() => showCreateUploadModal(modals, uploadFiles)}
+            onClick={() =>
+              showCreateUploadModal(modals, user ? true : false, uploadFiles)
+            }
           >
             Share
           </Button>
