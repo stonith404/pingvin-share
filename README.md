@@ -39,7 +39,8 @@ The website is now listening available on `http://localhost:3000`, have fun with
 
 ### Upgrade to a new version
 
-Just update the docker container by running `docker compose pull && docker compose up -d`
+1. Check if your local `docker-compose.yml` and `.env` files are up to date with the files in the repository
+2. Run `docker compose pull && docker compose up -d` to update your docker container
 
 > Note: If you installed Pingvin Share before it used Sqlite, you unfortunately have to set up the project from scratch again, sorry for that.
 
