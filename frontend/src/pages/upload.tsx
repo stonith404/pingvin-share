@@ -41,13 +41,11 @@ const Upload = () => {
       );
       share = await shareService.create(id, expiration, security);
       for (let i = 0; i < files.length; i++) {
-        const progressCallBack = (bytesProgress: number) => {
+        const progressCallBack = (progress: number) => {
           setFiles((files) => {
             return files.map((file, callbackIndex) => {
               if (i == callbackIndex) {
-                file.uploadingProgress = Math.round(
-                  (100 * bytesProgress) / files[i].size
-                );
+                file.uploadingProgress = progress;
               }
               return file;
             });
@@ -77,7 +75,6 @@ const Upload = () => {
         (file) => file.uploadingProgress >= 100 || file.uploadingProgress == -1
       )
     ) {
-      console.log(files.length);
       const fileErrorCount = files.filter(
         (file) => file.uploadingProgress == -1
       ).length;

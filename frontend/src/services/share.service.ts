@@ -75,12 +75,16 @@ const uploadFile = async (
   let formData = new FormData();
   formData.append("file", file);
 
-  return (
-    await api.post(`shares/${shareId}/files`, formData, {
-      onUploadProgress: (progressEvent) =>
-        progressCallBack(progressEvent.loaded),
-    })
-  ).data;
+  const response = await api.post(`shares/${shareId}/files`, formData, {
+    onUploadProgress: (progressEvent) => {
+      const uploadingProgress = Math.round(
+        (100 * progressEvent.loaded) / progressEvent.total
+      );
+      if (uploadingProgress < 100) progressCallBack(uploadingProgress);
+    },
+  });
+  progressCallBack(100);
+  return response;
 };
 
 export default {
