@@ -12,9 +12,8 @@ import {
 } from "@mantine/core";
 import { useClipboard } from "@mantine/hooks";
 import { useModals } from "@mantine/modals";
-import { NextLink } from "@mantine/next";
 import moment from "moment";
-import getConfig from "next/config";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { TbLink, TbTrash } from "react-icons/tb";
@@ -23,8 +22,6 @@ import useUser from "../../hooks/user.hook";
 import shareService from "../../services/share.service";
 import { MyShare } from "../../types/share.type";
 import toast from "../../utils/toast.util";
-
-const { publicRuntimeConfig } = getConfig();
 
 const MyShares = () => {
   const modals = useModals();
@@ -54,7 +51,7 @@ const MyShares = () => {
               <Title order={3}>It's empty here 👀</Title>
               <Text>You don't have any shares.</Text>
               <Space h={5} />
-              <Button component={NextLink} href="/upload" variant="light">
+              <Button component={Link} href="/upload" variant="light">
                 Create one
               </Button>
             </Stack>

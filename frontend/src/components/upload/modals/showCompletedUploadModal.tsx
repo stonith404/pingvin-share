@@ -10,13 +10,10 @@ import { useClipboard } from "@mantine/hooks";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import moment from "moment";
-import getConfig from "next/config";
 import { useRouter } from "next/router";
 import { TbCopy } from "react-icons/tb";
 import { Share } from "../../../types/share.type";
 import toast from "../../../utils/toast.util";
-
-const { publicRuntimeConfig } = getConfig();
 
 const showCompletedUploadModal = (modals: ModalsContextProps, share: Share) => {
   return modals.openModal({

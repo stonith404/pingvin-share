@@ -1,5 +1,5 @@
 import { ActionIcon, Avatar, Menu } from "@mantine/core";
-import { NextLink } from "@mantine/next";
+import Link from "next/link";
 import { TbDoorExit, TbLink } from "react-icons/tb";
 import authService from "../../services/auth.service";
 
@@ -13,7 +13,7 @@ const ActionAvatar = () => {
       </Menu.Target>
       <Menu.Dropdown>
         <Menu.Item
-          component={NextLink}
+          component={Link}
           href="/account/shares"
           icon={<TbLink size={14} />}
         >

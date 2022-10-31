@@ -3,7 +3,7 @@ import { Global } from "@mantine/core";
 const GlobalStyle = () => {
   return (
     <Global
-      styles={(theme) => ({
+      styles={() => ({
         a: {
           color: "inherit",
           textDecoration: "none",

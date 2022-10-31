@@ -9,8 +9,8 @@ import {
   Title,
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
-import { NextLink } from "@mantine/next";
 import getConfig from "next/config";
+import Link from "next/link";
 import * as yup from "yup";
 import authService from "../../services/auth.service";
 import toast from "../../utils/toast.util";
@@ -61,7 +61,7 @@ const AuthForm = ({ mode }: { mode: "signUp" | "signIn" }) => {
             ? "You have an account already?"
             : "You don't have an account yet?"}{" "}
           <Anchor
-            component={NextLink}
+            component={Link}
             href={mode == "signUp" ? "signIn" : "signUp"}
             size="sm"
           >

@@ -8,9 +8,9 @@ import {
   ThemeIcon,
   Title,
 } from "@mantine/core";
-import { NextLink } from "@mantine/next";
 import getConfig from "next/config";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { TbCheck } from "react-icons/tb";
 import Meta from "../components/Meta";
@@ -126,7 +126,7 @@ export default function Home() {
 
               <Group mt={30}>
                 <Button
-                  component={NextLink}
+                  component={Link}
                   href="/auth/signUp"
                   radius="xl"
                   size="md"
@@ -135,7 +135,7 @@ export default function Home() {
                   Get started
                 </Button>
                 <Button
-                  component={NextLink}
+                  component={Link}
                   href="https://github.com/stonith404/pingvin-share"
                   target="_blank"
                   variant="default"

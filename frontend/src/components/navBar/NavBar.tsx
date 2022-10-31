@@ -11,8 +11,8 @@ import {
   Transition,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { NextLink } from "@mantine/next";
 import getConfig from "next/config";
+import Link from "next/link";
 import { ReactNode, useEffect, useState } from "react";
 import useUser from "../../hooks/user.hook";
 import Logo from "../Logo";
@@ -22,7 +22,7 @@ const { publicRuntimeConfig } = getConfig();
 
 const HEADER_HEIGHT = 60;
 
-type Link = {
+type NavLink = {
   link?: string;
   label?: string;
   component?: ReactNode;
@@ -122,7 +122,7 @@ const NavBar = () => {
     },
   ];
 
-  const [unauthenticatedLinks, setUnauthenticatedLinks] = useState<Link[]>([
+  const [unauthenticatedLinks, setUnauthenticatedLinks] = useState<NavLink[]>([
     {
       link: "/auth/signIn",
       label: "Sign in",
@@ -161,7 +161,7 @@ const NavBar = () => {
           );
         }
         return (
-          <NextLink
+          <Link
             key={link.label}
             href={link.link ?? ""}
             onClick={() => toggleOpened.toggle()}
@@ -170,7 +170,7 @@ const NavBar = () => {
             })}
           >
             {link.label}
-          </NextLink>
+          </Link>
         );
       })}
     </>
@@ -178,12 +178,12 @@ const NavBar = () => {
   return (
     <Header height={HEADER_HEIGHT} mb={40} className={classes.root}>
       <Container className={classes.header}>
-        <NextLink href="/">
+        <Link href="/" passHref>
           <Group>
             <Logo height={35} width={35} />
             <Text weight={600}>Pingvin Share</Text>
           </Group>
-        </NextLink>
+        </Link>
         <Group spacing={5} className={classes.links}>
           <Group>{items} </Group>
         </Group>

@@ -8,7 +8,7 @@ import {
   Group,
 } from "@mantine/core";
 import Meta from "../components/Meta";
-import { NextLink } from "@mantine/next";
+import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -53,7 +53,7 @@ const ErrorNotFound = () => {
           className={classes.description}
         ></Text>
         <Group position="center">
-          <Button component={NextLink} href="/" variant="light">
+          <Button component={Link} href="/" variant="light">
             Bring me back
           </Button>
         </Group>
