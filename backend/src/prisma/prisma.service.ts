@@ -12,7 +12,6 @@ export class PrismaService extends PrismaClient {
         },
       },
     });
-    console.log(config.get("DB_URL"));
     super.$connect().then(() => console.info("Connected to the database"));
   }
 }

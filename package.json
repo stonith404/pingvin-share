@@ -6,6 +6,7 @@
     "lint": "cd frontend && npm run lint && cd ../backend && npm run lint",
     "version": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s && git add CHANGELOG.md",
     "release:patch": "npm version patch -m 'release: %s' && git push && git push --tags",
-    "release:minor": "npm version minor -m 'release: %s' && git push && git push --tags"
+    "release:minor": "npm version minor -m 'release: %s' && git push && git push --tags",
+    "deploy:dev": "docker buildx build --push --tag stonith404/pingvin-share:development --platform linux/amd64,linux/arm64 ."
   }
 }
