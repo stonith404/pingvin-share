@@ -1,3 +1,12 @@
+### [0.1.1](https://github.com/stonith404/pingvin-share/compare/v0.1.0...v0.1.1) (2022-10-31)
+
+
+### Bug Fixes
+
+* add `ALLOW_UNAUTHENTICATED_SHARES` to docker compose file ([599d8ca](https://github.com/stonith404/pingvin-share/commit/599d8caa31dc018c14c959d6602ac652eaef5da2))
+* only log jobs if they actually did something ([e40cc0f](https://github.com/stonith404/pingvin-share/commit/e40cc0f48beec09e18738de1b445cabd9daab09b))
+* share finishes before all files are uploaded ([99de4e5](https://github.com/stonith404/pingvin-share/commit/99de4e57e18df54596e168a57b94c55d7a834472))
+
 ## [0.1.0](https://github.com/stonith404/pingvin-share/compare/v0.0.1...v0.1.0) (2022-10-29)
 
 
