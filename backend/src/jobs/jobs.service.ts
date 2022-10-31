@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import { Cron } from "@nestjs/schedule";
+import * as moment from "moment";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
-import * as moment from "moment";
 
 @Injectable()
 export class JobsService {
@@ -31,14 +31,19 @@ export class JobsService {
       await this.fileService.deleteAllFiles(expiredShare.id);
     }
 
-    console.log(`job: deleted ${expiredShares.length} expired shares`);
+    if (expiredShares.length > 0)
+      console.log(`job: deleted ${expiredShares.length} expired shares`);
   }
 
   @Cron("0 * * * *")
   async deleteExpiredRefreshTokens() {
-    const expiredShares = await this.prisma.refreshToken.deleteMany({
+    const expiredRefreshTokens = await this.prisma.refreshToken.deleteMany({
       where: { expiresAt: { lt: new Date() } },
     });
-    console.log(`job: deleted ${expiredShares.count} expired refresh tokens`);
+
+    if (expiredRefreshTokens.count > 0)
+      console.log(
+        `job: deleted ${expiredRefreshTokens.count} expired refresh tokens`
+      );
   }
 }
