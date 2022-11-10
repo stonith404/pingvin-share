@@ -1,6 +1,6 @@
 import { Expose, plainToClass, Type } from "class-transformer";
-import { AuthSignInDTO } from "src/auth/dto/authSignIn.dto";
 import { FileDTO } from "src/file/dto/file.dto";
+import { PublicUserDTO } from "src/user/dto/publicUser.dto";
 
 export class ShareDTO {
   @Expose()
@@ -14,8 +14,8 @@ export class ShareDTO {
   files: FileDTO[];
 
   @Expose()
-  @Type(() => AuthSignInDTO)
-  creator: AuthSignInDTO;
+  @Type(() => PublicUserDTO)
+  creator: PublicUserDTO;
 
   from(partial: Partial<ShareDTO>) {
     return plainToClass(ShareDTO, partial, { excludeExtraneousValues: true });
