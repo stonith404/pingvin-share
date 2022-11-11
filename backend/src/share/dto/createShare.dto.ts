@@ -1,5 +1,11 @@
 import { Type } from "class-transformer";
-import { IsString, Length, Matches, ValidateNested } from "class-validator";
+import {
+  IsEmail,
+  IsString,
+  Length,
+  Matches,
+  ValidateNested,
+} from "class-validator";
 import { ShareSecurityDTO } from "./shareSecurity.dto";
 
 export class CreateShareDTO {
@@ -12,6 +18,9 @@ export class CreateShareDTO {
 
   @IsString()
   expiration: string;
+
+  @IsEmail({}, { each: true })
+  recipients: string[];
 
   @ValidateNested()
   @Type(() => ShareSecurityDTO)

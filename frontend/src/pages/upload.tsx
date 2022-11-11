@@ -29,6 +29,7 @@ const Upload = () => {
   const uploadFiles = async (
     id: string,
     expiration: string,
+    recipients: string[],
     security: ShareSecurity
   ) => {
     setisUploading(true);
@@ -39,7 +40,7 @@ const Upload = () => {
           return file;
         })
       );
-      share = await shareService.create(id, expiration, security);
+      share = await shareService.create(id, expiration, recipients, security);
       for (let i = 0; i < files.length; i++) {
         const progressCallBack = (progress: number) => {
           setFiles((files) => {

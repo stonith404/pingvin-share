@@ -6,6 +6,7 @@ import {
   Col,
   Grid,
   Group,
+  MultiSelect,
   NumberInput,
   PasswordInput,
   Select,
@@ -33,6 +34,7 @@ const showCreateUploadModal = (
   uploadCallback: (
     id: string,
     expiration: string,
+    recipients: string[],
     security: ShareSecurity
   ) => void
 ) => {
@@ -54,6 +56,7 @@ const CreateUploadModalBody = ({
   uploadCallback: (
     id: string,
     expiration: string,
+    recipients: string[],
     security: ShareSecurity
   ) => void;
   isSignedIn: boolean;
@@ -79,7 +82,7 @@ const CreateUploadModalBody = ({
   const form = useForm({
     initialValues: {
       link: "",
-
+      recipients: [] as string[],
       password: undefined,
       maxViews: undefined,
       expiration_num: 1,
@@ -110,7 +113,7 @@ const CreateUploadModalBody = ({
             const expiration = form.values.never_expires
               ? "never"
               : form.values.expiration_num + form.values.expiration_unit;
-            uploadCallback(values.link, expiration, {
+            uploadCallback(values.link, expiration, values.recipients, {
               password: values.password,
               maxViews: values.maxViews,
             });
@@ -211,7 +214,6 @@ const CreateUploadModalBody = ({
             label="Never Expires"
             {...form.getInputProps("never_expires")}
           />
-
           {/* Preview expiration date text */}
           <Text
             italic
@@ -222,8 +224,32 @@ const CreateUploadModalBody = ({
           >
             {ExpirationPreview({ form })}
           </Text>
-
           <Accordion>
+            <Accordion.Item value="recipients" sx={{ borderBottom: "none" }}>
+              <Accordion.Control>Email recipients</Accordion.Control>
+              <Accordion.Panel>
+                <MultiSelect
+                  data={form.values.recipients}
+                  placeholder="Enter email recipients"
+                  searchable
+                  {...form.getInputProps("recipients")}
+                  creatable
+                  getCreateLabel={(query) => `+ ${query}`}
+                  onCreate={(query) => {
+                    if (!query.match(/^\S+@\S+\.\S+$/)) {
+                      form.setFieldError("recipients", "Invalid email address");
+                    } else {
+                      form.setFieldError("recipients", null);
+                      form.setFieldValue("recipients", [
+                        ...form.values.recipients,
+                        query,
+                      ]);
+                      return query;
+                    }
+                  }}
+                />
+              </Accordion.Panel>
+            </Accordion.Item>
             <Accordion.Item value="security" sx={{ borderBottom: "none" }}>
               <Accordion.Control>Security options</Accordion.Control>
               <Accordion.Panel>

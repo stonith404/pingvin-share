@@ -13,12 +13,14 @@ import { PrismaService } from "./prisma/prisma.service";
 import { ShareController } from "./share/share.controller";
 import { ShareModule } from "./share/share.module";
 import { UserController } from "./user/user.controller";
+import { EmailModule } from "./email/email.module";
 
 @Module({
   imports: [
     AuthModule,
     ShareModule,
     FileModule,
+    EmailModule,
     PrismaModule,
     ConfigModule.forRoot({ isGlobal: true }),
     ThrottlerModule.forRoot({

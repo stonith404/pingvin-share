@@ -11,6 +11,7 @@ import * as archiver from "archiver";
 import * as argon from "argon2";
 import * as fs from "fs";
 import * as moment from "moment";
+import { EmailService } from "src/email/email.service";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { CreateShareDTO } from "./dto/createShare.dto";
@@ -20,6 +21,7 @@ export class ShareService {
   constructor(
     private prisma: PrismaService,
     private fileService: FileService,
+    private emailService: EmailService,
     private config: ConfigService,
     private jwtService: JwtService
   ) {}
@@ -36,7 +38,7 @@ export class ShareService {
     }
 
     // We have to add an exception for "never" (since moment won't like that)
-    let expirationDate;
+    let expirationDate: Date;
     if (share.expiration !== "never") {
       expirationDate = moment()
         .add(
@@ -60,6 +62,11 @@ export class ShareService {
         expiration: expirationDate,
         creator: { connect: user ? { id: user.id } : undefined },
         security: { create: share.security },
+        recipients: {
+          create: share.recipients
+            ? share.recipients.map((email) => ({ email }))
+            : [],
+        },
       },
     });
   }
@@ -84,20 +91,32 @@ export class ShareService {
   }
 
   async complete(id: string) {
+    const share = await this.prisma.share.findUnique({
+      where: { id },
+      include: { files: true, recipients: true, creator: true },
+    });
+
     if (await this.isShareCompleted(id))
       throw new BadRequestException("Share already completed");
 
-    const moreThanOneFileInShare =
-      (await this.prisma.file.findMany({ where: { shareId: id } })).length != 0;
-
-    if (!moreThanOneFileInShare)
+    if (share.files.length == 0)
       throw new BadRequestException(
         "You need at least on file in your share to complete it."
       );
 
+    // Asynchronously create a zip of all files
     this.createZip(id).then(() =>
       this.prisma.share.update({ where: { id }, data: { isZipReady: true } })
     );
+
+    // Send email for each recepient
+    for (const recepient of share.recipients) {
+      await this.emailService.sendMail(
+        recepient.email,
+        share.id,
+        share.creator
+      );
+    }
 
     return await this.prisma.share.update({
       where: { id },
@@ -106,7 +125,7 @@ export class ShareService {
   }
 
   async getSharesByUser(userId: string) {
-    return await this.prisma.share.findMany({
+    const shares = await this.prisma.share.findMany({
       where: {
         creator: { id: userId },
         uploadLocked: true,
@@ -119,7 +138,17 @@ export class ShareService {
       orderBy: {
         expiration: "desc",
       },
+      include: { recipients: true },
     });
+
+    const sharesWithEmailRecipients = shares.map((share) => {
+      return {
+        ...share,
+        recipients: share.recipients.map((recipients) => recipients.email),
+      };
+    });
+
+    return sharesWithEmailRecipients;
   }
 
   async get(id: string) {

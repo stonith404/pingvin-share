@@ -40,10 +40,19 @@ model Share {
   views        Int      @default(0)
   expiration   DateTime
 
-  creatorId String?
-  creator   User?           @relation(fields: [creatorId], references: [id])
-  security  ShareSecurity?
-  files     File[]
+  creatorId  String?
+  creator    User?            @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  security   ShareSecurity?
+  recipients ShareRecipient[]
+  files      File[]
+}
+
+model ShareRecipient {
+  id    String @id @default(uuid())
+  email String
+
+  shareId String
+  share   Share  @relation(fields: [shareId], references: [id], onDelete: Cascade)
 }
 
 model File {

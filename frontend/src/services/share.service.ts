@@ -9,9 +9,11 @@ import api from "./api.service";
 const create = async (
   id: string,
   expiration: string,
+  recipients: string[],
   security?: ShareSecurity
 ) => {
-  return (await api.post("shares", { id, expiration, security })).data;
+  return (await api.post("shares", { id, expiration, recipients, security }))
+    .data;
 };
 
 const completeShare = async (id: string) => {

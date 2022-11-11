@@ -8,6 +8,9 @@ export class MyShareDTO extends ShareDTO {
   @Expose()
   createdAt: Date;
 
+  @Expose()
+  recipients: string[];
+
   from(partial: Partial<MyShareDTO>) {
     return plainToClass(MyShareDTO, partial, { excludeExtraneousValues: true });
   }
