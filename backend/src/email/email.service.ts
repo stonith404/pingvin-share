@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, InternalServerErrorException } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { User } from "@prisma/client";
 import * as nodemailer from "nodemailer";
@@ -19,6 +19,9 @@ export class EmailService {
   });
 
   async sendMail(recipientEmail: string, shareId: string, creator: User) {
+    if (this.config.get("EMAIL_RECIPIENTS_ENABLED") == "false")
+      throw new InternalServerErrorException("Email service disabled");
+
     const shareUrl = `${this.config.get("APP_URL")}/share/${shareId}`;
     const creatorIdentifier =
       creator.firstName && creator.lastName

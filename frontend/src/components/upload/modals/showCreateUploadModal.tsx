@@ -225,31 +225,36 @@ const CreateUploadModalBody = ({
             {ExpirationPreview({ form })}
           </Text>
           <Accordion>
-            <Accordion.Item value="recipients" sx={{ borderBottom: "none" }}>
-              <Accordion.Control>Email recipients</Accordion.Control>
-              <Accordion.Panel>
-                <MultiSelect
-                  data={form.values.recipients}
-                  placeholder="Enter email recipients"
-                  searchable
-                  {...form.getInputProps("recipients")}
-                  creatable
-                  getCreateLabel={(query) => `+ ${query}`}
-                  onCreate={(query) => {
-                    if (!query.match(/^\S+@\S+\.\S+$/)) {
-                      form.setFieldError("recipients", "Invalid email address");
-                    } else {
-                      form.setFieldError("recipients", null);
-                      form.setFieldValue("recipients", [
-                        ...form.values.recipients,
-                        query,
-                      ]);
-                      return query;
-                    }
-                  }}
-                />
-              </Accordion.Panel>
-            </Accordion.Item>
+            {publicRuntimeConfig.EMAIL_RECIPIENTS_ENABLED == "true" && (
+              <Accordion.Item value="recipients" sx={{ borderBottom: "none" }}>
+                <Accordion.Control>Email recipients</Accordion.Control>
+                <Accordion.Panel>
+                  <MultiSelect
+                    data={form.values.recipients}
+                    placeholder="Enter email recipients"
+                    searchable
+                    {...form.getInputProps("recipients")}
+                    creatable
+                    getCreateLabel={(query) => `+ ${query}`}
+                    onCreate={(query) => {
+                      if (!query.match(/^\S+@\S+\.\S+$/)) {
+                        form.setFieldError(
+                          "recipients",
+                          "Invalid email address"
+                        );
+                      } else {
+                        form.setFieldError("recipients", null);
+                        form.setFieldValue("recipients", [
+                          ...form.values.recipients,
+                          query,
+                        ]);
+                        return query;
+                      }
+                    }}
+                  />
+                </Accordion.Panel>
+              </Accordion.Item>
+            )}
             <Accordion.Item value="security" sx={{ borderBottom: "none" }}>
               <Accordion.Control>Security options</Accordion.Control>
               <Accordion.Panel>
