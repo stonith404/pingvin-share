@@ -14,6 +14,7 @@ Demo: https://pingvin-share.dev.eliasschneider.com
 - No file size limit, only your disk will be your limit
 - Set a share expiration
 - Optionally secure your share with a visitor limit and a password
+- Email recepients
 - Light & dark mode
 
 ## ⌨️ Setup
@@ -28,14 +29,16 @@ The website is now listening available on `http://localhost:3000`, have fun with
 
 ### Environment variables
 
-| Variable                       | Description                                                                                 | Possible values |
-| ------------------------------ | ------------------------------------------------------------------------------------------- | --------------- |
-| `APP_URL`                      | On which URL Pingvin Share is available. E.g http://localhost or https://pingvin-share.com. | URL             |
-| `SHOW_HOME_PAGE`               | Whether the Pingvin Share home page should be shown.                                        | true/false      |
-| `ALLOW_REGISTRATION`           | Whether a new user can create a new account.                                                | true/false      |
-| `ALLOW_UNAUTHENTICATED_SHARES` | Whether a user can create a share without being signed in.                                  | true/false      |
-| `MAX_FILE_SIZE`                | Maximum allowed size per file in bytes.                                                     | Number          |
-| `JWT_SECRET`                   | Long random string to sign the JWT's.                                                       | Random string   |
+| Variable                                                | Description                                                                                                                         | Possible values |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| `APP_URL`                                               | On which URL Pingvin Share is available. E.g http://localhost or https://pingvin-share.com.                                         | URL             |
+| `SHOW_HOME_PAGE`                                        | Whether the Pingvin Share home page should be shown.                                                                                | true/false      |
+| `ALLOW_REGISTRATION`                                    | Whether a new user can create a new account.                                                                                        | true/false      |
+| `ALLOW_UNAUTHENTICATED_SHARES`                          | Whether a user can create a share without being signed in.                                                                          | true/false      |
+| `MAX_FILE_SIZE`                                         | Maximum allowed size per file in bytes.                                                                                             | Number          |
+| `JWT_SECRET`                                            | Long random string to sign the JWT's.                                                                                               | Random string   |
+| `EMAIL_RECIPIENTS_ENABLED`                              | Whether email reciepients are enabled. Only set this to true if you entered the host, port, email and password of your SMTP server. | true/false      |
+| `SMTP_HOST`, `SMTP_PORT`, `SMTP_EMAIL`, `SMTP_PASSWORD` | Credentials for your SMTP server.                                                                                                   | -               |
 
 ### Upgrade to a new version
 
