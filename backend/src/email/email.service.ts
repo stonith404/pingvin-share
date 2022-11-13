@@ -23,10 +23,10 @@ export class EmailService {
       throw new InternalServerErrorException("Email service disabled");
 
     const shareUrl = `${this.config.get("APP_URL")}/share/${shareId}`;
-    const creatorIdentifier =
+    const creatorIdentifier = creator ?
       creator.firstName && creator.lastName
         ? `${creator.firstName} ${creator.lastName}`
-        : creator.email;
+        : creator.email : "A Pingvin Share user";
 
     await this.transporter.sendMail({
       from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
