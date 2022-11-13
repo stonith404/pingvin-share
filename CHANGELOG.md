@@ -1,3 +1,17 @@
+## [0.2.0](https://github.com/stonith404/pingvin-share/compare/v0.1.1...v0.2.0) (2022-11-13)
+
+
+### Features
+
+* add email recepients functionality ([32ad43a](https://github.com/stonith404/pingvin-share/commit/32ad43ae27a29b946bfba0040cac7eb158c84553))
+
+
+### Bug Fixes
+
+* add public userDTO to prevent confusion ([0efd2d8](https://github.com/stonith404/pingvin-share/commit/0efd2d8bf96506cf7d7dc2dc3164a8d59009cec7))
+* email sending when not signed in ([32eaee4](https://github.com/stonith404/pingvin-share/commit/32eaee42363250defa92913c738a2702ba3e2693))
+* hide and disallow email recipients if disabled ([34db3ae](https://github.com/stonith404/pingvin-share/commit/34db3ae2a997498edaa70404807d0e770dad6edb))
+
 ### [0.1.1](https://github.com/stonith404/pingvin-share/compare/v0.1.0...v0.1.1) (2022-10-31)
 
 
