@@ -444,7 +444,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"id\": \"test-share\",\n    \"expiration\": \"1-day\",\n    \"security\": {\n        \"password\": \"share-password\",\n        \"maxViews\": 1\n    }\n}",
+									"raw": "{\n    \"id\": \"test-share\",\n    \"expiration\": \"1-day\",\n    \"recipients\": [],\n    \"security\": {\n        \"password\": \"share-password\",\n        \"maxViews\": 1\n    }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
