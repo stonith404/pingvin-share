@@ -12,10 +12,11 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  email     String  @unique
-  password  String
-  firstName String?
-  lastName  String?
+  email           String  @unique
+  password        String
+  isAdministrator Boolean @default(false)
+  firstName       String?
+  lastName        String?
 
   shares        Share[]
   refreshTokens RefreshToken[]
