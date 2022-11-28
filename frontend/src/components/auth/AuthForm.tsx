@@ -9,15 +9,15 @@ import {
   Title,
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
-import getConfig from "next/config";
 import Link from "next/link";
 import * as yup from "yup";
+import useConfig from "../../hooks/config.hook";
 import authService from "../../services/auth.service";
 import toast from "../../utils/toast.util";
 
-const { publicRuntimeConfig } = getConfig();
-
 const AuthForm = ({ mode }: { mode: "signUp" | "signIn" }) => {
+  const config = useConfig();
+
   const validationSchema = yup.object().shape({
     email: yup.string().email().required(),
     password: yup.string().min(8).required(),
@@ -55,7 +55,7 @@ const AuthForm = ({ mode }: { mode: "signUp" | "signIn" }) => {
       >
         {mode == "signUp" ? "Sign up" : "Welcome back"}
       </Title>
-      {publicRuntimeConfig.ALLOW_REGISTRATION == "true" && (
+      {config.get("allowRegistration") && (
         <Text color="dimmed" size="sm" align="center" mt={5}>
           {mode == "signUp"
             ? "You have an account already?"

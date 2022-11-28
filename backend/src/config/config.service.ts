@@ -1,4 +1,9 @@
-import { Inject, Injectable } from "@nestjs/common";
+import {
+  BadRequestException,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from "@nestjs/common";
 import { Config } from "@prisma/client";
 import { PrismaService } from "src/prisma/prisma.service";
 
@@ -36,6 +41,25 @@ export class ConfigService {
       if (!configVariable.value) configVariable.value = configVariable.default;
 
       return configVariable;
+    });
+  }
+
+  async update(key: string, value: string | number | boolean) {
+    const configVariable = await this.prisma.config.findUnique({
+      where: { key },
+    });
+
+    if (!configVariable || configVariable.locked)
+      throw new NotFoundException("Config variable not found");
+
+    if (typeof value != configVariable.type)
+      throw new BadRequestException(
+        `Config variable must be of type ${configVariable.type}`
+      );
+
+    return await this.prisma.config.update({
+      where: { key },
+      data: { value: value.toString() },
     });
   }
 }

@@ -1,13 +1,11 @@
 import { Button, Center, createStyles, Group, Text } from "@mantine/core";
 import { Dropzone as MantineDropzone } from "@mantine/dropzone";
-import getConfig from "next/config";
 import { Dispatch, ForwardedRef, SetStateAction, useRef } from "react";
 import { TbCloudUpload, TbUpload } from "react-icons/tb";
+import useConfig from "../../hooks/config.hook";
 import { FileUpload } from "../../types/File.type";
 import { byteStringToHumanSizeString } from "../../utils/math/byteStringToHumanSizeString.util";
 import toast from "../../utils/toast.util";
-
-const { publicRuntimeConfig } = getConfig();
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -40,12 +38,14 @@ const Dropzone = ({
   isUploading: boolean;
   setFiles: Dispatch<SetStateAction<FileUpload[]>>;
 }) => {
+  const config = useConfig();
+
   const { classes } = useStyles();
   const openRef = useRef<() => void>();
   return (
     <div className={classes.wrapper}>
       <MantineDropzone
-        maxSize={parseInt(publicRuntimeConfig.MAX_FILE_SIZE!)}
+        maxSize={parseInt(config.get("maxFileSize"))}
         onReject={(e) => {
           toast.error(e[0].errors[0].message);
         }}
@@ -75,8 +75,7 @@ const Dropzone = ({
           <Text align="center" size="sm" mt="xs" color="dimmed">
             Drag&apos;n&apos;drop files here to start your share. We can accept
             only files that are less than{" "}
-            {byteStringToHumanSizeString(publicRuntimeConfig.MAX_FILE_SIZE)} in
-            size.
+            {byteStringToHumanSizeString(config.get("maxFileSize"))} in size.
           </Text>
         </div>
       </MantineDropzone>

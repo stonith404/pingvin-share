@@ -10,11 +10,14 @@ import { NotificationsProvider } from "@mantine/notifications";
 import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
 import Header from "../components/navBar/NavBar";
+import { ConfigContext } from "../hooks/config.hook";
 import { UserContext } from "../hooks/user.hook";
 import authService from "../services/auth.service";
+import configService from "../services/config.service";
 import userService from "../services/user.service";
 import GlobalStyle from "../styles/global.style";
 import globalStyle from "../styles/mantine.style";
+import Config from "../types/config.type";
 import { CurrentUser } from "../types/user.type";
 import { GlobalLoadingContext } from "../utils/loading.util";
 
@@ -24,9 +27,11 @@ function App({ Component, pageProps }: AppProps) {
   const [colorScheme, setColorScheme] = useState<ColorScheme>();
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<CurrentUser | null>(null);
+  const [config, setConfig] = useState<Config[] | null>(null);
 
   const getInitalData = async () => {
     setIsLoading(true);
+    setConfig(await configService.getAll());
     await authService.refreshAccessToken();
     setUser(await userService.getCurrentUser());
     setIsLoading(false);
@@ -54,13 +59,15 @@ function App({ Component, pageProps }: AppProps) {
             {isLoading ? (
               <LoadingOverlay visible overlayOpacity={1} />
             ) : (
-              <UserContext.Provider value={user}>
-                <LoadingOverlay visible={isLoading} overlayOpacity={1} />
-                <Header />
-                <Container>
-                  <Component {...pageProps} />
-                </Container>
-              </UserContext.Provider>
+              <ConfigContext.Provider value={config}>
+                <UserContext.Provider value={user}>
+                  <LoadingOverlay visible={isLoading} overlayOpacity={1} />
+                  <Header />
+                  <Container>
+                    <Component {...pageProps} />
+                  </Container>
+                </UserContext.Provider>{" "}
+              </ConfigContext.Provider>
             )}
           </GlobalLoadingContext.Provider>
         </ModalsProvider>
@@ -68,10 +75,5 @@ function App({ Component, pageProps }: AppProps) {
     </MantineProvider>
   );
 }
-
-// Opts out of static site generation to use publicRuntimeConfig
-App.getInitialProps = () => {
-  return {};
-};
 
 export default App;
