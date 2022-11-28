@@ -3,12 +3,12 @@ import {
   Injectable,
   UnauthorizedException,
 } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
 import { JwtService } from "@nestjs/jwt";
 import { User } from "@prisma/client";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
 import * as argon from "argon2";
 import * as moment from "moment";
+import { ConfigService } from "src/config/config.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { AuthRegisterDTO } from "./dto/authRegister.dto";
 import { AuthSignInDTO } from "./dto/authSignIn.dto";
@@ -68,7 +68,7 @@ export class AuthService {
       },
       {
         expiresIn: "15min",
-        secret: this.config.get("JWT_SECRET"),
+        secret: this.config.get("jwtSecret"),
       }
     );
   }

@@ -1,34 +1,35 @@
 import { Injectable, InternalServerErrorException } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
 import { User } from "@prisma/client";
 import * as nodemailer from "nodemailer";
+import { ConfigService } from "src/config/config.service";
 
 @Injectable()
 export class EmailService {
   constructor(private config: ConfigService) {}
 
-  // create reusable transporter object using the default SMTP transport
-  transporter = nodemailer.createTransport({
-    host: this.config.get("SMTP_HOST"),
-    port: parseInt(this.config.get("SMTP_PORT")),
-    secure: parseInt(this.config.get("SMTP_PORT")) == 465,
-    auth: {
-      user: this.config.get("SMTP_EMAIL"),
-      pass: this.config.get("SMTP_PASSWORD"),
-    },
-  });
-
   async sendMail(recipientEmail: string, shareId: string, creator: User) {
-    if (this.config.get("EMAIL_RECIPIENTS_ENABLED") == "false")
+    // create reusable transporter object using the default SMTP transport
+    const transporter = nodemailer.createTransport({
+      host: this.config.get("SMTP_HOST"),
+      port: parseInt(this.config.get("SMTP_PORT")),
+      secure: parseInt(this.config.get("SMTP_PORT")) == 465,
+      auth: {
+        user: this.config.get("SMTP_EMAIL"),
+        pass: this.config.get("SMTP_PASSWORD"),
+      },
+    });
+
+    if (!this.config.get("emailRecepientsEnabled"))
       throw new InternalServerErrorException("Email service disabled");
 
     const shareUrl = `${this.config.get("APP_URL")}/share/${shareId}`;
-    const creatorIdentifier = creator ?
-      creator.firstName && creator.lastName
+    const creatorIdentifier = creator
+      ? creator.firstName && creator.lastName
         ? `${creator.firstName} ${creator.lastName}`
-        : creator.email : "A Pingvin Share user";
+        : creator.email
+      : "A Pingvin Share user";
 
-    await this.transporter.sendMail({
+    await transporter.sendMail({
       from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
       to: recipientEmail,
       subject: "Files shared with you",

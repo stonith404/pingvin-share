@@ -2,7 +2,6 @@ import {
   Controller,
   Get,
   Param,
-  ParseFilePipeBuilder,
   Post,
   Res,
   StreamableFile,
@@ -19,6 +18,7 @@ import { ShareDTO } from "src/share/dto/share.dto";
 import { ShareOwnerGuard } from "src/share/guard/shareOwner.guard";
 import { ShareSecurityGuard } from "src/share/guard/shareSecurity.guard";
 import { FileService } from "./file.service";
+import { FileValidationPipe } from "./pipe/fileValidation.pipe";
 
 @Controller("shares/:shareId/files")
 export class FileController {
@@ -32,13 +32,7 @@ export class FileController {
     })
   )
   async create(
-    @UploadedFile(
-      new ParseFilePipeBuilder()
-        .addMaxSizeValidator({
-          maxSize: parseInt(process.env.MAX_FILE_SIZE),
-        })
-        .build()
-    )
+    @UploadedFile(FileValidationPipe)
     file: Express.Multer.File,
     @Param("shareId") shareId: string
   ) {

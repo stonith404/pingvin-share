@@ -77,3 +77,14 @@ model ShareSecurity {
   shareId String? @unique
   share   Share?  @relation(fields: [shareId], references: [id], onDelete: Cascade)
 }
+
+model Config {
+  updatedAt DateTime @updatedAt
+
+  key     String @id
+  type    String
+  value   String?
+  default String
+  secret  Boolean @default(true)
+  locked  Boolean @default(false)
+}

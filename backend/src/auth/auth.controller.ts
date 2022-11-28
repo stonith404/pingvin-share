@@ -5,8 +5,8 @@ import {
   HttpCode,
   Post,
 } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
 import { Throttle } from "@nestjs/throttler";
+import { ConfigService } from "src/config/config.service";
 import { AuthService } from "./auth.service";
 import { AuthRegisterDTO } from "./dto/authRegister.dto";
 import { AuthSignInDTO } from "./dto/authSignIn.dto";
@@ -21,8 +21,8 @@ export class AuthController {
 
   @Throttle(10, 5 * 60)
   @Post("signUp")
-  signUp(@Body() dto: AuthRegisterDTO) {
-    if (this.config.get("ALLOW_REGISTRATION") == "false")
+  async signUp(@Body() dto: AuthRegisterDTO) {
+    if (!this.config.get("allowRegistration"))
       throw new ForbiddenException("Registration is not allowed");
     return this.authService.signUp(dto);
   }

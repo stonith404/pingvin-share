@@ -9,6 +9,9 @@
     "format": "prettier --write 'src/**/*.ts'",
     "test:system": "npx prisma migrate reset -f && nest start & sleep 10 && newman run ./test/system/newman-system-tests.json"
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed/config.seed.ts"
+  },
   "dependencies": {
     "@nestjs/common": "^9.1.2",
     "@nestjs/config": "^2.2.0",

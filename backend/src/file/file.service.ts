@@ -3,11 +3,11 @@ import {
   Injectable,
   NotFoundException,
 } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
 import { JwtService } from "@nestjs/jwt";
 import { randomUUID } from "crypto";
 import * as fs from "fs";
 import * as mime from "mime-types";
+import { ConfigService } from "src/config/config.service";
 import { PrismaService } from "src/prisma/prisma.service";
 
 @Injectable()
@@ -78,14 +78,14 @@ export class FileService {
     return fs.createReadStream(`./data/uploads/shares/${shareId}/archive.zip`);
   }
 
-  getFileDownloadUrl(shareId: string, fileId: string) {
+  async getFileDownloadUrl(shareId: string, fileId: string) {
     const downloadToken = this.generateFileDownloadToken(shareId, fileId);
     return `${this.config.get(
       "APP_URL"
     )}/api/shares/${shareId}/files/${fileId}?token=${downloadToken}`;
   }
 
-  generateFileDownloadToken(shareId: string, fileId: string) {
+  async generateFileDownloadToken(shareId: string, fileId: string) {
     if (fileId == "zip") fileId = undefined;
 
     return this.jwtService.sign(
@@ -95,15 +95,15 @@ export class FileService {
       },
       {
         expiresIn: "10min",
-        secret: this.config.get("JWT_SECRET"),
+        secret: this.config.get("jwtSecret"),
       }
     );
   }
 
-  verifyFileDownloadToken(shareId: string, token: string) {
+  async verifyFileDownloadToken(shareId: string, token: string) {
     try {
       const claims = this.jwtService.verify(token, {
-        secret: this.config.get("JWT_SECRET"),
+        secret: this.config.get("jwtSecret"),
       });
       return claims.shareId == shareId;
     } catch {

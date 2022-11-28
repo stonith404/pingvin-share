@@ -4,13 +4,13 @@ import {
   Injectable,
   NotFoundException,
 } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
 import { JwtService } from "@nestjs/jwt";
 import { Share, User } from "@prisma/client";
 import * as archiver from "archiver";
 import * as argon from "argon2";
 import * as fs from "fs";
 import * as moment from "moment";
+import { ConfigService } from "src/config/config.service";
 import { EmailService } from "src/email/email.service";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
@@ -235,7 +235,7 @@ export class ShareService {
       },
       {
         expiresIn: moment(expiration).diff(new Date(), "seconds") + "s",
-        secret: this.config.get("JWT_SECRET"),
+        secret: this.config.get("jwtSecret"),
       }
     );
   }
@@ -247,7 +247,7 @@ export class ShareService {
 
     try {
       const claims = this.jwtService.verify(token, {
-        secret: this.config.get("JWT_SECRET"),
+        secret: this.config.get("jwtSecret"),
         // Ignore expiration if expiration is 0
         ignoreExpiration: moment(expiration).isSame(0),
       });
