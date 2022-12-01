@@ -12,11 +12,10 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  email           String  @unique
-  password        String
-  isAdministrator Boolean @default(false)
-  firstName       String?
-  lastName        String?
+  username String  @unique
+  email    String  @unique
+  password String
+  isAdmin  Boolean @default(false)
 
   shares        Share[]
   refreshTokens RefreshToken[]
@@ -81,10 +80,10 @@ model ShareSecurity {
 model Config {
   updatedAt DateTime @updatedAt
 
-  key     String @id
-  type    String
-  value   String?
-  default String
-  secret  Boolean @default(true)
-  locked  Boolean @default(false)
+  key         String  @id
+  type        String
+  value       String
+  description String
+  secret      Boolean @default(true)
+  locked      Boolean @default(false)
 }

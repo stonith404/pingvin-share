@@ -3,9 +3,11 @@ import { User } from "@prisma/client";
 
 @Injectable()
 export class AdministratorGuard implements CanActivate {
-  canActivate(context: ExecutionContext): boolean {
+  canActivate(context: ExecutionContext) {
     const { user }: { user: User } = context.switchToHttp().getRequest();
+
     if (!user) return false;
-    return user.isAdministrator;
+
+    return user.isAdmin;
   }
 }

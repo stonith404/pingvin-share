@@ -1,24 +1,26 @@
 import { Expose, plainToClass } from "class-transformer";
-import { IsEmail, IsNotEmpty, IsString } from "class-validator";
+import { IsEmail, IsNotEmpty, IsOptional, IsString } from "class-validator";
 
 export class UserDTO {
   @Expose()
   id: string;
 
   @Expose()
-  firstName: string;
+  @IsOptional()
+  @IsString()
+  username: string;
 
   @Expose()
-  lastName: string;
-
-  @Expose()
-  @IsNotEmpty()
+  @IsOptional()
   @IsEmail()
   email: string;
 
   @IsNotEmpty()
   @IsString()
   password: string;
+
+  @Expose()
+  isAdmin: boolean;
 
   from(partial: Partial<UserDTO>) {
     return plainToClass(UserDTO, partial, { excludeExtraneousValues: true });

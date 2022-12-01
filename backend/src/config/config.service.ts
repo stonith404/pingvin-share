@@ -21,26 +21,20 @@ export class ConfigService {
 
     if (!configVariable) throw new Error(`Config variable ${key} not found`);
 
-    const value = configVariable.value ?? configVariable.default;
-
-    if (configVariable.type == "number") return parseInt(value);
-    if (configVariable.type == "boolean") return value == "true";
-    if (configVariable.type == "string") return value;
+    if (configVariable.type == "number") return parseInt(configVariable.value);
+    if (configVariable.type == "boolean") return configVariable.value == "true";
+    if (configVariable.type == "string") return configVariable.value;
   }
 
   async listForAdmin() {
-    return await this.prisma.config.findMany();
+    return await this.prisma.config.findMany({
+      where: { locked: { equals: false } },
+    });
   }
 
   async list() {
-    const configVariables = await this.prisma.config.findMany({
+    return await this.prisma.config.findMany({
       where: { secret: { equals: false } },
-    });
-
-    return configVariables.map((configVariable) => {
-      if (!configVariable.value) configVariable.value = configVariable.default;
-
-      return configVariable;
     });
   }
 
@@ -57,9 +51,20 @@ export class ConfigService {
         `Config variable must be of type ${configVariable.type}`
       );
 
-    return await this.prisma.config.update({
+    const updatedVariable = await this.prisma.config.update({
       where: { key },
       data: { value: value.toString() },
+    });
+
+    this.configVariables = await this.prisma.config.findMany();
+
+    return updatedVariable;
+  }
+
+  async finishSetup() {
+    return await this.prisma.config.update({
+      where: { key: "setupFinished" },
+      data: { value: "true" },
     });
   }
 }

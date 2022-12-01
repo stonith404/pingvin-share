@@ -15,17 +15,19 @@ import useConfig from "../../hooks/config.hook";
 import authService from "../../services/auth.service";
 import toast from "../../utils/toast.util";
 
-const AuthForm = ({ mode }: { mode: "signUp" | "signIn" }) => {
+const SignUpForm = () => {
   const config = useConfig();
 
   const validationSchema = yup.object().shape({
     email: yup.string().email().required(),
+    username: yup.string().required(),
     password: yup.string().min(8).required(),
   });
 
   const form = useForm({
     initialValues: {
       email: "",
+      username: "",
       password: "",
     },
     validate: yupResolver(validationSchema),
@@ -34,12 +36,12 @@ const AuthForm = ({ mode }: { mode: "signUp" | "signIn" }) => {
   const signIn = (email: string, password: string) => {
     authService
       .signIn(email, password)
-      .then(() => window.location.replace("/upload"))
+      .then(() => window.location.replace("/"))
       .catch((e) => toast.error(e.response.data.message));
   };
-  const signUp = (email: string, password: string) => {
+  const signUp = (email: string, username: string, password: string) => {
     authService
-      .signUp(email, password)
+      .signUp(email, username, password)
       .then(() => signIn(email, password))
       .catch((e) => toast.error(e.response.data.message));
   };
@@ -53,33 +55,31 @@ const AuthForm = ({ mode }: { mode: "signUp" | "signIn" }) => {
           fontWeight: 900,
         })}
       >
-        {mode == "signUp" ? "Sign up" : "Welcome back"}
+        Sign up
       </Title>
       {config.get("allowRegistration") && (
         <Text color="dimmed" size="sm" align="center" mt={5}>
-          {mode == "signUp"
-            ? "You have an account already?"
-            : "You don't have an account yet?"}{" "}
-          <Anchor
-            component={Link}
-            href={mode == "signUp" ? "signIn" : "signUp"}
-            size="sm"
-          >
-            {mode == "signUp" ? "Sign in" : "Sign up"}
+          You have an account already?{" "}
+          <Anchor component={Link} href={"signIn"} size="sm">
+            Sign in
           </Anchor>
         </Text>
       )}
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
         <form
           onSubmit={form.onSubmit((values) =>
-            mode == "signIn"
-              ? signIn(values.email, values.password)
-              : signUp(values.email, values.password)
+            signUp(values.email, values.username, values.password)
           )}
         >
           <TextInput
+            label="Username"
+            placeholder="john.doe"
+            {...form.getInputProps("username")}
+          />
+          <TextInput
             label="Email"
             placeholder="you@email.com"
+            mt="md"
             {...form.getInputProps("email")}
           />
           <PasswordInput
@@ -89,7 +89,7 @@ const AuthForm = ({ mode }: { mode: "signUp" | "signIn" }) => {
             {...form.getInputProps("password")}
           />
           <Button fullWidth mt="xl" type="submit">
-            {mode == "signUp" ? "Let's get started" : "Sign in"}
+            Let's get started
           </Button>
         </form>
       </Paper>
@@ -97,4 +97,4 @@ const AuthForm = ({ mode }: { mode: "signUp" | "signIn" }) => {
   );
 };
 
-export default AuthForm;
+export default SignUpForm;

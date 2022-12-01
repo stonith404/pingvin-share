@@ -27,7 +27,9 @@ export class AuthService {
       const user = await this.prisma.user.create({
         data: {
           email: dto.email,
+          username: dto.username,
           password: hash,
+          isAdmin: !this.config.get("setupFinished"),
         },
       });
 
@@ -38,16 +40,22 @@ export class AuthService {
     } catch (e) {
       if (e instanceof PrismaClientKnownRequestError) {
         if (e.code == "P2002") {
-          throw new BadRequestException("Credentials taken");
+          const duplicatedField: string = e.meta.target[0];
+          throw new BadRequestException(
+            `A user with this ${duplicatedField} already exists`
+          );
         }
       }
     }
   }
 
   async signIn(dto: AuthSignInDTO) {
-    const user = await this.prisma.user.findUnique({
+    if (!dto.email && !dto.username)
+      throw new BadRequestException("Email or username is required");
+
+    const user = await this.prisma.user.findFirst({
       where: {
-        email: dto.email,
+        OR: [{ email: dto.email }, { username: dto.username }],
       },
     });
 

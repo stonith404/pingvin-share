@@ -3,16 +3,18 @@ import { ConfigDTO } from "./config.dto";
 
 export class AdminConfigDTO extends ConfigDTO {
   @Expose()
-  default: string;
-
-  @Expose()
   secret: boolean;
 
   @Expose()
   updatedAt: Date;
 
+  @Expose()
+  description: string;
+
   from(partial: Partial<AdminConfigDTO>) {
-    return plainToClass(AdminConfigDTO, partial, { excludeExtraneousValues: true });
+    return plainToClass(AdminConfigDTO, partial, {
+      excludeExtraneousValues: true,
+    });
   }
 
   fromList(partial: Partial<AdminConfigDTO>[]) {
