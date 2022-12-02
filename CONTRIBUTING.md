@@ -3,10 +3,11 @@
 We would ❤️ for you to contribute to Pingvin Share and help make it better! All contributions are welcome, including issues, suggestions, pull requests and more.
 
 ## Getting started
+
 You've found a bug, have suggestion or something else, just create an issue on GitHub and we can get in touch 😊.
 
+## Submit a Pull Request
 
-## Submit a Pull Request 
 Once you created a issue and you want to create a pull request, follow this guide.
 
 Branch naming convention is as following
@@ -74,20 +75,21 @@ The backend is built with [Nest.js](https://nestjs.com) and uses Typescript.
 #### Setup
 
 1. Open the `backend` folder
-2. Duplicate the `.env.example` file, rename the duplicate to `.env` and change the environment variables if needed
-3. Install the dependencies with `npm install`
-4. Push the database schema to the database by running `npx prisma db push`
+2. Install the dependencies with `npm install`
+3. Push the database schema to the database by running `npx prisma db push`
+4. Seed the database with `npx prisma db seed`
 5. Start the backend with `npm run dev`
 
 ### Frontend
+
 The frontend is built with [Next.js](https://nextjs.org) and uses Typescript.
 
 #### Setup
+
 1. Start the backend first
 2. Open the `frontend` folder
-3. Duplicate the `.env.example` file, rename the duplicate to `.env` and change the environment variables if needed
-4. Install the dependencies with `npm install`
-5. Start the frontend with `npm run dev`
+3. Install the dependencies with `npm install`
+4. Start the frontend with `npm run dev`
 
 You're all set!
 
