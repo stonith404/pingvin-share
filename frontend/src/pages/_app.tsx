@@ -51,7 +51,7 @@ function App({ Component, pageProps }: AppProps) {
       configVariables.filter((variable) => variable.key)[0].value == "false" &&
       !["/auth/signUp", "/admin/setup"].includes(router.asPath)
     ) {
-      router.push(!user ? "/auth/signUp" : "admin/setup");
+      router.push(!user ? "/auth/signUp" : "/admin/setup");
     }
   }, [router.asPath]);
 

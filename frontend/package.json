@@ -2,9 +2,9 @@
   "name": "pingvin-share",
   "version": "0.0.1",
   "scripts": {
-    "dev": "dotenv next dev",
+    "dev": "next dev",
     "build": "next build",
-    "start": "dotenv next start",
+    "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"src/**/*.ts*\""
   },
@@ -37,7 +37,6 @@
     "@types/react": "18.0.4",
     "@types/react-dom": "18.0.0",
     "axios": "^0.26.1",
-    "dotenv-cli": "^6.0.0",
     "eslint": "8.13.0",
     "eslint-config-next": "^13.0.0",
     "eslint-config-prettier": "^8.5.0",
