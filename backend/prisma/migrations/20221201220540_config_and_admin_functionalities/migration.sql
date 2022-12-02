@@ -28,7 +28,7 @@ CREATE TABLE "new_User" (
     "password" TEXT NOT NULL,
     "isAdmin" BOOLEAN NOT NULL DEFAULT false
 );
-INSERT INTO "new_User" ("createdAt", "email", "id", "password", "updatedAt") SELECT "createdAt", "email", "id", "password", "updatedAt" FROM "User";
+INSERT INTO "new_User" ("createdAt", "email", "id", "password", "updatedAt", "username") SELECT "createdAt", "email", "id", "password", "updatedAt", 'user-' || User.id as "username"  FROM "User";
 DROP TABLE "User";
 ALTER TABLE "new_User" RENAME TO "User";
 CREATE UNIQUE INDEX "User_username_key" ON "User"("username");

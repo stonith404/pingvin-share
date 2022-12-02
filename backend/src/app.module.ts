@@ -12,6 +12,7 @@ import { EmailModule } from "./email/email.module";
 import { FileModule } from "./file/file.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { ShareModule } from "./share/share.module";
+import { UserModule } from "./user/user.module";
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { ShareModule } from "./share/share.module";
     EmailModule,
     PrismaModule,
     ConfigModule,
+    UserModule,
     MulterModule.registerAsync({
       useFactory: (config: ConfigService) => ({
         fileFilter: (req: Request, file, cb) => {
