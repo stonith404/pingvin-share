@@ -78,14 +78,15 @@ export class FileService {
     return fs.createReadStream(`./data/uploads/shares/${shareId}/archive.zip`);
   }
 
-  async getFileDownloadUrl(shareId: string, fileId: string) {
+  getFileDownloadUrl(shareId: string, fileId: string) {
     const downloadToken = this.generateFileDownloadToken(shareId, fileId);
+
     return `${this.config.get(
-      "APP_URL"
+      "appUrl"
     )}/api/shares/${shareId}/files/${fileId}?token=${downloadToken}`;
   }
 
-  async generateFileDownloadToken(shareId: string, fileId: string) {
+  generateFileDownloadToken(shareId: string, fileId: string) {
     if (fileId == "zip") fileId = undefined;
 
     return this.jwtService.sign(
@@ -100,7 +101,7 @@ export class FileService {
     );
   }
 
-  async verifyFileDownloadToken(shareId: string, token: string) {
+  verifyFileDownloadToken(shareId: string, token: string) {
     try {
       const claims = this.jwtService.verify(token, {
         secret: this.config.get("jwtSecret"),
