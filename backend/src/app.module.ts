@@ -2,22 +2,16 @@ import { HttpException, HttpStatus, Module } from "@nestjs/common";
 
 import { ScheduleModule } from "@nestjs/schedule";
 import { AuthModule } from "./auth/auth.module";
-import { JobsService } from "./jobs/jobs.service";
 
-import { APP_GUARD } from "@nestjs/core";
 import { MulterModule } from "@nestjs/platform-express";
-import { ThrottlerGuard, ThrottlerModule } from "@nestjs/throttler";
+import { ThrottlerModule } from "@nestjs/throttler";
 import { Request } from "express";
 import { ConfigModule } from "./config/config.module";
 import { ConfigService } from "./config/config.service";
 import { EmailModule } from "./email/email.module";
-import { FileController } from "./file/file.controller";
 import { FileModule } from "./file/file.module";
 import { PrismaModule } from "./prisma/prisma.module";
-import { PrismaService } from "./prisma/prisma.service";
-import { ShareController } from "./share/share.controller";
 import { ShareModule } from "./share/share.module";
-import { UserController } from "./user/user.controller";
 
 @Module({
   imports: [
@@ -51,22 +45,5 @@ import { UserController } from "./user/user.controller";
     }),
     ScheduleModule.forRoot(),
   ],
-  providers: [
-    ConfigService,
-    PrismaService,
-    JobsService,
-    {
-      provide: "CONFIG_VARIABLES",
-      useFactory: async (prisma: PrismaService) => {
-        return await prisma.config.findMany();
-      },
-      inject: [PrismaService],
-    },
-    {
-      provide: APP_GUARD,
-      useClass: ThrottlerGuard,
-    },
-  ],
-  controllers: [UserController, ShareController, FileController],
 })
 export class AppModule {}
