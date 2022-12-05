@@ -28,7 +28,7 @@ export class AuthController {
   @Throttle(10, 5 * 60)
   @Post("signUp")
   async signUp(@Body() dto: AuthRegisterDTO) {
-    if (!this.config.get("allowRegistration"))
+    if (!this.config.get("ALLOW_REGISTRATION"))
       throw new ForbiddenException("Registration is not allowed");
     return this.authService.signUp(dto);
   }

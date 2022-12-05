@@ -49,7 +49,7 @@ const SignInForm = () => {
       >
         Welcome back
       </Title>
-      {config.get("allowRegistration") && (
+      {config.get("ALLOW_REGISTRATION") && (
         <Text color="dimmed" size="sm" align="center" mt={5}>
           You don't have an account yet?{" "}
           <Anchor component={Link} href={"signUp"} size="sm">
@@ -65,6 +65,7 @@ const SignInForm = () => {
         >
           <TextInput
             label="Email or username"
+            type="email"
             placeholder="you@email.com"
             {...form.getInputProps("emailOrUsername")}
           />

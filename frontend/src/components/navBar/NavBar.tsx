@@ -130,7 +130,7 @@ const NavBar = () => {
   ]);
 
   useEffect(() => {
-    if (config.get("showHomePage"))
+    if (config.get("SHOW_HOME_PAGE"))
       setUnauthenticatedLinks((array) => [
         {
           link: "/",
@@ -139,7 +139,7 @@ const NavBar = () => {
         ...array,
       ]);
 
-    if (config.get("allowRegistration"))
+    if (config.get("ALLOW_REGISTRATION"))
       setUnauthenticatedLinks((array) => [
         ...array,
         {

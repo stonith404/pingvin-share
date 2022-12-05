@@ -26,13 +26,13 @@ import { UserModule } from "./user/user.module";
     MulterModule.registerAsync({
       useFactory: (config: ConfigService) => ({
         fileFilter: (req: Request, file, cb) => {
-          const maxFileSize = config.get("maxFileSize");
+          const MAX_FILE_SIZE = config.get("MAX_FILE_SIZE");
           const requestFileSize = parseInt(req.headers["content-length"]);
-          const isValidFileSize = requestFileSize <= maxFileSize;
+          const isValidFileSize = requestFileSize <= MAX_FILE_SIZE;
           cb(
             !isValidFileSize &&
               new HttpException(
-                `File must be smaller than ${maxFileSize} bytes`,
+                `File must be smaller than ${MAX_FILE_SIZE} bytes`,
                 HttpStatus.PAYLOAD_TOO_LARGE
               ),
             isValidFileSize

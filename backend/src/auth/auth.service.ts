@@ -30,7 +30,7 @@ export class AuthService {
           email: dto.email,
           username: dto.username,
           password: hash,
-          isAdmin: !this.config.get("setupFinished"),
+          isAdmin: !this.config.get("SETUP_FINISHED"),
         },
       });
 
@@ -74,7 +74,7 @@ export class AuthService {
       throw new ForbiddenException("Invalid password");
 
     const hash = await argon.hash(newPassword);
-    
+
     this.prisma.user.update({
       where: { id: user.id },
       data: { password: hash },
@@ -89,7 +89,7 @@ export class AuthService {
       },
       {
         expiresIn: "15min",
-        secret: this.config.get("jwtSecret"),
+        secret: this.config.get("JWT_SECRET"),
       }
     );
   }

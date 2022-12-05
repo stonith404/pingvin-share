@@ -95,7 +95,7 @@ const Upload = () => {
       }
     }
   }, [files]);
-  if (!user && !config.get("allowUnauthenticatedShares")) {
+  if (!user && !config.get("ALLOW_UNAUTHENTICATED_SHARES")) {
     router.replace("/");
   } else {
     return (
@@ -110,10 +110,12 @@ const Upload = () => {
                 modals,
                 {
                   isUserSignedIn: user ? true : false,
-                  allowUnauthenticatedShares: config.get(
-                    "allowUnauthenticatedShares"
+                  ALLOW_UNAUTHENTICATED_SHARES: config.get(
+                    "ALLOW_UNAUTHENTICATED_SHARES"
                   ),
-                  emailRecipientsEnabled: config.get("emailRecipientsEnabled"),
+                  ENABLE_EMAIL_RECIPIENTS: config.get(
+                    "ENABLE_EMAIL_RECIPIENTS"
+                  ),
                 },
                 uploadFiles
               )

@@ -63,7 +63,7 @@ export class ConfigService {
 
   async finishSetup() {
     return await this.prisma.config.update({
-      where: { key: "setupFinished" },
+      where: { key: "SETUP_FINISHED" },
       data: { value: "true" },
     });
   }

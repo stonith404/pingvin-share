@@ -82,7 +82,7 @@ export class FileService {
     const downloadToken = this.generateFileDownloadToken(shareId, fileId);
 
     return `${this.config.get(
-      "appUrl"
+      "APP_URL"
     )}/api/shares/${shareId}/files/${fileId}?token=${downloadToken}`;
   }
 
@@ -96,7 +96,7 @@ export class FileService {
       },
       {
         expiresIn: "10min",
-        secret: this.config.get("jwtSecret"),
+        secret: this.config.get("JWT_SECRET"),
       }
     );
   }
@@ -104,7 +104,7 @@ export class FileService {
   verifyFileDownloadToken(shareId: string, token: string) {
     try {
       const claims = this.jwtService.verify(token, {
-        secret: this.config.get("jwtSecret"),
+        secret: this.config.get("JWT_SECRET"),
       });
       return claims.shareId == shareId;
     } catch {

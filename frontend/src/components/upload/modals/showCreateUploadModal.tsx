@@ -29,8 +29,8 @@ const showCreateUploadModal = (
   modals: ModalsContextProps,
   options: {
     isUserSignedIn: boolean;
-    allowUnauthenticatedShares: boolean;
-    emailRecipientsEnabled: boolean;
+    ALLOW_UNAUTHENTICATED_SHARES: boolean;
+    ENABLE_EMAIL_RECIPIENTS: boolean;
   },
   uploadCallback: (
     id: string,
@@ -62,14 +62,14 @@ const CreateUploadModalBody = ({
   ) => void;
   options: {
     isUserSignedIn: boolean;
-    allowUnauthenticatedShares: boolean;
-    emailRecipientsEnabled: boolean;
+    ALLOW_UNAUTHENTICATED_SHARES: boolean;
+    ENABLE_EMAIL_RECIPIENTS: boolean;
   };
 }) => {
   const modals = useModals();
 
   const [showNotSignedInAlert, setShowNotSignedInAlert] = useState(
-    options.emailRecipientsEnabled
+    options.ENABLE_EMAIL_RECIPIENTS
   );
 
   const validationSchema = yup.object().shape({
@@ -230,7 +230,7 @@ const CreateUploadModalBody = ({
             {ExpirationPreview({ form })}
           </Text>
           <Accordion>
-            {options.emailRecipientsEnabled && (
+            {options.ENABLE_EMAIL_RECIPIENTS && (
               <Accordion.Item value="recipients" sx={{ borderBottom: "none" }}>
                 <Accordion.Control>Email recipients</Accordion.Control>
                 <Accordion.Panel>

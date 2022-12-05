@@ -17,7 +17,7 @@ const Setup = () => {
   if (!user) {
     router.push("/auth/signUp");
     return;
-  } else if (config.get("setupFinished")) {
+  } else if (config.get("SETUP_FINISHED")) {
     router.push("/");
     return;
   }

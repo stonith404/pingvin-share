@@ -45,7 +45,7 @@ const Dropzone = ({
   return (
     <div className={classes.wrapper}>
       <MantineDropzone
-        maxSize={parseInt(config.get("maxFileSize"))}
+        maxSize={parseInt(config.get("MAX_FILE_SIZE"))}
         onReject={(e) => {
           toast.error(e[0].errors[0].message);
         }}
@@ -75,7 +75,7 @@ const Dropzone = ({
           <Text align="center" size="sm" mt="xs" color="dimmed">
             Drag&apos;n&apos;drop files here to start your share. We can accept
             only files that are less than{" "}
-            {byteStringToHumanSizeString(config.get("maxFileSize"))} in size.
+            {byteStringToHumanSizeString(config.get("MAX_FILE_SIZE"))} in size.
           </Text>
         </div>
       </MantineDropzone>

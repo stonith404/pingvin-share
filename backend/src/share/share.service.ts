@@ -235,7 +235,7 @@ export class ShareService {
       },
       {
         expiresIn: moment(expiration).diff(new Date(), "seconds") + "s",
-        secret: this.config.get("jwtSecret"),
+        secret: this.config.get("JWT_SECRET"),
       }
     );
   }
@@ -247,7 +247,7 @@ export class ShareService {
 
     try {
       const claims = this.jwtService.verify(token, {
-        secret: this.config.get("jwtSecret"),
+        secret: this.config.get("JWT_SECRET"),
         // Ignore expiration if expiration is 0
         ignoreExpiration: moment(expiration).isSame(0),
       });

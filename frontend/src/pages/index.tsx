@@ -74,9 +74,9 @@ export default function Home() {
 
   const { classes } = useStyles();
   const router = useRouter();
-  if (user || config.get("allowUnauthenticatedShares")) {
+  if (user || config.get("ALLOW_UNAUTHENTICATED_SHARES")) {
     router.replace("/upload");
-  } else if (!config.get("showHomePage")) {
+  } else if (!config.get("SHOW_HOME_PAGE")) {
     router.replace("/auth/signIn");
   } else {
     return (

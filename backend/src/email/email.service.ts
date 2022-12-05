@@ -22,8 +22,7 @@ export class EmailService {
     if (!this.config.get("emailRecepientsEnabled"))
       throw new InternalServerErrorException("Email service disabled");
 
-    const shareUrl = `${this.config.get("appUrl")}/share/${shareId}`;
-  
+    const shareUrl = `${this.config.get("APP_URL")}/share/${shareId}`;
 
     await transporter.sendMail({
       from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
