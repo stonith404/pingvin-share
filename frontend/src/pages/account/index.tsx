@@ -81,7 +81,6 @@ const Account = () => {
               {...accountForm.getInputProps("username")}
             />
             <TextInput
-              type="email"
               label="Email"
               {...accountForm.getInputProps("email")}
             />

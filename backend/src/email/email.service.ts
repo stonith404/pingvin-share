@@ -19,7 +19,7 @@ export class EmailService {
       },
     });
 
-    if (!this.config.get("emailRecepientsEnabled"))
+    if (!this.config.get("ENABLE_EMAIL_RECIPIENTS"))
       throw new InternalServerErrorException("Email service disabled");
 
     const shareUrl = `${this.config.get("APP_URL")}/share/${shareId}`;

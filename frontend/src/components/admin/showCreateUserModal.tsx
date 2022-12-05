@@ -63,7 +63,6 @@ const Body = ({
         <Stack>
           <TextInput label="Username" {...form.getInputProps("username")} />
           <TextInput
-            type="email"
             label="Email"
             {...form.getInputProps("email")}
           />

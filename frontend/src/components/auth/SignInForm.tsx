@@ -65,7 +65,6 @@ const SignInForm = () => {
         >
           <TextInput
             label="Email or username"
-            type="email"
             placeholder="you@email.com"
             {...form.getInputProps("emailOrUsername")}
           />

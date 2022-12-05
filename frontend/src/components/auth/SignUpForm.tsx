@@ -78,7 +78,6 @@ const SignUpForm = () => {
           />
           <TextInput
             label="Email"
-            type="email"
             placeholder="you@email.com"
             mt="md"
             {...form.getInputProps("email")}
