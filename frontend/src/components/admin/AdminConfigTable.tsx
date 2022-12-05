@@ -13,16 +13,15 @@ const AdminConfigTable = () => {
 
   const [configVariables, setConfigVariables] = useState<AdminConfigType[]>([]);
 
-  const getConfigVariables = () => {
-    setIsLoading(true);
-    configService.listForAdmin().then((configVariables) => {
+  const getConfigVariables = async () => {
+    await configService.listForAdmin().then((configVariables) => {
       setConfigVariables(configVariables);
-      setIsLoading(false);
     });
   };
 
   useEffect(() => {
-    getConfigVariables();
+    setIsLoading(true);
+    getConfigVariables().then(() => setIsLoading(false));
   }, []);
 
   const skeletonRows = [...Array(9)].map((c, i) => (
@@ -61,7 +60,6 @@ const AdminConfigTable = () => {
                   <Code>{element.key}</Code> {element.secret && <TbLock />}{" "}
                   <br />
                   <Text size="xs" color="dimmed">
-                    {" "}
                     {element.description}
                   </Text>
                 </td>

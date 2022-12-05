@@ -40,7 +40,7 @@ const Setup = () => {
           mb={70}
           mt="lg"
         >
-          Let me in!
+          Let me in
         </Button>
       </Stack>
     </>

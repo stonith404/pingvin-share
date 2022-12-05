@@ -45,6 +45,12 @@ const Dropzone = ({
   return (
     <div className={classes.wrapper}>
       <MantineDropzone
+        // Temporary fix for Dropzone issue (https://github.com/mantinedev/mantine/issues/3115)
+        getFilesFromEvent={(e) => {
+          return Promise.resolve([
+            ...((e.target as EventTarget & HTMLInputElement)?.files as any),
+          ]);
+        }}
         maxSize={parseInt(config.get("MAX_FILE_SIZE"))}
         onReject={(e) => {
           toast.error(e[0].errors[0].message);
@@ -52,15 +58,11 @@ const Dropzone = ({
         disabled={isUploading}
         openRef={openRef as ForwardedRef<() => void>}
         onDrop={(files) => {
-          if (files.length > 100) {
-            toast.error("You can't upload more than 100 files per share.");
-          } else {
-            const newFiles = files.map((file) => {
-              (file as FileUpload).uploadingProgress = 0;
-              return file as FileUpload;
-            });
-            setFiles(newFiles);
-          }
+          const newFiles = files.map((file) => {
+            (file as FileUpload).uploadingProgress = 0;
+            return file as FileUpload;
+          });
+          setFiles(newFiles);
         }}
         className={classes.dropzone}
         radius="md"

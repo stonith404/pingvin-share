@@ -80,7 +80,7 @@ const uploadFile = async (
   const response = await api.post(`shares/${shareId}/files`, formData, {
     onUploadProgress: (progressEvent) => {
       const uploadingProgress = Math.round(
-        (100 * progressEvent.loaded) / progressEvent.total
+        (100 * progressEvent.loaded) / (progressEvent.total ?? 1)
       );
       if (uploadingProgress < 100) progressCallBack(uploadingProgress);
     },
