@@ -44,9 +44,14 @@ const refreshAccessToken = async () => {
   }
 };
 
+const updatePassword = async (oldPassword: string, password: string) => {
+  await api.patch("/auth/password", { oldPassword, password });
+};
+
 export default {
   signIn,
   signUp,
   signOut,
   refreshAccessToken,
+  updatePassword
 };

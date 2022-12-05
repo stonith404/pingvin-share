@@ -1,9 +1,12 @@
-import { Space } from "@mantine/core";
+import { Space, Title } from "@mantine/core";
 import AdminConfigTable from "../../components/admin/AdminConfigTable";
 
 const AdminConfig = () => {
   return (
     <>
+      <Title mb={30} order={3}>
+        Configuration
+      </Title>
       <AdminConfigTable />
       <Space h="xl" />
     </>

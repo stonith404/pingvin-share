@@ -1,5 +1,6 @@
 import {
   BadRequestException,
+  ForbiddenException,
   Injectable,
   UnauthorizedException,
 } from "@nestjs/common";
@@ -66,6 +67,18 @@ export class AuthService {
     const refreshToken = await this.createRefreshToken(user.id);
 
     return { accessToken, refreshToken };
+  }
+
+  async updatePassword(user: User, oldPassword: string, newPassword: string) {
+    if (argon.verify(user.password, oldPassword))
+      throw new ForbiddenException("Invalid password");
+
+    const hash = await argon.hash(newPassword);
+    
+    this.prisma.user.update({
+      where: { id: user.id },
+      data: { password: hash },
+    });
   }
 
   async createAccessToken(user: User) {

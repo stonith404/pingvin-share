@@ -12,6 +12,8 @@ import { User } from "@prisma/client";
 import { GetUser } from "src/auth/decorator/getUser.decorator";
 import { AdministratorGuard } from "src/auth/guard/isAdmin.guard";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
+import { CreateUserDTO } from "./dto/createUser.dto";
+import { UpdateOwnUserDTO } from "./dto/updateOwnUser.dto";
 import { UpdateUserDto } from "./dto/updateUser.dto";
 import { UserDTO } from "./dto/user.dto";
 import { UserSevice } from "./user.service";
@@ -29,7 +31,10 @@ export class UserController {
 
   @Patch("me")
   @UseGuards(JwtGuard)
-  async updateCurrentUser(@GetUser() user: User, @Body() data: UpdateUserDto) {
+  async updateCurrentUser(
+    @GetUser() user: User,
+    @Body() data: UpdateOwnUserDTO
+  ) {
     return new UserDTO().from(await this.userService.update(user.id, data));
   }
 
@@ -48,7 +53,7 @@ export class UserController {
 
   @Post()
   @UseGuards(JwtGuard, AdministratorGuard)
-  async create(@Body() user: UserDTO) {
+  async create(@Body() user: CreateUserDTO) {
     return new UserDTO().from(await this.userService.create(user));
   }
 
@@ -60,7 +65,7 @@ export class UserController {
 
   @Delete(":id")
   @UseGuards(JwtGuard, AdministratorGuard)
-  async delete(@Param() id: string) {
+  async delete(@Param("id") id: string) {
     return new UserDTO().from(await this.userService.delete(id));
   }
 }

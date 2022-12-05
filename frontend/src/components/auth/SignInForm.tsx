@@ -35,7 +35,7 @@ const SignInForm = () => {
     authService
       .signIn(email, password)
       .then(() => window.location.replace("/"))
-      .catch((e) => toast.error(e.response.data.message));
+      .catch(toast.axiosError);
   };
 
   return (

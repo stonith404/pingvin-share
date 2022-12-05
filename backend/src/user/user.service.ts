@@ -2,6 +2,7 @@ import { BadRequestException, Injectable } from "@nestjs/common";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
 import * as argon from "argon2";
 import { PrismaService } from "src/prisma/prisma.service";
+import { CreateUserDTO } from "./dto/createUser.dto";
 import { UpdateUserDto } from "./dto/updateUser.dto";
 import { UserDTO } from "./dto/user.dto";
 
@@ -17,7 +18,7 @@ export class UserSevice {
     return await this.prisma.user.findUnique({ where: { id } });
   }
 
-  async create(dto: UserDTO) {
+  async create(dto: CreateUserDTO) {
     const hash = await argon.hash(dto.password);
     try {
       return await this.prisma.user.create({

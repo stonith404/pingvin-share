@@ -1,6 +1,6 @@
 import { ActionIcon, Avatar, Menu } from "@mantine/core";
 import Link from "next/link";
-import { TbDoorExit, TbLink, TbSettings } from "react-icons/tb";
+import { TbDoorExit, TbLink, TbSettings, TbUser } from "react-icons/tb";
 import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
 
@@ -22,10 +22,13 @@ const ActionAvatar = () => {
         >
           My shares
         </Menu.Item>
+        <Menu.Item component={Link} href="/account" icon={<TbUser size={14} />}>
+          My account
+        </Menu.Item>
         {user!.isAdmin && (
           <Menu.Item
             component={Link}
-            href="/admin/config"
+            href="/admin"
             icon={<TbSettings size={14} />}
           >
             Administration

@@ -10,6 +10,9 @@ const error = (message: string) =>
     message: message,
   });
 
+const axiosError = (axiosError: any) =>
+  error(axiosError?.response?.data?.message ?? "An unknown error occured");
+
 const success = (message: string) =>
   showNotification({
     icon: <TbCheck />,
@@ -22,5 +25,6 @@ const success = (message: string) =>
 const toast = {
   error,
   success,
+  axiosError,
 };
 export default toast;

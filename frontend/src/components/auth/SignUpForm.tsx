@@ -20,7 +20,7 @@ const SignUpForm = () => {
 
   const validationSchema = yup.object().shape({
     email: yup.string().email().required(),
-    username: yup.string().required(),
+    username: yup.string().min(3).required(),
     password: yup.string().min(8).required(),
   });
 
@@ -37,13 +37,13 @@ const SignUpForm = () => {
     authService
       .signIn(email, password)
       .then(() => window.location.replace("/"))
-      .catch((e) => toast.error(e.response.data.message));
+      .catch(toast.axiosError);
   };
   const signUp = (email: string, username: string, password: string) => {
     authService
       .signUp(email, username, password)
       .then(() => signIn(email, password))
-      .catch((e) => toast.error(e.response.data.message));
+      .catch(toast.axiosError);
   };
 
   return (

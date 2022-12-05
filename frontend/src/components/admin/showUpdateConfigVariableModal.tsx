@@ -84,7 +84,7 @@ const Body = ({
               getConfigVariables();
               modals.closeAll();
             })
-            .catch((e) => toast.error(e.response.data.message));
+            .catch(toast.axiosError);
         }}
       >
         Save

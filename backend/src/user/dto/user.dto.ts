@@ -1,17 +1,10 @@
 import { Expose, plainToClass } from "class-transformer";
-import {
-  IsEmail,
-  IsNotEmpty,
-  IsString,
-  Length,
-  Matches,
-} from "class-validator";
+import { IsEmail, Length, Matches, MinLength } from "class-validator";
 
 export class UserDTO {
   @Expose()
   id: string;
 
-  @Expose()
   @Expose()
   @Matches("^[a-zA-Z0-9_.]*$", undefined, {
     message: "Username can only contain letters, numbers, dots and underscores",
@@ -23,8 +16,7 @@ export class UserDTO {
   @IsEmail()
   email: string;
 
-  @IsNotEmpty()
-  @IsString()
+  @MinLength(8)
   password: string;
 
   @Expose()
