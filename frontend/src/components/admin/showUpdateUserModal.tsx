@@ -88,7 +88,7 @@ const Body = ({
             mt="xs"
             labelPosition="left"
             label="Admin privileges"
-            {...accountForm.getInputProps("isAdmin", {type: "checkbox"})}
+            {...accountForm.getInputProps("isAdmin", { type: "checkbox" })}
           />
         </Stack>
       </form>

@@ -58,7 +58,7 @@ const Account = () => {
   return (
     <Container size="sm">
       <Title order={3} mb="xs">
-       My account
+        My account
       </Title>
       <Paper withBorder p="xl">
         <Title order={5} mb="xs">

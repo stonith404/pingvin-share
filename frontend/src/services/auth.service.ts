@@ -53,5 +53,5 @@ export default {
   signUp,
   signOut,
   refreshAccessToken,
-  updatePassword
+  updatePassword,
 };
