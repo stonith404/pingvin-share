@@ -3,11 +3,11 @@ import {
   Injectable,
   NotFoundException,
 } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
 import { JwtService } from "@nestjs/jwt";
 import { randomUUID } from "crypto";
 import * as fs from "fs";
 import * as mime from "mime-types";
+import { ConfigService } from "src/config/config.service";
 import { PrismaService } from "src/prisma/prisma.service";
 
 @Injectable()
@@ -80,6 +80,7 @@ export class FileService {
 
   getFileDownloadUrl(shareId: string, fileId: string) {
     const downloadToken = this.generateFileDownloadToken(shareId, fileId);
+
     return `${this.config.get(
       "APP_URL"
     )}/api/shares/${shareId}/files/${fileId}?token=${downloadToken}`;

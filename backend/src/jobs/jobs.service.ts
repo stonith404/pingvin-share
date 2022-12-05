@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { Cron } from "@nestjs/schedule";
+import * as fs from "fs";
 import * as moment from "moment";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
@@ -33,6 +34,22 @@ export class JobsService {
 
     if (expiredShares.length > 0)
       console.log(`job: deleted ${expiredShares.length} expired shares`);
+  }
+
+  @Cron("0 0 * * *")
+  deleteTemporaryFiles() {
+    const files = fs.readdirSync("./data/uploads/_temp");
+
+    for (const file of files) {
+      const stats = fs.statSync(`./data/uploads/_temp/${file}`);
+      const isOlderThanOneDay = moment(stats.mtime)
+        .add(1, "day")
+        .isBefore(moment());
+
+      if (isOlderThanOneDay) fs.rmSync(`./data/uploads/_temp/${file}`);
+    }
+
+    console.log(`job: deleted ${files.length} temporary files`);
   }
 
   @Cron("0 * * * *")

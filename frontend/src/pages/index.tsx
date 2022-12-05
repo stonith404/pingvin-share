@@ -8,15 +8,13 @@ import {
   ThemeIcon,
   Title,
 } from "@mantine/core";
-import getConfig from "next/config";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { TbCheck } from "react-icons/tb";
 import Meta from "../components/Meta";
+import useConfig from "../hooks/config.hook";
 import useUser from "../hooks/user.hook";
-
-const { publicRuntimeConfig } = getConfig();
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -71,13 +69,14 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export default function Home() {
+  const config = useConfig();
   const user = useUser();
 
   const { classes } = useStyles();
   const router = useRouter();
-  if (user || publicRuntimeConfig.ALLOW_UNAUTHENTICATED_SHARES == "true") {
+  if (user || config.get("ALLOW_UNAUTHENTICATED_SHARES")) {
     router.replace("/upload");
-  } else if (publicRuntimeConfig.SHOW_HOME_PAGE == "false") {
+  } else if (!config.get("SHOW_HOME_PAGE")) {
     router.replace("/auth/signIn");
   } else {
     return (

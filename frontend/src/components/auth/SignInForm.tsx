@@ -9,23 +9,23 @@ import {
   Title,
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
-import getConfig from "next/config";
 import Link from "next/link";
 import * as yup from "yup";
+import useConfig from "../../hooks/config.hook";
 import authService from "../../services/auth.service";
 import toast from "../../utils/toast.util";
 
-const { publicRuntimeConfig } = getConfig();
+const SignInForm = () => {
+  const config = useConfig();
 
-const AuthForm = ({ mode }: { mode: "signUp" | "signIn" }) => {
   const validationSchema = yup.object().shape({
-    email: yup.string().email().required(),
+    emailOrUsername: yup.string().required(),
     password: yup.string().min(8).required(),
   });
 
   const form = useForm({
     initialValues: {
-      email: "",
+      emailOrUsername: "",
       password: "",
     },
     validate: yupResolver(validationSchema),
@@ -34,14 +34,8 @@ const AuthForm = ({ mode }: { mode: "signUp" | "signIn" }) => {
   const signIn = (email: string, password: string) => {
     authService
       .signIn(email, password)
-      .then(() => window.location.replace("/upload"))
-      .catch((e) => toast.error(e.response.data.message));
-  };
-  const signUp = (email: string, password: string) => {
-    authService
-      .signUp(email, password)
-      .then(() => signIn(email, password))
-      .catch((e) => toast.error(e.response.data.message));
+      .then(() => window.location.replace("/"))
+      .catch(toast.axiosError);
   };
 
   return (
@@ -53,34 +47,26 @@ const AuthForm = ({ mode }: { mode: "signUp" | "signIn" }) => {
           fontWeight: 900,
         })}
       >
-        {mode == "signUp" ? "Sign up" : "Welcome back"}
+        Welcome back
       </Title>
-      {publicRuntimeConfig.ALLOW_REGISTRATION == "true" && (
+      {config.get("ALLOW_REGISTRATION") && (
         <Text color="dimmed" size="sm" align="center" mt={5}>
-          {mode == "signUp"
-            ? "You have an account already?"
-            : "You don't have an account yet?"}{" "}
-          <Anchor
-            component={Link}
-            href={mode == "signUp" ? "signIn" : "signUp"}
-            size="sm"
-          >
-            {mode == "signUp" ? "Sign in" : "Sign up"}
+          You don't have an account yet?{" "}
+          <Anchor component={Link} href={"signUp"} size="sm">
+            {"Sign up"}
           </Anchor>
         </Text>
       )}
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
         <form
           onSubmit={form.onSubmit((values) =>
-            mode == "signIn"
-              ? signIn(values.email, values.password)
-              : signUp(values.email, values.password)
+            signIn(values.emailOrUsername, values.password)
           )}
         >
           <TextInput
-            label="Email"
+            label="Email or username"
             placeholder="you@email.com"
-            {...form.getInputProps("email")}
+            {...form.getInputProps("emailOrUsername")}
           />
           <PasswordInput
             label="Password"
@@ -89,7 +75,7 @@ const AuthForm = ({ mode }: { mode: "signUp" | "signIn" }) => {
             {...form.getInputProps("password")}
           />
           <Button fullWidth mt="xl" type="submit">
-            {mode == "signUp" ? "Let's get started" : "Sign in"}
+            Sign in
           </Button>
         </form>
       </Paper>
@@ -97,4 +83,4 @@ const AuthForm = ({ mode }: { mode: "signUp" | "signIn" }) => {
   );
 };
 
-export default AuthForm;
+export default SignInForm;

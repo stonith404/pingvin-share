@@ -11,14 +11,12 @@ import {
   Transition,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import getConfig from "next/config";
 import Link from "next/link";
 import { ReactNode, useEffect, useState } from "react";
+import useConfig from "../../hooks/config.hook";
 import useUser from "../../hooks/user.hook";
 import Logo from "../Logo";
 import ActionAvatar from "./ActionAvatar";
-
-const { publicRuntimeConfig } = getConfig();
 
 const HEADER_HEIGHT = 60;
 
@@ -110,6 +108,8 @@ const useStyles = createStyles((theme) => ({
 
 const NavBar = () => {
   const user = useUser();
+  const config = useConfig();
+
   const [opened, toggleOpened] = useDisclosure(false);
 
   const authenticatedLinks = [
@@ -130,7 +130,7 @@ const NavBar = () => {
   ]);
 
   useEffect(() => {
-    if (publicRuntimeConfig.SHOW_HOME_PAGE == "true")
+    if (config.get("SHOW_HOME_PAGE"))
       setUnauthenticatedLinks((array) => [
         {
           link: "/",
@@ -139,7 +139,7 @@ const NavBar = () => {
         ...array,
       ]);
 
-    if (publicRuntimeConfig.ALLOW_REGISTRATION == "true")
+    if (config.get("ALLOW_REGISTRATION"))
       setUnauthenticatedLinks((array) => [
         ...array,
         {

@@ -36,7 +36,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"firstName\" : \"System\",\n    \"lastName\" : \"Test\",\n    \"email\": \"system@test.org\",\n    \"password\": \"J2y8unpJUcJDRv\"\n}",
+							"raw": "{\n    \"email\": \"system@test.org\",\n    \"username\": \"system.test\",\n    \"password\": \"J2y8unpJUcJDRv\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -97,7 +97,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"firstName\" : \"System\",\n    \"lastName\" : \"Test2\",\n    \"email\": \"system2@test.org\",\n    \"password\": \"N44HcHgeuAvfCT\"\n}",
+									"raw": "{\n    \"email\": \"system2@test.org\",\n   \"username\": \"system.test2\",\n     \"password\": \"N44HcHgeuAvfCT\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"

@@ -18,7 +18,6 @@ import {
 import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
-import getConfig from "next/config";
 import { useState } from "react";
 import { TbAlertCircle } from "react-icons/tb";
 import * as yup from "yup";
@@ -26,11 +25,13 @@ import shareService from "../../../services/share.service";
 import { ShareSecurity } from "../../../types/share.type";
 import ExpirationPreview from "../ExpirationPreview";
 
-const { publicRuntimeConfig } = getConfig();
-
 const showCreateUploadModal = (
   modals: ModalsContextProps,
-  isSignedIn: boolean,
+  options: {
+    isUserSignedIn: boolean;
+    ALLOW_UNAUTHENTICATED_SHARES: boolean;
+    ENABLE_EMAIL_RECIPIENTS: boolean;
+  },
   uploadCallback: (
     id: string,
     expiration: string,
@@ -42,7 +43,7 @@ const showCreateUploadModal = (
     title: <Title order={4}>Share</Title>,
     children: (
       <CreateUploadModalBody
-        isSignedIn={isSignedIn}
+        options={options}
         uploadCallback={uploadCallback}
       />
     ),
@@ -51,7 +52,7 @@ const showCreateUploadModal = (
 
 const CreateUploadModalBody = ({
   uploadCallback,
-  isSignedIn,
+  options,
 }: {
   uploadCallback: (
     id: string,
@@ -59,12 +60,16 @@ const CreateUploadModalBody = ({
     recipients: string[],
     security: ShareSecurity
   ) => void;
-  isSignedIn: boolean;
+  options: {
+    isUserSignedIn: boolean;
+    ALLOW_UNAUTHENTICATED_SHARES: boolean;
+    ENABLE_EMAIL_RECIPIENTS: boolean;
+  };
 }) => {
   const modals = useModals();
 
   const [showNotSignedInAlert, setShowNotSignedInAlert] = useState(
-    publicRuntimeConfig.ALLOW_UNAUTHENTICATED_SHARES == "true"
+    options.ENABLE_EMAIL_RECIPIENTS
   );
 
   const validationSchema = yup.object().shape({
@@ -93,7 +98,7 @@ const CreateUploadModalBody = ({
   });
   return (
     <Group>
-      {showNotSignedInAlert && !isSignedIn && (
+      {showNotSignedInAlert && !options.isUserSignedIn && (
         <Alert
           withCloseButton
           onClose={() => setShowNotSignedInAlert(false)}
@@ -225,7 +230,7 @@ const CreateUploadModalBody = ({
             {ExpirationPreview({ form })}
           </Text>
           <Accordion>
-            {publicRuntimeConfig.EMAIL_RECIPIENTS_ENABLED == "true" && (
+            {options.ENABLE_EMAIL_RECIPIENTS && (
               <Accordion.Item value="recipients" sx={{ borderBottom: "none" }}>
                 <Accordion.Control>Email recipients</Accordion.Control>
                 <Accordion.Panel>

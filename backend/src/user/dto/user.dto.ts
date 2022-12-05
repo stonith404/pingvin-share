@@ -1,26 +1,34 @@
 import { Expose, plainToClass } from "class-transformer";
-import { IsEmail, IsNotEmpty, IsString } from "class-validator";
+import { IsEmail, Length, Matches, MinLength } from "class-validator";
 
 export class UserDTO {
   @Expose()
   id: string;
 
   @Expose()
-  firstName: string;
+  @Matches("^[a-zA-Z0-9_.]*$", undefined, {
+    message: "Username can only contain letters, numbers, dots and underscores",
+  })
+  @Length(3, 32)
+  username: string;
 
   @Expose()
-  lastName: string;
-
-  @Expose()
-  @IsNotEmpty()
   @IsEmail()
   email: string;
 
-  @IsNotEmpty()
-  @IsString()
+  @MinLength(8)
   password: string;
+
+  @Expose()
+  isAdmin: boolean;
 
   from(partial: Partial<UserDTO>) {
     return plainToClass(UserDTO, partial, { excludeExtraneousValues: true });
+  }
+
+  fromList(partial: Partial<UserDTO>[]) {
+    return partial.map((part) =>
+      plainToClass(UserDTO, part, { excludeExtraneousValues: true })
+    );
   }
 }

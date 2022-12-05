@@ -28,7 +28,5 @@ COPY --from=backend-builder /opt/app/prisma ./prisma
 COPY --from=backend-builder /opt/app/package.json ./
 WORKDIR /opt/app
 
-RUN npm i -g dotenv-cli
-
 EXPOSE 3000
-CMD cd frontend && dotenv node_modules/.bin/next start & cd backend && npm run prod
+CMD cd frontend && node_modules/.bin/next start & cd backend && npm run prod

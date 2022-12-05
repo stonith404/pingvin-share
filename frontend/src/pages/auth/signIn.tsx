@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import AuthForm from "../../components/auth/AuthForm";
+import SignInForm from "../../components/auth/SignInForm";
 import Meta from "../../components/Meta";
 import useUser from "../../hooks/user.hook";
 
@@ -12,7 +12,7 @@ const SignIn = () => {
     return (
       <>
         <Meta title="Sign In" />
-        <AuthForm mode="signIn" />
+        <SignInForm />
       </>
     );
   }

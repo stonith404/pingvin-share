@@ -2,7 +2,6 @@ import {
   Controller,
   Get,
   Param,
-  ParseFilePipeBuilder,
   Post,
   Res,
   StreamableFile,
@@ -32,13 +31,7 @@ export class FileController {
     })
   )
   async create(
-    @UploadedFile(
-      new ParseFilePipeBuilder()
-        .addMaxSizeValidator({
-          maxSize: parseInt(process.env.MAX_FILE_SIZE),
-        })
-        .build()
-    )
+    @UploadedFile()
     file: Express.Multer.File,
     @Param("shareId") shareId: string
   ) {

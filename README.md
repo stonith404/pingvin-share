@@ -10,6 +10,7 @@ Demo: https://pingvin-share.dev.eliasschneider.com
 
 ## ✨ Features
 
+- Spin up your instance within 2 minutes
 - Create a share with files that you can access with a link
 - No file size limit, only your disk will be your limit
 - Set a share expiration
@@ -21,31 +22,14 @@ Demo: https://pingvin-share.dev.eliasschneider.com
 
 > Pleas note that Pingvin Share is in early stage and could include some bugs
 
-1. Download the `docker-compose.yml` and `.env.example` file.
-2. Rename the `.env.example` file to `.env` and change the environment variables so that they fit to your environment. If you need help with the environment variables take a look [here](#environment-variables)
-3. Run `docker-compose up -d`
+1. Download the `docker-compose.yml` file
+2. Run `docker-compose up -d`
 
 The website is now listening available on `http://localhost:3000`, have fun with Pingvin Share 🐧!
 
-### Environment variables
-
-| Variable                                                | Description                                                                                                                         | Possible values |
-| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| `APP_URL`                                               | On which URL Pingvin Share is available. E.g http://localhost or https://pingvin-share.com.                                         | URL             |
-| `SHOW_HOME_PAGE`                                        | Whether the Pingvin Share home page should be shown.                                                                                | true/false      |
-| `ALLOW_REGISTRATION`                                    | Whether a new user can create a new account.                                                                                        | true/false      |
-| `ALLOW_UNAUTHENTICATED_SHARES`                          | Whether a user can create a share without being signed in.                                                                          | true/false      |
-| `MAX_FILE_SIZE`                                         | Maximum allowed size per file in bytes.                                                                                             | Number          |
-| `JWT_SECRET`                                            | Long random string to sign the JWT's.                                                                                               | Random string   |
-| `EMAIL_RECIPIENTS_ENABLED`                              | Whether email reciepients are enabled. Only set this to true if you entered the host, port, email and password of your SMTP server. | true/false      |
-| `SMTP_HOST`, `SMTP_PORT`, `SMTP_EMAIL`, `SMTP_PASSWORD` | Credentials for your SMTP server.                                                                                                   | -               |
-
 ### Upgrade to a new version
 
-1. Check if your local `docker-compose.yml` and `.env` files are up to date with the files in the repository
-2. Run `docker compose pull && docker compose up -d` to update your docker container
-
-> Note: If you installed Pingvin Share before it used Sqlite, you unfortunately have to set up the project from scratch again, sorry for that.
+Run `docker compose pull && docker compose up -d` to update your docker container
 
 ## 🖤 Contribute
 

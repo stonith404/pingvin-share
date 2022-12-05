@@ -1,14 +1,15 @@
 import {
   BadRequestException,
+  ForbiddenException,
   Injectable,
   UnauthorizedException,
 } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
 import { JwtService } from "@nestjs/jwt";
 import { User } from "@prisma/client";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
 import * as argon from "argon2";
 import * as moment from "moment";
+import { ConfigService } from "src/config/config.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { AuthRegisterDTO } from "./dto/authRegister.dto";
 import { AuthSignInDTO } from "./dto/authSignIn.dto";
@@ -27,7 +28,9 @@ export class AuthService {
       const user = await this.prisma.user.create({
         data: {
           email: dto.email,
+          username: dto.username,
           password: hash,
+          isAdmin: !this.config.get("SETUP_FINISHED"),
         },
       });
 
@@ -38,16 +41,22 @@ export class AuthService {
     } catch (e) {
       if (e instanceof PrismaClientKnownRequestError) {
         if (e.code == "P2002") {
-          throw new BadRequestException("Credentials taken");
+          const duplicatedField: string = e.meta.target[0];
+          throw new BadRequestException(
+            `A user with this ${duplicatedField} already exists`
+          );
         }
       }
     }
   }
 
   async signIn(dto: AuthSignInDTO) {
-    const user = await this.prisma.user.findUnique({
+    if (!dto.email && !dto.username)
+      throw new BadRequestException("Email or username is required");
+
+    const user = await this.prisma.user.findFirst({
       where: {
-        email: dto.email,
+        OR: [{ email: dto.email }, { username: dto.username }],
       },
     });
 
@@ -58,6 +67,18 @@ export class AuthService {
     const refreshToken = await this.createRefreshToken(user.id);
 
     return { accessToken, refreshToken };
+  }
+
+  async updatePassword(user: User, oldPassword: string, newPassword: string) {
+    if (argon.verify(user.password, oldPassword))
+      throw new ForbiddenException("Invalid password");
+
+    const hash = await argon.hash(newPassword);
+
+    this.prisma.user.update({
+      where: { id: user.id },
+      data: { password: hash },
+    });
   }
 
   async createAccessToken(user: User) {

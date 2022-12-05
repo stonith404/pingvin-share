@@ -1,7 +1,6 @@
 import { Button, Group } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import axios from "axios";
-import getConfig from "next/config";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Meta from "../components/Meta";
@@ -9,13 +8,13 @@ import Dropzone from "../components/upload/Dropzone";
 import FileList from "../components/upload/FileList";
 import showCompletedUploadModal from "../components/upload/modals/showCompletedUploadModal";
 import showCreateUploadModal from "../components/upload/modals/showCreateUploadModal";
+import useConfig from "../hooks/config.hook";
 import useUser from "../hooks/user.hook";
 import shareService from "../services/share.service";
 import { FileUpload } from "../types/File.type";
 import { ShareSecurity } from "../types/share.type";
 import toast from "../utils/toast.util";
 
-const { publicRuntimeConfig } = getConfig();
 let share: any;
 
 const Upload = () => {
@@ -23,6 +22,7 @@ const Upload = () => {
   const modals = useModals();
 
   const user = useUser();
+  const config = useConfig();
   const [files, setFiles] = useState<FileUpload[]>([]);
   const [isUploading, setisUploading] = useState(false);
 
@@ -95,7 +95,7 @@ const Upload = () => {
       }
     }
   }, [files]);
-  if (!user && publicRuntimeConfig.ALLOW_UNAUTHENTICATED_SHARES == "false") {
+  if (!user && !config.get("ALLOW_UNAUTHENTICATED_SHARES")) {
     router.replace("/");
   } else {
     return (
@@ -106,7 +106,19 @@ const Upload = () => {
             loading={isUploading}
             disabled={files.length <= 0}
             onClick={() =>
-              showCreateUploadModal(modals, user ? true : false, uploadFiles)
+              showCreateUploadModal(
+                modals,
+                {
+                  isUserSignedIn: user ? true : false,
+                  ALLOW_UNAUTHENTICATED_SHARES: config.get(
+                    "ALLOW_UNAUTHENTICATED_SHARES"
+                  ),
+                  ENABLE_EMAIL_RECIPIENTS: config.get(
+                    "ENABLE_EMAIL_RECIPIENTS"
+                  ),
+                },
+                uploadFiles
+              )
             }
           >
             Share

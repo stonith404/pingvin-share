@@ -2,15 +2,22 @@ import { getCookie, setCookies } from "cookies-next";
 import * as jose from "jose";
 import api from "./api.service";
 
-const signIn = async (email: string, password: string) => {
-  const response = await api.post("auth/signIn", { email, password });
+const signIn = async (emailOrUsername: string, password: string) => {
+  const emailOrUsernameBody = emailOrUsername.includes("@")
+    ? { email: emailOrUsername }
+    : { username: emailOrUsername };
+
+  const response = await api.post("auth/signIn", {
+    ...emailOrUsernameBody,
+    password,
+  });
   setCookies("access_token", response.data.accessToken);
   setCookies("refresh_token", response.data.refreshToken);
   return response;
 };
 
-const signUp = async (email: string, password: string) => {
-  return await api.post("auth/signUp", { email, password });
+const signUp = async (email: string, username: string, password: string) => {
+  return await api.post("auth/signUp", { email, username, password });
 };
 
 const signOut = () => {
@@ -37,9 +44,14 @@ const refreshAccessToken = async () => {
   }
 };
 
+const updatePassword = async (oldPassword: string, password: string) => {
+  await api.patch("/auth/password", { oldPassword, password });
+};
+
 export default {
   signIn,
   signUp,
   signOut,
   refreshAccessToken,
+  updatePassword,
 };

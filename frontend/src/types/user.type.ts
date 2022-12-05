@@ -1,8 +1,29 @@
-export default interface User {
+type User = {
   id: string;
-  firstName?: string;
-  lastName?: string;
+  username: string;
   email: string;
-}
+  isAdmin: boolean;
+};
 
-export interface CurrentUser extends User {}
+export type CreateUser = {
+  username: string;
+  email: string;
+  password: string;
+  isAdmin?: boolean;
+};
+
+export type UpdateUser = {
+  username?: string;
+  email?: string;
+  password?: string;
+  isAdmin?: boolean;
+};
+
+export type UpdateCurrentUser = {
+  username?: string;
+  email?: string;
+};
+
+export type CurrentUser = User & {};
+
+export default User;

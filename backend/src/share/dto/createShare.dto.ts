@@ -11,7 +11,7 @@ import { ShareSecurityDTO } from "./shareSecurity.dto";
 export class CreateShareDTO {
   @IsString()
   @Matches("^[a-zA-Z0-9_-]*$", undefined, {
-    message: "ID only can contain letters, numbers, underscores and hyphens",
+    message: "ID can only contain letters, numbers, underscores and hyphens",
   })
   @Length(3, 50)
   id: string;
