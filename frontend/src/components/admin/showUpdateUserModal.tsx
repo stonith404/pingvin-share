@@ -4,6 +4,7 @@ import {
   Group,
   PasswordInput,
   Stack,
+  Switch,
   TextInput,
   Title,
 } from "@mantine/core";
@@ -36,8 +37,9 @@ const Body = ({
 }) => {
   const accountForm = useForm({
     initialValues: {
-      username: user?.username,
-      email: user?.email,
+      username: user.username,
+      email: user.email,
+      isAdmin: user.isAdmin,
     },
     validate: yupResolver(
       yup.object().shape({
@@ -64,10 +66,7 @@ const Body = ({
         id="accountForm"
         onSubmit={accountForm.onSubmit(async (values) => {
           userService
-            .update(user.id, {
-              email: values.email,
-              username: values.username,
-            })
+            .update(user.id, values)
             .then(() => {
               getUsers();
               modals.closeAll();
@@ -85,11 +84,17 @@ const Body = ({
             label="Email"
             {...accountForm.getInputProps("email")}
           />
+          <Switch
+            mt="xs"
+            labelPosition="left"
+            label="Admin privileges"
+            {...accountForm.getInputProps("isAdmin", {type: "checkbox"})}
+          />
         </Stack>
       </form>
       <Accordion>
         <Accordion.Item sx={{ borderBottom: "none" }} value="changePassword">
-          <Accordion.Control>Passwort ändern</Accordion.Control>
+          <Accordion.Control>Change password</Accordion.Control>
           <Accordion.Panel>
             <form
               onSubmit={passwordForm.onSubmit(async (values) => {

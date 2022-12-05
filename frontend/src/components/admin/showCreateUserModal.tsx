@@ -1,7 +1,6 @@
 import {
   Button,
   Group,
-  Input,
   PasswordInput,
   Stack,
   Switch,
@@ -51,7 +50,7 @@ const Body = ({
     <Stack>
       <form
         onSubmit={form.onSubmit(async (values) => {
-          console.log(values)
+          console.log(values);
           userService
             .create(values)
             .then(() => {
@@ -72,10 +71,12 @@ const Body = ({
             label="New password"
             {...form.getInputProps("password")}
           />
-
-
-            <Switch labelPosition="left" label="Admin privileges" {...form.getInputProps("isAdmin")} />
-
+          <Switch
+            mt="xs"
+            labelPosition="left"
+            label="Admin privileges"
+            {...form.getInputProps("isAdmin", { type: "checkbox" })}
+          />
           <Group position="right">
             <Button type="submit">Create</Button>
           </Group>
