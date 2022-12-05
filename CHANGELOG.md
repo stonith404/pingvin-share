@@ -1,3 +1,25 @@
+## [0.3.0](https://github.com/stonith404/pingvin-share/compare/v0.2.0...v0.3.0) (2022-12-05)
+
+
+### Features
+
+* add add new config strategy to frontend ([493705e](https://github.com/stonith404/pingvin-share/commit/493705e4ef21cb638620b0037b9ff2cec8046c95))
+* add administrator guard ([13f98cc](https://github.com/stonith404/pingvin-share/commit/13f98cc32c804c786c71b10dc4cf029d7795be76))
+* add job that deleted temporary files ([b649d8b](https://github.com/stonith404/pingvin-share/commit/b649d8bf8e849aff3f350e3c5fd0151a063b9706))
+* add new config strategy to backend ([1b5e53f](https://github.com/stonith404/pingvin-share/commit/1b5e53ff7ee00228eda6dc5c62d5cd8c3752b03b))
+* add setup wizard ([b579b8f](https://github.com/stonith404/pingvin-share/commit/b579b8f3309e2d7070e6a82c5da76ab8029bee11))
+* add user management ([7a3967f](https://github.com/stonith404/pingvin-share/commit/7a3967fd6f76a03461d05e962e82fe5130528ca5))
+* add user operations to backend ([31b3f6c](https://github.com/stonith404/pingvin-share/commit/31b3f6cb2fc662623df92cdbaf803f1b98a696ae))
+
+
+### Bug Fixes
+
+* convert async function to sync function ([1dbfe0b](https://github.com/stonith404/pingvin-share/commit/1dbfe0bbc9821bbee02220484c87cf9fe12fd033))
+* database migration by adding a username ([e9526fc](https://github.com/stonith404/pingvin-share/commit/e9526fc0390cc8ba70c824370041ea9aaf6f9ef9))
+* docker build ([e958a83](https://github.com/stonith404/pingvin-share/commit/e958a83b87a452e42fb38c12d4b11d71b2323c2d))
+* share password validation ([c795b98](https://github.com/stonith404/pingvin-share/commit/c795b988df437c85efb91e0f6f8ec782f38dbe3d))
+* unable to update user privileges ([d4a0f1a](https://github.com/stonith404/pingvin-share/commit/d4a0f1a4f16b7980fb244a4e582ceeb9bfaff877))
+
 ## [0.2.0](https://github.com/stonith404/pingvin-share/compare/v0.1.1...v0.2.0) (2022-11-13)
 
 
