@@ -17,9 +17,6 @@ jobs:
       - name: Install Dependencies
         working-directory: ./backend
         run: npm install
-      - name: Create .env file
-        working-directory: ./backend
-        run: mv .env.example .env
       - name: Run Server and Test with Newman
         working-directory: ./backend
         run: npm run test:system
