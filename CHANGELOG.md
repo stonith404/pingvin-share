@@ -1,3 +1,10 @@
+### [0.3.1](https://github.com/stonith404/pingvin-share/compare/v0.3.0...v0.3.1) (2022-12-05)
+
+
+### Bug Fixes
+
+* dropzone rejection on chrome ([75f57a4](https://github.com/stonith404/pingvin-share/commit/75f57a4e57fb13cc62e87428e8302b453ea6b44b))
+
 ## [0.3.0](https://github.com/stonith404/pingvin-share/compare/v0.2.0...v0.3.0) (2022-12-05)
 
 
