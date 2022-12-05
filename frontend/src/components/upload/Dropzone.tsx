@@ -45,12 +45,6 @@ const Dropzone = ({
   return (
     <div className={classes.wrapper}>
       <MantineDropzone
-        // Temporary fix for Dropzone issue (https://github.com/mantinedev/mantine/issues/3115)
-        getFilesFromEvent={(e) => {
-          return Promise.resolve([
-            ...((e.target as EventTarget & HTMLInputElement)?.files as any),
-          ]);
-        }}
         maxSize={parseInt(config.get("MAX_FILE_SIZE"))}
         onReject={(e) => {
           toast.error(e[0].errors[0].message);
