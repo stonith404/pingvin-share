@@ -105,21 +105,19 @@ const Upload = () => {
           <Button
             loading={isUploading}
             disabled={files.length <= 0}
-            onClick={() =>
+            onClick={() => {
               showCreateUploadModal(
                 modals,
                 {
                   isUserSignedIn: user ? true : false,
-                  ALLOW_UNAUTHENTICATED_SHARES: config.get(
+                  allowUnauthenticatedShares: config.get(
                     "ALLOW_UNAUTHENTICATED_SHARES"
                   ),
-                  ENABLE_EMAIL_RECIPIENTS: config.get(
-                    "ENABLE_EMAIL_RECIPIENTS"
-                  ),
+                  enableEmailRecepients: config.get("ENABLE_EMAIL_RECIPIENTS"),
                 },
                 uploadFiles
-              )
-            }
+              );
+            }}
           >
             Share
           </Button>
