@@ -21,7 +21,7 @@ const completeShare = async (id: string) => {
 };
 
 const get = async (id: string): Promise<Share> => {
-  const shareToken = localStorage.getItem(`share_${id}_token`);
+  const shareToken = sessionStorage.getItem(`share_${id}_token`);
   return (
     await api.get(`shares/${id}`, {
       headers: { "X-Share-Token": shareToken ?? "" },
@@ -30,7 +30,7 @@ const get = async (id: string): Promise<Share> => {
 };
 
 const getMetaData = async (id: string): Promise<ShareMetaData> => {
-  const shareToken = localStorage.getItem(`share_${id}_token`);
+  const shareToken = sessionStorage.getItem(`share_${id}_token`);
   return (
     await api.get(`shares/${id}/metaData`, {
       headers: { "X-Share-Token": shareToken ?? "" },
@@ -49,7 +49,7 @@ const getMyShares = async (): Promise<MyShare[]> => {
 const getShareToken = async (id: string, password?: string) => {
   const { token } = (await api.post(`/shares/${id}/token`, { password })).data;
 
-  localStorage.setItem(`share_${id}_token`, token);
+  sessionStorage.setItem(`share_${id}_token`, token);
 };
 
 const isShareIdAvailable = async (id: string): Promise<boolean> => {
@@ -57,7 +57,7 @@ const isShareIdAvailable = async (id: string): Promise<boolean> => {
 };
 
 const getFileDownloadUrl = async (shareId: string, fileId: string) => {
-  const shareToken = localStorage.getItem(`share_${shareId}_token`);
+  const shareToken = sessionStorage.getItem(`share_${shareId}_token`);
   return (
     await api.get(`shares/${shareId}/files/${fileId}/download`, {
       headers: { "X-Share-Token": shareToken ?? "" },
