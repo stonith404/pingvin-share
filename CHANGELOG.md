@@ -1,3 +1,12 @@
+### [0.3.2](https://github.com/stonith404/pingvin-share/compare/v0.3.1...v0.3.2) (2022-12-07)
+
+
+### Bug Fixes
+
+* make share password optional ([57cb683](https://github.com/stonith404/pingvin-share/commit/57cb683c64eaedec2697ea6863948bd2ae68dd75))
+* unauthenticated dialog not shown ([4a016ed](https://github.com/stonith404/pingvin-share/commit/4a016ed57db526ee900c567f7b7f0991f948c631))
+* use session storage for share token ([5ea63fb](https://github.com/stonith404/pingvin-share/commit/5ea63fb60be0c508c38ba228cc8ac6dd7b403aac))
+
 ### [0.3.1](https://github.com/stonith404/pingvin-share/compare/v0.3.0...v0.3.1) (2022-12-05)
 
 
