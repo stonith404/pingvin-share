@@ -14,7 +14,7 @@ export class EmailService {
       port: parseInt(this.config.get("SMTP_PORT")),
       secure: parseInt(this.config.get("SMTP_PORT")) == 465,
       auth: {
-        user: this.config.get("SMTP_EMAIL"),
+        user: this.config.get("SMTP_USERNAME"),
         pass: this.config.get("SMTP_PASSWORD"),
       },
     });

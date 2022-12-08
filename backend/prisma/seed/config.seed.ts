@@ -74,7 +74,13 @@ const configVariables: Prisma.ConfigCreateInput[] = [
   },
   {
     key: "SMTP_EMAIL",
-    description: "Email address of the SMTP server",
+    description: "Email address which the emails get sent from",
+    type: "string",
+    value: "",
+  },
+  {
+    key: "SMTP_USERNAME",
+    description: "Username of the SMTP server",
     type: "string",
     value: "",
   },
@@ -103,13 +109,31 @@ async function main() {
     }
   }
 
-  // Delete the config variable if it doesn't exist anymore
   const configVariablesFromDatabase = await prisma.config.findMany();
 
+  // Delete the config variable if it doesn't exist anymore
   for (const configVariableFromDatabase of configVariablesFromDatabase) {
-    if (!configVariables.find((v) => v.key == configVariableFromDatabase.key)) {
+    const configVariable = configVariables.find(
+      (v) => v.key == configVariableFromDatabase.key
+    );
+    if (!configVariable) {
       await prisma.config.delete({
         where: { key: configVariableFromDatabase.key },
+      });
+
+      // Update the config variable if the metadata changed
+    } else if (
+      JSON.stringify({
+        key: configVariableFromDatabase.key,
+        value: configVariableFromDatabase.value,
+        ...configVariable,
+      }) != JSON.stringify(configVariableFromDatabase)
+    ) {
+      await prisma.config.update({
+        where: { key: configVariableFromDatabase.key },
+        data: configVariables.find(
+          (v) => v.key == configVariableFromDatabase.key
+        ),
       });
     }
   }
