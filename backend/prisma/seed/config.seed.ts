@@ -55,7 +55,7 @@ const configVariables: Prisma.ConfigCreateInput[] = [
   {
     key: "ENABLE_EMAIL_RECIPIENTS",
     description:
-      "Whether to send emails to recipients. Only set this to true if you entered the host, port, email and password of your SMTP server.",
+      "Whether to send emails to recipients. Only set this to true if you entered the host, port, email, user and password of your SMTP server.",
     type: "boolean",
     value: "false",
     secret: false,

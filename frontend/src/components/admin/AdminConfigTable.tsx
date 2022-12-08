@@ -65,7 +65,7 @@ const AdminConfigTable = () => {
                 </td>
                 <td>
                   {configVariable.obscured
-                    ? "••••••••••••"
+                    ? "•".repeat(configVariable.value.length)
                     : configVariable.value}
                 </td>
                 <td>
