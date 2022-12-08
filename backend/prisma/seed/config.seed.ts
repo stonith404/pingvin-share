@@ -124,16 +124,18 @@ async function main() {
       // Update the config variable if the metadata changed
     } else if (
       JSON.stringify({
+        ...configVariable,
         key: configVariableFromDatabase.key,
         value: configVariableFromDatabase.value,
-        ...configVariable,
       }) != JSON.stringify(configVariableFromDatabase)
     ) {
       await prisma.config.update({
         where: { key: configVariableFromDatabase.key },
-        data: configVariables.find(
-          (v) => v.key == configVariableFromDatabase.key
-        ),
+        data: {
+          ...configVariable,
+          key: configVariableFromDatabase.key,
+          value: configVariableFromDatabase.value,
+        },
       });
     }
   }
