@@ -2,12 +2,6 @@
 
 Pingvin Share is self-hosted file sharing platform and an alternative for WeTransfer.
 
-## 🎪 Showcase
-
-Demo: https://pingvin-share.dev.eliasschneider.com
-
-<img src="https://user-images.githubusercontent.com/58886915/167101708-b85032ad-f5b1-480a-b8d7-ec0096ea2a43.png" width="700"/>
-
 ## ✨ Features
 
 - Spin up your instance within 2 minutes
@@ -17,6 +11,13 @@ Demo: https://pingvin-share.dev.eliasschneider.com
 - Optionally secure your share with a visitor limit and a password
 - Email recepients
 - Light & dark mode
+
+## 🐧 Get to know Pingvin Share
+
+- [Demo](https://pingvin-share.dev.eliasschneider.com)
+- [Review by DB Tech](https://www.youtube.com/watch?v=rWwNeZCOPJA)
+
+<img src="https://user-images.githubusercontent.com/58886915/167101708-b85032ad-f5b1-480a-b8d7-ec0096ea2a43.png" width="700"/>
 
 ## ⌨️ Setup
 
