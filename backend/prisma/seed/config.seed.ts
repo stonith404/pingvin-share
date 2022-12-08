@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { Prisma, PrismaClient } from "@prisma/client";
 import * as crypto from "crypto";
 
-const configVariables = [
+const configVariables: Prisma.ConfigCreateInput[] = [
   {
     key: "SETUP_FINISHED",
     description: "Whether the setup has been finished",
@@ -83,6 +83,7 @@ const configVariables = [
     description: "Password of the SMTP server",
     type: "string",
     value: "",
+    obscured: true,
   },
 ];
 

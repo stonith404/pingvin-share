@@ -80,10 +80,7 @@ const Account = () => {
               label="Username"
               {...accountForm.getInputProps("username")}
             />
-            <TextInput
-              label="Email"
-              {...accountForm.getInputProps("email")}
-            />
+            <TextInput label="Email" {...accountForm.getInputProps("email")} />
             <Group position="right">
               <Button type="submit">Save</Button>
             </Group>

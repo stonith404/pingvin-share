@@ -62,10 +62,7 @@ const Body = ({
       >
         <Stack>
           <TextInput label="Username" {...form.getInputProps("username")} />
-          <TextInput
-            label="Email"
-            {...form.getInputProps("email")}
-          />
+          <TextInput label="Email" {...form.getInputProps("email")} />
           <PasswordInput
             label="New password"
             {...form.getInputProps("password")}

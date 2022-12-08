@@ -2,6 +2,7 @@ import {
   Button,
   Code,
   NumberInput,
+  PasswordInput,
   Select,
   Space,
   Stack,
@@ -53,9 +54,12 @@ const Body = ({
       <Text>
         Set <Code>{configVariable.key}</Code> to
       </Text>
-      {configVariable.type == "string" && (
-        <TextInput label="Value" {...form.getInputProps("stringValue")} />
-      )}
+      {configVariable.type == "string" &&
+        (configVariable.obscured ? (
+          <PasswordInput label="Value" {...form.getInputProps("stringValue")} />
+        ) : (
+          <TextInput label="Value" {...form.getInputProps("stringValue")} />
+        ))}
       {configVariable.type == "number" && (
         <NumberInput label="Value" {...form.getInputProps("numberValue")} />
       )}

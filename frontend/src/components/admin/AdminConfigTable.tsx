@@ -54,17 +54,20 @@ const AdminConfigTable = () => {
       <tbody>
         {isLoading
           ? skeletonRows
-          : configVariables.map((element) => (
-              <tr key={element.key}>
+          : configVariables.map((configVariable) => (
+              <tr key={configVariable.key}>
                 <td style={{ maxWidth: "200px" }}>
-                  <Code>{element.key}</Code> {element.secret && <TbLock />}{" "}
-                  <br />
+                  <Code>{configVariable.key}</Code>{" "}
+                  {configVariable.secret && <TbLock />} <br />
                   <Text size="xs" color="dimmed">
-                    {element.description}
+                    {configVariable.description}
                   </Text>
                 </td>
-                <td>{element.value}</td>
-
+                <td>
+                  {configVariable.obscured
+                    ? "••••••••••••"
+                    : configVariable.value}
+                </td>
                 <td>
                   <Group position="right">
                     <ActionIcon
@@ -74,7 +77,7 @@ const AdminConfigTable = () => {
                       onClick={() =>
                         showUpdateConfigVariableModal(
                           modals,
-                          element,
+                          configVariable,
                           getConfigVariables
                         )
                       }

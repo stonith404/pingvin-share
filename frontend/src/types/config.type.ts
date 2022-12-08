@@ -8,6 +8,7 @@ export type AdminConfig = Config & {
   updatedAt: Date;
   secret: boolean;
   description: string;
+  obscured: boolean;
 };
 
 export default Config;

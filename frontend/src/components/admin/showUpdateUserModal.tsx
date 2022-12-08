@@ -79,10 +79,7 @@ const Body = ({
             label="Username"
             {...accountForm.getInputProps("username")}
           />
-          <TextInput
-            label="Email"
-            {...accountForm.getInputProps("email")}
-          />
+          <TextInput label="Email" {...accountForm.getInputProps("email")} />
           <Switch
             mt="xs"
             labelPosition="left"
