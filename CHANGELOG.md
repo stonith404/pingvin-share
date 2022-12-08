@@ -1,3 +1,19 @@
+### [0.3.3](https://github.com/stonith404/pingvin-share/compare/v0.3.2...v0.3.3) (2022-12-08)
+
+
+### Features
+
+* add support for different email and user ([888a0c5](https://github.com/stonith404/pingvin-share/commit/888a0c5fafc51b6872ed71e37d4b40c9bf6a07f1))
+
+
+### Bug Fixes
+
+* allow empty strings in config variable ([b8172ef](https://github.com/stonith404/pingvin-share/commit/b8172efd59fb3271ab9b818b13a7003342b2cebd))
+* improve admin dashboard color and layout ([a545c44](https://github.com/stonith404/pingvin-share/commit/a545c444261c90105dcb165ebcf4b26634e729ca))
+* obscure critical config variables ([bfb0d15](https://github.com/stonith404/pingvin-share/commit/bfb0d151ea2ba125e536a16b1873e143a67e9f64))
+* obscured text length ([cbe37c6](https://github.com/stonith404/pingvin-share/commit/cbe37c679853ecef1522ed213e4cac5defd5b45a))
+* space character in email ([907e56a](https://github.com/stonith404/pingvin-share/commit/907e56af0faccdbc8d7f5ab3418a4ad71ff849f5))
+
 ### [0.3.2](https://github.com/stonith404/pingvin-share/compare/v0.3.1...v0.3.2) (2022-12-07)
 
 
