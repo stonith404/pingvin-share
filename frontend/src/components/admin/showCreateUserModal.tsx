@@ -50,7 +50,6 @@ const Body = ({
     <Stack>
       <form
         onSubmit={form.onSubmit(async (values) => {
-          console.log(values);
           userService
             .create(values)
             .then(() => {
