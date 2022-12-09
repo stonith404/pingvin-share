@@ -10,7 +10,7 @@ const SignUp = () => {
   const router = useRouter();
   if (user) {
     router.replace("/");
-  } else if (config.get("ALLOW_REGISTRATION") == "false") {
+  } else if (!config.get("ALLOW_REGISTRATION")) {
     router.replace("/auth/signIn");
   } else {
     return (
