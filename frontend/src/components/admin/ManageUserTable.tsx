@@ -18,8 +18,8 @@ const ManageUserTable = ({
   const modals = useModals();
 
   return (
-    <Box sx={{ display: "block", overflowX: "auto", whiteSpace: "nowrap" }}>
-      <Table verticalSpacing="sm" highlightOnHover>
+    <Box sx={{ display: "block", overflowX: "auto" }}>
+      <Table verticalSpacing="sm">
         <thead>
           <tr>
             <th>Username</th>
