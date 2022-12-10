@@ -40,14 +40,16 @@ const Body = ({ share }: { share: Share }) => {
         variant="filled"
         value={link}
         rightSection={
-          <ActionIcon
-            onClick={() => {
-              clipboard.copy(link);
-              toast.success("Your link was copied to the keyboard.");
-            }}
-          >
-            <TbCopy />
-          </ActionIcon>
+          window.isSecureContext && (
+            <ActionIcon
+              onClick={() => {
+                clipboard.copy(link);
+                toast.success("Your link was copied to the keyboard.");
+              }}
+            >
+              <TbCopy />
+            </ActionIcon>
+          )
         }
       />
       <Text

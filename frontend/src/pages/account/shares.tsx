@@ -17,6 +17,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { TbLink, TbTrash } from "react-icons/tb";
+import showShareLinkModal from "../../components/account/showShareLinkModal";
 import Meta from "../../components/Meta";
 import useUser from "../../hooks/user.hook";
 import shareService from "../../services/share.service";
@@ -83,12 +84,16 @@ const MyShares = () => {
                         variant="light"
                         size={25}
                         onClick={() => {
-                          clipboard.copy(
-                            `${window.location.origin}/share/${share.id}`
-                          );
-                          toast.success(
-                            "Your link was copied to the keyboard."
-                          );
+                          if (window.isSecureContext) {
+                            clipboard.copy(
+                              `${window.location.origin}/share/${share.id}`
+                            );
+                            toast.success(
+                              "Your link was copied to the keyboard."
+                            );
+                          } else {
+                            showShareLinkModal(modals, share.id);
+                          }
                         }}
                       >
                         <TbLink />
