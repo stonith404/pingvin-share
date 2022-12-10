@@ -2,6 +2,7 @@ import { Button, Group } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import axios from "axios";
 import { useRouter } from "next/router";
+import pLimit from "p-limit";
 import { useEffect, useState } from "react";
 import Meta from "../components/Meta";
 import Dropzone from "../components/upload/Dropzone";
@@ -12,10 +13,11 @@ import useConfig from "../hooks/config.hook";
 import useUser from "../hooks/user.hook";
 import shareService from "../services/share.service";
 import { FileUpload } from "../types/File.type";
-import { ShareSecurity } from "../types/share.type";
+import { Share, ShareSecurity } from "../types/share.type";
 import toast from "../utils/toast.util";
 
-let share: any;
+let share: Share;
+const promiseLimit = pLimit(3);
 
 const Upload = () => {
   const router = useRouter();
@@ -41,7 +43,8 @@ const Upload = () => {
         })
       );
       share = await shareService.create(id, expiration, recipients, security);
-      for (let i = 0; i < files.length; i++) {
+      const uploadPromises = files.map((file, i) => {
+        // Callback to indicate current upload progress
         const progressCallBack = (progress: number) => {
           setFiles((files) => {
             return files.map((file, callbackIndex) => {
@@ -54,11 +57,15 @@ const Upload = () => {
         };
 
         try {
-          await shareService.uploadFile(share.id, files[i], progressCallBack);
+          return promiseLimit(() =>
+            shareService.uploadFile(share.id, file, progressCallBack)
+          );
         } catch {
-          files[i].uploadingProgress = -1;
+          file.uploadingProgress = -1;
         }
-      }
+      });
+
+      await Promise.all(uploadPromises);
     } catch (e) {
       if (axios.isAxiosError(e)) {
         toast.error(e.response?.data?.message ?? "An unkown error occured.");
