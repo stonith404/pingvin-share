@@ -1,4 +1,4 @@
-import { Button, Stack, Text, Title } from "@mantine/core";
+import { Box, Button, Stack, Text, Title } from "@mantine/core";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import AdminConfigTable from "../../components/admin/AdminConfigTable";
@@ -28,7 +28,9 @@ const Setup = () => {
         <Logo height={80} width={80} />
         <Title order={2}>Welcome to Pingvin Share</Title>
         <Text>Let's customize Pingvin Share for you! </Text>
-        <AdminConfigTable />
+        <Box style={{ width: "100%" }}>
+          <AdminConfigTable />
+        </Box>
         <Button
           loading={isLoading}
           onClick={async () => {
