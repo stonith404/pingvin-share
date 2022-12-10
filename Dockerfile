@@ -48,5 +48,4 @@ COPY --from=backend-builder /opt/app/package.json ./
 
 WORKDIR /opt/app
 EXPOSE 3000
-EXPOSE 8080
 CMD node frontend/server.js & cd backend && npm run prod
