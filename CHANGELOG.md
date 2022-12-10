@@ -1,3 +1,12 @@
+### [0.3.4](https://github.com/stonith404/pingvin-share/compare/v0.3.3...v0.3.4) (2022-12-10)
+
+
+### Bug Fixes
+
+* show alternative to copy button if site is not using https ([7e877ce](https://github.com/stonith404/pingvin-share/commit/7e877ce9f4b82d61c9b238e17def9f4c29e7aeb8))
+* sign up page available when registration is disabled ([c8a4521](https://github.com/stonith404/pingvin-share/commit/c8a4521677280d6aba89d293a1fe0c38adf9f92c))
+* tables on mobile ([b1bfb09](https://github.com/stonith404/pingvin-share/commit/b1bfb09dfd5c90cc18847470a9ce1ce8397c1476))
+
 ### [0.3.3](https://github.com/stonith404/pingvin-share/compare/v0.3.2...v0.3.3) (2022-12-08)
 
 
