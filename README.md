@@ -23,10 +23,16 @@ Pingvin Share is self-hosted file sharing platform and an alternative for WeTran
 
 > Pleas note that Pingvin Share is in early stage and could include some bugs
 
+### Recommended installation
+
 1. Download the `docker-compose.yml` file
 2. Run `docker-compose up -d`
 
 The website is now listening available on `http://localhost:3000`, have fun with Pingvin Share 🐧!
+
+### Additional resources
+
+- [Synology NAS installation](https://mariushosting.com/how-to-install-pingvin-share-on-your-synology-nas/)
 
 ### Upgrade to a new version
 
