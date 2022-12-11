@@ -1,3 +1,20 @@
+### [0.3.5](https://github.com/stonith404/pingvin-share/compare/v0.3.4...v0.3.5) (2022-12-11)
+
+
+### Features
+
+* upload 3 files at same time ([d010a8a](https://github.com/stonith404/pingvin-share/commit/d010a8a2d366708b1bb5088e9c1e9f9378d3e023))
+
+
+### Bug Fixes
+
+* jobs never get executed ([05cbb7b](https://github.com/stonith404/pingvin-share/commit/05cbb7b27ef98a3a80dd9edc318f1dcc9a8bd442))
+* only create zip if more than one file is in the share ([3d1d4d0](https://github.com/stonith404/pingvin-share/commit/3d1d4d0fc7c0351724387c3721280c334ae94d98))
+* remove unnecessary port expose ([084e911](https://github.com/stonith404/pingvin-share/commit/084e911eed95eb22fea0bf185803ba32c3eda1a9))
+* setup wizard table doesn't take full width ([9798e26](https://github.com/stonith404/pingvin-share/commit/9798e26872064edc1049138cf73479b1354a43ed))
+* use node slim to fix arm builds ([797f893](https://github.com/stonith404/pingvin-share/commit/797f8938cac9cc3bb788f632d97eba5c49fe98a5))
+* zip doesn't contain file extension ([5b01108](https://github.com/stonith404/pingvin-share/commit/5b0110877745f1fcde4952737a93c07ef4a2a92d))
+
 ### [0.3.4](https://github.com/stonith404/pingvin-share/compare/v0.3.3...v0.3.4) (2022-12-10)
 
 
