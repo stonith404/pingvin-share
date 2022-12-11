@@ -79,7 +79,7 @@ export class FileController {
     const zip = this.fileService.getZip(shareId);
     res.set({
       "Content-Type": "application/zip",
-      "Content-Disposition": `attachment ; filename="pingvin-share-${shareId}"`,
+      "Content-Disposition": `attachment ; filename="pingvin-share-${shareId}.zip"`,
     });
 
     return new StreamableFile(zip);
