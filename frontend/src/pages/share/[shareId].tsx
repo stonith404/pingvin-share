@@ -17,7 +17,7 @@ export function getServerSideProps(context: GetServerSidePropsContext) {
 
 const Share = ({ shareId }: { shareId: string }) => {
   const modals = useModals();
-  const [fileList, setFileList] = useState<any[]>([]);
+  const [files, setFiles] = useState<any[]>([]);
 
   const getShareToken = async (password?: string) => {
     await shareService
@@ -41,7 +41,7 @@ const Share = ({ shareId }: { shareId: string }) => {
     shareService
       .get(shareId)
       .then((share) => {
-        setFileList(share.files);
+        setFiles(share.files);
       })
       .catch((e) => {
         const { error } = e.response.data;
@@ -77,14 +77,12 @@ const Share = ({ shareId }: { shareId: string }) => {
         title={`Share ${shareId}`}
         description="Look what I've shared with you."
       />
-      <Group position="right" mb="lg">
-        <DownloadAllButton shareId={shareId} />
-      </Group>
-      <FileList
-        files={fileList}
-        shareId={shareId}
-        isLoading={fileList.length == 0}
-      />
+      {files.length > 1 && (
+        <Group position="right" mb="lg">
+          <DownloadAllButton shareId={shareId} />
+        </Group>
+      )}
+      <FileList files={files} shareId={shareId} isLoading={files.length == 0} />
     </>
   );
 };

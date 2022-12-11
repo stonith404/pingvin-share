@@ -105,9 +105,10 @@ export class ShareService {
       );
 
     // Asynchronously create a zip of all files
-    this.createZip(id).then(() =>
-      this.prisma.share.update({ where: { id }, data: { isZipReady: true } })
-    );
+    if (share.files.length > 1)
+      this.createZip(id).then(() =>
+        this.prisma.share.update({ where: { id }, data: { isZipReady: true } })
+      );
 
     // Send email for each recepient
     for (const recepient of share.recipients) {
