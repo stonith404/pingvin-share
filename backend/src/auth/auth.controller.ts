@@ -54,4 +54,10 @@ export class AuthController {
     );
     return { accessToken };
   }
+
+  @Post("totp/enable")
+  @UseGuards(JwtGuard)
+    async enableTotp(@GetUser() user: User) {
+      return this.authService.enableTotp(user.id);
+    }
 }

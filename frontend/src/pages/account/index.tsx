@@ -18,6 +18,8 @@ import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
 import userService from "../../services/user.service";
 import toast from "../../utils/toast.util";
+import showEnableTotpModal from "../../components/account/showEnableTotpModal";
+
 
 const Account = () => {
   const user = useUser();
@@ -57,6 +59,14 @@ const Account = () => {
 
   return (
     <Container size="sm">
+        <button onClick={async () => {
+            // TODO: Add password field
+            const {totpSecret, qrCode} = await authService.enableOTP("password");
+            showEnableTotpModal(modals, {
+                qrCode: qrCode,
+                secret: totpSecret,
+            });
+        }}>Bruh</button>
       <Title order={3} mb="xs">
         My account
       </Title>

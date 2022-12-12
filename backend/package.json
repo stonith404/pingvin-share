@@ -35,9 +35,11 @@
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "qrcode": "^1.5.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.6.0",
+    "speakeasy": "^2.0.0",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {
@@ -51,7 +53,9 @@
     "@types/multer": "^1.4.7",
     "@types/node": "^18.11.10",
     "@types/nodemailer": "^6.4.6",
+    "@types/qrcode": "^1.5.0",
     "@types/passport-jwt": "^3.0.7",
+    "@types/speakeasy": "^2.0.7",
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
