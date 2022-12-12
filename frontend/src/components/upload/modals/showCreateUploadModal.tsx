@@ -12,6 +12,7 @@ import {
   Select,
   Stack,
   Text,
+  Textarea,
   TextInput,
   Title,
 } from "@mantine/core";
@@ -22,7 +23,7 @@ import { useState } from "react";
 import { TbAlertCircle } from "react-icons/tb";
 import * as yup from "yup";
 import shareService from "../../../services/share.service";
-import { ShareSecurity } from "../../../types/share.type";
+import { CreateShare } from "../../../types/share.type";
 import ExpirationPreview from "../ExpirationPreview";
 
 const showCreateUploadModal = (
@@ -32,12 +33,7 @@ const showCreateUploadModal = (
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
   },
-  uploadCallback: (
-    id: string,
-    expiration: string,
-    recipients: string[],
-    security: ShareSecurity
-  ) => void
+  uploadCallback: (createShare: CreateShare) => void
 ) => {
   return modals.openModal({
     title: <Title order={4}>Share</Title>,
@@ -54,12 +50,7 @@ const CreateUploadModalBody = ({
   uploadCallback,
   options,
 }: {
-  uploadCallback: (
-    id: string,
-    expiration: string,
-    recipients: string[],
-    security: ShareSecurity
-  ) => void;
+  uploadCallback: (createShare: CreateShare) => void;
   options: {
     isUserSignedIn: boolean;
     allowUnauthenticatedShares: boolean;
@@ -88,6 +79,7 @@ const CreateUploadModalBody = ({
       recipients: [] as string[],
       password: undefined,
       maxViews: undefined,
+      description: undefined,
       expiration_num: 1,
       expiration_unit: "-days",
       never_expires: false,
@@ -116,9 +108,15 @@ const CreateUploadModalBody = ({
             const expiration = form.values.never_expires
               ? "never"
               : form.values.expiration_num + form.values.expiration_unit;
-            uploadCallback(values.link, expiration, values.recipients, {
-              password: values.password,
-              maxViews: values.maxViews,
+            uploadCallback({
+              id: values.link,
+              expiration: expiration,
+              recipients: values.recipients,
+              description: values.description,
+              security: {
+                password: values.password,
+                maxViews: values.maxViews,
+              },
             });
             modals.closeAll();
           }
@@ -258,6 +256,18 @@ const CreateUploadModalBody = ({
                 </Accordion.Panel>
               </Accordion.Item>
             )}
+            <Accordion.Item value="description" sx={{ borderBottom: "none" }}>
+              <Accordion.Control>Description</Accordion.Control>
+              <Accordion.Panel>
+                <Stack align="stretch">
+                  <Textarea
+                    variant="filled"
+                    placeholder="Note for the recepients"
+                    {...form.getInputProps("description")}
+                  />
+                </Stack>
+              </Accordion.Panel>
+            </Accordion.Item>
             <Accordion.Item value="security" sx={{ borderBottom: "none" }}>
               <Accordion.Control>Security options</Accordion.Control>
               <Accordion.Panel>

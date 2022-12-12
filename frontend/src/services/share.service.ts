@@ -1,19 +1,22 @@
 import {
+  CreateShare,
   MyShare,
   Share,
   ShareMetaData,
-  ShareSecurity,
 } from "../types/share.type";
 import api from "./api.service";
 
-const create = async (
-  id: string,
-  expiration: string,
-  recipients: string[],
-  security?: ShareSecurity
-) => {
-  return (await api.post("shares", { id, expiration, recipients, security }))
-    .data;
+const create = async (share: CreateShare) => {
+  const { id, expiration, recipients, security, description } = share;
+  return (
+    await api.post("shares", {
+      id,
+      expiration,
+      recipients,
+      security,
+      description,
+    })
+  ).data;
 };
 
 const completeShare = async (id: string) => {

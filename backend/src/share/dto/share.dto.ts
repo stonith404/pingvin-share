@@ -17,6 +17,9 @@ export class ShareDTO {
   @Type(() => PublicUserDTO)
   creator: PublicUserDTO;
 
+  @Expose()
+  description: string;
+
   from(partial: Partial<ShareDTO>) {
     return plainToClass(ShareDTO, partial, { excludeExtraneousValues: true });
   }

@@ -9,35 +9,10 @@ const FileList = ({
   shareId,
   isLoading,
 }: {
-  files: any[];
+  files?: any[];
   shareId: string;
   isLoading: boolean;
 }) => {
-  const rows = files.map((file) => (
-    <tr key={file.name}>
-      <td>{file.name}</td>
-      <td>{byteStringToHumanSizeString(file.size)}</td>
-      <td>
-        {file.uploadingState ? (
-          file.uploadingState != "finished" ? (
-            <Loader size={22} />
-          ) : (
-            <TbCircleCheck color="green" size={22} />
-          )
-        ) : (
-          <ActionIcon
-            size={25}
-            onClick={async () => {
-              await shareService.downloadFile(shareId, file.id);
-            }}
-          >
-            <TbDownload />
-          </ActionIcon>
-        )}
-      </td>
-    </tr>
-  ));
-
   return (
     <Table>
       <thead>
@@ -47,7 +22,34 @@ const FileList = ({
           <th></th>
         </tr>
       </thead>
-      <tbody>{isLoading ? skeletonRows : rows}</tbody>
+      <tbody>
+        {isLoading
+          ? skeletonRows
+          : files!.map((file) => (
+              <tr key={file.name}>
+                <td>{file.name}</td>
+                <td>{byteStringToHumanSizeString(file.size)}</td>
+                <td>
+                  {file.uploadingState ? (
+                    file.uploadingState != "finished" ? (
+                      <Loader size={22} />
+                    ) : (
+                      <TbCircleCheck color="green" size={22} />
+                    )
+                  ) : (
+                    <ActionIcon
+                      size={25}
+                      onClick={async () => {
+                        await shareService.downloadFile(shareId, file.id);
+                      }}
+                    >
+                      <TbDownload />
+                    </ActionIcon>
+                  )}
+                </td>
+              </tr>
+            ))}
+      </tbody>
     </Table>
   );
 };
