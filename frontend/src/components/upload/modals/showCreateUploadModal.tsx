@@ -226,6 +226,18 @@ const CreateUploadModalBody = ({
             {ExpirationPreview({ form })}
           </Text>
           <Accordion>
+            <Accordion.Item value="description" sx={{ borderBottom: "none" }}>
+              <Accordion.Control>Description</Accordion.Control>
+              <Accordion.Panel>
+                <Stack align="stretch">
+                  <Textarea
+                    variant="filled"
+                    placeholder="Note for the recepients"
+                    {...form.getInputProps("description")}
+                  />
+                </Stack>
+              </Accordion.Panel>
+            </Accordion.Item>
             {options.enableEmailRecepients && (
               <Accordion.Item value="recipients" sx={{ borderBottom: "none" }}>
                 <Accordion.Control>Email recipients</Accordion.Control>
@@ -256,18 +268,7 @@ const CreateUploadModalBody = ({
                 </Accordion.Panel>
               </Accordion.Item>
             )}
-            <Accordion.Item value="description" sx={{ borderBottom: "none" }}>
-              <Accordion.Control>Description</Accordion.Control>
-              <Accordion.Panel>
-                <Stack align="stretch">
-                  <Textarea
-                    variant="filled"
-                    placeholder="Note for the recepients"
-                    {...form.getInputProps("description")}
-                  />
-                </Stack>
-              </Accordion.Panel>
-            </Accordion.Item>
+
             <Accordion.Item value="security" sx={{ borderBottom: "none" }}>
               <Accordion.Control>Security options</Accordion.Control>
               <Accordion.Panel>
