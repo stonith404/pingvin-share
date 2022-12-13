@@ -28,7 +28,7 @@ export class EmailService {
       from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
       to: recipientEmail,
       subject: "Files shared with you",
-      text: `Hey!\n${creator.username} shared some files with you. View or dowload the files with this link: ${shareUrl}.\nShared securely with Pingvin Share 🐧`,
+      text: `Hey!\n${creator.username} shared some files with you. View or dowload the files with this link: ${shareUrl}\nShared securely with Pingvin Share 🐧`,
     });
   }
 }
