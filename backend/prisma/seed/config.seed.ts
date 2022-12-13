@@ -53,6 +53,13 @@ const configVariables: Prisma.ConfigCreateInput[] = [
     locked: true,
   },
   {
+    key: "TOTP_SECRET",
+    description: "A 16 byte random string used to encrypt/decrypt TOTP secrets",
+    type: "string",
+    value: crypto.randomBytes(16).toString("base64"),
+    locked: true,
+  },
+  {
     key: "ENABLE_EMAIL_RECIPIENTS",
     description:
       "Whether to send emails to recipients. Only set this to true if you entered the host, port, email, user and password of your SMTP server.",

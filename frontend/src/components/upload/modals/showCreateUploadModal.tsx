@@ -237,7 +237,7 @@ const CreateUploadModalBody = ({
                     placeholder="Enter email recipients"
                     searchable
                     {...form.getInputProps("recipients")}
-                    creatable
+                    gcreatable
                     getCreateLabel={(query) => `+ ${query}`}
                     onCreate={(query) => {
                       if (!query.match(/^\S+@\S+\.\S+$/)) {

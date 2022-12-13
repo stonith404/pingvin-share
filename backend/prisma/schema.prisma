@@ -23,7 +23,6 @@ model User {
   totpEnabled Boolean @default(false)
   totpVerified Boolean @default(false)
   totpSecret String?
-  totpAuthUrl String?
 }
 
 model RefreshToken {
