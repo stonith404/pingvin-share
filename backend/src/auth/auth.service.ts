@@ -73,7 +73,7 @@ export class AuthService {
     }
 
     async updatePassword(user: User, oldPassword: string, newPassword: string) {
-        if (argon.verify(user.password, oldPassword))
+        if (!(await argon.verify(user.password, oldPassword)))
             throw new ForbiddenException("Invalid password");
 
         const hash = await argon.hash(newPassword);
