@@ -45,7 +45,6 @@ export class FileController {
   @Get(":fileId/download")
   @UseGuards(ShareSecurityGuard)
   async getFileDownloadUrl(
-    @Res({ passthrough: true }) res: Response,
     @Param("shareId") shareId: string,
     @Param("fileId") fileId: string
   ) {
@@ -57,15 +56,10 @@ export class FileController {
   @Get("zip/download")
   @UseGuards(ShareSecurityGuard)
   async getZipArchiveDownloadURL(
-    @Res({ passthrough: true }) res: Response,
     @Param("shareId") shareId: string,
     @Param("fileId") fileId: string
   ) {
     const url = this.fileService.getFileDownloadUrl(shareId, fileId);
-
-    res.set({
-      "Content-Type": "application/zip",
-    });
 
     return { url };
   }
