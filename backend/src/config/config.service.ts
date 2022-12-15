@@ -23,7 +23,8 @@ export class ConfigService {
 
     if (configVariable.type == "number") return parseInt(configVariable.value);
     if (configVariable.type == "boolean") return configVariable.value == "true";
-    if (configVariable.type == "string") return configVariable.value;
+    if (configVariable.type == "string" || configVariable.type == "text")
+      return configVariable.value;
   }
 
   async listForAdmin() {
@@ -46,10 +47,15 @@ export class ConfigService {
     if (!configVariable || configVariable.locked)
       throw new NotFoundException("Config variable not found");
 
-    if (typeof value != configVariable.type)
+    if (
+      typeof value != configVariable.type &&
+      typeof value == "string" &&
+      configVariable.type != "text"
+    ) {
       throw new BadRequestException(
         `Config variable must be of type ${configVariable.type}`
       );
+    }
 
     const updatedVariable = await this.prisma.config.update({
       where: { key },

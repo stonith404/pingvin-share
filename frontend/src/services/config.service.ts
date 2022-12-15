@@ -27,7 +27,7 @@ const get = (key: string, configVariables: Config[]): any => {
 
   if (configVariable.type == "number") return parseInt(configVariable.value);
   if (configVariable.type == "boolean") return configVariable.value == "true";
-  if (configVariable.type == "string") return configVariable.value;
+  if (configVariable.type == "string" || configVariable.type == "text") return configVariable.value;
 };
 
 const finishSetup = async (): Promise<AdminConfig[]> => {
