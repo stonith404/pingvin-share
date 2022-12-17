@@ -11,8 +11,25 @@ const signIn = async (emailOrUsername: string, password: string) => {
     ...emailOrUsernameBody,
     password,
   });
-  setCookies("access_token", response.data.accessToken);
-  setCookies("refresh_token", response.data.refreshToken);
+  return response;
+};
+
+const signInTotp = async (
+  emailOrUsername: string,
+  password: string,
+  totp: string,
+  loginToken: string
+) => {
+  const emailOrUsernameBody = emailOrUsername.includes("@")
+    ? { email: emailOrUsername }
+    : { username: emailOrUsername };
+
+  const response = await api.post("auth/signIn/totp", {
+    ...emailOrUsernameBody,
+    password,
+    totp,
+    loginToken,
+  });
   return response;
 };
 
@@ -99,6 +116,7 @@ const disableTOTP = async (totpCode: string, password: string) => {
 
 export default {
   signIn,
+  signInTotp,
   signUp,
   signOut,
   refreshAccessToken,

@@ -169,7 +169,7 @@ const Account = () => {
 
           <Tabs.Panel value="totp" pt="xs">
             {/* TODO: This is ugly, make it prettier */}
-            {/* If we have totp enabled, show differnt text */}
+            {/* If we have totp enabled, show different text */}
             {user.totpVerified ? (
               <>
                 <Text>Enter your current password to disable TOTP</Text>

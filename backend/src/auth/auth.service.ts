@@ -16,6 +16,7 @@ import { AuthSignInDTO } from "./dto/authSignIn.dto";
 import { authenticator, totp } from "otplib";
 import * as qrcode from "qrcode-svg";
 import * as crypto from "crypto";
+import { AuthSignInTotpDTO } from "./dto/authSignInTotp.dto";
 
 @Injectable()
 export class AuthService {
@@ -65,6 +66,68 @@ export class AuthService {
 
     if (!user || !(await argon.verify(user.password, dto.password)))
       throw new UnauthorizedException("Wrong email or password");
+
+    // Check if the user has TOTP enabled
+    if (user.totpVerified) {
+      const loginToken = await this.createLoginToken(user.id);
+
+      return { loginToken };
+    }
+
+    const accessToken = await this.createAccessToken(user);
+    const refreshToken = await this.createRefreshToken(user.id);
+
+    return { accessToken, refreshToken };
+  }
+
+  async signInTotp(dto: AuthSignInTotpDTO) {
+    if (!dto.email && !dto.username)
+      throw new BadRequestException("Email or username is required");
+
+    const user = await this.prisma.user.findFirst({
+      where: {
+        OR: [{ email: dto.email }, { username: dto.username }],
+      },
+    });
+
+    if (!user || !(await argon.verify(user.password, dto.password)))
+      throw new UnauthorizedException("Wrong email or password");
+
+    const token = await this.prisma.loginToken.findFirst({
+      where: {
+        token: dto.loginToken,
+      },
+    });
+
+    if (!token || token.userId != user.id || token.used)
+      throw new UnauthorizedException("Invalid login token");
+
+    if (token.expiresAt < new Date())
+      throw new UnauthorizedException("Login token expired");
+
+    // Check the TOTP code
+    const { totpSecret } = await this.prisma.user.findUnique({
+      where: { id: user.id },
+      select: { totpSecret: true },
+    });
+
+    if (!totpSecret) {
+      throw new BadRequestException("TOTP is not enabled");
+    }
+
+    const decryptedSecret = this.decryptTotpSecret(totpSecret, dto.password);
+
+    const expected = authenticator.generate(decryptedSecret);
+
+    if (dto.totp !== expected) {
+      throw new BadRequestException("Invalid code");
+    }
+
+    // Set the login token to used
+    await this.prisma.loginToken.update({
+      where: { token: token.token },
+      data: { used: true },
+    });
 
     const accessToken = await this.createAccessToken(user);
     const refreshToken = await this.createRefreshToken(user.id);
@@ -119,7 +182,17 @@ export class AuthService {
     return refreshToken;
   }
 
-  _encryptTotpSecret(totpSecret: string, password: string) {
+  async createLoginToken(userId: string) {
+    const loginToken = (
+      await this.prisma.loginToken.create({
+        data: { userId, expiresAt: moment().add(5, "minutes").toDate() },
+      })
+    ).token;
+
+    return loginToken;
+  }
+
+  encryptTotpSecret(totpSecret: string, password: string) {
     let iv = this.config.get("TOTP_SECRET");
     iv = Buffer.from(iv, "base64");
     const key = crypto
@@ -137,7 +210,7 @@ export class AuthService {
     return encrypted.toString("base64");
   }
 
-  _decryptTotpSecret(encryptedTotpSecret: string, password: string) {
+  decryptTotpSecret(encryptedTotpSecret: string, password: string) {
     let iv = this.config.get("TOTP_SECRET");
     iv = Buffer.from(iv, "base64");
     const key = crypto
@@ -170,7 +243,7 @@ export class AuthService {
 
     // TODO: Maybe make the issuer configurable with env vars?
     const secret = authenticator.generateSecret();
-    const encryptedSecret = this._encryptTotpSecret(secret, password);
+    const encryptedSecret = this.encryptTotpSecret(secret, password);
 
     const otpURL = totp.keyuri(
       user.username || user.email,
@@ -214,7 +287,7 @@ export class AuthService {
       throw new BadRequestException("TOTP is not in progress");
     }
 
-    const decryptedSecret = this._decryptTotpSecret(totpSecret, password);
+    const decryptedSecret = this.decryptTotpSecret(totpSecret, password);
 
     const expected = authenticator.generate(decryptedSecret);
 
@@ -245,7 +318,7 @@ export class AuthService {
       throw new BadRequestException("TOTP is not enabled");
     }
 
-    const decryptedSecret = this._decryptTotpSecret(totpSecret, password);
+    const decryptedSecret = this.decryptTotpSecret(totpSecret, password);
 
     const expected = authenticator.generate(decryptedSecret);
 

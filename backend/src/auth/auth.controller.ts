@@ -19,6 +19,7 @@ import { UpdatePasswordDTO } from "./dto/updatePassword.dto";
 import { EnableTotpDTO } from "./dto/enableTotp.dto";
 import { JwtGuard } from "./guard/jwt.guard";
 import { VerifyTotpDTO } from "./dto/verifyTotp.dto";
+import { AuthSignInTotpDTO } from "./dto/authSignInTotp.dto";
 
 @Controller("auth")
 export class AuthController {
@@ -40,6 +41,13 @@ export class AuthController {
   @HttpCode(200)
   signIn(@Body() dto: AuthSignInDTO) {
     return this.authService.signIn(dto);
+  }
+
+  @Throttle(10, 5 * 60)
+  @Post("signIn/totp")
+  @HttpCode(200)
+  signInTotp(@Body() dto: AuthSignInTotpDTO) {
+    return this.authService.signInTotp(dto);
   }
 
   @Patch("password")
