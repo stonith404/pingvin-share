@@ -54,7 +54,7 @@ const configVariables: Prisma.ConfigCreateInput[] = [
   },
   {
     key: "TOTP_SECRET",
-    description: "A 16 byte random string used to encrypt/decrypt TOTP secrets",
+    description: "A 16 byte random string used to generate TOTP secrets",
     type: "string",
     value: crypto.randomBytes(16).toString("base64"),
     locked: true,

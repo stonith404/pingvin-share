@@ -67,6 +67,7 @@ export class AuthService {
     if (!user || !(await argon.verify(user.password, dto.password)))
       throw new UnauthorizedException("Wrong email or password");
 
+    // TODO: Make all old loginTokens invalid when a new one is created
     // Check if the user has TOTP enabled
     if (user.totpVerified) {
       const loginToken = await this.createLoginToken(user.id);
@@ -274,6 +275,7 @@ export class AuthService {
     };
   }
 
+  // TODO: Maybe require a token to verify that the user who started enabling totp is the one who is verifying it?
   async verifyTotp(user: User, password: string, code: string) {
     if (!(await argon.verify(user.password, password)))
       throw new ForbiddenException("Invalid password");
