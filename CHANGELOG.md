@@ -1,3 +1,16 @@
+### [0.3.6](https://github.com/stonith404/pingvin-share/compare/v0.3.5...v0.3.6) (2022-12-13)
+
+
+### Features
+
+* add description field to share ([8728fa5](https://github.com/stonith404/pingvin-share/commit/8728fa5207524e9aee26d68eafe1b6fff367d749))
+
+
+### Bug Fixes
+
+* remove dot in email link ([9b0c08d](https://github.com/stonith404/pingvin-share/commit/9b0c08d0cdeeeef217ccba57f593fea9d8858371))
+* rerange accordion items ([844c47e](https://github.com/stonith404/pingvin-share/commit/844c47e1290fb0f7dedb41a18be59ed5ab83dabc))
+
 ### [0.3.5](https://github.com/stonith404/pingvin-share/compare/v0.3.4...v0.3.5) (2022-12-11)
 
 

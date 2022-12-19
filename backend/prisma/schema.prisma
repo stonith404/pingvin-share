@@ -55,6 +55,7 @@ model Share {
   isZipReady   Boolean  @default(false)
   views        Int      @default(0)
   expiration   DateTime
+  description  String?
 
   creatorId  String?
   creator    User?            @relation(fields: [creatorId], references: [id], onDelete: Cascade)

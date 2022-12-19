@@ -7,6 +7,7 @@ import {
   Space,
   Stack,
   Text,
+  Textarea,
   TextInput,
   Title,
 } from "@mantine/core";
@@ -45,6 +46,7 @@ const Body = ({
   const form = useForm({
     initialValues: {
       stringValue: configVariable.value,
+      textValue: configVariable.value,
       numberValue: parseInt(configVariable.value),
       booleanValue: configVariable.value,
     },
@@ -56,12 +58,16 @@ const Body = ({
       </Text>
       {configVariable.type == "string" &&
         (configVariable.obscured ? (
-          <PasswordInput label="Value" {...form.getInputProps("stringValue")} />
+          <PasswordInput {...form.getInputProps("stringValue")} />
         ) : (
-          <TextInput label="Value" {...form.getInputProps("stringValue")} />
+          <TextInput {...form.getInputProps("stringValue")} />
         ))}
+
+      {configVariable.type == "text" && (
+        <Textarea autosize {...form.getInputProps("textValue")} />
+      )}
       {configVariable.type == "number" && (
-        <NumberInput label="Value" {...form.getInputProps("numberValue")} />
+        <NumberInput {...form.getInputProps("numberValue")} />
       )}
       {configVariable.type == "boolean" && (
         <Select
@@ -78,6 +84,8 @@ const Body = ({
           const value =
             configVariable.type == "string"
               ? form.values.stringValue
+              : configVariable.type == "text"
+              ? form.values.textValue
               : configVariable.type == "number"
               ? form.values.numberValue
               : form.values.booleanValue == "true";

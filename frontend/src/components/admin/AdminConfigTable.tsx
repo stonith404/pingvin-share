@@ -73,9 +73,18 @@ const AdminConfigTable = () => {
                     </Text>
                   </td>
                   <td>
-                    {configVariable.obscured
-                      ? "•".repeat(configVariable.value.length)
-                      : configVariable.value}
+                    <Text
+                      style={{
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        maxWidth: "40ch",
+                      }}
+                    >
+                      {configVariable.obscured
+                        ? "•".repeat(configVariable.value.length)
+                        : configVariable.value}
+                    </Text>
                   </td>
                   <td>
                     <Group position="right">

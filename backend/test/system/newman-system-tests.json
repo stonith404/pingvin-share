@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "243b0832-3a6a-4389-bb71-4d988c0a86d9",
+		"_postman_id": "84a95987-2997-429a-aba6-d38289b0b76a",
 		"name": "Pingvin Share Testing",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "17822132"
@@ -431,7 +431,7 @@
 											"    const responseBody = pm.response.json();",
 											"    pm.expect(responseBody).to.have.property(\"id\")",
 											"    pm.expect(responseBody).to.have.property(\"expiration\")",
-											"    pm.expect(Object.keys(responseBody).length).be.equal(2)",
+											"    pm.expect(Object.keys(responseBody).length).be.equal(3)",
 											"});",
 											""
 										],
@@ -518,6 +518,60 @@
 							"response": []
 						},
 						{
+							"name": "Upload file 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\",  () => {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"pm.test(\"Response body correct\", () => {",
+											"    const responseBody = pm.response.json();",
+											"    pm.expect(responseBody).to.have.property(\"id\")",
+											"    pm.expect(Object.keys(responseBody).length).be.equal(1)",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "./test/system/test-file.txt"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_URL}}/shares/:shareId/files",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"shares",
+										":shareId",
+										"files"
+									],
+									"variable": [
+										{
+											"key": "shareId",
+											"value": "test-share"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Complete share",
 							"event": [
 								{
@@ -532,7 +586,7 @@
 											"    const responseBody = pm.response.json();",
 											"    pm.expect(responseBody).to.have.property(\"id\")",
 											"    pm.expect(responseBody).to.have.property(\"expiration\")",
-											"    pm.expect(Object.keys(responseBody).length).be.equal(2)",
+											"    pm.expect(Object.keys(responseBody).length).be.equal(3)",
 											"});",
 											""
 										],
@@ -942,9 +996,9 @@
 											"    pm.response.to.have.status(200);",
 											"});",
 											"",
-											"pm.test(\"Response contains 1 file\", () => {",
+											"pm.test(\"Response contains 2 files\", () => {",
 											"    const responseBody = pm.response.json();",
-											"    pm.expect(responseBody.files.length).be.equal(1)",
+											"    pm.expect(responseBody.files.length).be.equal(2)",
 											"});",
 											"",
 											"",

@@ -13,10 +13,10 @@ import useConfig from "../hooks/config.hook";
 import useUser from "../hooks/user.hook";
 import shareService from "../services/share.service";
 import { FileUpload } from "../types/File.type";
-import { Share, ShareSecurity } from "../types/share.type";
+import { CreateShare, Share } from "../types/share.type";
 import toast from "../utils/toast.util";
 
-let share: Share;
+let createdShare: Share;
 const promiseLimit = pLimit(3);
 
 const Upload = () => {
@@ -28,12 +28,7 @@ const Upload = () => {
   const [files, setFiles] = useState<FileUpload[]>([]);
   const [isUploading, setisUploading] = useState(false);
 
-  const uploadFiles = async (
-    id: string,
-    expiration: string,
-    recipients: string[],
-    security: ShareSecurity
-  ) => {
+  const uploadFiles = async (share: CreateShare) => {
     setisUploading(true);
     try {
       setFiles((files) =>
@@ -42,7 +37,8 @@ const Upload = () => {
           return file;
         })
       );
-      share = await shareService.create(id, expiration, recipients, security);
+      createdShare = await shareService.create(share);
+
       const uploadPromises = files.map((file, i) => {
         // Callback to indicate current upload progress
         const progressCallBack = (progress: number) => {
@@ -91,9 +87,9 @@ const Upload = () => {
         toast.error(`${fileErrorCount} file(s) failed to upload. Try again.`);
       } else {
         shareService
-          .completeShare(share.id)
+          .completeShare(createdShare.id)
           .then(() => {
-            showCompletedUploadModal(modals, share);
+            showCompletedUploadModal(modals, createdShare);
             setFiles([]);
           })
           .catch(() =>

@@ -4,7 +4,16 @@ export type Share = {
   id: string;
   files: any;
   creator: User;
+  description?: string;
   expiration: Date;
+};
+
+export type CreateShare = {
+  id: string;
+  description?: string;
+  recipients: string[];
+  expiration: string;
+  security: ShareSecurity;
 };
 
 export type ShareMetaData = {

@@ -1,4 +1,4 @@
-import { Group } from "@mantine/core";
+import { Box, Group, Text, Title } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { GetServerSidePropsContext } from "next";
 import { useEffect, useState } from "react";
@@ -8,6 +8,7 @@ import FileList from "../../components/share/FileList";
 import showEnterPasswordModal from "../../components/share/showEnterPasswordModal";
 import showErrorModal from "../../components/share/showErrorModal";
 import shareService from "../../services/share.service";
+import { Share as ShareType } from "../../types/share.type";
 
 export function getServerSideProps(context: GetServerSidePropsContext) {
   return {
@@ -17,7 +18,7 @@ export function getServerSideProps(context: GetServerSidePropsContext) {
 
 const Share = ({ shareId }: { shareId: string }) => {
   const modals = useModals();
-  const [files, setFiles] = useState<any[]>([]);
+  const [share, setShare] = useState<ShareType>();
 
   const getShareToken = async (password?: string) => {
     await shareService
@@ -41,7 +42,7 @@ const Share = ({ shareId }: { shareId: string }) => {
     shareService
       .get(shareId)
       .then((share) => {
-        setFiles(share.files);
+        setShare(share);
       })
       .catch((e) => {
         const { error } = e.response.data;
@@ -77,12 +78,16 @@ const Share = ({ shareId }: { shareId: string }) => {
         title={`Share ${shareId}`}
         description="Look what I've shared with you."
       />
-      {files.length > 1 && (
-        <Group position="right" mb="lg">
-          <DownloadAllButton shareId={shareId} />
-        </Group>
-      )}
-      <FileList files={files} shareId={shareId} isLoading={files.length == 0} />
+
+      <Group position="apart" mb="lg">
+        <Box style={{ maxWidth: "70%" }}>
+          <Title order={3}>{share?.id}</Title>
+          <Text size="sm">{share?.description}</Text>
+        </Box>
+        {share?.files.length > 1 && <DownloadAllButton shareId={shareId} />}
+      </Group>
+
+      <FileList files={share?.files} shareId={shareId} isLoading={!share} />
     </>
   );
 };
