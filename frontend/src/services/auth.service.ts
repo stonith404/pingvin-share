@@ -66,52 +66,27 @@ const updatePassword = async (oldPassword: string, password: string) => {
 };
 
 const enableTOTP = async (password: string) => {
-  try {
-    let { data } = await api.post("/auth/totp/enable", { password });
-    console.log(data);
+  const { data } = await api.post("/auth/totp/enable", { password });
 
-    if (!data) {
-      return false;
-    }
-
-    return {
-      totpAuthUrl: data.totpAuthUrl,
-      totpSecret: data.totpSecret,
-      qrCode: data.qrCode,
-    };
-  } catch (e) {
-    return false;
-  }
+  return {
+    totpAuthUrl: data.totpAuthUrl,
+    totpSecret: data.totpSecret,
+    qrCode: data.qrCode,
+  };
 };
 
 const verifyTOTP = async (totpCode: string, password: string) => {
-  try {
-    let { data } = await api.post("/auth/totp/verify", {
-      code: totpCode,
-      password,
-    });
-    if (data) {
-      return true;
-    }
-    return false;
-  } catch (e) {
-    return false;
-  }
+  await api.post("/auth/totp/verify", {
+    code: totpCode,
+    password,
+  });
 };
 
 const disableTOTP = async (totpCode: string, password: string) => {
-  try {
-    let { data } = await api.post("/auth/totp/disable", {
-      code: totpCode,
-      password,
-    });
-    if (data) {
-      return true;
-    }
-    return false;
-  } catch (e) {
-    return false;
-  }
+  await api.post("/auth/totp/disable", {
+    code: totpCode,
+    password,
+  });
 };
 
 export default {

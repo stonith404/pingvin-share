@@ -14,10 +14,8 @@ import {
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
-import { showNotification } from "@mantine/notifications";
 import { Icon2fa, IconKey } from "@tabler/icons";
 import { useRouter } from "next/router";
-import { TbCheck } from "react-icons/tb";
 import * as yup from "yup";
 import showEnableTotpModal from "../../components/account/showEnableTotpModal";
 import useUser from "../../hooks/user.hook";
@@ -176,31 +174,16 @@ const Account = () => {
               <>
                 <Text>Enter your current password to disable TOTP</Text>
                 <form
-                  onSubmit={disableTotpForm.onSubmit(async (values) => {
-                    const result = await authService.disableTOTP(
-                      values.code,
-                      values.password
-                    );
-                    if (!result) {
-                      showNotification({
-                        icon: <TbCheck />,
-                        color: "red",
-                        radius: "md",
-                        title: "Error",
-                        message: "Invalid password or code",
-                      });
-                    } else {
-                      showNotification({
-                        icon: <TbCheck />,
-                        color: "green",
-                        radius: "md",
-                        title: "Success",
-                        message: "Successfully disabled TOTP",
-                      });
-                      values.password = "";
-                      values.code = "";
-                      refreshUser();
-                    }
+                  onSubmit={disableTotpForm.onSubmit((values) => {
+                    authService
+                      .disableTOTP(values.code, values.password)
+                      .then(() => {
+                        toast.success("Successfully disabled TOTP");
+                        values.password = "";
+                        values.code = "";
+                        refreshUser();
+                      })
+                      .catch(toast.axiosError);
                   })}
                 >
                   <Stack>
@@ -228,26 +211,18 @@ const Account = () => {
               <>
                 <Text>Enter your current password to start enabling TOTP</Text>
                 <form
-                  onSubmit={enableTotpForm.onSubmit(async (values) => {
-                    const result = await authService.enableTOTP(
-                      values.password
-                    );
-                    if (!result) {
-                      showNotification({
-                        icon: <TbCheck />,
-                        color: "red",
-                        radius: "md",
-                        title: "Error",
-                        message: "Invalid password",
-                      });
-                    } else {
-                      showEnableTotpModal(modals, refreshUser, {
-                        qrCode: result.qrCode,
-                        secret: result.totpSecret,
-                        password: values.password,
-                      });
-                      values.password = "";
-                    }
+                  onSubmit={enableTotpForm.onSubmit((values) => {
+                    authService
+                      .enableTOTP(values.password)
+                      .then((result) => {
+                        showEnableTotpModal(modals, refreshUser, {
+                          qrCode: result.qrCode,
+                          secret: result.totpSecret,
+                          password: values.password,
+                        });
+                        values.password = "";
+                      })
+                      .catch(toast.axiosError);
                   })}
                 >
                   <Stack>

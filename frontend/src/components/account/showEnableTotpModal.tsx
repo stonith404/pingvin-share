@@ -13,11 +13,10 @@ import {
 import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
-import { showNotification } from "@mantine/notifications";
-import { TbCheck } from "react-icons/tb";
 import * as yup from "yup";
 import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
+import toast from "../../utils/toast.util";
 
 const showEnableTotpModal = (
   modals: ModalsContextProps,
@@ -83,13 +82,7 @@ const CreateEnableTotpModal = ({
             <Button
               onClick={() => {
                 navigator.clipboard.writeText(options.secret);
-                showNotification({
-                  icon: <TbCheck />,
-                  color: "green",
-                  radius: "md",
-                  title: "Success",
-                  message: "Copied to clipboard",
-                });
+                toast.success("Copied to clipboard");
               }}
             >
               {options.secret}
@@ -102,30 +95,15 @@ const CreateEnableTotpModal = ({
           <Text>Step 2: Validate your code</Text>
 
           <form
-            onSubmit={form.onSubmit(async (values) => {
-              const success = await authService.verifyTOTP(
-                values.code,
-                options.password
-              );
-              if (!success) {
-                showNotification({
-                  icon: <TbCheck />,
-                  color: "red",
-                  radius: "md",
-                  title: "Error",
-                  message: "Invalid code",
-                });
-              } else {
-                showNotification({
-                  icon: <TbCheck />,
-                  color: "green",
-                  radius: "md",
-                  title: "Success",
-                  message: "Successfully enabled TOTP",
-                });
-                modals.closeAll();
-                refreshUser();
-              }
+            onSubmit={form.onSubmit((values) => {
+              authService
+                .verifyTOTP(values.code, options.password)
+                .then(() => {
+                  toast.success("Successfully enabled TOTP");
+                  modals.closeAll();
+                  refreshUser();
+                })
+                .catch(toast.axiosError);
             })}
           >
             <Grid align="flex-end">
