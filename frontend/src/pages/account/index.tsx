@@ -7,26 +7,26 @@ import {
   Paper,
   PasswordInput,
   Stack,
+  Tabs,
   Text,
   TextInput,
   Title,
-  Tabs,
 } from "@mantine/core";
-import { Icon2fa, IconKey } from "@tabler/icons";
 import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
+import { showNotification } from "@mantine/notifications";
+import { Icon2fa, IconKey } from "@tabler/icons";
 import { useRouter } from "next/router";
+import { TbCheck } from "react-icons/tb";
 import * as yup from "yup";
+import showEnableTotpModal from "../../components/account/showEnableTotpModal";
 import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
 import userService from "../../services/user.service";
 import toast from "../../utils/toast.util";
-import showEnableTotpModal from "../../components/account/showEnableTotpModal";
-import { showNotification } from "@mantine/notifications";
-import { TbCheck } from "react-icons/tb";
 
 const Account = () => {
-  const user = useUser();
+  const { user, setUser } = useUser();
   const modals = useModals();
   const router = useRouter();
 
@@ -83,6 +83,8 @@ const Account = () => {
       })
     ),
   });
+
+  const refreshUser = async () => setUser(await userService.getCurrentUser());
 
   if (!user) {
     router.push("/");
@@ -197,8 +199,7 @@ const Account = () => {
                       });
                       values.password = "";
                       values.code = "";
-                      // TODO: Update the form without reloading the page
-                      window.location.reload();
+                      refreshUser();
                     }
                   })}
                 >
@@ -240,7 +241,7 @@ const Account = () => {
                         message: "Invalid password",
                       });
                     } else {
-                      showEnableTotpModal(modals, {
+                      showEnableTotpModal(modals, refreshUser, {
                         qrCode: result.qrCode,
                         secret: result.totpSecret,
                         password: values.password,

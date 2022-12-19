@@ -4,7 +4,7 @@ import Meta from "../../components/Meta";
 import useUser from "../../hooks/user.hook";
 
 const SignIn = () => {
-  const user = useUser();
+  const { user } = useUser();
   const router = useRouter();
   if (user) {
     router.replace("/");

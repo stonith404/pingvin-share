@@ -27,4 +27,9 @@ export type UpdateCurrentUser = {
 
 export type CurrentUser = User & {};
 
+export type UserHook = {
+  user: CurrentUser | null;
+  setUser: (user: CurrentUser | null) => void;
+};
+
 export default User;

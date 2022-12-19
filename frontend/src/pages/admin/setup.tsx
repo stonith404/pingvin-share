@@ -10,7 +10,7 @@ import configService from "../../services/config.service";
 const Setup = () => {
   const router = useRouter();
   const config = useConfig();
-  const user = useUser();
+  const { user } = useUser();
 
   const [isLoading, setIsLoading] = useState(false);
 

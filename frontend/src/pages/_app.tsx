@@ -73,7 +73,7 @@ function App({ Component, pageProps }: AppProps) {
               <LoadingOverlay visible overlayOpacity={1} />
             ) : (
               <ConfigContext.Provider value={configVariables}>
-                <UserContext.Provider value={user}>
+                <UserContext.Provider value={{ user, setUser }}>
                   <LoadingOverlay visible={isLoading} overlayOpacity={1} />
                   <Header />
                   <Container>

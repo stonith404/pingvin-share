@@ -70,7 +70,7 @@ const useStyles = createStyles((theme) => ({
 
 export default function Home() {
   const config = useConfig();
-  const user = useUser();
+  const { user } = useUser();
 
   const { classes } = useStyles();
   const router = useRouter();

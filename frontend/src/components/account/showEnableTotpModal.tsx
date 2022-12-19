@@ -2,24 +2,26 @@ import {
   Button,
   Center,
   Col,
-  Image,
-  Tooltip,
   Grid,
+  Image,
   Stack,
-  Title,
   Text,
   TextInput,
+  Title,
+  Tooltip,
 } from "@mantine/core";
-import { showNotification } from "@mantine/notifications";
 import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
+import { showNotification } from "@mantine/notifications";
 import { TbCheck } from "react-icons/tb";
 import * as yup from "yup";
+import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
 
 const showEnableTotpModal = (
   modals: ModalsContextProps,
+  refreshUser: () => {},
   options: {
     qrCode: string;
     secret: string;
@@ -28,20 +30,27 @@ const showEnableTotpModal = (
 ) => {
   return modals.openModal({
     title: <Title order={4}>Enable TOTP</Title>,
-    children: <CreateEnableTotpModal options={options} />,
+    children: (
+      <CreateEnableTotpModal options={options} refreshUser={refreshUser} />
+    ),
   });
 };
 
 const CreateEnableTotpModal = ({
   options,
+  refreshUser,
 }: {
   options: {
     qrCode: string;
     secret: string;
     password: string;
   };
+  refreshUser: () => {};
 }) => {
   const modals = useModals();
+  const user = useUser();
+
+  console.log(user.user);
 
   const validationSchema = yup.object().shape({
     code: yup
@@ -115,8 +124,7 @@ const CreateEnableTotpModal = ({
                   message: "Successfully enabled TOTP",
                 });
                 modals.closeAll();
-                // TODO: Do this without refreshing the page
-                window.location.reload();
+                refreshUser();
               }
             })}
           >

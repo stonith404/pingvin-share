@@ -107,7 +107,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const NavBar = () => {
-  const user = useUser();
+  const { user } = useUser();
   const config = useConfig();
 
   const [opened, toggleOpened] = useDisclosure(false);
