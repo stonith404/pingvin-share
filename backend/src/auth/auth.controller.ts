@@ -14,12 +14,12 @@ import { AuthService } from "./auth.service";
 import { GetUser } from "./decorator/getUser.decorator";
 import { AuthRegisterDTO } from "./dto/authRegister.dto";
 import { AuthSignInDTO } from "./dto/authSignIn.dto";
+import { AuthSignInTotpDTO } from "./dto/authSignInTotp.dto";
+import { EnableTotpDTO } from "./dto/enableTotp.dto";
 import { RefreshAccessTokenDTO } from "./dto/refreshAccessToken.dto";
 import { UpdatePasswordDTO } from "./dto/updatePassword.dto";
-import { EnableTotpDTO } from "./dto/enableTotp.dto";
-import { JwtGuard } from "./guard/jwt.guard";
 import { VerifyTotpDTO } from "./dto/verifyTotp.dto";
-import { AuthSignInTotpDTO } from "./dto/authSignInTotp.dto";
+import { JwtGuard } from "./guard/jwt.guard";
 
 @Controller("auth")
 export class AuthController {
@@ -84,10 +84,4 @@ export class AuthController {
     // Note: We use VerifyTotpDTO here because it has both fields we need: password and totp code
     return this.authService.disableTotp(user, body.password, body.code);
   }
-
-  // @Post("totp/enable")
-  // @UseGuards(JwtGuard)
-  // async enableTotp(@GetUser() user: User, @Body() body: EnableTotpDTO) {
-  //     return this.authService.enableTotp(user, body.code);
-  // }
 }
