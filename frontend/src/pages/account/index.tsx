@@ -13,8 +13,8 @@ import {
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
-import { Icon2fa } from "@tabler/icons";
 import { useRouter } from "next/router";
+import { Tb2Fa } from "react-icons/tb";
 import * as yup from "yup";
 import showEnableTotpModal from "../../components/account/showEnableTotpModal";
 import useUser from "../../hooks/user.hook";
@@ -158,7 +158,7 @@ const Account = () => {
 
         <Tabs defaultValue="totp">
           <Tabs.List>
-            <Tabs.Tab value="totp" icon={<Icon2fa size={14} />}>
+            <Tabs.Tab value="totp" icon={<Tb2Fa size={14} />}>
               TOTP
             </Tabs.Tab>
           </Tabs.List>
