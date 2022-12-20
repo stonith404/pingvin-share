@@ -1,4 +1,4 @@
-import { getCookie, setCookies } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 import * as jose from "jose";
 import api from "./api.service";
 
@@ -38,8 +38,8 @@ const signUp = async (email: string, username: string, password: string) => {
 };
 
 const signOut = () => {
-  setCookies("access_token", null);
-  setCookies("refresh_token", null);
+  setCookie("access_token", null);
+  setCookie("refresh_token", null);
   window.location.reload();
 };
 
@@ -54,7 +54,7 @@ const refreshAccessToken = async () => {
       const refreshToken = getCookie("refresh_token");
 
       const response = await api.post("auth/token", { refreshToken });
-      setCookies("access_token", response.data.accessToken);
+      setCookie("access_token", response.data.accessToken);
     }
   } catch {
     console.info("Refresh token invalid or expired");

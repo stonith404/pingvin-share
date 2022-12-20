@@ -2,7 +2,6 @@ import {
   Anchor,
   Button,
   Container,
-  NumberInput,
   Paper,
   PasswordInput,
   Text,
@@ -10,15 +9,15 @@ import {
   Title,
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
+import { showNotification } from "@mantine/notifications";
+import { setCookie } from "cookies-next";
 import Link from "next/link";
+import React from "react";
+import { TbInfoCircle } from "react-icons/tb";
 import * as yup from "yup";
 import useConfig from "../../hooks/config.hook";
 import authService from "../../services/auth.service";
 import toast from "../../utils/toast.util";
-import { setCookies } from "cookies-next";
-import React from "react";
-import { showNotification } from "@mantine/notifications";
-import { TbCheck, TbInfoCircle } from "react-icons/tb";
 
 const SignInForm = () => {
   const config = useConfig();
@@ -60,8 +59,8 @@ const SignInForm = () => {
           });
           setLoginToken(response.data["loginToken"]);
         } else {
-          setCookies("access_token", response.data.accessToken);
-          setCookies("refresh_token", response.data.refreshToken);
+          setCookie("access_token", response.data.accessToken);
+          setCookie("refresh_token", response.data.refreshToken);
           window.location.replace("/");
         }
       })
@@ -72,8 +71,8 @@ const SignInForm = () => {
     authService
       .signInTotp(email, password, totp, loginToken)
       .then((response) => {
-        setCookies("access_token", response.data.accessToken);
-        setCookies("refresh_token", response.data.refreshToken);
+        setCookie("access_token", response.data.accessToken);
+        setCookie("refresh_token", response.data.refreshToken);
         window.location.replace("/");
       })
       .catch((error) => {
