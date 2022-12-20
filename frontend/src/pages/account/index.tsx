@@ -1,5 +1,4 @@
 import {
-  Anchor,
   Button,
   Center,
   Container,
@@ -14,7 +13,7 @@ import {
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
-import { Icon2fa, IconKey } from "@tabler/icons";
+import { Icon2fa } from "@tabler/icons";
 import { useRouter } from "next/router";
 import * as yup from "yup";
 import showEnableTotpModal from "../../components/account/showEnableTotpModal";
@@ -37,7 +36,7 @@ const Account = () => {
       yup.object().shape({
         email: yup.string().email(),
         username: yup.string().min(3),
-      }),
+      })
     ),
   });
 
@@ -50,7 +49,7 @@ const Account = () => {
       yup.object().shape({
         oldPassword: yup.string().min(8),
         password: yup.string().min(8),
-      }),
+      })
     ),
   });
 
@@ -61,7 +60,7 @@ const Account = () => {
     validate: yupResolver(
       yup.object().shape({
         password: yup.string().min(8),
-      }),
+      })
     ),
   });
 
@@ -78,7 +77,7 @@ const Account = () => {
           .min(6)
           .max(6)
           .matches(/^[0-9]+$/, { message: "Code must be a number" }),
-      }),
+      })
     ),
   });
 
@@ -167,77 +166,73 @@ const Account = () => {
           <Tabs.Panel value="totp" pt="xs">
             {/* TODO: This is ugly, make it prettier */}
             {/* If we have totp enabled, show different text */}
-            {user.totpVerified
-              ? (
-                <>
-                  <Text>Enter your current password to disable TOTP</Text>
-                  <form
-                    onSubmit={disableTotpForm.onSubmit((values) => {
-                      authService
-                        .disableTOTP(values.code, values.password)
-                        .then(() => {
-                          toast.success("Successfully disabled TOTP");
-                          values.password = "";
-                          values.code = "";
-                          refreshUser();
-                        })
-                        .catch(toast.axiosError);
-                    })}
-                  >
-                    <Stack>
-                      <PasswordInput
-                        label="Password"
-                        {...disableTotpForm.getInputProps("password")}
-                      />
+            {user.totpVerified ? (
+              <>
+                <form
+                  onSubmit={disableTotpForm.onSubmit((values) => {
+                    authService
+                      .disableTOTP(values.code, values.password)
+                      .then(() => {
+                        toast.success("Successfully disabled TOTP");
+                        values.password = "";
+                        values.code = "";
+                        refreshUser();
+                      })
+                      .catch(toast.axiosError);
+                  })}
+                >
+                  <Stack>
+                    <PasswordInput
+                      description="Enter your current password to disable TOTP"
+                      label="Password"
+                      {...disableTotpForm.getInputProps("password")}
+                    />
 
-                      <TextInput
-                        variant="filled"
-                        label="Code"
-                        placeholder="******"
-                        {...disableTotpForm.getInputProps("code")}
-                      />
+                    <TextInput
+                      variant="filled"
+                      label="Code"
+                      placeholder="******"
+                      {...disableTotpForm.getInputProps("code")}
+                    />
 
-                      <Group position="right">
-                        <Button color="red" type="submit">
-                          Disable
-                        </Button>
-                      </Group>
-                    </Stack>
-                  </form>
-                </>
-              )
-              : (
-                <>
-                  <Text>
-                    Enter your current password to start enabling TOTP
-                  </Text>
-                  <form
-                    onSubmit={enableTotpForm.onSubmit((values) => {
-                      authService
-                        .enableTOTP(values.password)
-                        .then((result) => {
-                          showEnableTotpModal(modals, refreshUser, {
-                            qrCode: result.qrCode,
-                            secret: result.totpSecret,
-                            password: values.password,
-                          });
-                          values.password = "";
-                        })
-                        .catch(toast.axiosError);
-                    })}
-                  >
-                    <Stack>
-                      <PasswordInput
-                        label="Password"
-                        {...enableTotpForm.getInputProps("password")}
-                      />
-                      <Group position="right">
-                        <Button type="submit">Start</Button>
-                      </Group>
-                    </Stack>
-                  </form>
-                </>
-              )}
+                    <Group position="right">
+                      <Button color="red" type="submit">
+                        Disable
+                      </Button>
+                    </Group>
+                  </Stack>
+                </form>
+              </>
+            ) : (
+              <>
+                <form
+                  onSubmit={enableTotpForm.onSubmit((values) => {
+                    authService
+                      .enableTOTP(values.password)
+                      .then((result) => {
+                        showEnableTotpModal(modals, refreshUser, {
+                          qrCode: result.qrCode,
+                          secret: result.totpSecret,
+                          password: values.password,
+                        });
+                        values.password = "";
+                      })
+                      .catch(toast.axiosError);
+                  })}
+                >
+                  <Stack>
+                    <PasswordInput
+                      label="Password"
+                      description="Enter your current password to start enabling TOTP"
+                      {...enableTotpForm.getInputProps("password")}
+                    />
+                    <Group position="right">
+                      <Button type="submit">Start</Button>
+                    </Group>
+                  </Stack>
+                </form>
+              </>
+            )}
           </Tabs.Panel>
         </Tabs>
       </Paper>
@@ -263,7 +258,8 @@ const Account = () => {
                   await userService.removeCurrentUser();
                   window.location.reload();
                 },
-              })}
+              })
+            }
           >
             Delete Account
           </Button>
