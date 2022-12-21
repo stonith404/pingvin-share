@@ -19,6 +19,11 @@ model User {
 
   shares        Share[]
   refreshTokens RefreshToken[]
+  loginTokens   LoginToken[]
+
+  totpEnabled  Boolean @default(false)
+  totpVerified Boolean @default(false)
+  totpSecret   String?
 }
 
 model RefreshToken {
@@ -29,6 +34,17 @@ model RefreshToken {
 
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model LoginToken {
+  token     String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  expiresAt DateTime
+
+  userId String
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  used   Boolean @default(false)
 }
 
 model Share {

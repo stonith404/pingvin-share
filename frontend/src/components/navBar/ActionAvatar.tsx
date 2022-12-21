@@ -5,7 +5,7 @@ import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
 
 const ActionAvatar = () => {
-  const user = useUser();
+  const { user } = useUser();
 
   return (
     <Menu position="bottom-start" withinPortal>

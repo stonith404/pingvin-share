@@ -28,7 +28,7 @@ const MyShares = () => {
   const modals = useModals();
   const clipboard = useClipboard();
   const router = useRouter();
-  const user = useUser();
+  const { user } = useUser();
 
   const [shares, setShares] = useState<MyShare[]>();
 

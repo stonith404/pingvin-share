@@ -22,6 +22,9 @@ export class UserDTO {
   @Expose()
   isAdmin: boolean;
 
+  @Expose()
+  totpVerified: boolean;
+
   from(partial: Partial<UserDTO>) {
     return plainToClass(UserDTO, partial, { excludeExtraneousValues: true });
   }
