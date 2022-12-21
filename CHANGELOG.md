@@ -1,3 +1,11 @@
+## [0.4.0](https://github.com/stonith404/pingvin-share/compare/v0.3.6...v0.4.0) (2022-12-21)
+
+
+### Features
+
+* custom email message ([0616a68](https://github.com/stonith404/pingvin-share/commit/0616a68bd2e0c9cb559ebdf294e353dd3f69c9a5))
+* TOTP (two-factor) Authentication ([#55](https://github.com/stonith404/pingvin-share/issues/55)) ([16480f6](https://github.com/stonith404/pingvin-share/commit/16480f6e9572011fadeb981a388b92cb646fa6d9))
+
 ### [0.3.6](https://github.com/stonith404/pingvin-share/compare/v0.3.5...v0.3.6) (2022-12-13)
 
 
