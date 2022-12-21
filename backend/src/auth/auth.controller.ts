@@ -14,8 +14,11 @@ import { AuthService } from "./auth.service";
 import { GetUser } from "./decorator/getUser.decorator";
 import { AuthRegisterDTO } from "./dto/authRegister.dto";
 import { AuthSignInDTO } from "./dto/authSignIn.dto";
+import { AuthSignInTotpDTO } from "./dto/authSignInTotp.dto";
+import { EnableTotpDTO } from "./dto/enableTotp.dto";
 import { RefreshAccessTokenDTO } from "./dto/refreshAccessToken.dto";
 import { UpdatePasswordDTO } from "./dto/updatePassword.dto";
+import { VerifyTotpDTO } from "./dto/verifyTotp.dto";
 import { JwtGuard } from "./guard/jwt.guard";
 
 @Controller("auth")
@@ -40,6 +43,13 @@ export class AuthController {
     return this.authService.signIn(dto);
   }
 
+  @Throttle(10, 5 * 60)
+  @Post("signIn/totp")
+  @HttpCode(200)
+  signInTotp(@Body() dto: AuthSignInTotpDTO) {
+    return this.authService.signInTotp(dto);
+  }
+
   @Patch("password")
   @UseGuards(JwtGuard)
   async updatePassword(@GetUser() user: User, @Body() dto: UpdatePasswordDTO) {
@@ -53,5 +63,25 @@ export class AuthController {
       body.refreshToken
     );
     return { accessToken };
+  }
+
+  // TODO: Implement recovery codes to disable 2FA just in case someone gets locked out
+  @Post("totp/enable")
+  @UseGuards(JwtGuard)
+  async enableTotp(@GetUser() user: User, @Body() body: EnableTotpDTO) {
+    return this.authService.enableTotp(user, body.password);
+  }
+
+  @Post("totp/verify")
+  @UseGuards(JwtGuard)
+  async verifyTotp(@GetUser() user: User, @Body() body: VerifyTotpDTO) {
+    return this.authService.verifyTotp(user, body.password, body.code);
+  }
+
+  @Post("totp/disable")
+  @UseGuards(JwtGuard)
+  async disableTotp(@GetUser() user: User, @Body() body: VerifyTotpDTO) {
+    // Note: We use VerifyTotpDTO here because it has both fields we need: password and totp code
+    return this.authService.disableTotp(user, body.password, body.code);
   }
 }

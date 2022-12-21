@@ -1,7 +1,10 @@
 import { createContext, useContext } from "react";
-import { CurrentUser } from "../types/user.type";
+import { UserHook } from "../types/user.type";
 
-export const UserContext = createContext<CurrentUser | null>(null);
+export const UserContext = createContext<UserHook>({
+  user: null,
+  setUser: () => {},
+});
 
 const useUser = () => {
   return useContext(UserContext);

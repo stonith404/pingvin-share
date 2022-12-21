@@ -23,7 +23,7 @@ const Upload = () => {
   const router = useRouter();
   const modals = useModals();
 
-  const user = useUser();
+  const { user } = useUser();
   const config = useConfig();
   const [files, setFiles] = useState<FileUpload[]>([]);
   const [isUploading, setisUploading] = useState(false);

@@ -3,6 +3,7 @@ type User = {
   username: string;
   email: string;
   isAdmin: boolean;
+  totpVerified: boolean;
 };
 
 export type CreateUser = {
@@ -25,5 +26,10 @@ export type UpdateCurrentUser = {
 };
 
 export type CurrentUser = User & {};
+
+export type UserHook = {
+  user: CurrentUser | null;
+  setUser: (user: CurrentUser | null) => void;
+};
 
 export default User;
