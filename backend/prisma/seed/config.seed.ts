@@ -69,9 +69,17 @@ const configVariables: Prisma.ConfigCreateInput[] = [
   },
   {
     key: "EMAIL_MESSAGE",
-    description: "Message which gets sent to the recipients. {creator} and {shareUrl} will be replaced with the creator's name and the share URL.",
+    description:
+      "Message which gets sent to the recipients. {creator} and {shareUrl} will be replaced with the creator's name and the share URL.",
     type: "text",
-    value: "Hey!\n{creator} shared some files with you. View or download the files with this link: {shareUrl}\nShared securely with Pingvin Share 🐧",
+    value:
+      "Hey!\n{creator} shared some files with you. View or download the files with this link: {shareUrl}\nShared securely with Pingvin Share 🐧",
+  },
+  {
+    key: "EMAIL_SUBJECT",
+    description: "Subject of the email which gets sent to the recipients.",
+    type: "string",
+    value: "Files shared with you",
   },
   {
     key: "SMTP_HOST",

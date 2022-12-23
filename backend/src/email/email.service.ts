@@ -27,7 +27,7 @@ export class EmailService {
     await transporter.sendMail({
       from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
       to: recipientEmail,
-      subject: "Files shared with you",
+      subject: this.config.get("EMAIL_SUBJECT"),
       text: this.config
         .get("EMAIL_MESSAGE")
         .replaceAll("\\n", "\n")
