@@ -1,5 +1,6 @@
 import {
   ColorScheme,
+  ColorSchemeProvider,
   Container,
   LoadingOverlay,
   MantineProvider,
@@ -11,7 +12,8 @@ import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Header from "../components/navBar/NavBar";
-import useConfig, { ConfigContext } from "../hooks/config.hook";
+import { ConfigContext } from "../hooks/config.hook";
+import usePreferences from "../hooks/usePreferences";
 import { UserContext } from "../hooks/user.hook";
 import authService from "../services/auth.service";
 import configService from "../services/config.service";
@@ -25,9 +27,9 @@ import { GlobalLoadingContext } from "../utils/loading.util";
 function App({ Component, pageProps }: AppProps) {
   const systemTheme = useColorScheme();
   const router = useRouter();
-  const config = useConfig();
+  const preferences = usePreferences();
 
-  const [colorScheme, setColorScheme] = useState<ColorScheme>();
+  const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<CurrentUser | null>(null);
   const [configVariables, setConfigVariables] = useState<Config[] | null>(null);
@@ -56,7 +58,11 @@ function App({ Component, pageProps }: AppProps) {
   }, [router.asPath]);
 
   useEffect(() => {
-    setColorScheme(systemTheme);
+    setColorScheme(
+      preferences.get("colorScheme") == "system"
+        ? systemTheme
+        : preferences.get("colorScheme")
+    );
   }, [systemTheme]);
 
   return (
@@ -65,26 +71,31 @@ function App({ Component, pageProps }: AppProps) {
       withNormalizeCSS
       theme={{ colorScheme, ...globalStyle }}
     >
-      <GlobalStyle />
-      <NotificationsProvider>
-        <ModalsProvider>
-          <GlobalLoadingContext.Provider value={{ isLoading, setIsLoading }}>
-            {isLoading ? (
-              <LoadingOverlay visible overlayOpacity={1} />
-            ) : (
-              <ConfigContext.Provider value={configVariables}>
-                <UserContext.Provider value={{ user, setUser }}>
-                  <LoadingOverlay visible={isLoading} overlayOpacity={1} />
-                  <Header />
-                  <Container>
-                    <Component {...pageProps} />
-                  </Container>
-                </UserContext.Provider>{" "}
-              </ConfigContext.Provider>
-            )}
-          </GlobalLoadingContext.Provider>
-        </ModalsProvider>
-      </NotificationsProvider>
+      <ColorSchemeProvider
+        colorScheme={colorScheme}
+        toggleColorScheme={(value) => setColorScheme(value ?? "light")}
+      >
+        <GlobalStyle />
+        <NotificationsProvider>
+          <ModalsProvider>
+            <GlobalLoadingContext.Provider value={{ isLoading, setIsLoading }}>
+              {isLoading ? (
+                <LoadingOverlay visible overlayOpacity={1} />
+              ) : (
+                <ConfigContext.Provider value={configVariables}>
+                  <UserContext.Provider value={{ user, setUser }}>
+                    <LoadingOverlay visible={isLoading} overlayOpacity={1} />
+                    <Header />
+                    <Container>
+                      <Component {...pageProps} />
+                    </Container>
+                  </UserContext.Provider>{" "}
+                </ConfigContext.Provider>
+              )}
+            </GlobalLoadingContext.Provider>
+          </ModalsProvider>
+        </NotificationsProvider>
+      </ColorSchemeProvider>
     </MantineProvider>
   );
 }

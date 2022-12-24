@@ -17,6 +17,7 @@ import { useRouter } from "next/router";
 import { Tb2Fa } from "react-icons/tb";
 import * as yup from "yup";
 import showEnableTotpModal from "../../components/account/showEnableTotpModal";
+import ThemeSwitcher from "../../components/account/ThemeSwitcher";
 import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
 import userService from "../../services/user.service";
@@ -164,8 +165,6 @@ const Account = () => {
           </Tabs.List>
 
           <Tabs.Panel value="totp" pt="xs">
-            {/* TODO: This is ugly, make it prettier */}
-            {/* If we have totp enabled, show different text */}
             {user.totpVerified ? (
               <>
                 <form
@@ -236,8 +235,13 @@ const Account = () => {
           </Tabs.Panel>
         </Tabs>
       </Paper>
-
-      <Center mt={80}>
+      <Paper withBorder p="xl" mt="lg">
+        <Title order={5} mb="xs">
+          Color scheme
+        </Title>
+        <ThemeSwitcher />
+      </Paper>
+      <Center mt={80} mb="lg">
         <Stack>
           <Button
             variant="light"
