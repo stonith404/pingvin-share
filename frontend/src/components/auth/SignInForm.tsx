@@ -10,7 +10,6 @@ import {
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";
-import { setCookie } from "cookies-next";
 import Link from "next/link";
 import React from "react";
 import { TbInfoCircle } from "react-icons/tb";
@@ -59,8 +58,6 @@ const SignInForm = () => {
           });
           setLoginToken(response.data["loginToken"]);
         } else {
-          setCookie("access_token", response.data.accessToken);
-          setCookie("refresh_token", response.data.refreshToken);
           window.location.replace("/");
         }
       })
@@ -70,11 +67,7 @@ const SignInForm = () => {
   const signInTotp = (email: string, password: string, totp: string) => {
     authService
       .signInTotp(email, password, totp, loginToken)
-      .then((response) => {
-        setCookie("access_token", response.data.accessToken);
-        setCookie("refresh_token", response.data.refreshToken);
-        window.location.replace("/");
-      })
+      .then(() => window.location.replace("/"))
       .catch((error) => {
         if (error?.response?.data?.message == "Login token expired") {
           toast.error("Login token expired");

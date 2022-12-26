@@ -11,6 +11,12 @@ const signIn = async (emailOrUsername: string, password: string) => {
     ...emailOrUsernameBody,
     password,
   });
+
+  setCookie("access_token", response.data.accessToken);
+  setCookie("refresh_token", response.data.refreshToken, {
+    maxAge: 60 * 60 * 24 * 30 * 3,
+  });
+
   return response;
 };
 
@@ -34,7 +40,14 @@ const signInTotp = async (
 };
 
 const signUp = async (email: string, username: string, password: string) => {
-  return await api.post("auth/signUp", { email, username, password });
+  const response = await api.post("auth/signUp", { email, username, password });
+
+  setCookie("access_token", response.data.accessToken);
+  setCookie("refresh_token", response.data.refreshToken, {
+    maxAge: 60 * 60 * 24 * 30 * 3,
+  });
+
+  return response;
 };
 
 const signOut = () => {
@@ -45,14 +58,14 @@ const signOut = () => {
 
 const refreshAccessToken = async () => {
   try {
-    const currentAccessToken = getCookie("access_token") as string;
+    const accessToken = getCookie("access_token") as string;
+    const refreshToken = getCookie("refresh_token");
     if (
-      currentAccessToken &&
-      (jose.decodeJwt(currentAccessToken).exp ?? 0) * 1000 <
-        Date.now() + 2 * 60 * 1000
+      (accessToken &&
+        (jose.decodeJwt(accessToken).exp ?? 0) * 1000 <
+          Date.now() + 2 * 60 * 1000) ||
+      (refreshToken && !accessToken)
     ) {
-      const refreshToken = getCookie("refresh_token");
-
       const response = await api.post("auth/token", { refreshToken });
       setCookie("access_token", response.data.accessToken);
     }

@@ -9,7 +9,6 @@ import {
   Title,
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
-import { setCookie } from "cookies-next";
 import Link from "next/link";
 import * as yup from "yup";
 import useConfig from "../../hooks/config.hook";
@@ -37,11 +36,7 @@ const SignUpForm = () => {
   const signUp = (email: string, username: string, password: string) => {
     authService
       .signUp(email, username, password)
-      .then((response) => {
-        setCookie("access_token", response.data.accessToken);
-        setCookie("refresh_token", response.data.refreshToken);
-        window.location.replace("/");
-      })
+      .then(() => window.location.replace("/"))
       .catch(toast.axiosError);
   };
 
