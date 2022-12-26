@@ -11,6 +11,7 @@ import { Throttle } from "@nestjs/throttler";
 import { User } from "@prisma/client";
 import { ConfigService } from "src/config/config.service";
 import { AuthService } from "./auth.service";
+import { AuthTotpService } from "./authTotp.service";
 import { GetUser } from "./decorator/getUser.decorator";
 import { AuthRegisterDTO } from "./dto/authRegister.dto";
 import { AuthSignInDTO } from "./dto/authSignIn.dto";
@@ -25,6 +26,7 @@ import { JwtGuard } from "./guard/jwt.guard";
 export class AuthController {
   constructor(
     private authService: AuthService,
+    private authTotpService: AuthTotpService,
     private config: ConfigService
   ) {}
 
@@ -47,7 +49,7 @@ export class AuthController {
   @Post("signIn/totp")
   @HttpCode(200)
   signInTotp(@Body() dto: AuthSignInTotpDTO) {
-    return this.authService.signInTotp(dto);
+    return this.authTotpService.signInTotp(dto);
   }
 
   @Patch("password")
@@ -65,23 +67,22 @@ export class AuthController {
     return { accessToken };
   }
 
-  // TODO: Implement recovery codes to disable 2FA just in case someone gets locked out
   @Post("totp/enable")
   @UseGuards(JwtGuard)
   async enableTotp(@GetUser() user: User, @Body() body: EnableTotpDTO) {
-    return this.authService.enableTotp(user, body.password);
+    return this.authTotpService.enableTotp(user, body.password);
   }
 
   @Post("totp/verify")
   @UseGuards(JwtGuard)
   async verifyTotp(@GetUser() user: User, @Body() body: VerifyTotpDTO) {
-    return this.authService.verifyTotp(user, body.password, body.code);
+    return this.authTotpService.verifyTotp(user, body.password, body.code);
   }
 
   @Post("totp/disable")
   @UseGuards(JwtGuard)
   async disableTotp(@GetUser() user: User, @Body() body: VerifyTotpDTO) {
     // Note: We use VerifyTotpDTO here because it has both fields we need: password and totp code
-    return this.authService.disableTotp(user, body.password, body.code);
+    return this.authTotpService.disableTotp(user, body.password, body.code);
   }
 }
