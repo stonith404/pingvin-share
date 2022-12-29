@@ -1,12 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Param,
-  Patch,
-  Post,
-  UseGuards,
-} from "@nestjs/common";
+import { Body, Controller, Get, Patch, Post, UseGuards } from "@nestjs/common";
 import { AdministratorGuard } from "src/auth/guard/isAdmin.guard";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
 import { ConfigService } from "./config.service";
@@ -26,15 +18,15 @@ export class ConfigController {
   @Get("admin")
   @UseGuards(JwtGuard, AdministratorGuard)
   async listForAdmin() {
-    return await this.configService.listForAdmin()
+    return new AdminConfigDTO().fromList(
+      await this.configService.listForAdmin()
+    );
   }
 
-  @Patch("admin/:key")
+  @Patch("admin")
   @UseGuards(JwtGuard, AdministratorGuard)
-  async update(@Param("key") key: string, @Body() data: UpdateConfigDTO) {
-    return new AdminConfigDTO().from(
-      await this.configService.update(key, data.value)
-    );
+  async updateMany(@Body() data: UpdateConfigDTO[]) {
+    await this.configService.updateMany(data);
   }
 
   @Post("admin/finishSetup")

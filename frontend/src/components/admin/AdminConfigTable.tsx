@@ -1,15 +1,16 @@
 import {
   Box,
+  Button,
   Group,
   Paper,
-  Skeleton,
   Space,
   Stack,
   Text,
   Title,
 } from "@mantine/core";
-import { useModals } from "@mantine/modals";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import useConfig from "../../hooks/config.hook";
 import configService from "../../services/config.service";
 import {
   AdminConfigGroupedByCategory,
@@ -19,12 +20,12 @@ import {
   capitalizeFirstLetter,
   configVariableToFriendlyName,
 } from "../../utils/string.util";
+import toast from "../../utils/toast.util";
 import AdminConfigInput from "./AdminConfigInput";
 
 const AdminConfigTable = () => {
-  const modals = useModals();
-
-  const [isLoading, setIsLoading] = useState(false);
+  const config = useConfig();
+  const router = useRouter();
 
   let updatedConfigVariables: UpdateConfig[] = [];
 
@@ -37,7 +38,6 @@ const AdminConfigTable = () => {
     } else {
       updatedConfigVariables.push(configVariable);
     }
-    console.log(updatedConfigVariables);
   };
 
   const [configVariablesByCategory, setCofigVariablesByCategory] =
@@ -59,30 +59,11 @@ const AdminConfigTable = () => {
   };
 
   useEffect(() => {
-    setIsLoading(true);
-    getConfigVariables().then(() => setIsLoading(false));
+    getConfigVariables();
   }, []);
 
-  const skeletonRows = [...Array(9)].map((c, i) => (
-    <tr key={i}>
-      <td>
-        <Skeleton height={18} width={80} mb="sm" />
-        <Skeleton height={30} />
-      </td>
-      <td>
-        <Skeleton height={18} />
-      </td>
-
-      <td>
-        <Group position="right">
-          <Skeleton height={25} width={25} />
-        </Group>
-      </td>
-    </tr>
-  ));
-
   return (
-    <Box>
+    <Box mb="lg">
       {Object.entries(configVariablesByCategory).map(
         ([category, configVariables]) => {
           return (
@@ -107,7 +88,7 @@ const AdminConfigTable = () => {
                         key={configVariable.key}
                         updateConfigVariable={updateConfigVariable}
                         configVariable={configVariable}
-                      />{" "}
+                      />
                     </Box>
                   </Group>
 
@@ -118,6 +99,30 @@ const AdminConfigTable = () => {
           );
         }
       )}
+      <Group position="right">
+        <Button
+          onClick={() => {
+            if (config.get("SETUP_FINISHED")) {
+              configService
+                .updateMany(updatedConfigVariables)
+                .then(() =>
+                  toast.success("Configurations updated successfully")
+                )
+                .catch(toast.axiosError);
+            } else {
+              configService
+                .updateMany(updatedConfigVariables)
+                .then(async () => {
+                  await configService.finishSetup();
+                  window.location.reload();
+                })
+                .catch(toast.axiosError);
+            }
+          }}
+        >
+          Save
+        </Button>
+      </Group>
     </Box>
   );
 };

@@ -1,18 +1,14 @@
-import { Box, Button, Stack, Text, Title } from "@mantine/core";
+import { Box, Stack, Text, Title } from "@mantine/core";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import AdminConfigTable from "../../components/admin/AdminConfigTable";
 import Logo from "../../components/Logo";
 import useConfig from "../../hooks/config.hook";
 import useUser from "../../hooks/user.hook";
-import configService from "../../services/config.service";
 
 const Setup = () => {
   const router = useRouter();
   const config = useConfig();
   const { user } = useUser();
-
-  const [isLoading, setIsLoading] = useState(false);
 
   if (!user) {
     router.push("/auth/signUp");
@@ -31,19 +27,6 @@ const Setup = () => {
         <Box style={{ width: "100%" }}>
           <AdminConfigTable />
         </Box>
-        <Button
-          loading={isLoading}
-          onClick={async () => {
-            setIsLoading(true);
-            await configService.finishSetup();
-            setIsLoading(false);
-            window.location.reload();
-          }}
-          mb={70}
-          mt="lg"
-        >
-          Let me in
-        </Button>
       </Stack>
     </>
   );

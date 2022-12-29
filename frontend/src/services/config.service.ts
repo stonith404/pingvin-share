@@ -1,4 +1,4 @@
-import Config, { AdminConfig } from "../types/config.type";
+import Config, { AdminConfig, UpdateConfig } from "../types/config.type";
 import api from "./api.service";
 
 const list = async (): Promise<Config[]> => {
@@ -9,11 +9,8 @@ const listForAdmin = async (): Promise<AdminConfig[]> => {
   return (await api.get("/configs/admin")).data;
 };
 
-const update = async (
-  key: string,
-  value: string | number | boolean
-): Promise<AdminConfig[]> => {
-  return (await api.patch(`/configs/admin/${key}`, { value })).data;
+const updateMany = async (data: UpdateConfig[]): Promise<AdminConfig[]> => {
+  return (await api.patch("/configs/admin", data)).data;
 };
 
 const get = (key: string, configVariables: Config[]): any => {
@@ -27,7 +24,8 @@ const get = (key: string, configVariables: Config[]): any => {
 
   if (configVariable.type == "number") return parseInt(configVariable.value);
   if (configVariable.type == "boolean") return configVariable.value == "true";
-  if (configVariable.type == "string" || configVariable.type == "text") return configVariable.value;
+  if (configVariable.type == "string" || configVariable.type == "text")
+    return configVariable.value;
 };
 
 const finishSetup = async (): Promise<AdminConfig[]> => {
@@ -37,7 +35,7 @@ const finishSetup = async (): Promise<AdminConfig[]> => {
 export default {
   list,
   listForAdmin,
-  update,
+  updateMany,
   get,
   finishSetup,
 };

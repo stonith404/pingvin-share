@@ -39,6 +39,14 @@ export class ConfigService {
     });
   }
 
+  async updateMany(data: { key: string; value: string | number | boolean }[]) {
+    for (const variable of data) {
+      await this.update(variable.key, variable.value);
+    }
+
+    return data;
+  }
+
   async update(key: string, value: string | number | boolean) {
     const configVariable = await this.prisma.config.findUnique({
       where: { key },

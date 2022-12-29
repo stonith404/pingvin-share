@@ -1,6 +1,9 @@
-import { IsNotEmpty, ValidateIf } from "class-validator";
+import { IsNotEmpty, IsString, ValidateIf } from "class-validator";
 
 class UpdateConfigDTO {
+  @IsString()
+  key: string;
+
   @IsNotEmpty()
   @ValidateIf((dto) => dto.value !== "")
   value: string | number | boolean;

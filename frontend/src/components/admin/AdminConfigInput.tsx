@@ -21,13 +21,13 @@ const AdminConfigInput = ({
       stringValue: configVariable.value,
       textValue: configVariable.value,
       numberValue: parseInt(configVariable.value),
-      booleanValue: configVariable.value,
+      booleanValue: configVariable.value == "true",
     },
   });
 
   const onValueChange = (configVariable: AdminConfig, value: any) => {
     form.setFieldValue(`${configVariable.type}Value`, value);
-    updateConfigVariable({ key: configVariable.key, value: value.toString() });
+    updateConfigVariable({ key: configVariable.key, value: value });
   };
 
   return (
@@ -62,10 +62,12 @@ const AdminConfigInput = ({
         />
       )}
       {configVariable.type == "boolean" && (
-        <Switch
-          {...form.getInputProps("booleanValue")}
-          onChange={(e) => onValueChange(configVariable, e.target.checked)}
-        />
+        <>
+          <Switch
+            {...form.getInputProps("booleanValue", { type: "checkbox" })}
+            onChange={(e) => onValueChange(configVariable, e.target.checked)}
+          />
+        </>
       )}
     </Stack>
   );
