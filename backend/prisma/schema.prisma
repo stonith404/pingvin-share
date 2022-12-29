@@ -101,6 +101,7 @@ model Config {
   type        String
   value       String
   description String
+  category    String
   obscured    Boolean @default(false)
   secret      Boolean @default(true)
   locked      Boolean @default(false)

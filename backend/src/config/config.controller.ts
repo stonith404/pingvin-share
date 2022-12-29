@@ -26,9 +26,7 @@ export class ConfigController {
   @Get("admin")
   @UseGuards(JwtGuard, AdministratorGuard)
   async listForAdmin() {
-    return new AdminConfigDTO().fromList(
-      await this.configService.listForAdmin()
-    );
+    return await this.configService.listForAdmin()
   }
 
   @Patch("admin/:key")
