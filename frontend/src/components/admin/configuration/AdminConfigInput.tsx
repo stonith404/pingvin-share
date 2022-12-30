@@ -7,7 +7,7 @@ import {
   TextInput,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { AdminConfig, UpdateConfig } from "../../types/config.type";
+import { AdminConfig, UpdateConfig } from "../../../types/config.type";
 
 const AdminConfigInput = ({
   configVariable,

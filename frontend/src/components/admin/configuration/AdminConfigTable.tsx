@@ -8,24 +8,24 @@ import {
   Text,
   Title,
 } from "@mantine/core";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import useConfig from "../../hooks/config.hook";
-import configService from "../../services/config.service";
+import useConfig from "../../../hooks/config.hook";
+import configService from "../../../services/config.service";
 import {
   AdminConfigGroupedByCategory,
   UpdateConfig,
-} from "../../types/config.type";
+} from "../../../types/config.type";
 import {
   capitalizeFirstLetter,
   configVariableToFriendlyName,
-} from "../../utils/string.util";
-import toast from "../../utils/toast.util";
+} from "../../../utils/string.util";
+import toast from "../../../utils/toast.util";
+
 import AdminConfigInput from "./AdminConfigInput";
+import TestEmailButton from "./TestEmailButton";
 
 const AdminConfigTable = () => {
   const config = useConfig();
-  const router = useRouter();
 
   let updatedConfigVariables: UpdateConfig[] = [];
 
@@ -95,6 +95,11 @@ const AdminConfigTable = () => {
                   <Space h="lg" />
                 </>
               ))}
+              {category == "email" && (
+                <Group position="right">
+                  <TestEmailButton />
+                </Group>
+              )}
             </Paper>
           );
         }

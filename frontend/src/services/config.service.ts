@@ -32,10 +32,15 @@ const finishSetup = async (): Promise<AdminConfig[]> => {
   return (await api.post("/configs/admin/finishSetup")).data;
 };
 
+const sendTestEmail = async (email: string) => {
+  await api.post("/configs/admin/testEmail", { email });
+};
+
 export default {
   list,
   listForAdmin,
   updateMany,
   get,
   finishSetup,
+  sendTestEmail,
 };

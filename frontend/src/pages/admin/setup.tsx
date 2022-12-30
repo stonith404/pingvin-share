@@ -1,6 +1,7 @@
 import { Box, Stack, Text, Title } from "@mantine/core";
 import { useRouter } from "next/router";
-import AdminConfigTable from "../../components/admin/AdminConfigTable";
+import AdminConfigTable from "../../components/admin/configuration/AdminConfigTable";
+
 import Logo from "../../components/Logo";
 import useConfig from "../../hooks/config.hook";
 import useUser from "../../hooks/user.hook";
