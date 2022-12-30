@@ -1,3 +1,17 @@
+## [0.5.0](https://github.com/stonith404/pingvin-share/compare/v0.4.0...v0.5.0) (2022-12-30)
+
+
+### Features
+
+* custom mail subject ([cabaee5](https://github.com/stonith404/pingvin-share/commit/cabaee588b50877872d210c870bfb9c95b541921))
+* improve config UI ([#69](https://github.com/stonith404/pingvin-share/issues/69)) ([5bc4f90](https://github.com/stonith404/pingvin-share/commit/5bc4f902f6218a09423491404806a4b7fb865c98))
+* manually switch color scheme ([ef21bac](https://github.com/stonith404/pingvin-share/commit/ef21bac59b11dc68649ab3b195dcb89d2b192e7b))
+
+
+### Bug Fixes
+
+* refresh token gets deleted on session end ([e5b50f8](https://github.com/stonith404/pingvin-share/commit/e5b50f855c02aa4b5c9ee873dd5a7ab25759972d))
+
 ## [0.4.0](https://github.com/stonith404/pingvin-share/compare/v0.3.6...v0.4.0) (2022-12-21)
 
 
