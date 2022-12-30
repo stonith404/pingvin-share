@@ -18,8 +18,6 @@ export class EmailService {
   });
 
   async sendMail(recipientEmail: string, shareId: string, creator: User) {
-    // create reusable transporter object using the default SMTP transport
-
     if (!this.config.get("ENABLE_EMAIL_RECIPIENTS"))
       throw new InternalServerErrorException("Email service disabled");
 
