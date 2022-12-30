@@ -36,6 +36,12 @@ const signInTotp = async (
     totp,
     loginToken,
   });
+
+  setCookie("access_token", response.data.accessToken);
+  setCookie("refresh_token", response.data.refreshToken, {
+    maxAge: 60 * 60 * 24 * 30 * 3,
+  });
+
   return response;
 };
 

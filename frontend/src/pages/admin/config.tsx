@@ -1,5 +1,5 @@
 import { Space, Title } from "@mantine/core";
-import AdminConfigTable from "../../components/admin/AdminConfigTable";
+import AdminConfigTable from "../../components/admin/configuration/AdminConfigTable";
 
 const AdminConfig = () => {
   return (

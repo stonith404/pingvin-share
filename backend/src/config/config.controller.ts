@@ -1,22 +1,19 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Param,
-  Patch,
-  Post,
-  UseGuards,
-} from "@nestjs/common";
+import { Body, Controller, Get, Patch, Post, UseGuards } from "@nestjs/common";
 import { AdministratorGuard } from "src/auth/guard/isAdmin.guard";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
+import { EmailService } from "src/email/email.service";
 import { ConfigService } from "./config.service";
 import { AdminConfigDTO } from "./dto/adminConfig.dto";
 import { ConfigDTO } from "./dto/config.dto";
+import { TestEmailDTO } from "./dto/testEmail.dto";
 import UpdateConfigDTO from "./dto/updateConfig.dto";
 
 @Controller("configs")
 export class ConfigController {
-  constructor(private configService: ConfigService) {}
+  constructor(
+    private configService: ConfigService,
+    private emailService: EmailService
+  ) {}
 
   @Get()
   async list() {
@@ -31,17 +28,21 @@ export class ConfigController {
     );
   }
 
-  @Patch("admin/:key")
+  @Patch("admin")
   @UseGuards(JwtGuard, AdministratorGuard)
-  async update(@Param("key") key: string, @Body() data: UpdateConfigDTO) {
-    return new AdminConfigDTO().from(
-      await this.configService.update(key, data.value)
-    );
+  async updateMany(@Body() data: UpdateConfigDTO[]) {
+    await this.configService.updateMany(data);
   }
 
   @Post("admin/finishSetup")
   @UseGuards(JwtGuard, AdministratorGuard)
   async finishSetup() {
     return await this.configService.finishSetup();
+  }
+
+  @Post("admin/testEmail")
+  @UseGuards(JwtGuard, AdministratorGuard)
+  async testEmail(@Body() { email }: TestEmailDTO) {
+    await this.emailService.sendTestMail(email);
   }
 }

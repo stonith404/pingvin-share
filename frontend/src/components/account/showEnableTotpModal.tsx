@@ -47,9 +47,6 @@ const CreateEnableTotpModal = ({
   refreshUser: () => {};
 }) => {
   const modals = useModals();
-  const user = useUser();
-
-  console.log(user.user);
 
   const validationSchema = yup.object().shape({
     code: yup

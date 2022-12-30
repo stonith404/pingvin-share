@@ -7,24 +7,23 @@ import { ConfigService } from "src/config/config.service";
 export class EmailService {
   constructor(private config: ConfigService) {}
 
-  async sendMail(recipientEmail: string, shareId: string, creator: User) {
-    // create reusable transporter object using the default SMTP transport
-    const transporter = nodemailer.createTransport({
-      host: this.config.get("SMTP_HOST"),
-      port: parseInt(this.config.get("SMTP_PORT")),
-      secure: parseInt(this.config.get("SMTP_PORT")) == 465,
-      auth: {
-        user: this.config.get("SMTP_USERNAME"),
-        pass: this.config.get("SMTP_PASSWORD"),
-      },
-    });
+  transporter = nodemailer.createTransport({
+    host: this.config.get("SMTP_HOST"),
+    port: parseInt(this.config.get("SMTP_PORT")),
+    secure: parseInt(this.config.get("SMTP_PORT")) == 465,
+    auth: {
+      user: this.config.get("SMTP_USERNAME"),
+      pass: this.config.get("SMTP_PASSWORD"),
+    },
+  });
 
+  async sendMail(recipientEmail: string, shareId: string, creator: User) {
     if (!this.config.get("ENABLE_EMAIL_RECIPIENTS"))
       throw new InternalServerErrorException("Email service disabled");
 
     const shareUrl = `${this.config.get("APP_URL")}/share/${shareId}`;
 
-    await transporter.sendMail({
+    await this.transporter.sendMail({
       from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
       to: recipientEmail,
       subject: this.config.get("EMAIL_SUBJECT"),
@@ -33,6 +32,15 @@ export class EmailService {
         .replaceAll("\\n", "\n")
         .replaceAll("{creator}", creator.username)
         .replaceAll("{shareUrl}", shareUrl),
+    });
+  }
+
+  async sendTestMail(recipientEmail: string) {
+    await this.transporter.sendMail({
+      from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
+      to: recipientEmail,
+      subject: "Test email",
+      text: "This is a test email",
     });
   }
 }
