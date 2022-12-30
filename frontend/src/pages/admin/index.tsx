@@ -1,19 +1,17 @@
-import { Col, createStyles, Grid, Paper, Text } from "@mantine/core";
+import {
+  Center,
+  Col,
+  createStyles,
+  Grid,
+  Paper,
+  Stack,
+  Text,
+  Title,
+} from "@mantine/core";
 import Link from "next/link";
-import { TbSettings, TbUsers } from "react-icons/tb";
-
-const managementOptions = [
-  {
-    title: "User management",
-    icon: TbUsers,
-    route: "/admin/users",
-  },
-  {
-    title: "Configuration",
-    icon: TbSettings,
-    route: "/admin/config",
-  },
-];
+import { useEffect, useState } from "react";
+import { TbRefresh, TbSettings, TbUsers } from "react-icons/tb";
+import configService from "../../services/config.service";
 
 const useStyles = createStyles((theme) => ({
   item: {
@@ -33,27 +31,69 @@ const useStyles = createStyles((theme) => ({
 const Admin = () => {
   const { classes, theme } = useStyles();
 
+  const [managementOptions, setManagementOptions] = useState([
+    {
+      title: "User management",
+      icon: TbUsers,
+      route: "/admin/users",
+    },
+    {
+      title: "Configuration",
+      icon: TbSettings,
+      route: "/admin/config",
+    },
+  ]);
+
+  useEffect(() => {
+    configService.isNewReleaseAvailable().then((isNewReleaseAvailable) => {
+      if (isNewReleaseAvailable) {
+        setManagementOptions([
+          ...managementOptions,
+          {
+            title: "Update",
+            icon: TbRefresh,
+            route:
+              "https://github.com/stonith404/pingvin-share/releases/tag/v0.5.0",
+          },
+        ]);
+      }
+    });
+  }, []);
+
   return (
-    <Paper withBorder p={40}>
-      <Grid mt="md">
-        {managementOptions.map((item) => {
-          return (
-            <Col xs={6} key={item.route}>
-              <Paper
-                withBorder
-                component={Link}
-                href={item.route}
-                key={item.title}
-                className={classes.item}
-              >
-                <item.icon color={theme.colors.victoria[8]} size={35} />
-                <Text mt={7}>{item.title}</Text>
-              </Paper>
-            </Col>
-          );
-        })}
-      </Grid>
-    </Paper>
+    <>
+      <Title mb={30} order={3}>
+        Administration
+      </Title>
+      <Stack justify="space-between" style={{ height: "calc(100vh - 180px)" }}>
+        <Paper withBorder p={40}>
+          <Grid>
+            {managementOptions.map((item) => {
+              return (
+                <Col xs={6} key={item.route}>
+                  <Paper
+                    withBorder
+                    component={Link}
+                    href={item.route}
+                    key={item.title}
+                    className={classes.item}
+                  >
+                    <item.icon color={theme.colors.victoria[8]} size={35} />
+                    <Text mt={7}>{item.title}</Text>
+                  </Paper>
+                </Col>
+              );
+            })}
+          </Grid>
+        </Paper>
+
+        <Center>
+          <Text size="xs" color="dimmed">
+            Version {process.env.VERSION}
+          </Text>
+        </Center>
+      </Stack>
+    </>
   );
 };
 

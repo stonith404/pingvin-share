@@ -28,7 +28,6 @@ function App({ Component, pageProps }: AppProps) {
   const systemTheme = useColorScheme();
   const router = useRouter();
   const preferences = usePreferences();
-
   const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<CurrentUser | null>(null);
@@ -89,7 +88,7 @@ function App({ Component, pageProps }: AppProps) {
                     <Container>
                       <Component {...pageProps} />
                     </Container>
-                  </UserContext.Provider>{" "}
+                  </UserContext.Provider>
                 </ConfigContext.Provider>
               )}
             </GlobalLoadingContext.Provider>

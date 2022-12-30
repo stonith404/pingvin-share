@@ -1,3 +1,4 @@
+import axios from "axios";
 import Config, { AdminConfig, UpdateConfig } from "../types/config.type";
 import api from "./api.service";
 
@@ -36,6 +37,15 @@ const sendTestEmail = async (email: string) => {
   await api.post("/configs/admin/testEmail", { email });
 };
 
+const isNewReleaseAvailable = async () => {
+  const response = (
+    await axios.get(
+      "https://api.github.com/repos/stonith404/pingvin-share/releases/latest"
+    )
+  ).data;
+  return response.tag_name.replace("v", "") != process.env.VERSION;
+};
+
 export default {
   list,
   listForAdmin,
@@ -43,4 +53,5 @@ export default {
   get,
   finishSetup,
   sendTestEmail,
+  isNewReleaseAvailable,
 };
