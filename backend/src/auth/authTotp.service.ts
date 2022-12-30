@@ -1,18 +1,20 @@
 import {
   BadRequestException,
   ForbiddenException,
+  Injectable,
   UnauthorizedException,
 } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
 import { User } from "@prisma/client";
 import * as argon from "argon2";
 import * as crypto from "crypto";
 import { authenticator, totp } from "otplib";
 import * as qrcode from "qrcode-svg";
+import { ConfigService } from "src/config/config.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { AuthService } from "./auth.service";
 import { AuthSignInTotpDTO } from "./dto/authSignInTotp.dto";
 
+@Injectable()
 export class AuthTotpService {
   constructor(
     private config: ConfigService,
