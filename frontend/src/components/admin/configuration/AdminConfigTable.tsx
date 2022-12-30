@@ -8,6 +8,7 @@ import {
   Text,
   Title,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import { useEffect, useState } from "react";
 import useConfig from "../../../hooks/config.hook";
 import configService from "../../../services/config.service";
@@ -26,6 +27,7 @@ import TestEmailButton from "./TestEmailButton";
 
 const AdminConfigTable = () => {
   const config = useConfig();
+  const isMobile = useMediaQuery("(max-width: 560px)");
 
   let updatedConfigVariables: UpdateConfig[] = [];
 
@@ -74,7 +76,10 @@ const AdminConfigTable = () => {
               {configVariables.map((configVariable) => (
                 <>
                   <Group position="apart">
-                    <Stack style={{ maxWidth: "40%" }} spacing={0}>
+                    <Stack
+                      style={{ maxWidth: isMobile ? "100%" : "40%" }}
+                      spacing={0}
+                    >
                       <Title order={6}>
                         {configVariableToFriendlyName(configVariable.key)}
                       </Title>
@@ -83,7 +88,7 @@ const AdminConfigTable = () => {
                       </Text>
                     </Stack>
                     <Stack></Stack>
-                    <Box style={{ width: "50%" }}>
+                    <Box style={{ width: isMobile ? "100%" : "50%" }}>
                       <AdminConfigInput
                         key={configVariable.key}
                         updateConfigVariable={updateConfigVariable}
