@@ -4,8 +4,7 @@ import configService from "../../../services/config.service";
 import toast from "../../../utils/toast.util";
 
 const TestEmailButton = () => {
-
-    const {user} = useUser();
+  const { user } = useUser();
 
   return (
     <Button
