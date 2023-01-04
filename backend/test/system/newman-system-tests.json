@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "84a95987-2997-429a-aba6-d38289b0b76a",
+		"_postman_id": "4b16228d-41ef-4c6b-8a0b-294a30a4cfc2",
 		"name": "Pingvin Share Testing",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "17822132"
@@ -18,12 +18,12 @@
 								"exec": [
 									"if(pm.response.to.have.status(201)){",
 									"    const token = pm.response.json()[\"accessToken\"]",
-									"    pm.collectionVariables.set(\"USER_AUTH_TOKEN\", token)",
-									"",
 									"    // Get user id",
 									"    const jwtPayload = JSON.parse(atob(token.split('.')[1]));",
 									"    const userId = jwtPayload[\"sub\"]",
 									"    pm.collectionVariables.set(\"USER_ID\", userId)",
+									"",
+									"    pm.collectionVariables.set(\"COOKIES\", pm.response.headers.get(\"Set-Cookie\"))",
 									"}",
 									""
 								],
@@ -80,6 +80,7 @@
 											"    pm.expect(responseBody).to.have.property(\"accessToken\")",
 											"    pm.expect(responseBody).to.have.property(\"refreshToken\")",
 											"});",
+											"",
 											""
 										],
 										"type": "text/javascript"
@@ -97,7 +98,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"email\": \"system2@test.org\",\n   \"username\": \"system.test2\",\n     \"password\": \"N44HcHgeuAvfCT\"\n}",
+									"raw": "{\n    \"email\": \"system2@test.org\",\n   \"username\": \"system2.test\",\n     \"password\": \"N44HcHgeuAvfCT\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1556,23 +1557,13 @@
 			]
 		}
 	],
-	"auth": {
-		"type": "bearer",
-		"bearer": [
-			{
-				"key": "token",
-				"value": "{{USER_AUTH_TOKEN}}",
-				"type": "string"
-			}
-		]
-	},
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
 				"type": "text/javascript",
 				"exec": [
-					""
+					"pm.request.addHeader(\"Cookie\", pm.collectionVariables.get(\"COOKIES\"))"
 				]
 			}
 		},
