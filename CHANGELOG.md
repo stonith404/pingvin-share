@@ -1,3 +1,16 @@
+### [0.5.1](https://github.com/stonith404/pingvin-share/compare/v0.5.0...v0.5.1) (2023-01-04)
+
+
+### Features
+
+* show version and show button if new release is available on admin page ([71658ad](https://github.com/stonith404/pingvin-share/commit/71658ad39d7e3638de659e8230fad4e05f60fdd8))
+* use cookies for authentication ([faea1ab](https://github.com/stonith404/pingvin-share/commit/faea1abcc4b533f391feaed427e211fef9166fe4))
+
+
+### Bug Fixes
+
+* email configuration updated without restart ([1117465](https://github.com/stonith404/pingvin-share/commit/11174656e425c4be60e4f7b1ea8463678e5c60d2))
+
 ## [0.5.0](https://github.com/stonith404/pingvin-share/compare/v0.4.0...v0.5.0) (2022-12-30)
 
 
