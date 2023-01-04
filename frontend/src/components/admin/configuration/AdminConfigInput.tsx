@@ -36,8 +36,8 @@ const AdminConfigInput = ({
         (configVariable.obscured ? (
           <PasswordInput
             style={{ width: "100%" }}
-            onChange={(e) => onValueChange(configVariable, e.target.value)}
             {...form.getInputProps("stringValue")}
+            onChange={(e) => onValueChange(configVariable, e.target.value)}
           />
         ) : (
           <TextInput

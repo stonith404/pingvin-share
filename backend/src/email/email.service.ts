@@ -7,15 +7,17 @@ import { ConfigService } from "src/config/config.service";
 export class EmailService {
   constructor(private config: ConfigService) {}
 
-  transporter = nodemailer.createTransport({
-    host: this.config.get("SMTP_HOST"),
-    port: parseInt(this.config.get("SMTP_PORT")),
-    secure: parseInt(this.config.get("SMTP_PORT")) == 465,
-    auth: {
-      user: this.config.get("SMTP_USERNAME"),
-      pass: this.config.get("SMTP_PASSWORD"),
-    },
-  });
+  getTransporter() {
+    return nodemailer.createTransport({
+      host: this.config.get("SMTP_HOST"),
+      port: parseInt(this.config.get("SMTP_PORT")),
+      secure: parseInt(this.config.get("SMTP_PORT")) == 465,
+      auth: {
+        user: this.config.get("SMTP_USERNAME"),
+        pass: this.config.get("SMTP_PASSWORD"),
+      },
+    });
+  }
 
   async sendMail(recipientEmail: string, shareId: string, creator: User) {
     if (!this.config.get("ENABLE_EMAIL_RECIPIENTS"))
@@ -23,7 +25,7 @@ export class EmailService {
 
     const shareUrl = `${this.config.get("APP_URL")}/share/${shareId}`;
 
-    await this.transporter.sendMail({
+    await this.getTransporter().sendMail({
       from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
       to: recipientEmail,
       subject: this.config.get("EMAIL_SUBJECT"),
@@ -36,7 +38,7 @@ export class EmailService {
   }
 
   async sendTestMail(recipientEmail: string) {
-    await this.transporter.sendMail({
+    await this.getTransporter().sendMail({
       from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
       to: recipientEmail,
       subject: "Test email",
