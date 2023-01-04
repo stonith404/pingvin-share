@@ -1,4 +1,4 @@
-import { getCookie, setCookie } from "cookies-next";
+import { getCookie } from "cookies-next";
 import * as jose from "jose";
 import api from "./api.service";
 
@@ -10,11 +10,6 @@ const signIn = async (emailOrUsername: string, password: string) => {
   const response = await api.post("auth/signIn", {
     ...emailOrUsernameBody,
     password,
-  });
-
-  setCookie("access_token", response.data.accessToken);
-  setCookie("refresh_token", response.data.refreshToken, {
-    maxAge: 60 * 60 * 24 * 30 * 3,
   });
 
   return response;
@@ -37,45 +32,30 @@ const signInTotp = async (
     loginToken,
   });
 
-  setCookie("access_token", response.data.accessToken);
-  setCookie("refresh_token", response.data.refreshToken, {
-    maxAge: 60 * 60 * 24 * 30 * 3,
-  });
-
   return response;
 };
 
 const signUp = async (email: string, username: string, password: string) => {
   const response = await api.post("auth/signUp", { email, username, password });
 
-  setCookie("access_token", response.data.accessToken);
-  setCookie("refresh_token", response.data.refreshToken, {
-    maxAge: 60 * 60 * 24 * 30 * 3,
-  });
-
   return response;
 };
 
-const signOut = () => {
-  setCookie("access_token", null);
-  setCookie("refresh_token", null);
+const signOut = async () => {
+  await api.post("/auth/signOut");
   window.location.reload();
 };
 
 const refreshAccessToken = async () => {
   try {
     const accessToken = getCookie("access_token") as string;
-    const refreshToken = getCookie("refresh_token");
     if (
-      (accessToken &&
-        (jose.decodeJwt(accessToken).exp ?? 0) * 1000 <
-          Date.now() + 2 * 60 * 1000) ||
-      (refreshToken && !accessToken)
+      !accessToken ||
+      (jose.decodeJwt(accessToken).exp ?? 0) * 1000 < Date.now() + 2 * 60 * 1000
     ) {
-      const response = await api.post("auth/token", { refreshToken });
-      setCookie("access_token", response.data.accessToken);
+      await api.post("/auth/token");
     }
-  } catch {
+  } catch (e) {
     console.info("Refresh token invalid or expired");
   }
 };

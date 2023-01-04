@@ -37,7 +37,7 @@ const ActionAvatar = () => {
 
         <Menu.Item
           onClick={async () => {
-            authService.signOut();
+            await authService.signOut();
           }}
           icon={<TbDoorExit size={14} />}
         >

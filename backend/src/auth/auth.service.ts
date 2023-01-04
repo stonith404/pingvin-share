@@ -34,8 +34,10 @@ export class AuthService {
         },
       });
 
-      const accessToken = await this.createAccessToken(user);
-      const refreshToken = await this.createRefreshToken(user.id);
+      const { refreshToken, refreshTokenId } = await this.createRefreshToken(
+        user.id
+      );
+      const accessToken = await this.createAccessToken(user, refreshTokenId);
 
       return { accessToken, refreshToken };
     } catch (e) {
@@ -71,8 +73,10 @@ export class AuthService {
       return { loginToken };
     }
 
-    const accessToken = await this.createAccessToken(user);
-    const refreshToken = await this.createRefreshToken(user.id);
+    const { refreshToken, refreshTokenId } = await this.createRefreshToken(
+      user.id
+    );
+    const accessToken = await this.createAccessToken(user, refreshTokenId);
 
     return { accessToken, refreshToken };
   }
@@ -89,17 +93,26 @@ export class AuthService {
     });
   }
 
-  async createAccessToken(user: User) {
+  async createAccessToken(user: User, refreshTokenId: string) {
     return this.jwtService.sign(
       {
         sub: user.id,
         email: user.email,
+        refreshTokenId,
       },
       {
         expiresIn: "15min",
         secret: this.config.get("JWT_SECRET"),
       }
     );
+  }
+
+  async signOut(accessToken: string) {
+    const { refreshTokenId } = this.jwtService.decode(accessToken) as {
+      refreshTokenId: string;
+    };
+
+    await this.prisma.refreshToken.delete({ where: { id: refreshTokenId } });
   }
 
   async refreshAccessToken(refreshToken: string) {
@@ -111,17 +124,18 @@ export class AuthService {
     if (!refreshTokenMetaData || refreshTokenMetaData.expiresAt < new Date())
       throw new UnauthorizedException();
 
-    return this.createAccessToken(refreshTokenMetaData.user);
+    return this.createAccessToken(
+      refreshTokenMetaData.user,
+      refreshTokenMetaData.id
+    );
   }
 
   async createRefreshToken(userId: string) {
-    const refreshToken = (
-      await this.prisma.refreshToken.create({
-        data: { userId, expiresAt: moment().add(3, "months").toDate() },
-      })
-    ).token;
+    const { id, token } = await this.prisma.refreshToken.create({
+      data: { userId, expiresAt: moment().add(3, "months").toDate() },
+    });
 
-    return refreshToken;
+    return { refreshTokenId: id, refreshToken: token };
   }
 
   async createLoginToken(userId: string) {

@@ -1,6 +1,7 @@
 import { ClassSerializerInterceptor, ValidationPipe } from "@nestjs/common";
 import { NestFactory, Reflector } from "@nestjs/core";
 import { NestExpressApplication } from "@nestjs/platform-express";
+import * as cookieParser from "cookie-parser";
 import * as fs from "fs";
 import { AppModule } from "./app.module";
 
@@ -9,6 +10,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
+  app.use(cookieParser());
   app.set("trust proxy", true);
 
   await fs.promises.mkdir("./data/uploads/_temp", { recursive: true });

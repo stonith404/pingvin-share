@@ -5,10 +5,14 @@ import {
   HttpCode,
   Patch,
   Post,
+  Req,
+  Res,
+  UnauthorizedException,
   UseGuards,
 } from "@nestjs/common";
 import { Throttle } from "@nestjs/throttler";
 import { User } from "@prisma/client";
+import { Request, Response } from "express";
 import { ConfigService } from "src/config/config.service";
 import { AuthService } from "./auth.service";
 import { AuthTotpService } from "./authTotp.service";
@@ -17,7 +21,6 @@ import { AuthRegisterDTO } from "./dto/authRegister.dto";
 import { AuthSignInDTO } from "./dto/authSignIn.dto";
 import { AuthSignInTotpDTO } from "./dto/authSignInTotp.dto";
 import { EnableTotpDTO } from "./dto/enableTotp.dto";
-import { RefreshAccessTokenDTO } from "./dto/refreshAccessToken.dto";
 import { UpdatePasswordDTO } from "./dto/updatePassword.dto";
 import { VerifyTotpDTO } from "./dto/verifyTotp.dto";
 import { JwtGuard } from "./guard/jwt.guard";
@@ -32,24 +35,59 @@ export class AuthController {
 
   @Throttle(10, 5 * 60)
   @Post("signUp")
-  async signUp(@Body() dto: AuthRegisterDTO) {
+  async signUp(
+    @Body() dto: AuthRegisterDTO,
+    @Res({ passthrough: true }) response: Response
+  ) {
     if (!this.config.get("ALLOW_REGISTRATION"))
       throw new ForbiddenException("Registration is not allowed");
-    return this.authService.signUp(dto);
+    const result = await this.authService.signUp(dto);
+
+    response = this.addTokensToResponse(
+      response,
+      result.accessToken,
+      result.refreshToken
+    );
+
+    return result;
   }
 
   @Throttle(10, 5 * 60)
   @Post("signIn")
   @HttpCode(200)
-  signIn(@Body() dto: AuthSignInDTO) {
-    return this.authService.signIn(dto);
+  async signIn(
+    @Body() dto: AuthSignInDTO,
+    @Res({ passthrough: true }) response: Response
+  ) {
+    const result = await this.authService.signIn(dto);
+
+    if (result.accessToken && result.refreshToken) {
+      response = this.addTokensToResponse(
+        response,
+        result.accessToken,
+        result.refreshToken
+      );
+    }
+
+    return result;
   }
 
   @Throttle(10, 5 * 60)
   @Post("signIn/totp")
   @HttpCode(200)
-  signInTotp(@Body() dto: AuthSignInTotpDTO) {
-    return this.authTotpService.signInTotp(dto);
+  async signInTotp(
+    @Body() dto: AuthSignInTotpDTO,
+    @Res({ passthrough: true }) response: Response
+  ) {
+    const result = await this.authTotpService.signInTotp(dto);
+
+    response = this.addTokensToResponse(
+      response,
+      result.accessToken,
+      result.refreshToken
+    );
+
+    return result;
   }
 
   @Patch("password")
@@ -60,11 +98,31 @@ export class AuthController {
 
   @Post("token")
   @HttpCode(200)
-  async refreshAccessToken(@Body() body: RefreshAccessTokenDTO) {
+  async refreshAccessToken(
+    @Req() request: Request,
+    @Res({ passthrough: true }) response: Response
+  ) {
+    if (!request.cookies.refresh_token) throw new UnauthorizedException();
+
     const accessToken = await this.authService.refreshAccessToken(
-      body.refreshToken
+      request.cookies.refresh_token
     );
+    response.cookie("access_token", accessToken, { httpOnly: true });
     return { accessToken };
+  }
+
+  @Post("signOut")
+  async signOut(
+    @Req() request: Request,
+    @Res({ passthrough: true }) response: Response
+  ) {
+    await this.authService.signOut(request.cookies.access_token);
+    response.cookie("access_token", "accessToken", { maxAge: -1 });
+    response.cookie("refresh_token", "", {
+      path: "/api/auth/token",
+      httpOnly: true,
+      maxAge: -1,
+    });
   }
 
   @Post("totp/enable")
@@ -84,5 +142,20 @@ export class AuthController {
   async disableTotp(@GetUser() user: User, @Body() body: VerifyTotpDTO) {
     // Note: We use VerifyTotpDTO here because it has both fields we need: password and totp code
     return this.authTotpService.disableTotp(user, body.password, body.code);
+  }
+
+  private addTokensToResponse(
+    response: Response,
+    accessToken: string,
+    refreshToken: string
+  ) {
+    response.cookie("access_token", accessToken);
+    response.cookie("refresh_token", refreshToken, {
+      path: "/api/auth/token",
+      httpOnly: true,
+      maxAge: 60 * 60 * 24 * 30 * 3,
+    });
+
+    return response;
   }
 }

@@ -71,8 +71,12 @@ export class AuthTotpService {
       data: { used: true },
     });
 
-    const accessToken = await this.authService.createAccessToken(user);
-    const refreshToken = await this.authService.createRefreshToken(user.id);
+    const { refreshToken, refreshTokenId } =
+      await this.authService.createRefreshToken(user.id);
+    const accessToken = await this.authService.createAccessToken(
+      user,
+      refreshTokenId
+    );
 
     return { accessToken, refreshToken };
   }
