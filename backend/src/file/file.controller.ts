@@ -36,8 +36,6 @@ export class FileController {
 
     const { id, name, chunkIndex, totalChunks } = query;
 
-    console.log(query)
-
     const data = body.toString().split(",")[1];
 
     return await this.fileService.create(

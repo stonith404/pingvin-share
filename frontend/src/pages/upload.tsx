@@ -31,57 +31,60 @@ const Upload = () => {
   const uploadFiles = async (share: CreateShare) => {
     createdShare = await shareService.create(share);
 
-    for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
-      const file = files[fileIndex];
-      let fileId: string;
+    const fileUploadPromises = files.map(async (file, fileIndex) =>
+      promiseLimit(async () => {
+        let fileId: string;
 
-      const chunks = Math.ceil(file.size / chunkSize);
+        const chunks = Math.ceil(file.size / chunkSize);
 
-      for (let chunkIndex = 0; chunkIndex < chunks; chunkIndex++) {
-        const from = chunkIndex * chunkSize;
-        const to = from + chunkSize;
-        const blob = file.slice(from, to);
-        try {
-          await new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = async (event) =>
-              await shareService
-                .uploadFile(
-                  createdShare.id,
-                  event,
-                  {
-                    id: fileId,
-                    name: file.name,
-                  },
-                  chunkIndex,
-                  Math.ceil(file.size / chunkSize)
-                )
-                .then((response) => {
-                  fileId = response.id;
-                  resolve(response);
-                })
-                .catch(reject);
+        for (let chunkIndex = 0; chunkIndex < chunks; chunkIndex++) {
+          const from = chunkIndex * chunkSize;
+          const to = from + chunkSize;
+          const blob = file.slice(from, to);
+          try {
+            await new Promise((resolve, reject) => {
+              const reader = new FileReader();
+              reader.onload = async (event) =>
+                await shareService
+                  .uploadFile(
+                    createdShare.id,
+                    event,
+                    {
+                      id: fileId,
+                      name: file.name,
+                    },
+                    chunkIndex,
+                    Math.ceil(file.size / chunkSize)
+                  )
+                  .then((response) => {
+                    fileId = response.id;
+                    resolve(response);
+                  })
+                  .catch(reject);
 
-            reader.readAsDataURL(blob);
-          });
+              reader.readAsDataURL(blob);
+            });
 
-          setFiles((files) =>
-            files.map((file, callbackIndex) => {
-              if (fileIndex == callbackIndex) {
-                file.uploadingProgress = Math.round(
-                  ((chunkIndex + 1) / chunks) * 100
-                );
-              }
-              return file;
-            })
-          );
-        } catch {
-          console.log("error retry");
-          // chunkIndex = -1;
-          // continue;
+            setFiles((files) =>
+              files.map((file, callbackIndex) => {
+                if (fileIndex == callbackIndex) {
+                  file.uploadingProgress = Math.round(
+                    ((chunkIndex + 1) / chunks) * 100
+                  );
+                }
+                return file;
+              })
+            );
+          } catch {
+            console.log("error retry");
+            // chunkIndex = -1;
+            // continue;
+          }
         }
-      }
-    }
+      })
+    );
+
+    Promise.all(fileUploadPromises);
   };
 
   useEffect(() => {
