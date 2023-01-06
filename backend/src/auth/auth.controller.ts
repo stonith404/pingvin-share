@@ -107,7 +107,7 @@ export class AuthController {
     const accessToken = await this.authService.refreshAccessToken(
       request.cookies.refresh_token
     );
-    response.cookie("access_token", accessToken, { httpOnly: true });
+    response.cookie("access_token", accessToken);
     return { accessToken };
   }
 
