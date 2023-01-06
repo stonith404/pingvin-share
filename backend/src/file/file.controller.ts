@@ -11,7 +11,6 @@ import {
 } from "@nestjs/common";
 import * as contentDisposition from "content-disposition";
 import { Response } from "express";
-import * as fs from "fs";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
 import { FileDownloadGuard } from "src/file/guard/fileDownload.guard";
 import { ShareOwnerGuard } from "src/share/guard/shareOwner.guard";
@@ -27,7 +26,7 @@ export class FileController {
   async create(
     @Query() query: any,
 
-    @Body() body: any,
+    @Body() body: string,
     @Param("shareId") shareId: string
   ) {
     // Fixes file names with special characters
@@ -35,29 +34,18 @@ export class FileController {
     //   "utf8"
     // );
 
-    const { name, currentChunkIndex, totalChunks } = query;
-    const firstChunk = parseInt(currentChunkIndex) === 0;
-    const lastChunk = parseInt(currentChunkIndex) === parseInt(totalChunks) - 1;
-    const ext = name.split(".").pop();
+    const { id, name, chunkIndex, totalChunks } = query;
+
+    console.log(query)
+
     const data = body.toString().split(",")[1];
-    const buffer = Buffer.from(data, "base64");
 
-    const tmpFilename = "tmp_" + "test_file" + ext;
-
-    if (firstChunk && fs.existsSync("./data/uploads/" + tmpFilename)) {
-      fs.unlinkSync("./data/uploads/" + tmpFilename);
-    }
-
-    fs.appendFileSync("./data/uploads/" + tmpFilename, buffer);
-
-    if (lastChunk) {
-      const finalFilename = "final." + ext;
-      fs.renameSync(
-        "./data/uploads/" + tmpFilename,
-        "./data/uploads/" + finalFilename
-      );
-      // return new ShareDTO().from(await this.fileService.create(file, shareId));
-    }
+    return await this.fileService.create(
+      data,
+      { index: chunkIndex, total: totalChunks },
+      { id, name },
+      shareId
+    );
   }
 
   @Get(":fileId/download")

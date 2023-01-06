@@ -4,7 +4,6 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
-import { randomUUID } from "crypto";
 import * as fs from "fs";
 import * as mime from "mime-types";
 import { ConfigService } from "src/config/config.service";
@@ -18,7 +17,14 @@ export class FileService {
     private config: ConfigService
   ) {}
 
-  async create(file: Express.Multer.File, shareId: string) {
+  async create(
+    data: string,
+    chunk: { index: number; total: number },
+    file: { id?: string; name: string },
+    shareId: string
+  ) {
+    if (!file.id) file.id = crypto.randomUUID();
+
     const share = await this.prisma.share.findUnique({
       where: { id: shareId },
     });
@@ -26,24 +32,32 @@ export class FileService {
     if (share.uploadLocked)
       throw new BadRequestException("Share is already completed");
 
-    const fileId = randomUUID();
-
     await fs.promises.mkdir(`./data/uploads/shares/${shareId}`, {
       recursive: true,
     });
-    fs.promises.rename(
-      `./data/uploads/_temp/${file.filename}`,
-      `./data/uploads/shares/${shareId}/${fileId}`
-    );
 
-    return await this.prisma.file.create({
-      data: {
-        id: fileId,
-        name: file.originalname,
-        size: file.size.toString(),
-        share: { connect: { id: shareId } },
-      },
-    });
+    const buffer = Buffer.from(data, "base64");
+
+    fs.appendFileSync(`./data/uploads/shares/${shareId}/${file.id}.tmp`, buffer);
+
+    const isLastChunk = chunk.index == chunk.total - 1;
+    if (isLastChunk) {
+      fs.renameSync(
+        `./data/uploads/shares/${shareId}/${file.id}.tmp`,
+        `./data/uploads/shares/${shareId}/${file.id}`
+      );
+      const fileSize = fs.statSync(`./data/uploads/shares/${shareId}/${file.id}`).size;
+      await this.prisma.file.create({
+        data: {
+          id: file.id,
+          name: file.name,
+          size: fileSize.toString(),
+          share: { connect: { id: shareId } },
+        },
+      });
+    }
+
+    return file;
   }
 
   async get(shareId: string, fileId: string) {

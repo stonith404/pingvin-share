@@ -1,18 +1,22 @@
 import { Button, Group } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import pLimit from "p-limit";
+import { useEffect, useState } from "react";
 import Meta from "../components/Meta";
 import Dropzone from "../components/upload/Dropzone";
 import FileList from "../components/upload/FileList";
+import showCompletedUploadModal from "../components/upload/modals/showCompletedUploadModal";
 import showCreateUploadModal from "../components/upload/modals/showCreateUploadModal";
 import useConfig from "../hooks/config.hook";
 import useUser from "../hooks/user.hook";
 import shareService from "../services/share.service";
 import { FileUpload } from "../types/File.type";
 import { CreateShare, Share } from "../types/share.type";
+import toast from "../utils/toast.util";
 
 let createdShare: Share;
+const promiseLimit = pLimit(3);
 const chunkSize = 10 * 1024 * 1024; // 10MB
 
 const Upload = () => {
@@ -25,10 +29,12 @@ const Upload = () => {
   const [isUploading, setisUploading] = useState(false);
 
   const uploadFiles = async (share: CreateShare) => {
-    const createdShare = await shareService.create(share);
+    createdShare = await shareService.create(share);
 
-    let fileIndex = 0;
-    for (const file of files) {
+    for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
+      const file = files[fileIndex];
+      let fileId: string;
+
       const chunks = Math.ceil(file.size / chunkSize);
 
       for (let chunkIndex = 0; chunkIndex < chunks; chunkIndex++) {
@@ -38,21 +44,20 @@ const Upload = () => {
         try {
           await new Promise((resolve, reject) => {
             const reader = new FileReader();
-            reader.onload = async (e) =>
+            reader.onload = async (event) =>
               await shareService
                 .uploadFile(
                   createdShare.id,
-                  e,
-                  file.name,
+                  event,
+                  {
+                    id: fileId,
+                    name: file.name,
+                  },
                   chunkIndex,
                   Math.ceil(file.size / chunkSize)
                 )
                 .then((response) => {
-                  const chunks = Math.ceil(file.size / chunkSize) - 1;
-                  const isLastChunk = chunkIndex === chunks;
-
-                  chunkIndex++;
-
+                  fileId = response.id;
                   resolve(response);
                 })
                 .catch(reject);
@@ -60,37 +65,52 @@ const Upload = () => {
             reader.readAsDataURL(blob);
           });
 
-          setFiles((files) => {
-            console.log(
-              files.map((file, callbackIndex) => {
-                console.log({ fileIndex, callbackIndex });
-                if (fileIndex == callbackIndex) {
-                  file.uploadingProgress = Math.round(
-                    (chunkIndex / chunks) * 100
-                  );
-                }
-                return file;
-              })
-            );
-            return files.map((file, callbackIndex) => {
+          setFiles((files) =>
+            files.map((file, callbackIndex) => {
               if (fileIndex == callbackIndex) {
                 file.uploadingProgress = Math.round(
-                  (chunkIndex / chunks) * 100
+                  ((chunkIndex + 1) / chunks) * 100
                 );
               }
               return file;
-            });
-          });
-        } catch (e) {
+            })
+          );
+        } catch {
           console.log("error retry");
-          chunkIndex = -1;
-          continue;
+          // chunkIndex = -1;
+          // continue;
         }
       }
-
-      fileIndex++;
     }
   };
+
+  useEffect(() => {
+    if (
+      files.length > 0 &&
+      files.every(
+        (file) => file.uploadingProgress >= 100 || file.uploadingProgress == -1
+      )
+    ) {
+      const fileErrorCount = files.filter(
+        (file) => file.uploadingProgress == -1
+      ).length;
+      setisUploading(false);
+      if (fileErrorCount > 0) {
+        toast.error(`${fileErrorCount} file(s) failed to upload. Try again.`);
+      } else {
+        shareService
+          .completeShare(createdShare.id)
+          .then(() => {
+            showCompletedUploadModal(modals, createdShare);
+            setFiles([]);
+          })
+          .catch(() =>
+            toast.error("An error occurred while finishing your share.")
+          );
+      }
+    }
+  }, [files]);
+
   if (!user && !config.get("ALLOW_UNAUTHENTICATED_SHARES")) {
     router.replace("/");
   } else {
