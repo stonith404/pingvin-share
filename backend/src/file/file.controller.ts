@@ -1,20 +1,19 @@
 import {
+  Body,
   Controller,
   Get,
   Param,
   Post,
+  Query,
   Res,
   StreamableFile,
-  UploadedFile,
   UseGuards,
-  UseInterceptors,
 } from "@nestjs/common";
-import { FileInterceptor } from "@nestjs/platform-express";
 import * as contentDisposition from "content-disposition";
 import { Response } from "express";
+import * as fs from "fs";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
 import { FileDownloadGuard } from "src/file/guard/fileDownload.guard";
-import { ShareDTO } from "src/share/dto/share.dto";
 import { ShareOwnerGuard } from "src/share/guard/shareOwner.guard";
 import { ShareSecurityGuard } from "src/share/guard/shareSecurity.guard";
 import { FileService } from "./file.service";
@@ -25,21 +24,40 @@ export class FileController {
 
   @Post()
   @UseGuards(JwtGuard, ShareOwnerGuard)
-  @UseInterceptors(
-    FileInterceptor("file", {
-      dest: "./data/uploads/_temp/",
-    })
-  )
   async create(
-    @UploadedFile()
-    file: Express.Multer.File,
+    @Query() query: any,
+
+    @Body() body: any,
     @Param("shareId") shareId: string
   ) {
     // Fixes file names with special characters
-    file.originalname = Buffer.from(file.originalname, "latin1").toString(
-      "utf8"
-    );
-    return new ShareDTO().from(await this.fileService.create(file, shareId));
+    // file.originalname = Buffer.from(file.originalname, "latin1").toString(
+    //   "utf8"
+    // );
+
+    const { name, currentChunkIndex, totalChunks } = query;
+    const firstChunk = parseInt(currentChunkIndex) === 0;
+    const lastChunk = parseInt(currentChunkIndex) === parseInt(totalChunks) - 1;
+    const ext = name.split(".").pop();
+    const data = body.toString().split(",")[1];
+    const buffer = Buffer.from(data, "base64");
+
+    const tmpFilename = "tmp_" + "test_file" + ext;
+
+    if (firstChunk && fs.existsSync("./data/uploads/" + tmpFilename)) {
+      fs.unlinkSync("./data/uploads/" + tmpFilename);
+    }
+
+    fs.appendFileSync("./data/uploads/" + tmpFilename, buffer);
+
+    if (lastChunk) {
+      const finalFilename = "final." + ext;
+      fs.renameSync(
+        "./data/uploads/" + tmpFilename,
+        "./data/uploads/" + finalFilename
+      );
+      // return new ShareDTO().from(await this.fileService.create(file, shareId));
+    }
   }
 
   @Get(":fileId/download")

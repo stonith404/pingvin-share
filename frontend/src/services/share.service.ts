@@ -74,22 +74,23 @@ const downloadFile = async (shareId: string, fileId: string) => {
 
 const uploadFile = async (
   shareId: string,
-  file: File,
-  progressCallBack: (uploadingProgress: number) => void
+  readerEvent: ProgressEvent<FileReader>,
+  fileName: string,
+  chunkIndex: number,
+  totalChunks: number
 ) => {
-  let formData = new FormData();
-  formData.append("file", file);
+  const data = readerEvent.target!.result;
 
-  const response = await api.post(`shares/${shareId}/files`, formData, {
-    onUploadProgress: (progressEvent) => {
-      const uploadingProgress = Math.round(
-        (100 * progressEvent.loaded) / (progressEvent.total ?? 1)
-      );
-      if (uploadingProgress < 100) progressCallBack(uploadingProgress);
+  const headers = { "Content-Type": "application/octet-stream" };
+
+  return await api.post(`shares/${shareId}/files`, data, {
+    headers,
+    params: {
+      name: fileName,
+      currentChunkIndex: chunkIndex,
+      totalChunks,
     },
   });
-  progressCallBack(100);
-  return response;
 };
 
 export default {
