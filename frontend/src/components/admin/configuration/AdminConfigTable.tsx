@@ -115,9 +115,10 @@ const AdminConfigTable = () => {
             if (config.get("SETUP_FINISHED")) {
               configService
                 .updateMany(updatedConfigVariables)
-                .then(() =>
-                  toast.success("Configurations updated successfully")
-                )
+                .then(() => {
+                  updatedConfigVariables = [];
+                  toast.success("Configurations updated successfully");
+                })
                 .catch(toast.axiosError);
             } else {
               configService

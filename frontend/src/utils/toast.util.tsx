@@ -11,7 +11,7 @@ const error = (message: string) =>
   });
 
 const axiosError = (axiosError: any) =>
-  error(axiosError?.response?.data?.message ?? "An unknown error occured");
+  error(axiosError?.response?.data?.message ?? "An unknown error occurred");
 
 const success = (message: string) =>
   showNotification({

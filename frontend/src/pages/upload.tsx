@@ -1,6 +1,5 @@
 import { Button, Group } from "@mantine/core";
 import { useModals } from "@mantine/modals";
-import axios from "axios";
 import { useRouter } from "next/router";
 import pLimit from "p-limit";
 import { useEffect, useState } from "react";
@@ -63,11 +62,7 @@ const Upload = () => {
 
       await Promise.all(uploadPromises);
     } catch (e) {
-      if (axios.isAxiosError(e)) {
-        toast.error(e.response?.data?.message ?? "An unkown error occured.");
-      } else {
-        toast.error("An unkown error occured.");
-      }
+      toast.axiosError(e);
       setisUploading(false);
     }
   };
@@ -93,7 +88,7 @@ const Upload = () => {
             setFiles([]);
           })
           .catch(() =>
-            toast.error("An error occured while finishing your share.")
+            toast.error("An error occurred while finishing your share.")
           );
       }
     }
