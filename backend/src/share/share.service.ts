@@ -56,6 +56,10 @@ export class ShareService {
       expirationDate = moment(0).toDate();
     }
 
+    fs.mkdirSync(`./data/uploads/shares/${share.id}`, {
+      recursive: true,
+    });
+
     return await this.prisma.share.create({
       data: {
         ...share,

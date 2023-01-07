@@ -44,10 +44,10 @@ const configVariables: Prisma.ConfigCreateInput[] = [
     secret: false,
   },
   {
-    key: "MAX_FILE_SIZE",
-    description: "Maximum file size in bytes",
+    key: "MAX_SHARE_SIZE",
+    description: "Maximum share size in bytes",
     type: "number",
-    value: "1000000000",
+    value: "1073741824",
     category: "share",
     secret: false,
   },

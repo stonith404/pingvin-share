@@ -1,5 +1,7 @@
 import {
   BadRequestException,
+  HttpException,
+  HttpStatus,
   Injectable,
   NotFoundException,
 } from "@nestjs/common";
@@ -27,28 +29,25 @@ export class FileService {
 
     const share = await this.prisma.share.findUnique({
       where: { id: shareId },
+      include: { files: true },
     });
 
     if (share.uploadLocked)
       throw new BadRequestException("Share is already completed");
 
-    await fs.promises.mkdir(`./data/uploads/shares/${shareId}`, {
-      recursive: true,
-    });
-
-    // Calculate expected chunk index from the temporary file on the server
-    let expectedChunkIndex: number;
+    let diskFileSize: number;
     try {
-      const chunkSize = 10 * 1024 * 1024; // 10MB
-      const diskFileSize = fs.statSync(
+      diskFileSize = fs.statSync(
         `./data/uploads/shares/${shareId}/${file.id}.tmp-chunk`
       ).size;
-      expectedChunkIndex = Math.ceil(diskFileSize / chunkSize);
     } catch {
-      expectedChunkIndex = 0;
+      diskFileSize = 0;
     }
 
     // If the sent chunk index and the expected chunk index doesn't match throw an error
+    const chunkSize = 10 * 1024 * 1024; // 10MB
+    const expectedChunkIndex = Math.ceil(diskFileSize / chunkSize);
+
     if (expectedChunkIndex != chunk.index)
       throw new BadRequestException({
         message: "Unexpected chunk received",
@@ -57,6 +56,22 @@ export class FileService {
       });
 
     const buffer = Buffer.from(data, "base64");
+
+    // Check if share size limit is exceeded
+    const fileSizeSum = share.files.reduce(
+      (n, { size }) => n + parseInt(size),
+      0
+    );
+
+    if (
+      fileSizeSum + diskFileSize + buffer.byteLength >
+      this.config.get("MAX_SHARE_SIZE")
+    ) {
+      throw new HttpException(
+        "Max share size exceeded",
+        HttpStatus.PAYLOAD_TOO_LARGE
+      );
+    }
 
     fs.appendFileSync(
       `./data/uploads/shares/${shareId}/${file.id}.tmp-chunk`,
