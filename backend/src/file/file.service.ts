@@ -41,7 +41,7 @@ export class FileService {
     try {
       const chunkSize = 10 * 1024 * 1024; // 10MB
       const diskFileSize = fs.statSync(
-        `./data/uploads/shares/${shareId}/${file.id}.tmp`
+        `./data/uploads/shares/${shareId}/${file.id}.tmp-chunk`
       ).size;
       expectedChunkIndex = Math.ceil(diskFileSize / chunkSize);
     } catch {
@@ -59,14 +59,14 @@ export class FileService {
     const buffer = Buffer.from(data, "base64");
 
     fs.appendFileSync(
-      `./data/uploads/shares/${shareId}/${file.id}.tmp`,
+      `./data/uploads/shares/${shareId}/${file.id}.tmp-chunk`,
       buffer
     );
 
     const isLastChunk = chunk.index == chunk.total - 1;
     if (isLastChunk) {
       fs.renameSync(
-        `./data/uploads/shares/${shareId}/${file.id}.tmp`,
+        `./data/uploads/shares/${shareId}/${file.id}.tmp-chunk`,
         `./data/uploads/shares/${shareId}/${file.id}`
       );
       const fileSize = fs.statSync(

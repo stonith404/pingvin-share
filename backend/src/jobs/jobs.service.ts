@@ -38,18 +38,34 @@ export class JobsService {
 
   @Cron("0 0 * * *")
   deleteTemporaryFiles() {
-    const files = fs.readdirSync("./data/uploads/_temp");
+    let filesDeleted = 0;
 
-    for (const file of files) {
-      const stats = fs.statSync(`./data/uploads/_temp/${file}`);
-      const isOlderThanOneDay = moment(stats.mtime)
-        .add(1, "day")
-        .isBefore(moment());
+    const shareDirectories = fs
+      .readdirSync("./data/uploads/shares", { withFileTypes: true })
+      .filter((dirent) => dirent.isDirectory())
+      .map((dirent) => dirent.name);
 
-      if (isOlderThanOneDay) fs.rmSync(`./data/uploads/_temp/${file}`);
+    for (const shareDirectory of shareDirectories) {
+      const temporaryFiles = fs
+        .readdirSync(`./data/uploads/shares/${shareDirectory}`)
+        .filter((file) => file.endsWith(".tmp-chunk"));
+
+      for (const file of temporaryFiles) {
+        const stats = fs.statSync(
+          `./data/uploads/shares/${shareDirectory}/${file}`
+        );
+        const isOlderThanOneDay = moment(stats.mtime)
+          .add(1, "day")
+          .isBefore(moment());
+
+        if (isOlderThanOneDay) {
+          fs.rmSync(`./data/uploads/shares/${shareDirectory}/${file}`);
+          filesDeleted++;
+        }
+      }
     }
 
-    console.log(`job: deleted ${files.length} temporary files`);
+    console.log(`job: deleted ${filesDeleted} temporary files`);
   }
 
   @Cron("0 * * * *")
