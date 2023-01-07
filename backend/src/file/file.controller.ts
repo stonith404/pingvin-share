@@ -29,18 +29,13 @@ export class FileController {
     @Body() body: string,
     @Param("shareId") shareId: string
   ) {
-    // Fixes file names with special characters
-    // file.originalname = Buffer.from(file.originalname, "latin1").toString(
-    //   "utf8"
-    // );
-
     const { id, name, chunkIndex, totalChunks } = query;
 
     const data = body.toString().split(",")[1];
 
     return await this.fileService.create(
       data,
-      { index: chunkIndex, total: totalChunks },
+      { index: parseInt(chunkIndex), total: parseInt(totalChunks) },
       { id, name },
       shareId
     );

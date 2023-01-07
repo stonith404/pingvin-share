@@ -1,5 +1,6 @@
 import { Button, Group } from "@mantine/core";
 import { useModals } from "@mantine/modals";
+import { AxiosError } from "axios";
 import { useRouter } from "next/router";
 import pLimit from "p-limit";
 import { useEffect, useState } from "react";
@@ -32,6 +33,7 @@ const Upload = () => {
     createdShare = await shareService.create(share);
 
     const fileUploadPromises = files.map(async (file, fileIndex) =>
+      // Limit the number of concurrent uploads to 3
       promiseLimit(async () => {
         let fileId: string;
 
@@ -65,6 +67,7 @@ const Upload = () => {
               reader.readAsDataURL(blob);
             });
 
+            // Set the progress of the file
             setFiles((files) =>
               files.map((file, callbackIndex) => {
                 if (fileIndex == callbackIndex) {
@@ -75,10 +78,20 @@ const Upload = () => {
                 return file;
               })
             );
-          } catch {
-            console.log("error retry");
-            // chunkIndex = -1;
-            // continue;
+          } catch (e) {
+            if (
+              e instanceof AxiosError &&
+              e.response?.data.error == "unexpected_chunk_index"
+            ) {
+              // Retry with the expected chunk index
+              chunkIndex = e.response!.data!.expectedChunkIndex - 1;
+              continue;
+            } else {
+              // Retry after 5 seconds
+              await new Promise((resolve) => setTimeout(resolve, 5000));
+              chunkIndex = -1;
+              continue;
+            }
           }
         }
       })

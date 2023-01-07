@@ -36,9 +36,32 @@ export class FileService {
       recursive: true,
     });
 
+    // Calculate expected chunk index from the temporary file on the server
+    let expectedChunkIndex: number;
+    try {
+      const chunkSize = 10 * 1024 * 1024; // 10MB
+      const diskFileSize = fs.statSync(
+        `./data/uploads/shares/${shareId}/${file.id}.tmp`
+      ).size;
+      expectedChunkIndex = Math.ceil(diskFileSize / chunkSize);
+    } catch {
+      expectedChunkIndex = 0;
+    }
+
+    // If the sent chunk index and the expected chunk index doesn't match throw an error
+    if (expectedChunkIndex != chunk.index)
+      throw new BadRequestException({
+        message: "Unexpected chunk received",
+        error: "unexpected_chunk_index",
+        expectedChunkIndex,
+      });
+
     const buffer = Buffer.from(data, "base64");
 
-    fs.appendFileSync(`./data/uploads/shares/${shareId}/${file.id}.tmp`, buffer);
+    fs.appendFileSync(
+      `./data/uploads/shares/${shareId}/${file.id}.tmp`,
+      buffer
+    );
 
     const isLastChunk = chunk.index == chunk.total - 1;
     if (isLastChunk) {
@@ -46,7 +69,9 @@ export class FileService {
         `./data/uploads/shares/${shareId}/${file.id}.tmp`,
         `./data/uploads/shares/${shareId}/${file.id}`
       );
-      const fileSize = fs.statSync(`./data/uploads/shares/${shareId}/${file.id}`).size;
+      const fileSize = fs.statSync(
+        `./data/uploads/shares/${shareId}/${file.id}`
+      ).size;
       await this.prisma.file.create({
         data: {
           id: file.id,

@@ -85,17 +85,17 @@ const uploadFile = async (
 ): Promise<FileUploadResponse> => {
   const data = readerEvent.target!.result;
 
-  const headers = { "Content-Type": "application/octet-stream" };
-
-  return (await api.post(`shares/${shareId}/files`, data, {
-    headers,
-    params: {
-      id: file.id,
-      name: file.name,
-      chunkIndex,
-      totalChunks,
-    },
-  })).data;
+  return (
+    await api.post(`shares/${shareId}/files`, data, {
+      headers: { "Content-Type": "application/octet-stream" },
+      params: {
+        id: file.id,
+        name: file.name,
+        chunkIndex,
+        totalChunks,
+      },
+    })
+  ).data;
 };
 
 export default {
