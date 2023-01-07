@@ -30,6 +30,7 @@ const Upload = () => {
   const [isUploading, setisUploading] = useState(false);
 
   const uploadFiles = async (share: CreateShare) => {
+    setisUploading(true);
     createdShare = await shareService.create(share);
 
     const fileUploadPromises = files.map(async (file, fileIndex) =>
@@ -110,7 +111,7 @@ const Upload = () => {
       const fileErrorCount = files.filter(
         (file) => file.uploadingProgress == -1
       ).length;
-      setisUploading(false);
+
       if (fileErrorCount > 0) {
         toast.error(`${fileErrorCount} file(s) failed to upload. Try again.`);
       } else {
@@ -124,6 +125,7 @@ const Upload = () => {
             toast.error("An error occurred while finishing your share.")
           );
       }
+      setisUploading(false);
     }
   }, [files]);
 

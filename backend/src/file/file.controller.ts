@@ -9,6 +9,7 @@ import {
   StreamableFile,
   UseGuards,
 } from "@nestjs/common";
+import { SkipThrottle } from "@nestjs/throttler";
 import * as contentDisposition from "content-disposition";
 import { Response } from "express";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
@@ -22,6 +23,7 @@ export class FileController {
   constructor(private fileService: FileService) {}
 
   @Post()
+  @SkipThrottle()
   @UseGuards(JwtGuard, ShareOwnerGuard)
   async create(
     @Query() query: any,
