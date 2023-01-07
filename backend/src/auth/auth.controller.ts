@@ -153,7 +153,7 @@ export class AuthController {
     response.cookie("refresh_token", refreshToken, {
       path: "/api/auth/token",
       httpOnly: true,
-      maxAge: 60 * 60 * 24 * 30 * 3,
+      maxAge: 1000 * 60 * 60 * 24 * 30 * 3,
     });
 
     return response;
