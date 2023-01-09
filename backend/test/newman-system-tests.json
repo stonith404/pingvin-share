@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4b16228d-41ef-4c6b-8a0b-294a30a4cfc2",
+		"_postman_id": "38c7001d-4868-484b-935a-84fd3b5e7cf6",
 		"name": "Pingvin Share Testing",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "17822132"
@@ -478,28 +478,34 @@
 											"pm.test(\"Response body correct\", () => {",
 											"    const responseBody = pm.response.json();",
 											"    pm.expect(responseBody).to.have.property(\"id\")",
-											"    pm.expect(Object.keys(responseBody).length).be.equal(1)",
+											"    pm.expect(responseBody.name).to.be.equal(\"test-file.txt\")",
+											"    pm.expect(Object.keys(responseBody).length).be.equal(2)",
 											"});"
 										],
 										"type": "text/javascript"
 									}
 								}
 							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/octet-stream",
+										"type": "text"
+									}
+								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "file",
-											"type": "file",
-											"src": "./test/system/test-file.txt"
-										}
-									]
+									"mode": "raw",
+									"raw": "data:application/octet-stream;base64,VGhpcyBpcyBhIHRlc3QgZmlsZWQgdXNlZCBmb3IgdXBsb2FkaW5nIGluIHRoZSBzeXN0ZW0gdGVzdC4="
 								},
 								"url": {
-									"raw": "{{API_URL}}/shares/:shareId/files",
+									"raw": "{{API_URL}}/shares/:shareId/files?name=test-file.txt&chunkIndex=0&totalChunks=1",
 									"host": [
 										"{{API_URL}}"
 									],
@@ -507,6 +513,20 @@
 										"shares",
 										":shareId",
 										"files"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "test-file.txt"
+										},
+										{
+											"key": "chunkIndex",
+											"value": "0"
+										},
+										{
+											"key": "totalChunks",
+											"value": "1"
+										}
 									],
 									"variable": [
 										{
@@ -531,29 +551,34 @@
 											"",
 											"pm.test(\"Response body correct\", () => {",
 											"    const responseBody = pm.response.json();",
-											"    pm.expect(responseBody).to.have.property(\"id\")",
-											"    pm.expect(Object.keys(responseBody).length).be.equal(1)",
+											"    pm.expect(responseBody.name).to.be.equal(\"test-file2.txt\")",
+											"    pm.expect(Object.keys(responseBody).length).be.equal(2)",
 											"});"
 										],
 										"type": "text/javascript"
 									}
 								}
 							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/octet-stream",
+										"type": "text"
+									}
+								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "file",
-											"type": "file",
-											"src": "./test/system/test-file.txt"
-										}
-									]
+									"mode": "raw",
+									"raw": "data:application/octet-stream;base64,VGhpcyBpcyBhIHRlc3QgZmlsZWQgdXNlZCBmb3IgdXBsb2FkaW5nIGluIHRoZSBzeXN0ZW0gdGVzdC4="
 								},
 								"url": {
-									"raw": "{{API_URL}}/shares/:shareId/files",
+									"raw": "{{API_URL}}/shares/:shareId/files?name=test-file2.txt&chunkIndex=0&totalChunks=1",
 									"host": [
 										"{{API_URL}}"
 									],
@@ -561,6 +586,20 @@
 										"shares",
 										":shareId",
 										"files"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "test-file2.txt"
+										},
+										{
+											"key": "chunkIndex",
+											"value": "0"
+										},
+										{
+											"key": "totalChunks",
+											"value": "1"
+										}
 									],
 									"variable": [
 										{

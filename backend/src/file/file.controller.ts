@@ -1,20 +1,19 @@
 import {
+  Body,
   Controller,
   Get,
   Param,
   Post,
+  Query,
   Res,
   StreamableFile,
-  UploadedFile,
   UseGuards,
-  UseInterceptors,
 } from "@nestjs/common";
-import { FileInterceptor } from "@nestjs/platform-express";
+import { SkipThrottle } from "@nestjs/throttler";
 import * as contentDisposition from "content-disposition";
 import { Response } from "express";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
 import { FileDownloadGuard } from "src/file/guard/fileDownload.guard";
-import { ShareDTO } from "src/share/dto/share.dto";
 import { ShareOwnerGuard } from "src/share/guard/shareOwner.guard";
 import { ShareSecurityGuard } from "src/share/guard/shareSecurity.guard";
 import { FileService } from "./file.service";
@@ -24,22 +23,24 @@ export class FileController {
   constructor(private fileService: FileService) {}
 
   @Post()
+  @SkipThrottle()
   @UseGuards(JwtGuard, ShareOwnerGuard)
-  @UseInterceptors(
-    FileInterceptor("file", {
-      dest: "./data/uploads/_temp/",
-    })
-  )
   async create(
-    @UploadedFile()
-    file: Express.Multer.File,
+    @Query() query: any,
+
+    @Body() body: string,
     @Param("shareId") shareId: string
   ) {
-    // Fixes file names with special characters
-    file.originalname = Buffer.from(file.originalname, "latin1").toString(
-      "utf8"
+    const { id, name, chunkIndex, totalChunks } = query;
+
+    const data = body.toString().split(",")[1];
+
+    return await this.fileService.create(
+      data,
+      { index: parseInt(chunkIndex), total: parseInt(totalChunks) },
+      { id, name },
+      shareId
     );
-    return new ShareDTO().from(await this.fileService.create(file, shareId));
   }
 
   @Get(":fileId/download")

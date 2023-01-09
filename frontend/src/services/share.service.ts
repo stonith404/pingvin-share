@@ -1,3 +1,4 @@
+import { FileUploadResponse } from "../types/File.type";
 import {
   CreateShare,
   MyShare,
@@ -74,22 +75,27 @@ const downloadFile = async (shareId: string, fileId: string) => {
 
 const uploadFile = async (
   shareId: string,
-  file: File,
-  progressCallBack: (uploadingProgress: number) => void
-) => {
-  let formData = new FormData();
-  formData.append("file", file);
+  readerEvent: ProgressEvent<FileReader>,
+  file: {
+    id?: string;
+    name: string;
+  },
+  chunkIndex: number,
+  totalChunks: number
+): Promise<FileUploadResponse> => {
+  const data = readerEvent.target!.result;
 
-  const response = await api.post(`shares/${shareId}/files`, formData, {
-    onUploadProgress: (progressEvent) => {
-      const uploadingProgress = Math.round(
-        (100 * progressEvent.loaded) / (progressEvent.total ?? 1)
-      );
-      if (uploadingProgress < 100) progressCallBack(uploadingProgress);
-    },
-  });
-  progressCallBack(100);
-  return response;
+  return (
+    await api.post(`shares/${shareId}/files`, data, {
+      headers: { "Content-Type": "application/octet-stream" },
+      params: {
+        id: file.id,
+        name: file.name,
+        chunkIndex,
+        totalChunks,
+      },
+    })
+  ).data;
 };
 
 export default {

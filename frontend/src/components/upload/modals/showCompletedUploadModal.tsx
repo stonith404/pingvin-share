@@ -37,6 +37,7 @@ const Body = ({ share }: { share: Share }) => {
   return (
     <Stack align="stretch">
       <TextInput
+        readOnly
         variant="filled"
         value={link}
         rightSection={

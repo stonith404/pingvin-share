@@ -33,9 +33,11 @@ const useStyles = createStyles((theme) => ({
 
 const Dropzone = ({
   isUploading,
+  files,
   setFiles,
 }: {
   isUploading: boolean;
+  files: FileUpload[];
   setFiles: Dispatch<SetStateAction<FileUpload[]>>;
 }) => {
   const config = useConfig();
@@ -45,18 +47,27 @@ const Dropzone = ({
   return (
     <div className={classes.wrapper}>
       <MantineDropzone
-        maxSize={parseInt(config.get("MAX_FILE_SIZE"))}
         onReject={(e) => {
           toast.error(e[0].errors[0].message);
         }}
         disabled={isUploading}
         openRef={openRef as ForwardedRef<() => void>}
-        onDrop={(files) => {
-          const newFiles = files.map((file) => {
-            (file as FileUpload).uploadingProgress = 0;
-            return file as FileUpload;
-          });
-          setFiles(newFiles);
+        onDrop={(newFiles: FileUpload[]) => {
+          const fileSizeSum = [...newFiles, ...files].reduce((n, { size }) => n + size, 0);
+
+          if (fileSizeSum > config.get("MAX_SHARE_SIZE")) {
+            toast.error(
+              `Your files exceed the maximum share size of ${byteStringToHumanSizeString(
+                config.get("MAX_SHARE_SIZE")
+              )}.`
+            );
+          } else {
+            newFiles = newFiles.map((newFile) => {
+              newFile.uploadingProgress = 0;
+              return newFile;
+            });
+            setFiles([...newFiles, ...files]);
+          }
         }}
         className={classes.dropzone}
         radius="md"
@@ -71,7 +82,8 @@ const Dropzone = ({
           <Text align="center" size="sm" mt="xs" color="dimmed">
             Drag&apos;n&apos;drop files here to start your share. We can accept
             only files that are less than{" "}
-            {byteStringToHumanSizeString(config.get("MAX_FILE_SIZE"))} in size.
+            {byteStringToHumanSizeString(config.get("MAX_SHARE_SIZE"))} in
+            total.
           </Text>
         </div>
       </MantineDropzone>

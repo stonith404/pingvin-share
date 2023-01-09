@@ -1,5 +1,7 @@
 import { Button, Group } from "@mantine/core";
 import { useModals } from "@mantine/modals";
+import { cleanNotifications } from "@mantine/notifications";
+import { AxiosError } from "axios";
 import { useRouter } from "next/router";
 import pLimit from "p-limit";
 import { useEffect, useState } from "react";
@@ -15,8 +17,10 @@ import { FileUpload } from "../types/File.type";
 import { CreateShare, Share } from "../types/share.type";
 import toast from "../utils/toast.util";
 
-let createdShare: Share;
 const promiseLimit = pLimit(3);
+const chunkSize = 10 * 1024 * 1024; // 10MB
+let errorToastShown = false;
+let createdShare: Share;
 
 const Upload = () => {
   const router = useRouter();
@@ -29,70 +33,122 @@ const Upload = () => {
 
   const uploadFiles = async (share: CreateShare) => {
     setisUploading(true);
-    try {
-      setFiles((files) =>
-        files.map((file) => {
-          file.uploadingProgress = 1;
-          return file;
-        })
-      );
-      createdShare = await shareService.create(share);
+    createdShare = await shareService.create(share);
 
-      const uploadPromises = files.map((file, i) => {
-        // Callback to indicate current upload progress
-        const progressCallBack = (progress: number) => {
-          setFiles((files) => {
-            return files.map((file, callbackIndex) => {
-              if (i == callbackIndex) {
+    const fileUploadPromises = files.map(async (file, fileIndex) =>
+      // Limit the number of concurrent uploads to 3
+      promiseLimit(async () => {
+        let fileId: string;
+
+        const setFileProgress = (progress: number) => {
+          setFiles((files) =>
+            files.map((file, callbackIndex) => {
+              if (fileIndex == callbackIndex) {
                 file.uploadingProgress = progress;
               }
               return file;
-            });
-          });
+            })
+          );
         };
 
-        try {
-          return promiseLimit(() =>
-            shareService.uploadFile(share.id, file, progressCallBack)
-          );
-        } catch {
-          file.uploadingProgress = -1;
-        }
-      });
+        setFileProgress(1);
 
-      await Promise.all(uploadPromises);
-    } catch (e) {
-      toast.axiosError(e);
-      setisUploading(false);
-    }
+        const chunks = Math.ceil(file.size / chunkSize);
+
+        for (let chunkIndex = 0; chunkIndex < chunks; chunkIndex++) {
+          const from = chunkIndex * chunkSize;
+          const to = from + chunkSize;
+          const blob = file.slice(from, to);
+          try {
+            await new Promise((resolve, reject) => {
+              const reader = new FileReader();
+              reader.onload = async (event) =>
+                await shareService
+                  .uploadFile(
+                    createdShare.id,
+                    event,
+                    {
+                      id: fileId,
+                      name: file.name,
+                    },
+                    chunkIndex,
+                    Math.ceil(file.size / chunkSize)
+                  )
+                  .then((response) => {
+                    fileId = response.id;
+                    resolve(response);
+                  })
+                  .catch(reject);
+
+              reader.readAsDataURL(blob);
+            });
+
+            setFileProgress(((chunkIndex + 1) / chunks) * 100);
+          } catch (e) {
+            if (
+              e instanceof AxiosError &&
+              e.response?.data.error == "unexpected_chunk_index"
+            ) {
+              // Retry with the expected chunk index
+              chunkIndex = e.response!.data!.expectedChunkIndex - 1;
+              continue;
+            } else {
+              setFileProgress(-1);
+              // Retry after 5 seconds
+              await new Promise((resolve) => setTimeout(resolve, 5000));
+              chunkIndex = -1;
+
+              continue;
+            }
+          }
+        }
+      })
+    );
+
+    Promise.all(fileUploadPromises);
   };
 
   useEffect(() => {
+    // Check if there are any files that failed to upload
+    const fileErrorCount = files.filter(
+      (file) => file.uploadingProgress == -1
+    ).length;
+
+    if (fileErrorCount > 0) {
+      if (!errorToastShown) {
+        toast.error(
+          `${fileErrorCount} file(s) failed to upload. Trying again.`,
+          {
+            disallowClose: true,
+            autoClose: false,
+          }
+        );
+      }
+      errorToastShown = true;
+    } else {
+      cleanNotifications();
+      errorToastShown = false;
+    }
+
+    // Complete share
     if (
       files.length > 0 &&
-      files.every(
-        (file) => file.uploadingProgress >= 100 || file.uploadingProgress == -1
-      )
+      files.every((file) => file.uploadingProgress >= 100) &&
+      fileErrorCount == 0
     ) {
-      const fileErrorCount = files.filter(
-        (file) => file.uploadingProgress == -1
-      ).length;
-      setisUploading(false);
-      if (fileErrorCount > 0) {
-        toast.error(`${fileErrorCount} file(s) failed to upload. Try again.`);
-      } else {
-        shareService
-          .completeShare(createdShare.id)
-          .then(() => {
-            showCompletedUploadModal(modals, createdShare);
-            setFiles([]);
-          })
-          .catch(() =>
-            toast.error("An error occurred while finishing your share.")
-          );
-      }
+      shareService
+        .completeShare(createdShare.id)
+        .then(() => {
+          setisUploading(false);
+          showCompletedUploadModal(modals, createdShare);
+          setFiles([]);
+        })
+        .catch(() =>
+          toast.error("An error occurred while finishing your share.")
+        );
     }
   }, [files]);
+
   if (!user && !config.get("ALLOW_UNAUTHENTICATED_SHARES")) {
     router.replace("/");
   } else {
@@ -120,7 +176,7 @@ const Upload = () => {
             Share
           </Button>
         </Group>
-        <Dropzone setFiles={setFiles} isUploading={isUploading} />
+        <Dropzone files={files} setFiles={setFiles} isUploading={isUploading} />
         {files.length > 0 && <FileList files={files} setFiles={setFiles} />}
       </>
     );

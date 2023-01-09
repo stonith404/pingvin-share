@@ -7,7 +7,7 @@
     "prod": "prisma migrate deploy && prisma db seed && node dist/src/main",
     "lint": "eslint 'src/**/*.ts'",
     "format": "prettier --write 'src/**/*.ts'",
-    "test:system": "prisma migrate reset -f && nest start & wait-on http://localhost:8080/api/configs && newman run ./test/system/newman-system-tests.json"
+    "test:system": "prisma migrate reset -f && nest start & wait-on http://localhost:8080/api/configs && newman run ./test/newman-system-tests.json"
   },
   "prisma": {
     "seed": "ts-node prisma/seed/config.seed.ts"
@@ -25,13 +25,13 @@
     "@prisma/client": "^4.7.1",
     "archiver": "^5.3.1",
     "argon2": "^0.30.2",
+    "body-parser": "^1.20.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "content-disposition": "^0.5.4",
     "cookie-parser": "^1.4.6",
     "mime-types": "^2.1.35",
     "moment": "^2.29.4",
-    "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.8.0",
     "otplib": "^12.0.1",
     "passport": "^0.6.0",
@@ -52,7 +52,6 @@
     "@types/cron": "^2.0.0",
     "@types/express": "^4.17.14",
     "@types/mime-types": "^2.1.1",
-    "@types/multer": "^1.4.7",
     "@types/node": "^18.11.10",
     "@types/nodemailer": "^6.4.6",
     "@types/passport-jwt": "^3.0.7",
