@@ -33,9 +33,11 @@ const useStyles = createStyles((theme) => ({
 
 const Dropzone = ({
   isUploading,
+  files,
   setFiles,
 }: {
   isUploading: boolean;
+  files: FileUpload[];
   setFiles: Dispatch<SetStateAction<FileUpload[]>>;
 }) => {
   const config = useConfig();
@@ -50,8 +52,8 @@ const Dropzone = ({
         }}
         disabled={isUploading}
         openRef={openRef as ForwardedRef<() => void>}
-        onDrop={(files) => {
-          const fileSizeSum = files.reduce((n, { size }) => n + size, 0);
+        onDrop={(newFiles: FileUpload[]) => {
+          const fileSizeSum = [...newFiles, ...files].reduce((n, { size }) => n + size, 0);
 
           if (fileSizeSum > config.get("MAX_SHARE_SIZE")) {
             toast.error(
@@ -60,11 +62,11 @@ const Dropzone = ({
               )}.`
             );
           } else {
-            const newFiles = files.map((file) => {
-              (file as FileUpload).uploadingProgress = 0;
-              return file as FileUpload;
+            newFiles = newFiles.map((newFile) => {
+              newFile.uploadingProgress = 0;
+              return newFile;
             });
-            setFiles(newFiles);
+            setFiles([...newFiles, ...files]);
           }
         }}
         className={classes.dropzone}

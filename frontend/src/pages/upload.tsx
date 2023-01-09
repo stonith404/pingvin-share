@@ -1,5 +1,6 @@
 import { Button, Group } from "@mantine/core";
 import { useModals } from "@mantine/modals";
+import { cleanNotifications } from "@mantine/notifications";
 import { AxiosError } from "axios";
 import { useRouter } from "next/router";
 import pLimit from "p-limit";
@@ -16,9 +17,11 @@ import { FileUpload } from "../types/File.type";
 import { CreateShare, Share } from "../types/share.type";
 import toast from "../utils/toast.util";
 
-let createdShare: Share;
-const promiseLimit = pLimit(3);
+const promiseLimit = pLimit(1);
 const chunkSize = 10 * 1024 * 1024; // 10MB
+let errorToastShown = false;
+let createdShare: Share;
+
 
 const Upload = () => {
   const router = useRouter();
@@ -28,6 +31,8 @@ const Upload = () => {
   const config = useConfig();
   const [files, setFiles] = useState<FileUpload[]>([]);
   const [isUploading, setisUploading] = useState(false);
+
+
 
   const uploadFiles = async (share: CreateShare) => {
     setisUploading(true);
@@ -88,9 +93,19 @@ const Upload = () => {
               chunkIndex = e.response!.data!.expectedChunkIndex - 1;
               continue;
             } else {
+              // Set the progress of the file
+              setFiles((files) =>
+                files.map((file, callbackIndex) => {
+                  if (fileIndex == callbackIndex) {
+                    file.uploadingProgress = -1;
+                  }
+                  return file;
+                })
+              );
               // Retry after 5 seconds
               await new Promise((resolve) => setTimeout(resolve, 5000));
               chunkIndex = -1;
+
               continue;
             }
           }
@@ -102,31 +117,42 @@ const Upload = () => {
   };
 
   useEffect(() => {
+    // Check if there are any files that failed to upload
+    const fileErrorCount = files.filter(
+      (file) => file.uploadingProgress == -1
+    ).length;
+
+    if (fileErrorCount > 0) {
+      if (!errorToastShown) {
+        toast.error(`${fileErrorCount} file(s) failed to upload. Trying again.`, {
+          disallowClose: true,
+          autoClose: false,
+        });
+      }
+      errorToastShown = true;
+    } else {
+      cleanNotifications();
+      errorToastShown = false;
+    }
+
+    // Complete share
     if (
       files.length > 0 &&
-      files.every(
-        (file) => file.uploadingProgress >= 100 || file.uploadingProgress == -1
-      )
+      files.every((file) => file.uploadingProgress >= 100) &&
+      fileErrorCount == 0
     ) {
-      const fileErrorCount = files.filter(
-        (file) => file.uploadingProgress == -1
-      ).length;
-
-      if (fileErrorCount > 0) {
-        toast.error(`${fileErrorCount} file(s) failed to upload. Try again.`);
-      } else {
-        shareService
-          .completeShare(createdShare.id)
-          .then(() => {
-            showCompletedUploadModal(modals, createdShare);
-            setFiles([]);
-          })
-          .catch(() =>
-            toast.error("An error occurred while finishing your share.")
-          );
-      }
-      setisUploading(false);
+      shareService
+        .completeShare(createdShare.id)
+        .then(() => {
+          setisUploading(false);
+          showCompletedUploadModal(modals, createdShare);
+          setFiles([]);
+        })
+        .catch(() =>
+          toast.error("An error occurred while finishing your share.")
+        );
     }
+
   }, [files]);
 
   if (!user && !config.get("ALLOW_UNAUTHENTICATED_SHARES")) {
@@ -156,7 +182,7 @@ const Upload = () => {
             Share
           </Button>
         </Group>
-        <Dropzone setFiles={setFiles} isUploading={isUploading} />
+        <Dropzone files={files} setFiles={setFiles} isUploading={isUploading} />
         {files.length > 0 && <FileList files={files} setFiles={setFiles} />}
       </>
     );
