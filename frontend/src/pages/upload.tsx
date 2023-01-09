@@ -17,7 +17,7 @@ import { FileUpload } from "../types/File.type";
 import { CreateShare, Share } from "../types/share.type";
 import toast from "../utils/toast.util";
 
-const promiseLimit = pLimit(1);
+const promiseLimit = pLimit(3);
 const chunkSize = 10 * 1024 * 1024; // 10MB
 let errorToastShown = false;
 let createdShare: Share;

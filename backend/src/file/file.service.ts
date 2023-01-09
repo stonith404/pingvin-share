@@ -6,6 +6,7 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
+import * as crypto from "crypto";
 import * as fs from "fs";
 import * as mime from "mime-types";
 import { ConfigService } from "src/config/config.service";
