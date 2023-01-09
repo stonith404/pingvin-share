@@ -22,7 +22,6 @@ const chunkSize = 10 * 1024 * 1024; // 10MB
 let errorToastShown = false;
 let createdShare: Share;
 
-
 const Upload = () => {
   const router = useRouter();
   const modals = useModals();
@@ -32,8 +31,6 @@ const Upload = () => {
   const [files, setFiles] = useState<FileUpload[]>([]);
   const [isUploading, setisUploading] = useState(false);
 
-
-
   const uploadFiles = async (share: CreateShare) => {
     setisUploading(true);
     createdShare = await shareService.create(share);
@@ -42,6 +39,19 @@ const Upload = () => {
       // Limit the number of concurrent uploads to 3
       promiseLimit(async () => {
         let fileId: string;
+
+        const setFileProgress = (progress: number) => {
+          setFiles((files) =>
+            files.map((file, callbackIndex) => {
+              if (fileIndex == callbackIndex) {
+                file.uploadingProgress = progress;
+              }
+              return file;
+            })
+          );
+        };
+
+        setFileProgress(1);
 
         const chunks = Math.ceil(file.size / chunkSize);
 
@@ -73,17 +83,7 @@ const Upload = () => {
               reader.readAsDataURL(blob);
             });
 
-            // Set the progress of the file
-            setFiles((files) =>
-              files.map((file, callbackIndex) => {
-                if (fileIndex == callbackIndex) {
-                  file.uploadingProgress = Math.round(
-                    ((chunkIndex + 1) / chunks) * 100
-                  );
-                }
-                return file;
-              })
-            );
+            setFileProgress(((chunkIndex + 1) / chunks) * 100);
           } catch (e) {
             if (
               e instanceof AxiosError &&
@@ -93,15 +93,7 @@ const Upload = () => {
               chunkIndex = e.response!.data!.expectedChunkIndex - 1;
               continue;
             } else {
-              // Set the progress of the file
-              setFiles((files) =>
-                files.map((file, callbackIndex) => {
-                  if (fileIndex == callbackIndex) {
-                    file.uploadingProgress = -1;
-                  }
-                  return file;
-                })
-              );
+              setFileProgress(-1);
               // Retry after 5 seconds
               await new Promise((resolve) => setTimeout(resolve, 5000));
               chunkIndex = -1;
@@ -124,10 +116,13 @@ const Upload = () => {
 
     if (fileErrorCount > 0) {
       if (!errorToastShown) {
-        toast.error(`${fileErrorCount} file(s) failed to upload. Trying again.`, {
-          disallowClose: true,
-          autoClose: false,
-        });
+        toast.error(
+          `${fileErrorCount} file(s) failed to upload. Trying again.`,
+          {
+            disallowClose: true,
+            autoClose: false,
+          }
+        );
       }
       errorToastShown = true;
     } else {
@@ -152,7 +147,6 @@ const Upload = () => {
           toast.error("An error occurred while finishing your share.")
         );
     }
-
   }, [files]);
 
   if (!user && !config.get("ALLOW_UNAUTHENTICATED_SHARES")) {
