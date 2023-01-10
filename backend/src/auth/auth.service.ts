@@ -87,10 +87,16 @@ export class AuthService {
 
     const hash = await argon.hash(newPassword);
 
-    return await this.prisma.user.update({
+    await this.prisma.refreshToken.deleteMany({
+      where: { userId: user.id },
+    });
+
+    await this.prisma.user.update({
       where: { id: user.id },
       data: { password: hash },
     });
+
+    return this.createRefreshToken(user.id);
   }
 
   async createAccessToken(user: User, refreshTokenId: string) {
@@ -112,7 +118,12 @@ export class AuthService {
       refreshTokenId: string;
     };
 
-    await this.prisma.refreshToken.delete({ where: { id: refreshTokenId } });
+    await this.prisma.refreshToken
+      .delete({ where: { id: refreshTokenId } })
+      .catch((e) => {
+        // Ignore error if refresh token doesn't exist
+        if (e.code != "P2025") throw e;
+      });
   }
 
   async refreshAccessToken(refreshToken: string) {
