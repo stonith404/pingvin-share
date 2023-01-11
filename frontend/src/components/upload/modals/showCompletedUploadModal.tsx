@@ -15,7 +15,11 @@ import { TbCopy } from "react-icons/tb";
 import { Share } from "../../../types/share.type";
 import toast from "../../../utils/toast.util";
 
-const showCompletedUploadModal = (modals: ModalsContextProps, share: Share) => {
+const showCompletedUploadModal = (
+  modals: ModalsContextProps,
+  share: Share,
+  appUrl: string
+) => {
   return modals.openModal({
     closeOnClickOutside: false,
     withCloseButton: false,
@@ -25,15 +29,16 @@ const showCompletedUploadModal = (modals: ModalsContextProps, share: Share) => {
         <Title order={4}>Share ready</Title>
       </Stack>
     ),
-    children: <Body share={share} />,
+    children: <Body share={share} appUrl={appUrl} />,
   });
 };
 
-const Body = ({ share }: { share: Share }) => {
+const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
   const clipboard = useClipboard({ timeout: 500 });
   const modals = useModals();
   const router = useRouter();
-  const link = `${window.location.origin}/share/${share.id}`;
+
+  const link = `${appUrl}/share/${share.id}`;
   return (
     <Stack align="stretch">
       <TextInput

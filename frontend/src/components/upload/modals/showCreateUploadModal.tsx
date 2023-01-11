@@ -30,6 +30,7 @@ const showCreateUploadModal = (
   modals: ModalsContextProps,
   options: {
     isUserSignedIn: boolean;
+    appUrl: string;
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
   },
@@ -53,6 +54,7 @@ const CreateUploadModalBody = ({
   uploadCallback: (createShare: CreateShare) => void;
   options: {
     isUserSignedIn: boolean;
+    appUrl: string;
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
   };
@@ -156,7 +158,7 @@ const CreateUploadModalBody = ({
               color: theme.colors.gray[6],
             })}
           >
-            {window.location.origin}/share/
+            {options.appUrl}/share/
             {form.values.link == "" ? "myAwesomeShare" : form.values.link}
           </Text>
           <Grid align={form.errors.link ? "center" : "flex-end"}>

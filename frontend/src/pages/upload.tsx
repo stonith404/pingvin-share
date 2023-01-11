@@ -140,7 +140,7 @@ const Upload = () => {
         .completeShare(createdShare.id)
         .then(() => {
           setisUploading(false);
-          showCompletedUploadModal(modals, createdShare);
+          showCompletedUploadModal(modals, createdShare, config.get("APP_URL"));
           setFiles([]);
         })
         .catch(() =>
@@ -164,6 +164,7 @@ const Upload = () => {
                 modals,
                 {
                   isUserSignedIn: user ? true : false,
+                  appUrl: config.get("APP_URL"),
                   allowUnauthenticatedShares: config.get(
                     "ALLOW_UNAUTHENTICATED_SHARES"
                   ),

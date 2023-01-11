@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 import { TbLink, TbTrash } from "react-icons/tb";
 import showShareLinkModal from "../../components/account/showShareLinkModal";
 import Meta from "../../components/Meta";
+import useConfig from "../../hooks/config.hook";
 import useUser from "../../hooks/user.hook";
 import shareService from "../../services/share.service";
 import { MyShare } from "../../types/share.type";
@@ -28,6 +29,8 @@ const MyShares = () => {
   const modals = useModals();
   const clipboard = useClipboard();
   const router = useRouter();
+  const config = useConfig();
+
   const { user } = useUser();
 
   const [shares, setShares] = useState<MyShare[]>();
@@ -86,13 +89,17 @@ const MyShares = () => {
                         onClick={() => {
                           if (window.isSecureContext) {
                             clipboard.copy(
-                              `${window.location.origin}/share/${share.id}`
+                              `${config.get("APP_URL")}/share/${share.id}`
                             );
                             toast.success(
                               "Your link was copied to the keyboard."
                             );
                           } else {
-                            showShareLinkModal(modals, share.id);
+                            showShareLinkModal(
+                              modals,
+                              share.id,
+                              config.get("APP_URL")
+                            );
                           }
                         }}
                       >
