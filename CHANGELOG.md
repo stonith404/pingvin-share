@@ -1,3 +1,16 @@
+### [0.6.1](https://github.com/stonith404/pingvin-share/compare/v0.6.0...v0.6.1) (2023-01-11)
+
+
+### Features
+
+* delete all sessions if password was changed ([02e41e2](https://github.com/stonith404/pingvin-share/commit/02e41e243768de34de1bdc8833e83f60db530e55))
+
+
+### Bug Fixes
+
+* shareUrl uses wrong origin ([f1b44f8](https://github.com/stonith404/pingvin-share/commit/f1b44f87fa64d3b21ca92c9068cb352d0ad51bc0))
+* update password doesn't work ([74e8956](https://github.com/stonith404/pingvin-share/commit/74e895610642552c98c0015d0f8347735aaed457))
+
 ## [0.6.0](https://github.com/stonith404/pingvin-share/compare/v0.5.1...v0.6.0) (2023-01-09)
 
 
