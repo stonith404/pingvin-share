@@ -53,7 +53,7 @@ const Admin = () => {
             title: "Update",
             icon: TbRefresh,
             route:
-              "https://github.com/stonith404/pingvin-share/releases/tag/v0.5.0",
+              "https://github.com/stonith404/pingvin-share/releases/latest",
           },
         ]);
       }
