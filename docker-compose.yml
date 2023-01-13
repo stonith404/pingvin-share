@@ -3,6 +3,10 @@ services:
   pingvin-share:
     image: stonith404/pingvin-share
     restart: unless-stopped
+# Optional: If you add clamav, uncomment the following to have clamav start first.
+#    depends_on:
+#      clamav:
+#        condition: service_healthy
     ports:
       - 3000:3000
     volumes:
