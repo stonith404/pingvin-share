@@ -36,7 +36,7 @@ The website is now listening available on `http://localhost:3000`, have fun with
 With ClamAV the shares get scanned for malicious files and get removed if any found.
 
 1. Add the ClamAV container to the Docker Compose stack (see `docker-compose.yml`) and start the container.
-2. Docker will wait for ClamAV to start before starting pingvin-share.  This make take a minute or two.
+2. Docker will wait for ClamAV to start before starting Pingvin Share. This may take a minute or two.
 3. The Pingvin Share logs should now log "ClamAV is active"
 
 Please note that ClamAV needs a lot of [ressources](https://docs.clamav.net/manual/Installing/Docker.html#memory-ram-requirements).
