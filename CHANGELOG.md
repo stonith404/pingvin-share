@@ -1,3 +1,15 @@
+## [0.7.0](https://github.com/stonith404/pingvin-share/compare/v0.6.1...v0.7.0) (2023-01-13)
+
+
+### Features
+
+* add ClamAV to scan for malicious files ([76088cc](https://github.com/stonith404/pingvin-share/commit/76088cc76aedae709f06deaee2244efcf6a22bed))
+
+
+### Bug Fixes
+
+* invalid github release link on admin page ([349bf47](https://github.com/stonith404/pingvin-share/commit/349bf475cc7fc1141dbd2a9bd2f63153c4d5b41b))
+
 ### [0.6.1](https://github.com/stonith404/pingvin-share/compare/v0.6.0...v0.6.1) (2023-01-11)
 
 

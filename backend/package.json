@@ -1,6 +1,6 @@
 {
   "name": "pingvin-share-backend",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "scripts": {
     "build": "nest build",
     "dev": "nest start --watch",
