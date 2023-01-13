@@ -53,7 +53,10 @@ const Dropzone = ({
         disabled={isUploading}
         openRef={openRef as ForwardedRef<() => void>}
         onDrop={(newFiles: FileUpload[]) => {
-          const fileSizeSum = [...newFiles, ...files].reduce((n, { size }) => n + size, 0);
+          const fileSizeSum = [...newFiles, ...files].reduce(
+            (n, { size }) => n + size,
+            0
+          );
 
           if (fileSizeSum > config.get("MAX_SHARE_SIZE")) {
             toast.error(

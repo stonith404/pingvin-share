@@ -11,7 +11,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
-  app.use(bodyParser.raw({type:'application/octet-stream', limit:'20mb'}));
+  app.use(bodyParser.raw({ type: "application/octet-stream", limit: "20mb" }));
   app.use(cookieParser());
   app.set("trust proxy", true);
 

@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  clamav:
+    restart: unless-stopped
+    ports:
+      - 3310:3310
+    image: clamav/clamav

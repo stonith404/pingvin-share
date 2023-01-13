@@ -47,21 +47,19 @@ const Share = ({ shareId }: { shareId: string }) => {
       .catch((e) => {
         const { error } = e.response.data;
         if (e.response.status == 404) {
-          showErrorModal(
-            modals,
-            "Not found",
-            "This share can't be found. Please check your link."
-          );
+          if (error == "share_removed") {
+            showErrorModal(modals, "Share removed", e.response.data.message);
+          } else {
+            showErrorModal(
+              modals,
+              "Not found",
+              "This share can't be found. Please check your link."
+            );
+          }
         } else if (error == "share_password_required") {
           showEnterPasswordModal(modals, getShareToken);
         } else if (error == "share_token_required") {
           getShareToken();
-        } else if (error == "forbidden") {
-          showErrorModal(
-            modals,
-            "Forbidden",
-            "You're not allowed to see this share. Are you logged in with the correct account?"
-          );
         } else {
           showErrorModal(modals, "Error", "An unknown error occurred.");
         }

@@ -30,7 +30,7 @@ RUN npm run build  && npm prune --production
 
 # Stage 5: Final image
 FROM node:18-slim AS runner
-ENV NODE_ENV=production
+ENV NODE_ENV=docker
 RUN apt-get update && apt-get install -y openssl
 
 WORKDIR /opt/app/frontend

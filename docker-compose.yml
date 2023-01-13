@@ -6,4 +6,9 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - "${PWD}/data:/opt/app/backend/data"
+      - "./data:/opt/app/backend/data"
+# Optional: Add ClamAV (see README.md)  
+# ClamAV is currently only available for AMD64 see https://github.com/Cisco-Talos/clamav/issues/482
+#  clamav:
+#    restart: unless-stopped
+#    image: clamav/clamav

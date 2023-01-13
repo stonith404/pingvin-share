@@ -4,13 +4,12 @@ Pingvin Share is self-hosted file sharing platform and an alternative for WeTran
 
 ## ✨ Features
 
-- Spin up your instance within 2 minutes
 - Create a share with files that you can access with a link
 - No file size limit, only your disk will be your limit
 - Set a share expiration
 - Optionally secure your share with a visitor limit and a password
 - Email recepients
-- Light & dark mode
+- ClamAV integration
 
 ## 🐧 Get to know Pingvin Share
 
@@ -29,6 +28,18 @@ Pingvin Share is self-hosted file sharing platform and an alternative for WeTran
 2. Run `docker-compose up -d`
 
 The website is now listening available on `http://localhost:3000`, have fun with Pingvin Share 🐧!
+
+### Integrations
+
+#### ClamAV
+
+With ClamAV the shares get scanned for malicious files and get removed if any found.
+
+1. Add the ClamAV container to the Docker Compose stack (see `docker-compose.yml`) and start the container.
+2. As soon as the ClamAV container is ready (when ClamAV logs "socket found, clamd started"), restart the Pingvin Share container with `docker compose restart pingvin-share`
+3. The Pingvin Share logs should now log "ClamAV is active"
+
+Please note that ClamAV needs a lot of [ressources](https://docs.clamav.net/manual/Installing/Docker.html#memory-ram-requirements).
 
 ### Additional resources
 

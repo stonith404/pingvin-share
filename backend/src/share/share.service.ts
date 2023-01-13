@@ -10,6 +10,7 @@ import * as archiver from "archiver";
 import * as argon from "argon2";
 import * as fs from "fs";
 import * as moment from "moment";
+import { ClamScanService } from "src/clamscan/clamscan.service";
 import { ConfigService } from "src/config/config.service";
 import { EmailService } from "src/email/email.service";
 import { FileService } from "src/file/file.service";
@@ -23,7 +24,8 @@ export class ShareService {
     private fileService: FileService,
     private emailService: EmailService,
     private config: ConfigService,
-    private jwtService: JwtService
+    private jwtService: JwtService,
+    private clasmScanService: ClamScanService
   ) {}
 
   async create(share: CreateShareDTO, user?: User) {
@@ -123,6 +125,9 @@ export class ShareService {
       );
     }
 
+    // Check if any file is malicious with ClamAV
+    this.clasmScanService.checkAndRemove(share.id);
+
     return await this.prisma.share.update({
       where: { id },
       data: { uploadLocked: true },
@@ -157,7 +162,7 @@ export class ShareService {
   }
 
   async get(id: string) {
-    const share: any = await this.prisma.share.findUnique({
+    const share = await this.prisma.share.findUnique({
       where: { id },
       include: {
         files: true,
@@ -165,10 +170,13 @@ export class ShareService {
       },
     });
 
+    if (share.removedReason)
+      throw new NotFoundException(share.removedReason, "share_removed");
+
     if (!share || !share.uploadLocked)
       throw new NotFoundException("Share not found");
 
-    return share;
+    return share as any;
   }
 
   async getMetaData(id: string) {
