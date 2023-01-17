@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import AdminConfigTable from "../../components/admin/configuration/AdminConfigTable";
 
 import Logo from "../../components/Logo";
+import Meta from "../../components/Meta";
 import useConfig from "../../hooks/config.hook";
 import useUser from "../../hooks/user.hook";
 
@@ -21,6 +22,7 @@ const Setup = () => {
 
   return (
     <>
+      <Meta title="Setup" />
       <Stack align="center">
         <Logo height={80} width={80} />
         <Title order={2}>Welcome to Pingvin Share</Title>

@@ -11,6 +11,7 @@ import {
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { TbRefresh, TbSettings, TbUsers } from "react-icons/tb";
+import Meta from "../../components/Meta";
 import configService from "../../services/config.service";
 
 const useStyles = createStyles((theme) => ({
@@ -62,6 +63,7 @@ const Admin = () => {
 
   return (
     <>
+      <Meta title="Administration" />
       <Title mb={30} order={3}>
         Administration
       </Title>

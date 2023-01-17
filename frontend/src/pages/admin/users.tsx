@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { TbPlus } from "react-icons/tb";
 import ManageUserTable from "../../components/admin/ManageUserTable";
 import showCreateUserModal from "../../components/admin/showCreateUserModal";
+import Meta from "../../components/Meta";
 import userService from "../../services/user.service";
 import User from "../../types/user.type";
 import toast from "../../utils/toast.util";
@@ -47,6 +48,7 @@ const Users = () => {
 
   return (
     <>
+      <Meta title="User management" />
       <Group position="apart" align="baseline" mb={20}>
         <Title mb={30} order={3}>
           User management
