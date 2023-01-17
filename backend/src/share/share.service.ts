@@ -25,7 +25,7 @@ export class ShareService {
     private emailService: EmailService,
     private config: ConfigService,
     private jwtService: JwtService,
-    private clasmScanService: ClamScanService
+    private clamScanService: ClamScanService
   ) {}
 
   async create(share: CreateShareDTO, user?: User) {
@@ -126,7 +126,7 @@ export class ShareService {
     }
 
     // Check if any file is malicious with ClamAV
-    this.clasmScanService.checkAndRemove(share.id);
+    this.clamScanService.checkAndRemove(share.id);
 
     return await this.prisma.share.update({
       where: { id },

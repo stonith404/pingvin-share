@@ -7,4 +7,4 @@ import { ClamScanService } from "./clamscan.service";
   providers: [ClamScanService],
   exports: [ClamScanService],
 })
-export class ClamscanModule {}
+export class ClamScanModule {}

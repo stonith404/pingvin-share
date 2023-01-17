@@ -12,7 +12,7 @@ import { JobsModule } from "./jobs/jobs.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { ShareModule } from "./share/share.module";
 import { UserModule } from "./user/user.module";
-import { ClamscanModule } from "./clamscan/clamscan.module";
+import { ClamScanModule } from "./clamscan/clamscan.module";
 
 @Module({
   imports: [
@@ -29,7 +29,7 @@ import { ClamscanModule } from "./clamscan/clamscan.module";
       limit: 100,
     }),
     ScheduleModule.forRoot(),
-    ClamscanModule,
+    ClamScanModule,
   ],
   providers: [
     {
