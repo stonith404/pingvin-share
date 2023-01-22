@@ -6,10 +6,12 @@ import {
   HttpCode,
   Param,
   Post,
+  Req,
   UseGuards,
 } from "@nestjs/common";
 import { Throttle } from "@nestjs/throttler";
 import { User } from "@prisma/client";
+import { Request } from "express";
 import { GetUser } from "src/auth/decorator/getUser.decorator";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
 import { CreateShareDTO } from "./dto/createShare.dto";
@@ -17,6 +19,7 @@ import { MyShareDTO } from "./dto/myShare.dto";
 import { ShareDTO } from "./dto/share.dto";
 import { ShareMetaDataDTO } from "./dto/shareMetaData.dto";
 import { SharePasswordDto } from "./dto/sharePassword.dto";
+import { CreateShareGuard } from "./guard/createShare.guard";
 import { ShareOwnerGuard } from "./guard/shareOwner.guard";
 import { ShareSecurityGuard } from "./guard/shareSecurity.guard";
 import { ShareTokenSecurity } from "./guard/shareTokenSecurity.guard";
@@ -46,7 +49,7 @@ export class ShareController {
   }
 
   @Post()
-  @UseGuards(JwtGuard)
+  @UseGuards(CreateShareGuard)
   async create(@Body() body: CreateShareDTO, @GetUser() user: User) {
     return new ShareDTO().from(await this.shareService.create(body, user));
   }
@@ -59,11 +62,13 @@ export class ShareController {
 
   @Post(":id/complete")
   @HttpCode(202)
-  @UseGuards(JwtGuard, ShareOwnerGuard)
-  async complete(@Param("id") id: string) {
-    return new ShareDTO().from(await this.shareService.complete(id));
+  @UseGuards(CreateShareGuard, ShareOwnerGuard)
+  async complete(@Param("id") id: string, @Req() request: Request) {
+    const {reverse_share_token} =  request.cookies;
+    return new ShareDTO().from(await this.shareService.complete(id, reverse_share_token));
   }
 
+  @Throttle(10, 60)
   @Get("isShareIdAvailable/:id")
   async isShareIdAvailable(@Param("id") id: string) {
     return this.shareService.isShareIdAvailable(id);
@@ -75,5 +80,27 @@ export class ShareController {
   @Post(":id/token")
   async getShareToken(@Param("id") id: string, @Body() body: SharePasswordDto) {
     return this.shareService.getShareToken(id, body.password);
+  }
+
+  @Post("reverseShareToken")
+  @UseGuards(CreateShareGuard)
+  async createReverseShareToken(
+    @Body() body: CreateShareDTO,
+    @GetUser() user: User
+  ) {
+    return new ShareDTO().from(await this.shareService.create(body, user));
+  }
+
+  @Throttle(20, 60)
+  @Get("reverseShareToken/:reverseShareToken")
+  @UseGuards(CreateShareGuard)
+  async isReverseShareTokenValid(
+    @Param("reverseShareToken") reverseShareToken: string
+  ) {
+    const isValid = await this.shareService.isReverseShareTokenValid(
+      reverseShareToken
+    );
+
+    return { isValid };
   }
 }

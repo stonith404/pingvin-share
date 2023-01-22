@@ -17,9 +17,10 @@ model User {
   password String
   isAdmin  Boolean @default(false)
 
-  shares        Share[]
-  refreshTokens RefreshToken[]
-  loginTokens   LoginToken[]
+  shares             Share[]
+  refreshTokens      RefreshToken[]
+  loginTokens        LoginToken[]
+  reverseShareTokens ReverseShareToken[]
 
   totpEnabled  Boolean @default(false)
   totpVerified Boolean @default(false)
@@ -64,6 +65,17 @@ model Share {
   security   ShareSecurity?
   recipients ShareRecipient[]
   files      File[]
+}
+
+model ReverseShareToken {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  expiration DateTime
+  used      Boolean @default(false)
+
+  creatorId String?
+  creator   User?   @relation(fields: [creatorId], references: [id], onDelete: Cascade)
 }
 
 model ShareRecipient {

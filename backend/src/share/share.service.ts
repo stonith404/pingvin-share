@@ -96,7 +96,7 @@ export class ShareService {
     await archive.finalize();
   }
 
-  async complete(id: string) {
+  async complete(id: string, reverseShareToken?: string) {
     const share = await this.prisma.share.findUnique({
       where: { id },
       include: { files: true, recipients: true, creator: true },
@@ -127,6 +127,13 @@ export class ShareService {
 
     // Check if any file is malicious with ClamAV
     this.clamScanService.checkAndRemove(share.id);
+
+    if (reverseShareToken) {
+      await this.prisma.reverseShareToken.update({
+        where: { id: reverseShareToken },
+        data: { used: true },
+      });
+    }
 
     return await this.prisma.share.update({
       where: { id },
@@ -269,5 +276,19 @@ export class ShareService {
     } catch {
       return false;
     }
+  }
+
+  async isReverseShareTokenValid(reverseShareToken: string) {
+    const reverseShareTokenTuple =
+      await this.prisma.reverseShareToken.findUnique({
+        where: { id: reverseShareToken },
+      });
+
+    if (!reverseShareTokenTuple) return false;
+
+    const isExpired = new Date() > reverseShareTokenTuple.expiration;
+    const isUsed = reverseShareTokenTuple.used;
+
+    return !(isExpired || isUsed);
   }
 }

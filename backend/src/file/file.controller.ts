@@ -14,6 +14,7 @@ import * as contentDisposition from "content-disposition";
 import { Response } from "express";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
 import { FileDownloadGuard } from "src/file/guard/fileDownload.guard";
+import { CreateShareGuard } from "src/share/guard/createShare.guard";
 import { ShareOwnerGuard } from "src/share/guard/shareOwner.guard";
 import { ShareSecurityGuard } from "src/share/guard/shareSecurity.guard";
 import { FileService } from "./file.service";
@@ -24,7 +25,7 @@ export class FileController {
 
   @Post()
   @SkipThrottle()
-  @UseGuards(JwtGuard, ShareOwnerGuard)
+  @UseGuards(CreateShareGuard, ShareOwnerGuard)
   async create(
     @Query() query: any,
 

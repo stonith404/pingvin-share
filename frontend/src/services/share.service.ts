@@ -1,3 +1,4 @@
+import { setCookie } from "cookies-next";
 import { FileUploadResponse } from "../types/File.type";
 import {
   CreateShare,
@@ -98,6 +99,16 @@ const uploadFile = async (
   ).data;
 };
 
+const setReverseShareToken = async (reverseShareToken: string) => {
+  const { isValid } = (
+    await api.get(`/shares/reverseShareToken/${reverseShareToken}`)
+  ).data;
+
+  if (!isValid) throw "Reverse share token is invalid";
+
+  setCookie("reverse_share_token", reverseShareToken);
+};
+
 export default {
   create,
   completeShare,
@@ -109,4 +120,5 @@ export default {
   isShareIdAvailable,
   downloadFile,
   uploadFile,
+  setReverseShareToken,
 };

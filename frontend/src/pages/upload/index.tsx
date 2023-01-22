@@ -2,20 +2,21 @@ import { Button, Group } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { cleanNotifications } from "@mantine/notifications";
 import { AxiosError } from "axios";
+import { getCookie, getCookies } from "cookies-next";
 import { useRouter } from "next/router";
 import pLimit from "p-limit";
 import { useEffect, useState } from "react";
-import Meta from "../components/Meta";
-import Dropzone from "../components/upload/Dropzone";
-import FileList from "../components/upload/FileList";
-import showCompletedUploadModal from "../components/upload/modals/showCompletedUploadModal";
-import showCreateUploadModal from "../components/upload/modals/showCreateUploadModal";
-import useConfig from "../hooks/config.hook";
-import useUser from "../hooks/user.hook";
-import shareService from "../services/share.service";
-import { FileUpload } from "../types/File.type";
-import { CreateShare, Share } from "../types/share.type";
-import toast from "../utils/toast.util";
+import Meta from "../../components/Meta";
+import Dropzone from "../../components/upload/Dropzone";
+import FileList from "../../components/upload/FileList";
+import showCompletedUploadModal from "../../components/upload/modals/showCompletedUploadModal";
+import showCreateUploadModal from "../../components/upload/modals/showCreateUploadModal";
+import useConfig from "../../hooks/config.hook";
+import useUser from "../../hooks/user.hook";
+import shareService from "../../services/share.service";
+import { FileUpload } from "../../types/File.type";
+import { CreateShare, Share } from "../../types/share.type";
+import toast from "../../utils/toast.util";
 
 const promiseLimit = pLimit(3);
 const chunkSize = 10 * 1024 * 1024; // 10MB
@@ -149,7 +150,7 @@ const Upload = () => {
     }
   }, [files]);
 
-  if (!user && !config.get("ALLOW_UNAUTHENTICATED_SHARES")) {
+  if ((!user && !config.get("ALLOW_UNAUTHENTICATED_SHARES")) && !getCookie("reverse_share_token")) {
     router.replace("/");
   } else {
     return (
