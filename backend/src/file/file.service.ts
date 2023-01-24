@@ -68,7 +68,7 @@ export class FileService {
 
     if (
       shareSizeSum > this.config.get("MAX_SHARE_SIZE") ||
-      (share.reverseShare.maxShareSize &&
+      (share.reverseShare?.maxShareSize &&
         shareSizeSum > parseInt(share.reverseShare.maxShareSize))
     ) {
       throw new HttpException(

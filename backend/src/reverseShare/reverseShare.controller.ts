@@ -28,10 +28,7 @@ export class ReverseShareController {
 
   @Post()
   @UseGuards(JwtGuard)
-  async createReverseShare(
-    @Body() body: CreateReverseShareDTO,
-    @GetUser() user: User
-  ) {
+  async create(@Body() body: CreateReverseShareDTO, @GetUser() user: User) {
     const token = await this.reverseShareService.create(body, user.id);
 
     const link = `${this.config.get("APP_URL")}/upload/${token}`;
@@ -41,9 +38,7 @@ export class ReverseShareController {
 
   @Throttle(20, 60)
   @Get(":reverseShareToken")
-  async getReverseShareByToken(
-    @Param("reverseShareToken") reverseShareToken: string
-  ) {
+  async getByToken(@Param("reverseShareToken") reverseShareToken: string) {
     const isValid = await this.reverseShareService.isValid(reverseShareToken);
 
     if (!isValid) throw new NotFoundException("Reverse share token not found");
@@ -55,7 +50,7 @@ export class ReverseShareController {
 
   @Get()
   @UseGuards(JwtGuard)
-  async getMyReverseShares(@GetUser() user: User) {
+  async getAllByUser(@GetUser() user: User) {
     return new ReverseShareTokenWithShare().fromList(
       await this.reverseShareService.getAllByUser(user.id)
     );
@@ -63,7 +58,7 @@ export class ReverseShareController {
 
   @Delete(":reverseShareId")
   @UseGuards(JwtGuard, ReverseShareOwnerGuard)
-  async deleteReverseShare(@Param("reverseShareId") id: string) {
+  async remove(@Param("reverseShareId") id: string) {
     await this.reverseShareService.remove(id);
   }
 }
