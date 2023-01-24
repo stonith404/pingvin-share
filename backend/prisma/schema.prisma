@@ -60,8 +60,11 @@ model Share {
   description   String?
   removedReason String?
 
-  creatorId  String?
-  creator    User?            @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  creatorId String?
+  creator   User?   @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+
+  reverseShareToken ReverseShareToken?
+
   security   ShareSecurity?
   recipients ShareRecipient[]
   files      File[]
@@ -71,11 +74,16 @@ model ReverseShareToken {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
 
-  expiration DateTime
-  used      Boolean @default(false)
+  shareExpiration DateTime
+  maxShareSize    String
+
+  used Boolean @default(false)
 
   creatorId String?
   creator   User?   @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+
+  shareId String? @unique
+  share   Share?  @relation(fields: [shareId], references: [id], onDelete: Cascade)
 }
 
 model ShareRecipient {

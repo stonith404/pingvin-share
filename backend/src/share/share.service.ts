@@ -15,8 +15,8 @@ import { ConfigService } from "src/config/config.service";
 import { EmailService } from "src/email/email.service";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
-import { CreateReverseShareTokenDTO } from "./dto/createReverseShareToken.dto";
 import { CreateShareDTO } from "./dto/createShare.dto";
+import { ReverseShareTokenDTO } from "./dto/reverseShareToken.dto";
 
 @Injectable()
 export class ShareService {
@@ -29,7 +29,7 @@ export class ShareService {
     private clamScanService: ClamScanService
   ) {}
 
-  async create(share: CreateShareDTO, user?: User) {
+  async create(share: CreateShareDTO, user?: User, reverseShareToken?: string) {
     if (!(await this.isShareIdAvailable(share.id)).isAvailable)
       throw new BadRequestException("Share id already in use");
 
@@ -40,26 +40,37 @@ export class ShareService {
       share.security.password = await argon.hash(share.security.password);
     }
 
-    // We have to add an exception for "never" (since moment won't like that)
     let expirationDate: Date;
-    if (share.expiration !== "never") {
-      expirationDate = moment()
-        .add(
-          share.expiration.split("-")[0],
-          share.expiration.split(
-            "-"
-          )[1] as moment.unitOfTime.DurationConstructor
-        )
-        .toDate();
+
+    // If share is created by a reverse share token override the expiration date
+    if (reverseShareToken) {
+      const { shareExpiration } =
+        await this.prisma.reverseShareToken.findUnique({
+          where: { id: reverseShareToken },
+        });
+
+      expirationDate = shareExpiration;
     } else {
-      expirationDate = moment(0).toDate();
+      // We have to add an exception for "never" (since moment won't like that)
+      if (share.expiration !== "never") {
+        expirationDate = moment()
+          .add(
+            share.expiration.split("-")[0],
+            share.expiration.split(
+              "-"
+            )[1] as moment.unitOfTime.DurationConstructor
+          )
+          .toDate();
+      } else {
+        expirationDate = moment(0).toDate();
+      }
     }
 
     fs.mkdirSync(`./data/uploads/shares/${share.id}`, {
       recursive: true,
     });
 
-    return await this.prisma.share.create({
+    const shareTuple = await this.prisma.share.create({
       data: {
         ...share,
         expiration: expirationDate,
@@ -72,6 +83,18 @@ export class ShareService {
         },
       },
     });
+
+    if (reverseShareToken) {
+      // Assign share to reverse share token
+      await this.prisma.reverseShareToken.update({
+        where: { id: reverseShareToken },
+        data: {
+          shareId: share.id,
+        },
+      });
+    }
+
+    return shareTuple;
   }
 
   async createZip(shareId: string) {
@@ -275,10 +298,7 @@ export class ShareService {
     }
   }
 
-  async createReverseShareToken(
-    data: CreateReverseShareTokenDTO,
-    creatorId: string
-  ) {
+  async createReverseShareToken(data: ReverseShareTokenDTO, creatorId: string) {
     // Parse date string to date
     const expirationDate = moment()
       .add(
@@ -287,11 +307,31 @@ export class ShareService {
       )
       .toDate();
 
+    const globalMaxShareSize = this.config.get("MAX_SHARE_SIZE");
+
+    if (globalMaxShareSize < data.maxShareSize)
+      throw new BadRequestException(
+        `Max share size can't be greater than ${globalMaxShareSize} bytes.`
+      );
+
     const reverseShareTokenTuple = await this.prisma.reverseShareToken.create({
-      data: { expiration: expirationDate, creatorId },
+      data: {
+        shareExpiration: expirationDate,
+        maxShareSize: data.maxShareSize,
+        creatorId,
+      },
     });
 
     return reverseShareTokenTuple.id;
+  }
+
+  async getReverseShareToken(reverseShareToken: string) {
+    const reverseShareTokenTuple =
+      await this.prisma.reverseShareToken.findUnique({
+        where: { id: reverseShareToken },
+      });
+
+    return reverseShareTokenTuple;
   }
 
   async isReverseShareTokenValid(reverseShareToken: string) {
@@ -302,7 +342,7 @@ export class ShareService {
 
     if (!reverseShareTokenTuple) return false;
 
-    const isExpired = new Date() > reverseShareTokenTuple.expiration;
+    const isExpired = new Date() > reverseShareTokenTuple.shareExpiration;
     const isUsed = reverseShareTokenTuple.used;
 
     return !(isExpired || isUsed);

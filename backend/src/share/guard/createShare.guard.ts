@@ -23,8 +23,6 @@ export class CreateShareGuard extends JwtGuard {
     const isReverseShareTokenValid =
       await this.shareService.isReverseShareTokenValid(reverseShareTokenId);
 
-    console.log(isReverseShareTokenValid);
-
     return isReverseShareTokenValid;
   }
 }

@@ -1,8 +1,8 @@
 import { LoadingOverlay } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { GetServerSidePropsContext } from "next";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Upload from ".";
 import showErrorModal from "../../components/share/showErrorModal";
 import shareService from "../../services/share.service";
 
@@ -14,15 +14,15 @@ export function getServerSideProps(context: GetServerSidePropsContext) {
 
 const Share = ({ reverseShareToken }: { reverseShareToken: string }) => {
   const modals = useModals();
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
+
+  const [maxShareSize, setMaxShareSize] = useState(0);
 
   useEffect(() => {
     shareService
       .setReverseShareToken(reverseShareToken)
-      .then(() => {
-        setIsLoading(false);
-        router.push("/upload");
+      .then((reverseShareTokenData) => {
+        setMaxShareSize(parseInt(reverseShareTokenData.maxShareSize));
         setIsLoading(false);
       })
       .catch(() => {
@@ -35,7 +35,9 @@ const Share = ({ reverseShareToken }: { reverseShareToken: string }) => {
       });
   }, []);
 
-  return <LoadingOverlay visible={isLoading} />;
+  if (isLoading) return <LoadingOverlay visible />;
+
+  return <Upload isReverseShare maxShareSize={maxShareSize} />;
 };
 
 export default Share;

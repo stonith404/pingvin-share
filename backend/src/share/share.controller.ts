@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   HttpCode,
+  NotFoundException,
   Param,
   Post,
   Req,
@@ -15,9 +16,9 @@ import { Request } from "express";
 import { GetUser } from "src/auth/decorator/getUser.decorator";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
 import { ConfigService } from "src/config/config.service";
-import { CreateReverseShareTokenDTO } from "./dto/createReverseShareToken.dto";
 import { CreateShareDTO } from "./dto/createShare.dto";
 import { MyShareDTO } from "./dto/myShare.dto";
+import { ReverseShareTokenDTO } from "./dto/reverseShareToken.dto";
 import { ShareDTO } from "./dto/share.dto";
 import { ShareMetaDataDTO } from "./dto/shareMetaData.dto";
 import { SharePasswordDto } from "./dto/sharePassword.dto";
@@ -55,8 +56,15 @@ export class ShareController {
 
   @Post()
   @UseGuards(CreateShareGuard)
-  async create(@Body() body: CreateShareDTO, @GetUser() user: User) {
-    return new ShareDTO().from(await this.shareService.create(body, user));
+  async create(
+    @Body() body: CreateShareDTO,
+    @Req() request: Request,
+    @GetUser() user: User
+  ) {
+    const { reverse_share_token } = request.cookies;
+    return new ShareDTO().from(
+      await this.shareService.create(body, user, reverse_share_token)
+    );
   }
 
   @Delete(":id")
@@ -92,7 +100,7 @@ export class ShareController {
   @Post("reverseShareToken")
   @UseGuards(JwtGuard)
   async createReverseShareToken(
-    @Body() body: CreateReverseShareTokenDTO,
+    @Body() body: ReverseShareTokenDTO,
     @GetUser() user: User
   ) {
     const token = await this.shareService.createReverseShareToken(
@@ -107,13 +115,17 @@ export class ShareController {
 
   @Throttle(20, 60)
   @Get("reverseShareToken/:reverseShareToken")
-  async isReverseShareTokenValid(
+  async getReverseShareToken(
     @Param("reverseShareToken") reverseShareToken: string
   ) {
     const isValid = await this.shareService.isReverseShareTokenValid(
       reverseShareToken
     );
 
-    return { isValid };
+    if (!isValid) throw new NotFoundException("Reverse share token not found");
+
+    return new ReverseShareTokenDTO().from(
+      await this.shareService.getReverseShareToken(reverseShareToken)
+    );
   }
 }

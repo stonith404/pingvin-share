@@ -5,7 +5,6 @@ import {
   Checkbox,
   Col,
   Grid,
-  Group,
   MultiSelect,
   NumberInput,
   PasswordInput,
@@ -30,6 +29,7 @@ const showCreateUploadModal = (
   modals: ModalsContextProps,
   options: {
     isUserSignedIn: boolean;
+    isReverseShare: boolean;
     appUrl: string;
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
@@ -54,6 +54,7 @@ const CreateUploadModalBody = ({
   uploadCallback: (createShare: CreateShare) => void;
   options: {
     isUserSignedIn: boolean;
+    isReverseShare: boolean;
     appUrl: string;
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
@@ -89,7 +90,7 @@ const CreateUploadModalBody = ({
     validate: yupResolver(validationSchema),
   });
   return (
-    <Group>
+    <>
       {showNotSignedInAlert && !options.isUserSignedIn && (
         <Alert
           withCloseButton
@@ -161,71 +162,78 @@ const CreateUploadModalBody = ({
             {options.appUrl}/share/
             {form.values.link == "" ? "myAwesomeShare" : form.values.link}
           </Text>
-          <Grid align={form.errors.link ? "center" : "flex-end"}>
-            <Col xs={6}>
-              <NumberInput
-                min={1}
-                max={99999}
-                precision={0}
-                variant="filled"
-                label="Expiration"
-                placeholder="n"
-                disabled={form.values.never_expires}
-                {...form.getInputProps("expiration_num")}
+          {!options.isReverseShare && (
+            <>
+              <Grid align={form.errors.link ? "center" : "flex-end"}>
+                <Col xs={6}>
+                  <NumberInput
+                    min={1}
+                    max={99999}
+                    precision={0}
+                    variant="filled"
+                    label="Expiration"
+                    placeholder="n"
+                    disabled={form.values.never_expires}
+                    {...form.getInputProps("expiration_num")}
+                  />
+                </Col>
+                <Col xs={6}>
+                  <Select
+                    disabled={form.values.never_expires}
+                    {...form.getInputProps("expiration_unit")}
+                    data={[
+                      // Set the label to singular if the number is 1, else plural
+                      {
+                        value: "-minutes",
+                        label:
+                          "Minute" +
+                          (form.values.expiration_num == 1 ? "" : "s"),
+                      },
+                      {
+                        value: "-hours",
+                        label:
+                          "Hour" + (form.values.expiration_num == 1 ? "" : "s"),
+                      },
+                      {
+                        value: "-days",
+                        label:
+                          "Day" + (form.values.expiration_num == 1 ? "" : "s"),
+                      },
+                      {
+                        value: "-weeks",
+                        label:
+                          "Week" + (form.values.expiration_num == 1 ? "" : "s"),
+                      },
+                      {
+                        value: "-months",
+                        label:
+                          "Month" +
+                          (form.values.expiration_num == 1 ? "" : "s"),
+                      },
+                      {
+                        value: "-years",
+                        label:
+                          "Year" + (form.values.expiration_num == 1 ? "" : "s"),
+                      },
+                    ]}
+                  />
+                </Col>
+              </Grid>
+              <Checkbox
+                label="Never Expires"
+                {...form.getInputProps("never_expires")}
               />
-            </Col>
-            <Col xs={6}>
-              <Select
-                disabled={form.values.never_expires}
-                {...form.getInputProps("expiration_unit")}
-                data={[
-                  // Set the label to singular if the number is 1, else plural
-                  {
-                    value: "-minutes",
-                    label:
-                      "Minute" + (form.values.expiration_num == 1 ? "" : "s"),
-                  },
-                  {
-                    value: "-hours",
-                    label:
-                      "Hour" + (form.values.expiration_num == 1 ? "" : "s"),
-                  },
-                  {
-                    value: "-days",
-                    label: "Day" + (form.values.expiration_num == 1 ? "" : "s"),
-                  },
-                  {
-                    value: "-weeks",
-                    label:
-                      "Week" + (form.values.expiration_num == 1 ? "" : "s"),
-                  },
-                  {
-                    value: "-months",
-                    label:
-                      "Month" + (form.values.expiration_num == 1 ? "" : "s"),
-                  },
-                  {
-                    value: "-years",
-                    label:
-                      "Year" + (form.values.expiration_num == 1 ? "" : "s"),
-                  },
-                ]}
-              />
-            </Col>
-          </Grid>
-          <Checkbox
-            label="Never Expires"
-            {...form.getInputProps("never_expires")}
-          />
-          <Text
-            italic
-            size="xs"
-            sx={(theme) => ({
-              color: theme.colors.gray[6],
-            })}
-          >
-            {getExpirationPreview("share", form)}
-          </Text>
+              <Text
+                italic
+                size="xs"
+                sx={(theme) => ({
+                  color: theme.colors.gray[6],
+                })}
+              >
+                {getExpirationPreview("share", form)}
+              </Text>
+            </>
+          )}
           <Accordion>
             <Accordion.Item value="description" sx={{ borderBottom: "none" }}>
               <Accordion.Control>Description</Accordion.Control>
@@ -295,7 +303,7 @@ const CreateUploadModalBody = ({
           <Button type="submit">Share</Button>
         </Stack>
       </form>
-    </Group>
+    </>
   );
 };
 
