@@ -57,7 +57,7 @@ const Body = () => {
       <form
         onSubmit={form.onSubmit(async (values) => {
           shareService
-            .createReverseShareToken(
+            .createReverseShare(
               values.expiration_num + values.expiration_unit,
               values.maxShareSize
             )

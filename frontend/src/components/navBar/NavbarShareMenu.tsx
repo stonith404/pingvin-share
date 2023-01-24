@@ -3,7 +3,6 @@ import { useModals } from "@mantine/modals";
 import Link from "next/link";
 import { TbLink, TbPlus } from "react-icons/tb";
 import useUser from "../../hooks/user.hook";
-import showCreateReverseShareModal from "../share/modals/showCreateReverseShareModal";
 
 const NavbarShareMneu = () => {
   const modals = useModals();
@@ -21,10 +20,11 @@ const NavbarShareMneu = () => {
           My shares
         </Menu.Item>
         <Menu.Item
-          onClick={() => showCreateReverseShareModal(modals)}
+          component={Link}
+          href="/account/reverseShares"
           icon={<TbPlus />}
         >
-          Reverse share
+          Reverse shares
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>

@@ -16,7 +16,6 @@ import { EmailService } from "src/email/email.service";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { CreateShareDTO } from "./dto/createShare.dto";
-import { ReverseShareTokenDTO } from "./dto/reverseShareToken.dto";
 
 @Injectable()
 export class ShareService {
@@ -296,55 +295,5 @@ export class ShareService {
     } catch {
       return false;
     }
-  }
-
-  async createReverseShareToken(data: ReverseShareTokenDTO, creatorId: string) {
-    // Parse date string to date
-    const expirationDate = moment()
-      .add(
-        data.expiration.split("-")[0],
-        data.expiration.split("-")[1] as moment.unitOfTime.DurationConstructor
-      )
-      .toDate();
-
-    const globalMaxShareSize = this.config.get("MAX_SHARE_SIZE");
-
-    if (globalMaxShareSize < data.maxShareSize)
-      throw new BadRequestException(
-        `Max share size can't be greater than ${globalMaxShareSize} bytes.`
-      );
-
-    const reverseShareTokenTuple = await this.prisma.reverseShareToken.create({
-      data: {
-        shareExpiration: expirationDate,
-        maxShareSize: data.maxShareSize,
-        creatorId,
-      },
-    });
-
-    return reverseShareTokenTuple.id;
-  }
-
-  async getReverseShareToken(reverseShareToken: string) {
-    const reverseShareTokenTuple =
-      await this.prisma.reverseShareToken.findUnique({
-        where: { id: reverseShareToken },
-      });
-
-    return reverseShareTokenTuple;
-  }
-
-  async isReverseShareTokenValid(reverseShareToken: string) {
-    const reverseShareTokenTuple =
-      await this.prisma.reverseShareToken.findUnique({
-        where: { id: reverseShareToken },
-      });
-
-    if (!reverseShareTokenTuple) return false;
-
-    const isExpired = new Date() > reverseShareTokenTuple.shareExpiration;
-    const isUsed = reverseShareTokenTuple.used;
-
-    return !(isExpired || isUsed);
   }
 }

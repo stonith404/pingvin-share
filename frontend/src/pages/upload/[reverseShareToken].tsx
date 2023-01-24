@@ -20,7 +20,7 @@ const Share = ({ reverseShareToken }: { reverseShareToken: string }) => {
 
   useEffect(() => {
     shareService
-      .setReverseShareToken(reverseShareToken)
+      .setReverseShare(reverseShareToken)
       .then((reverseShareTokenData) => {
         setMaxShareSize(parseInt(reverseShareTokenData.maxShareSize));
         setIsLoading(false);

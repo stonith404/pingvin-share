@@ -1,13 +1,13 @@
 import { ExecutionContext, Injectable } from "@nestjs/common";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
 import { ConfigService } from "src/config/config.service";
-import { ShareService } from "../share.service";
+import { ReverseShareService } from "src/reverseShare/reverseShare.service";
 
 @Injectable()
 export class CreateShareGuard extends JwtGuard {
   constructor(
     configService: ConfigService,
-    private shareService: ShareService
+    private reverseShareService: ReverseShareService
   ) {
     super(configService);
   }
@@ -20,8 +20,9 @@ export class CreateShareGuard extends JwtGuard {
 
     if (!reverseShareTokenId) return false;
 
-    const isReverseShareTokenValid =
-      await this.shareService.isReverseShareTokenValid(reverseShareTokenId);
+    const isReverseShareTokenValid = await this.reverseShareService.isValid(
+      reverseShareTokenId
+    );
 
     return isReverseShareTokenValid;
   }

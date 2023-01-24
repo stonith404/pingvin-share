@@ -4,7 +4,6 @@ import {
   Delete,
   Get,
   HttpCode,
-  NotFoundException,
   Param,
   Post,
   Req,
@@ -18,7 +17,6 @@ import { JwtGuard } from "src/auth/guard/jwt.guard";
 import { ConfigService } from "src/config/config.service";
 import { CreateShareDTO } from "./dto/createShare.dto";
 import { MyShareDTO } from "./dto/myShare.dto";
-import { ReverseShareTokenDTO } from "./dto/reverseShareToken.dto";
 import { ShareDTO } from "./dto/share.dto";
 import { ShareMetaDataDTO } from "./dto/shareMetaData.dto";
 import { SharePasswordDto } from "./dto/sharePassword.dto";
@@ -95,37 +93,5 @@ export class ShareController {
   @Post(":id/token")
   async getShareToken(@Param("id") id: string, @Body() body: SharePasswordDto) {
     return this.shareService.getShareToken(id, body.password);
-  }
-
-  @Post("reverseShareToken")
-  @UseGuards(JwtGuard)
-  async createReverseShareToken(
-    @Body() body: ReverseShareTokenDTO,
-    @GetUser() user: User
-  ) {
-    const token = await this.shareService.createReverseShareToken(
-      body,
-      user.id
-    );
-
-    const link = `${this.config.get("APP_URL")}/upload/${token}`;
-
-    return { token, link };
-  }
-
-  @Throttle(20, 60)
-  @Get("reverseShareToken/:reverseShareToken")
-  async getReverseShareToken(
-    @Param("reverseShareToken") reverseShareToken: string
-  ) {
-    const isValid = await this.shareService.isReverseShareTokenValid(
-      reverseShareToken
-    );
-
-    if (!isValid) throw new NotFoundException("Reverse share token not found");
-
-    return new ReverseShareTokenDTO().from(
-      await this.shareService.getReverseShareToken(reverseShareToken)
-    );
   }
 }

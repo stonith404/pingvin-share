@@ -99,22 +99,21 @@ const uploadFile = async (
   ).data;
 };
 
-const createReverseShareToken = async (
-  expiration: string,
-  maxShareSize: number
-) => {
+const createReverseShare = async (expiration: string, maxShareSize: number) => {
   return (
-    await api.post("/shares/reverseShareToken", {
+    await api.post("reverseShares", {
       expiration,
       maxShareSize: maxShareSize.toString(),
     })
   ).data;
 };
 
-const setReverseShareToken = async (reverseShareToken: string) => {
-  const { data } = await api.get(
-    `/shares/reverseShareToken/${reverseShareToken}`
-  );
+const getMyReverseShares = async () => {
+  return (await api.get("reverseShares")).data;
+};
+
+const setReverseShare = async (reverseShareToken: string) => {
+  const { data } = await api.get(`/reverseShares/${reverseShareToken}`);
   setCookie("reverse_share_token", reverseShareToken);
   return data;
 };
@@ -130,6 +129,7 @@ export default {
   isShareIdAvailable,
   downloadFile,
   uploadFile,
-  setReverseShareToken,
-  createReverseShareToken,
+  setReverseShare,
+  createReverseShare,
+  getMyReverseShares,
 };
