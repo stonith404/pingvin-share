@@ -19,7 +19,7 @@ const FileList = ({
   const rows = files.map((file, i) => (
     <tr key={i}>
       <td>{file.name}</td>
-      <td>{byteToHumanSizeString(file.size.toString())}</td>
+      <td>{byteToHumanSizeString(file.size)}</td>
       <td>
         {file.uploadingProgress == 0 ? (
           <ActionIcon
