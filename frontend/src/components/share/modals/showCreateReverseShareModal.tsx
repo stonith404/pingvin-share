@@ -109,7 +109,7 @@ const Body = ({ getReverseShares }: { getReverseShares: () => void }) => {
                 color: theme.colors.gray[6],
               })}
             >
-              {getExpirationPreview("reverse share link", form)}
+              {getExpirationPreview("reverse share", form)}
             </Text>
           </div>
           <FileSizeInput

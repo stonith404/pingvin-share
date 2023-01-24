@@ -1,13 +1,8 @@
 import { ActionIcon, Menu } from "@mantine/core";
-import { useModals } from "@mantine/modals";
 import Link from "next/link";
-import { TbLink, TbPlus } from "react-icons/tb";
-import useUser from "../../hooks/user.hook";
+import { TbArrowLoopLeft, TbLink } from "react-icons/tb";
 
 const NavbarShareMneu = () => {
-  const modals = useModals();
-  const { user } = useUser();
-
   return (
     <Menu position="bottom-start" withinPortal>
       <Menu.Target>
@@ -22,7 +17,7 @@ const NavbarShareMneu = () => {
         <Menu.Item
           component={Link}
           href="/account/reverseShares"
-          icon={<TbPlus />}
+          icon={<TbArrowLoopLeft />}
         >
           Reverse shares
         </Menu.Item>

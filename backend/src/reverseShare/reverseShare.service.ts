@@ -1,12 +1,17 @@
 import { BadRequestException, Injectable } from "@nestjs/common";
 import * as moment from "moment";
 import { ConfigService } from "src/config/config.service";
+import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { CreateReverseShareDTO } from "./dto/createReverseShare.dto";
 
 @Injectable()
 export class ReverseShareService {
-  constructor(private config: ConfigService, private prisma: PrismaService) {}
+  constructor(
+    private config: ConfigService,
+    private prisma: PrismaService,
+    private fileService: FileService
+  ) {}
 
   async create(data: CreateReverseShareDTO, creatorId: string) {
     // Parse date string to date
@@ -74,8 +79,15 @@ export class ReverseShareService {
   }
 
   async remove(id: string) {
-    await this.prisma.reverseShare.delete({
-      where: { id },
+    const share = await this.prisma.share.findFirst({
+      where: { reverseShare: { id } },
     });
+
+    if (share) {
+      await this.prisma.share.delete({ where: { id: share.id } });
+      await this.fileService.deleteAllFiles(share.id);
+    } else {
+      await this.prisma.reverseShare.delete({ where: { id } });
+    }
   }
 }

@@ -10,9 +10,9 @@ import { ShareService } from "./share.service";
 @Module({
   imports: [
     JwtModule.register({}),
-    ReverseShareModule,
     EmailModule,
     ClamScanModule,
+    ReverseShareModule,
     forwardRef(() => FileModule),
   ],
   controllers: [ShareController],

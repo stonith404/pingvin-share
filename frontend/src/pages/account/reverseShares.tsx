@@ -156,7 +156,9 @@ const MyShares = () => {
                               title: `Delete reverse share`,
                               children: (
                                 <Text size="sm">
-                                  Do you really want to delete this share?
+                                  Do you really want to delete this reverse
+                                  share? If you do, the share will be deleted as
+                                  well.
                                 </Text>
                               ),
                               confirmProps: {
