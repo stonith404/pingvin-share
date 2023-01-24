@@ -20,7 +20,7 @@ model User {
   shares             Share[]
   refreshTokens      RefreshToken[]
   loginTokens        LoginToken[]
-  reverseShareTokens ReverseShareToken[]
+  reverseShares ReverseShare[]
 
   totpEnabled  Boolean @default(false)
   totpVerified Boolean @default(false)
@@ -63,17 +63,18 @@ model Share {
   creatorId String?
   creator   User?   @relation(fields: [creatorId], references: [id], onDelete: Cascade)
 
-  reverseShareToken ReverseShareToken?
+  reverseShare ReverseShare?
 
   security   ShareSecurity?
   recipients ShareRecipient[]
   files      File[]
 }
 
-model ReverseShareToken {
+model ReverseShare {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
 
+  token           String   @unique @default(uuid())
   shareExpiration DateTime
   maxShareSize    String
 

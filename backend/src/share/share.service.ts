@@ -15,6 +15,7 @@ import { ConfigService } from "src/config/config.service";
 import { EmailService } from "src/email/email.service";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
+import { ReverseShareService } from "src/reverseShare/reverseShare.service";
 import { CreateShareDTO } from "./dto/createShare.dto";
 
 @Injectable()
@@ -25,6 +26,7 @@ export class ShareService {
     private emailService: EmailService,
     private config: ConfigService,
     private jwtService: JwtService,
+    private reverseShareService: ReverseShareService,
     private clamScanService: ClamScanService
   ) {}
 
@@ -43,10 +45,9 @@ export class ShareService {
 
     // If share is created by a reverse share token override the expiration date
     if (reverseShareToken) {
-      const { shareExpiration } =
-        await this.prisma.reverseShareToken.findUnique({
-          where: { id: reverseShareToken },
-        });
+      const { shareExpiration } = await this.reverseShareService.getByToken(
+        reverseShareToken
+      );
 
       expirationDate = shareExpiration;
     } else {
@@ -85,8 +86,8 @@ export class ShareService {
 
     if (reverseShareToken) {
       // Assign share to reverse share token
-      await this.prisma.reverseShareToken.update({
-        where: { id: reverseShareToken },
+      await this.prisma.reverseShare.update({
+        where: { token: reverseShareToken },
         data: {
           shareId: share.id,
         },
@@ -148,8 +149,8 @@ export class ShareService {
     this.clamScanService.checkAndRemove(share.id);
 
     if (reverseShareToken) {
-      await this.prisma.reverseShareToken.update({
-        where: { id: reverseShareToken },
+      await this.prisma.reverseShare.update({
+        where: { token: reverseShareToken },
         data: { used: true },
       });
     }

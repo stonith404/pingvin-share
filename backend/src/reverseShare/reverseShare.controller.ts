@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   NotFoundException,
   Param,
@@ -12,8 +13,10 @@ import { User } from "@prisma/client";
 import { GetUser } from "src/auth/decorator/getUser.decorator";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
 import { ConfigService } from "src/config/config.service";
-import { ReverseShareTokenDTO } from "src/reverseShare/dto/reverseShareToken.dto";
-import { ReverseShareTokenWithShareDTO } from "./dto/reverseShareTokenWithShare";
+import { CreateReverseShareDTO } from "./dto/createReverseShare.dto";
+import { ReverseShareDTO } from "./dto/reverseShare.dto";
+import { ReverseShareTokenWithShare } from "./dto/reverseShareTokenWithShare";
+import { ReverseShareOwnerGuard } from "./guards/reverseShareOwner.guard";
 import { ReverseShareService } from "./reverseShare.service";
 
 @Controller("reverseShares")
@@ -26,7 +29,7 @@ export class ReverseShareController {
   @Post()
   @UseGuards(JwtGuard)
   async createReverseShare(
-    @Body() body: ReverseShareTokenDTO,
+    @Body() body: CreateReverseShareDTO,
     @GetUser() user: User
   ) {
     const token = await this.reverseShareService.create(body, user.id);
@@ -38,23 +41,29 @@ export class ReverseShareController {
 
   @Throttle(20, 60)
   @Get(":reverseShareToken")
-  async getReverseShareToken(
+  async getReverseShareByToken(
     @Param("reverseShareToken") reverseShareToken: string
   ) {
     const isValid = await this.reverseShareService.isValid(reverseShareToken);
 
     if (!isValid) throw new NotFoundException("Reverse share token not found");
 
-    return new ReverseShareTokenDTO().from(
-      await this.reverseShareService.get(reverseShareToken)
+    return new ReverseShareDTO().from(
+      await this.reverseShareService.getByToken(reverseShareToken)
     );
   }
 
   @Get()
   @UseGuards(JwtGuard)
   async getMyReverseShares(@GetUser() user: User) {
-    return new ReverseShareTokenWithShareDTO().fromList(
+    return new ReverseShareTokenWithShare().fromList(
       await this.reverseShareService.getAllByUser(user.id)
     );
+  }
+
+  @Delete(":reverseShareId")
+  @UseGuards(JwtGuard, ReverseShareOwnerGuard)
+  async deleteReverseShare(@Param("reverseShareId") id: string) {
+    await this.reverseShareService.remove(id);
   }
 }

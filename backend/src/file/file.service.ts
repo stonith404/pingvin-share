@@ -30,7 +30,7 @@ export class FileService {
 
     const share = await this.prisma.share.findUnique({
       where: { id: shareId },
-      include: { files: true, reverseShareToken: true },
+      include: { files: true, reverseShare: true },
     });
 
     if (share.uploadLocked)
@@ -68,8 +68,8 @@ export class FileService {
 
     if (
       shareSizeSum > this.config.get("MAX_SHARE_SIZE") ||
-      (share.reverseShareToken.maxShareSize &&
-        shareSizeSum > parseInt(share.reverseShareToken.maxShareSize))
+      (share.reverseShare.maxShareSize &&
+        shareSizeSum > parseInt(share.reverseShare.maxShareSize))
     ) {
       throw new HttpException(
         "Max share size exceeded",

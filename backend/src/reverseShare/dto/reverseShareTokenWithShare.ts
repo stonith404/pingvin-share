@@ -1,22 +1,21 @@
 import { OmitType } from "@nestjs/mapped-types";
 import { Expose, plainToClass, Type } from "class-transformer";
 import { MyShareDTO } from "src/share/dto/myShare.dto";
-import { ReverseShareTokenDTO } from "./reverseShareToken.dto";
+import { ReverseShareDTO } from "./reverseShare.dto";
 
-export class ReverseShareTokenWithShareDTO extends OmitType(
-  ReverseShareTokenDTO,
-  ["expiration"] as const
-) {
+export class ReverseShareTokenWithShare extends OmitType(ReverseShareDTO, [
+  "shareExpiration",
+] as const) {
   @Expose()
-  expiration: Date;
+  shareExpiration: Date;
 
   @Expose()
-  @Type(() => MyShareDTO)
-  share: MyShareDTO;
+  @Type(() => OmitType(MyShareDTO, ["recipients"] as const))
+  share: Omit<MyShareDTO, "recipients" | "files" | "from" | "fromList">;
 
-  fromList(partial: Partial<ReverseShareTokenWithShareDTO>[]) {
+  fromList(partial: Partial<ReverseShareTokenWithShare>[]) {
     return partial.map((part) =>
-      plainToClass(ReverseShareTokenWithShareDTO, part, {
+      plainToClass(ReverseShareTokenWithShare, part, {
         excludeExtraneousValues: true,
       })
     );

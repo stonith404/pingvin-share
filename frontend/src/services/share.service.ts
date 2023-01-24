@@ -2,6 +2,7 @@ import { setCookie } from "cookies-next";
 import { FileUploadResponse } from "../types/File.type";
 import {
   CreateShare,
+  MyReverseShare,
   MyShare,
   Share,
   ShareMetaData,
@@ -99,16 +100,19 @@ const uploadFile = async (
   ).data;
 };
 
-const createReverseShare = async (expiration: string, maxShareSize: number) => {
+const createReverseShare = async (
+  shareExpiration: string,
+  maxShareSize: number
+) => {
   return (
     await api.post("reverseShares", {
-      expiration,
+      shareExpiration,
       maxShareSize: maxShareSize.toString(),
     })
   ).data;
 };
 
-const getMyReverseShares = async () => {
+const getMyReverseShares = async (): Promise<MyReverseShare[]> => {
   return (await api.get("reverseShares")).data;
 };
 
@@ -116,6 +120,10 @@ const setReverseShare = async (reverseShareToken: string) => {
   const { data } = await api.get(`/reverseShares/${reverseShareToken}`);
   setCookie("reverse_share_token", reverseShareToken);
   return data;
+};
+
+const removeReverseShare = async (id: string) => {
+  await api.delete(`/reverseShares/${id}`);
 };
 
 export default {
@@ -132,4 +140,5 @@ export default {
   setReverseShare,
   createReverseShare,
   getMyReverseShares,
+  removeReverseShare,
 };

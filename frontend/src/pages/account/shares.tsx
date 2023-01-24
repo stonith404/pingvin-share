@@ -1,5 +1,6 @@
 import {
   ActionIcon,
+  Box,
   Button,
   Center,
   Group,
@@ -61,83 +62,85 @@ const MyShares = () => {
             </Stack>
           </Center>
         ) : (
-          <Table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Visitors</th>
-                <th>Expires at</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {shares.map((share) => (
-                <tr key={share.id}>
-                  <td>{share.id}</td>
-                  <td>{share.views}</td>
-                  <td>
-                    {moment(share.expiration).unix() === 0
-                      ? "Never"
-                      : moment(share.expiration).format("LLL")}
-                  </td>
-                  <td>
-                    <Group position="right">
-                      <ActionIcon
-                        color="victoria"
-                        variant="light"
-                        size={25}
-                        onClick={() => {
-                          if (window.isSecureContext) {
-                            clipboard.copy(
-                              `${config.get("APP_URL")}/share/${share.id}`
-                            );
-                            toast.success(
-                              "Your link was copied to the keyboard."
-                            );
-                          } else {
-                            showShareLinkModal(
-                              modals,
-                              share.id,
-                              config.get("APP_URL")
-                            );
-                          }
-                        }}
-                      >
-                        <TbLink />
-                      </ActionIcon>
-                      <ActionIcon
-                        color="red"
-                        variant="light"
-                        size={25}
-                        onClick={() => {
-                          modals.openConfirmModal({
-                            title: `Delete share ${share.id}`,
-                            children: (
-                              <Text size="sm">
-                                Do you really want to delete this share?
-                              </Text>
-                            ),
-                            confirmProps: {
-                              color: "red",
-                            },
-                            labels: { confirm: "Confirm", cancel: "Cancel" },
-                            onConfirm: () => {
-                              shareService.remove(share.id);
-                              setShares(
-                                shares.filter((item) => item.id !== share.id)
-                              );
-                            },
-                          });
-                        }}
-                      >
-                        <TbTrash />
-                      </ActionIcon>
-                    </Group>
-                  </td>
+          <Box sx={{ display: "block", overflowX: "auto" }}>
+            <Table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Visitors</th>
+                  <th>Expires at</th>
+                  <th></th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
+              </thead>
+              <tbody>
+                {shares.map((share) => (
+                  <tr key={share.id}>
+                    <td>{share.id}</td>
+                    <td>{share.views}</td>
+                    <td>
+                      {moment(share.expiration).unix() === 0
+                        ? "Never"
+                        : moment(share.expiration).format("LLL")}
+                    </td>
+                    <td>
+                      <Group position="right">
+                        <ActionIcon
+                          color="victoria"
+                          variant="light"
+                          size={25}
+                          onClick={() => {
+                            if (window.isSecureContext) {
+                              clipboard.copy(
+                                `${config.get("APP_URL")}/share/${share.id}`
+                              );
+                              toast.success(
+                                "Your link was copied to the keyboard."
+                              );
+                            } else {
+                              showShareLinkModal(
+                                modals,
+                                share.id,
+                                config.get("APP_URL")
+                              );
+                            }
+                          }}
+                        >
+                          <TbLink />
+                        </ActionIcon>
+                        <ActionIcon
+                          color="red"
+                          variant="light"
+                          size={25}
+                          onClick={() => {
+                            modals.openConfirmModal({
+                              title: `Delete share ${share.id}`,
+                              children: (
+                                <Text size="sm">
+                                  Do you really want to delete this share?
+                                </Text>
+                              ),
+                              confirmProps: {
+                                color: "red",
+                              },
+                              labels: { confirm: "Confirm", cancel: "Cancel" },
+                              onConfirm: () => {
+                                shareService.remove(share.id);
+                                setShares(
+                                  shares.filter((item) => item.id !== share.id)
+                                );
+                              },
+                            });
+                          }}
+                        >
+                          <TbTrash />
+                        </ActionIcon>
+                      </Group>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </Box>
         )}
       </>
     );

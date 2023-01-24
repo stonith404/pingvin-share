@@ -26,6 +26,13 @@ export type MyShare = Share & {
   cratedAt: Date;
 };
 
+export type MyReverseShare = {
+  id: string;
+  maxShareSize: string;
+  shareExpiration: Date;
+  share?: MyShare;
+};
+
 export type ShareSecurity = {
   maxViews?: number;
   password?: string;

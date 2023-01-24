@@ -1,5 +1,4 @@
 import {
-  ActionIcon,
   Button,
   Col,
   Grid,
@@ -9,40 +8,27 @@ import {
   Stack,
   Text,
   Title,
-  Tooltip,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
-import { TbInfoCircle } from "react-icons/tb";
 import shareService from "../../../services/share.service";
 import { getExpirationPreview } from "../../../utils/date.util";
 import toast from "../../../utils/toast.util";
 import FileSizeInput from "../FileSizeInput";
 import showCompletedReverseShareModal from "./showCompletedReverseShareModal";
 
-const showCreateReverseShareModal = (modals: ModalsContextProps) => {
+const showCreateReverseShareModal = (
+  modals: ModalsContextProps,
+  getReverseShares: () => void
+) => {
   return modals.openModal({
-    title: (
-      <Group align="center" spacing={3}>
-        <Title order={4}>Create reverse share</Title>
-        <Tooltip
-          multiline
-          width={220}
-          label="A reverse share enables you to generate a unique URL for a single-use share for an external user."
-          events={{ hover: true, focus: false, touch: true }}
-        >
-          <ActionIcon>
-            <TbInfoCircle />
-          </ActionIcon>
-        </Tooltip>
-      </Group>
-    ),
-    children: <Body />,
+    title: <Title order={4}>Create reverse share</Title>,
+    children: <Body getReverseShares={getReverseShares} />,
   });
 };
 
-const Body = () => {
+const Body = ({ getReverseShares }: { getReverseShares: () => void }) => {
   const modals = useModals();
 
   const form = useForm({
@@ -63,7 +49,7 @@ const Body = () => {
             )
             .then(({ link }) => {
               modals.closeAll();
-              showCompletedReverseShareModal(modals, link);
+              showCompletedReverseShareModal(modals, link, getReverseShares);
             })
             .catch(toast.axiosError);
         })}
@@ -77,7 +63,7 @@ const Body = () => {
                   max={99999}
                   precision={0}
                   variant="filled"
-                  label="Link expiration"
+                  label="Share expiration"
                   {...form.getInputProps("expiration_num")}
                 />
               </Col>

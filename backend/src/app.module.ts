@@ -13,7 +13,7 @@ import { PrismaModule } from "./prisma/prisma.module";
 import { ShareModule } from "./share/share.module";
 import { UserModule } from "./user/user.module";
 import { ClamScanModule } from "./clamscan/clamscan.module";
-import { ReverseShareModule } from './reverseShare/reverseShare.module';
+import { ReverseShareModule } from "./reverseShare/reverseShare.module";
 
 @Module({
   imports: [

@@ -2,13 +2,13 @@ import { ActionIcon, Button, Stack, TextInput, Title } from "@mantine/core";
 import { useClipboard } from "@mantine/hooks";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
-import { useRouter } from "next/router";
 import { TbCopy } from "react-icons/tb";
 import toast from "../../../utils/toast.util";
 
 const showCompletedReverseShareModal = (
   modals: ModalsContextProps,
-  link: string
+  link: string,
+  getReverseShares: () => void
 ) => {
   return modals.openModal({
     closeOnClickOutside: false,
@@ -19,14 +19,19 @@ const showCompletedReverseShareModal = (
         <Title order={4}>Reverse share link</Title>
       </Stack>
     ),
-    children: <Body link={link} />,
+    children: <Body link={link} getReverseShares={getReverseShares} />,
   });
 };
 
-const Body = ({ link }: { link: string }) => {
+const Body = ({
+  link,
+  getReverseShares,
+}: {
+  link: string;
+  getReverseShares: () => void;
+}) => {
   const clipboard = useClipboard({ timeout: 500 });
   const modals = useModals();
-  const router = useRouter();
 
   return (
     <Stack align="stretch">
@@ -51,7 +56,7 @@ const Body = ({ link }: { link: string }) => {
       <Button
         onClick={() => {
           modals.closeAll();
-          router.push("/upload");
+          getReverseShares();
         }}
       >
         Done

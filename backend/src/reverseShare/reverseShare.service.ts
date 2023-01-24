@@ -2,18 +2,20 @@ import { BadRequestException, Injectable } from "@nestjs/common";
 import * as moment from "moment";
 import { ConfigService } from "src/config/config.service";
 import { PrismaService } from "src/prisma/prisma.service";
-import { ReverseShareTokenDTO } from "./dto/reverseShareToken.dto";
+import { CreateReverseShareDTO } from "./dto/createReverseShare.dto";
 
 @Injectable()
 export class ReverseShareService {
   constructor(private config: ConfigService, private prisma: PrismaService) {}
 
-  async create(data: ReverseShareTokenDTO, creatorId: string) {
+  async create(data: CreateReverseShareDTO, creatorId: string) {
     // Parse date string to date
     const expirationDate = moment()
       .add(
-        data.expiration.split("-")[0],
-        data.expiration.split("-")[1] as moment.unitOfTime.DurationConstructor
+        data.shareExpiration.split("-")[0],
+        data.shareExpiration.split(
+          "-"
+        )[1] as moment.unitOfTime.DurationConstructor
       )
       .toDate();
 
@@ -24,7 +26,7 @@ export class ReverseShareService {
         `Max share size can't be greater than ${globalMaxShareSize} bytes.`
       );
 
-    const reverseShareTokenTuple = await this.prisma.reverseShareToken.create({
+    const reverseShare = await this.prisma.reverseShare.create({
       data: {
         shareExpiration: expirationDate,
         maxShareSize: data.maxShareSize,
@@ -32,56 +34,48 @@ export class ReverseShareService {
       },
     });
 
-    return reverseShareTokenTuple.id;
+    return reverseShare.token;
   }
 
-  async get(reverseShareToken: string) {
-    const reverseShareTokenTuple =
-      await this.prisma.reverseShareToken.findUnique({
-        where: { id: reverseShareToken },
-      });
+  async getByToken(reverseShareToken: string) {
+    const reverseShare = await this.prisma.reverseShare.findUnique({
+      where: { token: reverseShareToken },
+    });
 
-    return reverseShareTokenTuple;
+    return reverseShare;
   }
 
   async getAllByUser(userId: string) {
-    const reverseShareTokens = await this.prisma.reverseShareToken.findMany({
+    const reverseShares = await this.prisma.reverseShare.findMany({
       where: {
         creatorId: userId,
-
         shareExpiration: { gt: new Date() },
       },
       orderBy: {
         shareExpiration: "desc",
       },
-      include: { share: { include: { recipients: true } } },
+      include: { share: { include: { creator: true } } },
     });
 
-    const sharesWithEmailRecipients = reverseShareTokens.map(
-      (reverseShareToken) => {
-        return {
-          ...reverseShareToken.share,
-          recipients: reverseShareToken.share.recipients.map(
-            (recipients) => recipients.email
-          ),
-        };
-      }
-    );
-
-    return sharesWithEmailRecipients;
+    return reverseShares;
   }
 
   async isValid(reverseShareToken: string) {
-    const reverseShareTokenTuple =
-      await this.prisma.reverseShareToken.findUnique({
-        where: { id: reverseShareToken },
-      });
+    const reverseShare = await this.prisma.reverseShare.findUnique({
+      where: { token: reverseShareToken },
+    });
 
-    if (!reverseShareTokenTuple) return false;
+    if (!reverseShare) return false;
 
-    const isExpired = new Date() > reverseShareTokenTuple.shareExpiration;
-    const isUsed = reverseShareTokenTuple.used;
+    const isExpired = new Date() > reverseShare.shareExpiration;
+    const isUsed = reverseShare.used;
 
     return !(isExpired || isUsed);
+  }
+
+  async remove(id: string) {
+    await this.prisma.reverseShare.delete({
+      where: { id },
+    });
   }
 }
