@@ -15,6 +15,7 @@ import { ConfigService } from "src/config/config.service";
 import { EmailService } from "src/email/email.service";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
+import { CreateReverseShareTokenDTO } from "./dto/createReverseShareToken.dto";
 import { CreateShareDTO } from "./dto/createShare.dto";
 
 @Injectable()
@@ -50,10 +51,6 @@ export class ShareService {
           )[1] as moment.unitOfTime.DurationConstructor
         )
         .toDate();
-
-      // Throw error if expiration date is now
-      if (expirationDate.setMilliseconds(0) == new Date().setMilliseconds(0))
-        throw new BadRequestException("Invalid expiration date");
     } else {
       expirationDate = moment(0).toDate();
     }
@@ -276,6 +273,25 @@ export class ShareService {
     } catch {
       return false;
     }
+  }
+
+  async createReverseShareToken(
+    data: CreateReverseShareTokenDTO,
+    creatorId: string
+  ) {
+    // Parse date string to date
+    const expirationDate = moment()
+      .add(
+        data.expiration.split("-")[0],
+        data.expiration.split("-")[1] as moment.unitOfTime.DurationConstructor
+      )
+      .toDate();
+
+    const reverseShareTokenTuple = await this.prisma.reverseShareToken.create({
+      data: { expiration: expirationDate, creatorId },
+    });
+
+    return reverseShareTokenTuple.id;
   }
 
   async isReverseShareTokenValid(reverseShareToken: string) {

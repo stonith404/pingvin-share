@@ -1,4 +1,5 @@
 import {
+  ActionIcon,
   Box,
   Burger,
   Container,
@@ -13,10 +14,12 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
 import { ReactNode, useEffect, useState } from "react";
+import { TbPlus } from "react-icons/tb";
 import useConfig from "../../hooks/config.hook";
 import useUser from "../../hooks/user.hook";
 import Logo from "../Logo";
 import ActionAvatar from "./ActionAvatar";
+import NavbarShareMenu from "./NavbarShareMenu";
 
 const HEADER_HEIGHT = 60;
 
@@ -116,6 +119,9 @@ const NavBar = () => {
     {
       link: "/upload",
       label: "Upload",
+    },
+    {
+      component: <NavbarShareMenu />,
     },
     {
       component: <ActionAvatar />,

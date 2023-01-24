@@ -150,7 +150,11 @@ const Upload = () => {
     }
   }, [files]);
 
-  if ((!user && !config.get("ALLOW_UNAUTHENTICATED_SHARES")) && !getCookie("reverse_share_token")) {
+  if (
+    !user &&
+    !config.get("ALLOW_UNAUTHENTICATED_SHARES") &&
+    !getCookie("reverse_share_token")
+  ) {
     router.replace("/");
   } else {
     return (

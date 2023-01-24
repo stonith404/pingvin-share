@@ -99,6 +99,10 @@ const uploadFile = async (
   ).data;
 };
 
+const createReverseShareToken = async (expiration: string) => {
+  return (await api.post("/shares/reverseShareToken", { expiration })).data;
+};
+
 const setReverseShareToken = async (reverseShareToken: string) => {
   const { isValid } = (
     await api.get(`/shares/reverseShareToken/${reverseShareToken}`)
@@ -121,4 +125,5 @@ export default {
   downloadFile,
   uploadFile,
   setReverseShareToken,
+  createReverseShareToken,
 };

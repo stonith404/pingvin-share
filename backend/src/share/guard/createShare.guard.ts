@@ -1,13 +1,13 @@
 import { ExecutionContext, Injectable } from "@nestjs/common";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
 import { ConfigService } from "src/config/config.service";
-import { PrismaService } from "src/prisma/prisma.service";
+import { ShareService } from "../share.service";
 
 @Injectable()
 export class CreateShareGuard extends JwtGuard {
   constructor(
-    private configService: ConfigService,
-    private prisma: PrismaService
+    configService: ConfigService,
+    private shareService: ShareService
   ) {
     super(configService);
   }
@@ -20,13 +20,11 @@ export class CreateShareGuard extends JwtGuard {
 
     if (!reverseShareTokenId) return false;
 
-    const reverseShareToken = await this.prisma.reverseShareToken.findUnique({
-      where: { id: reverseShareTokenId },
-    });
+    const isReverseShareTokenValid =
+      await this.shareService.isReverseShareTokenValid(reverseShareTokenId);
 
-    if (!reverseShareToken || new Date() > reverseShareToken.expiration)
-      return false;
+    console.log(isReverseShareTokenValid);
 
-    return true;
+    return isReverseShareTokenValid;
   }
 }

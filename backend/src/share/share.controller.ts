@@ -14,6 +14,8 @@ import { User } from "@prisma/client";
 import { Request } from "express";
 import { GetUser } from "src/auth/decorator/getUser.decorator";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
+import { ConfigService } from "src/config/config.service";
+import { CreateReverseShareTokenDTO } from "./dto/createReverseShareToken.dto";
 import { CreateShareDTO } from "./dto/createShare.dto";
 import { MyShareDTO } from "./dto/myShare.dto";
 import { ShareDTO } from "./dto/share.dto";
@@ -26,7 +28,10 @@ import { ShareTokenSecurity } from "./guard/shareTokenSecurity.guard";
 import { ShareService } from "./share.service";
 @Controller("shares")
 export class ShareController {
-  constructor(private shareService: ShareService) {}
+  constructor(
+    private shareService: ShareService,
+    private config: ConfigService
+  ) {}
 
   @Get()
   @UseGuards(JwtGuard)
@@ -64,8 +69,10 @@ export class ShareController {
   @HttpCode(202)
   @UseGuards(CreateShareGuard, ShareOwnerGuard)
   async complete(@Param("id") id: string, @Req() request: Request) {
-    const {reverse_share_token} =  request.cookies;
-    return new ShareDTO().from(await this.shareService.complete(id, reverse_share_token));
+    const { reverse_share_token } = request.cookies;
+    return new ShareDTO().from(
+      await this.shareService.complete(id, reverse_share_token)
+    );
   }
 
   @Throttle(10, 60)
@@ -83,17 +90,23 @@ export class ShareController {
   }
 
   @Post("reverseShareToken")
-  @UseGuards(CreateShareGuard)
+  @UseGuards(JwtGuard)
   async createReverseShareToken(
-    @Body() body: CreateShareDTO,
+    @Body() body: CreateReverseShareTokenDTO,
     @GetUser() user: User
   ) {
-    return new ShareDTO().from(await this.shareService.create(body, user));
+    const token = await this.shareService.createReverseShareToken(
+      body,
+      user.id
+    );
+
+    const link = `${this.config.get("APP_URL")}/upload/${token}`;
+
+    return { token, link };
   }
 
   @Throttle(20, 60)
   @Get("reverseShareToken/:reverseShareToken")
-  @UseGuards(CreateShareGuard)
   async isReverseShareTokenValid(
     @Param("reverseShareToken") reverseShareToken: string
   ) {

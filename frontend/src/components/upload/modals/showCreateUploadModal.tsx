@@ -24,7 +24,7 @@ import { TbAlertCircle } from "react-icons/tb";
 import * as yup from "yup";
 import shareService from "../../../services/share.service";
 import { CreateShare } from "../../../types/share.type";
-import ExpirationPreview from "../ExpirationPreview";
+import { getExpirationPreview } from "../../../utils/date.util";
 
 const showCreateUploadModal = (
   modals: ModalsContextProps,
@@ -217,7 +217,6 @@ const CreateUploadModalBody = ({
             label="Never Expires"
             {...form.getInputProps("never_expires")}
           />
-          {/* Preview expiration date text */}
           <Text
             italic
             size="xs"
@@ -225,7 +224,7 @@ const CreateUploadModalBody = ({
               color: theme.colors.gray[6],
             })}
           >
-            {ExpirationPreview({ form })}
+            {getExpirationPreview("share", form)}
           </Text>
           <Accordion>
             <Accordion.Item value="description" sx={{ borderBottom: "none" }}>
