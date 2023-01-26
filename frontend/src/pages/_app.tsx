@@ -46,15 +46,24 @@ function App({ Component, pageProps }: AppProps) {
     getInitalData();
   }, []);
 
+  // Redirect to setup page if setup is not completed
   useEffect(() => {
     if (
       configVariables &&
-      configVariables.filter((variable) => variable.key)[0].value == "false" &&
       !["/auth/signUp", "/admin/setup"].includes(router.asPath)
     ) {
-      router.push(!user ? "/auth/signUp" : "/admin/setup");
+      const setupStatus = configVariables.filter(
+        (variable) => variable.key == "SETUP_STATUS"
+      )[0].value;
+      if (setupStatus == "STARTED") {
+        router.replace("/auth/signUp");
+      } else if (user && setupStatus == "REGISTERED") {
+        router.replace("/admin/setup");
+      } else if (setupStatus == "REGISTERED") {
+        router.replace("/auth/signIn");
+      }
     }
-  }, [router.asPath]);
+  }, [configVariables, router.asPath]);
 
   useEffect(() => {
     setColorScheme(

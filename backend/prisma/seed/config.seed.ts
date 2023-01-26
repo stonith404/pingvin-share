@@ -4,10 +4,10 @@ import * as crypto from "crypto";
 const configVariables: Prisma.ConfigCreateInput[] = [
   {
     order: 0,
-    key: "SETUP_FINISHED",
+    key: "SETUP_STATUS",
     description: "Status of the setup wizard",
-    type: "boolean",
-    value: "false",
+    type: "string",
+    value: "STARTED", // STARTED, REGISTERED, FINISHED
     category: "internal",
     secret: false,
     locked: true,

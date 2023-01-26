@@ -46,7 +46,6 @@ CREATE UNIQUE INDEX "ReverseShare_token_key" ON "ReverseShare"("token");
 CREATE UNIQUE INDEX "ReverseShare_shareId_key" ON "ReverseShare"("shareId");
 
 -- Custom migration
-UPDATE Config SET `order` = 0 WHERE key = "SETUP_FINISHED";
 UPDATE Config SET `order` = 0 WHERE key = "JWT_SECRET";
 UPDATE Config SET `order` = 0 WHERE key = "TOTP_SECRET";
 
@@ -65,3 +64,4 @@ UPDATE Config SET `order` = 15 WHERE key = "SMTP_USERNAME";
 UPDATE Config SET `order` = 16 WHERE key = "SMTP_PASSWORD";
 
 INSERT INTO Config (`order`, `key`, `description`, `type`, `value`, `category`, `secret`, `updatedAt`) VALUES (11, "SMTP_ENABLED", "Whether SMTP is enabled. Only set this to true if you entered the host, port, email, user and password of your SMTP server.", "boolean", IFNULL((SELECT value FROM Config WHERE key="ENABLE_SHARE_EMAIL_RECIPIENTS"), "false"), "smtp", 0, strftime('%s', 'now'));
+INSERT INTO Config (`order`, `key`, `description`, `type`, `value`, `category`, `secret`, `updatedAt`, `locked`) VALUES (0, "SETUP_STATUS", "Status of the setup wizard", "string", IIF((SELECT value FROM Config WHERE key="SETUP_FINISHED") == "true", "FINISHED", "STARTED"), "internal", 0, strftime('%s', 'now'), 1);

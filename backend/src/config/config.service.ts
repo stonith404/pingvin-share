@@ -76,10 +76,10 @@ export class ConfigService {
     return updatedVariable;
   }
 
-  async finishSetup() {
+  async changeSetupStatus(status: "STARTED" | "REGISTERED" | "FINISHED") {
     return await this.prisma.config.update({
-      where: { key: "SETUP_FINISHED" },
-      data: { value: "true" },
+      where: { key: "SETUP_STATUS" },
+      data: { value: status },
     });
   }
 }

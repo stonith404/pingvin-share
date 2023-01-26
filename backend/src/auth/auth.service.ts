@@ -23,6 +23,8 @@ export class AuthService {
   ) {}
 
   async signUp(dto: AuthRegisterDTO) {
+    const isFirstUser = this.config.get("SETUP_STATUS") == "STARTED";
+
     const hash = await argon.hash(dto.password);
     try {
       const user = await this.prisma.user.create({
@@ -30,9 +32,13 @@ export class AuthService {
           email: dto.email,
           username: dto.username,
           password: hash,
-          isAdmin: !this.config.get("SETUP_FINISHED"),
+          isAdmin: isFirstUser,
         },
       });
+
+      if (isFirstUser) {
+        await this.config.changeSetupStatus("REGISTERED");
+      }
 
       const { refreshToken, refreshTokenId } = await this.createRefreshToken(
         user.id

@@ -112,20 +112,20 @@ const AdminConfigTable = () => {
       <Group position="right">
         <Button
           onClick={() => {
-            if (config.get("SETUP_FINISHED")) {
-              configService
-                .updateMany(updatedConfigVariables)
-                .then(() => {
-                  updatedConfigVariables = [];
-                  toast.success("Configurations updated successfully");
-                })
-                .catch(toast.axiosError);
-            } else {
+            if (config.get("SETUP_STATUS") == "REGISTERED") {
               configService
                 .updateMany(updatedConfigVariables)
                 .then(async () => {
                   await configService.finishSetup();
                   window.location.reload();
+                })
+                .catch(toast.axiosError);
+            } else {
+              configService
+                .updateMany(updatedConfigVariables)
+                .then(() => {
+                  updatedConfigVariables = [];
+                  toast.success("Configurations updated successfully");
                 })
                 .catch(toast.axiosError);
             }

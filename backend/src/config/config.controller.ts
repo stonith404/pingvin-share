@@ -37,7 +37,7 @@ export class ConfigController {
   @Post("admin/finishSetup")
   @UseGuards(JwtGuard, AdministratorGuard)
   async finishSetup() {
-    return await this.configService.finishSetup();
+    return await this.configService.changeSetupStatus("FINISHED");
   }
 
   @Post("admin/testEmail")
