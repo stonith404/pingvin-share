@@ -278,7 +278,7 @@ export class ShareService {
 
     const token = await this.generateShareToken(shareId);
     await this.increaseViewCount(share);
-    return { token };
+    return token;
   }
 
   async generateShareToken(shareId: string) {

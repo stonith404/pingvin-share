@@ -12,8 +12,6 @@ import {
 import { SkipThrottle } from "@nestjs/throttler";
 import * as contentDisposition from "content-disposition";
 import { Response } from "express";
-import { JwtGuard } from "src/auth/guard/jwt.guard";
-import { FileDownloadGuard } from "src/file/guard/fileDownload.guard";
 import { CreateShareGuard } from "src/share/guard/createShare.guard";
 import { ShareOwnerGuard } from "src/share/guard/shareOwner.guard";
 import { ShareSecurityGuard } from "src/share/guard/shareSecurity.guard";
@@ -44,30 +42,8 @@ export class FileController {
     );
   }
 
-  @Get(":fileId/download")
-  @UseGuards(ShareSecurityGuard)
-  async getFileDownloadUrl(
-    @Param("shareId") shareId: string,
-    @Param("fileId") fileId: string
-  ) {
-    const url = this.fileService.getFileDownloadUrl(shareId, fileId);
-
-    return { url };
-  }
-
-  @Get("zip/download")
-  @UseGuards(ShareSecurityGuard)
-  async getZipArchiveDownloadURL(
-    @Param("shareId") shareId: string,
-    @Param("fileId") fileId: string
-  ) {
-    const url = this.fileService.getFileDownloadUrl(shareId, fileId);
-
-    return { url };
-  }
-
   @Get("zip")
-  @UseGuards(FileDownloadGuard)
+  @UseGuards(ShareSecurityGuard)
   async getZip(
     @Res({ passthrough: true }) res: Response,
     @Param("shareId") shareId: string
@@ -82,7 +58,7 @@ export class FileController {
   }
 
   @Get(":fileId")
-  @UseGuards(FileDownloadGuard)
+  @UseGuards(ShareSecurityGuard)
   async getFile(
     @Res({ passthrough: true }) res: Response,
     @Param("shareId") shareId: string,

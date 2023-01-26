@@ -5,7 +5,6 @@ import {
   Injectable,
   NotFoundException,
 } from "@nestjs/common";
-import { Reflector } from "@nestjs/core";
 import { Request } from "express";
 import * as moment from "moment";
 import { PrismaService } from "src/prisma/prisma.service";
@@ -14,20 +13,21 @@ import { ShareService } from "src/share/share.service";
 @Injectable()
 export class ShareSecurityGuard implements CanActivate {
   constructor(
-    private reflector: Reflector,
     private shareService: ShareService,
     private prisma: PrismaService
   ) {}
 
   async canActivate(context: ExecutionContext) {
     const request: Request = context.switchToHttp().getRequest();
-    const shareToken = request.get("X-Share-Token");
+
     const shareId = Object.prototype.hasOwnProperty.call(
       request.params,
       "shareId"
     )
       ? request.params.shareId
       : request.params.id;
+
+    const shareToken = request.cookies[`share_${shareId}_token`];
 
     const share = await this.prisma.share.findUnique({
       where: { id: shareId },

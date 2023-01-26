@@ -42,6 +42,7 @@ export class AuthController {
   ) {
     if (!this.config.get("ALLOW_REGISTRATION"))
       throw new ForbiddenException("Registration is not allowed");
+
     const result = await this.authService.signUp(dto);
 
     response = this.addTokensToResponse(

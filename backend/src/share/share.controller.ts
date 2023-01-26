@@ -7,14 +7,14 @@ import {
   Param,
   Post,
   Req,
+  Res,
   UseGuards,
 } from "@nestjs/common";
 import { Throttle } from "@nestjs/throttler";
 import { User } from "@prisma/client";
-import { Request } from "express";
+import { Request, Response } from "express";
 import { GetUser } from "src/auth/decorator/getUser.decorator";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
-import { ConfigService } from "src/config/config.service";
 import { CreateShareDTO } from "./dto/createShare.dto";
 import { MyShareDTO } from "./dto/myShare.dto";
 import { ShareDTO } from "./dto/share.dto";
@@ -27,10 +27,7 @@ import { ShareTokenSecurity } from "./guard/shareTokenSecurity.guard";
 import { ShareService } from "./share.service";
 @Controller("shares")
 export class ShareController {
-  constructor(
-    private shareService: ShareService,
-    private config: ConfigService
-  ) {}
+  constructor(private shareService: ShareService) {}
 
   @Get()
   @UseGuards(JwtGuard)
@@ -88,10 +85,20 @@ export class ShareController {
   }
 
   @HttpCode(200)
-  @Throttle(10, 5 * 60)
+  @Throttle(20, 5 * 60)
   @UseGuards(ShareTokenSecurity)
   @Post(":id/token")
-  async getShareToken(@Param("id") id: string, @Body() body: SharePasswordDto) {
-    return this.shareService.getShareToken(id, body.password);
+  async getShareToken(
+    @Param("id") id: string,
+    @Res({ passthrough: true }) response: Response,
+    @Body() body: SharePasswordDto
+  ) {
+    const token = await this.shareService.getShareToken(id, body.password);
+    response.cookie(`share_${id}_token`, token, {
+      path: "/",
+      httpOnly: true,
+    });
+
+    return { token };
   }
 }

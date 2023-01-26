@@ -136,37 +136,5 @@ export class FileService {
     return fs.createReadStream(`./data/uploads/shares/${shareId}/archive.zip`);
   }
 
-  getFileDownloadUrl(shareId: string, fileId: string) {
-    const downloadToken = this.generateFileDownloadToken(shareId, fileId);
-
-    return `${this.config.get(
-      "APP_URL"
-    )}/api/shares/${shareId}/files/${fileId}?token=${downloadToken}`;
-  }
-
-  generateFileDownloadToken(shareId: string, fileId: string) {
-    if (fileId == "zip") fileId = undefined;
-
-    return this.jwtService.sign(
-      {
-        shareId,
-        fileId,
-      },
-      {
-        expiresIn: "10min",
-        secret: this.config.get("JWT_SECRET"),
-      }
-    );
-  }
-
-  verifyFileDownloadToken(shareId: string, token: string) {
-    try {
-      const claims = this.jwtService.verify(token, {
-        secret: this.config.get("JWT_SECRET"),
-      });
-      return claims.shareId == shareId;
-    } catch {
-      return false;
-    }
-  }
+ 
 }
