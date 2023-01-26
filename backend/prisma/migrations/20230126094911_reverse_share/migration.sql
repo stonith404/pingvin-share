@@ -67,7 +67,7 @@ UPDATE Config SET id = 17 WHERE key = "SMTP_EMAIL";
 UPDATE Config SET id = 18 WHERE key = "SMTP_USERNAME";
 UPDATE Config SET id = 19 WHERE key = "SMTP_PASSWORD";
 
-INSERT INTO Config (`id`, `key`, `description`, `type`, `value`, `category`, `secret`, `updatedAt`) VALUES (14, "SMTP_ENABLED", "Whether SMTP is enabled. Only set this to true if you entered the host, port, email, user and password of your SMTP server.", "boolean", (SELECT value FROM Config WHERE key="ENABLE_SHARE_EMAIL_RECIPIENTS"), "smtp", 0, (SELECT updatedAt FROM Config WHERE key="ENABLE_SHARE_EMAIL_RECIPIENTS"));
+INSERT INTO Config (`id`, `key`, `description`, `type`, `value`, `category`, `secret`, `updatedAt`) VALUES (14, "SMTP_ENABLED", "Whether SMTP is enabled. Only set this to true if you entered the host, port, email, user and password of your SMTP server.", "boolean", IFNULL((SELECT value FROM Config WHERE key="ENABLE_SHARE_EMAIL_RECIPIENTS"), "false"), "smtp", 0, strftime('%s', 'now'));
 
 PRAGMA foreign_keys=OFF;
 CREATE TABLE "new_Config" (
