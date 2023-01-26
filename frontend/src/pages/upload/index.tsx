@@ -2,27 +2,34 @@ import { Button, Group } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { cleanNotifications } from "@mantine/notifications";
 import { AxiosError } from "axios";
+import { getCookie } from "cookies-next";
 import { useRouter } from "next/router";
 import pLimit from "p-limit";
 import { useEffect, useState } from "react";
-import Meta from "../components/Meta";
-import Dropzone from "../components/upload/Dropzone";
-import FileList from "../components/upload/FileList";
-import showCompletedUploadModal from "../components/upload/modals/showCompletedUploadModal";
-import showCreateUploadModal from "../components/upload/modals/showCreateUploadModal";
-import useConfig from "../hooks/config.hook";
-import useUser from "../hooks/user.hook";
-import shareService from "../services/share.service";
-import { FileUpload } from "../types/File.type";
-import { CreateShare, Share } from "../types/share.type";
-import toast from "../utils/toast.util";
+import Meta from "../../components/Meta";
+import Dropzone from "../../components/upload/Dropzone";
+import FileList from "../../components/upload/FileList";
+import showCompletedUploadModal from "../../components/upload/modals/showCompletedUploadModal";
+import showCreateUploadModal from "../../components/upload/modals/showCreateUploadModal";
+import useConfig from "../../hooks/config.hook";
+import useUser from "../../hooks/user.hook";
+import shareService from "../../services/share.service";
+import { FileUpload } from "../../types/File.type";
+import { CreateShare, Share } from "../../types/share.type";
+import toast from "../../utils/toast.util";
 
 const promiseLimit = pLimit(3);
 const chunkSize = 10 * 1024 * 1024; // 10MB
 let errorToastShown = false;
 let createdShare: Share;
 
-const Upload = () => {
+const Upload = ({
+  maxShareSize,
+  isReverseShare = false,
+}: {
+  maxShareSize?: number;
+  isReverseShare: boolean;
+}) => {
   const router = useRouter();
   const modals = useModals();
 
@@ -30,6 +37,8 @@ const Upload = () => {
   const config = useConfig();
   const [files, setFiles] = useState<FileUpload[]>([]);
   const [isUploading, setisUploading] = useState(false);
+
+  maxShareSize ??= parseInt(config.get("MAX_SHARE_SIZE"));
 
   const uploadFiles = async (share: CreateShare) => {
     setisUploading(true);
@@ -138,9 +147,9 @@ const Upload = () => {
     ) {
       shareService
         .completeShare(createdShare.id)
-        .then(() => {
+        .then((share) => {
           setisUploading(false);
-          showCompletedUploadModal(modals, createdShare, config.get("APP_URL"));
+          showCompletedUploadModal(modals, share, config.get("APP_URL"));
           setFiles([]);
         })
         .catch(() =>
@@ -149,8 +158,13 @@ const Upload = () => {
     }
   }, [files]);
 
-  if (!user && !config.get("ALLOW_UNAUTHENTICATED_SHARES")) {
+  if (
+    !user &&
+    !config.get("ALLOW_UNAUTHENTICATED_SHARES") &&
+    !getCookie("reverse_share_token")
+  ) {
     router.replace("/");
+    return null;
   } else {
     return (
       <>
@@ -164,11 +178,14 @@ const Upload = () => {
                 modals,
                 {
                   isUserSignedIn: user ? true : false,
+                  isReverseShare,
                   appUrl: config.get("APP_URL"),
                   allowUnauthenticatedShares: config.get(
                     "ALLOW_UNAUTHENTICATED_SHARES"
                   ),
-                  enableEmailRecepients: config.get("ENABLE_EMAIL_RECIPIENTS"),
+                  enableEmailRecepients: config.get(
+                    "ENABLE_SHARE_EMAIL_RECIPIENTS"
+                  ),
                 },
                 uploadFiles
               );
@@ -177,7 +194,12 @@ const Upload = () => {
             Share
           </Button>
         </Group>
-        <Dropzone files={files} setFiles={setFiles} isUploading={isUploading} />
+        <Dropzone
+          maxShareSize={maxShareSize}
+          files={files}
+          setFiles={setFiles}
+          isUploading={isUploading}
+        />
         {files.length > 0 && <FileList files={files} setFiles={setFiles} />}
       </>
     );

@@ -4,7 +4,7 @@ import { Dispatch, ForwardedRef, SetStateAction, useRef } from "react";
 import { TbCloudUpload, TbUpload } from "react-icons/tb";
 import useConfig from "../../hooks/config.hook";
 import { FileUpload } from "../../types/File.type";
-import { byteStringToHumanSizeString } from "../../utils/math/byteStringToHumanSizeString.util";
+import { byteToHumanSizeString } from "../../utils/fileSize.util";
 import toast from "../../utils/toast.util";
 
 const useStyles = createStyles((theme) => ({
@@ -33,10 +33,12 @@ const useStyles = createStyles((theme) => ({
 
 const Dropzone = ({
   isUploading,
+  maxShareSize,
   files,
   setFiles,
 }: {
   isUploading: boolean;
+  maxShareSize: number;
   files: FileUpload[];
   setFiles: Dispatch<SetStateAction<FileUpload[]>>;
 }) => {
@@ -58,10 +60,10 @@ const Dropzone = ({
             0
           );
 
-          if (fileSizeSum > config.get("MAX_SHARE_SIZE")) {
+          if (fileSizeSum > maxShareSize) {
             toast.error(
-              `Your files exceed the maximum share size of ${byteStringToHumanSizeString(
-                config.get("MAX_SHARE_SIZE")
+              `Your files exceed the maximum share size of ${byteToHumanSizeString(
+                maxShareSize
               )}.`
             );
           } else {
@@ -84,9 +86,8 @@ const Dropzone = ({
           </Text>
           <Text align="center" size="sm" mt="xs" color="dimmed">
             Drag&apos;n&apos;drop files here to start your share. We can accept
-            only files that are less than{" "}
-            {byteStringToHumanSizeString(config.get("MAX_SHARE_SIZE"))} in
-            total.
+            only files that are less than {byteToHumanSizeString(maxShareSize)}{" "}
+            in total.
           </Text>
         </div>
       </MantineDropzone>

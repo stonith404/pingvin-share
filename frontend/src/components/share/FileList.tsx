@@ -2,7 +2,7 @@ import { ActionIcon, Loader, Skeleton, Table } from "@mantine/core";
 import { TbCircleCheck, TbDownload } from "react-icons/tb";
 import shareService from "../../services/share.service";
 
-import { byteStringToHumanSizeString } from "../../utils/math/byteStringToHumanSizeString.util";
+import { byteToHumanSizeString } from "../../utils/fileSize.util";
 
 const FileList = ({
   files,
@@ -28,7 +28,7 @@ const FileList = ({
           : files!.map((file) => (
               <tr key={file.name}>
                 <td>{file.name}</td>
-                <td>{byteStringToHumanSizeString(file.size)}</td>
+                <td>{byteToHumanSizeString(file.size)}</td>
                 <td>
                   {file.uploadingState ? (
                     file.uploadingState != "finished" ? (

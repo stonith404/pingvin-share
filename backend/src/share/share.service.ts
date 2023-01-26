@@ -15,6 +15,7 @@ import { ConfigService } from "src/config/config.service";
 import { EmailService } from "src/email/email.service";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
+import { ReverseShareService } from "src/reverseShare/reverseShare.service";
 import { CreateShareDTO } from "./dto/createShare.dto";
 
 @Injectable()
@@ -25,10 +26,11 @@ export class ShareService {
     private emailService: EmailService,
     private config: ConfigService,
     private jwtService: JwtService,
+    private reverseShareService: ReverseShareService,
     private clamScanService: ClamScanService
   ) {}
 
-  async create(share: CreateShareDTO, user?: User) {
+  async create(share: CreateShareDTO, user?: User, reverseShareToken?: string) {
     if (!(await this.isShareIdAvailable(share.id)).isAvailable)
       throw new BadRequestException("Share id already in use");
 
@@ -39,30 +41,36 @@ export class ShareService {
       share.security.password = await argon.hash(share.security.password);
     }
 
-    // We have to add an exception for "never" (since moment won't like that)
     let expirationDate: Date;
-    if (share.expiration !== "never") {
-      expirationDate = moment()
-        .add(
-          share.expiration.split("-")[0],
-          share.expiration.split(
-            "-"
-          )[1] as moment.unitOfTime.DurationConstructor
-        )
-        .toDate();
 
-      // Throw error if expiration date is now
-      if (expirationDate.setMilliseconds(0) == new Date().setMilliseconds(0))
-        throw new BadRequestException("Invalid expiration date");
+    // If share is created by a reverse share token override the expiration date
+    if (reverseShareToken) {
+      const { shareExpiration } = await this.reverseShareService.getByToken(
+        reverseShareToken
+      );
+
+      expirationDate = shareExpiration;
     } else {
-      expirationDate = moment(0).toDate();
+      // We have to add an exception for "never" (since moment won't like that)
+      if (share.expiration !== "never") {
+        expirationDate = moment()
+          .add(
+            share.expiration.split("-")[0],
+            share.expiration.split(
+              "-"
+            )[1] as moment.unitOfTime.DurationConstructor
+          )
+          .toDate();
+      } else {
+        expirationDate = moment(0).toDate();
+      }
     }
 
     fs.mkdirSync(`./data/uploads/shares/${share.id}`, {
       recursive: true,
     });
 
-    return await this.prisma.share.create({
+    const shareTuple = await this.prisma.share.create({
       data: {
         ...share,
         expiration: expirationDate,
@@ -75,6 +83,18 @@ export class ShareService {
         },
       },
     });
+
+    if (reverseShareToken) {
+      // Assign share to reverse share token
+      await this.prisma.reverseShare.update({
+        where: { token: reverseShareToken },
+        data: {
+          shareId: share.id,
+        },
+      });
+    }
+
+    return shareTuple;
   }
 
   async createZip(shareId: string) {
@@ -96,10 +116,15 @@ export class ShareService {
     await archive.finalize();
   }
 
-  async complete(id: string) {
+  async complete(id: string, reverseShareToken?: string) {
     const share = await this.prisma.share.findUnique({
       where: { id },
-      include: { files: true, recipients: true, creator: true },
+      include: {
+        files: true,
+        recipients: true,
+        creator: true,
+        reverseShare: { include: { creator: true } },
+      },
     });
 
     if (await this.isShareCompleted(id))
@@ -118,15 +143,33 @@ export class ShareService {
 
     // Send email for each recepient
     for (const recepient of share.recipients) {
-      await this.emailService.sendMail(
+      await this.emailService.sendMailToShareRecepients(
         recepient.email,
         share.id,
         share.creator
       );
     }
 
+    if (
+      share.reverseShare &&
+      this.config.get("SMTP_ENABLED") &&
+      share.reverseShare.sendEmailNotification
+    ) {
+      await this.emailService.sendMailToReverseShareCreator(
+        share.reverseShare.creator.email,
+        share.id
+      );
+    }
+
     // Check if any file is malicious with ClamAV
     this.clamScanService.checkAndRemove(share.id);
+
+    if (reverseShareToken) {
+      await this.prisma.reverseShare.update({
+        where: { token: reverseShareToken },
+        data: { used: true },
+      });
+    }
 
     return await this.prisma.share.update({
       where: { id },

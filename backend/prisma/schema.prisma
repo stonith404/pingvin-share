@@ -20,6 +20,7 @@ model User {
   shares        Share[]
   refreshTokens RefreshToken[]
   loginTokens   LoginToken[]
+  reverseShares ReverseShare[]
 
   totpEnabled  Boolean @default(false)
   totpVerified Boolean @default(false)
@@ -59,11 +60,31 @@ model Share {
   description   String?
   removedReason String?
 
-  creatorId  String?
-  creator    User?            @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  creatorId String?
+  creator   User?   @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+
+  reverseShare ReverseShare?
+
   security   ShareSecurity?
   recipients ShareRecipient[]
   files      File[]
+}
+
+model ReverseShare {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  token                 String   @unique @default(uuid())
+  shareExpiration       DateTime
+  maxShareSize          String
+  sendEmailNotification Boolean
+  used                  Boolean  @default(false)
+
+  creatorId String
+  creator   User   @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+
+  shareId String? @unique
+  share   Share?  @relation(fields: [shareId], references: [id], onDelete: Cascade)
 }
 
 model ShareRecipient {
@@ -97,9 +118,10 @@ model ShareSecurity {
 }
 
 model Config {
+  id        Int      @id
   updatedAt DateTime @updatedAt
 
-  key         String  @id
+  key         String  @unique
   type        String
   value       String
   description String

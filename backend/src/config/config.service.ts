@@ -29,6 +29,7 @@ export class ConfigService {
 
   async listForAdmin() {
     return await this.prisma.config.findMany({
+      orderBy: { id: "asc" },
       where: { locked: { equals: false } },
     });
   }

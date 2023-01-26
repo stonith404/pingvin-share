@@ -8,6 +8,9 @@ export class EmailService {
   constructor(private config: ConfigService) {}
 
   getTransporter() {
+    if (!this.config.get("SMTP_ENABLED"))
+      throw new InternalServerErrorException("SMTP is disabled");
+
     return nodemailer.createTransport({
       host: this.config.get("SMTP_HOST"),
       port: parseInt(this.config.get("SMTP_PORT")),
@@ -19,8 +22,12 @@ export class EmailService {
     });
   }
 
-  async sendMail(recipientEmail: string, shareId: string, creator: User) {
-    if (!this.config.get("ENABLE_EMAIL_RECIPIENTS"))
+  async sendMailToShareRecepients(
+    recipientEmail: string,
+    shareId: string,
+    creator?: User
+  ) {
+    if (!this.config.get("ENABLE_SHARE_EMAIL_RECIPIENTS"))
       throw new InternalServerErrorException("Email service disabled");
 
     const shareUrl = `${this.config.get("APP_URL")}/share/${shareId}`;
@@ -28,11 +35,25 @@ export class EmailService {
     await this.getTransporter().sendMail({
       from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
       to: recipientEmail,
-      subject: this.config.get("EMAIL_SUBJECT"),
+      subject: this.config.get("SHARE_RECEPIENTS_EMAIL_SUBJECT"),
       text: this.config
-        .get("EMAIL_MESSAGE")
+        .get("SHARE_RECEPIENTS_EMAIL_MESSAGE")
         .replaceAll("\\n", "\n")
-        .replaceAll("{creator}", creator.username)
+        .replaceAll("{creator}", creator?.username ?? "Someone")
+        .replaceAll("{shareUrl}", shareUrl),
+    });
+  }
+
+  async sendMailToReverseShareCreator(recipientEmail: string, shareId: string) {
+    const shareUrl = `${this.config.get("APP_URL")}/share/${shareId}`;
+
+    await this.getTransporter().sendMail({
+      from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
+      to: recipientEmail,
+      subject: this.config.get("REVERSE_SHARE_EMAIL_SUBJECT"),
+      text: this.config
+        .get("REVERSE_SHARE_EMAIL_MESSAGE")
+        .replaceAll("\\n", "\n")
         .replaceAll("{shareUrl}", shareUrl),
     });
   }
