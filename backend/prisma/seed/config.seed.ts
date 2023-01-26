@@ -80,7 +80,7 @@ const configVariables: Prisma.ConfigCreateInput[] = [
     id: 9,
     key: "ENABLE_SHARE_EMAIL_RECIPIENTS",
     description:
-      "Whether to send emails to share recipients. Only enable this if you have enabled SMTP.",
+      "Whether to allow emails to share recipients. Only enable this if you have enabled SMTP.",
     type: "boolean",
     value: "false",
     category: "email",
@@ -90,7 +90,7 @@ const configVariables: Prisma.ConfigCreateInput[] = [
     id: 10,
     key: "SHARE_RECEPIENTS_EMAIL_MESSAGE",
     description:
-      "Message which gets sent to the recipients. {creator} and {shareUrl} will be replaced with the creator's name and the share URL.",
+      "Message which gets sent to the share recipients. {creator} and {shareUrl} will be replaced with the creator's name and the share URL.",
     type: "text",
     value:
       "Hey!\n{creator} shared some files with you. View or download the files with this link: {shareUrl}\nShared securely with Pingvin Share 🐧",
@@ -99,7 +99,8 @@ const configVariables: Prisma.ConfigCreateInput[] = [
   {
     id: 11,
     key: "SHARE_RECEPIENTS_EMAIL_SUBJECT",
-    description: "Subject of the email which gets sent to the recipients.",
+    description:
+      "Subject of the email which gets sent to the share recipients.",
     type: "string",
     value: "Files shared with you",
     category: "email",
@@ -118,7 +119,7 @@ const configVariables: Prisma.ConfigCreateInput[] = [
     id: 13,
     key: "REVERSE_SHARE_EMAIL_SUBJECT",
     description:
-      "Subject of the email which gets sent when someone created a share with your reverse share link",
+      "Subject of the email which gets sent when someone created a share with your reverse share link.",
     type: "string",
     value: "Reverse share link used",
     category: "email",
