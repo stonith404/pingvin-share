@@ -100,7 +100,7 @@ const AdminConfigTable = () => {
                   <Space h="lg" />
                 </>
               ))}
-              {category == "email" && (
+              {category == "smtp" && (
                 <Group position="right">
                   <TestEmailButton />
                 </Group>

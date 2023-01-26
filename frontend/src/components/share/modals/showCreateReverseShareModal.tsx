@@ -6,6 +6,7 @@ import {
   NumberInput,
   Select,
   Stack,
+  Switch,
   Text,
   Title,
 } from "@mantine/core";
@@ -20,20 +21,33 @@ import showCompletedReverseShareModal from "./showCompletedReverseShareModal";
 
 const showCreateReverseShareModal = (
   modals: ModalsContextProps,
+  showSendEmailNotificationOption: boolean,
   getReverseShares: () => void
 ) => {
   return modals.openModal({
     title: <Title order={4}>Create reverse share</Title>,
-    children: <Body getReverseShares={getReverseShares} />,
+    children: (
+      <Body
+        showSendEmailNotificationOption={showSendEmailNotificationOption}
+        getReverseShares={getReverseShares}
+      />
+    ),
   });
 };
 
-const Body = ({ getReverseShares }: { getReverseShares: () => void }) => {
+const Body = ({
+  getReverseShares,
+  showSendEmailNotificationOption,
+}: {
+  getReverseShares: () => void;
+  showSendEmailNotificationOption: boolean;
+}) => {
   const modals = useModals();
 
   const form = useForm({
     initialValues: {
       maxShareSize: 104857600,
+      sendEmailNotification: false,
       expiration_num: 1,
       expiration_unit: "-days",
     },
@@ -45,7 +59,8 @@ const Body = ({ getReverseShares }: { getReverseShares: () => void }) => {
           shareService
             .createReverseShare(
               values.expiration_num + values.expiration_unit,
-              values.maxShareSize
+              values.maxShareSize,
+              values.sendEmailNotification
             )
             .then(({ link }) => {
               modals.closeAll();
@@ -117,6 +132,17 @@ const Body = ({ getReverseShares }: { getReverseShares: () => void }) => {
             value={form.values.maxShareSize}
             onChange={(number) => form.setFieldValue("maxShareSize", number)}
           />
+          {showSendEmailNotificationOption && (
+            <Switch
+              mt="xs"
+              labelPosition="left"
+              label="Send email notification"
+              description="Send an email notification when a share is created with this reverse share link"
+              {...form.getInputProps("sendEmailNotification", {
+                type: "checkbox",
+              })}
+            />
+          )}
 
           <Button mt="md" type="submit">
             Create

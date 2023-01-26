@@ -74,11 +74,11 @@ model ReverseShare {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
 
-  token           String   @unique @default(uuid())
-  shareExpiration DateTime
-  maxShareSize    String
-
-  used Boolean @default(false)
+  token                 String   @unique @default(uuid())
+  shareExpiration       DateTime
+  maxShareSize          String
+  sendEmailNotification Boolean
+  used                  Boolean  @default(false)
 
   creatorId String
   creator   User   @relation(fields: [creatorId], references: [id], onDelete: Cascade)
@@ -118,9 +118,10 @@ model ShareSecurity {
 }
 
 model Config {
+  id        Int      @id
   updatedAt DateTime @updatedAt
 
-  key         String  @id
+  key         String  @unique
   type        String
   value       String
   description String

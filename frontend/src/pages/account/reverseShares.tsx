@@ -71,7 +71,11 @@ const MyShares = () => {
           </Group>
           <Button
             onClick={() =>
-              showCreateReverseShareModal(modals, getReverseShares)
+              showCreateReverseShareModal(
+                modals,
+                config.get("SMTP_ENABLED"),
+                getReverseShares
+              )
             }
             leftIcon={<TbPlus size={20} />}
           >

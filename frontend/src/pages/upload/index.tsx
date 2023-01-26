@@ -183,7 +183,9 @@ const Upload = ({
                   allowUnauthenticatedShares: config.get(
                     "ALLOW_UNAUTHENTICATED_SHARES"
                   ),
-                  enableEmailRecepients: config.get("ENABLE_EMAIL_RECIPIENTS"),
+                  enableEmailRecepients: config.get(
+                    "ENABLE_SHARE_EMAIL_RECIPIENTS"
+                  ),
                 },
                 uploadFiles
               );

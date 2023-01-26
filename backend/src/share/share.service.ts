@@ -119,7 +119,12 @@ export class ShareService {
   async complete(id: string, reverseShareToken?: string) {
     const share = await this.prisma.share.findUnique({
       where: { id },
-      include: { files: true, recipients: true, creator: true },
+      include: {
+        files: true,
+        recipients: true,
+        creator: true,
+        reverseShare: { include: { creator: true } },
+      },
     });
 
     if (await this.isShareCompleted(id))
@@ -138,10 +143,21 @@ export class ShareService {
 
     // Send email for each recepient
     for (const recepient of share.recipients) {
-      await this.emailService.sendMail(
+      await this.emailService.sendMailToShareRecepients(
         recepient.email,
         share.id,
         share.creator
+      );
+    }
+
+    if (
+      share.reverseShare &&
+      this.config.get("SMTP_ENABLED") &&
+      share.reverseShare.sendEmailNotification
+    ) {
+      await this.emailService.sendMailToReverseShareCreator(
+        share.reverseShare.creator.email,
+        share.id
       );
     }
 

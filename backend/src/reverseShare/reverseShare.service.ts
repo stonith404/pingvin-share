@@ -35,6 +35,7 @@ export class ReverseShareService {
       data: {
         shareExpiration: expirationDate,
         maxShareSize: data.maxShareSize,
+        sendEmailNotification: data.sendEmailNotification,
         creatorId,
       },
     });
