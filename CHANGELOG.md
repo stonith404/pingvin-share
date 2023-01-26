@@ -1,3 +1,16 @@
+## [0.8.0](https://github.com/stonith404/pingvin-share/compare/v0.7.0...v0.8.0) (2023-01-26)
+
+
+### Features
+
+* reverse shares ([#86](https://github.com/stonith404/pingvin-share/issues/86)) ([4a5fb54](https://github.com/stonith404/pingvin-share/commit/4a5fb549c6ac808261eb65d28db69510a82efd00))
+
+
+### Bug Fixes
+
+* Add meta tags to new pages ([bb64f6c](https://github.com/stonith404/pingvin-share/commit/bb64f6c33fc5c5e11f2c777785c96a74b57dfabc))
+* admin users were created while the setup wizard wasn't finished ([ad92cfc](https://github.com/stonith404/pingvin-share/commit/ad92cfc852ca6aa121654d747a02628492ae5b89))
+
 ## [0.7.0](https://github.com/stonith404/pingvin-share/compare/v0.6.1...v0.7.0) (2023-01-13)
 
 
