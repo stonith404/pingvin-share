@@ -118,10 +118,9 @@ model ShareSecurity {
 }
 
 model Config {
-  id        Int      @id
   updatedAt DateTime @updatedAt
 
-  key         String  @unique
+  key         String  @id
   type        String
   value       String
   description String
@@ -129,4 +128,5 @@ model Config {
   obscured    Boolean @default(false)
   secret      Boolean @default(true)
   locked      Boolean @default(false)
+  order       Int
 }
