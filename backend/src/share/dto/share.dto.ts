@@ -20,6 +20,9 @@ export class ShareDTO {
   @Expose()
   description: string;
 
+  @Expose()
+  hasPassword: boolean;
+
   from(partial: Partial<ShareDTO>) {
     return plainToClass(ShareDTO, partial, { excludeExtraneousValues: true });
   }

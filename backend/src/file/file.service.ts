@@ -135,6 +135,4 @@ export class FileService {
   getZip(shareId: string) {
     return fs.createReadStream(`./data/uploads/shares/${shareId}/archive.zip`);
   }
-
- 
 }

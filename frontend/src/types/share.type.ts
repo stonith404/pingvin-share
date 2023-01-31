@@ -6,6 +6,7 @@ export type Share = {
   creator: User;
   description?: string;
   expiration: Date;
+  hasPassword: boolean;
 };
 
 export type CreateShare = {

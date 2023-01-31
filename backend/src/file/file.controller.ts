@@ -14,8 +14,8 @@ import * as contentDisposition from "content-disposition";
 import { Response } from "express";
 import { CreateShareGuard } from "src/share/guard/createShare.guard";
 import { ShareOwnerGuard } from "src/share/guard/shareOwner.guard";
-import { ShareSecurityGuard } from "src/share/guard/shareSecurity.guard";
 import { FileService } from "./file.service";
+import { FileSecurityGuard } from "./guard/fileSecurity.guard";
 
 @Controller("shares/:shareId/files")
 export class FileController {
@@ -43,7 +43,7 @@ export class FileController {
   }
 
   @Get("zip")
-  @UseGuards(ShareSecurityGuard)
+  @UseGuards(FileSecurityGuard)
   async getZip(
     @Res({ passthrough: true }) res: Response,
     @Param("shareId") shareId: string
@@ -58,7 +58,7 @@ export class FileController {
   }
 
   @Get(":fileId")
-  @UseGuards(ShareSecurityGuard)
+  @UseGuards(FileSecurityGuard)
   async getFile(
     @Res({ passthrough: true }) res: Response,
     @Param("shareId") shareId: string,

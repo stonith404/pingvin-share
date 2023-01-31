@@ -1,20 +1,57 @@
-import { ActionIcon, Group, Skeleton, Table } from "@mantine/core";
+import {
+  ActionIcon,
+  Group,
+  Skeleton,
+  Stack,
+  Table,
+  TextInput,
+} from "@mantine/core";
+import { useClipboard } from "@mantine/hooks";
+import { useModals } from "@mantine/modals";
 import mime from "mime-types";
+
 import Link from "next/link";
-import { TbDownload, TbEye } from "react-icons/tb";
+import { TbDownload, TbEye, TbLink } from "react-icons/tb";
+import useConfig from "../../hooks/config.hook";
 import shareService from "../../services/share.service";
 import { FileMetaData } from "../../types/File.type";
+import { Share } from "../../types/share.type";
 import { byteToHumanSizeString } from "../../utils/fileSize.util";
+import toast from "../../utils/toast.util";
 
 const FileList = ({
   files,
-  shareId,
+  share,
   isLoading,
 }: {
   files?: FileMetaData[];
-  shareId: string;
+  share: Share;
   isLoading: boolean;
 }) => {
+  const clipboard = useClipboard();
+  const config = useConfig();
+  const modals = useModals();
+
+  const copyFileLink = (file: FileMetaData) => {
+    const link = `${config.get("APP_URL")}/api/shares/${share.id}/files/${
+      file.id
+    }`;
+
+    if (window.isSecureContext) {
+      clipboard.copy(link);
+      toast.success("Your file link was copied to the keyboard.");
+    } else {
+      modals.openModal({
+        title: "File link",
+        children: (
+          <Stack align="stretch">
+            <TextInput variant="filled" value={link} />
+          </Stack>
+        ),
+      });
+    }
+  };
+
   return (
     <Table>
       <thead>
@@ -36,7 +73,7 @@ const FileList = ({
                     {shareService.doesFileSupportPreview(file.name) && (
                       <ActionIcon
                         component={Link}
-                        href={`/share/${shareId}/preview/${
+                        href={`/share/${share.id}/preview/${
                           file.id
                         }?type=${mime.contentType(file.name)}`}
                         target="_blank"
@@ -45,10 +82,15 @@ const FileList = ({
                         <TbEye />
                       </ActionIcon>
                     )}
+                    {!share.hasPassword && (
+                      <ActionIcon size={25} onClick={() => copyFileLink(file)}>
+                        <TbLink />
+                      </ActionIcon>
+                    )}
                     <ActionIcon
                       size={25}
                       onClick={async () => {
-                        await shareService.downloadFile(shareId, file.id);
+                        await shareService.downloadFile(share.id, file.id);
                       }}
                     >
                       <TbDownload />

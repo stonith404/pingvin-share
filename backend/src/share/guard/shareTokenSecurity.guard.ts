@@ -26,10 +26,12 @@ export class ShareTokenSecurity implements CanActivate {
       include: { security: true },
     });
 
-    const isExpired =
-      moment().isAfter(share.expiration) && !moment(share.expiration).isSame(0);
-
-    if (!share || isExpired) throw new NotFoundException("Share not found");
+    if (
+      !share ||
+      (moment().isAfter(share.expiration) &&
+        !moment(share.expiration).isSame(0))
+    )
+      throw new NotFoundException("Share not found");
 
     return true;
   }

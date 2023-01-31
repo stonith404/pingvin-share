@@ -204,12 +204,13 @@ export class ShareService {
     return sharesWithEmailRecipients;
   }
 
-  async get(id: string) {
+  async get(id: string): Promise<any> {
     const share = await this.prisma.share.findUnique({
       where: { id },
       include: {
         files: true,
         creator: true,
+        security: true,
       },
     });
 
@@ -218,8 +219,10 @@ export class ShareService {
 
     if (!share || !share.uploadLocked)
       throw new NotFoundException("Share not found");
-
-    return share as any;
+    return {
+      ...share,
+      hasPassword: share.security?.password ? true : false,
+    };
   }
 
   async getMetaData(id: string) {

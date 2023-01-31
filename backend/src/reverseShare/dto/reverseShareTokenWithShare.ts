@@ -10,8 +10,11 @@ export class ReverseShareTokenWithShare extends OmitType(ReverseShareDTO, [
   shareExpiration: Date;
 
   @Expose()
-  @Type(() => OmitType(MyShareDTO, ["recipients"] as const))
-  share: Omit<MyShareDTO, "recipients" | "files" | "from" | "fromList">;
+  @Type(() => OmitType(MyShareDTO, ["recipients", "hasPassword"] as const))
+  share: Omit<
+    MyShareDTO,
+    "recipients" | "files" | "from" | "fromList" | "hasPassword"
+  >;
 
   fromList(partial: Partial<ReverseShareTokenWithShare>[]) {
     return partial.map((part) =>
