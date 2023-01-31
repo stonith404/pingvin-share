@@ -29,7 +29,9 @@ const AdminConfigTable = () => {
   const config = useConfig();
   const isMobile = useMediaQuery("(max-width: 560px)");
 
-  let updatedConfigVariables: UpdateConfig[] = [];
+  const [updatedConfigVariables, setUpdatedConfigVariables] = useState<
+    UpdateConfig[]
+  >([]);
 
   const updateConfigVariable = (configVariable: UpdateConfig) => {
     const index = updatedConfigVariables.findIndex(
@@ -38,7 +40,7 @@ const AdminConfigTable = () => {
     if (index > -1) {
       updatedConfigVariables[index] = configVariable;
     } else {
-      updatedConfigVariables.push(configVariable);
+      setUpdatedConfigVariables([...updatedConfigVariables, configVariable]);
     }
   };
 
@@ -58,6 +60,26 @@ const AdminConfigTable = () => {
       );
       setCofigVariablesByCategory(configVariablesByCategory);
     });
+  };
+
+  const saveConfigVariables = async () => {
+    if (config.get("SETUP_STATUS") == "REGISTERED") {
+      await configService
+        .updateMany(updatedConfigVariables)
+        .then(async () => {
+          await configService.finishSetup();
+          window.location.reload();
+        })
+        .catch(toast.axiosError);
+    } else {
+      await configService
+        .updateMany(updatedConfigVariables)
+        .then(() => {
+          setUpdatedConfigVariables([]);
+          toast.success("Configurations updated successfully");
+        })
+        .catch(toast.axiosError);
+    }
   };
 
   useEffect(() => {
@@ -102,7 +124,10 @@ const AdminConfigTable = () => {
               ))}
               {category == "smtp" && (
                 <Group position="right">
-                  <TestEmailButton />
+                  <TestEmailButton
+                    configVariablesChanged={updatedConfigVariables.length != 0}
+                    saveConfigVariables={saveConfigVariables}
+                  />
                 </Group>
               )}
             </Paper>
@@ -110,29 +135,7 @@ const AdminConfigTable = () => {
         }
       )}
       <Group position="right">
-        <Button
-          onClick={() => {
-            if (config.get("SETUP_STATUS") == "REGISTERED") {
-              configService
-                .updateMany(updatedConfigVariables)
-                .then(async () => {
-                  await configService.finishSetup();
-                  window.location.reload();
-                })
-                .catch(toast.axiosError);
-            } else {
-              configService
-                .updateMany(updatedConfigVariables)
-                .then(() => {
-                  updatedConfigVariables = [];
-                  toast.success("Configurations updated successfully");
-                })
-                .catch(toast.axiosError);
-            }
-          }}
-        >
-          Save
-        </Button>
+        <Button onClick={saveConfigVariables}>Save</Button>
       </Group>
     </Box>
   );

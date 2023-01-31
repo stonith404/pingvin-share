@@ -59,11 +59,16 @@ export class EmailService {
   }
 
   async sendTestMail(recipientEmail: string) {
-    await this.getTransporter().sendMail({
-      from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
-      to: recipientEmail,
-      subject: "Test email",
-      text: "This is a test email",
-    });
+    try {
+      await this.getTransporter().sendMail({
+        from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
+        to: recipientEmail,
+        subject: "Test email",
+        text: "This is a test email",
+      });
+    } catch (e) {
+      console.error(e);
+      throw new InternalServerErrorException(e.message);
+    }
   }
 }
