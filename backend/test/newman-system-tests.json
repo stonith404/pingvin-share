@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "38c7001d-4868-484b-935a-84fd3b5e7cf6",
+		"_postman_id": "cd31bdf9-d558-42da-9231-154721476cd2",
 		"name": "Pingvin Share Testing",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "17822132"
@@ -804,16 +804,6 @@
 							"request": {
 								"method": "POST",
 								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "file",
-											"type": "file",
-											"src": "./test/system/test-file.txt"
-										}
-									]
-								},
 								"url": {
 									"raw": "{{API_URL}}/shares/:shareId/files",
 									"host": [
@@ -853,16 +843,6 @@
 							"request": {
 								"method": "POST",
 								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "file",
-											"type": "file",
-											"src": "./test/system/test-file.txt"
-										}
-									]
-								},
 								"url": {
 									"raw": "{{API_URL}}/shares/:shareId/files",
 									"host": [
@@ -987,7 +967,8 @@
 											"    pm.expect(Object.keys(responseBody).length).be.equal(1)",
 											"});",
 											"",
-											"pm.collectionVariables.set(\"shareToken\", pm.response.json().token)"
+											"pm.collectionVariables.set(\"COOKIES\", `${pm.collectionVariables.get(\"COOKIES\")};${pm.response.headers.get(\"Set-Cookie\")}`)",
+											""
 										],
 										"type": "text/javascript"
 									}
@@ -1041,8 +1022,6 @@
 											"    pm.expect(responseBody.files.length).be.equal(2)",
 											"});",
 											"",
-											"",
-											"",
 											"pm.collectionVariables.set(\"fileId\", pm.response.json().files[0].id)"
 										],
 										"type": "text/javascript"
@@ -1051,13 +1030,7 @@
 							],
 							"request": {
 								"method": "GET",
-								"header": [
-									{
-										"key": "X-Share-Token",
-										"value": "{{shareToken}}",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"url": {
 									"raw": "{{API_URL}}/shares/:shareId",
 									"host": [
@@ -1071,88 +1044,6 @@
 										{
 											"key": "shareId",
 											"value": "test-share"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get file download url",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"let URL = require('url');",
-											"",
-											"pm.test(\"Status code is 200\",  () => {",
-											"    pm.response.to.have.status(200);",
-											"});",
-											"",
-											"",
-											"pm.test(\"Response body correct\", () => {",
-											"    const responseBody = pm.response.json();",
-											"    pm.expect(responseBody).to.have.property(\"url\")",
-											"    pm.expect(Object.keys(responseBody).length).be.equal(1)",
-											"});",
-											"",
-											"",
-											"const path = URL.parse(pm.response.json().url).path.replace(\"/api/\", \"\")",
-											"",
-											"pm.collectionVariables.set(\"fileDownloadPath\",path )"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Share-Token",
-										"value": "{{shareToken}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "file",
-											"type": "file",
-											"src": "./test/system/test-file.txt"
-										},
-										{
-											"key": "shareId",
-											"value": "868c6a44-fb8c-4768-ad0d-ef22feebc8ea",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{API_URL}}/shares/:shareId/files/:fileId/download",
-									"host": [
-										"{{API_URL}}"
-									],
-									"path": [
-										"shares",
-										":shareId",
-										"files",
-										":fileId",
-										"download"
-									],
-									"variable": [
-										{
-											"key": "shareId",
-											"value": "test-share"
-										},
-										{
-											"key": "fileId",
-											"value": "{{fileId}}"
 										}
 									]
 								}
@@ -1174,97 +1065,11 @@
 									}
 								}
 							],
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
 							"request": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "file",
-											"type": "file",
-											"src": "./test/system/test-file.txt"
-										},
-										{
-											"key": "shareId",
-											"value": "868c6a44-fb8c-4768-ad0d-ef22feebc8ea",
-											"type": "text"
-										}
-									]
-								},
 								"url": {
-									"raw": "{{API_URL}}/{{fileDownloadPath}}",
-									"host": [
-										"{{API_URL}}"
-									],
-									"path": [
-										"{{fileDownloadPath}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get zip download url",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"let URL = require('url');",
-											"",
-											"pm.test(\"Status code is 200\",  () => {",
-											"    pm.response.to.have.status(200);",
-											"});",
-											"",
-											"",
-											"pm.test(\"Response body correct\", () => {",
-											"    const responseBody = pm.response.json();",
-											"    pm.expect(responseBody).to.have.property(\"url\")",
-											"    pm.expect(Object.keys(responseBody).length).be.equal(1)",
-											"});",
-											"",
-											"",
-											"const path = URL.parse(pm.response.json().url).path.replace(\"/api/\", \"\")",
-											"",
-											"pm.collectionVariables.set(\"zipDownloadPath\",path )"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Share-Token",
-										"value": "{{shareToken}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "file",
-											"type": "file",
-											"src": "./test/system/test-file.txt"
-										},
-										{
-											"key": "shareId",
-											"value": "868c6a44-fb8c-4768-ad0d-ef22feebc8ea",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{API_URL}}/shares/:shareId/files/zip/download",
+									"raw": "{{API_URL}}/shares/:shareId/files/{{fileId}}",
 									"host": [
 										"{{API_URL}}"
 									],
@@ -1272,8 +1077,7 @@
 										"shares",
 										":shareId",
 										"files",
-										"zip",
-										"download"
+										"{{fileId}}"
 									],
 									"variable": [
 										{
@@ -1306,64 +1110,16 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "file",
-											"type": "file",
-											"src": "./test/system/test-file.txt"
-										},
-										{
-											"key": "shareId",
-											"value": "868c6a44-fb8c-4768-ad0d-ef22feebc8ea",
-											"type": "text"
-										}
-									]
-								},
 								"url": {
-									"raw": "{{API_URL}}/{{zipDownloadPath}}",
-									"host": [
-										"{{API_URL}}"
-									],
-									"path": [
-										"{{zipDownloadPath}}"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Negative",
-					"item": [
-						{
-							"name": "Get share - No token",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 403\",  () => {",
-											"    pm.response.to.have.status(403);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_URL}}/shares/:shareId",
+									"raw": "{{API_URL}}/shares/:shareId/files/zip",
 									"host": [
 										"{{API_URL}}"
 									],
 									"path": [
 										"shares",
-										":shareId"
+										":shareId",
+										"files",
+										"zip"
 									],
 									"variable": [
 										{
@@ -1374,7 +1130,12 @@
 								}
 							},
 							"response": []
-						},
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
 						{
 							"name": "Get share token - Wrong password",
 							"event": [
@@ -1458,128 +1219,6 @@
 										"shares",
 										":shareId",
 										"token"
-									],
-									"variable": [
-										{
-											"key": "shareId",
-											"value": "test-share"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get file download url - No token",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 403\",  () => {",
-											"    pm.response.to.have.status(403);",
-											"});",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "file",
-											"type": "file",
-											"src": "./test/system/test-file.txt"
-										},
-										{
-											"key": "shareId",
-											"value": "868c6a44-fb8c-4768-ad0d-ef22feebc8ea",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{API_URL}}/shares/:shareId/files/:fileId/download",
-									"host": [
-										"{{API_URL}}"
-									],
-									"path": [
-										"shares",
-										":shareId",
-										"files",
-										":fileId",
-										"download"
-									],
-									"variable": [
-										{
-											"key": "shareId",
-											"value": "test-share"
-										},
-										{
-											"key": "fileId",
-											"value": "{{fileId}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get zip download url - No token",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 403\",  () => {",
-											"    pm.response.to.have.status(403);",
-											"});",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "file",
-											"type": "file",
-											"src": "./test/system/test-file.txt"
-										},
-										{
-											"key": "shareId",
-											"value": "868c6a44-fb8c-4768-ad0d-ef22feebc8ea",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{API_URL}}/shares/:shareId/files/zip/download",
-									"host": [
-										"{{API_URL}}"
-									],
-									"path": [
-										"shares",
-										":shareId",
-										"files",
-										"zip",
-										"download"
 									],
 									"variable": [
 										{
