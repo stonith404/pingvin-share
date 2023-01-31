@@ -1,3 +1,16 @@
+## [0.9.0](https://github.com/stonith404/pingvin-share/compare/v0.8.0...v0.9.0) (2023-01-31)
+
+
+### Features
+
+* direct file link ([008df06](https://github.com/stonith404/pingvin-share/commit/008df06b5cf48872d4dd68df813370596a4fd468))
+* file preview ([91a6b3f](https://github.com/stonith404/pingvin-share/commit/91a6b3f716d37d7831e17a7be1cdb35cb23da705))
+
+
+### Bug Fixes
+
+* improve send test email UX ([233c26e](https://github.com/stonith404/pingvin-share/commit/233c26e5cfde59e7d51023ef9901dec2b84a4845))
+
 ## [0.8.0](https://github.com/stonith404/pingvin-share/compare/v0.7.0...v0.8.0) (2023-01-26)
 
 
