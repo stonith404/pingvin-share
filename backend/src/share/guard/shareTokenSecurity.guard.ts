@@ -1,7 +1,6 @@
 import {
   CanActivate,
   ExecutionContext,
-  ForbiddenException,
   Injectable,
   NotFoundException,
 } from "@nestjs/common";
@@ -27,18 +26,10 @@ export class ShareTokenSecurity implements CanActivate {
       include: { security: true },
     });
 
-    if (
-      !share ||
-      (moment().isAfter(share.expiration) &&
-        !moment(share.expiration).isSame(0))
-    )
-      throw new NotFoundException("Share not found");
+    const isExpired =
+      moment().isAfter(share.expiration) && !moment(share.expiration).isSame(0);
 
-    if (share.security?.maxViews && share.security.maxViews <= share.views)
-      throw new ForbiddenException(
-        "Maximum views exceeded",
-        "share_max_views_exceeded"
-      );
+    if (!share || isExpired) throw new NotFoundException("Share not found");
 
     return true;
   }

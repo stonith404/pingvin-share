@@ -273,8 +273,16 @@ export class ShareService {
     if (
       share?.security?.password &&
       !(await argon.verify(share.security.password, password))
-    )
+    ) {
       throw new ForbiddenException("Wrong password");
+    }
+
+    if (share.security?.maxViews && share.security.maxViews <= share.views) {
+      throw new ForbiddenException(
+        "Maximum views exceeded",
+        "share_max_views_exceeded"
+      );
+    }
 
     const token = await this.generateShareToken(shareId);
     await this.increaseViewCount(share);

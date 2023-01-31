@@ -34,12 +34,10 @@ export class ShareSecurityGuard implements CanActivate {
       include: { security: true },
     });
 
-    if (
-      !share ||
-      (moment().isAfter(share.expiration) &&
-        moment(share.expiration).unix() !== 0)
-    )
-      throw new NotFoundException("Share not found");
+    const isExpired =
+      moment().isAfter(share.expiration) && !moment(share.expiration).isSame(0);
+
+    if (!share || isExpired) throw new NotFoundException("Share not found");
 
     if (share.security?.password && !shareToken)
       throw new ForbiddenException(
