@@ -51,7 +51,7 @@ export class FileController {
     const zip = this.fileService.getZip(shareId);
     res.set({
       "Content-Type": "application/zip",
-      "Content-Disposition": `attachment ; filename="pingvin-share-${shareId}.zip"`,
+      "Content-Disposition": contentDisposition(`pingvin-share-${shareId}.zip`),
     });
 
     return new StreamableFile(zip);
@@ -62,14 +62,21 @@ export class FileController {
   async getFile(
     @Res({ passthrough: true }) res: Response,
     @Param("shareId") shareId: string,
-    @Param("fileId") fileId: string
+    @Param("fileId") fileId: string,
+    @Query("download") download = "true"
   ) {
     const file = await this.fileService.get(shareId, fileId);
-    res.set({
+
+    const headers = {
       "Content-Type": file.metaData.mimeType,
       "Content-Length": file.metaData.size,
-      "Content-Disposition": contentDisposition(file.metaData.name),
-    });
+    };
+
+    if (download === "true") {
+      headers["Content-Disposition"] = contentDisposition(file.metaData.name);
+    }
+
+    res.set(headers);
 
     return new StreamableFile(file.file);
   }

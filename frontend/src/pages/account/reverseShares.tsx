@@ -4,7 +4,6 @@ import {
   Button,
   Center,
   Group,
-  LoadingOverlay,
   Stack,
   Table,
   Text,
@@ -18,6 +17,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { TbInfoCircle, TbLink, TbPlus, TbTrash } from "react-icons/tb";
 import showShareLinkModal from "../../components/account/showShareLinkModal";
+import CenterLoader from "../../components/core/CenterLoader";
 import Meta from "../../components/Meta";
 import showCreateReverseShareModal from "../../components/share/modals/showCreateReverseShareModal";
 import useConfig from "../../hooks/config.hook";
@@ -50,7 +50,7 @@ const MyShares = () => {
   if (!user) {
     router.replace("/");
   } else {
-    if (!reverseShares) return <LoadingOverlay visible />;
+    if (!reverseShares) return <CenterLoader />;
     return (
       <>
         <Meta title="My shares" />

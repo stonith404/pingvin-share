@@ -2,13 +2,13 @@ import { Box, Group, Text, Title } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { GetServerSidePropsContext } from "next";
 import { useEffect, useState } from "react";
-import Meta from "../../components/Meta";
-import DownloadAllButton from "../../components/share/DownloadAllButton";
-import FileList from "../../components/share/FileList";
-import showEnterPasswordModal from "../../components/share/showEnterPasswordModal";
-import showErrorModal from "../../components/share/showErrorModal";
-import shareService from "../../services/share.service";
-import { Share as ShareType } from "../../types/share.type";
+import Meta from "../../../components/Meta";
+import DownloadAllButton from "../../../components/share/DownloadAllButton";
+import FileList from "../../../components/share/FileList";
+import showEnterPasswordModal from "../../../components/share/showEnterPasswordModal";
+import showErrorModal from "../../../components/share/showErrorModal";
+import shareService from "../../../services/share.service";
+import { Share as ShareType } from "../../../types/share.type";
 
 export function getServerSideProps(context: GetServerSidePropsContext) {
   return {

@@ -22,6 +22,7 @@
     "cookies-next": "^2.1.1",
     "file-saver": "^2.0.5",
     "jose": "^4.11.2",
+    "mime-types": "^2.1.35",
     "moment": "^2.29.4",
     "next": "^13.1.2",
     "next-cookies": "^2.0.3",
@@ -34,6 +35,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@types/mime-types": "^2.1.1",
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.10",

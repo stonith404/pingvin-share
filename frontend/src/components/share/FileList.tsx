@@ -1,7 +1,9 @@
-import { ActionIcon, Loader, Skeleton, Table } from "@mantine/core";
-import { TbCircleCheck, TbDownload } from "react-icons/tb";
+import { ActionIcon, Group, Skeleton, Table } from "@mantine/core";
+import mime from "mime-types";
+import Link from "next/link";
+import { TbDownload, TbEye } from "react-icons/tb";
 import shareService from "../../services/share.service";
-
+import { FileMetaData } from "../../types/File.type";
 import { byteToHumanSizeString } from "../../utils/fileSize.util";
 
 const FileList = ({
@@ -9,7 +11,7 @@ const FileList = ({
   shareId,
   isLoading,
 }: {
-  files?: any[];
+  files?: FileMetaData[];
   shareId: string;
   isLoading: boolean;
 }) => {
@@ -28,15 +30,21 @@ const FileList = ({
           : files!.map((file) => (
               <tr key={file.name}>
                 <td>{file.name}</td>
-                <td>{byteToHumanSizeString(file.size)}</td>
+                <td>{byteToHumanSizeString(parseInt(file.size))}</td>
                 <td>
-                  {file.uploadingState ? (
-                    file.uploadingState != "finished" ? (
-                      <Loader size={22} />
-                    ) : (
-                      <TbCircleCheck color="green" size={22} />
-                    )
-                  ) : (
+                  <Group position="right">
+                    {shareService.doesFileSupportPreview(file.name) && (
+                      <ActionIcon
+                        component={Link}
+                        href={`/share/${shareId}/preview/${
+                          file.id
+                        }?type=${mime.contentType(file.name)}`}
+                        target="_blank"
+                        size={25}
+                      >
+                        <TbEye />
+                      </ActionIcon>
+                    )}
                     <ActionIcon
                       size={25}
                       onClick={async () => {
@@ -45,7 +53,7 @@ const FileList = ({
                     >
                       <TbDownload />
                     </ActionIcon>
-                  )}
+                  </Group>
                 </td>
               </tr>
             ))}

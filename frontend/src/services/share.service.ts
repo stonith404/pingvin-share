@@ -1,5 +1,7 @@
 import { setCookie } from "cookies-next";
+import mime from "mime-types";
 import { FileUploadResponse } from "../types/File.type";
+
 import {
   CreateShare,
   MyReverseShare,
@@ -47,7 +49,22 @@ const getShareToken = async (id: string, password?: string) => {
 };
 
 const isShareIdAvailable = async (id: string): Promise<boolean> => {
-  return (await api.get(`shares/isShareIdAvailable/${id}`)).data.isAvailable;
+  return (await api.get(`/shares/isShareIdAvailable/${id}`)).data.isAvailable;
+};
+
+const doesFileSupportPreview = (fileName: string) => {
+  const mimeType = mime.contentType(fileName);
+
+  if (!mimeType) return false;
+
+  const supportedMimeTypes = [
+    mimeType.startsWith("video/"),
+    mimeType.startsWith("image/"),
+    mimeType.startsWith("audio/"),
+    mimeType == "application/pdf",
+  ];
+
+  return supportedMimeTypes.some((isSupported) => isSupported);
 };
 
 const downloadFile = async (shareId: string, fileId: string) => {
@@ -114,6 +131,7 @@ export default {
   get,
   remove,
   getMetaData,
+  doesFileSupportPreview,
   getMyShares,
   isShareIdAvailable,
   downloadFile,
