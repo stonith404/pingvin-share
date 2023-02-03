@@ -77,9 +77,13 @@ export class ConfigService {
   }
 
   async changeSetupStatus(status: "STARTED" | "REGISTERED" | "FINISHED") {
-    return await this.prisma.config.update({
+    const updatedVariable = await this.prisma.config.update({
       where: { key: "SETUP_STATUS" },
       data: { value: status },
     });
+
+    this.configVariables = await this.prisma.config.findMany();
+
+    return updatedVariable;
   }
 }
