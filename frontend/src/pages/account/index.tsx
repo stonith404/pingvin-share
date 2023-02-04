@@ -13,7 +13,6 @@ import {
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
-import { useRouter } from "next/router";
 import { Tb2Fa } from "react-icons/tb";
 import * as yup from "yup";
 import showEnableTotpModal from "../../components/account/showEnableTotpModal";
@@ -27,7 +26,6 @@ import toast from "../../utils/toast.util";
 const Account = () => {
   const { user, setUser } = useUser();
   const modals = useModals();
-  const router = useRouter();
 
   const accountForm = useForm({
     initialValues: {
@@ -84,11 +82,6 @@ const Account = () => {
   });
 
   const refreshUser = async () => setUser(await userService.getCurrentUser());
-
-  if (!user) {
-    router.push("/");
-    return;
-  }
 
   return (
     <>
@@ -171,7 +164,7 @@ const Account = () => {
             </Tabs.List>
 
             <Tabs.Panel value="totp" pt="xs">
-              {user.totpVerified ? (
+              {user!.totpVerified ? (
                 <>
                   <form
                     onSubmit={disableTotpForm.onSubmit((values) => {

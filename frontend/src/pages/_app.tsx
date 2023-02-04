@@ -9,7 +9,6 @@ import { useColorScheme } from "@mantine/hooks";
 import { ModalsProvider } from "@mantine/modals";
 import { NotificationsProvider } from "@mantine/notifications";
 import type { AppProps } from "next/app";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Header from "../components/navBar/NavBar";
 import { ConfigContext } from "../hooks/config.hook";
@@ -26,7 +25,7 @@ import { GlobalLoadingContext } from "../utils/loading.util";
 
 function App({ Component, pageProps }: AppProps) {
   const systemTheme = useColorScheme();
-  const router = useRouter();
+
   const preferences = usePreferences();
   const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
   const [isLoading, setIsLoading] = useState(true);
@@ -45,25 +44,6 @@ function App({ Component, pageProps }: AppProps) {
     setInterval(async () => await authService.refreshAccessToken(), 30 * 1000);
     getInitalData();
   }, []);
-
-  // Redirect to setup page if setup is not completed
-  useEffect(() => {
-    if (
-      configVariables &&
-      !["/auth/signUp", "/admin/setup"].includes(router.asPath)
-    ) {
-      const setupStatus = configVariables.filter(
-        (variable) => variable.key == "SETUP_STATUS"
-      )[0].value;
-      if (setupStatus == "STARTED") {
-        router.replace("/auth/signUp");
-      } else if (user && setupStatus == "REGISTERED") {
-        router.replace("/admin/setup");
-      } else if (setupStatus == "REGISTERED") {
-        router.replace("/auth/signIn");
-      }
-    }
-  }, [configVariables, router.asPath]);
 
   useEffect(() => {
     setColorScheme(

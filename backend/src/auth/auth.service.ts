@@ -110,26 +110,30 @@ export class AuthService {
       {
         sub: user.id,
         email: user.email,
+        isAdmin: user.isAdmin,
         refreshTokenId,
       },
       {
-        expiresIn: "15min",
+        expiresIn: "10s",
         secret: this.config.get("JWT_SECRET"),
       }
     );
   }
 
   async signOut(accessToken: string) {
-    const { refreshTokenId } = this.jwtService.decode(accessToken) as {
-      refreshTokenId: string;
-    };
+    const { refreshTokenId } =
+      (this.jwtService.decode(accessToken) as {
+        refreshTokenId: string;
+      }) || {};
 
-    await this.prisma.refreshToken
-      .delete({ where: { id: refreshTokenId } })
-      .catch((e) => {
-        // Ignore error if refresh token doesn't exist
-        if (e.code != "P2025") throw e;
-      });
+    if (refreshTokenId) {
+      await this.prisma.refreshToken
+        .delete({ where: { id: refreshTokenId } })
+        .catch((e) => {
+          // Ignore error if refresh token doesn't exist
+          if (e.code != "P2025") throw e;
+        });
+    }
   }
 
   async refreshAccessToken(refreshToken: string) {

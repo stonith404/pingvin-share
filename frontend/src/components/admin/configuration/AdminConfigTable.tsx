@@ -9,6 +9,7 @@ import {
   Title,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import useConfig from "../../../hooks/config.hook";
 import configService from "../../../services/config.service";
@@ -27,6 +28,7 @@ import TestEmailButton from "./TestEmailButton";
 
 const AdminConfigTable = () => {
   const config = useConfig();
+  const router = useRouter();
   const isMobile = useMediaQuery("(max-width: 560px)");
 
   const [updatedConfigVariables, setUpdatedConfigVariables] = useState<
@@ -68,7 +70,7 @@ const AdminConfigTable = () => {
         .updateMany(updatedConfigVariables)
         .then(async () => {
           await configService.finishSetup();
-          window.location.reload();
+          router.replace("/upload");
         })
         .catch(toast.axiosError);
     } else {

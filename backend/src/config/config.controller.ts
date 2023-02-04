@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Patch, Post, UseGuards } from "@nestjs/common";
+import { SkipThrottle } from "@nestjs/throttler";
 import { AdministratorGuard } from "src/auth/guard/isAdmin.guard";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
 import { EmailService } from "src/email/email.service";
@@ -16,6 +17,7 @@ export class ConfigController {
   ) {}
 
   @Get()
+  @SkipThrottle()
   async list() {
     return new ConfigDTO().fromList(await this.configService.list());
   }

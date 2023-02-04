@@ -120,7 +120,7 @@ export class AuthController {
     const accessToken = await this.authService.refreshAccessToken(
       request.cookies.refresh_token
     );
-    response.cookie("access_token", accessToken);
+    response = this.addTokensToResponse(response, undefined, accessToken);
     return new TokenDTO().from({ accessToken });
   }
 
@@ -162,11 +162,13 @@ export class AuthController {
     refreshToken?: string,
     accessToken?: string
   ) {
-    if (accessToken) response.cookie("access_token", accessToken);
+    if (accessToken)
+      response.cookie("access_token", accessToken, { sameSite: "lax" });
     if (refreshToken)
       response.cookie("refresh_token", refreshToken, {
         path: "/api/auth/token",
         httpOnly: true,
+        sameSite: "strict",
         maxAge: 1000 * 60 * 60 * 24 * 30 * 3,
       });
 

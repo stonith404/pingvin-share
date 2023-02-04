@@ -1,25 +1,10 @@
 import { Box, Stack, Text, Title } from "@mantine/core";
-import { useRouter } from "next/router";
 import AdminConfigTable from "../../components/admin/configuration/AdminConfigTable";
 
 import Logo from "../../components/Logo";
 import Meta from "../../components/Meta";
-import useConfig from "../../hooks/config.hook";
-import useUser from "../../hooks/user.hook";
 
 const Setup = () => {
-  const router = useRouter();
-  const config = useConfig();
-  const { user } = useUser();
-
-  if (!user) {
-    router.push("/auth/signUp");
-    return;
-  } else if (config.get("SETUP_STATUS") == "FINISHED") {
-    router.push("/");
-    return;
-  }
-
   return (
     <>
       <Meta title="Setup" />

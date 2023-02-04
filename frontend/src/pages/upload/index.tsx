@@ -2,8 +2,6 @@ import { Button, Group } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { cleanNotifications } from "@mantine/notifications";
 import { AxiosError } from "axios";
-import { getCookie } from "cookies-next";
-import { useRouter } from "next/router";
 import pLimit from "p-limit";
 import { useEffect, useState } from "react";
 import Meta from "../../components/Meta";
@@ -30,7 +28,6 @@ const Upload = ({
   maxShareSize?: number;
   isReverseShare: boolean;
 }) => {
-  const router = useRouter();
   const modals = useModals();
 
   const { user } = useUser();
@@ -158,51 +155,42 @@ const Upload = ({
     }
   }, [files]);
 
-  if (
-    !user &&
-    !config.get("ALLOW_UNAUTHENTICATED_SHARES") &&
-    !getCookie("reverse_share_token")
-  ) {
-    router.replace("/");
-    return null;
-  } else {
-    return (
-      <>
-        <Meta title="Upload" />
-        <Group position="right" mb={20}>
-          <Button
-            loading={isUploading}
-            disabled={files.length <= 0}
-            onClick={() => {
-              showCreateUploadModal(
-                modals,
-                {
-                  isUserSignedIn: user ? true : false,
-                  isReverseShare,
-                  appUrl: config.get("APP_URL"),
-                  allowUnauthenticatedShares: config.get(
-                    "ALLOW_UNAUTHENTICATED_SHARES"
-                  ),
-                  enableEmailRecepients: config.get(
-                    "ENABLE_SHARE_EMAIL_RECIPIENTS"
-                  ),
-                },
-                uploadFiles
-              );
-            }}
-          >
-            Share
-          </Button>
-        </Group>
-        <Dropzone
-          maxShareSize={maxShareSize}
-          files={files}
-          setFiles={setFiles}
-          isUploading={isUploading}
-        />
-        {files.length > 0 && <FileList files={files} setFiles={setFiles} />}
-      </>
-    );
-  }
+  return (
+    <>
+      <Meta title="Upload" />
+      <Group position="right" mb={20}>
+        <Button
+          loading={isUploading}
+          disabled={files.length <= 0}
+          onClick={() => {
+            showCreateUploadModal(
+              modals,
+              {
+                isUserSignedIn: user ? true : false,
+                isReverseShare,
+                appUrl: config.get("APP_URL"),
+                allowUnauthenticatedShares: config.get(
+                  "ALLOW_UNAUTHENTICATED_SHARES"
+                ),
+                enableEmailRecepients: config.get(
+                  "ENABLE_SHARE_EMAIL_RECIPIENTS"
+                ),
+              },
+              uploadFiles
+            );
+          }}
+        >
+          Share
+        </Button>
+      </Group>
+      <Dropzone
+        maxShareSize={maxShareSize}
+        files={files}
+        setFiles={setFiles}
+        isUploading={isUploading}
+      />
+      {files.length > 0 && <FileList files={files} setFiles={setFiles} />}
+    </>
+  );
 };
 export default Upload;
