@@ -114,7 +114,7 @@ export class AuthService {
         refreshTokenId,
       },
       {
-        expiresIn: "10s",
+        expiresIn: "15min",
         secret: this.config.get("JWT_SECRET"),
       }
     );

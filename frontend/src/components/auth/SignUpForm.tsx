@@ -10,13 +10,18 @@ import {
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import * as yup from "yup";
 import useConfig from "../../hooks/config.hook";
+import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
+import userService from "../../services/user.service";
 import toast from "../../utils/toast.util";
 
 const SignUpForm = () => {
   const config = useConfig();
+  const router = useRouter();
+  const { setUser } = useUser();
 
   const validationSchema = yup.object().shape({
     email: yup.string().email().required(),
@@ -33,10 +38,13 @@ const SignUpForm = () => {
     validate: yupResolver(validationSchema),
   });
 
-  const signUp = (email: string, username: string, password: string) => {
-    authService
+  const signUp = async (email: string, username: string, password: string) => {
+    await authService
       .signUp(email, username, password)
-      .then(() => window.location.replace("/"))
+      .then(async () => {
+        setUser(await userService.getCurrentUser());
+        router.replace("/");
+      })
       .catch(toast.axiosError);
   };
 

@@ -5,20 +5,22 @@ import Meta from "../../components/Meta";
 import useUser from "../../hooks/user.hook";
 
 const SignIn = () => {
-  const router = useRouter();
   const { user } = useUser();
+  const router = useRouter();
+
+  const redirectPath = (router.query.redirect as string) ?? "/upload";
 
   // If the access token is expired, the middleware redirects to this page.
   // If the refresh token is still valid, the user will be redirected to the home page.
   if (user) {
-    router.replace("/");
+    router.replace(redirectPath);
     return <LoadingOverlay overlayOpacity={1} visible />;
   }
 
   return (
     <>
       <Meta title="Sign In" />
-      <SignInForm />
+      <SignInForm redirectPath={redirectPath} />
     </>
   );
 };

@@ -105,7 +105,13 @@ export async function middleware(request: NextRequest) {
   ];
 
   for (const rule of rules) {
-    if (rule.condition)
-      return NextResponse.redirect(new URL(rule.path, request.url));
+    if (rule.condition) {
+      let { path } = rule;
+
+      if (path == "/auth/signIn") {
+        path = path + "?redirect=" + encodeURIComponent(route);
+      }
+      return NextResponse.redirect(new URL(path, request.url));
+    }
   }
 }

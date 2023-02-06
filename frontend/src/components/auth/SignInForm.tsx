@@ -11,15 +11,21 @@ import {
 import { useForm, yupResolver } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import { TbInfoCircle } from "react-icons/tb";
 import * as yup from "yup";
 import useConfig from "../../hooks/config.hook";
+import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
+import userService from "../../services/user.service";
 import toast from "../../utils/toast.util";
 
-const SignInForm = () => {
+const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
   const config = useConfig();
+  const router = useRouter();
+  const { setUser } = useUser();
+
   const [showTotp, setShowTotp] = React.useState(false);
   const [loginToken, setLoginToken] = React.useState("");
 
@@ -42,10 +48,10 @@ const SignInForm = () => {
     validate: yupResolver(validationSchema),
   });
 
-  const signIn = (email: string, password: string) => {
-    authService
+  const signIn = async (email: string, password: string) => {
+    await authService
       .signIn(email, password)
-      .then((response) => {
+      .then(async (response) => {
         if (response.data["loginToken"]) {
           // Prompt the user to enter their totp code
           setShowTotp(true);
@@ -58,7 +64,8 @@ const SignInForm = () => {
           });
           setLoginToken(response.data["loginToken"]);
         } else {
-          window.location.replace("/");
+          setUser(await userService.getCurrentUser());
+          router.replace(redirectPath);
         }
       })
       .catch(toast.axiosError);
