@@ -15,13 +15,12 @@ import * as yup from "yup";
 import useConfig from "../../hooks/config.hook";
 import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
-import userService from "../../services/user.service";
 import toast from "../../utils/toast.util";
 
 const SignUpForm = () => {
   const config = useConfig();
   const router = useRouter();
-  const { setUser } = useUser();
+  const { refreshUser } = useUser();
 
   const validationSchema = yup.object().shape({
     email: yup.string().email().required(),
@@ -42,8 +41,8 @@ const SignUpForm = () => {
     await authService
       .signUp(email, username, password)
       .then(async () => {
-        setUser(await userService.getCurrentUser());
-        router.replace("/");
+        await refreshUser();
+        router.replace("/upload");
       })
       .catch(toast.axiosError);
   };

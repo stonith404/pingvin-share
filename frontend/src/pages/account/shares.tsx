@@ -4,7 +4,6 @@ import {
   Button,
   Center,
   Group,
-  LoadingOverlay,
   Space,
   Stack,
   Table,
@@ -18,6 +17,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { TbLink, TbTrash } from "react-icons/tb";
 import showShareLinkModal from "../../components/account/showShareLinkModal";
+import CenterLoader from "../../components/core/CenterLoader";
 import Meta from "../../components/Meta";
 import useConfig from "../../hooks/config.hook";
 import shareService from "../../services/share.service";
@@ -35,7 +35,8 @@ const MyShares = () => {
     shareService.getMyShares().then((shares) => setShares(shares));
   }, []);
 
-  if (!shares) return <LoadingOverlay visible />;
+  if (!shares) return <CenterLoader />;
+
   return (
     <>
       <Meta title="My shares" />

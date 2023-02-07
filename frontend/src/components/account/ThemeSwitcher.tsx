@@ -18,7 +18,6 @@ const ThemeSwitcher = () => {
   );
   const { toggleColorScheme } = useMantineColorScheme();
   const systemColorScheme = useColorScheme();
-
   return (
     <Stack>
       <SegmentedControl

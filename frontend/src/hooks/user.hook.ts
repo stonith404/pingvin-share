@@ -3,7 +3,7 @@ import { UserHook } from "../types/user.type";
 
 export const UserContext = createContext<UserHook>({
   user: null,
-  setUser: () => {},
+  refreshUser: async () => null,
 });
 
 const useUser = () => {

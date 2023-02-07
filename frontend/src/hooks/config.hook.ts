@@ -1,13 +1,17 @@
 import { createContext, useContext } from "react";
 import configService from "../services/config.service";
-import Config from "../types/config.type";
+import { ConfigHook } from "../types/config.type";
 
-export const ConfigContext = createContext<Config[] | null>(null);
+export const ConfigContext = createContext<ConfigHook>({
+  configVariables: [],
+  refresh: () => {},
+});
 
 const useConfig = () => {
-  const configVariables = useContext(ConfigContext) as Config[];
+  const configContext = useContext(ConfigContext);
   return {
-    get: (key: string) => configService.get(key, configVariables),
+    get: (key: string) => configService.get(key, configContext.configVariables),
+    refresh: () => configContext.refresh(),
   };
 };
 

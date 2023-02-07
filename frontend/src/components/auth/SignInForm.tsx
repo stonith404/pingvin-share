@@ -18,13 +18,12 @@ import * as yup from "yup";
 import useConfig from "../../hooks/config.hook";
 import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
-import userService from "../../services/user.service";
 import toast from "../../utils/toast.util";
 
 const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
   const config = useConfig();
   const router = useRouter();
-  const { setUser } = useUser();
+  const { refreshUser } = useUser();
 
   const [showTotp, setShowTotp] = React.useState(false);
   const [loginToken, setLoginToken] = React.useState("");
@@ -64,7 +63,7 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
           });
           setLoginToken(response.data["loginToken"]);
         } else {
-          setUser(await userService.getCurrentUser());
+          await refreshUser();
           router.replace(redirectPath);
         }
       })
@@ -74,7 +73,10 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
   const signInTotp = (email: string, password: string, totp: string) => {
     authService
       .signInTotp(email, password, totp, loginToken)
-      .then(() => window.location.replace("/"))
+      .then(async () => {
+        await refreshUser();
+        router.replace(redirectPath);
+      })
       .catch((error) => {
         if (error?.response?.data?.message == "Login token expired") {
           toast.error("Login token expired");

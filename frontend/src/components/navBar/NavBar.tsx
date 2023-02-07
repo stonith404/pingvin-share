@@ -1,5 +1,4 @@
 import {
-  ActionIcon,
   Box,
   Burger,
   Container,
@@ -14,7 +13,6 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
 import { ReactNode, useEffect, useState } from "react";
-import { TbPlus } from "react-icons/tb";
 import useConfig from "../../hooks/config.hook";
 import useUser from "../../hooks/user.hook";
 import Logo from "../Logo";
@@ -172,7 +170,9 @@ const NavBar = () => {
             href={link.link ?? ""}
             onClick={() => toggleOpened.toggle()}
             className={cx(classes.link, {
-              [classes.linkActive]: window.location.pathname == link.link,
+              [classes.linkActive]:
+                typeof window != "undefined" &&
+                window.location.pathname == link.link,
             })}
           >
             {link.label}

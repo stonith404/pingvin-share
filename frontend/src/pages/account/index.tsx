@@ -24,7 +24,7 @@ import userService from "../../services/user.service";
 import toast from "../../utils/toast.util";
 
 const Account = () => {
-  const { user, setUser } = useUser();
+  const { user, refreshUser } = useUser();
   const modals = useModals();
 
   const accountForm = useForm({
@@ -80,8 +80,6 @@ const Account = () => {
       })
     ),
   });
-
-  const refreshUser = async () => setUser(await userService.getCurrentUser());
 
   return (
     <>

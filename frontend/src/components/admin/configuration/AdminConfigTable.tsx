@@ -82,6 +82,7 @@ const AdminConfigTable = () => {
         })
         .catch(toast.axiosError);
     }
+    config.refresh();
   };
 
   useEffect(() => {

@@ -29,4 +29,9 @@ export type AdminConfigGroupedByCategory = {
   ];
 };
 
+export type ConfigHook = {
+  configVariables: Config[];
+  refresh: () => void;
+};
+
 export default Config;

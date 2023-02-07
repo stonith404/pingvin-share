@@ -7,18 +7,20 @@ const Meta = ({
   title: string;
   description?: string;
 }) => {
+  const metaTitle = `${title} - Pingvin Share`;
+
   return (
     <Head>
-      {/* TODO: Doesn't work because script get only executed on client side */}
-      <title>{title} - Pingvin Share</title>
-      <meta name="og:title" content={`${title} - Pingvin Share`} />
+      <title>{metaTitle}</title>
+      <meta name="og:title" content={metaTitle} />
       <meta
         name="og:description"
         content={
           description ?? "An open-source and self-hosted sharing platform."
         }
       />
-      <meta name="twitter:title" content={`${title} - Pingvin Share`} />
+      <meta property="og:image" content="/img/opengraph-default.png" />
+      <meta name="twitter:title" content={metaTitle} />
       <meta name="twitter:description" content={description} />
     </Head>
   );
