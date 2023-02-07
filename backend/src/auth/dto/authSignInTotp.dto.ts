@@ -1,18 +1,7 @@
-import { PickType } from "@nestjs/mapped-types";
-import { IsEmail, IsOptional, IsString } from "class-validator";
-import { UserDTO } from "src/user/dto/user.dto";
+import { IsString } from "class-validator";
+import { AuthSignInDTO } from "./authSignIn.dto";
 
-export class AuthSignInTotpDTO extends PickType(UserDTO, [
-  "password",
-] as const) {
-  @IsEmail()
-  @IsOptional()
-  email: string;
-
-  @IsString()
-  @IsOptional()
-  username: string;
-
+export class AuthSignInTotpDTO extends AuthSignInDTO {
   @IsString()
   totp: string;
 

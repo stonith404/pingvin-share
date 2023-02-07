@@ -1,4 +1,4 @@
-import { OmitType } from "@nestjs/mapped-types";
+import { OmitType } from "@nestjs/swagger";
 import { Expose, plainToClass, Type } from "class-transformer";
 import { MyShareDTO } from "src/share/dto/myShare.dto";
 import { ReverseShareDTO } from "./reverseShare.dto";
