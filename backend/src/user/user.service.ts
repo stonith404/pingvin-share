@@ -4,7 +4,6 @@ import * as argon from "argon2";
 import { PrismaService } from "src/prisma/prisma.service";
 import { CreateUserDTO } from "./dto/createUser.dto";
 import { UpdateUserDto } from "./dto/updateUser.dto";
-import { UserDTO } from "./dto/user.dto";
 
 @Injectable()
 export class UserSevice {

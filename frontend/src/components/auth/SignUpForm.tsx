@@ -49,13 +49,7 @@ const SignUpForm = () => {
 
   return (
     <Container size={420} my={40}>
-      <Title
-        align="center"
-        sx={(theme) => ({
-          fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-          fontWeight: 900,
-        })}
-      >
+      <Title order={2} align="center" weight={900}>
         Sign up
       </Title>
       {config.get("ALLOW_REGISTRATION") && (
@@ -74,12 +68,12 @@ const SignUpForm = () => {
         >
           <TextInput
             label="Username"
-            placeholder="john.doe"
+            placeholder="Your username"
             {...form.getInputProps("username")}
           />
           <TextInput
             label="Email"
-            placeholder="you@email.com"
+            placeholder="Your email"
             mt="md"
             {...form.getInputProps("email")}
           />

@@ -3,6 +3,7 @@ import {
   Controller,
   ForbiddenException,
   HttpCode,
+  Param,
   Patch,
   Post,
   Req,
@@ -21,6 +22,7 @@ import { AuthRegisterDTO } from "./dto/authRegister.dto";
 import { AuthSignInDTO } from "./dto/authSignIn.dto";
 import { AuthSignInTotpDTO } from "./dto/authSignInTotp.dto";
 import { EnableTotpDTO } from "./dto/enableTotp.dto";
+import { ResetPasswordDTO } from "./dto/resetPassword.dto";
 import { TokenDTO } from "./dto/token.dto";
 import { UpdatePasswordDTO } from "./dto/updatePassword.dto";
 import { VerifyTotpDTO } from "./dto/verifyTotp.dto";
@@ -34,8 +36,8 @@ export class AuthController {
     private config: ConfigService
   ) {}
 
-  @Throttle(10, 5 * 60)
   @Post("signUp")
+  @Throttle(10, 5 * 60)
   async signUp(
     @Body() dto: AuthRegisterDTO,
     @Res({ passthrough: true }) response: Response
@@ -54,8 +56,8 @@ export class AuthController {
     return result;
   }
 
-  @Throttle(10, 5 * 60)
   @Post("signIn")
+  @Throttle(10, 5 * 60)
   @HttpCode(200)
   async signIn(
     @Body() dto: AuthSignInDTO,
@@ -74,8 +76,8 @@ export class AuthController {
     return result;
   }
 
-  @Throttle(10, 5 * 60)
   @Post("signIn/totp")
+  @Throttle(10, 5 * 60)
   @HttpCode(200)
   async signInTotp(
     @Body() dto: AuthSignInTotpDTO,
@@ -90,6 +92,20 @@ export class AuthController {
     );
 
     return new TokenDTO().from(result);
+  }
+
+  @Post("resetPassword/:email")
+  @Throttle(5, 5 * 60)
+  @HttpCode(204)
+  async requestResetPassword(@Param("email") email: string) {
+    return await this.authService.requestResetPassword(email);
+  }
+
+  @Post("resetPassword")
+  @Throttle(5, 5 * 60)
+  @HttpCode(204)
+  async resetPassword(@Body() dto: ResetPasswordDTO) {
+    return await this.authService.resetPassword(dto.token, dto.password);
   }
 
   @Patch("password")

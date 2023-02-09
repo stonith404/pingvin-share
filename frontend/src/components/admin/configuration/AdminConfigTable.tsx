@@ -35,6 +35,12 @@ const AdminConfigTable = () => {
     UpdateConfig[]
   >([]);
 
+  useEffect(() => {
+    if (config.get("SETUP_STATUS") != "FINISHED") {
+      config.refresh();
+    }
+  }, []);
+
   const updateConfigVariable = (configVariable: UpdateConfig) => {
     const index = updatedConfigVariables.findIndex(
       (item) => item.key === configVariable.key

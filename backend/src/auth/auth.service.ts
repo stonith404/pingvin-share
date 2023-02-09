@@ -10,6 +10,7 @@ import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
 import * as argon from "argon2";
 import * as moment from "moment";
 import { ConfigService } from "src/config/config.service";
+import { EmailService } from "src/email/email.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { AuthRegisterDTO } from "./dto/authRegister.dto";
 import { AuthSignInDTO } from "./dto/authSignIn.dto";
@@ -19,7 +20,8 @@ export class AuthService {
   constructor(
     private prisma: PrismaService,
     private jwtService: JwtService,
-    private config: ConfigService
+    private config: ConfigService,
+    private emailService: EmailService
   ) {}
 
   async signUp(dto: AuthRegisterDTO) {
@@ -85,6 +87,50 @@ export class AuthService {
     const accessToken = await this.createAccessToken(user, refreshTokenId);
 
     return { accessToken, refreshToken };
+  }
+
+  async requestResetPassword(email: string) {
+    const user = await this.prisma.user.findFirst({
+      where: { email },
+      include: { resetPasswordToken: true },
+    });
+
+    if (!user) throw new BadRequestException("User not found");
+
+    // Delete old reset password token
+    if (user.resetPasswordToken) {
+      await this.prisma.resetPasswordToken.delete({
+        where: { token: user.resetPasswordToken.token },
+      });
+    }
+
+    const { token } = await this.prisma.resetPasswordToken.create({
+      data: {
+        expiresAt: moment().add(1, "hour").toDate(),
+        user: { connect: { id: user.id } },
+      },
+    });
+
+    await this.emailService.sendResetPasswordEmail(user.email, token);
+  }
+
+  async resetPassword(token: string, newPassword: string) {
+    const user = await this.prisma.user.findFirst({
+      where: { resetPasswordToken: { token } },
+    });
+
+    if (!user) throw new BadRequestException("Token invalid or expired");
+
+    const newPasswordHash = await argon.hash(newPassword);
+
+    await this.prisma.resetPasswordToken.delete({
+      where: { token },
+    });
+
+    await this.prisma.user.update({
+      where: { id: user.id },
+      data: { password: newPasswordHash },
+    });
   }
 
   async updatePassword(user: User, oldPassword: string, newPassword: string) {

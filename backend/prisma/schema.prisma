@@ -22,9 +22,10 @@ model User {
   loginTokens   LoginToken[]
   reverseShares ReverseShare[]
 
-  totpEnabled  Boolean @default(false)
-  totpVerified Boolean @default(false)
-  totpSecret   String?
+  totpEnabled        Boolean              @default(false)
+  totpVerified       Boolean              @default(false)
+  totpSecret         String?
+  resetPasswordToken ResetPasswordToken?
 }
 
 model RefreshToken {
@@ -47,6 +48,16 @@ model LoginToken {
   userId String
   user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   used   Boolean @default(false)
+}
+
+model ResetPasswordToken {
+  token     String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  expiresAt DateTime
+
+  userId String @unique
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Share {

@@ -10,8 +10,11 @@ import {
 } from "@mantine/core";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { TbCheck } from "react-icons/tb";
 import Meta from "../components/Meta";
+import useUser from "../hooks/user.hook";
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -67,6 +70,17 @@ const useStyles = createStyles((theme) => ({
 
 export default function Home() {
   const { classes } = useStyles();
+  const { refreshUser } = useUser();
+  const router = useRouter();
+
+  // If the user is already logged in, redirect to the upload page
+  useEffect(() => {
+    refreshUser().then((user) => {
+      if (user) {
+        router.replace("/upload");
+      }
+    });
+  }, []);
 
   return (
     <>

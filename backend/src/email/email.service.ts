@@ -58,6 +58,21 @@ export class EmailService {
     });
   }
 
+  async sendResetPasswordEmail(recipientEmail: string, token: string) {
+    const resetPasswordUrl = `${this.config.get(
+      "APP_URL"
+    )}/auth/resetPassword/${token}`;
+
+    await this.getTransporter().sendMail({
+      from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
+      to: recipientEmail,
+      subject: this.config.get("RESET_PASSWORD_EMAIL_SUBJECT"),
+      text: this.config
+        .get("RESET_PASSWORD_EMAIL_MESSAGE")
+        .replaceAll("{url}", resetPasswordUrl),
+    });
+  }
+
   async sendTestMail(recipientEmail: string) {
     try {
       await this.getTransporter().sendMail({

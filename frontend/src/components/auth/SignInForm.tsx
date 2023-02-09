@@ -2,6 +2,7 @@ import {
   Anchor,
   Button,
   Container,
+  Group,
   Paper,
   PasswordInput,
   Text,
@@ -91,13 +92,7 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
 
   return (
     <Container size={420} my={40}>
-      <Title
-        align="center"
-        sx={(theme) => ({
-          fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-          fontWeight: 900,
-        })}
-      >
+      <Title order={2} align="center" weight={900}>
         Welcome back
       </Title>
       {config.get("ALLOW_REGISTRATION") && (
@@ -118,7 +113,7 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
         >
           <TextInput
             label="Email or username"
-            placeholder="you@email.com"
+            placeholder="Your email or username"
             {...form.getInputProps("emailOrUsername")}
           />
           <PasswordInput
@@ -135,6 +130,13 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
               mt="md"
               {...form.getInputProps("totp")}
             />
+          )}
+          {config.get("SMTP_ENABLED") && (
+            <Group position="right" mt="xs">
+              <Anchor component={Link} href="/auth/resetPassword" size="xs">
+                Forgot password?
+              </Anchor>
+            </Group>
           )}
           <Button fullWidth mt="xl" type="submit">
             Sign in

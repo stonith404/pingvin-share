@@ -12,6 +12,7 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { ReactNode, useEffect, useState } from "react";
 import useConfig from "../../hooks/config.hook";
 import useUser from "../../hooks/user.hook";
@@ -109,11 +110,18 @@ const useStyles = createStyles((theme) => ({
 
 const NavBar = () => {
   const { user } = useUser();
+  const router = useRouter();
   const config = useConfig();
 
   const [opened, toggleOpened] = useDisclosure(false);
 
-  const authenticatedLinks = [
+  const [currentRoute, setCurrentRoute] = useState("");
+
+  useEffect(() => {
+    setCurrentRoute(router.pathname);
+  }, [router.pathname]);
+
+  const authenticatedLinks: NavLink[] = [
     {
       link: "/upload",
       label: "Upload",
@@ -126,32 +134,31 @@ const NavBar = () => {
     },
   ];
 
-  const [unauthenticatedLinks, setUnauthenticatedLinks] = useState<NavLink[]>([
+  let unauthenticatedLinks: NavLink[] = [
     {
       link: "/auth/signIn",
       label: "Sign in",
     },
-  ]);
+  ];
 
-  useEffect(() => {
-    if (config.get("SHOW_HOME_PAGE"))
-      setUnauthenticatedLinks((array) => [
-        {
-          link: "/",
-          label: "Home",
-        },
-        ...array,
-      ]);
+  if (config.get("ALLOW_UNAUTHENTICATED_SHARES")) {
+    unauthenticatedLinks.unshift({
+      link: "/upload",
+      label: "Upload",
+    });
+  }
 
-    if (config.get("ALLOW_REGISTRATION"))
-      setUnauthenticatedLinks((array) => [
-        ...array,
-        {
-          link: "/auth/signUp",
-          label: "Sign up",
-        },
-      ]);
-  }, []);
+  if (config.get("SHOW_HOME_PAGE"))
+    unauthenticatedLinks.unshift({
+      link: "/",
+      label: "Home",
+    });
+
+  if (config.get("ALLOW_REGISTRATION"))
+    unauthenticatedLinks.push({
+      link: "/auth/signUp",
+      label: "Sign up",
+    });
 
   const { classes, cx } = useStyles();
   const items = (
@@ -170,9 +177,7 @@ const NavBar = () => {
             href={link.link ?? ""}
             onClick={() => toggleOpened.toggle()}
             className={cx(classes.link, {
-              [classes.linkActive]:
-                typeof window != "undefined" &&
-                window.location.pathname == link.link,
+              [classes.linkActive]: currentRoute == link.link,
             })}
           >
             {link.label}
