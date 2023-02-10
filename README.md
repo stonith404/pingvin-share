@@ -4,12 +4,12 @@ Pingvin Share is self-hosted file sharing platform and an alternative for WeTran
 
 ## ✨ Features
 
-- Create a share with files that you can access with a link
-- No file size limit, only your disk will be your limit
-- Set a share expiration
-- Optionally secure your share with a visitor limit and a password
-- Email recepients
-- ClamAV integration
+- Share files using a link
+- Unlimited file size (restricted only by disk space)
+- Set an expiration date for shares
+- Secure shares with visitor limits and passwords
+- Email recipients
+- Integration with ClamAV for security scans
 
 ## 🐧 Get to know Pingvin Share
 
@@ -20,20 +20,50 @@ Pingvin Share is self-hosted file sharing platform and an alternative for WeTran
 
 ## ⌨️ Setup
 
-> Pleas note that Pingvin Share is in early stage and could include some bugs
+> Note: Pingvin Share is in its early stages and may contain bugs.
 
-### Recommended installation
+### Installation with Docker (recommended)
 
 1. Download the `docker-compose.yml` file
 2. Run `docker-compose up -d`
 
 The website is now listening available on `http://localhost:3000`, have fun with Pingvin Share 🐧!
 
+### Stand-alone Installation
+
+Required tools:
+
+- [Node.js](https://nodejs.org/en/download/) >= 14
+- [Git](https://git-scm.com/downloads)
+- [pm2](https://pm2.keymetrics.io/) for running Pingvin Share in the background
+
+```bash
+git clone https://github.com/stonith404/pingvin-share
+cd pingvin-share
+
+# Checkout the latest version
+git fetch --tags && git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
+
+# Start the frontend
+cd frontend
+npm install
+npm run build
+pm2 start npm --name="pingvin-share-frontend" -- run start
+
+# Start the backend
+cd ../backend
+npm install
+npm run build
+pm2 start --name="pingvin-share-backend" npm -- run prod
+```
+
+The website is now listening available on `http://localhost:3000`, have fun with Pingvin Share 🐧!
+
 ### Integrations
 
-#### ClamAV
+#### ClamAV (Docker only)
 
-With ClamAV the shares get scanned for malicious files and get removed if any found.
+ClamAV is used to scan shares for malicious files and remove them if found.
 
 1. Add the ClamAV container to the Docker Compose stack (see `docker-compose.yml`) and start the container.
 2. Docker will wait for ClamAV to start before starting Pingvin Share. This may take a minute or two.
@@ -47,7 +77,18 @@ Please note that ClamAV needs a lot of [ressources](https://docs.clamav.net/manu
 
 ### Upgrade to a new version
 
-Run `docker compose pull && docker compose up -d` to update your docker container
+As Pingvin Share is in early stage, see the release notes for breaking changes before upgrading.
+
+#### Docker
+
+```bash
+docker compose pull
+docker compose up -d
+```
+
+#### Stand-alone
+
+Repeat the steps from the [installation guide](#stand-alone-installation) except the `git clone` step.
 
 ## 🖤 Contribute
 
