@@ -81,15 +81,15 @@ export class ReverseShareService {
   }
 
   async remove(id: string) {
-    const share = await this.prisma.share.findFirst({
+    const shares = await this.prisma.share.findMany({
       where: { reverseShare: { id } },
     });
 
-    if (share) {
+    for (const share of shares) {
       await this.prisma.share.delete({ where: { id: share.id } });
       await this.fileService.deleteAllFiles(share.id);
-    } else {
-      await this.prisma.reverseShare.delete({ where: { id } });
     }
+
+    await this.prisma.reverseShare.delete({ where: { id } });
   }
 }
