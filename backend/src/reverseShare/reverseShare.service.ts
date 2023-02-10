@@ -44,7 +44,9 @@ export class ReverseShareService {
     return reverseShare.token;
   }
 
-  async getByToken(reverseShareToken: string) {
+  async getByToken(reverseShareToken?: string) {
+    if (!reverseShareToken) return null;
+
     const reverseShare = await this.prisma.reverseShare.findUnique({
       where: { token: reverseShareToken },
     });
