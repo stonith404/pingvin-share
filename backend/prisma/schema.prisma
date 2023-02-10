@@ -22,8 +22,8 @@ model User {
   loginTokens   LoginToken[]
   reverseShares ReverseShare[]
 
-  totpEnabled        Boolean              @default(false)
-  totpVerified       Boolean              @default(false)
+  totpEnabled        Boolean             @default(false)
+  totpVerified       Boolean             @default(false)
   totpSecret         String?
   resetPasswordToken ResetPasswordToken?
 }
@@ -57,7 +57,7 @@ model ResetPasswordToken {
   expiresAt DateTime
 
   userId String @unique
-  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Share {
@@ -74,7 +74,8 @@ model Share {
   creatorId String?
   creator   User?   @relation(fields: [creatorId], references: [id], onDelete: Cascade)
 
-  reverseShare ReverseShare?
+  reverseShareId String?
+  reverseShare   ReverseShare? @relation(fields: [reverseShareId], references: [id], onDelete: Cascade)
 
   security   ShareSecurity?
   recipients ShareRecipient[]
@@ -89,13 +90,12 @@ model ReverseShare {
   shareExpiration       DateTime
   maxShareSize          String
   sendEmailNotification Boolean
-  used                  Boolean  @default(false)
+  remainingUses         Int
 
   creatorId String
   creator   User   @relation(fields: [creatorId], references: [id], onDelete: Cascade)
 
-  shareId String? @unique
-  share   Share?  @relation(fields: [shareId], references: [id], onDelete: Cascade)
+  shares Share[]
 }
 
 model ShareRecipient {

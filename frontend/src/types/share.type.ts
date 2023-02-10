@@ -31,7 +31,8 @@ export type MyReverseShare = {
   id: string;
   maxShareSize: string;
   shareExpiration: Date;
-  share?: MyShare;
+  remainingUses: number;
+  shares: MyShare[];
 };
 
 export type ShareSecurity = {

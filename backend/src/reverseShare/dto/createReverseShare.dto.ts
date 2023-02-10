@@ -1,4 +1,4 @@
-import { IsBoolean, IsString } from "class-validator";
+import { IsBoolean, IsString, Max, Min } from "class-validator";
 
 export class CreateReverseShareDTO {
   @IsBoolean()
@@ -9,4 +9,8 @@ export class CreateReverseShareDTO {
 
   @IsString()
   shareExpiration: string;
+
+  @Min(1)
+  @Max(1000)
+  maxUseCount: number;
 }

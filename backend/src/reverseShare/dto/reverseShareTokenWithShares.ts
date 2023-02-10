@@ -3,7 +3,7 @@ import { Expose, plainToClass, Type } from "class-transformer";
 import { MyShareDTO } from "src/share/dto/myShare.dto";
 import { ReverseShareDTO } from "./reverseShare.dto";
 
-export class ReverseShareTokenWithShare extends OmitType(ReverseShareDTO, [
+export class ReverseShareTokenWithShares extends OmitType(ReverseShareDTO, [
   "shareExpiration",
 ] as const) {
   @Expose()
@@ -11,14 +11,17 @@ export class ReverseShareTokenWithShare extends OmitType(ReverseShareDTO, [
 
   @Expose()
   @Type(() => OmitType(MyShareDTO, ["recipients", "hasPassword"] as const))
-  share: Omit<
+  shares: Omit<
     MyShareDTO,
     "recipients" | "files" | "from" | "fromList" | "hasPassword"
-  >;
+  >[];
 
-  fromList(partial: Partial<ReverseShareTokenWithShare>[]) {
+  @Expose()
+  remainingUses: number;
+
+  fromList(partial: Partial<ReverseShareTokenWithShares>[]) {
     return partial.map((part) =>
-      plainToClass(ReverseShareTokenWithShare, part, {
+      plainToClass(ReverseShareTokenWithShares, part, {
         excludeExtraneousValues: true,
       })
     );

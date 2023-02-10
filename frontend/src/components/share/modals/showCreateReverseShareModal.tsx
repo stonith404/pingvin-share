@@ -47,6 +47,7 @@ const Body = ({
   const form = useForm({
     initialValues: {
       maxShareSize: 104857600,
+      maxUseCount: 1,
       sendEmailNotification: false,
       expiration_num: 1,
       expiration_unit: "-days",
@@ -60,6 +61,7 @@ const Body = ({
             .createReverseShare(
               values.expiration_num + values.expiration_unit,
               values.maxShareSize,
+              values.maxUseCount,
               values.sendEmailNotification
             )
             .then(({ link }) => {
@@ -131,6 +133,15 @@ const Body = ({
             label="Max share size"
             value={form.values.maxShareSize}
             onChange={(number) => form.setFieldValue("maxShareSize", number)}
+          />
+          <NumberInput
+            min={1}
+            max={1000}
+            precision={0}
+            variant="filled"
+            label="Max use count"
+            description="The maximum number of times this reverse share link can be used"
+            {...form.getInputProps("maxUseCount")}
           />
           {showSendEmailNotificationOption && (
             <Switch

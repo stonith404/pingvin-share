@@ -13,12 +13,12 @@ export const config = {
 
 export async function middleware(request: NextRequest) {
   const routes = {
-    unauthenticated: new Routes(["/auth/signIn", "/auth/resetPassword*", "/"]),
+    unauthenticated: new Routes(["/auth/*", "/"]),
     public: new Routes(["/share/*", "/upload/*"]),
     setupStatusRegistered: new Routes(["/auth/*", "/admin/setup"]),
     admin: new Routes(["/admin/*"]),
     account: new Routes(["/account/*"]),
-    disabledRoutes: new Routes([]),
+    disabled: new Routes([]),
   };
 
   // Get config from backend
@@ -46,7 +46,7 @@ export async function middleware(request: NextRequest) {
   }
 
   if (!getConfig("ALLOW_REGISTRATION")) {
-    routes.disabledRoutes.routes.push("/auth/signUp");
+    routes.disabled.routes.push("/auth/signUp");
   }
 
   if (getConfig("ALLOW_UNAUTHENTICATED_SHARES")) {
@@ -54,14 +54,14 @@ export async function middleware(request: NextRequest) {
   }
 
   if (!getConfig("SMTP_ENABLED")) {
-    routes.disabledRoutes.routes.push("/auth/resetPassword*");
+    routes.disabled.routes.push("/auth/resetPassword*");
   }
 
   // prettier-ignore
   const rules = [
     // Disabled routes
     {
-      condition: routes.disabledRoutes.contains(route),
+      condition: routes.disabled.contains(route),
       path: "/",
     },
     // Setup status

@@ -15,7 +15,7 @@ import { JwtGuard } from "src/auth/guard/jwt.guard";
 import { ConfigService } from "src/config/config.service";
 import { CreateReverseShareDTO } from "./dto/createReverseShare.dto";
 import { ReverseShareDTO } from "./dto/reverseShare.dto";
-import { ReverseShareTokenWithShare } from "./dto/reverseShareTokenWithShare";
+import { ReverseShareTokenWithShares } from "./dto/reverseShareTokenWithShares";
 import { ReverseShareOwnerGuard } from "./guards/reverseShareOwner.guard";
 import { ReverseShareService } from "./reverseShare.service";
 
@@ -51,7 +51,7 @@ export class ReverseShareController {
   @Get()
   @UseGuards(JwtGuard)
   async getAllByUser(@GetUser() user: User) {
-    return new ReverseShareTokenWithShare().fromList(
+    return new ReverseShareTokenWithShares().fromList(
       await this.reverseShareService.getAllByUser(user.id)
     );
   }
