@@ -44,12 +44,11 @@ export class ShareService {
     let expirationDate: Date;
 
     // If share is created by a reverse share token override the expiration date
-    if (reverseShareToken) {
-      const { shareExpiration } = await this.reverseShareService.getByToken(
-        reverseShareToken
-      );
-
-      expirationDate = shareExpiration;
+    const reverseShare = await this.reverseShareService.getByToken(
+      reverseShareToken
+    );
+    if (reverseShare) {
+      expirationDate = reverseShare.shareExpiration;
     } else {
       // We have to add an exception for "never" (since moment won't like that)
       if (share.expiration !== "never") {
@@ -84,12 +83,14 @@ export class ShareService {
       },
     });
 
-    if (reverseShareToken) {
+    if (reverseShare) {
       // Assign share to reverse share token
       await this.prisma.reverseShare.update({
         where: { token: reverseShareToken },
         data: {
-          shareId: share.id,
+          shares: {
+            connect: { id: shareTuple.id },
+          },
         },
       });
     }
@@ -164,10 +165,10 @@ export class ShareService {
     // Check if any file is malicious with ClamAV
     this.clamScanService.checkAndRemove(share.id);
 
-    if (reverseShareToken) {
+    if (share.reverseShare) {
       await this.prisma.reverseShare.update({
         where: { token: reverseShareToken },
-        data: { used: true },
+        data: { remainingUses: { decrement: 1 } },
       });
     }
 
