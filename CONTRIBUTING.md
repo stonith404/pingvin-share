@@ -8,61 +8,54 @@ You've found a bug, have suggestion or something else, just create an issue on G
 
 ## Submit a Pull Request
 
-Once you created a issue and you want to create a pull request, follow this guide.
+Before you submit the pull request for review please ensure that
 
-Branch naming convention is as following
+- The pull request naming follows the [Conventional Commits specification](https://www.conventionalcommits.org):
 
-`TYPE-ISSUE_ID-DESCRIPTION`
+  `<type>[optional scope]: <description>`
 
-example:
+  example:
 
-```
-feat-69-ability-to-set-share-expiration-to-never
-```
+  ```
+  feat(share): add password protection
+  ```
 
-When `TYPE` can be:
+  When `TYPE` can be:
 
-- **feat** - is a new feature
-- **doc** - documentation only changes
-- **fix** - a bug fix
-- **refactor** - code change that neither fixes a bug nor adds a feature
+  - **feat** - is a new feature
+  - **doc** - documentation only changes
+  - **fix** - a bug fix
+  - **refactor** - code change that neither fixes a bug nor adds a feature
 
-**All PRs must include a commit message with the changes description!**
+- Your pull request has a detailed description
+- You run `npm run format` to format the code
 
-For the initial start, fork the project and use the `git clone` command to download the repository to your computer. A standard procedure for working on an issue would be to:
+<details>
+  <summary>Don't know how to create a pull request? Learn how to create a pull request</summary>
 
-1. `git pull`, before creating a new branch, pull the changes from upstream. Your master needs to be up to date.
+1. Create a fork of the repository by clicking on the `Fork` button in the Pingvin Share repository
 
-```
-$ git pull
-```
-
-2. Create new branch from `main` like: `feat-69-ability-to-set-share-expiration-to-never`<br/>
+2. Clone your fork to your machine with `git clone`
 
 ```
-$ git checkout -b [name_of_your_new_branch]
+$ git clone https://github.com/[your_username]/pingvin-share
 ```
 
 3. Work - commit - repeat
 
-4. Before you push your changes, make sure you run the linter and format the code.
-
-```bash
-npm run lint
-npm run format
-```
-
-5. Push changes to GitHub
+4. Push changes to GitHub
 
 ```
 $ git push origin [name_of_your_new_branch]
 ```
 
-6. Submit your changes for review
+5. Submit your changes for review
    If you go to your repository on GitHub, you'll see a `Compare & pull request` button. Click on that button.
-7. Start a Pull Request
-   Now submit the pull request and click on `Create pull request`.
+6. Start a Pull Request
+7. Now submit the pull request and click on `Create pull request`.
 8. Get a code review approval/reject
+
+</details>
 
 ## Setup project
 
