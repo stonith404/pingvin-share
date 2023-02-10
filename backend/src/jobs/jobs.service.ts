@@ -4,11 +4,13 @@ import * as fs from "fs";
 import * as moment from "moment";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
+import { ReverseShareService } from "src/reverseShare/reverseShare.service";
 
 @Injectable()
 export class JobsService {
   constructor(
     private prisma: PrismaService,
+    private reverseShareService: ReverseShareService,
     private fileService: FileService
   ) {}
 
@@ -34,6 +36,24 @@ export class JobsService {
 
     if (expiredShares.length > 0)
       console.log(`job: deleted ${expiredShares.length} expired shares`);
+  }
+
+  @Cron("0 * * * *")
+  async deleteExpiredReverseShares() {
+    const expiredReverseShares = await this.prisma.reverseShare.findMany({
+      where: {
+        shareExpiration: { lt: new Date() },
+      },
+    });
+
+    for (const expiredReverseShare of expiredReverseShares) {
+      await this.reverseShareService.remove(expiredReverseShare.id);
+    }
+
+    if (expiredReverseShares.length > 0)
+      console.log(
+        `job: deleted ${expiredReverseShares.length} expired reverse shares`
+      );
   }
 
   @Cron("0 0 * * *")
@@ -69,14 +89,25 @@ export class JobsService {
   }
 
   @Cron("0 * * * *")
-  async deleteExpiredRefreshTokens() {
-    const expiredRefreshTokens = await this.prisma.refreshToken.deleteMany({
+  async deleteExpiredTokens() {
+    const { count: refreshTokenCount } =
+      await this.prisma.refreshToken.deleteMany({
+        where: { expiresAt: { lt: new Date() } },
+      });
+
+    const { count: loginTokenCount } = await this.prisma.loginToken.deleteMany({
       where: { expiresAt: { lt: new Date() } },
     });
 
-    if (expiredRefreshTokens.count > 0)
-      console.log(
-        `job: deleted ${expiredRefreshTokens.count} expired refresh tokens`
-      );
+    const { count: resetPasswordTokenCount } =
+      await this.prisma.resetPasswordToken.deleteMany({
+        where: { expiresAt: { lt: new Date() } },
+      });
+
+    const deletedTokensCount =
+      refreshTokenCount + loginTokenCount + resetPasswordTokenCount;
+
+    if (deletedTokensCount > 0)
+      console.log(`job: deleted ${deletedTokensCount} expired refresh tokens`);
   }
 }
