@@ -1,3 +1,25 @@
+## [0.10.0](https://github.com/stonith404/pingvin-share/compare/v0.9.0...v0.10.0) (2023-02-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* reset password with email
+
+### Features
+
+* allow multiple shares with one reverse share link ([ccdf8ea](https://github.com/stonith404/pingvin-share/commit/ccdf8ea3ae1e7b8520c5b1dd9bea18b1b3305f35))
+* **frontend:** server side rendering to improve performance ([38de022](https://github.com/stonith404/pingvin-share/commit/38de022215a9b99c2eb36654f8dbb1e17ca87aba))
+* reset password with email ([5d1a7f0](https://github.com/stonith404/pingvin-share/commit/5d1a7f0310df2643213affd2a0d1785b7e0af398))
+
+
+### Bug Fixes
+
+* delete all shares of reverse share ([86a7379](https://github.com/stonith404/pingvin-share/commit/86a737951951c911abd7967d76cb253c4335cb0c))
+* invalid redirection after jwt expiry ([82f204e](https://github.com/stonith404/pingvin-share/commit/82f204e8a93e3113dcf65b1881d4943a898602eb))
+* setup status doesn't change ([064ef38](https://github.com/stonith404/pingvin-share/commit/064ef38d783b3f351535c2911eb451efd9526d71))
+* share creation without reverseShareToken ([b966270](https://github.com/stonith404/pingvin-share/commit/b9662701c42fe6771c07acb869564031accb2932))
+* share fails if a share was created with a reverse share link recently ([edc10b7](https://github.com/stonith404/pingvin-share/commit/edc10b72b7884c629a8417c3c82222b135ef7653))
+
 ## [0.9.0](https://github.com/stonith404/pingvin-share/compare/v0.8.0...v0.9.0) (2023-01-31)
 
 
