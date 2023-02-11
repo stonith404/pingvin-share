@@ -70,8 +70,8 @@ export async function middleware(request: NextRequest) {
       path: "/auth/signUp",
     },
     {
-      condition: getConfig("SETUP_STATUS") == "REGISTERED" && !routes.setupStatusRegistered.contains(route),
-      path: user ? "/admin/setup" : "/auth/signIn",
+      condition: getConfig("SETUP_STATUS") == "REGISTERED" && !routes.setupStatusRegistered.contains(route) && user?.isAdmin,
+      path: "/admin/setup",
     },
      // Authenticated state
      {
