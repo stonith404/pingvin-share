@@ -44,17 +44,17 @@ cd pingvin-share
 # Checkout the latest version
 git fetch --tags && git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
 
-# Start the frontend
-cd frontend
-npm install
-npm run build
-pm2 start npm --name="pingvin-share-frontend" -- run start
-
 # Start the backend
 cd ../backend
 npm install
 npm run build
 pm2 start --name="pingvin-share-backend" npm -- run prod
+
+# Start the frontend
+cd frontend
+npm install
+npm run build
+pm2 start --name="pingvin-share-frontend" npm -- run start
 ```
 
 The website is now listening available on `http://localhost:3000`, have fun with Pingvin Share 🐧!
