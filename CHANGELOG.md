@@ -1,3 +1,11 @@
+### [0.10.1](https://github.com/stonith404/pingvin-share/compare/v0.10.0...v0.10.1) (2023-02-12)
+
+
+### Bug Fixes
+
+* non administrator user redirection error while setup isn't finished ([dc8cf3d](https://github.com/stonith404/pingvin-share/commit/dc8cf3d5ca6b4f8a8f243b8e0b05e09738cf8b61))
+* setup wizard doesn't redirect after completion ([7cd9dff](https://github.com/stonith404/pingvin-share/commit/7cd9dff637900098c9f6e46ccade37283d47321b))
+
 ## [0.10.0](https://github.com/stonith404/pingvin-share/compare/v0.9.0...v0.10.0) (2023-02-10)
 
 
