@@ -57,6 +57,10 @@ export async function middleware(request: NextRequest) {
     routes.disabled.routes.push("/auth/resetPassword*");
   }
 
+  if (getConfig("SETUP_STATUS") == "FINISHED") {
+    routes.disabled.routes.push("/admin/setup");
+  }
+
   // prettier-ignore
   const rules = [
     // Disabled routes

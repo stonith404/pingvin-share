@@ -76,7 +76,7 @@ const AdminConfigTable = () => {
         .updateMany(updatedConfigVariables)
         .then(async () => {
           await configService.finishSetup();
-          router.replace("/upload");
+          router.reload();
         })
         .catch(toast.axiosError);
     } else {
