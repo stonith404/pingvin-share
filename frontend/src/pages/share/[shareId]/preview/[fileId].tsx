@@ -40,7 +40,9 @@ const FilePreview = ({
   if (isNotSupported) return <UnSupportedFile />;
 
   if (mimeType == "application/pdf") {
-    window.location.href = `/api/shares/${shareId}/files/${fileId}?download=false`;
+    if (typeof window !== "undefined") {
+      window.location.href = `/api/shares/${shareId}/files/${fileId}?download=false`;
+    }
     return null;
   } else if (mimeType.startsWith("video/")) {
     return (
