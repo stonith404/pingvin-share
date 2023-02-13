@@ -1,3 +1,10 @@
+### [0.10.2](https://github.com/stonith404/pingvin-share/compare/v0.10.1...v0.10.2) (2023-02-13)
+
+
+### Bug Fixes
+
+* pdf preview tries to render on server ([c3af0fe](https://github.com/stonith404/pingvin-share/commit/c3af0fe097582f69b63ed1ad18fb71bff334d32a))
+
 ### [0.10.1](https://github.com/stonith404/pingvin-share/compare/v0.10.0...v0.10.1) (2023-02-12)
 
 
