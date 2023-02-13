@@ -45,13 +45,13 @@ cd pingvin-share
 git fetch --tags && git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
 
 # Start the backend
-cd ../backend
+cd backend
 npm install
 npm run build
 pm2 start --name="pingvin-share-backend" npm -- run prod
 
 # Start the frontend
-cd frontend
+cd ../frontend
 npm install
 npm run build
 pm2 start --name="pingvin-share-frontend" npm -- run start
@@ -88,7 +88,11 @@ docker compose up -d
 
 #### Stand-alone
 
-Repeat the steps from the [installation guide](#stand-alone-installation) except the `git clone` step.
+1. Remove the running app
+   ```
+   pm2 delete pingvin-share-backend pingvin-share-frontend
+   ```
+2. Repeat the steps from the [installation guide](#stand-alone-installation) except the `git clone` step.
 
 ## 🖤 Contribute
 
