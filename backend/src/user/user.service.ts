@@ -1,13 +1,17 @@
 import { BadRequestException, Injectable } from "@nestjs/common";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
 import * as argon from "argon2";
+import { EmailService } from "src/email/email.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { CreateUserDTO } from "./dto/createUser.dto";
 import { UpdateUserDto } from "./dto/updateUser.dto";
 
 @Injectable()
 export class UserSevice {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private emailService: EmailService
+  ) {}
 
   async list() {
     return await this.prisma.user.findMany();
@@ -18,7 +22,17 @@ export class UserSevice {
   }
 
   async create(dto: CreateUserDTO) {
-    const hash = await argon.hash(dto.password);
+    let hash: string;
+
+    // The password can be undefined if the user is invited by an admin
+    if (!dto.password) {
+      const randomPassword = crypto.randomUUID();
+      hash = await argon.hash(randomPassword);
+      this.emailService.sendInviteEmail(dto.email, randomPassword);
+    } else {
+      hash = await argon.hash(dto.password);
+    }
+
     try {
       return await this.prisma.user.create({
         data: {

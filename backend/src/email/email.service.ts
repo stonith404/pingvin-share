@@ -73,6 +73,20 @@ export class EmailService {
     });
   }
 
+  async sendInviteEmail(recipientEmail: string, password: string) {
+    const loginUrl = `${this.config.get("APP_URL")}/auth/signIn`;
+
+    await this.getTransporter().sendMail({
+      from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
+      to: recipientEmail,
+      subject: this.config.get("INVITE_EMAIL_SUBJECT"),
+      text: this.config
+        .get("INVITE_EMAIL_MESSAGE")
+        .replaceAll("{url}", loginUrl)
+        .replaceAll("{password}", password),
+    });
+  }
+
   async sendTestMail(recipientEmail: string) {
     try {
       await this.getTransporter().sendMail({

@@ -1,7 +1,7 @@
 import { ActionIcon, Box, Group, Skeleton, Table } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { TbCheck, TbEdit, TbTrash } from "react-icons/tb";
-import User from "../../types/user.type";
+import User from "../../../types/user.type";
 import showUpdateUserModal from "./showUpdateUserModal";
 
 const ManageUserTable = ({

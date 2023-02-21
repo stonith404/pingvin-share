@@ -11,9 +11,9 @@ import {
 import { useForm, yupResolver } from "@mantine/form";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import * as yup from "yup";
-import userService from "../../services/user.service";
-import User from "../../types/user.type";
-import toast from "../../utils/toast.util";
+import userService from "../../../services/user.service";
+import User from "../../../types/user.type";
+import toast from "../../../utils/toast.util";
 
 const showUpdateUserModal = (
   modals: ModalsContextProps,
@@ -90,7 +90,7 @@ const Body = ({
       </form>
       <Accordion>
         <Accordion.Item sx={{ borderBottom: "none" }} value="changePassword">
-          <Accordion.Control>Change password</Accordion.Control>
+          <Accordion.Control px={0}>Change password</Accordion.Control>
           <Accordion.Panel>
             <form
               onSubmit={passwordForm.onSubmit(async (values) => {

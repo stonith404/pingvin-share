@@ -9,7 +9,7 @@ type User = {
 export type CreateUser = {
   username: string;
   email: string;
-  password: string;
+  password?: string;
   isAdmin?: boolean;
 };
 

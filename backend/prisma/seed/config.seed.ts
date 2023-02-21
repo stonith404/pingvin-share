@@ -135,9 +135,27 @@ const configVariables: Prisma.ConfigCreateInput[] = [
       "Hey!\nYou requested a password reset. Click this link to reset your password: {url}\nThe link expires in a hour.\nPingvin Share 🐧",
     category: "email",
   },
-
   {
     order: 13,
+    key: "INVITE_EMAIL_SUBJECT",
+    description:
+      "Subject of the email which gets sent when an admin invites an user.",
+    type: "string",
+    value: "Pingvin Share invite",
+    category: "email",
+  },
+  {
+    order: 14,
+    key: "INVITE_EMAIL_MESSAGE",
+    description:
+      "Message which gets sent when an admin invites an user. {url} will be replaced with the invite URL and {password} with the password.",
+    type: "text",
+    value:
+      "Hey!\nYou were invited to Pingvin Share. Click this link to accept the invite: {url}\nYour password is: {password}\nPingvin Share 🐧",
+    category: "email",
+  },
+  {
+    order: 15,
     key: "SMTP_ENABLED",
     description:
       "Whether SMTP is enabled. Only set this to true if you entered the host, port, email, user and password of your SMTP server.",
@@ -147,7 +165,7 @@ const configVariables: Prisma.ConfigCreateInput[] = [
     secret: false,
   },
   {
-    order: 14,
+    order: 16,
     key: "SMTP_HOST",
     description: "Host of the SMTP server",
     type: "string",
@@ -155,7 +173,7 @@ const configVariables: Prisma.ConfigCreateInput[] = [
     category: "smtp",
   },
   {
-    order: 15,
+    order: 17,
     key: "SMTP_PORT",
     description: "Port of the SMTP server",
     type: "number",
@@ -163,7 +181,7 @@ const configVariables: Prisma.ConfigCreateInput[] = [
     category: "smtp",
   },
   {
-    order: 16,
+    order: 18,
     key: "SMTP_EMAIL",
     description: "Email address which the emails get sent from",
     type: "string",
@@ -171,7 +189,7 @@ const configVariables: Prisma.ConfigCreateInput[] = [
     category: "smtp",
   },
   {
-    order: 17,
+    order: 19,
     key: "SMTP_USERNAME",
     description: "Username of the SMTP server",
     type: "string",
@@ -179,7 +197,7 @@ const configVariables: Prisma.ConfigCreateInput[] = [
     category: "smtp",
   },
   {
-    order: 18,
+    order: 20,
     key: "SMTP_PASSWORD",
     description: "Password of the SMTP server",
     type: "string",
