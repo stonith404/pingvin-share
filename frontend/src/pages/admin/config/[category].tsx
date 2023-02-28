@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import AdminConfigInput from "../../../components/admin/configuration/AdminConfigInput";
 import ConfigurationHeader from "../../../components/admin/configuration/ConfigurationHeader";
 import ConfigurationNavBar from "../../../components/admin/configuration/ConfigurationNavBar";
+import TestEmailButton from "../../../components/admin/configuration/TestEmailButton";
 import CenterLoader from "../../../components/core/CenterLoader";
 import Meta from "../../../components/Meta";
 import useConfig from "../../../hooks/config.hook";
@@ -37,7 +38,7 @@ export default function AppShellDemo() {
 
   const categoryId = router.query.category as string;
 
-  const [configVariables, setConfigVariables] = useState<AdminConfig[]>([]);
+  const [configVariables, setConfigVariables] = useState<AdminConfig[]>();
   const [updatedConfigVariables, setUpdatedConfigVariables] = useState<
     UpdateConfig[]
   >([]);
@@ -82,7 +83,6 @@ export default function AppShellDemo() {
                 : theme.colors.gray[0],
           },
         }}
-        navbarOffsetBreakpoint="sm"
         navbar={
           <ConfigurationNavBar
             categoryId={categoryId}
@@ -130,10 +130,14 @@ export default function AppShellDemo() {
                   </Group>
                 ))}
               </Stack>
-              <Group position="right">
-                <Button mt="lg" onClick={saveConfigVariables}>
-                  Save
-                </Button>
+              <Group mt="lg" position="right">
+                {categoryId == "email" && (
+                  <TestEmailButton
+                    configVariablesChanged={updatedConfigVariables.length != 0}
+                    saveConfigVariables={saveConfigVariables}
+                  />
+                )}
+                <Button onClick={saveConfigVariables}>Save</Button>
               </Group>
             </>
           )}
