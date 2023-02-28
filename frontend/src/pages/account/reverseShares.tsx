@@ -67,7 +67,7 @@ const MyShares = () => {
           onClick={() =>
             showCreateReverseShareModal(
               modals,
-              config.get("SMTP_ENABLED"),
+              config.get("smtp.enabled"),
               getReverseShares
             )
           }
@@ -129,9 +129,9 @@ const MyShares = () => {
                                   onClick={() => {
                                     if (window.isSecureContext) {
                                       clipboard.copy(
-                                        `${config.get("APP_URL")}/share/${
-                                          share.id
-                                        }`
+                                        `${config.get(
+                                          "general.appUrl"
+                                        )}/share/${share.id}`
                                       );
                                       toast.success(
                                         "The share link was copied to the keyboard."
@@ -140,7 +140,7 @@ const MyShares = () => {
                                       showShareLinkModal(
                                         modals,
                                         share.id,
-                                        config.get("APP_URL")
+                                        config.get("general.appUrl")
                                       );
                                     }
                                   }}

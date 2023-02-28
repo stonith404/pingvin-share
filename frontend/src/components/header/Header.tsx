@@ -4,7 +4,7 @@ import {
   Container,
   createStyles,
   Group,
-  Header,
+  Header as MantineHeader,
   Paper,
   Stack,
   Text,
@@ -108,7 +108,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const NavBar = () => {
+const Header = () => {
   const { user } = useUser();
   const router = useRouter();
   const config = useConfig();
@@ -141,20 +141,20 @@ const NavBar = () => {
     },
   ];
 
-  if (config.get("ALLOW_UNAUTHENTICATED_SHARES")) {
+  if (config.get("share.allowUnauthenticatedShares")) {
     unauthenticatedLinks.unshift({
       link: "/upload",
       label: "Upload",
     });
   }
 
-  if (config.get("SHOW_HOME_PAGE"))
+  if (config.get("general.showHomePage"))
     unauthenticatedLinks.unshift({
       link: "/",
       label: "Home",
     });
 
-  if (config.get("ALLOW_REGISTRATION"))
+  if (config.get("share.allowRegistration"))
     unauthenticatedLinks.push({
       link: "/auth/signUp",
       label: "Sign up",
@@ -187,12 +187,12 @@ const NavBar = () => {
     </>
   );
   return (
-    <Header height={HEADER_HEIGHT} mb={40} className={classes.root}>
+    <MantineHeader height={HEADER_HEIGHT} mb={40} className={classes.root}>
       <Container className={classes.header}>
         <Link href="/" passHref>
           <Group>
             <Logo height={35} width={35} />
-            <Text weight={600}>Pingvin Share</Text>
+            <Text weight={600}>{config.get("general.appName")}</Text>
           </Group>
         </Link>
         <Group spacing={5} className={classes.links}>
@@ -212,8 +212,8 @@ const NavBar = () => {
           )}
         </Transition>
       </Container>
-    </Header>
+    </MantineHeader>
   );
 };
 
-export default NavBar;
+export default Header;

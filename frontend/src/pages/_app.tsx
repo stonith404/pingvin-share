@@ -11,8 +11,9 @@ import axios from "axios";
 import { getCookie, setCookie } from "cookies-next";
 import { GetServerSidePropsContext } from "next";
 import type { AppProps } from "next/app";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Header from "../components/navBar/NavBar";
+import Header from "../components/header/Header";
 import { ConfigContext } from "../hooks/config.hook";
 import usePreferences from "../hooks/usePreferences";
 import { UserContext } from "../hooks/user.hook";
@@ -24,16 +25,25 @@ import globalStyle from "../styles/mantine.style";
 import Config from "../types/config.type";
 import { CurrentUser } from "../types/user.type";
 
+const excludeDefaultLayoutRoutes = ["/admin/config/[category]"];
+
 function App({ Component, pageProps }: AppProps) {
   const systemTheme = useColorScheme(pageProps.colorScheme);
+  const router = useRouter();
+
   const [colorScheme, setColorScheme] = useState<ColorScheme>(systemTheme);
   const preferences = usePreferences();
 
   const [user, setUser] = useState<CurrentUser | null>(pageProps.user);
+  const [route, setRoute] = useState<string>(pageProps.route);
 
   const [configVariables, setConfigVariables] = useState<Config[]>(
     pageProps.configVariables
   );
+
+  useEffect(() => {
+    setRoute(router.pathname);
+  }, [router.pathname]);
 
   useEffect(() => {
     setInterval(async () => await authService.refreshAccessToken(), 30 * 1000);
@@ -86,10 +96,16 @@ function App({ Component, pageProps }: AppProps) {
                   },
                 }}
               >
-                <Header />
-                <Container>
+                {excludeDefaultLayoutRoutes.includes(route) ? (
                   <Component {...pageProps} />
-                </Container>
+                ) : (
+                  <>
+                    <Header />
+                    <Container>
+                      <Component {...pageProps} />
+                    </Container>
+                  </>
+                )}
               </UserContext.Provider>
             </ConfigContext.Provider>
           </ModalsProvider>
@@ -105,12 +121,13 @@ App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
   let pageProps: {
     user?: CurrentUser;
     configVariables?: Config[];
+    route?: string;
     colorScheme: ColorScheme;
   } = {
+    route: ctx.resolvedUrl,
     colorScheme:
       (getCookie("mantine-color-scheme", ctx) as ColorScheme) ?? "light",
   };
-
   if (ctx.req) {
     const cookieHeader = ctx.req.headers.cookie;
 
@@ -123,6 +140,8 @@ App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
     pageProps.configVariables = (
       await axios(`http://localhost:8080/api/configs`)
     ).data;
+
+    pageProps.route = ctx.req.url;
   }
 
   return { pageProps };

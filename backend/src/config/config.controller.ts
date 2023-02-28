@@ -1,5 +1,16 @@
-import { Body, Controller, Get, Patch, Post, UseGuards } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Res,
+  StreamableFile,
+  UseGuards,
+} from "@nestjs/common";
 import { SkipThrottle } from "@nestjs/throttler";
+import { Response } from "express";
 import { AdministratorGuard } from "src/auth/guard/isAdmin.guard";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
 import { EmailService } from "src/email/email.service";
@@ -22,12 +33,18 @@ export class ConfigController {
     return new ConfigDTO().fromList(await this.configService.list());
   }
 
-  @Get("admin")
+  @Get("admin/:category")
   @UseGuards(JwtGuard, AdministratorGuard)
-  async listForAdmin() {
+  async getByCategory(@Param("category") category: string) {
     return new AdminConfigDTO().fromList(
-      await this.configService.listForAdmin()
+      await this.configService.getByCategory(category)
     );
+  }
+
+  @Get("admin/categories")
+  @UseGuards(JwtGuard, AdministratorGuard)
+  async getCategories() {
+    return await this.configService.getCategories();
   }
 
   @Patch("admin")
@@ -46,5 +63,16 @@ export class ConfigController {
   @UseGuards(JwtGuard, AdministratorGuard)
   async testEmail(@Body() { email }: TestEmailDTO) {
     await this.emailService.sendTestMail(email);
+  }
+
+  @Get("logo")
+  @SkipThrottle()
+  async getLogo(@Res({ passthrough: true }) res: Response) {
+    res.set({
+      "Content-Type": "image/png",
+      "Content-Disposition": "inline; filename=logo.png",
+    });
+
+    return new StreamableFile(this.configService.getLogo());
   }
 }

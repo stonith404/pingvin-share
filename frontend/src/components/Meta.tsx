@@ -1,4 +1,5 @@
 import Head from "next/head";
+import useConfig from "../hooks/config.hook";
 
 const Meta = ({
   title,
@@ -7,7 +8,9 @@ const Meta = ({
   title: string;
   description?: string;
 }) => {
-  const metaTitle = `${title} - Pingvin Share`;
+  const config = useConfig();
+
+  const metaTitle = `${title} - ${config.get("general.appName")}`;
 
   return (
     <Head>

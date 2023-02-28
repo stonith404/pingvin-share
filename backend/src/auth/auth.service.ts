@@ -25,7 +25,7 @@ export class AuthService {
   ) {}
 
   async signUp(dto: AuthRegisterDTO) {
-    const isFirstUser = this.config.get("SETUP_STATUS") == "STARTED";
+    const isFirstUser = this.config.get("internal.setupStatus") == "STARTED";
 
     const hash = await argon.hash(dto.password);
     try {
@@ -161,7 +161,7 @@ export class AuthService {
       },
       {
         expiresIn: "15min",
-        secret: this.config.get("JWT_SECRET"),
+        secret: this.config.get("internal.jwtSecret"),
       }
     );
   }

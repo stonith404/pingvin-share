@@ -5,6 +5,8 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { Config } from "@prisma/client";
+import * as fs from "fs";
+import { ConfigVariables } from "prisma/seed/config.seed";
 import { PrismaService } from "src/prisma/prisma.service";
 
 @Injectable()
@@ -14,9 +16,9 @@ export class ConfigService {
     private prisma: PrismaService
   ) {}
 
-  get(key: string): any {
+  get(key: ConfigVariables): any {
     const configVariable = this.configVariables.filter(
-      (variable) => variable.key == key
+      (variable) => `${variable.category}.${variable.name}` == key
     )[0];
 
     if (!configVariable) throw new Error(`Config variable ${key} not found`);
@@ -27,16 +29,45 @@ export class ConfigService {
       return configVariable.value;
   }
 
-  async listForAdmin() {
-    return await this.prisma.config.findMany({
+  async getByCategory(category: string) {
+    const configVariables = await this.prisma.config.findMany({
       orderBy: { order: "asc" },
+      where: { category, locked: { equals: false } },
+    });
+
+    return configVariables.map((variable) => {
+      return {
+        key: `${variable.category}.${variable.name}`,
+        ...variable,
+      };
+    });
+  }
+
+  async getCategories() {
+    const categories = await this.prisma.config.groupBy({
+      by: ["category"],
       where: { locked: { equals: false } },
+      _count: { category: true },
+    });
+
+    return categories.map((category) => {
+      return {
+        category: category.category,
+        count: category._count.category,
+      };
     });
   }
 
   async list() {
-    return await this.prisma.config.findMany({
+    const configVariables = await this.prisma.config.findMany({
       where: { secret: { equals: false } },
+    });
+
+    return configVariables.map((variable) => {
+      return {
+        key: `${variable.category}.${variable.name}`,
+        ...variable,
+      };
     });
   }
 
@@ -50,7 +81,12 @@ export class ConfigService {
 
   async update(key: string, value: string | number | boolean) {
     const configVariable = await this.prisma.config.findUnique({
-      where: { key },
+      where: {
+        name_category: {
+          category: key.split(".")[0],
+          name: key.split(".")[1],
+        },
+      },
     });
 
     if (!configVariable || configVariable.locked)
@@ -67,7 +103,12 @@ export class ConfigService {
     }
 
     const updatedVariable = await this.prisma.config.update({
-      where: { key },
+      where: {
+        name_category: {
+          category: key.split(".")[0],
+          name: key.split(".")[1],
+        },
+      },
       data: { value: value.toString() },
     });
 
@@ -78,12 +119,20 @@ export class ConfigService {
 
   async changeSetupStatus(status: "STARTED" | "REGISTERED" | "FINISHED") {
     const updatedVariable = await this.prisma.config.update({
-      where: { key: "SETUP_STATUS" },
+      where: {
+        name_category: {
+          category: "internal",
+          name: "setupStatus",
+        },
+      },
       data: { value: status },
     });
 
     this.configVariables = await this.prisma.config.findMany();
 
     return updatedVariable;
+  }
+  getLogo() {
+    return fs.createReadStream(`./data/branding/logo.png`);
   }
 }

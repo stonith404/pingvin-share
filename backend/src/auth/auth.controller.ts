@@ -42,7 +42,7 @@ export class AuthController {
     @Body() dto: AuthRegisterDTO,
     @Res({ passthrough: true }) response: Response
   ) {
-    if (!this.config.get("ALLOW_REGISTRATION"))
+    if (!this.config.get("share.allowRegistration"))
       throw new ForbiddenException("Registration is not allowed");
 
     const result = await this.authService.signUp(dto);

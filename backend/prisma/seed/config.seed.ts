@@ -1,258 +1,234 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 import * as crypto from "crypto";
 
-const configVariables: Prisma.ConfigCreateInput[] = [
-  {
-    order: 0,
-    key: "SETUP_STATUS",
-    description: "Status of the setup wizard",
-    type: "string",
-    value: "STARTED", // STARTED, REGISTERED, FINISHED
-    category: "internal",
-    secret: false,
-    locked: true,
+const configVariables: ConfigVariables = {
+  internal: {
+    setupStatus: {
+      description: "Status of the setup wizard",
+      type: "string",
+      value: "STARTED", // STARTED, REGISTERED, FINISHED
+      secret: false,
+      locked: true,
+    },
+    jwtSecret: {
+      description: "Long random string used to sign JWT tokens",
+      type: "string",
+      value: crypto.randomBytes(256).toString("base64"),
+      locked: true,
+    },
   },
-  {
-    order: 0,
-    key: "JWT_SECRET",
-    description: "Long random string used to sign JWT tokens",
-    type: "string",
-    value: crypto.randomBytes(256).toString("base64"),
-    category: "internal",
-    locked: true,
-  },
-  {
-    order: 1,
-    key: "APP_URL",
-    description: "On which URL Pingvin Share is available",
-    type: "string",
-    value: "http://localhost:3000",
-    category: "general",
-    secret: false,
-  },
-  {
-    order: 2,
-    key: "SHOW_HOME_PAGE",
-    description: "Whether to show the home page",
-    type: "boolean",
-    value: "true",
-    category: "general",
-    secret: false,
-  },
-  {
-    order: 3,
-    key: "ALLOW_REGISTRATION",
-    description: "Whether registration is allowed",
-    type: "boolean",
-    value: "true",
-    category: "share",
-    secret: false,
-  },
-  {
-    order: 4,
-    key: "ALLOW_UNAUTHENTICATED_SHARES",
-    description: "Whether unauthorized users can create shares",
-    type: "boolean",
-    value: "false",
-    category: "share",
-    secret: false,
-  },
-  {
-    order: 5,
+  general: {
+    appName: {
+      description: "Name of the application",
+      type: "string",
+      value: "Pingvin Share",
+      secret: false,
+    },
+    appUrl: {
+      description: "On which URL Pingvin Share is available",
+      type: "string",
+      value: "http://localhost:3000",
 
-    key: "MAX_SHARE_SIZE",
-    description: "Maximum share size in bytes",
-    type: "number",
-    value: "1073741824",
-    category: "share",
-    secret: false,
+      secret: false,
+    },
+    showHomePage: {
+      description: "Whether to show the home page",
+      type: "boolean",
+      value: "true",
+      secret: false,
+    },
   },
 
-  {
-    order: 6,
-    key: "ENABLE_SHARE_EMAIL_RECIPIENTS",
-    description:
-      "Whether to allow emails to share recipients. Only enable this if you have enabled SMTP.",
-    type: "boolean",
-    value: "false",
-    category: "email",
-    secret: false,
+  share: {
+    allowRegistration: {
+      description: "Whether registration is allowed",
+      type: "boolean",
+      value: "true",
+
+      secret: false,
+    },
+    allowUnauthenticatedShares: {
+      description: "Whether unauthorized users can create shares",
+      type: "boolean",
+      value: "false",
+
+      secret: false,
+    },
+    maxSize: {
+      description: "Maximum share size in bytes",
+      type: "number",
+      value: "1073741824",
+
+      secret: false,
+    },
   },
-  {
-    order: 7,
-    key: "SHARE_RECEPIENTS_EMAIL_SUBJECT",
-    description:
-      "Subject of the email which gets sent to the share recipients.",
-    type: "string",
-    value: "Files shared with you",
-    category: "email",
+  email: {
+    enableShareEmailRecipients: {
+      description:
+        "Whether to allow emails to share recipients. Only enable this if you have enabled SMTP.",
+      type: "boolean",
+      value: "false",
+
+      secret: false,
+    },
+    shareRecipientsEmailSubject: {
+      description:
+        "Subject of the email which gets sent to the share recipients.",
+      type: "string",
+      value: "Files shared with you",
+    },
+    shareRecipientsEmailMessage: {
+      description:
+        "Message which gets sent to the share recipients. {creator} and {shareUrl} will be replaced with the creator's name and the share URL.",
+      type: "text",
+      value:
+        "Hey!\n{creator} shared some files with you. View or download the files with this link: {shareUrl}\nShared securely with Pingvin Share 🐧",
+    },
+    reverseShareEmailSubject: {
+      description:
+        "Subject of the email which gets sent when someone created a share with your reverse share link.",
+      type: "string",
+      value: "Reverse share link used",
+    },
+    reverseShareEmailMessage: {
+      description:
+        "Message which gets sent when someone created a share with your reverse share link. {shareUrl} will be replaced with the creator's name and the share URL.",
+      type: "text",
+      value:
+        "Hey!\nA share was just created with your reverse share link: {shareUrl}\nShared securely with Pingvin Share 🐧",
+    },
+    resetPasswordEmailSubject: {
+      description:
+        "Subject of the email which gets sent when a user requests a password reset.",
+      type: "string",
+      value: "Pingvin Share password reset",
+    },
+    resetPasswordEmailMessage: {
+      description:
+        "Message which gets sent when a user requests a password reset. {url} will be replaced with the reset password URL.",
+      type: "text",
+      value:
+        "Hey!\nYou requested a password reset. Click this link to reset your password: {url}\nThe link expires in a hour.\nPingvin Share 🐧",
+    },
+    inviteEmailSubject: {
+      description:
+        "Subject of the email which gets sent when an admin invites an user.",
+      type: "string",
+      value: "Pingvin Share invite",
+    },
+    inviteEmailMessage: {
+      description:
+        "Message which gets sent when an admin invites an user. {url} will be replaced with the invite URL and {password} with the password.",
+      type: "text",
+      value:
+        "Hey!\nYou were invited to Pingvin Share. Click this link to accept the invite: {url}\nYour password is: {password}\nPingvin Share 🐧",
+    },
   },
-  {
-    order: 8,
-    key: "SHARE_RECEPIENTS_EMAIL_MESSAGE",
-    description:
-      "Message which gets sent to the share recipients. {creator} and {shareUrl} will be replaced with the creator's name and the share URL.",
-    type: "text",
-    value:
-      "Hey!\n{creator} shared some files with you. View or download the files with this link: {shareUrl}\nShared securely with Pingvin Share 🐧",
-    category: "email",
+  smtp: {
+    enabled: {
+      description:
+        "Whether SMTP is enabled. Only set this to true if you entered the host, port, email, user and password of your SMTP server.",
+      type: "boolean",
+      value: "false",
+      secret: false,
+    },
+    host: {
+      description: "Host of the SMTP server",
+      type: "string",
+      value: "",
+    },
+    port: {
+      description: "Port of the SMTP server",
+      type: "number",
+      value: "0",
+    },
+    email: {
+      description: "Email address which the emails get sent from",
+      type: "string",
+      value: "",
+    },
+    username: {
+      description: "Username of the SMTP server",
+      type: "string",
+      value: "",
+    },
+    password: {
+      description: "Password of the SMTP server",
+      type: "string",
+      value: "",
+      obscured: true,
+    },
   },
-  {
-    order: 9,
-    key: "REVERSE_SHARE_EMAIL_SUBJECT",
-    description:
-      "Subject of the email which gets sent when someone created a share with your reverse share link.",
-    type: "string",
-    value: "Reverse share link used",
-    category: "email",
-  },
-  {
-    order: 10,
-    key: "REVERSE_SHARE_EMAIL_MESSAGE",
-    description:
-      "Message which gets sent when someone created a share with your reverse share link. {shareUrl} will be replaced with the creator's name and the share URL.",
-    type: "text",
-    value:
-      "Hey!\nA share was just created with your reverse share link: {shareUrl}\nShared securely with Pingvin Share 🐧",
-    category: "email",
-  },
-  {
-    order: 11,
-    key: "RESET_PASSWORD_EMAIL_SUBJECT",
-    description:
-      "Subject of the email which gets sent when a user requests a password reset.",
-    type: "string",
-    value: "Pingvin Share password reset",
-    category: "email",
-  },
-  {
-    order: 12,
-    key: "RESET_PASSWORD_EMAIL_MESSAGE",
-    description:
-      "Message which gets sent when a user requests a password reset. {url} will be replaced with the reset password URL.",
-    type: "text",
-    value:
-      "Hey!\nYou requested a password reset. Click this link to reset your password: {url}\nThe link expires in a hour.\nPingvin Share 🐧",
-    category: "email",
-  },
-  {
-    order: 13,
-    key: "INVITE_EMAIL_SUBJECT",
-    description:
-      "Subject of the email which gets sent when an admin invites an user.",
-    type: "string",
-    value: "Pingvin Share invite",
-    category: "email",
-  },
-  {
-    order: 14,
-    key: "INVITE_EMAIL_MESSAGE",
-    description:
-      "Message which gets sent when an admin invites an user. {url} will be replaced with the invite URL and {password} with the password.",
-    type: "text",
-    value:
-      "Hey!\nYou were invited to Pingvin Share. Click this link to accept the invite: {url}\nYour password is: {password}\nPingvin Share 🐧",
-    category: "email",
-  },
-  {
-    order: 15,
-    key: "SMTP_ENABLED",
-    description:
-      "Whether SMTP is enabled. Only set this to true if you entered the host, port, email, user and password of your SMTP server.",
-    type: "boolean",
-    value: "false",
-    category: "smtp",
-    secret: false,
-  },
-  {
-    order: 16,
-    key: "SMTP_HOST",
-    description: "Host of the SMTP server",
-    type: "string",
-    value: "",
-    category: "smtp",
-  },
-  {
-    order: 17,
-    key: "SMTP_PORT",
-    description: "Port of the SMTP server",
-    type: "number",
-    value: "0",
-    category: "smtp",
-  },
-  {
-    order: 18,
-    key: "SMTP_EMAIL",
-    description: "Email address which the emails get sent from",
-    type: "string",
-    value: "",
-    category: "smtp",
-  },
-  {
-    order: 19,
-    key: "SMTP_USERNAME",
-    description: "Username of the SMTP server",
-    type: "string",
-    value: "",
-    category: "smtp",
-  },
-  {
-    order: 20,
-    key: "SMTP_PASSWORD",
-    description: "Password of the SMTP server",
-    type: "string",
-    value: "",
-    obscured: true,
-    category: "smtp",
-  },
-];
+};
+
+type ConfigVariables = {
+  [category: string]: {
+    [variable: string]: Omit<
+      Prisma.ConfigCreateInput,
+      "name" | "category" | "order"
+    >;
+  };
+};
 
 const prisma = new PrismaClient();
 
 async function main() {
-  for (const variable of configVariables) {
-    const existingConfigVariable = await prisma.config.findUnique({
-      where: { key: variable.key },
-    });
-
-    // Create a new config variable if it doesn't exist
-    if (!existingConfigVariable) {
-      await prisma.config.create({
-        data: variable,
+  for (const [category, configVariablesOfCategory] of Object.entries(
+    configVariables
+  )) {
+    let order = 0;
+    for (const [name, properties] of Object.entries(
+      configVariablesOfCategory
+    )) {
+      const existingConfigVariable = await prisma.config.findUnique({
+        where: { name_category: { name, category } },
       });
+
+      // Create a new config variable if it doesn't exist
+      if (!existingConfigVariable) {
+        await prisma.config.create({
+          data: {
+            order,
+            name,
+            ...properties,
+            category,
+          },
+        });
+      }
+      order++;
     }
   }
 
   const configVariablesFromDatabase = await prisma.config.findMany();
 
   // Delete the config variable if it doesn't exist anymore
-  for (const configVariableFromDatabase of configVariablesFromDatabase) {
-    const configVariable = configVariables.find(
-      (v) => v.key == configVariableFromDatabase.key
-    );
-    if (!configVariable) {
-      await prisma.config.delete({
-        where: { key: configVariableFromDatabase.key },
-      });
+  //   for (const configVariableFromDatabase of configVariablesFromDatabase) {
+  //     const configVariable = configVariables.find(
+  //       (v) => v.key == configVariableFromDatabase.key
+  //     );
+  //     if (!configVariable) {
+  //       await prisma.config.delete({
+  //         where: { key: configVariableFromDatabase.key },
+  //       });
 
-      // Update the config variable if the metadata changed
-    } else if (
-      JSON.stringify({
-        ...configVariable,
-        key: configVariableFromDatabase.key,
-        value: configVariableFromDatabase.value,
-      }) != JSON.stringify(configVariableFromDatabase)
-    ) {
-      await prisma.config.update({
-        where: { key: configVariableFromDatabase.key },
-        data: {
-          ...configVariable,
-          key: configVariableFromDatabase.key,
-          value: configVariableFromDatabase.value,
-        },
-      });
-    }
-  }
+  //       // Update the config variable if the metadata changed
+  //     } else if (
+  //       JSON.stringify({
+  //         ...configVariable,
+  //         key: configVariableFromDatabase.key,
+  //         value: configVariableFromDatabase.value,
+  //       }) != JSON.stringify(configVariableFromDatabase)
+  //     ) {
+  //       await prisma.config.update({
+  //         where: { key: configVariableFromDatabase.key },
+  //         data: {
+  //           ...configVariable,
+  //           key: configVariableFromDatabase.key,
+  //           value: configVariableFromDatabase.value,
+  //         },
+  //       });
+  //     }
+  //   }
 }
 main()
   .then(async () => {

@@ -95,7 +95,7 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
       <Title order={2} align="center" weight={900}>
         Welcome back
       </Title>
-      {config.get("ALLOW_REGISTRATION") && (
+      {config.get("share.allowRegistration") && (
         <Text color="dimmed" size="sm" align="center" mt={5}>
           You don't have an account yet?{" "}
           <Anchor component={Link} href={"signUp"} size="sm">
@@ -131,7 +131,7 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
               {...form.getInputProps("totp")}
             />
           )}
-          {config.get("SMTP_ENABLED") && (
+          {config.get("smtp.enabled") && (
             <Group position="right" mt="xs">
               <Anchor component={Link} href="/auth/resetPassword" size="xs">
                 Forgot password?

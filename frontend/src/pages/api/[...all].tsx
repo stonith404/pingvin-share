@@ -11,7 +11,7 @@ export const config = {
 export default (req: NextApiRequest, res: NextApiResponse) => {
   return httpProxyMiddleware(req, res, {
     headers: {
-      "X-Forwarded-For": req.socket.remoteAddress ?? "",
+      "X-Forwarded-For": req.socket?.remoteAddress ?? "",
     },
     target: "http://localhost:8080",
   });

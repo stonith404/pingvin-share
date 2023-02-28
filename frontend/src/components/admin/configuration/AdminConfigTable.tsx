@@ -36,7 +36,7 @@ const AdminConfigTable = () => {
   >([]);
 
   useEffect(() => {
-    if (config.get("SETUP_STATUS") != "FINISHED") {
+    if (config.get("internal.setupStatus") != "FINISHED") {
       config.refresh();
     }
   }, []);
@@ -56,22 +56,22 @@ const AdminConfigTable = () => {
     useState<AdminConfigGroupedByCategory>({});
 
   const getConfigVariables = async () => {
-    await configService.listForAdmin().then((configVariables) => {
-      const configVariablesByCategory = configVariables.reduce(
-        (categories: any, item) => {
-          const category = categories[item.category] || [];
-          category.push(item);
-          categories[item.category] = category;
-          return categories;
-        },
-        {}
-      );
-      setCofigVariablesByCategory(configVariablesByCategory);
-    });
+    // await configService.listForAdmin().then((configVariables) => {
+    //   const configVariablesByCategory = configVariables.reduce(
+    //     (categories: any, item) => {
+    //       const category = categories[item.category] || [];
+    //       category.push(item);
+    //       categories[item.category] = category;
+    //       return categories;
+    //     },
+    //     {}
+    //   );
+    //   setCofigVariablesByCategory(configVariablesByCategory);
+    // });
   };
 
   const saveConfigVariables = async () => {
-    if (config.get("SETUP_STATUS") == "REGISTERED") {
+    if (config.get("internal.setupStatus") == "REGISTERED") {
       await configService
         .updateMany(updatedConfigVariables)
         .then(async () => {

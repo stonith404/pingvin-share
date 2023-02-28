@@ -67,7 +67,7 @@ export class FileService {
     const shareSizeSum = fileSizeSum + diskFileSize + buffer.byteLength;
 
     if (
-      shareSizeSum > this.config.get("MAX_SHARE_SIZE") ||
+      shareSizeSum > this.config.get("share.maxSize") ||
       (share.reverseShare?.maxShareSize &&
         shareSizeSum > parseInt(share.reverseShare.maxShareSize))
     ) {
