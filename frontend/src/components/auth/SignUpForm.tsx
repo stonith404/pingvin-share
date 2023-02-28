@@ -41,8 +41,12 @@ const SignUpForm = () => {
     await authService
       .signUp(email, username, password)
       .then(async () => {
-        await refreshUser();
-        router.replace("/upload");
+        const user = await refreshUser();
+        if (user?.isAdmin) {
+          router.replace("/admin/intro");
+        } else {
+          router.replace("/upload");
+        }
       })
       .catch(toast.axiosError);
   };

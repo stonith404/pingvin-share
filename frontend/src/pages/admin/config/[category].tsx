@@ -17,6 +17,7 @@ import AdminConfigInput from "../../../components/admin/configuration/AdminConfi
 import ConfigurationHeader from "../../../components/admin/configuration/ConfigurationHeader";
 import ConfigurationNavBar from "../../../components/admin/configuration/ConfigurationNavBar";
 import CenterLoader from "../../../components/core/CenterLoader";
+import Meta from "../../../components/Meta";
 import useConfig from "../../../hooks/config.hook";
 import configService from "../../../services/config.service";
 import { AdminConfig, UpdateConfig } from "../../../types/config.type";
@@ -70,71 +71,74 @@ export default function AppShellDemo() {
   }, [categoryId]);
 
   return (
-    <AppShell
-      styles={{
-        main: {
-          background:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[8]
-              : theme.colors.gray[0],
-        },
-      }}
-      navbarOffsetBreakpoint="sm"
-      navbar={
-        <ConfigurationNavBar
-          categoryId={categoryId}
-          isMobileNavBarOpened={isMobileNavBarOpened}
-          setIsMobileNavBarOpened={setIsMobileNavBarOpened}
-        />
-      }
-      header={
-        <ConfigurationHeader
-          isMobileNavBarOpened={isMobileNavBarOpened}
-          setIsMobileNavBarOpened={setIsMobileNavBarOpened}
-        />
-      }
-    >
-      <Container size="lg">
-        {!configVariables ? (
-          <CenterLoader />
-        ) : (
-          <>
-            <Stack>
-              <Title mb="md" order={3}>
-                {capitalizeFirstLetter(categoryId)}
-              </Title>
-              {configVariables.map((configVariable) => (
-                <Group key={configVariable.key} position="apart">
-                  <Stack
-                    style={{ maxWidth: isMobile ? "100%" : "40%" }}
-                    spacing={0}
-                  >
-                    <Title order={6}>
-                      {configVariableToFriendlyName(configVariable.name)}
-                    </Title>
-                    <Text color="dimmed" size="sm" mb="xs">
-                      {configVariable.description}
-                    </Text>
-                  </Stack>
-                  <Stack></Stack>
-                  <Box style={{ width: isMobile ? "100%" : "50%" }}>
-                    <AdminConfigInput
-                      key={configVariable.key}
-                      configVariable={configVariable}
-                      updateConfigVariable={updateConfigVariable}
-                    />
-                  </Box>
-                </Group>
-              ))}
-            </Stack>
-            <Group position="right">
-              <Button mt="lg" onClick={saveConfigVariables}>
-                Save
-              </Button>
-            </Group>
-          </>
-        )}
-      </Container>
-    </AppShell>
+    <>
+      <Meta title="Configuration" />
+      <AppShell
+        styles={{
+          main: {
+            background:
+              theme.colorScheme === "dark"
+                ? theme.colors.dark[8]
+                : theme.colors.gray[0],
+          },
+        }}
+        navbarOffsetBreakpoint="sm"
+        navbar={
+          <ConfigurationNavBar
+            categoryId={categoryId}
+            isMobileNavBarOpened={isMobileNavBarOpened}
+            setIsMobileNavBarOpened={setIsMobileNavBarOpened}
+          />
+        }
+        header={
+          <ConfigurationHeader
+            isMobileNavBarOpened={isMobileNavBarOpened}
+            setIsMobileNavBarOpened={setIsMobileNavBarOpened}
+          />
+        }
+      >
+        <Container size="lg">
+          {!configVariables ? (
+            <CenterLoader />
+          ) : (
+            <>
+              <Stack>
+                <Title mb="md" order={3}>
+                  {capitalizeFirstLetter(categoryId)}
+                </Title>
+                {configVariables.map((configVariable) => (
+                  <Group key={configVariable.key} position="apart">
+                    <Stack
+                      style={{ maxWidth: isMobile ? "100%" : "40%" }}
+                      spacing={0}
+                    >
+                      <Title order={6}>
+                        {configVariableToFriendlyName(configVariable.name)}
+                      </Title>
+                      <Text color="dimmed" size="sm" mb="xs">
+                        {configVariable.description}
+                      </Text>
+                    </Stack>
+                    <Stack></Stack>
+                    <Box style={{ width: isMobile ? "100%" : "50%" }}>
+                      <AdminConfigInput
+                        key={configVariable.key}
+                        configVariable={configVariable}
+                        updateConfigVariable={updateConfigVariable}
+                      />
+                    </Box>
+                  </Group>
+                ))}
+              </Stack>
+              <Group position="right">
+                <Button mt="lg" onClick={saveConfigVariables}>
+                  Save
+                </Button>
+              </Group>
+            </>
+          )}
+        </Container>
+      </AppShell>
+    </>
   );
 }

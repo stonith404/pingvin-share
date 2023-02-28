@@ -94,6 +94,16 @@ docker compose up -d
    ```
 2. Repeat the steps from the [installation guide](#stand-alone-installation) except the `git clone` step.
 
+### Custom branding
+
+#### Name
+
+You can change the name of the app by visiting the admin configuration page and changing the `App Name` setting.
+
+#### Logo
+
+You can change the logo of the app by replacing the `logo.png` in the `/data` (or with the standalone installation `/backend/data`) folder with your own logo.
+
 ## 🖤 Contribute
 
 You're very welcome to contribute to Pingvin Share! Follow the [contribution guide](/CONTRIBUTING.md) to get started.
