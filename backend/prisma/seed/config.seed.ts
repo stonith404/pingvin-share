@@ -3,13 +3,6 @@ import * as crypto from "crypto";
 
 const configVariables: ConfigVariables = {
   internal: {
-    setupStatus: {
-      description: "Status of the setup wizard",
-      type: "string",
-      value: "STARTED", // STARTED, REGISTERED, FINISHED
-      secret: false,
-      locked: true,
-    },
     jwtSecret: {
       description: "Long random string used to sign JWT tokens",
       type: "string",
@@ -71,52 +64,52 @@ const configVariables: ConfigVariables = {
 
       secret: false,
     },
-    shareRecipientsEmailSubject: {
+    shareRecipientsSubject: {
       description:
         "Subject of the email which gets sent to the share recipients.",
       type: "string",
       value: "Files shared with you",
     },
-    shareRecipientsEmailMessage: {
+    shareRecipientsMessage: {
       description:
         "Message which gets sent to the share recipients. {creator} and {shareUrl} will be replaced with the creator's name and the share URL.",
       type: "text",
       value:
         "Hey!\n{creator} shared some files with you. View or download the files with this link: {shareUrl}\nShared securely with Pingvin Share 🐧",
     },
-    reverseShareEmailSubject: {
+    reverseShareSubject: {
       description:
         "Subject of the email which gets sent when someone created a share with your reverse share link.",
       type: "string",
       value: "Reverse share link used",
     },
-    reverseShareEmailMessage: {
+    reverseShareMessage: {
       description:
         "Message which gets sent when someone created a share with your reverse share link. {shareUrl} will be replaced with the creator's name and the share URL.",
       type: "text",
       value:
         "Hey!\nA share was just created with your reverse share link: {shareUrl}\nShared securely with Pingvin Share 🐧",
     },
-    resetPasswordEmailSubject: {
+    resetPasswordSubject: {
       description:
         "Subject of the email which gets sent when a user requests a password reset.",
       type: "string",
       value: "Pingvin Share password reset",
     },
-    resetPasswordEmailMessage: {
+    resetPasswordMessage: {
       description:
         "Message which gets sent when a user requests a password reset. {url} will be replaced with the reset password URL.",
       type: "text",
       value:
         "Hey!\nYou requested a password reset. Click this link to reset your password: {url}\nThe link expires in a hour.\nPingvin Share 🐧",
     },
-    inviteEmailSubject: {
+    inviteSubject: {
       description:
         "Subject of the email which gets sent when an admin invites an user.",
       type: "string",
       value: "Pingvin Share invite",
     },
-    inviteEmailMessage: {
+    inviteMessage: {
       description:
         "Message which gets sent when an admin invites an user. {url} will be replaced with the invite URL and {password} with the password.",
       type: "text",

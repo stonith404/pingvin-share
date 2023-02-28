@@ -35,7 +35,8 @@ yarn-error.log*
 /frontend/public/sw.*
 
 # project specific
-/backend/data/
+/backend/data/*
+!/backend/data/logo.png
 /data/
 
 # Jetbrains specific (webstorm)

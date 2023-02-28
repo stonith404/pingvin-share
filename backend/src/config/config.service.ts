@@ -6,7 +6,6 @@ import {
 } from "@nestjs/common";
 import { Config } from "@prisma/client";
 import * as fs from "fs";
-import { ConfigVariables } from "prisma/seed/config.seed";
 import { PrismaService } from "src/prisma/prisma.service";
 
 @Injectable()
@@ -16,7 +15,7 @@ export class ConfigService {
     private prisma: PrismaService
   ) {}
 
-  get(key: ConfigVariables): any {
+  get(key: `${string}.${string}`): any {
     const configVariable = this.configVariables.filter(
       (variable) => `${variable.category}.${variable.name}` == key
     )[0];
@@ -117,22 +116,7 @@ export class ConfigService {
     return updatedVariable;
   }
 
-  async changeSetupStatus(status: "STARTED" | "REGISTERED" | "FINISHED") {
-    const updatedVariable = await this.prisma.config.update({
-      where: {
-        name_category: {
-          category: "internal",
-          name: "setupStatus",
-        },
-      },
-      data: { value: status },
-    });
-
-    this.configVariables = await this.prisma.config.findMany();
-
-    return updatedVariable;
-  }
   getLogo() {
-    return fs.createReadStream(`./data/branding/logo.png`);
+    return fs.createReadStream(`./data/logo.png`);
   }
 }

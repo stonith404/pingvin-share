@@ -33,6 +33,17 @@ export class ConfigController {
     return new ConfigDTO().fromList(await this.configService.list());
   }
 
+  @Get("logo")
+  @SkipThrottle()
+  async getLogo(@Res({ passthrough: true }) res: Response) {
+    res.set({
+      "Content-Type": "image/png",
+      "Content-Disposition": "inline; filename=logo.png",
+    });
+
+    return new StreamableFile(this.configService.getLogo());
+  }
+
   @Get("admin/:category")
   @UseGuards(JwtGuard, AdministratorGuard)
   async getByCategory(@Param("category") category: string) {
@@ -53,26 +64,9 @@ export class ConfigController {
     await this.configService.updateMany(data);
   }
 
-  @Post("admin/finishSetup")
-  @UseGuards(JwtGuard, AdministratorGuard)
-  async finishSetup() {
-    return await this.configService.changeSetupStatus("FINISHED");
-  }
-
   @Post("admin/testEmail")
   @UseGuards(JwtGuard, AdministratorGuard)
   async testEmail(@Body() { email }: TestEmailDTO) {
     await this.emailService.sendTestMail(email);
-  }
-
-  @Get("logo")
-  @SkipThrottle()
-  async getLogo(@Res({ passthrough: true }) res: Response) {
-    res.set({
-      "Content-Type": "image/png",
-      "Content-Disposition": "inline; filename=logo.png",
-    });
-
-    return new StreamableFile(this.configService.getLogo());
   }
 }

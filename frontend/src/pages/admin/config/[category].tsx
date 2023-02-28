@@ -21,7 +21,7 @@ import Link from "next/link";
 
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { TbAt, TbColorSwatch, TbMail, TbShare, TbSquare } from "react-icons/tb";
+import { TbAt, TbMail, TbShare, TbSquare } from "react-icons/tb";
 import AdminConfigInput from "../../../components/admin/configuration/AdminConfigInput";
 import Logo from "../../../components/Logo";
 import useConfig from "../../../hooks/config.hook";
@@ -31,7 +31,6 @@ import { configVariableToFriendlyName } from "../../../utils/string.util";
 import toast from "../../../utils/toast.util";
 
 const categories = [
-  { name: "Branding", icon: <TbColorSwatch /> },
   { name: "General", icon: <TbSquare /> },
   { name: "Email", icon: <TbMail /> },
   { name: "Share", icon: <TbShare /> },
@@ -68,23 +67,13 @@ export default function AppShellDemo() {
   >([]);
 
   const saveConfigVariables = async () => {
-    if (config.get("internal.setupStatus") == "REGISTERED") {
-      await configService
-        .updateMany(updatedConfigVariables)
-        .then(async () => {
-          await configService.finishSetup();
-          router.reload();
-        })
-        .catch(toast.axiosError);
-    } else {
-      await configService
-        .updateMany(updatedConfigVariables)
-        .then(() => {
-          setUpdatedConfigVariables([]);
-          toast.success("Configurations updated successfully");
-        })
-        .catch(toast.axiosError);
-    }
+    await configService
+      .updateMany(updatedConfigVariables)
+      .then(() => {
+        setUpdatedConfigVariables([]);
+        toast.success("Configurations updated successfully");
+      })
+      .catch(toast.axiosError);
     config.refresh();
   };
 
@@ -209,7 +198,11 @@ export default function AppShellDemo() {
             <Space h="lg" />
           </>
         ))}
-        <Button onClick={saveConfigVariables}>Save</Button>
+        <Group position="right">
+          <Button mt="lg" onClick={saveConfigVariables}>
+            Save
+          </Button>
+        </Group>
       </Container>
     </AppShell>
   );

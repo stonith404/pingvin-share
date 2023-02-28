@@ -37,9 +37,9 @@ export class EmailService {
 
     await this.getTransporter().sendMail({
       to: recipientEmail,
-      subject: this.config.get("email.shareRecipientsEmailSubject"),
+      subject: this.config.get("email.shareRecipientsSubject"),
       text: this.config
-        .get("email.shareRecipientsEmailMessage")
+        .get("email.shareRecipientsMessage")
         .replaceAll("\\n", "\n")
         .replaceAll("{creator}", creator?.username ?? "Someone")
         .replaceAll("{shareUrl}", shareUrl),
@@ -51,9 +51,9 @@ export class EmailService {
 
     await this.getTransporter().sendMail({
       to: recipientEmail,
-      subject: this.config.get("email.reverseShareEmailSubject"),
+      subject: this.config.get("email.reverseShareSubject"),
       text: this.config
-        .get("email.reverseShareEmailMessage")
+        .get("email.reverseShareMessage")
         .replaceAll("\\n", "\n")
         .replaceAll("{shareUrl}", shareUrl),
     });
@@ -66,9 +66,9 @@ export class EmailService {
 
     await this.getTransporter().sendMail({
       to: recipientEmail,
-      subject: this.config.get("email.resetPasswordEmailSubject"),
+      subject: this.config.get("email.resetPasswordSubject"),
       text: this.config
-        .get("email.resetPasswordEmailMessage")
+        .get("email.resetPasswordMessage")
         .replaceAll("{url}", resetPasswordUrl),
     });
   }
@@ -78,9 +78,9 @@ export class EmailService {
 
     await this.getTransporter().sendMail({
       to: recipientEmail,
-      subject: this.config.get("email.inviteEmailSubject"),
+      subject: this.config.get("email.inviteSubject"),
       text: this.config
-        .get("email.inviteEmailMessage")
+        .get("email.inviteMessage")
         .replaceAll("{url}", loginUrl)
         .replaceAll("{password}", password),
     });

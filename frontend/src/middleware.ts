@@ -15,9 +15,8 @@ export async function middleware(request: NextRequest) {
   const routes = {
     unauthenticated: new Routes(["/auth/*", "/"]),
     public: new Routes(["/share/*", "/upload/*"]),
-    setupStatusRegistered: new Routes(["/auth/*", "/admin/setup"]),
     admin: new Routes(["/admin/*"]),
-    account: new Routes(["/account/*"]),
+    account: new Routes(["/account*"]),
     disabled: new Routes([]),
   };
 
@@ -57,25 +56,12 @@ export async function middleware(request: NextRequest) {
     routes.disabled.routes.push("/auth/resetPassword*");
   }
 
-  if (getConfig("internal.setupStatus") == "FINISHED") {
-    routes.disabled.routes.push("/admin/setup");
-  }
-
   // prettier-ignore
   const rules = [
     // Disabled routes
     {
       condition: routes.disabled.contains(route),
       path: "/",
-    },
-    // Setup status
-    {
-      condition: getConfig("internal.setupStatus") == "STARTED" && route != "/auth/signUp",
-      path: "/auth/signUp",
-    },
-    {
-      condition: getConfig("internal.setupStatus") == "REGISTERED" && !routes.setupStatusRegistered.contains(route) && user?.isAdmin,
-      path: "/admin/setup",
     },
      // Authenticated state
      {

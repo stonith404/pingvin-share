@@ -2,7 +2,7 @@ export function getServerSideProps() {
   return {
     redirect: {
       permanent: false,
-      destination: "/admin/config/branding",
+      destination: "/admin/config/general",
     },
     props: {},
   };
