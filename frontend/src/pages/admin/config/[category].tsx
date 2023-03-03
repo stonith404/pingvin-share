@@ -131,7 +131,7 @@ export default function AppShellDemo() {
                 ))}
               </Stack>
               <Group mt="lg" position="right">
-                {categoryId == "email" && (
+                {categoryId == "smtp" && (
                   <TestEmailButton
                     configVariablesChanged={updatedConfigVariables.length != 0}
                     saveConfigVariables={saveConfigVariables}

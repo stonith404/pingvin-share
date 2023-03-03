@@ -51,7 +51,6 @@ const ResetPassword = () => {
       <Paper withBorder shadow="md" p={30} radius="md" mt="xl">
         <form
           onSubmit={form.onSubmit((values) => {
-            console.log(resetPasswordToken);
             authService
               .resetPassword(resetPasswordToken, values.password)
               .then(() => {

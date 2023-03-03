@@ -12,9 +12,6 @@ export class EmailService {
       throw new InternalServerErrorException("SMTP is disabled");
 
     return nodemailer.createTransport({
-      from: `"${this.config.get("general.appName")}" <${this.config.get(
-        "smtp.email"
-      )}>`,
       host: this.config.get("smtp.host"),
       port: this.config.get("smtp.port"),
       secure: this.config.get("smtp.port") == 465,
@@ -36,6 +33,9 @@ export class EmailService {
     const shareUrl = `${this.config.get("general.appUrl")}/share/${shareId}`;
 
     await this.getTransporter().sendMail({
+      from: `"${this.config.get("general.appName")}" <${this.config.get(
+        "smtp.email"
+      )}>`,
       to: recipientEmail,
       subject: this.config.get("email.shareRecipientsSubject"),
       text: this.config
@@ -50,6 +50,9 @@ export class EmailService {
     const shareUrl = `${this.config.get("general.appUrl")}/share/${shareId}`;
 
     await this.getTransporter().sendMail({
+      from: `"${this.config.get("general.appName")}" <${this.config.get(
+        "smtp.email"
+      )}>`,
       to: recipientEmail,
       subject: this.config.get("email.reverseShareSubject"),
       text: this.config
@@ -65,6 +68,9 @@ export class EmailService {
     )}/auth/resetPassword/${token}`;
 
     await this.getTransporter().sendMail({
+      from: `"${this.config.get("general.appName")}" <${this.config.get(
+        "smtp.email"
+      )}>`,
       to: recipientEmail,
       subject: this.config.get("email.resetPasswordSubject"),
       text: this.config
@@ -77,6 +83,9 @@ export class EmailService {
     const loginUrl = `${this.config.get("general.appUrl")}/auth/signIn`;
 
     await this.getTransporter().sendMail({
+      from: `"${this.config.get("general.appName")}" <${this.config.get(
+        "smtp.email"
+      )}>`,
       to: recipientEmail,
       subject: this.config.get("email.inviteSubject"),
       text: this.config
@@ -89,6 +98,9 @@ export class EmailService {
   async sendTestMail(recipientEmail: string) {
     try {
       await this.getTransporter().sendMail({
+      from: `"${this.config.get("general.appName")}" <${this.config.get(
+        "smtp.email"
+      )}>`,
         to: recipientEmail,
         subject: "Test email",
         text: "This is a test email",
