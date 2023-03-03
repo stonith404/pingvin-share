@@ -31,7 +31,6 @@ const configVariables: ConfigVariables = {
       secret: false,
     },
   },
-
   share: {
     allowRegistration: {
       description: "Whether registration is allowed",
@@ -165,7 +164,7 @@ type ConfigVariables = {
 
 const prisma = new PrismaClient();
 
-async function main() {
+async function seedConfigVariables() {
   for (const [category, configVariablesOfCategory] of Object.entries(
     configVariables
   )) {
@@ -191,39 +190,55 @@ async function main() {
       order++;
     }
   }
-
-  const configVariablesFromDatabase = await prisma.config.findMany();
-
-  // Delete the config variable if it doesn't exist anymore
-  //   for (const configVariableFromDatabase of configVariablesFromDatabase) {
-  //     const configVariable = configVariables.find(
-  //       (v) => v.key == configVariableFromDatabase.key
-  //     );
-  //     if (!configVariable) {
-  //       await prisma.config.delete({
-  //         where: { key: configVariableFromDatabase.key },
-  //       });
-
-  //       // Update the config variable if the metadata changed
-  //     } else if (
-  //       JSON.stringify({
-  //         ...configVariable,
-  //         key: configVariableFromDatabase.key,
-  //         value: configVariableFromDatabase.value,
-  //       }) != JSON.stringify(configVariableFromDatabase)
-  //     ) {
-  //       await prisma.config.update({
-  //         where: { key: configVariableFromDatabase.key },
-  //         data: {
-  //           ...configVariable,
-  //           key: configVariableFromDatabase.key,
-  //           value: configVariableFromDatabase.value,
-  //         },
-  //       });
-  //     }
-  //   }
 }
-main()
+
+async function migrateConfigVariables() {
+  const existingConfigVariables = await prisma.config.findMany();
+
+  for (const existingConfigVariable of existingConfigVariables) {
+    const configVariable =
+      configVariables[existingConfigVariable.category]?.[
+        existingConfigVariable.name
+      ];
+    if (!configVariable) {
+      await prisma.config.delete({
+        where: {
+          name_category: {
+            name: existingConfigVariable.name,
+            category: existingConfigVariable.category,
+          },
+        },
+      });
+
+      // Update the config variable if the metadata changed
+    } else if (
+      JSON.stringify({
+        ...configVariable,
+        name: existingConfigVariable.name,
+        category: existingConfigVariable.category,
+        value: existingConfigVariable.value,
+      }) != JSON.stringify(existingConfigVariable)
+    ) {
+      await prisma.config.update({
+        where: {
+          name_category: {
+            name: existingConfigVariable.name,
+            category: existingConfigVariable.category,
+          },
+        },
+        data: {
+          ...configVariable,
+          name: existingConfigVariable.name,
+          category: existingConfigVariable.category,
+          value: existingConfigVariable.value,
+        },
+      });
+    }
+  }
+}
+
+seedConfigVariables()
+  .then(() => migrateConfigVariables())
   .then(async () => {
     await prisma.$disconnect();
   })
