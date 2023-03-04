@@ -22,7 +22,6 @@ const Meta = ({
           description ?? "An open-source and self-hosted sharing platform."
         }
       />
-      <meta property="og:image" content="/img/opengraph-default.png" />
       <meta name="twitter:title" content={metaTitle} />
       <meta name="twitter:description" content={description} />
     </Head>

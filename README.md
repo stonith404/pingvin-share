@@ -27,7 +27,7 @@ Pingvin Share is self-hosted file sharing platform and an alternative for WeTran
 1. Download the `docker-compose.yml` file
 2. Run `docker-compose up -d`
 
-The website is now listening available on `http://localhost:3000`, have fun with Pingvin Share 🐧!
+The website is now listening on `http://localhost:3000`, have fun with Pingvin Share 🐧!
 
 ### Stand-alone Installation
 
@@ -57,7 +57,7 @@ npm run build
 pm2 start --name="pingvin-share-frontend" npm -- run start
 ```
 
-The website is now listening available on `http://localhost:3000`, have fun with Pingvin Share 🐧!
+The website is now listening on `http://localhost:3000`, have fun with Pingvin Share 🐧!
 
 ### Integrations
 
@@ -102,7 +102,12 @@ You can change the name of the app by visiting the admin configuration page and 
 
 #### Logo
 
-You can change the logo of the app by replacing the `logo.png` in the `/data` (or with the standalone installation `/backend/data`) folder with your own logo.
+You can change the logo of the app by replacing the images in the `/data/images` (or with the standalone installation `/frontend/public/img`) folder with your own logo. The folder contains the following images:
+
+- `logo.png` - The logo in the header and home page
+- `favicon.png` - The favicon
+- `opengraph.png` - The image used for sharing on social media
+- `icons/*` - The icons used for the PWA
 
 ## 🖤 Contribute
 

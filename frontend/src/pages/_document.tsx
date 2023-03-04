@@ -17,9 +17,9 @@ export default class _Document extends Document {
             href="/img/icons/icon-white-128x128.png"
           />
 
-          <meta property="og:image" content="/img/opengraph-default.png" />
+          <meta property="og:image" content="/img/opengraph.png" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:image" content="/img/opengraph-default.png" />
+          <meta name="twitter:image" content="/img/opengraph.png" />
           <meta name="robots" content="noindex" />
           <meta name="theme-color" content="#46509e" />
         </Head>
