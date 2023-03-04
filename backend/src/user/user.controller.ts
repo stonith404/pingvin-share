@@ -6,9 +6,11 @@ import {
   Param,
   Patch,
   Post,
+  Res,
   UseGuards,
 } from "@nestjs/common";
 import { User } from "@prisma/client";
+import { Response } from "express";
 import { GetUser } from "src/auth/decorator/getUser.decorator";
 import { AdministratorGuard } from "src/auth/guard/isAdmin.guard";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
@@ -40,7 +42,16 @@ export class UserController {
 
   @Delete("me")
   @UseGuards(JwtGuard)
-  async deleteCurrentUser(@GetUser() user: User) {
+  async deleteCurrentUser(
+    @GetUser() user: User,
+    @Res({ passthrough: true }) response: Response
+  ) {
+    response.cookie("access_token", "accessToken", { maxAge: -1 });
+    response.cookie("refresh_token", "", {
+      path: "/api/auth/token",
+      httpOnly: true,
+      maxAge: -1,
+    });
     return new UserDTO().from(await this.userService.delete(user.id));
   }
 
