@@ -35,7 +35,7 @@ const Upload = ({
   const [files, setFiles] = useState<FileUpload[]>([]);
   const [isUploading, setisUploading] = useState(false);
 
-  maxShareSize ??= parseInt(config.get("MAX_SHARE_SIZE"));
+  maxShareSize ??= parseInt(config.get("share.maxSize"));
 
   const uploadFiles = async (share: CreateShare) => {
     setisUploading(true);
@@ -146,7 +146,7 @@ const Upload = ({
         .completeShare(createdShare.id)
         .then((share) => {
           setisUploading(false);
-          showCompletedUploadModal(modals, share, config.get("APP_URL"));
+          showCompletedUploadModal(modals, share, config.get("general.appUrl"));
           setFiles([]);
         })
         .catch(() =>
@@ -168,9 +168,9 @@ const Upload = ({
               {
                 isUserSignedIn: user ? true : false,
                 isReverseShare,
-                appUrl: config.get("APP_URL"),
+                appUrl: config.get("general.appUrl"),
                 allowUnauthenticatedShares: config.get(
-                  "ALLOW_UNAUTHENTICATED_SHARES"
+                  "share.allowUnauthenticatedShares"
                 ),
                 enableEmailRecepients: config.get(
                   "ENABLE_SHARE_EMAIL_RECIPIENTS"

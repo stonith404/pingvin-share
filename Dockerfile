@@ -35,10 +35,9 @@ RUN apt-get update && apt-get install -y openssl
 
 WORKDIR /opt/app/frontend
 COPY --from=frontend-builder /opt/app/public ./public
-# Automatically leverage output traces to reduce image size
-# https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=frontend-builder /opt/app/.next/standalone ./
 COPY --from=frontend-builder /opt/app/.next/static ./.next/static
+COPY --from=frontend-builder /opt/app/public/img /tmp/img
 
 WORKDIR /opt/app/backend
 COPY --from=backend-builder /opt/app/node_modules ./node_modules
@@ -48,4 +47,4 @@ COPY --from=backend-builder /opt/app/package.json ./
 
 WORKDIR /opt/app
 EXPOSE 3000
-CMD node frontend/server.js & cd backend && npm run prod
+CMD cp -rn /tmp/img /opt/app/frontend/public && node frontend/server.js & cd backend && npm run prod

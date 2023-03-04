@@ -1,8 +1,6 @@
 export const configVariableToFriendlyName = (variable: string) => {
-  return variable
-    .split("_")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join(" ");
+  const splitted = variable.split(/(?=[A-Z])/).join(" ");
+  return splitted.charAt(0).toUpperCase() + splitted.slice(1);
 };
 
 export const capitalizeFirstLetter = (string: string) => {

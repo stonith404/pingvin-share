@@ -41,8 +41,12 @@ const SignUpForm = () => {
     await authService
       .signUp(email, username, password)
       .then(async () => {
-        await refreshUser();
-        router.replace("/upload");
+        const user = await refreshUser();
+        if (user?.isAdmin) {
+          router.replace("/admin/intro");
+        } else {
+          router.replace("/upload");
+        }
       })
       .catch(toast.axiosError);
   };
@@ -52,7 +56,7 @@ const SignUpForm = () => {
       <Title order={2} align="center" weight={900}>
         Sign up
       </Title>
-      {config.get("ALLOW_REGISTRATION") && (
+      {config.get("share.allowRegistration") && (
         <Text color="dimmed" size="sm" align="center" mt={5}>
           You have an account already?{" "}
           <Anchor component={Link} href={"signIn"} size="sm">

@@ -84,7 +84,9 @@ const MyShares = () => {
                         onClick={() => {
                           if (window.isSecureContext) {
                             clipboard.copy(
-                              `${config.get("APP_URL")}/share/${share.id}`
+                              `${config.get("general.appUrl")}/share/${
+                                share.id
+                              }`
                             );
                             toast.success(
                               "Your link was copied to the keyboard."
@@ -93,7 +95,7 @@ const MyShares = () => {
                             showShareLinkModal(
                               modals,
                               share.id,
-                              config.get("APP_URL")
+                              config.get("general.appUrl")
                             );
                           }
                         }}

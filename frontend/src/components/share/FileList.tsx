@@ -33,9 +33,9 @@ const FileList = ({
   const modals = useModals();
 
   const copyFileLink = (file: FileMetaData) => {
-    const link = `${config.get("APP_URL")}/api/shares/${share.id}/files/${
-      file.id
-    }`;
+    const link = `${config.get("general.appUrl")}/api/shares/${
+      share.id
+    }/files/${file.id}`;
 
     if (window.isSecureContext) {
       clipboard.copy(link);

@@ -14,9 +14,9 @@ export class ConfigService {
     private prisma: PrismaService
   ) {}
 
-  get(key: string): any {
+  get(key: `${string}.${string}`): any {
     const configVariable = this.configVariables.filter(
-      (variable) => variable.key == key
+      (variable) => `${variable.category}.${variable.name}` == key
     )[0];
 
     if (!configVariable) throw new Error(`Config variable ${key} not found`);
@@ -27,30 +27,51 @@ export class ConfigService {
       return configVariable.value;
   }
 
-  async listForAdmin() {
-    return await this.prisma.config.findMany({
+  async getByCategory(category: string) {
+    const configVariables = await this.prisma.config.findMany({
       orderBy: { order: "asc" },
-      where: { locked: { equals: false } },
+      where: { category, locked: { equals: false } },
+    });
+
+    return configVariables.map((variable) => {
+      return {
+        key: `${variable.category}.${variable.name}`,
+        ...variable,
+      };
     });
   }
 
   async list() {
-    return await this.prisma.config.findMany({
+    const configVariables = await this.prisma.config.findMany({
       where: { secret: { equals: false } },
+    });
+
+    return configVariables.map((variable) => {
+      return {
+        key: `${variable.category}.${variable.name}`,
+        ...variable,
+      };
     });
   }
 
   async updateMany(data: { key: string; value: string | number | boolean }[]) {
+    const response: Config[] = [];
+
     for (const variable of data) {
-      await this.update(variable.key, variable.value);
+      response.push(await this.update(variable.key, variable.value));
     }
 
-    return data;
+    return response;
   }
 
   async update(key: string, value: string | number | boolean) {
     const configVariable = await this.prisma.config.findUnique({
-      where: { key },
+      where: {
+        name_category: {
+          category: key.split(".")[0],
+          name: key.split(".")[1],
+        },
+      },
     });
 
     if (!configVariable || configVariable.locked)
@@ -67,19 +88,13 @@ export class ConfigService {
     }
 
     const updatedVariable = await this.prisma.config.update({
-      where: { key },
+      where: {
+        name_category: {
+          category: key.split(".")[0],
+          name: key.split(".")[1],
+        },
+      },
       data: { value: value.toString() },
-    });
-
-    this.configVariables = await this.prisma.config.findMany();
-
-    return updatedVariable;
-  }
-
-  async changeSetupStatus(status: "STARTED" | "REGISTERED" | "FINISHED") {
-    const updatedVariable = await this.prisma.config.update({
-      where: { key: "SETUP_STATUS" },
-      data: { value: status },
     });
 
     this.configVariables = await this.prisma.config.findMany();

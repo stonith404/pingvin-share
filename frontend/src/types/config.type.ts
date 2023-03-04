@@ -10,11 +10,11 @@ export type UpdateConfig = {
 };
 
 export type AdminConfig = Config & {
+  name: string;
   updatedAt: Date;
   secret: boolean;
   description: string;
   obscured: boolean;
-  category: string;
 };
 
 export type AdminConfigGroupedByCategory = {
@@ -27,6 +27,11 @@ export type AdminConfigGroupedByCategory = {
       category: string;
     }
   ];
+};
+
+export type ConfigVariablesCategory = {
+  category: string;
+  count: number;
 };
 
 export type ConfigHook = {

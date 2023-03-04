@@ -24,7 +24,7 @@ export class ReverseShareService {
       )
       .toDate();
 
-    const globalMaxShareSize = this.config.get("MAX_SHARE_SIZE");
+    const globalMaxShareSize = this.config.get("share.maxSize");
 
     if (globalMaxShareSize < data.maxShareSize)
       throw new BadRequestException(

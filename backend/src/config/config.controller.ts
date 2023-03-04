@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Patch, Post, UseGuards } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Patch,
+  Post,
+  UseGuards,
+} from "@nestjs/common";
 import { SkipThrottle } from "@nestjs/throttler";
 import { AdministratorGuard } from "src/auth/guard/isAdmin.guard";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
@@ -22,24 +30,20 @@ export class ConfigController {
     return new ConfigDTO().fromList(await this.configService.list());
   }
 
-  @Get("admin")
+  @Get("admin/:category")
   @UseGuards(JwtGuard, AdministratorGuard)
-  async listForAdmin() {
+  async getByCategory(@Param("category") category: string) {
     return new AdminConfigDTO().fromList(
-      await this.configService.listForAdmin()
+      await this.configService.getByCategory(category)
     );
   }
 
   @Patch("admin")
   @UseGuards(JwtGuard, AdministratorGuard)
   async updateMany(@Body() data: UpdateConfigDTO[]) {
-    await this.configService.updateMany(data);
-  }
-
-  @Post("admin/finishSetup")
-  @UseGuards(JwtGuard, AdministratorGuard)
-  async finishSetup() {
-    return await this.configService.changeSetupStatus("FINISHED");
+    return new AdminConfigDTO().fromList(
+      await this.configService.updateMany(data)
+    );
   }
 
   @Post("admin/testEmail")

@@ -8,11 +8,11 @@ import {
   ThemeIcon,
   Title,
 } from "@mantine/core";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { TbCheck } from "react-icons/tb";
+import Logo from "../components/Logo";
 import Meta from "../components/Meta";
 import useUser from "../hooks/user.hook";
 
@@ -150,12 +150,7 @@ export default function Home() {
             </Group>
           </div>
           <Group className={classes.image} align="center">
-            <Image
-              src="/img/logo.svg"
-              alt="Pingvin Share Logo"
-              width={200}
-              height={200}
-            />
+            <Logo width={200} height={200} />
           </Group>
         </div>
       </Container>

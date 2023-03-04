@@ -25,7 +25,7 @@ export class AuthService {
   ) {}
 
   async signUp(dto: AuthRegisterDTO) {
-    const isFirstUser = this.config.get("SETUP_STATUS") == "STARTED";
+    const isFirstUser = (await this.prisma.user.count()) == 0;
 
     const hash = await argon.hash(dto.password);
     try {
@@ -37,10 +37,6 @@ export class AuthService {
           isAdmin: isFirstUser,
         },
       });
-
-      if (isFirstUser) {
-        await this.config.changeSetupStatus("REGISTERED");
-      }
 
       const { refreshToken, refreshTokenId } = await this.createRefreshToken(
         user.id
@@ -161,7 +157,7 @@ export class AuthService {
       },
       {
         expiresIn: "15min",
-        secret: this.config.get("JWT_SECRET"),
+        secret: this.config.get("internal.jwtSecret"),
       }
     );
   }

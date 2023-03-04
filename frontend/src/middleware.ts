@@ -15,9 +15,8 @@ export async function middleware(request: NextRequest) {
   const routes = {
     unauthenticated: new Routes(["/auth/*", "/"]),
     public: new Routes(["/share/*", "/upload/*"]),
-    setupStatusRegistered: new Routes(["/auth/*", "/admin/setup"]),
     admin: new Routes(["/admin/*"]),
-    account: new Routes(["/account/*"]),
+    account: new Routes(["/account*"]),
     disabled: new Routes([]),
   };
 
@@ -45,20 +44,16 @@ export async function middleware(request: NextRequest) {
     user = null;
   }
 
-  if (!getConfig("ALLOW_REGISTRATION")) {
+  if (!getConfig("share.allowRegistration")) {
     routes.disabled.routes.push("/auth/signUp");
   }
 
-  if (getConfig("ALLOW_UNAUTHENTICATED_SHARES")) {
+  if (getConfig("share.allowUnauthenticatedShares")) {
     routes.public.routes = ["*"];
   }
 
-  if (!getConfig("SMTP_ENABLED")) {
+  if (!getConfig("smtp.enabled")) {
     routes.disabled.routes.push("/auth/resetPassword*");
-  }
-
-  if (getConfig("SETUP_STATUS") == "FINISHED") {
-    routes.disabled.routes.push("/admin/setup");
   }
 
   // prettier-ignore
@@ -68,18 +63,9 @@ export async function middleware(request: NextRequest) {
       condition: routes.disabled.contains(route),
       path: "/",
     },
-    // Setup status
-    {
-      condition: getConfig("SETUP_STATUS") == "STARTED" && route != "/auth/signUp",
-      path: "/auth/signUp",
-    },
-    {
-      condition: getConfig("SETUP_STATUS") == "REGISTERED" && !routes.setupStatusRegistered.contains(route) && user?.isAdmin,
-      path: "/admin/setup",
-    },
      // Authenticated state
      {
-      condition: user && routes.unauthenticated.contains(route) && !getConfig("ALLOW_UNAUTHENTICATED_SHARES"),
+      condition: user && routes.unauthenticated.contains(route) && !getConfig("share.allowUnauthenticatedShares"),
       path: "/upload",
     },
     // Unauthenticated state
@@ -98,7 +84,7 @@ export async function middleware(request: NextRequest) {
     },
     // Home page
     {
-      condition: (!getConfig("SHOW_HOME_PAGE") || user) && route == "/",
+      condition: (!getConfig("general.showHomePage") || user) && route == "/",
       path: "/upload",
     },
   ];

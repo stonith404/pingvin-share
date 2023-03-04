@@ -8,16 +8,16 @@ export class EmailService {
   constructor(private config: ConfigService) {}
 
   getTransporter() {
-    if (!this.config.get("SMTP_ENABLED"))
+    if (!this.config.get("smtp.enabled"))
       throw new InternalServerErrorException("SMTP is disabled");
 
     return nodemailer.createTransport({
-      host: this.config.get("SMTP_HOST"),
-      port: parseInt(this.config.get("SMTP_PORT")),
-      secure: parseInt(this.config.get("SMTP_PORT")) == 465,
+      host: this.config.get("smtp.host"),
+      port: this.config.get("smtp.port"),
+      secure: this.config.get("smtp.port") == 465,
       auth: {
-        user: this.config.get("SMTP_USERNAME"),
-        pass: this.config.get("SMTP_PASSWORD"),
+        user: this.config.get("smtp.username"),
+        pass: this.config.get("smtp.password"),
       },
     });
   }
@@ -27,17 +27,19 @@ export class EmailService {
     shareId: string,
     creator?: User
   ) {
-    if (!this.config.get("ENABLE_SHARE_EMAIL_RECIPIENTS"))
+    if (!this.config.get("email.enableShareEmailRecipients"))
       throw new InternalServerErrorException("Email service disabled");
 
-    const shareUrl = `${this.config.get("APP_URL")}/share/${shareId}`;
+    const shareUrl = `${this.config.get("general.appUrl")}/share/${shareId}`;
 
     await this.getTransporter().sendMail({
-      from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
+      from: `"${this.config.get("general.appName")}" <${this.config.get(
+        "smtp.email"
+      )}>`,
       to: recipientEmail,
-      subject: this.config.get("SHARE_RECEPIENTS_EMAIL_SUBJECT"),
+      subject: this.config.get("email.shareRecipientsSubject"),
       text: this.config
-        .get("SHARE_RECEPIENTS_EMAIL_MESSAGE")
+        .get("email.shareRecipientsMessage")
         .replaceAll("\\n", "\n")
         .replaceAll("{creator}", creator?.username ?? "Someone")
         .replaceAll("{shareUrl}", shareUrl),
@@ -45,14 +47,16 @@ export class EmailService {
   }
 
   async sendMailToReverseShareCreator(recipientEmail: string, shareId: string) {
-    const shareUrl = `${this.config.get("APP_URL")}/share/${shareId}`;
+    const shareUrl = `${this.config.get("general.appUrl")}/share/${shareId}`;
 
     await this.getTransporter().sendMail({
-      from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
+      from: `"${this.config.get("general.appName")}" <${this.config.get(
+        "smtp.email"
+      )}>`,
       to: recipientEmail,
-      subject: this.config.get("REVERSE_SHARE_EMAIL_SUBJECT"),
+      subject: this.config.get("email.reverseShareSubject"),
       text: this.config
-        .get("REVERSE_SHARE_EMAIL_MESSAGE")
+        .get("email.reverseShareMessage")
         .replaceAll("\\n", "\n")
         .replaceAll("{shareUrl}", shareUrl),
     });
@@ -60,28 +64,32 @@ export class EmailService {
 
   async sendResetPasswordEmail(recipientEmail: string, token: string) {
     const resetPasswordUrl = `${this.config.get(
-      "APP_URL"
+      "general.appUrl"
     )}/auth/resetPassword/${token}`;
 
     await this.getTransporter().sendMail({
-      from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
+      from: `"${this.config.get("general.appName")}" <${this.config.get(
+        "smtp.email"
+      )}>`,
       to: recipientEmail,
-      subject: this.config.get("RESET_PASSWORD_EMAIL_SUBJECT"),
+      subject: this.config.get("email.resetPasswordSubject"),
       text: this.config
-        .get("RESET_PASSWORD_EMAIL_MESSAGE")
+        .get("email.resetPasswordMessage")
         .replaceAll("{url}", resetPasswordUrl),
     });
   }
 
   async sendInviteEmail(recipientEmail: string, password: string) {
-    const loginUrl = `${this.config.get("APP_URL")}/auth/signIn`;
+    const loginUrl = `${this.config.get("general.appUrl")}/auth/signIn`;
 
     await this.getTransporter().sendMail({
-      from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
+      from: `"${this.config.get("general.appName")}" <${this.config.get(
+        "smtp.email"
+      )}>`,
       to: recipientEmail,
-      subject: this.config.get("INVITE_EMAIL_SUBJECT"),
+      subject: this.config.get("email.inviteSubject"),
       text: this.config
-        .get("INVITE_EMAIL_MESSAGE")
+        .get("email.inviteMessage")
         .replaceAll("{url}", loginUrl)
         .replaceAll("{password}", password),
     });
@@ -90,7 +98,9 @@ export class EmailService {
   async sendTestMail(recipientEmail: string) {
     try {
       await this.getTransporter().sendMail({
-        from: `"Pingvin Share" <${this.config.get("SMTP_EMAIL")}>`,
+        from: `"${this.config.get("general.appName")}" <${this.config.get(
+          "smtp.email"
+        )}>`,
         to: recipientEmail,
         subject: "Test email",
         text: "This is a test email",

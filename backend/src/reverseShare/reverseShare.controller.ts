@@ -31,7 +31,7 @@ export class ReverseShareController {
   async create(@Body() body: CreateReverseShareDTO, @GetUser() user: User) {
     const token = await this.reverseShareService.create(body, user.id);
 
-    const link = `${this.config.get("APP_URL")}/upload/${token}`;
+    const link = `${this.config.get("general.appUrl")}/upload/${token}`;
 
     return { token, link };
   }
