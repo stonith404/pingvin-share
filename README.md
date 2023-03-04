@@ -98,7 +98,7 @@ docker compose up -d
 
 #### Name
 
-You can change the name of the app by visiting the admin configuration page and changing the `App Name` setting.
+You can change the name of the app by visiting the admin configuration page and changing the `App Name`.
 
 #### Logo
 

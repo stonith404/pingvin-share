@@ -41,21 +41,6 @@ export class ConfigService {
     });
   }
 
-  async getCategories() {
-    const categories = await this.prisma.config.groupBy({
-      by: ["category"],
-      where: { locked: { equals: false } },
-      _count: { category: true },
-    });
-
-    return categories.map((category) => {
-      return {
-        category: category.category,
-        count: category._count.category,
-      };
-    });
-  }
-
   async list() {
     const configVariables = await this.prisma.config.findMany({
       where: { secret: { equals: false } },
@@ -70,11 +55,13 @@ export class ConfigService {
   }
 
   async updateMany(data: { key: string; value: string | number | boolean }[]) {
+    const response: Config[] = [];
+
     for (const variable of data) {
-      await this.update(variable.key, variable.value);
+      response.push(await this.update(variable.key, variable.value));
     }
 
-    return data;
+    return response;
   }
 
   async update(key: string, value: string | number | boolean) {

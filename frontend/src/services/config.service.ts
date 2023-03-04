@@ -1,9 +1,5 @@
 import axios from "axios";
-import Config, {
-  AdminConfig,
-  ConfigVariablesCategory,
-  UpdateConfig
-} from "../types/config.type";
+import Config, { AdminConfig, UpdateConfig } from "../types/config.type";
 import api from "./api.service";
 
 const list = async (): Promise<Config[]> => {
@@ -12,11 +8,6 @@ const list = async (): Promise<Config[]> => {
 
 const getByCategory = async (category: string): Promise<AdminConfig[]> => {
   return (await api.get(`/configs/admin/${category}`)).data;
-};
-
-const getCategories = async (): Promise<ConfigVariablesCategory[]> => {
-return (await api.get("/configs/admin/categories")).data;
-
 };
 
 const updateMany = async (data: UpdateConfig[]): Promise<AdminConfig[]> => {
@@ -58,7 +49,6 @@ const isNewReleaseAvailable = async () => {
 export default {
   list,
   getByCategory,
-  getCategories,
   updateMany,
   get,
   finishSetup,

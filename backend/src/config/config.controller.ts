@@ -38,16 +38,12 @@ export class ConfigController {
     );
   }
 
-  @Get("admin/categories")
-  @UseGuards(JwtGuard, AdministratorGuard)
-  async getCategories() {
-    return await this.configService.getCategories();
-  }
-
   @Patch("admin")
   @UseGuards(JwtGuard, AdministratorGuard)
   async updateMany(@Body() data: UpdateConfigDTO[]) {
-    await this.configService.updateMany(data);
+    return new AdminConfigDTO().fromList(
+      await this.configService.updateMany(data)
+    );
   }
 
   @Post("admin/testEmail")
