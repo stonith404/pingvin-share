@@ -1,3 +1,16 @@
+## [0.11.0](https://github.com/stonith404/pingvin-share/compare/v0.10.2...v0.11.0) (2023-03-04)
+
+
+### Features
+
+* custom branding ([#112](https://github.com/stonith404/pingvin-share/issues/112)) ([fddad3e](https://github.com/stonith404/pingvin-share/commit/fddad3ef708c27052a8bf46f3076286d102f6d7e))
+* invite new user with email ([f984050](https://github.com/stonith404/pingvin-share/commit/f9840505b82fcb04364a79576f186b76cc75f5c0))
+
+
+### Bug Fixes
+
+* frontend error when user deleted ([0317f3a](https://github.com/stonith404/pingvin-share/commit/0317f3a508dc88ffe2c33413704f7df03a2372ea))
+
 ### [0.10.2](https://github.com/stonith404/pingvin-share/compare/v0.10.1...v0.10.2) (2023-02-13)
 
 
