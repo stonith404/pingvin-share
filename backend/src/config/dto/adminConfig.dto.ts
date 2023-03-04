@@ -17,7 +17,6 @@ export class AdminConfigDTO extends ConfigDTO {
   @Expose()
   obscured: boolean;
 
-
   from(partial: Partial<AdminConfigDTO>) {
     return plainToClass(AdminConfigDTO, partial, {
       excludeExtraneousValues: true,

@@ -79,12 +79,13 @@ const Body = ({
               })}
             />
           )}
-          {form.values.setPasswordManually || !smtpEnabled && (
-            <PasswordInput
-              label="Password"
-              {...form.getInputProps("password")}
-            />
-          )}
+          {form.values.setPasswordManually ||
+            (!smtpEnabled && (
+              <PasswordInput
+                label="Password"
+                {...form.getInputProps("password")}
+              />
+            ))}
           <Switch
             styles={{
               body: {

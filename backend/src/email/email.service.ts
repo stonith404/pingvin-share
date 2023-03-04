@@ -98,9 +98,9 @@ export class EmailService {
   async sendTestMail(recipientEmail: string) {
     try {
       await this.getTransporter().sendMail({
-      from: `"${this.config.get("general.appName")}" <${this.config.get(
-        "smtp.email"
-      )}>`,
+        from: `"${this.config.get("general.appName")}" <${this.config.get(
+          "smtp.email"
+        )}>`,
         to: recipientEmail,
         subject: "Test email",
         text: "This is a test email",
