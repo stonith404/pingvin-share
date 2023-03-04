@@ -5,7 +5,6 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { Config } from "@prisma/client";
-import * as fs from "fs";
 import { PrismaService } from "src/prisma/prisma.service";
 
 @Injectable()
@@ -114,9 +113,5 @@ export class ConfigService {
     this.configVariables = await this.prisma.config.findMany();
 
     return updatedVariable;
-  }
-
-  getLogo() {
-    return fs.createReadStream(`./data/logo.png`);
   }
 }

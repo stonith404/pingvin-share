@@ -7,6 +7,7 @@ services:
       - 3000:3000
     volumes:
       - "./data:/opt/app/backend/data"
+      - "./data/images:/opt/app/frontend/public/img"
 # Optional: If you add ClamAV, uncomment the following to have ClamAV start first.
 #    depends_on:
 #      clamav:

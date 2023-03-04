@@ -11,7 +11,11 @@ export default class _Document extends Document {
       <Html>
         <Head>
           <link rel="manifest" href="/manifest.json" />
-          <link rel="apple-touch-icon" href="/icons/icon-white-128x128.png" />
+          <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+          <link
+            rel="apple-touch-icon"
+            href="/img/icons/icon-white-128x128.png"
+          />
 
           <meta property="og:image" content="/img/opengraph-default.png" />
           <meta name="twitter:card" content="summary_large_image" />
