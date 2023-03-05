@@ -1,3 +1,10 @@
+### [0.11.1](https://github.com/stonith404/pingvin-share/compare/v0.11.0...v0.11.1) (2023-03-05)
+
+
+### Bug Fixes
+
+* old config variable prevents to create a share ([8b77e81](https://github.com/stonith404/pingvin-share/commit/8b77e81d4c1b8a2bf798595f5a66079c40734e09))
+
 ## [0.11.0](https://github.com/stonith404/pingvin-share/compare/v0.10.2...v0.11.0) (2023-03-04)
 
 
