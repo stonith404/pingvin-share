@@ -46,6 +46,12 @@ const isNewReleaseAvailable = async () => {
   return response.tag_name.replace("v", "") != process.env.VERSION;
 };
 
+const changeLogo = async (file: File) => {
+  const form = new FormData();
+  form.append("file", file);
+
+  await api.post("/configs/admin/logo", form);
+};
 export default {
   list,
   getByCategory,
@@ -54,4 +60,5 @@ export default {
   finishSetup,
   sendTestEmail,
   isNewReleaseAvailable,
+  changeLogo,
 };

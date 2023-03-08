@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import AdminConfigInput from "../../../components/admin/configuration/AdminConfigInput";
 import ConfigurationHeader from "../../../components/admin/configuration/ConfigurationHeader";
 import ConfigurationNavBar from "../../../components/admin/configuration/ConfigurationNavBar";
+import LogoConfigInput from "../../../components/admin/configuration/LogoConfigInput";
 import TestEmailButton from "../../../components/admin/configuration/TestEmailButton";
 import CenterLoader from "../../../components/core/CenterLoader";
 import Meta from "../../../components/Meta";
@@ -36,22 +37,38 @@ export default function AppShellDemo() {
   const isMobile = useMediaQuery("(max-width: 560px)");
   const config = useConfig();
 
-  const categoryId = router.query.category as string;
+  const categoryId = (router.query.category as string | undefined) ?? "general";
 
   const [configVariables, setConfigVariables] = useState<AdminConfig[]>();
   const [updatedConfigVariables, setUpdatedConfigVariables] = useState<
     UpdateConfig[]
   >([]);
 
+  const [logo, setLogo] = useState<File | null>(null);
+
   const saveConfigVariables = async () => {
-    await configService
-      .updateMany(updatedConfigVariables)
-      .then(() => {
-        setUpdatedConfigVariables([]);
-        toast.success("Configurations updated successfully");
-      })
-      .catch(toast.axiosError);
-    config.refresh();
+    if (logo) {
+      configService
+        .changeLogo(logo)
+        .then(() => {
+          setLogo(null);
+          toast.success(
+            "Logo updated successfully. It may take a few minutes to update on the website."
+          );
+        })
+        .catch(toast.axiosError);
+    }
+
+    if (updatedConfigVariables.length > 0) {
+      await configService
+        .updateMany(updatedConfigVariables)
+        .then(() => {
+          setUpdatedConfigVariables([]);
+          toast.success("Configurations updated successfully");
+        })
+        .catch(toast.axiosError);
+      config.refresh();
+    }
   };
 
   const updateConfigVariable = (configVariable: UpdateConfig) => {
@@ -129,6 +146,9 @@ export default function AppShellDemo() {
                     </Box>
                   </Group>
                 ))}
+                {categoryId == "general" && (
+                  <LogoConfigInput logo={logo} setLogo={setLogo} />
+                )}
               </Stack>
               <Group mt="lg" position="right">
                 {categoryId == "smtp" && (

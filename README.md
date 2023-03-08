@@ -96,18 +96,7 @@ docker compose up -d
 
 ### Custom branding
 
-#### Name
-
-You can change the name of the app by visiting the admin configuration page and changing the `App Name`.
-
-#### Logo
-
-You can change the logo of the app by replacing the images in the `/data/images` (or with the standalone installation `/frontend/public/img`) folder with your own logo. The folder contains the following images:
-
-- `logo.png` - The logo in the header and home page
-- `favicon.png` - The favicon
-- `opengraph.png` - The image used for sharing on social media
-- `icons/*` - The icons used for the PWA
+You can change the name and the logo of the app by visiting the admin configuration page.
 
 ## 🖤 Contribute
 

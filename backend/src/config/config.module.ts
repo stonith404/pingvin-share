@@ -3,6 +3,7 @@ import { EmailModule } from "src/email/email.module";
 import { PrismaService } from "src/prisma/prisma.service";
 import { ConfigController } from "./config.controller";
 import { ConfigService } from "./config.service";
+import { LogoService } from "./logo.service";
 
 @Global()
 @Module({
@@ -16,6 +17,7 @@ import { ConfigService } from "./config.service";
       inject: [PrismaService],
     },
     ConfigService,
+    LogoService,
   ],
   controllers: [ConfigController],
   exports: [ConfigService],

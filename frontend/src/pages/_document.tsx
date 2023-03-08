@@ -12,14 +12,8 @@ export default class _Document extends Document {
         <Head>
           <link rel="manifest" href="/manifest.json" />
           <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
-          <link
-            rel="apple-touch-icon"
-            href="/img/icons/icon-white-128x128.png"
-          />
+          <link rel="apple-touch-icon" href="/img/icons/icon-128x128.png" />
 
-          <meta property="og:image" content="/img/opengraph.png" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:image" content="/img/opengraph.png" />
           <meta name="robots" content="noindex" />
           <meta name="theme-color" content="#46509e" />
         </Head>
