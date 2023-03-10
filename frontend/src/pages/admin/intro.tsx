@@ -43,7 +43,7 @@ const Intro = () => {
           <Text>Enough talked, have fun with Pingvin Share!</Text>
           <Text mt="lg">How to you want to continue?</Text>
           <Stack>
-            <Button href="/admin/config" component={Link}>
+            <Button href="/admin/config/general" component={Link}>
               Customize configuration
             </Button>
             <Button href="/" component={Link} variant="light">

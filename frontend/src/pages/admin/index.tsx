@@ -41,7 +41,7 @@ const Admin = () => {
     {
       title: "Configuration",
       icon: TbSettings,
-      route: "/admin/config",
+      route: "/admin/config/general",
     },
   ]);
 
