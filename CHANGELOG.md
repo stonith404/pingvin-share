@@ -1,3 +1,16 @@
+## [0.12.0](https://github.com/stonith404/pingvin-share/compare/v0.11.1...v0.12.0) (2023-03-10)
+
+
+### Features
+
+* ability to change logo in frontend ([8403d7e](https://github.com/stonith404/pingvin-share/commit/8403d7e14ded801c3842a9b3fd87c3f6824c519e))
+
+
+### Bug Fixes
+
+* crypto is not defined ([8f71fd3](https://github.com/stonith404/pingvin-share/commit/8f71fd343506506532c1a24a4c66a16b1021705f))
+* home page shown even if disabled ([3ad6b03](https://github.com/stonith404/pingvin-share/commit/3ad6b03b6bd80168870049582683077b689fa548))
+
 ### [0.11.1](https://github.com/stonith404/pingvin-share/compare/v0.11.0...v0.11.1) (2023-03-05)
 
 
