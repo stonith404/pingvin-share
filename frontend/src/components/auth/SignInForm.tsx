@@ -32,11 +32,6 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
   const validationSchema = yup.object().shape({
     emailOrUsername: yup.string().required(),
     password: yup.string().min(8).required(),
-    totp: yup.string().when("totpRequired", {
-      is: true,
-      then: yup.string().min(6).max(6).required(),
-      otherwise: yup.string(),
-    }),
   });
 
   const form = useForm({
@@ -79,8 +74,8 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
         router.replace(redirectPath);
       })
       .catch((error) => {
-        if (error?.response?.data?.message == "Login token expired") {
-          toast.error("Login token expired");
+        if (error?.response?.data?.error == "share_password_required") {
+          toast.axiosError(error);
           // Refresh the page to start over
           window.location.reload();
         }

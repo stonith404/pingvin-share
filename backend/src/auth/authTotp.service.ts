@@ -42,7 +42,7 @@ export class AuthTotpService {
       throw new UnauthorizedException("Invalid login token");
 
     if (token.expiresAt < new Date())
-      throw new UnauthorizedException("Login token expired");
+      throw new UnauthorizedException("Login token expired", "token_expired");
 
     // Check the TOTP code
     const { totpSecret } = await this.prisma.user.findUnique({
