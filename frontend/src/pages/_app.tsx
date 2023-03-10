@@ -6,7 +6,7 @@ import {
 } from "@mantine/core";
 import { useColorScheme } from "@mantine/hooks";
 import { ModalsProvider } from "@mantine/modals";
-import { NotificationsProvider } from "@mantine/notifications";
+import { Notifications } from "@mantine/notifications";
 import axios from "axios";
 import { getCookie, setCookie } from "cookies-next";
 import { GetServerSidePropsContext } from "next";
@@ -76,40 +76,39 @@ function App({ Component, pageProps }: AppProps) {
         toggleColorScheme={toggleColorScheme}
       >
         <GlobalStyle />
-        <NotificationsProvider>
-          <ModalsProvider>
-            <ConfigContext.Provider
+        <Notifications />
+        <ModalsProvider>
+          <ConfigContext.Provider
+            value={{
+              configVariables,
+              refresh: async () => {
+                setConfigVariables(await configService.list());
+              },
+            }}
+          >
+            <UserContext.Provider
               value={{
-                configVariables,
-                refresh: async () => {
-                  setConfigVariables(await configService.list());
+                user,
+                refreshUser: async () => {
+                  const user = await userService.getCurrentUser();
+                  setUser(user);
+                  return user;
                 },
               }}
             >
-              <UserContext.Provider
-                value={{
-                  user,
-                  refreshUser: async () => {
-                    const user = await userService.getCurrentUser();
-                    setUser(user);
-                    return user;
-                  },
-                }}
-              >
-                {excludeDefaultLayoutRoutes.includes(route) ? (
-                  <Component {...pageProps} />
-                ) : (
-                  <>
-                    <Header />
-                    <Container>
-                      <Component {...pageProps} />
-                    </Container>
-                  </>
-                )}
-              </UserContext.Provider>
-            </ConfigContext.Provider>
-          </ModalsProvider>
-        </NotificationsProvider>
+              {excludeDefaultLayoutRoutes.includes(route) ? (
+                <Component {...pageProps} />
+              ) : (
+                <>
+                  <Header />
+                  <Container>
+                    <Component {...pageProps} />
+                  </Container>
+                </>
+              )}
+            </UserContext.Provider>
+          </ConfigContext.Provider>
+        </ModalsProvider>
       </ColorSchemeProvider>
     </MantineProvider>
   );

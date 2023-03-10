@@ -125,7 +125,7 @@ const Upload = ({
         toast.error(
           `${fileErrorCount} file(s) failed to upload. Trying again.`,
           {
-            disallowClose: true,
+            withCloseButton: false,
             autoClose: false,
           }
         );

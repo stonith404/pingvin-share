@@ -20,13 +20,13 @@ const useStyles = createStyles((theme) => ({
   inner: {
     display: "flex",
     justifyContent: "space-between",
-    paddingTop: theme.spacing.xl * 4,
-    paddingBottom: theme.spacing.xl * 4,
+    paddingTop: `calc(${theme.spacing.md} * 4)`,
+    paddingBottom: `calc(${theme.spacing.md} * 4)`,
   },
 
   content: {
     maxWidth: 480,
-    marginRight: theme.spacing.xl * 3,
+    marginRight: `calc(${theme.spacing.md} * 3)`,
 
     [theme.fn.smallerThan("md")]: {
       maxWidth: "100%",

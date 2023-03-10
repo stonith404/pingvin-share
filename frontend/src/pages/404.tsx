@@ -1,14 +1,13 @@
-import React from "react";
 import {
-  createStyles,
-  Title,
-  Text,
   Button,
   Container,
+  createStyles,
   Group,
+  Text,
+  Title,
 } from "@mantine/core";
-import Meta from "../components/Meta";
 import Link from "next/link";
+import Meta from "../components/Meta";
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -21,7 +20,7 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 900,
     fontSize: 220,
     lineHeight: 1,
-    marginBottom: theme.spacing.xl * 1.5,
+    marginBottom: `calc(${theme.spacing.xl} * 100)`,
     color: theme.colors.gray[2],
 
     [theme.fn.smallerThan("sm")]: {
@@ -32,7 +31,7 @@ const useStyles = createStyles((theme) => ({
   description: {
     maxWidth: 500,
     margin: "auto",
-    marginBottom: theme.spacing.xl * 1.5,
+    marginBottom: `calc(${theme.spacing.xl} * 100)`,
   },
 }));
 
