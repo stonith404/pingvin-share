@@ -18,7 +18,7 @@ export class LogoService {
   }
 
   async createPWAIcons(file: Buffer) {
-    const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+    const sizes = [48, 72, 96, 128, 144, 152, 192, 384, 512];
 
     for (const size of sizes) {
       const resized = await sharp(file).resize(size).toBuffer();
