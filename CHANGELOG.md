@@ -1,3 +1,10 @@
+### [0.12.1](https://github.com/stonith404/pingvin-share/compare/v0.12.0...v0.12.1) (2023-03-11)
+
+
+### Bug Fixes
+
+* 48px icon does not update ([753dbe8](https://github.com/stonith404/pingvin-share/commit/753dbe83b770814115a2576c7a50e1bac9dc8ce1))
+
 ## [0.12.0](https://github.com/stonith404/pingvin-share/compare/v0.11.1...v0.12.0) (2023-03-10)
 
 
