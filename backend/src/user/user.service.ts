@@ -29,7 +29,7 @@ export class UserSevice {
     if (!dto.password) {
       const randomPassword = crypto.randomUUID();
       hash = await argon.hash(randomPassword);
-      this.emailService.sendInviteEmail(dto.email, randomPassword);
+      await this.emailService.sendInviteEmail(dto.email, randomPassword);
     } else {
       hash = await argon.hash(dto.password);
     }

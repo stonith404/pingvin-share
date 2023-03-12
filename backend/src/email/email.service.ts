@@ -1,4 +1,8 @@
-import { Injectable, InternalServerErrorException } from "@nestjs/common";
+import {
+  Injectable,
+  InternalServerErrorException,
+  Logger,
+} from "@nestjs/common";
 import { User } from "@prisma/client";
 import * as nodemailer from "nodemailer";
 import { ConfigService } from "src/config/config.service";
@@ -6,6 +10,7 @@ import { ConfigService } from "src/config/config.service";
 @Injectable()
 export class EmailService {
   constructor(private config: ConfigService) {}
+  private readonly logger = new Logger(EmailService.name);
 
   getTransporter() {
     if (!this.config.get("smtp.enabled"))
@@ -22,6 +27,22 @@ export class EmailService {
     });
   }
 
+  private async sendMail(email: string, subject: string, text: string) {
+    await this.getTransporter()
+      .sendMail({
+        from: `"${this.config.get("general.appName")}" <${this.config.get(
+          "smtp.email"
+        )}>`,
+        to: email,
+        subject,
+        text,
+      })
+      .catch((e) => {
+        this.logger.error(e);
+        throw new InternalServerErrorException("Failed to send email");
+      });
+  }
+
   async sendMailToShareRecepients(
     recipientEmail: string,
     shareId: string,
@@ -32,34 +53,28 @@ export class EmailService {
 
     const shareUrl = `${this.config.get("general.appUrl")}/share/${shareId}`;
 
-    await this.getTransporter().sendMail({
-      from: `"${this.config.get("general.appName")}" <${this.config.get(
-        "smtp.email"
-      )}>`,
-      to: recipientEmail,
-      subject: this.config.get("email.shareRecipientsSubject"),
-      text: this.config
+    await this.sendMail(
+      recipientEmail,
+      this.config.get("email.shareRecipientsSubject"),
+      this.config
         .get("email.shareRecipientsMessage")
         .replaceAll("\\n", "\n")
         .replaceAll("{creator}", creator?.username ?? "Someone")
-        .replaceAll("{shareUrl}", shareUrl),
-    });
+        .replaceAll("{shareUrl}", shareUrl)
+    );
   }
 
   async sendMailToReverseShareCreator(recipientEmail: string, shareId: string) {
     const shareUrl = `${this.config.get("general.appUrl")}/share/${shareId}`;
 
-    await this.getTransporter().sendMail({
-      from: `"${this.config.get("general.appName")}" <${this.config.get(
-        "smtp.email"
-      )}>`,
-      to: recipientEmail,
-      subject: this.config.get("email.reverseShareSubject"),
-      text: this.config
+    await this.sendMail(
+      recipientEmail,
+      this.config.get("email.reverseShareSubject"),
+      this.config
         .get("email.reverseShareMessage")
         .replaceAll("\\n", "\n")
-        .replaceAll("{shareUrl}", shareUrl),
-    });
+        .replaceAll("{shareUrl}", shareUrl)
+    );
   }
 
   async sendResetPasswordEmail(recipientEmail: string, token: string) {
@@ -67,47 +82,42 @@ export class EmailService {
       "general.appUrl"
     )}/auth/resetPassword/${token}`;
 
-    await this.getTransporter().sendMail({
-      from: `"${this.config.get("general.appName")}" <${this.config.get(
-        "smtp.email"
-      )}>`,
-      to: recipientEmail,
-      subject: this.config.get("email.resetPasswordSubject"),
-      text: this.config
+    await this.sendMail(
+      recipientEmail,
+      this.config.get("email.resetPasswordSubject"),
+      this.config
         .get("email.resetPasswordMessage")
-        .replaceAll("{url}", resetPasswordUrl),
-    });
+        .replaceAll("\\n", "\n")
+        .replaceAll("{url}", resetPasswordUrl)
+    );
   }
 
   async sendInviteEmail(recipientEmail: string, password: string) {
     const loginUrl = `${this.config.get("general.appUrl")}/auth/signIn`;
 
-    await this.getTransporter().sendMail({
-      from: `"${this.config.get("general.appName")}" <${this.config.get(
-        "smtp.email"
-      )}>`,
-      to: recipientEmail,
-      subject: this.config.get("email.inviteSubject"),
-      text: this.config
+    await this.sendMail(
+      recipientEmail,
+      this.config.get("email.inviteSubject"),
+      this.config
         .get("email.inviteMessage")
         .replaceAll("{url}", loginUrl)
-        .replaceAll("{password}", password),
-    });
+        .replaceAll("{password}", password)
+    );
   }
 
   async sendTestMail(recipientEmail: string) {
-    try {
-      await this.getTransporter().sendMail({
+    await this.getTransporter()
+      .sendMail({
         from: `"${this.config.get("general.appName")}" <${this.config.get(
           "smtp.email"
         )}>`,
         to: recipientEmail,
         subject: "Test email",
         text: "This is a test email",
+      })
+      .catch((e) => {
+        this.logger.error(e);
+        throw new InternalServerErrorException(e.message);
       });
-    } catch (e) {
-      console.error(e);
-      throw new InternalServerErrorException(e.message);
-    }
   }
 }
