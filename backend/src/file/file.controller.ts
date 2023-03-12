@@ -51,7 +51,7 @@ export class FileController {
     const zip = this.fileService.getZip(shareId);
     res.set({
       "Content-Type": "application/zip",
-      "Content-Disposition": contentDisposition(`pingvin-share-${shareId}.zip`),
+      "Content-Disposition": contentDisposition(`${shareId}.zip`),
     });
 
     return new StreamableFile(zip);

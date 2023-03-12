@@ -8,6 +8,7 @@ import { User } from "@prisma/client";
 import * as argon from "argon2";
 import { authenticator, totp } from "otplib";
 import * as qrcode from "qrcode-svg";
+import { ConfigService } from "src/config/config.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { AuthService } from "./auth.service";
 import { AuthSignInTotpDTO } from "./dto/authSignInTotp.dto";
@@ -16,7 +17,8 @@ import { AuthSignInTotpDTO } from "./dto/authSignInTotp.dto";
 export class AuthTotpService {
   constructor(
     private prisma: PrismaService,
-    private authService: AuthService
+    private authService: AuthService,
+    private config: ConfigService
   ) {}
 
   async signInTotp(dto: AuthSignInTotpDTO) {
@@ -95,7 +97,7 @@ export class AuthTotpService {
 
     const otpURL = totp.keyuri(
       user.username || user.email,
-      "pingvin-share",
+      this.config.get("general.appName"),
       secret
     );
 
