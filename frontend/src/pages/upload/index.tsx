@@ -59,7 +59,10 @@ const Upload = ({
 
         setFileProgress(1);
 
-        const chunks = Math.ceil(file.size / chunkSize);
+        let chunks = Math.ceil(file.size / chunkSize);
+
+        // If the file is 0 bytes, we still need to upload 1 chunk
+        if (chunks == 0) chunks++;
 
         for (let chunkIndex = 0; chunkIndex < chunks; chunkIndex++) {
           const from = chunkIndex * chunkSize;
@@ -78,7 +81,7 @@ const Upload = ({
                       name: file.name,
                     },
                     chunkIndex,
-                    Math.ceil(file.size / chunkSize)
+                    chunks
                   )
                   .then((response) => {
                     fileId = response.id;
