@@ -8,7 +8,6 @@ import {
   Stack,
   Switch,
   Text,
-  Title,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useModals } from "@mantine/modals";
@@ -25,7 +24,7 @@ const showCreateReverseShareModal = (
   getReverseShares: () => void
 ) => {
   return modals.openModal({
-    title: <Title order={4}>Create reverse share</Title>,
+    title: "Create reverse share",
     children: (
       <Body
         showSendEmailNotificationOption={showSendEmailNotificationOption}

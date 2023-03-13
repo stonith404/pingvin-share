@@ -1,11 +1,4 @@
-import {
-  ActionIcon,
-  Button,
-  Stack,
-  Text,
-  TextInput,
-  Title,
-} from "@mantine/core";
+import { ActionIcon, Button, Stack, Text, TextInput } from "@mantine/core";
 import { useClipboard } from "@mantine/hooks";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
@@ -24,11 +17,7 @@ const showCompletedUploadModal = (
     closeOnClickOutside: false,
     withCloseButton: false,
     closeOnEscape: false,
-    title: (
-      <Stack align="stretch" spacing={0}>
-        <Title order={4}>Share ready</Title>
-      </Stack>
-    ),
+    title: "Share ready",
     children: <Body share={share} appUrl={appUrl} />,
   });
 };

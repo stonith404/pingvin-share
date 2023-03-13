@@ -1,4 +1,4 @@
-import { ActionIcon, Button, Stack, TextInput, Title } from "@mantine/core";
+import { ActionIcon, Button, Stack, TextInput } from "@mantine/core";
 import { useClipboard } from "@mantine/hooks";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
@@ -14,11 +14,7 @@ const showCompletedReverseShareModal = (
     closeOnClickOutside: false,
     withCloseButton: false,
     closeOnEscape: false,
-    title: (
-      <Stack align="stretch" spacing={0}>
-        <Title order={4}>Reverse share link</Title>
-      </Stack>
-    ),
+    title: "Reverse share link",
     children: <Body link={link} getReverseShares={getReverseShares} />,
   });
 };

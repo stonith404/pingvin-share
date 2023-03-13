@@ -37,7 +37,7 @@ const showCreateUploadModal = (
   uploadCallback: (createShare: CreateShare) => void
 ) => {
   return modals.openModal({
-    title: <Title order={4}>Share</Title>,
+    title: "Share",
     children: (
       <CreateUploadModalBody
         options={options}

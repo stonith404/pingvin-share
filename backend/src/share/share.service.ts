@@ -278,7 +278,7 @@ export class ShareService {
       share?.security?.password &&
       !(await argon.verify(share.security.password, password))
     ) {
-      throw new ForbiddenException("Wrong password");
+      throw new ForbiddenException("Wrong password", "wrong_password");
     }
 
     if (share.security?.maxViews && share.security.maxViews <= share.views) {

@@ -16,4 +16,14 @@ export default <MantineThemeOverride>{
     ],
   },
   primaryColor: "victoria",
+  components: {
+    Modal: {
+      styles: (theme) => ({
+        title: {
+          fontSize: theme.fontSizes.lg,
+          fontWeight: 700,
+        },
+      }),
+    },
+  },
 };

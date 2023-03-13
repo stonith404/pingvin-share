@@ -1,4 +1,4 @@
-import { Button, Stack, Text, Title } from "@mantine/core";
+import { Button, Stack, Text } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import { useRouter } from "next/router";
@@ -12,7 +12,7 @@ const showErrorModal = (
     closeOnClickOutside: false,
     withCloseButton: false,
     closeOnEscape: false,
-    title: <Title order={4}>{title}</Title>,
+    title: title,
 
     children: <Body text={text} />,
   });
