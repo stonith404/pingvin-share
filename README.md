@@ -88,11 +88,27 @@ docker compose up -d
 
 #### Stand-alone
 
-1. Remove the running app
-   ```
-   pm2 delete pingvin-share-backend pingvin-share-frontend
+1. Stop the running app
+   ```bash
+   pm2 stop pingvin-share-backend pingvin-share-frontend
    ```
 2. Repeat the steps from the [installation guide](#stand-alone-installation) except the `git clone` step.
+   ```bash
+   cd pingvin-share
+
+   # Checkout the latest version
+   git fetch --tags && git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
+
+   # Start the backend
+   cd backend
+   npm run build
+   pm2 restart pingvin-share-backend
+
+   # Start the frontend
+   cd ../frontend
+   npm run build
+   pm2 restart pingvin-share-frontend
+   ```
 
 ### Custom branding
 
