@@ -53,7 +53,7 @@ const isShareIdAvailable = async (id: string): Promise<boolean> => {
 };
 
 const doesFileSupportPreview = (fileName: string) => {
-  const mimeType = mime.contentType(fileName);
+  const mimeType = (mime.contentType(fileName) || "").split(";")[0];
 
   if (!mimeType) return false;
 
@@ -61,6 +61,7 @@ const doesFileSupportPreview = (fileName: string) => {
     mimeType.startsWith("video/"),
     mimeType.startsWith("image/"),
     mimeType.startsWith("audio/"),
+    mimeType == "text/plain",
     mimeType == "application/pdf",
   ];
 

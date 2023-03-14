@@ -1,5 +1,6 @@
 import {
   ActionIcon,
+  Box,
   Group,
   Skeleton,
   Stack,
@@ -8,9 +9,6 @@ import {
 } from "@mantine/core";
 import { useClipboard } from "@mantine/hooks";
 import { useModals } from "@mantine/modals";
-import mime from "mime-types";
-
-import Link from "next/link";
 import { TbDownload, TbEye, TbLink } from "react-icons/tb";
 import useConfig from "../../hooks/config.hook";
 import shareService from "../../services/share.service";
@@ -18,6 +16,7 @@ import { FileMetaData } from "../../types/File.type";
 import { Share } from "../../types/share.type";
 import { byteToHumanSizeString } from "../../utils/fileSize.util";
 import toast from "../../utils/toast.util";
+import showFilePreviewModal from "./modals/showFilePreviewModal";
 
 const FileList = ({
   files,
@@ -53,54 +52,57 @@ const FileList = ({
   };
 
   return (
-    <Table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Size</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {isLoading
-          ? skeletonRows
-          : files!.map((file) => (
-              <tr key={file.name}>
-                <td>{file.name}</td>
-                <td>{byteToHumanSizeString(parseInt(file.size))}</td>
-                <td>
-                  <Group position="right">
-                    {shareService.doesFileSupportPreview(file.name) && (
+    <Box sx={{ display: "block", overflowX: "auto" }}>
+      <Table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Size</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {isLoading
+            ? skeletonRows
+            : files!.map((file) => (
+                <tr key={file.name}>
+                  <td>{file.name}</td>
+                  <td>{byteToHumanSizeString(parseInt(file.size))}</td>
+                  <td>
+                    <Group position="right">
+                      {shareService.doesFileSupportPreview(file.name) && (
+                        <ActionIcon
+                          onClick={() =>
+                            showFilePreviewModal(share.id, file, modals)
+                          }
+                          size={25}
+                        >
+                          <TbEye />
+                        </ActionIcon>
+                      )}
+                      {!share.hasPassword && (
+                        <ActionIcon
+                          size={25}
+                          onClick={() => copyFileLink(file)}
+                        >
+                          <TbLink />
+                        </ActionIcon>
+                      )}
                       <ActionIcon
-                        component={Link}
-                        href={`/share/${share.id}/preview/${
-                          file.id
-                        }?type=${mime.contentType(file.name)}`}
-                        target="_blank"
                         size={25}
+                        onClick={async () => {
+                          await shareService.downloadFile(share.id, file.id);
+                        }}
                       >
-                        <TbEye />
+                        <TbDownload />
                       </ActionIcon>
-                    )}
-                    {!share.hasPassword && (
-                      <ActionIcon size={25} onClick={() => copyFileLink(file)}>
-                        <TbLink />
-                      </ActionIcon>
-                    )}
-                    <ActionIcon
-                      size={25}
-                      onClick={async () => {
-                        await shareService.downloadFile(share.id, file.id);
-                      }}
-                    >
-                      <TbDownload />
-                    </ActionIcon>
-                  </Group>
-                </td>
-              </tr>
-            ))}
-      </tbody>
-    </Table>
+                    </Group>
+                  </td>
+                </tr>
+              ))}
+        </tbody>
+      </Table>
+    </Box>
   );
 };
 
