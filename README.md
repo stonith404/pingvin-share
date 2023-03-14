@@ -16,7 +16,7 @@ Pingvin Share is self-hosted file sharing platform and an alternative for WeTran
 - [Demo](https://pingvin-share.dev.eliasschneider.com)
 - [Review by DB Tech](https://www.youtube.com/watch?v=rWwNeZCOPJA)
 
-<img src="https://user-images.githubusercontent.com/58886915/167101708-b85032ad-f5b1-480a-b8d7-ec0096ea2a43.png" width="700"/>
+<img src="https://user-images.githubusercontent.com/58886915/225038319-b2ef742c-3a74-4eb6-9689-4207a36842a4.png" width="700"/>
 
 ## ⌨️ Setup
 
