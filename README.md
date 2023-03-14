@@ -88,11 +88,7 @@ docker compose up -d
 
 #### Stand-alone
 
-1. Stop the running app
-   ```bash
-   pm2 stop pingvin-share-backend pingvin-share-frontend
-   ```
-2. Repeat the steps from the [installation guide](#stand-alone-installation) except the `git clone` step.
+1. Repeat the steps from the [installation guide](#stand-alone-installation) except the `git clone` step.
    ```bash
    cd pingvin-share
 
