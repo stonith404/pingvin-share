@@ -2,6 +2,7 @@ import { Button, Center, Stack, Text, Title } from "@mantine/core";
 import { modals } from "@mantine/modals";
 import Link from "next/link";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import api from "../../services/api.service";
 
 const FilePreviewContext = React.createContext<{
   shareId: string;
@@ -58,7 +59,7 @@ const FileDecider = () => {
     return <ImagePreview />;
   } else if (mimeType.startsWith("audio/")) {
     return <AudioPreview />;
-  } else if (mimeType == "text/plain") {
+  } else if (mimeType.startsWith("text/")) {
     return <TextPreview />;
   } else {
     setIsNotSupported(true);
@@ -115,15 +116,18 @@ const TextPreview = () => {
   const [text, setText] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`/api/shares/${shareId}/files/${fileId}?download=false`)
-      .then((res) => res.text())
-      .then((text) => setText(text));
+    api.get(`/shares/${shareId}/files/${fileId}?download=false`).then((res) => {
+      console.log(res.data);
+      setText(res.data);
+    });
   }, [shareId, fileId]);
 
   return (
     <Center style={{ minHeight: 200 }}>
       <Stack align="center" spacing={10} style={{ width: "100%" }}>
-        <Text size="sm">{text}</Text>
+        <Text sx={{ whiteSpace: "pre-wrap" }} size="sm">
+          {text}
+        </Text>
       </Stack>
     </Center>
   );
