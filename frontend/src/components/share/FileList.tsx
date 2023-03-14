@@ -9,6 +9,7 @@ import {
 } from "@mantine/core";
 import { useClipboard } from "@mantine/hooks";
 import { useModals } from "@mantine/modals";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { TbDownload, TbEye, TbLink } from "react-icons/tb";
 import useConfig from "../../hooks/config.hook";
 import shareService from "../../services/share.service";
@@ -16,20 +17,49 @@ import { FileMetaData } from "../../types/File.type";
 import { Share } from "../../types/share.type";
 import { byteToHumanSizeString } from "../../utils/fileSize.util";
 import toast from "../../utils/toast.util";
+import TableSortIcon, { TableSort } from "../core/SortIcon";
 import showFilePreviewModal from "./modals/showFilePreviewModal";
 
 const FileList = ({
   files,
+  setShare,
   share,
   isLoading,
 }: {
   files?: FileMetaData[];
+  setShare: Dispatch<SetStateAction<Share | undefined>>;
   share: Share;
   isLoading: boolean;
 }) => {
   const clipboard = useClipboard();
   const config = useConfig();
   const modals = useModals();
+
+  const [sort, setSort] = useState<TableSort>({
+    property: undefined,
+    direction: "desc",
+  });
+
+  const sortFiles = () => {
+    if (files && sort.property) {
+      const sortedFiles = files.sort((a: any, b: any) => {
+        if (sort.direction === "asc") {
+          return b[sort.property!].localeCompare(a[sort.property!], undefined, {
+            numeric: true,
+          });
+        } else {
+          return a[sort.property!].localeCompare(b[sort.property!], undefined, {
+            numeric: true,
+          });
+        }
+      });
+
+      setShare({
+        ...share,
+        files: sortedFiles,
+      });
+    }
+  };
 
   const copyFileLink = (file: FileMetaData) => {
     const link = `${config.get("general.appUrl")}/api/shares/${
@@ -51,13 +81,25 @@ const FileList = ({
     }
   };
 
+  useEffect(sortFiles, [sort]);
+
   return (
     <Box sx={{ display: "block", overflowX: "auto" }}>
       <Table>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Size</th>
+            <th>
+              <Group spacing="xs">
+                Name
+                <TableSortIcon sort={sort} setSort={setSort} property="name" />
+              </Group>
+            </th>
+            <th>
+              <Group spacing="xs">
+                Size
+                <TableSortIcon sort={sort} setSort={setSort} property="size" />
+              </Group>
+            </th>
             <th></th>
           </tr>
         </thead>
