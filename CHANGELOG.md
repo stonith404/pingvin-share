@@ -1,3 +1,19 @@
+## [0.13.0](https://github.com/stonith404/pingvin-share/compare/v0.12.1...v0.13.0) (2023-03-14)
+
+
+### Features
+
+* add preview modal ([c807d20](https://github.com/stonith404/pingvin-share/commit/c807d208d8f0518f6390f9f0f3d0eb00c12d213b))
+* sort shared files ([b25c30d](https://github.com/stonith404/pingvin-share/commit/b25c30d1ed57230096b17afaf8545c7b0ef2e4b1))
+
+
+### Bug Fixes
+
+* replace "pingvin share" with dynamic app name ([f55aa80](https://github.com/stonith404/pingvin-share/commit/f55aa805167f31864cb07e269a47533927cb533c))
+* set password manually input not shown ([8ff417a](https://github.com/stonith404/pingvin-share/commit/8ff417a013a45a777308f71c4f0d1817bfeed6be))
+* show line breaks in txt preview ([37e765d](https://github.com/stonith404/pingvin-share/commit/37e765ddc7b19554bc6fb50eb969984b58bf3cc5))
+* upload file if it is 0 bytes ([f82099f](https://github.com/stonith404/pingvin-share/commit/f82099f36eb4699385fc16dfb0e0c02e5d55b1e3))
+
 ### [0.12.1](https://github.com/stonith404/pingvin-share/compare/v0.12.0...v0.12.1) (2023-03-11)
 
 
