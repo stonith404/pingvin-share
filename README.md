@@ -33,7 +33,7 @@ The website is now listening on `http://localhost:3000`, have fun with Pingvin S
 
 Required tools:
 
-- [Node.js](https://nodejs.org/en/download/) >= 14
+- [Node.js](https://nodejs.org/en/download/) >= 16
 - [Git](https://git-scm.com/downloads)
 - [pm2](https://pm2.keymetrics.io/) for running Pingvin Share in the background
 
