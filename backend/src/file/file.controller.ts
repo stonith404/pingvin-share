@@ -32,7 +32,8 @@ export class FileController {
   ) {
     const { id, name, chunkIndex, totalChunks } = query;
 
-    const data = body.toString().split(",")[1];
+    // Data can be empty if the file is empty
+    const data = body.toString().split(",")[1] ?? "";
 
     return await this.fileService.create(
       data,
