@@ -1,3 +1,10 @@
+### [0.13.1](https://github.com/stonith404/pingvin-share/compare/v0.13.0...v0.13.1) (2023-03-14)
+
+
+### Bug Fixes
+
+* empty file can't be uploaded in chrome ([9f2097e](https://github.com/stonith404/pingvin-share/commit/9f2097e788dfb79c2f95085025934c3134a3eb38))
+
 ## [0.13.0](https://github.com/stonith404/pingvin-share/compare/v0.12.1...v0.13.0) (2023-03-14)
 
 
