@@ -87,7 +87,7 @@ const configVariables: ConfigVariables = {
         "Message which gets sent when someone created a share with your reverse share link. {shareUrl} will be replaced with the creator's name and the share URL.",
       type: "text",
       value:
-        "Hey!\nA share was just created with your reverse share link: {shareUrl}\nShared securely with Pingvin Share 🐧",
+        "Hey!\n\nA share was just created with your reverse share link: {shareUrl}\n\nShared securely with Pingvin Share 🐧",
     },
     resetPasswordSubject: {
       description:
@@ -100,7 +100,7 @@ const configVariables: ConfigVariables = {
         "Message which gets sent when a user requests a password reset. {url} will be replaced with the reset password URL.",
       type: "text",
       value:
-        "Hey!\nYou requested a password reset. Click this link to reset your password: {url}\nThe link expires in a hour.\nPingvin Share 🐧",
+        "Hey!\n\nYou requested a password reset. Click this link to reset your password: {url}\nThe link expires in a hour.\n\nPingvin Share 🐧",
     },
     inviteSubject: {
       description:
@@ -113,7 +113,7 @@ const configVariables: ConfigVariables = {
         "Message which gets sent when an admin invites an user. {url} will be replaced with the invite URL and {password} with the password.",
       type: "text",
       value:
-        "Hey!\nYou were invited to Pingvin Share. Click this link to accept the invite: {url}\nYour password is: {password}\nPingvin Share 🐧",
+        "Hey!\n\nYou were invited to Pingvin Share. Click this link to accept the invite: {url}\n\nYour password is: {password}\n\nPingvin Share 🐧",
     },
   },
   smtp: {
