@@ -18,5 +18,8 @@ CREATE TABLE "new_Config" (
 INSERT INTO "new_Config" ("category", "description", "locked", "name", "obscured", "order", "secret", "type", "updatedAt", "value") SELECT "category", "description", "locked", "name", "obscured", "order", "secret", "type", "updatedAt", "value" FROM "Config";
 DROP TABLE "Config";
 ALTER TABLE "new_Config" RENAME TO "Config";
+UPDATE "Config" SET "editedValue" = "value";
+UPDATE "Config" SET "value" = '';
+
 PRAGMA foreign_key_check;
 PRAGMA foreign_keys=ON;
