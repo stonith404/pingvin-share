@@ -142,12 +142,16 @@ export class ShareService {
         this.prisma.share.update({ where: { id }, data: { isZipReady: true } })
       );
 
-    // Send email for each recepient
-    for (const recepient of share.recipients) {
-      await this.emailService.sendMailToShareRecepients(
-        recepient.email,
+    console.log(share);
+
+    // Send email for each recipient
+    for (const recipient of share.recipients) {
+      await this.emailService.sendMailToShareRecipients(
+        recipient.email,
         share.id,
-        share.creator
+        share.creator,
+        share.description,
+        share.expiration
       );
     }
 
@@ -163,7 +167,7 @@ export class ShareService {
     }
 
     // Check if any file is malicious with ClamAV
-    this.clamScanService.checkAndRemove(share.id);
+    void this.clamScanService.checkAndRemove(share.id);
 
     if (share.reverseShare) {
       await this.prisma.reverseShare.update({
@@ -172,7 +176,7 @@ export class ShareService {
       });
     }
 
-    return await this.prisma.share.update({
+    return this.prisma.share.update({
       where: { id },
       data: { uploadLocked: true },
     });
@@ -214,6 +218,8 @@ export class ShareService {
         security: true,
       },
     });
+
+    console.log(share);
 
     if (share.removedReason)
       throw new NotFoundException(share.removedReason, "share_removed");

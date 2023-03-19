@@ -132,9 +132,28 @@ export default function AppShellDemo() {
                       <Title order={6}>
                         {configVariableToFriendlyName(configVariable.name)}
                       </Title>
-                      <Text color="dimmed" size="sm" mb="xs">
-                        {configVariable.description}
-                      </Text>
+                      {configVariable.description.split("\n").length == 1 ? (
+                        <Text color="dimmed" size="sm" mb="xs">
+                          {configVariable.description}
+                        </Text>
+                      ) : (
+                        configVariable.description.split("\n").map((line) => (
+                          <Text
+                            key={line}
+                            color="dimmed"
+                            size="sm"
+                            // mb="xs"
+                            style={{
+                              marginBottom: line === "" ? "1rem" : "0",
+                            }}
+                          >
+                            {line}
+                          </Text>
+                        ))
+                      )}
+                      {/*<Text color="dimmed" size="sm" mb="xs">*/}
+                      {/*  {configVariable.description}*/}
+                      {/*</Text>*/}
                     </Stack>
                     <Stack></Stack>
                     <Box style={{ width: isMobile ? "100%" : "50%" }}>

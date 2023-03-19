@@ -43,6 +43,7 @@ const AdminConfigInput = ({
           <TextInput
             style={{ width: "100%" }}
             {...form.getInputProps("stringValue")}
+            placeholder={configVariable.placeholder}
             onChange={(e) => onValueChange(configVariable, e.target.value)}
           />
         ))}
@@ -52,12 +53,14 @@ const AdminConfigInput = ({
           style={{ width: "100%" }}
           autosize
           {...form.getInputProps("textValue")}
+          placeholder={configVariable.placeholder}
           onChange={(e) => onValueChange(configVariable, e.target.value)}
         />
       )}
       {configVariable.type == "number" && (
         <NumberInput
           {...form.getInputProps("numberValue")}
+          placeholder={configVariable.placeholder}
           onChange={(number) => onValueChange(configVariable, number)}
         />
       )}
