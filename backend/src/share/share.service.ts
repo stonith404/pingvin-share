@@ -142,8 +142,6 @@ export class ShareService {
         this.prisma.share.update({ where: { id }, data: { isZipReady: true } })
       );
 
-    // console.log(share);
-
     // Send email for each recipient
     for (const recipient of share.recipients) {
       await this.emailService.sendMailToShareRecipients(
@@ -199,13 +197,6 @@ export class ShareService {
       include: { recipients: true },
     });
 
-    // const sharesWithEmailRecipients = shares.map((share) => {
-    //   return {
-    //     ...share,
-    //     recipients: share.recipients.map((recipients) => recipients.email),
-    //   };
-    // });
-
     return shares.map((share) => {
       return {
         ...share,
@@ -223,8 +214,6 @@ export class ShareService {
         security: true,
       },
     });
-
-    // console.log(share);
 
     if (share.removedReason)
       throw new NotFoundException(share.removedReason, "share_removed");

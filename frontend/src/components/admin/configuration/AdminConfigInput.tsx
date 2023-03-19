@@ -14,7 +14,6 @@ const AdminConfigInput = ({
   updateConfigVariable,
 }: {
   configVariable: AdminConfig;
-  // updateConfigVariable: any;
   updateConfigVariable: (variable: UpdateConfig) => void;
 }) => {
   const form = useForm({
@@ -39,17 +38,9 @@ const AdminConfigInput = ({
     },
   });
 
-  // {
-  //   console.log(JSON.stringify(configVariable));
-  // }
-
   const onValueChange = (configVariable: AdminConfig, value: any) => {
     form.setFieldValue(`${configVariable.type}Value`, value);
     updateConfigVariable({ key: configVariable.key, editedValue: value });
-
-    // updateConfigVariable((prev: any) => {
-    //   return { ...prev, key: configVariable.key, editedValue: value };
-    // });
   };
 
   return (

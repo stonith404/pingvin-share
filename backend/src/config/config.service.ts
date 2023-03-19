@@ -39,8 +39,6 @@ export class ConfigService {
     });
 
     return configVariables.map((variable) => {
-      // console.log(variable);
-
       return {
         key: `${variable.category}.${variable.name}`,
         ...variable,

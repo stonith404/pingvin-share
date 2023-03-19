@@ -67,7 +67,7 @@ export default function AppShellDemo() {
           toast.success("Configurations updated successfully");
         })
         .catch(toast.axiosError);
-      config.refresh();
+      void config.refresh();
     }
   };
 
@@ -146,7 +146,6 @@ export default function AppShellDemo() {
                             key={line}
                             color="dimmed"
                             size="sm"
-                            // mb="xs"
                             style={{
                               marginBottom: line === "" ? "1rem" : "0",
                             }}
@@ -155,12 +154,8 @@ export default function AppShellDemo() {
                           </Text>
                         ))
                       )}
-                      {/*<Text color="dimmed" size="sm" mb="xs">*/}
-                      {/*  {configVariable.description}*/}
-                      {/*</Text>*/}
                     </Stack>
                     <Stack></Stack>
-                    {/*{console.log("BEFORE SEND", configVariable)}*/}
                     <Box style={{ width: isMobile ? "100%" : "50%" }}>
                       <AdminConfigInput
                         key={configVariable.key}
