@@ -4,9 +4,12 @@ class UpdateConfigDTO {
   @IsString()
   key: string;
 
+  // @IsNotEmpty()
+  // @ValidateIf((dto) => dto.value !== "")
+  // value: string | number | boolean;
+
   @IsNotEmpty()
-  @ValidateIf((dto) => dto.value !== "")
-  value: string | number | boolean;
+  editedValue: string | number | boolean;
 }
 
 export default UpdateConfigDTO;

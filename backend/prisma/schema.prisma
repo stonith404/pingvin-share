@@ -135,6 +135,7 @@ model Config {
   category    String
   type        String
   value       String
+  editedValue String @default("")
   description String
   obscured    Boolean @default(false)
   secret      Boolean @default(true)

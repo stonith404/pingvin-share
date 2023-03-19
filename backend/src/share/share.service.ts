@@ -142,7 +142,7 @@ export class ShareService {
         this.prisma.share.update({ where: { id }, data: { isZipReady: true } })
       );
 
-    console.log(share);
+    // console.log(share);
 
     // Send email for each recipient
     for (const recipient of share.recipients) {
@@ -199,14 +199,19 @@ export class ShareService {
       include: { recipients: true },
     });
 
-    const sharesWithEmailRecipients = shares.map((share) => {
+    // const sharesWithEmailRecipients = shares.map((share) => {
+    //   return {
+    //     ...share,
+    //     recipients: share.recipients.map((recipients) => recipients.email),
+    //   };
+    // });
+
+    return shares.map((share) => {
       return {
         ...share,
         recipients: share.recipients.map((recipients) => recipients.email),
       };
     });
-
-    return sharesWithEmailRecipients;
   }
 
   async get(id: string): Promise<any> {
@@ -219,7 +224,7 @@ export class ShareService {
       },
     });
 
-    console.log(share);
+    // console.log(share);
 
     if (share.removedReason)
       throw new NotFoundException(share.removedReason, "share_removed");
@@ -228,7 +233,7 @@ export class ShareService {
       throw new NotFoundException("Share not found");
     return {
       ...share,
-      hasPassword: share.security?.password ? true : false,
+      hasPassword: !!share.security?.password,
     };
   }
 

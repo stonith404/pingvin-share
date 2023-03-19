@@ -75,8 +75,12 @@ export default function AppShellDemo() {
     const index = updatedConfigVariables.findIndex(
       (item) => item.key === configVariable.key
     );
+
     if (index > -1) {
-      updatedConfigVariables[index] = configVariable;
+      updatedConfigVariables[index] = {
+        ...updatedConfigVariables[index],
+        ...configVariable,
+      };
     } else {
       setUpdatedConfigVariables([...updatedConfigVariables, configVariable]);
     }
@@ -156,6 +160,7 @@ export default function AppShellDemo() {
                       {/*</Text>*/}
                     </Stack>
                     <Stack></Stack>
+                    {/*{console.log("BEFORE SEND", configVariable)}*/}
                     <Box style={{ width: isMobile ? "100%" : "50%" }}>
                       <AdminConfigInput
                         key={configVariable.key}

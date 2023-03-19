@@ -8,6 +8,9 @@ export class ConfigDTO {
   value: string;
 
   @Expose()
+  editedValue: string;
+
+  @Expose()
   type: string;
 
   fromList(partial: Partial<ConfigDTO>[]) {

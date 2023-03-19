@@ -14,20 +14,42 @@ const AdminConfigInput = ({
   updateConfigVariable,
 }: {
   configVariable: AdminConfig;
+  // updateConfigVariable: any;
   updateConfigVariable: (variable: UpdateConfig) => void;
 }) => {
   const form = useForm({
     initialValues: {
-      stringValue: configVariable.value,
-      textValue: configVariable.value,
-      numberValue: parseInt(configVariable.value),
-      booleanValue: configVariable.value == "true",
+      stringValue:
+        configVariable.editedValue === ""
+          ? configVariable.value
+          : configVariable.editedValue,
+      textValue:
+        configVariable.editedValue === ""
+          ? configVariable.value
+          : configVariable.editedValue,
+      numberValue: parseInt(
+        configVariable.editedValue === ""
+          ? configVariable.value
+          : configVariable.editedValue
+      ),
+      booleanValue:
+        (configVariable.editedValue === ""
+          ? configVariable.value
+          : configVariable.editedValue) == "true",
     },
   });
 
+  // {
+  //   console.log(JSON.stringify(configVariable));
+  // }
+
   const onValueChange = (configVariable: AdminConfig, value: any) => {
     form.setFieldValue(`${configVariable.type}Value`, value);
-    updateConfigVariable({ key: configVariable.key, value: value });
+    updateConfigVariable({ key: configVariable.key, editedValue: value });
+
+    // updateConfigVariable((prev: any) => {
+    //   return { ...prev, key: configVariable.key, editedValue: value };
+    // });
   };
 
   return (
@@ -43,7 +65,7 @@ const AdminConfigInput = ({
           <TextInput
             style={{ width: "100%" }}
             {...form.getInputProps("stringValue")}
-            placeholder={configVariable.placeholder}
+            placeholder={configVariable.value}
             onChange={(e) => onValueChange(configVariable, e.target.value)}
           />
         ))}
@@ -53,14 +75,14 @@ const AdminConfigInput = ({
           style={{ width: "100%" }}
           autosize
           {...form.getInputProps("textValue")}
-          placeholder={configVariable.placeholder}
+          placeholder={configVariable.value}
           onChange={(e) => onValueChange(configVariable, e.target.value)}
         />
       )}
       {configVariable.type == "number" && (
         <NumberInput
           {...form.getInputProps("numberValue")}
-          placeholder={configVariable.placeholder}
+          placeholder={configVariable.value}
           onChange={(number) => onValueChange(configVariable, number)}
         />
       )}

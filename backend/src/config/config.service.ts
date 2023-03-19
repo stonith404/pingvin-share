@@ -21,10 +21,15 @@ export class ConfigService {
 
     if (!configVariable) throw new Error(`Config variable ${key} not found`);
 
-    if (configVariable.type == "number") return parseInt(configVariable.value);
-    if (configVariable.type == "boolean") return configVariable.value == "true";
+    const value =
+      configVariable.editedValue === ""
+        ? configVariable.value
+        : configVariable.editedValue;
+
+    if (configVariable.type == "number") return parseInt(value);
+    if (configVariable.type == "boolean") return value == "true";
     if (configVariable.type == "string" || configVariable.type == "text")
-      return configVariable.value;
+      return value;
   }
 
   async getByCategory(category: string) {
@@ -34,6 +39,8 @@ export class ConfigService {
     });
 
     return configVariables.map((variable) => {
+      // console.log(variable);
+
       return {
         key: `${variable.category}.${variable.name}`,
         ...variable,
@@ -54,11 +61,13 @@ export class ConfigService {
     });
   }
 
-  async updateMany(data: { key: string; value: string | number | boolean }[]) {
+  async updateMany(
+    data: { key: string; editedValue: string | number | boolean }[]
+  ) {
     const response: Config[] = [];
 
     for (const variable of data) {
-      response.push(await this.update(variable.key, variable.value));
+      response.push(await this.update(variable.key, variable.editedValue));
     }
 
     return response;
@@ -94,7 +103,7 @@ export class ConfigService {
           name: key.split(".")[1],
         },
       },
-      data: { value: value.toString() },
+      data: { editedValue: value.toString() },
     });
 
     this.configVariables = await this.prisma.config.findMany();
