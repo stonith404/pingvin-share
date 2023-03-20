@@ -22,10 +22,13 @@ import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
 import userService from "../../services/user.service";
 import toast from "../../utils/toast.util";
+import {FormattedMessage} from "react-intl";
+import {useIntl} from "react-intl";
 
 const Account = () => {
   const { user, refreshUser } = useUser();
   const modals = useModals();
+  const intl = useIntl();
 
   const accountForm = useForm({
     initialValues: {
@@ -83,14 +86,15 @@ const Account = () => {
 
   return (
     <>
-      <Meta title="My account" />
+      {/* TODO: Translate title */}
+      <Meta title={intl.formatMessage({id:"account.title"})} />
       <Container size="sm">
         <Title order={3} mb="xs">
-          My account
+          <FormattedMessage id="account.title" />
         </Title>
         <Paper withBorder p="xl">
           <Title order={5} mb="xs">
-            Account Info
+            <FormattedMessage id="account.card.info.title" />
           </Title>
           <form
             onSubmit={accountForm.onSubmit((values) =>
@@ -105,29 +109,29 @@ const Account = () => {
           >
             <Stack>
               <TextInput
-                label="Username"
+                label={intl.formatMessage({id:"account.card.info.username"})}
                 {...accountForm.getInputProps("username")}
               />
               <TextInput
-                label="Email"
+                label={intl.formatMessage({id:"account.card.info.email"})}
                 {...accountForm.getInputProps("email")}
               />
               <Group position="right">
-                <Button type="submit">Save</Button>
+                <Button type="submit"><FormattedMessage id="common.button.save" /></Button>
               </Group>
             </Stack>
           </form>
         </Paper>
         <Paper withBorder p="xl" mt="lg">
           <Title order={5} mb="xs">
-            Password
+            <FormattedMessage id="account.card.password.title" />
           </Title>
           <form
             onSubmit={passwordForm.onSubmit((values) =>
               authService
                 .updatePassword(values.oldPassword, values.password)
                 .then(() => {
-                  toast.success("Password updated successfully");
+                  toast.success(intl.formatMessage({id:"account.notification.password.success"}));
                   passwordForm.reset();
                 })
                 .catch(toast.axiosError)
@@ -135,15 +139,15 @@ const Account = () => {
           >
             <Stack>
               <PasswordInput
-                label="Old password"
+                label={intl.formatMessage({id:"account.card.password.old"})}
                 {...passwordForm.getInputProps("oldPassword")}
               />
               <PasswordInput
-                label="New password"
+                label={intl.formatMessage({id:"account.card.password.new"})}
                 {...passwordForm.getInputProps("password")}
               />
               <Group position="right">
-                <Button type="submit">Save</Button>
+                <Button type="submit"><FormattedMessage id="common.button.save" /></Button>
               </Group>
             </Stack>
           </form>
@@ -151,7 +155,7 @@ const Account = () => {
 
         <Paper withBorder p="xl" mt="lg">
           <Title order={5} mb="xs">
-            Security
+            <FormattedMessage id="account.card.security.title" />
           </Title>
 
           <Tabs defaultValue="totp">
@@ -169,7 +173,7 @@ const Account = () => {
                       authService
                         .disableTOTP(values.code, values.password)
                         .then(() => {
-                          toast.success("Successfully disabled TOTP");
+                          toast.success(intl.formatMessage({id:"account.notification.totp.disable"}));
                           values.password = "";
                           values.code = "";
                           refreshUser();
@@ -179,8 +183,9 @@ const Account = () => {
                   >
                     <Stack>
                       <PasswordInput
+                       // TODO: Translate
                         description="Enter your current password to disable TOTP"
-                        label="Password"
+                        label={intl.formatMessage({id:"account.card.password.title"})}
                         {...disableTotpForm.getInputProps("password")}
                       />
 
@@ -218,12 +223,12 @@ const Account = () => {
                   >
                     <Stack>
                       <PasswordInput
-                        label="Password"
-                        description="Enter your current password to start enabling TOTP"
+                        label={intl.formatMessage({id:"account.card.password.title"})}
+                        description={intl.formatMessage({id:"account.card.security.totp.enable.description"})}
                         {...enableTotpForm.getInputProps("password")}
                       />
                       <Group position="right">
-                        <Button type="submit">Start</Button>
+                        <Button type="submit"><FormattedMessage id="account.card.security.totp.button.start" /></Button>
                       </Group>
                     </Stack>
                   </form>
@@ -234,7 +239,7 @@ const Account = () => {
         </Paper>
         <Paper withBorder p="xl" mt="lg">
           <Title order={5} mb="xs">
-            Color scheme
+            <FormattedMessage id="account.card.color.title" />
           </Title>
           <ThemeSwitcher />
         </Paper>
@@ -262,7 +267,7 @@ const Account = () => {
                 })
               }
             >
-              Delete Account
+              <FormattedMessage id="account.button.delete" />
             </Button>
           </Stack>
         </Center>

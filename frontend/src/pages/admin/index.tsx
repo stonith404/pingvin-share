@@ -13,6 +13,8 @@ import { useEffect, useState } from "react";
 import { TbRefresh, TbSettings, TbUsers } from "react-icons/tb";
 import Meta from "../../components/Meta";
 import configService from "../../services/config.service";
+import {FormattedMessage} from "react-intl";
+import {useIntl} from "react-intl";
 
 const useStyles = createStyles((theme) => ({
   item: {
@@ -31,15 +33,16 @@ const useStyles = createStyles((theme) => ({
 
 const Admin = () => {
   const { classes, theme } = useStyles();
+  const intl = useIntl();
 
   const [managementOptions, setManagementOptions] = useState([
     {
-      title: "User management",
+      title: intl.formatMessage({id:"admin.button.users"}),
       icon: TbUsers,
       route: "/admin/users",
     },
     {
-      title: "Configuration",
+      title: intl.formatMessage({id:"admin.button.config"}),
       icon: TbSettings,
       route: "/admin/config/general",
     },
@@ -63,9 +66,9 @@ const Admin = () => {
 
   return (
     <>
-      <Meta title="Administration" />
+      <Meta title={intl.formatMessage({id:"admin.title"})} />
       <Title mb={30} order={3}>
-        Administration
+        <FormattedMessage id="admin.title" />
       </Title>
       <Stack justify="space-between" style={{ height: "calc(100vh - 180px)" }}>
         <Paper withBorder p={40}>
@@ -91,7 +94,7 @@ const Admin = () => {
 
         <Center>
           <Text size="xs" color="dimmed">
-            Version {process.env.VERSION}
+            <FormattedMessage id="admin.version" /> {process.env.VERSION}
           </Text>
         </Center>
       </Stack>

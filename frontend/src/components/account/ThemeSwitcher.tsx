@@ -10,6 +10,8 @@ import { useColorScheme } from "@mantine/hooks";
 import { useState } from "react";
 import { TbDeviceLaptop, TbMoon, TbSun } from "react-icons/tb";
 import usePreferences from "../../hooks/usePreferences";
+import {FormattedMessage} from "react-intl";
+import {useIntl} from "react-intl";
 
 const ThemeSwitcher = () => {
   const preferences = usePreferences();
@@ -34,7 +36,7 @@ const ThemeSwitcher = () => {
             label: (
               <Center>
                 <TbMoon size={16} />
-                <Box ml={10}>Dark</Box>
+                <Box ml={10}><FormattedMessage id="account.theme.dark" /></Box>
               </Center>
             ),
             value: "dark",
@@ -43,7 +45,7 @@ const ThemeSwitcher = () => {
             label: (
               <Center>
                 <TbSun size={16} />
-                <Box ml={10}>Light</Box>
+                <Box ml={10}><FormattedMessage id="account.theme.light" /></Box>
               </Center>
             ),
             value: "light",
@@ -52,7 +54,7 @@ const ThemeSwitcher = () => {
             label: (
               <Center>
                 <TbDeviceLaptop size={16} />
-                <Box ml={10}>System</Box>
+                <Box ml={10}><FormattedMessage id="account.theme.system" /></Box>
               </Center>
             ),
             value: "system",

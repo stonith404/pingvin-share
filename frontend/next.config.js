@@ -19,4 +19,9 @@ module.exports = withPWA({
   output: "standalone", env: {
     VERSION: version,
   },
+  i18n: {
+    locales: ["en", "es"],
+    defaultLocale: "en",
+    localeDetection: true,
+  }
 });
