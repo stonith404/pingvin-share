@@ -74,7 +74,7 @@ const configVariables: ConfigVariables = {
         "Message which gets sent to the share recipients.\n\nAvailable variables:\n{creator} - The username of the creator of the share\n{shareUrl} - The URL of the share\n{desc} - The description of the share\n{expires} - The expiration date of the share\n\nVariables will be replaced with the actual values.",
       type: "text",
       value:
-        "Hey!\n\n{creator} shared some files with you, view or download the files with this link: {shareUrl}\n\nThe share will expire in {expires}, so make sure to download the files before then.\n\nNote: {desc}\n\nShared securely with Pingvin Share 🐧",
+        "Hey!\n\n{creator} shared some files with you, view or download the files with this link: {shareUrl}\n\nThe share will expire {expires}.\n\nNote: {desc}\n\nShared securely with Pingvin Share 🐧",
     },
     reverseShareSubject: {
       description:
