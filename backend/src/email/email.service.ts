@@ -4,8 +4,8 @@ import {
   Logger,
 } from "@nestjs/common";
 import { User } from "@prisma/client";
+import * as moment from "moment";
 import * as nodemailer from "nodemailer";
-import { DateTime } from "luxon";
 import { ConfigService } from "src/config/config.service";
 
 @Injectable()
@@ -67,7 +67,9 @@ export class EmailService {
         .replaceAll("{desc}", description ?? "No description")
         .replaceAll(
           "{expires}",
-          expiration ? DateTime.fromJSDate(expiration).toRelative() : ": never"
+          moment(expiration).unix() != 0
+            ? moment(expiration).fromNow()
+            : "never"
         )
     );
   }
