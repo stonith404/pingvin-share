@@ -216,7 +216,7 @@ async function migrateConfigVariables() {
         ...configVariable,
         name: existingConfigVariable.name,
         category: existingConfigVariable.category,
-        defaultValue: existingConfigVariable.defaultValue,
+        value: existingConfigVariable.value,
       }) != JSON.stringify(existingConfigVariable)
     ) {
       await prisma.config.update({
@@ -230,7 +230,7 @@ async function migrateConfigVariables() {
           ...configVariable,
           name: existingConfigVariable.name,
           category: existingConfigVariable.category,
-          defaultValue: existingConfigVariable.defaultValue,
+          value: existingConfigVariable.value,
         },
       });
     }
