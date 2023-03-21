@@ -18,23 +18,13 @@ const AdminConfigInput = ({
 }) => {
   const form = useForm({
     initialValues: {
-      stringValue:
-        configVariable.value === ""
-          ? configVariable.defaultValue
-          : configVariable.value,
-      textValue:
-        configVariable.value === ""
-          ? configVariable.defaultValue
-          : configVariable.value,
+      stringValue: configVariable.value ?? configVariable.defaultValue,
+      textValue: configVariable.value ?? configVariable.defaultValue,
       numberValue: parseInt(
-        configVariable.value === ""
-          ? configVariable.defaultValue
-          : configVariable.value
+        configVariable.value ?? configVariable.defaultValue
       ),
       booleanValue:
-        (configVariable.value === ""
-          ? configVariable.defaultValue
-          : configVariable.value) == "true",
+        configVariable.value ?? configVariable.defaultValue == "true",
     },
   });
 
