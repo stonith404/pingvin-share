@@ -23,10 +23,7 @@ const get = (key: string, configVariables: Config[]): any => {
 
   if (!configVariable) throw new Error(`Config variable ${key} not found`);
 
-  const value =
-    configVariable.value === ""
-      ? configVariable.defaultValue
-      : configVariable.value;
+  const value = configVariable.value ?? configVariable.defaultValue;
 
   if (configVariable.type == "number") return parseInt(value);
   if (configVariable.type == "boolean") return value == "true";
