@@ -69,7 +69,7 @@ export class EmailService {
           "{expires}",
           moment(expiration).unix() != 0
             ? moment(expiration).fromNow()
-            : "never"
+            : "in: never"
         )
     );
   }
