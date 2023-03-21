@@ -5,9 +5,6 @@ export class ConfigDTO {
   key: string;
 
   @Expose()
-  defaultValue: string;
-
-  @Expose()
   value: string;
 
   @Expose()
