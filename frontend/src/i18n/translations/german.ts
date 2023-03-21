@@ -54,7 +54,27 @@ export const german = {
     "admin.version": "Ausführung",
     // END /admin (admin/index.tsx)
 
+    // /admin/users (admin/users.tsx)
+    "admin.users.title": "Benutzerverwaltung",
+    "admin.users.table.username": "Benutzername",
+    "admin.users.table.email": "E-Mail",
+    "admin.users.table.admin": "Administrator",
+
+    "admin.users.edit.update.title": "Aktualisieren",
+    "admin.users.edit.update.admin-privileges": "Administratorrechte",
+    "admin.users.edit.update.change-password.title": "Passwort ändern",
+    "admin.users.edit.update.change-password.field": "Neues Passwort",
+    "admin.users.edit.update.change-password.button": "Neues Passwort speichern",
+    "admin.users.edit.update.notification.password.success": "Passwort erfolgreich geändert",
+
+    "admin.users.edit.delete.title": "Löschen",
+    "admin.users.edit.delete.description": "Möchten Sie {username} wirklich löschen und alle ihre Freigaben löschen?",
+    // END /admin/users (admin/users.tsx)
+
 
     // Common translations (for example: "common.button.save")
     "common.button.save": "Speichern",
+    "common.button.create": "Erstellen",
+    "common.button.delete": "Löschen",
+    "common.button.cancel": "Abbrechen",
 }

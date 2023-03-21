@@ -9,6 +9,8 @@ import useConfig from "../../hooks/config.hook";
 import userService from "../../services/user.service";
 import User from "../../types/user.type";
 import toast from "../../utils/toast.util";
+import {FormattedMessage} from "react-intl";
+import {useIntl} from "react-intl";
 
 const Users = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -16,6 +18,7 @@ const Users = () => {
 
   const config = useConfig();
   const modals = useModals();
+  const intl = useIntl();
 
   const getUsers = () => {
     setIsLoading(true);
@@ -27,14 +30,13 @@ const Users = () => {
 
   const deleteUser = (user: User) => {
     modals.openConfirmModal({
-      title: `Delete ${user.username}?`,
+      title: `${intl.formatMessage({id:"admin.users.edit.delete.title"})} ${user.username}?`,
       children: (
         <Text size="sm">
-          Do you really want to delete <b>{user.username}</b> and all his
-          shares?
+          <FormattedMessage id="admin.users.edit.delete.description" values={{username: <b>{user.username}</b>}} />
         </Text>
       ),
-      labels: { confirm: "Delete", cancel: "Cancel" },
+      labels: { confirm: intl.formatMessage({id:"common.button.cancel"}), cancel: intl.formatMessage({id:"common.button.delete"}) },
       confirmProps: { color: "red" },
       onConfirm: async () => {
         userService
@@ -51,10 +53,10 @@ const Users = () => {
 
   return (
     <>
-      <Meta title="User management" />
+      <Meta title={intl.formatMessage({id:"admin.users.title"})} />
       <Group position="apart" align="baseline" mb={20}>
         <Title mb={30} order={3}>
-          User management
+          <FormattedMessage id="admin.users.title" />
         </Title>
         <Button
           onClick={() =>
@@ -62,7 +64,7 @@ const Users = () => {
           }
           leftIcon={<TbPlus size={20} />}
         >
-          Create
+          <FormattedMessage id="common.button.create" />
         </Button>
       </Group>
 

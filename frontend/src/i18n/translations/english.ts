@@ -51,8 +51,29 @@ export const english = {
     "admin.version": "Version",
     // END /admin (admin/index.tsx)
 
+    // /admin/users (admin/users.tsx)
+    "admin.users.title": "User management",
+    "admin.users.table.username": "Username",
+    "admin.users.table.email": "Email",
+    "admin.users.table.admin": "Admin",
+
+    "admin.users.edit.update.title": "Update",
+    "admin.users.edit.update.admin-privileges": "Admin privileges",
+    "admin.users.edit.update.change-password.title": "Change password",
+    "admin.users.edit.update.change-password.field": "New password",
+    "admin.users.edit.update.change-password.button": "Save new password",
+    "admin.users.edit.update.notification.password.success": "Password changed successfully",
+
+    "admin.users.edit.delete.title": "Delete",
+    "admin.users.edit.delete.description": "Do you really want to delete {username} and all their shares?",
+    // END /admin/users (admin/users.tsx)
+
+
 
     // Common translations (for example: "common.button.save")
     "common.button.save": "Save",
+    "common.button.create": "Create",
+    "common.button.delete": "Delete",
+    "common.button.cancel": "Cancel",
 }
 
