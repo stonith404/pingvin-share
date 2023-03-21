@@ -81,12 +81,11 @@ export default function Home() {
     useEffect(() => {
         refreshUser().then((user) => {
             if (user) {
+                // TODO: Uncomment this when done testing
                 // router.replace("/upload");
             }
         });
     }, []);
-
-    console.log(intl.formatMessage({id: "home.title"}));
 
     return (
         <>
@@ -97,11 +96,10 @@ export default function Home() {
                         <Title className={classes.title}>
 
 
-
                             {/* FIXME: This really upsets me but I couldn't find a better way to do this */}
-                            <FormattedMessage id="home.title.a" />  <span className={classes.highlight}><FormattedMessage id="home.title.b" /></span> <br />{" "}
-                            <FormattedMessage id="home.title.c" />
-
+                            <FormattedMessage id="home.title.a"/> <span className={classes.highlight}><FormattedMessage
+                            id="home.title.b"/></span> <br/>{" "}
+                            <FormattedMessage id="home.title.c"/>
 
 
                             {/* FIXME: I'm leaving this here just to document past attempts for future reference */}
@@ -116,7 +114,7 @@ export default function Home() {
 
                         </Title>
                         <Text color="dimmed" mt="md">
-                            <FormattedMessage id="home.description" />
+                            <FormattedMessage id="home.description"/>
                         </Text>
 
                         <List
@@ -131,17 +129,20 @@ export default function Home() {
                         >
                             <List.Item>
                                 <div>
-                                    <b><FormattedMessage id="home.bullet.a.name" /></b> - <FormattedMessage id="home.bullet.a.description" />
+                                    <b><FormattedMessage id="home.bullet.a.name"/></b> - <FormattedMessage
+                                    id="home.bullet.a.description"/>
                                 </div>
                             </List.Item>
                             <List.Item>
                                 <div>
-                                    <b><FormattedMessage id="home.bullet.b.name" /></b> - <FormattedMessage id="home.bullet.b.description" />
+                                    <b><FormattedMessage id="home.bullet.b.name"/></b> - <FormattedMessage
+                                    id="home.bullet.b.description"/>
                                 </div>
                             </List.Item>
                             <List.Item>
                                 <div>
-                                    <b><FormattedMessage id="home.bullet.c.name" /></b> - <FormattedMessage id="home.bullet.c.description" />
+                                    <b><FormattedMessage id="home.bullet.c.name"/></b> - <FormattedMessage
+                                    id="home.bullet.c.description"/>
                                 </div>
                             </List.Item>
                         </List>
@@ -154,7 +155,7 @@ export default function Home() {
                                 size="md"
                                 className={classes.control}
                             >
-                                <FormattedMessage id="home.button.start" />
+                                <FormattedMessage id="home.button.start"/>
                             </Button>
                             <Button
                                 component={Link}
@@ -165,7 +166,7 @@ export default function Home() {
                                 size="md"
                                 className={classes.control}
                             >
-                                <FormattedMessage id="home.button.source" />
+                                <FormattedMessage id="home.button.source"/>
                             </Button>
                         </Group>
                     </div>

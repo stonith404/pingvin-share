@@ -1,4 +1,18 @@
 export const english = {
+    // Navbar
+    "navbar.upload": "Upload",
+    "navbar.signin": "Sign in",
+    "navbar.home": "Home",
+    "navbar.signup": "Sign Up",
+
+    "navbar.links.shares": "My shares",
+    "navbar.links.reverse": "Reverse shares",
+
+    "navbar.avatar.account": "My account",
+    "navbar.avatar.admin": "Administration",
+    "navbar.avatar.signout": "Sign out",
+    // END navbar
+
     // / (index.tsx)
     "home.title.a": "A",
     "home.title.b": "self-hosted",
@@ -44,6 +58,19 @@ export const english = {
     "account.button.delete": "Delete Account",
     // END /account (account/index.tsx)
 
+    // /account/shares (account/shares.tsx)
+    "account.shares.title": "My shares",
+    "account.shares.title.empty": "It's empty here 👀",
+    "account.shares.description.empty": "You don't have any shares.",
+    "account.shares.button.create": "Create one",
+
+    "account.shares.table.name": "Name",
+    "account.shares.table.visitors": "Visitors",
+    "account.shares.table.expires": "Expires at",
+
+    "account.shares.notify.copied": "Your link was copied to the clipboard",
+    // END /account/shares (account/shares.tsx)
+
     // /admin (admin/index.tsx)
     "admin.title": "Administration",
     "admin.button.users": "User management",
@@ -70,10 +97,11 @@ export const english = {
 
 
 
-    // Common translations (for example: "common.button.save")
+    // Common translations
     "common.button.save": "Save",
     "common.button.create": "Create",
     "common.button.delete": "Delete",
     "common.button.cancel": "Cancel",
+    "common.button.confirm": "Confirm"
 }
 

@@ -14,6 +14,7 @@ import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ReactNode, useEffect, useState } from "react";
+import { useIntl } from "react-intl";
 import useConfig from "../../hooks/config.hook";
 import useUser from "../../hooks/user.hook";
 import Logo from "../Logo";
@@ -112,6 +113,7 @@ const Header = () => {
   const { user } = useUser();
   const router = useRouter();
   const config = useConfig();
+  const intl = useIntl();
 
   const [opened, toggleOpened] = useDisclosure(false);
 
@@ -124,7 +126,7 @@ const Header = () => {
   const authenticatedLinks: NavLink[] = [
     {
       link: "/upload",
-      label: "Upload",
+      label: intl.formatMessage({ id: "navbar.upload" }),
     },
     {
       component: <NavbarShareMenu />,
@@ -137,27 +139,27 @@ const Header = () => {
   let unauthenticatedLinks: NavLink[] = [
     {
       link: "/auth/signIn",
-      label: "Sign in",
+      label: intl.formatMessage({ id: "navbar.signin" })
     },
   ];
 
   if (config.get("share.allowUnauthenticatedShares")) {
     unauthenticatedLinks.unshift({
       link: "/upload",
-      label: "Upload",
+      label: intl.formatMessage({ id: "navbar.upload" })
     });
   }
 
   if (config.get("general.showHomePage"))
     unauthenticatedLinks.unshift({
       link: "/",
-      label: "Home",
+      label: intl.formatMessage({ id: "navbar.home" })
     });
 
   if (config.get("share.allowRegistration"))
     unauthenticatedLinks.push({
       link: "/auth/signUp",
-      label: "Sign up",
+      label: intl.formatMessage({ id: "navbar.signup" })
     });
 
   const { classes, cx } = useStyles();
