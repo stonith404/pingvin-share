@@ -22,9 +22,9 @@ export class ConfigService {
     if (!configVariable) throw new Error(`Config variable ${key} not found`);
 
     const value =
-      configVariable.editedValue === ""
-        ? configVariable.value
-        : configVariable.editedValue;
+      configVariable.value === ""
+        ? configVariable.defaultValue
+        : configVariable.value;
 
     if (configVariable.type == "number") return parseInt(value);
     if (configVariable.type == "boolean") return value == "true";
@@ -59,13 +59,11 @@ export class ConfigService {
     });
   }
 
-  async updateMany(
-    data: { key: string; editedValue: string | number | boolean }[]
-  ) {
+  async updateMany(data: { key: string; value: string | number | boolean }[]) {
     const response: Config[] = [];
 
     for (const variable of data) {
-      response.push(await this.update(variable.key, variable.editedValue));
+      response.push(await this.update(variable.key, variable.value));
     }
 
     return response;
@@ -101,7 +99,7 @@ export class ConfigService {
           name: key.split(".")[1],
         },
       },
-      data: { editedValue: value.toString() },
+      data: { value: value.toString() },
     });
 
     this.configVariables = await this.prisma.config.findMany();

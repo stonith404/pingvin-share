@@ -5,7 +5,7 @@ class UpdateConfigDTO {
   key: string;
 
   @IsNotEmpty()
-  editedValue: string | number | boolean;
+  value: string | number | boolean;
 }
 
 export default UpdateConfigDTO;

@@ -24,9 +24,9 @@ const get = (key: string, configVariables: Config[]): any => {
   if (!configVariable) throw new Error(`Config variable ${key} not found`);
 
   const value =
-    configVariable.editedValue === ""
-      ? configVariable.value
-      : configVariable.editedValue;
+    configVariable.value === ""
+      ? configVariable.defaultValue
+      : configVariable.value;
 
   if (configVariable.type == "number") return parseInt(value);
   if (configVariable.type == "boolean") return value == "true";

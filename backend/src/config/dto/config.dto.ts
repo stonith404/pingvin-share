@@ -5,10 +5,10 @@ export class ConfigDTO {
   key: string;
 
   @Expose()
-  value: string;
+  defaultValue: string;
 
   @Expose()
-  editedValue: string;
+  value: string;
 
   @Expose()
   type: string;

@@ -1,13 +1,13 @@
 type Config = {
   key: string;
+  defaultValue: string;
   value: string;
-  editedValue: string;
   type: string;
 };
 
 export type UpdateConfig = {
   key: string;
-  editedValue: string;
+  value: string;
 };
 
 export type AdminConfig = Config & {
