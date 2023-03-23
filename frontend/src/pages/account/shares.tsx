@@ -91,7 +91,7 @@ const MyShares = () => {
                                                         }`
                                                     );
                                                     toast.success(
-                                                        intl.formatMessage({id: "account.shares.notify.copied"})
+                                                        intl.formatMessage({id: "common.notify.copied"})
                                                     );
                                                 } else {
                                                     showShareLinkModal(

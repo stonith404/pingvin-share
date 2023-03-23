@@ -22,8 +22,7 @@ import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
 import userService from "../../services/user.service";
 import toast from "../../utils/toast.util";
-import {FormattedMessage} from "react-intl";
-import {useIntl} from "react-intl";
+import {FormattedMessage, useIntl} from "react-intl";
 
 const Account = () => {
   const { user, refreshUser } = useUser();
@@ -86,7 +85,6 @@ const Account = () => {
 
   return (
     <>
-      {/* TODO: Translate title */}
       <Meta title={intl.formatMessage({id:"account.title"})} />
       <Container size="sm">
         <Title order={3} mb="xs">
@@ -131,7 +129,7 @@ const Account = () => {
               authService
                 .updatePassword(values.oldPassword, values.password)
                 .then(() => {
-                  toast.success(intl.formatMessage({id:"account.notification.password.success"}));
+                  toast.success(intl.formatMessage({id:"account.notify.password.success"}));
                   passwordForm.reset();
                 })
                 .catch(toast.axiosError)
@@ -173,7 +171,7 @@ const Account = () => {
                       authService
                         .disableTOTP(values.code, values.password)
                         .then(() => {
-                          toast.success(intl.formatMessage({id:"account.notification.totp.disable"}));
+                          toast.success(intl.formatMessage({id:"account.notify.totp.disable"}));
                           values.password = "";
                           values.code = "";
                           refreshUser();

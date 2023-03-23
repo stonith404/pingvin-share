@@ -10,8 +10,7 @@ import { useColorScheme } from "@mantine/hooks";
 import { useState } from "react";
 import { TbDeviceLaptop, TbMoon, TbSun } from "react-icons/tb";
 import usePreferences from "../../hooks/usePreferences";
-import {FormattedMessage} from "react-intl";
-import {useIntl} from "react-intl";
+import {FormattedMessage, useIntl} from "react-intl";
 
 const ThemeSwitcher = () => {
   const preferences = usePreferences();

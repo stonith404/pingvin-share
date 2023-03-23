@@ -28,6 +28,7 @@ import {
   configVariableToFriendlyName,
 } from "../../../utils/string.util";
 import toast from "../../../utils/toast.util";
+import {FormattedMessage, useIntl} from "react-intl";
 
 export default function AppShellDemo() {
   const theme = useMantineTheme();
@@ -157,7 +158,7 @@ export default function AppShellDemo() {
                     saveConfigVariables={saveConfigVariables}
                   />
                 )}
-                <Button onClick={saveConfigVariables}>Save</Button>
+                <Button onClick={saveConfigVariables}><FormattedMessage id="common.button.save" /></Button>
               </Group>
             </>
           )}

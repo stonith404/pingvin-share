@@ -12,6 +12,7 @@ import {
 import { useForm } from "@mantine/form";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
+import { FormattedMessage, useIntl } from "react-intl";
 import shareService from "../../../services/share.service";
 import { getExpirationPreview } from "../../../utils/date.util";
 import toast from "../../../utils/toast.util";
@@ -42,6 +43,7 @@ const Body = ({
   showSendEmailNotificationOption: boolean;
 }) => {
   const modals = useModals();
+  const intl = useIntl();
 
   const form = useForm({
     initialValues: {
@@ -79,7 +81,7 @@ const Body = ({
                   max={99999}
                   precision={0}
                   variant="filled"
-                  label="Share expiration"
+                  label={intl.formatMessage({id:"account.reverseShares.modal.expiration.label"})}
                   {...form.getInputProps("expiration_num")}
                 />
               </Col>
@@ -91,27 +93,44 @@ const Body = ({
                     {
                       value: "-minutes",
                       label:
-                        "Minute" + (form.values.expiration_num == 1 ? "" : "s"),
+                          form.values.expiration_num == 1 ?
+                              intl.formatMessage({id: "upload.modal.expires.minute-singular"})
+                              : intl.formatMessage({id: "upload.modal.expires.minute-plural"})
                     },
                     {
                       value: "-hours",
                       label:
-                        "Hour" + (form.values.expiration_num == 1 ? "" : "s"),
+                          form.values.expiration_num == 1 ?
+                              intl.formatMessage({id: "upload.modal.expires.hour-singular"})
+                              : intl.formatMessage({id: "upload.modal.expires.hour-plural"})
                     },
                     {
                       value: "-days",
                       label:
-                        "Day" + (form.values.expiration_num == 1 ? "" : "s"),
+                          form.values.expiration_num == 1 ?
+                              intl.formatMessage({id: "upload.modal.expires.day-singular"})
+                              : intl.formatMessage({id: "upload.modal.expires.day-plural"})
                     },
                     {
                       value: "-weeks",
                       label:
-                        "Week" + (form.values.expiration_num == 1 ? "" : "s"),
+                          form.values.expiration_num == 1 ?
+                              intl.formatMessage({id: "upload.modal.expires.week-singular"})
+                              : intl.formatMessage({id: "upload.modal.expires.week-plural"})
                     },
                     {
                       value: "-months",
                       label:
-                        "Month" + (form.values.expiration_num == 1 ? "" : "s"),
+                          form.values.expiration_num == 1 ?
+                              intl.formatMessage({id: "upload.modal.expires.month-singular"})
+                              : intl.formatMessage({id: "upload.modal.expires.month-plural"})
+                    },
+                    {
+                      value: "-years",
+                      label:
+                          form.values.expiration_num == 1 ?
+                              intl.formatMessage({id: "upload.modal.expires.year-singular"})
+                              : intl.formatMessage({id: "upload.modal.expires.year-plural"})
                     },
                   ]}
                 />
@@ -125,11 +144,12 @@ const Body = ({
                 color: theme.colors.gray[6],
               })}
             >
+              {/* TODO: Translate this */}
               {getExpirationPreview("reverse share", form)}
             </Text>
           </div>
           <FileSizeInput
-            label="Max share size"
+            label={intl.formatMessage({id:"account.reverseShares.modal.max-size.label"})}
             value={form.values.maxShareSize}
             onChange={(number) => form.setFieldValue("maxShareSize", number)}
           />
@@ -138,16 +158,16 @@ const Body = ({
             max={1000}
             precision={0}
             variant="filled"
-            label="Max use count"
-            description="The maximum number of times this reverse share link can be used"
+            label={intl.formatMessage({id:"account.reverseShares.modal.max-use.label"})}
+            description={intl.formatMessage({id:"account.reverseShares.modal.max-use.description"})}
             {...form.getInputProps("maxUseCount")}
           />
           {showSendEmailNotificationOption && (
             <Switch
               mt="xs"
               labelPosition="left"
-              label="Send email notification"
-              description="Send an email notification when a share is created with this reverse share link"
+              label={intl.formatMessage({id:"account.reverseShares.modal.send-email"})}
+              description={intl.formatMessage({id:"account.reverseShares.modal.send-email.description"})}
               {...form.getInputProps("sendEmailNotification", {
                 type: "checkbox",
               })}
@@ -155,7 +175,7 @@ const Body = ({
           )}
 
           <Button mt="md" type="submit">
-            Create
+            <FormattedMessage id="common.button.create" />
           </Button>
         </Stack>
       </form>

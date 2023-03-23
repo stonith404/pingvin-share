@@ -13,8 +13,7 @@ import * as yup from "yup";
 import userService from "../../../services/user.service";
 import User from "../../../types/user.type";
 import toast from "../../../utils/toast.util";
-import {FormattedMessage} from "react-intl";
-import {useIntl} from "react-intl";
+import {FormattedMessage, useIntl} from "react-intl";
 
 const showUpdateUserModal = (
     modals: ModalsContextProps,
@@ -110,7 +109,7 @@ const Body = ({
                                     .update(user.id, {
                                         password: values.password,
                                     })
-                                    .then(() => toast.success(intl.formatMessage({id:"admin.users.edit.update.notification.password.success"})))
+                                    .then(() => toast.success(intl.formatMessage({id:"admin.users.edit.update.notify.password.success"})))
                                     .catch(toast.axiosError);
                             })}
                         >

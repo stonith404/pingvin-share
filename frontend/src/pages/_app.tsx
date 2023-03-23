@@ -69,7 +69,7 @@ function App({Component, pageProps}: AppProps) {
     };
 
     // TODO: Add support for a locale switcher (via a user preference, env var, or something else)
-    const locale = LOCALES.NOLANG;
+    const locale = LOCALES.GERMAN;
 
     return (
         <IntlProvider messages={messages[locale]} locale={locale} defaultLocale={LOCALES.ENGLISH}>

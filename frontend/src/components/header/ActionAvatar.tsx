@@ -3,8 +3,7 @@ import Link from "next/link";
 import { TbDoorExit, TbSettings, TbUser } from "react-icons/tb";
 import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
-import {FormattedMessage} from "react-intl";
-import {useIntl} from "react-intl";
+import {FormattedMessage,useIntl} from "react-intl";
 
 const ActionAvatar = () => {
   const { user } = useUser();

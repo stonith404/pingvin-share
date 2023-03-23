@@ -9,8 +9,7 @@ import useConfig from "../../hooks/config.hook";
 import userService from "../../services/user.service";
 import User from "../../types/user.type";
 import toast from "../../utils/toast.util";
-import {FormattedMessage} from "react-intl";
-import {useIntl} from "react-intl";
+import {FormattedMessage, useIntl} from "react-intl";
 
 const Users = () => {
   const [users, setUsers] = useState<User[]>([]);

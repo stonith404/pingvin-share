@@ -13,8 +13,7 @@ import { useEffect, useState } from "react";
 import { TbRefresh, TbSettings, TbUsers } from "react-icons/tb";
 import Meta from "../../components/Meta";
 import configService from "../../services/config.service";
-import {FormattedMessage} from "react-intl";
-import {useIntl} from "react-intl";
+import {FormattedMessage, useIntl} from "react-intl";
 
 const useStyles = createStyles((theme) => ({
   item: {

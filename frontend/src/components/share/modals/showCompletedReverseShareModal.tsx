@@ -3,6 +3,7 @@ import { useClipboard } from "@mantine/hooks";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import { TbCopy } from "react-icons/tb";
+import { FormattedMessage, useIntl } from "react-intl";
 import toast from "../../../utils/toast.util";
 
 const showCompletedReverseShareModal = (
@@ -28,6 +29,7 @@ const Body = ({
 }) => {
   const clipboard = useClipboard({ timeout: 500 });
   const modals = useModals();
+  const intl = useIntl();
 
   return (
     <Stack align="stretch">
@@ -40,7 +42,7 @@ const Body = ({
             <ActionIcon
               onClick={() => {
                 clipboard.copy(link);
-                toast.success("Your link was copied to the keyboard.");
+                toast.success(intl.formatMessage({id:"common.notify.copied"}));
               }}
             >
               <TbCopy />
@@ -55,7 +57,7 @@ const Body = ({
           getReverseShares();
         }}
       >
-        Done
+        <FormattedMessage id="common.button.done" />
       </Button>
     </Stack>
   );

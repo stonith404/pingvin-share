@@ -11,6 +11,7 @@ import { ModalsContextProps } from "@mantine/modals/lib/context";
 import * as yup from "yup";
 import userService from "../../../services/user.service";
 import toast from "../../../utils/toast.util";
+import {FormattedMessage, useIntl} from "react-intl";
 
 const showCreateUserModal = (
   modals: ModalsContextProps,
@@ -51,6 +52,8 @@ const Body = ({
     ),
   });
 
+  const intl = useIntl();
+
   return (
     <Stack>
       <form
@@ -65,14 +68,14 @@ const Body = ({
         })}
       >
         <Stack>
-          <TextInput label="Username" {...form.getInputProps("username")} />
-          <TextInput label="Email" {...form.getInputProps("email")} />
+          <TextInput label={intl.formatMessage({id:"admin.users.modal.create.username"})} {...form.getInputProps("username")} />
+          <TextInput label={intl.formatMessage({id:"admin.users.modal.create.email"})} {...form.getInputProps("email")} />
           {smtpEnabled && (
             <Switch
               mt="xs"
               labelPosition="left"
-              label="Set password manually"
-              description="If not checked, the user will receive an email with a link to set their password."
+              label={intl.formatMessage({id:"admin.users.modal.create.manual-password"})}
+              description={intl.formatMessage({id:"admin.users.modal.create.manual-password.description"})}
               {...form.getInputProps("setPasswordManually", {
                 type: "checkbox",
               })}
@@ -80,7 +83,7 @@ const Body = ({
           )}
           {(form.values.setPasswordManually || !smtpEnabled) && (
             <PasswordInput
-              label="Password"
+              label={intl.formatMessage({id:"admin.users.modal.create.password"})}
               {...form.getInputProps("password")}
             />
           )}
@@ -93,12 +96,12 @@ const Body = ({
             }}
             mt="xs"
             labelPosition="left"
-            label="Admin privileges"
-            description="If checked, the user will be able to access the admin panel."
+            label={intl.formatMessage({id:"admin.users.modal.create.admin"})}
+            description={intl.formatMessage({id:"admin.users.modal.create.admin.description"})}
             {...form.getInputProps("isAdmin", { type: "checkbox" })}
           />
           <Group position="right">
-            <Button type="submit">Create</Button>
+            <Button type="submit"><FormattedMessage id="common.button.create" /></Button>
           </Group>
         </Stack>
       </form>

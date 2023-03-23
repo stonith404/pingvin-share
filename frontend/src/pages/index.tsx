@@ -15,8 +15,7 @@ import {TbCheck} from "react-icons/tb";
 import Logo from "../components/Logo";
 import Meta from "../components/Meta";
 import useUser from "../hooks/user.hook";
-import {FormattedMessage} from "react-intl";
-import {useIntl} from "react-intl";
+import {FormattedMessage, useIntl} from "react-intl";
 
 
 const useStyles = createStyles((theme) => ({
