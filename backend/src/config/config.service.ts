@@ -21,10 +21,12 @@ export class ConfigService {
 
     if (!configVariable) throw new Error(`Config variable ${key} not found`);
 
-    if (configVariable.type == "number") return parseInt(configVariable.value);
-    if (configVariable.type == "boolean") return configVariable.value == "true";
+    const value = configVariable.value ?? configVariable.defaultValue;
+
+    if (configVariable.type == "number") return parseInt(value);
+    if (configVariable.type == "boolean") return value == "true";
     if (configVariable.type == "string" || configVariable.type == "text")
-      return configVariable.value;
+      return value;
   }
 
   async getByCategory(category: string) {
@@ -35,8 +37,9 @@ export class ConfigService {
 
     return configVariables.map((variable) => {
       return {
-        key: `${variable.category}.${variable.name}`,
         ...variable,
+        key: `${variable.category}.${variable.name}`,
+        value: variable.value ?? variable.defaultValue,
       };
     });
   }
@@ -48,8 +51,9 @@ export class ConfigService {
 
     return configVariables.map((variable) => {
       return {
-        key: `${variable.category}.${variable.name}`,
         ...variable,
+        key: `${variable.category}.${variable.name}`,
+        value: variable.value ?? variable.defaultValue,
       };
     });
   }
@@ -77,7 +81,9 @@ export class ConfigService {
     if (!configVariable || configVariable.locked)
       throw new NotFoundException("Config variable not found");
 
-    if (
+    if (value == "") {
+      value = null;
+    } else if (
       typeof value != configVariable.type &&
       typeof value == "string" &&
       configVariable.type != "text"
@@ -94,7 +100,7 @@ export class ConfigService {
           name: key.split(".")[1],
         },
       },
-      data: { value: value.toString() },
+      data: { value: value ? value.toString() : null },
     });
 
     this.configVariables = await this.prisma.config.findMany();

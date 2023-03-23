@@ -18,10 +18,13 @@ const AdminConfigInput = ({
 }) => {
   const form = useForm({
     initialValues: {
-      stringValue: configVariable.value,
-      textValue: configVariable.value,
-      numberValue: parseInt(configVariable.value),
-      booleanValue: configVariable.value == "true",
+      stringValue: configVariable.value ?? configVariable.defaultValue,
+      textValue: configVariable.value ?? configVariable.defaultValue,
+      numberValue: parseInt(
+        configVariable.value ?? configVariable.defaultValue
+      ),
+      booleanValue:
+        configVariable.value ?? configVariable.defaultValue == "true",
     },
   });
 
@@ -35,29 +38,38 @@ const AdminConfigInput = ({
       {configVariable.type == "string" &&
         (configVariable.obscured ? (
           <PasswordInput
-            style={{ width: "100%" }}
+            style={{
+              width: "100%",
+            }}
             {...form.getInputProps("stringValue")}
             onChange={(e) => onValueChange(configVariable, e.target.value)}
           />
         ) : (
           <TextInput
-            style={{ width: "100%" }}
+            style={{
+              width: "100%",
+            }}
             {...form.getInputProps("stringValue")}
+            placeholder={configVariable.defaultValue}
             onChange={(e) => onValueChange(configVariable, e.target.value)}
           />
         ))}
 
       {configVariable.type == "text" && (
         <Textarea
-          style={{ width: "100%" }}
+          style={{
+            width: "100%",
+          }}
           autosize
           {...form.getInputProps("textValue")}
+          placeholder={configVariable.defaultValue}
           onChange={(e) => onValueChange(configVariable, e.target.value)}
         />
       )}
       {configVariable.type == "number" && (
         <NumberInput
           {...form.getInputProps("numberValue")}
+          placeholder={configVariable.defaultValue}
           onChange={(number) => onValueChange(configVariable, number)}
         />
       )}

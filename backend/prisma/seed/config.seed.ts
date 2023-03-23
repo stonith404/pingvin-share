@@ -6,7 +6,7 @@ const configVariables: ConfigVariables = {
     jwtSecret: {
       description: "Long random string used to sign JWT tokens",
       type: "string",
-      value: crypto.randomBytes(256).toString("base64"),
+      defaultValue: crypto.randomBytes(256).toString("base64"),
       locked: true,
     },
   },
@@ -14,20 +14,20 @@ const configVariables: ConfigVariables = {
     appName: {
       description: "Name of the application",
       type: "string",
-      value: "Pingvin Share",
+      defaultValue: "Pingvin Share",
       secret: false,
     },
     appUrl: {
       description: "On which URL Pingvin Share is available",
       type: "string",
-      value: "http://localhost:3000",
+      defaultValue: "http://localhost:3000",
 
       secret: false,
     },
     showHomePage: {
       description: "Whether to show the home page",
       type: "boolean",
-      value: "true",
+      defaultValue: "true",
       secret: false,
     },
   },
@@ -35,21 +35,21 @@ const configVariables: ConfigVariables = {
     allowRegistration: {
       description: "Whether registration is allowed",
       type: "boolean",
-      value: "true",
+      defaultValue: "true",
 
       secret: false,
     },
     allowUnauthenticatedShares: {
       description: "Whether unauthorized users can create shares",
       type: "boolean",
-      value: "false",
+      defaultValue: "false",
 
       secret: false,
     },
     maxSize: {
       description: "Maximum share size in bytes",
       type: "number",
-      value: "1073741824",
+      defaultValue: "1073741824",
 
       secret: false,
     },
@@ -59,7 +59,7 @@ const configVariables: ConfigVariables = {
       description:
         "Whether to allow emails to share recipients. Only enable this if you have enabled SMTP.",
       type: "boolean",
-      value: "false",
+      defaultValue: "false",
 
       secret: false,
     },
@@ -67,53 +67,53 @@ const configVariables: ConfigVariables = {
       description:
         "Subject of the email which gets sent to the share recipients.",
       type: "string",
-      value: "Files shared with you",
+      defaultValue: "Files shared with you",
     },
     shareRecipientsMessage: {
       description:
-        "Message which gets sent to the share recipients. {creator} and {shareUrl} will be replaced with the creator's name and the share URL.",
+        "Message which gets sent to the share recipients.\n\nAvailable variables:\n{creator} - The username of the creator of the share\n{shareUrl} - The URL of the share\n{desc} - The description of the share\n{expires} - The expiration date of the share\n\nVariables will be replaced with the actual values.",
       type: "text",
-      value:
-        "Hey!\n{creator} shared some files with you. View or download the files with this link: {shareUrl}\nShared securely with Pingvin Share 🐧",
+      defaultValue:
+        "Hey!\n\n{creator} shared some files with you, view or download the files with this link: {shareUrl}\n\nThe share will expire {expires}.\n\nNote: {desc}\n\nShared securely with Pingvin Share 🐧",
     },
     reverseShareSubject: {
       description:
         "Subject of the email which gets sent when someone created a share with your reverse share link.",
       type: "string",
-      value: "Reverse share link used",
+      defaultValue: "Reverse share link used",
     },
     reverseShareMessage: {
       description:
         "Message which gets sent when someone created a share with your reverse share link. {shareUrl} will be replaced with the creator's name and the share URL.",
       type: "text",
-      value:
-        "Hey!\nA share was just created with your reverse share link: {shareUrl}\nShared securely with Pingvin Share 🐧",
+      defaultValue:
+        "Hey!\n\nA share was just created with your reverse share link: {shareUrl}\n\nShared securely with Pingvin Share 🐧",
     },
     resetPasswordSubject: {
       description:
         "Subject of the email which gets sent when a user requests a password reset.",
       type: "string",
-      value: "Pingvin Share password reset",
+      defaultValue: "Pingvin Share password reset",
     },
     resetPasswordMessage: {
       description:
         "Message which gets sent when a user requests a password reset. {url} will be replaced with the reset password URL.",
       type: "text",
-      value:
-        "Hey!\nYou requested a password reset. Click this link to reset your password: {url}\nThe link expires in a hour.\nPingvin Share 🐧",
+      defaultValue:
+        "Hey!\n\nYou requested a password reset. Click this link to reset your password: {url}\nThe link expires in a hour.\n\nPingvin Share 🐧",
     },
     inviteSubject: {
       description:
         "Subject of the email which gets sent when an admin invites an user.",
       type: "string",
-      value: "Pingvin Share invite",
+      defaultValue: "Pingvin Share invite",
     },
     inviteMessage: {
       description:
         "Message which gets sent when an admin invites an user. {url} will be replaced with the invite URL and {password} with the password.",
       type: "text",
-      value:
-        "Hey!\nYou were invited to Pingvin Share. Click this link to accept the invite: {url}\nYour password is: {password}\nPingvin Share 🐧",
+      defaultValue:
+        "Hey!\n\nYou were invited to Pingvin Share. Click this link to accept the invite: {url}\n\nYour password is: {password}\n\nPingvin Share 🐧",
     },
   },
   smtp: {
@@ -121,33 +121,33 @@ const configVariables: ConfigVariables = {
       description:
         "Whether SMTP is enabled. Only set this to true if you entered the host, port, email, user and password of your SMTP server.",
       type: "boolean",
-      value: "false",
+      defaultValue: "false",
       secret: false,
     },
     host: {
       description: "Host of the SMTP server",
       type: "string",
-      value: "",
+      defaultValue: "",
     },
     port: {
       description: "Port of the SMTP server",
       type: "number",
-      value: "0",
+      defaultValue: "0",
     },
     email: {
       description: "Email address which the emails get sent from",
       type: "string",
-      value: "",
+      defaultValue: "",
     },
     username: {
       description: "Username of the SMTP server",
       type: "string",
-      value: "",
+      defaultValue: "",
     },
     password: {
       description: "Password of the SMTP server",
       type: "string",
-      value: "",
+      defaultValue: "",
       obscured: true,
     },
   },

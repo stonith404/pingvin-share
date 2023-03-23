@@ -4,6 +4,7 @@ import {
   Logger,
 } from "@nestjs/common";
 import { User } from "@prisma/client";
+import * as moment from "moment";
 import * as nodemailer from "nodemailer";
 import { ConfigService } from "src/config/config.service";
 
@@ -43,10 +44,12 @@ export class EmailService {
       });
   }
 
-  async sendMailToShareRecepients(
+  async sendMailToShareRecipients(
     recipientEmail: string,
     shareId: string,
-    creator?: User
+    creator?: User,
+    description?: string,
+    expiration?: Date
   ) {
     if (!this.config.get("email.enableShareEmailRecipients"))
       throw new InternalServerErrorException("Email service disabled");
@@ -61,6 +64,13 @@ export class EmailService {
         .replaceAll("\\n", "\n")
         .replaceAll("{creator}", creator?.username ?? "Someone")
         .replaceAll("{shareUrl}", shareUrl)
+        .replaceAll("{desc}", description ?? "No description")
+        .replaceAll(
+          "{expires}",
+          moment(expiration).unix() != 0
+            ? moment(expiration).fromNow()
+            : "in: never"
+        )
     );
   }
 

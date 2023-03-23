@@ -67,7 +67,7 @@ export default function AppShellDemo() {
           toast.success("Configurations updated successfully");
         })
         .catch(toast.axiosError);
-      config.refresh();
+      void config.refresh();
     }
   };
 
@@ -75,8 +75,12 @@ export default function AppShellDemo() {
     const index = updatedConfigVariables.findIndex(
       (item) => item.key === configVariable.key
     );
+
     if (index > -1) {
-      updatedConfigVariables[index] = configVariable;
+      updatedConfigVariables[index] = {
+        ...updatedConfigVariables[index],
+        ...configVariable,
+      };
     } else {
       setUpdatedConfigVariables([...updatedConfigVariables, configVariable]);
     }
@@ -132,9 +136,24 @@ export default function AppShellDemo() {
                       <Title order={6}>
                         {configVariableToFriendlyName(configVariable.name)}
                       </Title>
-                      <Text color="dimmed" size="sm" mb="xs">
-                        {configVariable.description}
-                      </Text>
+                      {configVariable.description.split("\n").length == 1 ? (
+                        <Text color="dimmed" size="sm" mb="xs">
+                          {configVariable.description}
+                        </Text>
+                      ) : (
+                        configVariable.description.split("\n").map((line) => (
+                          <Text
+                            key={line}
+                            color="dimmed"
+                            size="sm"
+                            style={{
+                              marginBottom: line === "" ? "1rem" : "0",
+                            }}
+                          >
+                            {line}
+                          </Text>
+                        ))
+                      )}
                     </Stack>
                     <Stack></Stack>
                     <Box style={{ width: isMobile ? "100%" : "50%" }}>

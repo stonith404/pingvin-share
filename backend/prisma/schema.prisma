@@ -131,15 +131,16 @@ model ShareSecurity {
 model Config {
   updatedAt DateTime @updatedAt
 
-  name        String
-  category    String
-  type        String
-  value       String
-  description String
-  obscured    Boolean @default(false)
-  secret      Boolean @default(true)
-  locked      Boolean @default(false)
-  order       Int
+  name         String
+  category     String
+  type         String
+  defaultValue String @default("")
+  value        String?
+  description  String
+  obscured     Boolean @default(false)
+  secret       Boolean @default(true)
+  locked       Boolean @default(false)
+  order        Int
 
   @@id([name, category])
 }

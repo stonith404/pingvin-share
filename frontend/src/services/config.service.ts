@@ -23,10 +23,12 @@ const get = (key: string, configVariables: Config[]): any => {
 
   if (!configVariable) throw new Error(`Config variable ${key} not found`);
 
-  if (configVariable.type == "number") return parseInt(configVariable.value);
-  if (configVariable.type == "boolean") return configVariable.value == "true";
+  const value = configVariable.value ?? configVariable.defaultValue;
+
+  if (configVariable.type == "number") return parseInt(value);
+  if (configVariable.type == "boolean") return value == "true";
   if (configVariable.type == "string" || configVariable.type == "text")
-    return configVariable.value;
+    return value;
 };
 
 const finishSetup = async (): Promise<AdminConfig[]> => {
