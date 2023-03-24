@@ -24,7 +24,7 @@ const AdminConfigInput = ({
         configVariable.value ?? configVariable.defaultValue
       ),
       booleanValue:
-        configVariable.value ?? configVariable.defaultValue == "true",
+        (configVariable.value ?? configVariable.defaultValue) == "true",
     },
   });
 
