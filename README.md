@@ -1,7 +1,6 @@
 ## pingvin-share部分汉化
 ### 说明
 简单部分汉化,仅供学习使用,随缘更新!
-下载地址:[pingvin-share-zh_cn](https://alist.balabi.asia/d/%E4%B8%80%E8%88%AC%E6%96%87%E4%BB%B6/pingvin-share-zh_cn.zip?sign=5mhHP1mnu4wW5AtJO2equXeH0hMw-h_KLdqQ2FDYbxw=:0)
 ## 演示:
 图片:
 ![](https://lsky.balabi.asia/i/2023/03/26/642009167f39a.png)
@@ -12,9 +11,6 @@
 测试账号并没有管理员权限!!!
 
 ## 使用方法:
-搭建教程参考[gugu的pingvin-share文件分享站搭建教程](https://blog.laoda.de/archives/docker-compose-install-pingvinshare)
-搭建教程参考[gugu的pingvin-share文件分享站搭建教程](https://blog.laoda.de/archives/docker-compose-install-pingvinshare)
-搭建教程参考[gugu的pingvin-share文件分享站搭建教程](https://blog.laoda.de/archives/docker-compose-install-pingvinshare)
 
 zip包上传至服务器并解压
 `unzip [包名]`
