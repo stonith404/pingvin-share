@@ -1,103 +1,40 @@
-# <div align="center"><img  src="https://user-images.githubusercontent.com/58886915/166198400-c2134044-1198-4647-a8b6-da9c4a204c68.svg" width="40"/> </br>Pingvin Share</div>
+## pingvin-share部分汉化
+### 说明
+简单部分汉化,仅供学习使用,随缘更新!
+## 演示:
+图片:
+![](https://lsky.balabi.asia/i/2023/03/26/642009167f39a.png)
+![](https://lsky.balabi.asia/i/2023/03/26/64200b97591c5.png)
+测试demo:[pingvin-share中文测试](https://pingvin.alldreams.top/)
+测试用户:`demo`
+测试用户密码:`Demo123456`
+测试账号并没有管理员权限!!!
 
-Pingvin Share is self-hosted file sharing platform and an alternative for WeTransfer.
+## 使用方法:
 
-## ✨ Features
-
-- Share files using a link
-- Unlimited file size (restricted only by disk space)
-- Set an expiration date for shares
-- Secure shares with visitor limits and passwords
-- Email recipients
-- Integration with ClamAV for security scans
-
-## 🐧 Get to know Pingvin Share
-
-- [Demo](https://pingvin-share.dev.eliasschneider.com)
-- [Review by DB Tech](https://www.youtube.com/watch?v=rWwNeZCOPJA)
-
-<img src="https://user-images.githubusercontent.com/58886915/225038319-b2ef742c-3a74-4eb6-9689-4207a36842a4.png" width="700"/>
-
-## ⌨️ Setup
-
-> Note: Pingvin Share is in its early stages and may contain bugs.
-
-### Installation with Docker (recommended)
-
-1. Download the `docker-compose.yml` file
-2. Run `docker-compose up -d`
-
-The website is now listening on `http://localhost:3000`, have fun with Pingvin Share 🐧!
-
-### Stand-alone Installation
-
-Required tools:
-
-- [Node.js](https://nodejs.org/en/download/) >= 16
-- [Git](https://git-scm.com/downloads)
-- [pm2](https://pm2.keymetrics.io/) for running Pingvin Share in the background
-
-```bash
-git clone https://github.com/stonith404/pingvin-share
-cd pingvin-share
-
-# Checkout the latest version
-git fetch --tags && git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
-
-# Start the backend
-cd backend
-npm install
-npm run build
-pm2 start --name="pingvin-share-backend" npm -- run prod
-
-# Start the frontend
-cd ../frontend
-npm install
-npm run build
-pm2 start --name="pingvin-share-frontend" npm -- run start
+zip包上传至服务器并解压
+`unzip [包名]`
+1. 进入项目Dockerfile所在目录
+2. 构建镜像
+```shell
+docker build -t pingvin-share-zh_cn:v1 .
+```
+3. 配置容器
+```shell
+nano docker-compose.yml
 ```
 
-The website is now listening on `http://localhost:3000`, have fun with Pingvin Share 🐧!
+参考配置:(注意镜像名的修改!!!)
+```yaml
+version: '3.8'
+services:
+  pingvin-share:
+    container_name: pingvin-share
+    image: pingvin-share-zh_cn:v1
+    restart: unless-stopped
+    ports:
+      - 5677:3000     # 8080可以改成服务器上未被使用的端口
+    volumes:
+      - "${PWD}/data:/opt/app/backend/data"  # ${PWD}/data表示在当前目录下创建data文件夹用于存放文件
 
-### Integrations
-
-#### ClamAV (Docker only)
-
-ClamAV is used to scan shares for malicious files and remove them if found.
-
-1. Add the ClamAV container to the Docker Compose stack (see `docker-compose.yml`) and start the container.
-2. Docker will wait for ClamAV to start before starting Pingvin Share. This may take a minute or two.
-3. The Pingvin Share logs should now log "ClamAV is active"
-
-Please note that ClamAV needs a lot of [ressources](https://docs.clamav.net/manual/Installing/Docker.html#memory-ram-requirements).
-
-### Additional resources
-
-- [Synology NAS installation](https://mariushosting.com/how-to-install-pingvin-share-on-your-synology-nas/)
-
-### Upgrade to a new version
-
-As Pingvin Share is in early stage, see the release notes for breaking changes before upgrading.
-
-#### Docker
-
-```bash
-docker compose pull
-docker compose up -d
 ```
-
-#### Stand-alone
-
-1. Remove the running app
-   ```
-   pm2 delete pingvin-share-backend pingvin-share-frontend
-   ```
-2. Repeat the steps from the [installation guide](#stand-alone-installation) except the `git clone` step.
-
-### Custom branding
-
-You can change the name and the logo of the app by visiting the admin configuration page.
-
-## 🖤 Contribute
-
-You're very welcome to contribute to Pingvin Share! Follow the [contribution guide](/CONTRIBUTING.md) to get started.
