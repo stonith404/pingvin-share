@@ -24,7 +24,7 @@ const showCreateReverseShareModal = (
   getReverseShares: () => void
 ) => {
   return modals.openModal({
-    title: "Create reverse share",
+    title: "创建外部分享",
     children: (
       <Body
         showSendEmailNotificationOption={showSendEmailNotificationOption}
@@ -155,7 +155,7 @@ const Body = ({
           )}
 
           <Button mt="md" type="submit">
-            Create
+            创建
           </Button>
         </Stack>
       </form>

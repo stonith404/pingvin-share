@@ -68,10 +68,10 @@ const FileList = ({
 
     if (window.isSecureContext) {
       clipboard.copy(link);
-      toast.success("Your file link was copied to the keyboard.");
+      toast.success("您的文件链接已复制到剪贴板.");
     } else {
       modals.openModal({
-        title: "File link",
+        title: "文件链接",
         children: (
           <Stack align="stretch">
             <TextInput variant="filled" value={link} />
@@ -90,13 +90,13 @@ const FileList = ({
           <tr>
             <th>
               <Group spacing="xs">
-                Name
+                名称
                 <TableSortIcon sort={sort} setSort={setSort} property="name" />
               </Group>
             </th>
             <th>
               <Group spacing="xs">
-                Size
+                大小
                 <TableSortIcon sort={sort} setSort={setSort} property="size" />
               </Group>
             </th>

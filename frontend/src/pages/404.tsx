@@ -44,7 +44,7 @@ const ErrorNotFound = () => {
       <Container className={classes.root}>
         <div className={classes.label}>404</div>
         <Title align="center" order={3}>
-          Oops this page doesn't exist.
+          抱歉，此页面不存在.
         </Title>
         <Text
           color="dimmed"
@@ -53,7 +53,7 @@ const ErrorNotFound = () => {
         ></Text>
         <Group position="center">
           <Button component={Link} href="/" variant="light">
-            Bring me back
+            带我回去
           </Button>
         </Group>
       </Container>

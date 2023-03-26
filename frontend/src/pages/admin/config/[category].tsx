@@ -53,7 +53,7 @@ export default function AppShellDemo() {
         .then(() => {
           setLogo(null);
           toast.success(
-            "Logo updated successfully. It may take a few minutes to update on the website."
+            "Logo更新成功。在网站上更新可能需要几分钟时间."
           );
         })
         .catch(toast.axiosError);
@@ -64,10 +64,10 @@ export default function AppShellDemo() {
         .updateMany(updatedConfigVariables)
         .then(() => {
           setUpdatedConfigVariables([]);
-          toast.success("Configurations updated successfully");
+          toast.success("配置更新成功");
         })
         .catch(toast.axiosError);
-      void config.refresh();
+      config.refresh();
     }
   };
 
@@ -75,12 +75,8 @@ export default function AppShellDemo() {
     const index = updatedConfigVariables.findIndex(
       (item) => item.key === configVariable.key
     );
-
     if (index > -1) {
-      updatedConfigVariables[index] = {
-        ...updatedConfigVariables[index],
-        ...configVariable,
-      };
+      updatedConfigVariables[index] = configVariable;
     } else {
       setUpdatedConfigVariables([...updatedConfigVariables, configVariable]);
     }
@@ -94,7 +90,7 @@ export default function AppShellDemo() {
 
   return (
     <>
-      <Meta title="Configuration" />
+      <Meta title="配置" />
       <AppShell
         styles={{
           main: {
@@ -136,24 +132,9 @@ export default function AppShellDemo() {
                       <Title order={6}>
                         {configVariableToFriendlyName(configVariable.name)}
                       </Title>
-                      {configVariable.description.split("\n").length == 1 ? (
-                        <Text color="dimmed" size="sm" mb="xs">
-                          {configVariable.description}
-                        </Text>
-                      ) : (
-                        configVariable.description.split("\n").map((line) => (
-                          <Text
-                            key={line}
-                            color="dimmed"
-                            size="sm"
-                            style={{
-                              marginBottom: line === "" ? "1rem" : "0",
-                            }}
-                          >
-                            {line}
-                          </Text>
-                        ))
-                      )}
+                      <Text color="dimmed" size="sm" mb="xs">
+                        {configVariable.description}
+                      </Text>
                     </Stack>
                     <Stack></Stack>
                     <Box style={{ width: isMobile ? "100%" : "50%" }}>
@@ -176,7 +157,7 @@ export default function AppShellDemo() {
                     saveConfigVariables={saveConfigVariables}
                   />
                 )}
-                <Button onClick={saveConfigVariables}>Save</Button>
+                <Button onClick={saveConfigVariables}>保存</Button>
               </Group>
             </>
           )}

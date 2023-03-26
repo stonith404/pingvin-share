@@ -16,7 +16,7 @@ const ActionAvatar = () => {
       </Menu.Target>
       <Menu.Dropdown>
         <Menu.Item component={Link} href="/account" icon={<TbUser size={14} />}>
-          My account
+          我的账户
         </Menu.Item>
         {user!.isAdmin && (
           <Menu.Item
@@ -24,7 +24,7 @@ const ActionAvatar = () => {
             href="/admin"
             icon={<TbSettings size={14} />}
           >
-            Administration
+            管理
           </Menu.Item>
         )}
 
@@ -34,7 +34,7 @@ const ActionAvatar = () => {
           }}
           icon={<TbDoorExit size={14} />}
         >
-          Sign out
+          退出登录
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>

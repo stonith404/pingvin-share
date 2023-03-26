@@ -30,11 +30,10 @@ const Users = () => {
       title: `Delete ${user.username}?`,
       children: (
         <Text size="sm">
-          Do you really want to delete <b>{user.username}</b> and all his
-          shares?
+          你真的想删除 <b>{user.username}</b> 和所有的分享?
         </Text>
       ),
-      labels: { confirm: "Delete", cancel: "Cancel" },
+      labels: { confirm: "删除", cancel: "取消" },
       confirmProps: { color: "red" },
       onConfirm: async () => {
         userService
@@ -51,10 +50,10 @@ const Users = () => {
 
   return (
     <>
-      <Meta title="User management" />
+      <Meta title="用户管理" />
       <Group position="apart" align="baseline" mb={20}>
         <Title mb={30} order={3}>
-          User management
+          用户管理
         </Title>
         <Button
           onClick={() =>
@@ -62,7 +61,7 @@ const Users = () => {
           }
           leftIcon={<TbPlus size={20} />}
         >
-          Create
+          创建
         </Button>
       </Group>
 

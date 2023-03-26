@@ -26,7 +26,7 @@ const showEnableTotpModal = (
   }
 ) => {
   return modals.openModal({
-    title: "Enable TOTP",
+    title: "启用TOTP",
     children: (
       <CreateEnableTotpModal options={options} refreshUser={refreshUser} />
     ),
@@ -52,7 +52,7 @@ const CreateEnableTotpModal = ({
       .min(6)
       .max(6)
       .required()
-      .matches(/^[0-9]+$/, { message: "Code must be a number" }),
+      .matches(/^[0-9]+$/, { message: "代码必须是数字" }),
   });
 
   const form = useForm({
@@ -66,35 +66,35 @@ const CreateEnableTotpModal = ({
     <div>
       <Center>
         <Stack>
-          <Text>Step 1: Add your authenticator</Text>
-          <Image src={options.qrCode} alt="QR Code" />
+          <Text>步骤1：添加您的验证器</Text>
+          <Image src={options.qrCode} alt="QR 代码" />
 
           <Center>
-            <span>OR</span>
+            <span>或</span>
           </Center>
 
-          <Tooltip label="Click to copy">
+          <Tooltip label="单击以复制">
             <Button
               onClick={() => {
                 navigator.clipboard.writeText(options.secret);
-                toast.success("Copied to clipboard");
+                toast.success("已复制到剪贴板");
               }}
             >
               {options.secret}
             </Button>
           </Tooltip>
           <Center>
-            <Text fz="xs">Enter manually</Text>
+            <Text fz="xs">手动输入</Text>
           </Center>
 
-          <Text>Step 2: Validate your code</Text>
+          <Text>第2步：验证代码</Text>
 
           <form
             onSubmit={form.onSubmit((values) => {
               authService
                 .verifyTOTP(values.code, options.password)
                 .then(() => {
-                  toast.success("Successfully enabled TOTP");
+                  toast.success("已成功启用TOTP");
                   modals.closeAll();
                   refreshUser();
                 })
@@ -105,14 +105,14 @@ const CreateEnableTotpModal = ({
               <Col xs={9}>
                 <TextInput
                   variant="filled"
-                  label="Code"
+                  label="代码"
                   placeholder="******"
                   {...form.getInputProps("code")}
                 />
               </Col>
               <Col xs={3}>
                 <Button variant="outline" type="submit">
-                  Verify
+                  验证
                 </Button>
               </Col>
             </Grid>

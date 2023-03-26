@@ -17,7 +17,7 @@ const showCompletedUploadModal = (
     closeOnClickOutside: false,
     withCloseButton: false,
     closeOnEscape: false,
-    title: "Share ready",
+    title: "分享就绪",
     children: <Body share={share} appUrl={appUrl} />,
   });
 };
@@ -39,7 +39,7 @@ const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
             <ActionIcon
               onClick={() => {
                 clipboard.copy(link);
-                toast.success("Your link was copied to the keyboard.");
+                toast.success("您的链接已复制到剪贴板.");
               }}
             >
               <TbCopy />
@@ -55,8 +55,8 @@ const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
       >
         {/* If our share.expiration is timestamp 0, show a different message */}
         {moment(share.expiration).unix() === 0
-          ? "This share will never expire."
-          : `This share will expire on ${moment(share.expiration).format(
+          ? "此共享永远不会过期."
+          : `此共享将到期于 ${moment(share.expiration).format(
               "LLL"
             )}`}
       </Text>
@@ -67,7 +67,7 @@ const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
           router.push("/upload");
         }}
       >
-        Done
+        完成
       </Button>
     </Stack>
   );

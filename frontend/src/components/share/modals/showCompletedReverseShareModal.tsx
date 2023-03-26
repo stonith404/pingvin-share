@@ -14,7 +14,7 @@ const showCompletedReverseShareModal = (
     closeOnClickOutside: false,
     withCloseButton: false,
     closeOnEscape: false,
-    title: "Reverse share link",
+    title: "外部分享链接",
     children: <Body link={link} getReverseShares={getReverseShares} />,
   });
 };
@@ -40,7 +40,7 @@ const Body = ({
             <ActionIcon
               onClick={() => {
                 clipboard.copy(link);
-                toast.success("Your link was copied to the keyboard.");
+                toast.success("您的链接已复制到剪贴板.");
               }}
             >
               <TbCopy />
@@ -55,7 +55,7 @@ const Body = ({
           getReverseShares();
         }}
       >
-        Done
+        完成
       </Button>
     </Stack>
   );

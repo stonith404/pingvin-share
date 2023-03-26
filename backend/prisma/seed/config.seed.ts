@@ -4,52 +4,52 @@ import * as crypto from "crypto";
 const configVariables: ConfigVariables = {
   internal: {
     jwtSecret: {
-      description: "Long random string used to sign JWT tokens",
+      description: "用于签名JWT令牌的长随机字符串",
       type: "string",
-      defaultValue: crypto.randomBytes(256).toString("base64"),
+      value: crypto.randomBytes(256).toString("base64"),
       locked: true,
     },
   },
   general: {
     appName: {
-      description: "Name of the application",
+      description: "应用程序名称",
       type: "string",
-      defaultValue: "Pingvin Share",
+      value: "Pingvin Share",
       secret: false,
     },
     appUrl: {
-      description: "On which URL Pingvin Share is available",
+      description: "Pingvin Share在哪个URL上可用",
       type: "string",
-      defaultValue: "http://localhost:3000",
+      value: "http://localhost:3000",
 
       secret: false,
     },
     showHomePage: {
-      description: "Whether to show the home page",
+      description: "是否显示主页",
       type: "boolean",
-      defaultValue: "true",
+      value: "true",
       secret: false,
     },
   },
   share: {
     allowRegistration: {
-      description: "Whether registration is allowed",
+      description: "是否允许注册",
       type: "boolean",
-      defaultValue: "true",
+      value: "true",
 
       secret: false,
     },
     allowUnauthenticatedShares: {
-      description: "Whether unauthorized users can create shares",
+      description: "未经授权的用户是否可以创建分享",
       type: "boolean",
-      defaultValue: "false",
+      value: "false",
 
       secret: false,
     },
     maxSize: {
-      description: "Maximum share size in bytes",
+      description: "最大共享大小（字节）",
       type: "number",
-      defaultValue: "1073741824",
+      value: "1073741824",
 
       secret: false,
     },
@@ -57,97 +57,97 @@ const configVariables: ConfigVariables = {
   email: {
     enableShareEmailRecipients: {
       description:
-        "Whether to allow emails to share recipients. Only enable this if you have enabled SMTP.",
+        "是否允许电子邮件分享收件人.仅当您已启用SMTP时才启用此功能.",
       type: "boolean",
-      defaultValue: "false",
+      value: "false",
 
       secret: false,
     },
     shareRecipientsSubject: {
       description:
-        "Subject of the email which gets sent to the share recipients.",
+        "发送给分享收件人的电子邮件的主题.",
       type: "string",
-      defaultValue: "Files shared with you",
+      value: "与您分享的文件",
     },
     shareRecipientsMessage: {
       description:
-        "Message which gets sent to the share recipients.\n\nAvailable variables:\n{creator} - The username of the creator of the share\n{shareUrl} - The URL of the share\n{desc} - The description of the share\n{expires} - The expiration date of the share\n\nVariables will be replaced with the actual values.",
+        "发送给分享收件人的邮件. {creator} 和 {shareUrl} 将替换为创建者的名称和分享URL.",
       type: "text",
-      defaultValue:
-        "Hey!\n\n{creator} shared some files with you, view or download the files with this link: {shareUrl}\n\nThe share will expire {expires}.\n\nNote: {desc}\n\nShared securely with Pingvin Share 🐧",
+      value:
+        "嗨!\n{creator} 与您共享了一些文件. 使用此链接查看或下载文件: {shareUrl}\n通过 Pingvin Share 🐧 安全分享",
     },
     reverseShareSubject: {
       description:
-        "Subject of the email which gets sent when someone created a share with your reverse share link.",
+        "当有人使用您的反向共享链接创建共享时发送的电子邮件的主题.",
       type: "string",
-      defaultValue: "Reverse share link used",
+      value: "已使用外部分享链接",
     },
     reverseShareMessage: {
       description:
-        "Message which gets sent when someone created a share with your reverse share link. {shareUrl} will be replaced with the creator's name and the share URL.",
+        "当有人使用您的反向共享链接创建共享时发送的消息. {shareUrl} 将替换为创建者的名称和共享URL.",
       type: "text",
-      defaultValue:
-        "Hey!\n\nA share was just created with your reverse share link: {shareUrl}\n\nShared securely with Pingvin Share 🐧",
+      value:
+        "嗨!\n刚刚使用反向共享链接创建了一个共享: {shareUrl}\n通过 Pingvin Share 🐧 安全分享",
     },
     resetPasswordSubject: {
       description:
-        "Subject of the email which gets sent when a user requests a password reset.",
+        "当用户请求重置密码时发送的电子邮件的主题.",
       type: "string",
-      defaultValue: "Pingvin Share password reset",
+      value: "Pingvin Share 密码重置",
     },
     resetPasswordMessage: {
       description:
-        "Message which gets sent when a user requests a password reset. {url} will be replaced with the reset password URL.",
+        "当用户请求重置密码时发送的消息. {url} 将替换为重置密码URL.",
       type: "text",
-      defaultValue:
-        "Hey!\n\nYou requested a password reset. Click this link to reset your password: {url}\nThe link expires in a hour.\n\nPingvin Share 🐧",
+      value:
+        "嗨!\n您请求重置密码. 单击此链接重置您的密码: {url}\n链接将在一小时后过期.\nPingvin Share 🐧",
     },
     inviteSubject: {
       description:
-        "Subject of the email which gets sent when an admin invites an user.",
+        "管理员邀请用户时发送的电子邮件的主题.",
       type: "string",
-      defaultValue: "Pingvin Share invite",
+      value: "Pingvin Share 邀请",
     },
     inviteMessage: {
       description:
-        "Message which gets sent when an admin invites an user. {url} will be replaced with the invite URL and {password} with the password.",
+        "管理员邀请用户时发送的消息. {url} 将替换为邀请URL，并且使用 {password} 密码.",
       type: "text",
-      defaultValue:
-        "Hey!\n\nYou were invited to Pingvin Share. Click this link to accept the invite: {url}\n\nYour password is: {password}\n\nPingvin Share 🐧",
+      value:
+        "嗨!\n您被邀请参加 Pingvin Share. 单击此链接接受邀请: {url}\n您的密码是: {password}\nPingvin Share 🐧",
     },
   },
   smtp: {
     enabled: {
       description:
-        "Whether SMTP is enabled. Only set this to true if you entered the host, port, email, user and password of your SMTP server.",
+        "您的密码是. 只有当您输入SMTP服务器的主机、端口、电子邮件、用户和密码时，才将此设置为true.",
       type: "boolean",
-      defaultValue: "false",
+      value: "false",
       secret: false,
     },
     host: {
-      description: "Host of the SMTP server",
+      description: "SMTP服务器的主机",
       type: "string",
-      defaultValue: "",
+      value: "",
     },
     port: {
-      description: "Port of the SMTP server",
+      description: "SMTP服务器的端口",
       type: "number",
-      defaultValue: "0",
+      value: "0",
     },
     email: {
-      description: "Email address which the emails get sent from",
+      description: "发送电子邮件的电子邮件地址",
       type: "string",
-      defaultValue: "",
+      value: "",
     },
     username: {
-      description: "Username of the SMTP server",
+      description: "SMTP服务器的用户名",
       type: "string",
-      defaultValue: "",
+      value: "",
     },
     password: {
-      description: "Password of the SMTP server",
+      description: "SMTP服务器的密码",
       type: "string",
-      defaultValue: "",
+      value: "",
       obscured: true,
     },
   },

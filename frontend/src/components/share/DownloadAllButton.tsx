@@ -39,13 +39,13 @@ const DownloadAllButton = ({ shareId }: { shareId: string }) => {
       loading={isLoading}
       onClick={() => {
         if (!isZipReady) {
-          toast.error("The share is preparing. Try again in a few minutes.");
+          toast.error("分享正在准备中.几分钟后重试.");
         } else {
           downloadAll();
         }
       }}
     >
-      Download all
+      全部下载
     </Button>
   );
 };

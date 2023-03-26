@@ -14,10 +14,10 @@ import { Dispatch, SetStateAction } from "react";
 import { TbAt, TbMail, TbShare, TbSquare } from "react-icons/tb";
 
 const categories = [
-  { name: "General", icon: <TbSquare /> },
-  { name: "Email", icon: <TbMail /> },
-  { name: "Share", icon: <TbShare /> },
-  { name: "SMTP", icon: <TbAt /> },
+  { name: "常规设置", icon: <TbSquare /> },
+  { name: "邮箱设置", icon: <TbMail /> },
+  { name: "分享设置", icon: <TbShare /> },
+  { name: "SMTP设置", icon: <TbAt /> },
 ];
 
 const useStyles = createStyles((theme) => ({
@@ -53,7 +53,7 @@ const ConfigurationNavBar = ({
     >
       <Navbar.Section>
         <Text size="xs" color="dimmed" mb="sm">
-          Configuration
+          配置
         </Text>
         <Stack spacing="xs">
           {categories.map((category) => (
@@ -87,7 +87,7 @@ const ConfigurationNavBar = ({
       </Navbar.Section>
       <MediaQuery largerThan="sm" styles={{ display: "none" }}>
         <Button mt="xl" variant="light" component={Link} href="/admin">
-          Go back
+          返回
         </Button>
       </MediaQuery>
     </Navbar>

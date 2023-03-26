@@ -124,7 +124,7 @@ const Header = () => {
   const authenticatedLinks: NavLink[] = [
     {
       link: "/upload",
-      label: "Upload",
+      label: "上传",
     },
     {
       component: <NavbarShareMenu />,
@@ -137,27 +137,27 @@ const Header = () => {
   let unauthenticatedLinks: NavLink[] = [
     {
       link: "/auth/signIn",
-      label: "Sign in",
+      label: "登录",
     },
   ];
 
   if (config.get("share.allowUnauthenticatedShares")) {
     unauthenticatedLinks.unshift({
       link: "/upload",
-      label: "Upload",
+      label: "上传",
     });
   }
 
   if (config.get("general.showHomePage"))
     unauthenticatedLinks.unshift({
       link: "/",
-      label: "Home",
+      label: "主页",
     });
 
   if (config.get("share.allowRegistration"))
     unauthenticatedLinks.push({
       link: "/auth/signUp",
-      label: "Sign up",
+      label: "注册",
     });
 
   const { classes, cx } = useStyles();

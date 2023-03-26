@@ -41,8 +41,8 @@ const FileList = ({
     <Table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Size</th>
+          <th>名称</th>
+          <th>大小</th>
           <th></th>
         </tr>
       </thead>

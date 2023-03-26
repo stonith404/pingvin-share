@@ -34,7 +34,7 @@ const Share = ({ shareId }: { shareId: string }) => {
           showErrorModal(
             modals,
             "Visitor limit exceeded",
-            "The visitor limit from this share has been exceeded."
+            "已超过此共享的访问者限制."
           );
         } else {
           toast.axiosError(e);
@@ -57,7 +57,7 @@ const Share = ({ shareId }: { shareId: string }) => {
             showErrorModal(
               modals,
               "Not found",
-              "This share can't be found. Please check your link."
+              "找不到此共享。请检查您的链接."
             );
           }
         } else if (error == "share_password_required") {
@@ -65,7 +65,7 @@ const Share = ({ shareId }: { shareId: string }) => {
         } else if (error == "share_token_required") {
           getShareToken();
         } else {
-          showErrorModal(modals, "Error", "An unknown error occurred.");
+          showErrorModal(modals, "Error", "发生了一个未知的错误.");
         }
       });
   };
@@ -77,8 +77,8 @@ const Share = ({ shareId }: { shareId: string }) => {
   return (
     <>
       <Meta
-        title={`Share ${shareId}`}
-        description="Look what I've shared with you."
+        title={`分享 ${shareId}`}
+        description="看看我和你分享了什么."
       />
 
       <Group position="apart" mb="lg">

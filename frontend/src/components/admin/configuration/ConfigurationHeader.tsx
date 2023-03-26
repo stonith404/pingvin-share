@@ -42,7 +42,7 @@ const ConfigurationHeader = ({
           </Link>
           <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
             <Button variant="light" component={Link} href="/admin">
-              Go back
+              返回
             </Button>
           </MediaQuery>
         </Group>

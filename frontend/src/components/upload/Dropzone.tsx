@@ -62,7 +62,7 @@ const Dropzone = ({
 
           if (fileSizeSum > maxShareSize) {
             toast.error(
-              `Your files exceed the maximum share size of ${byteToHumanSizeString(
+              `您的文件超过了的最大共享大小 ${byteToHumanSizeString(
                 maxShareSize
               )}.`
             );
@@ -82,12 +82,11 @@ const Dropzone = ({
             <TbCloudUpload size={50} />
           </Group>
           <Text align="center" weight={700} size="lg" mt="xl">
-            Upload files
+            上传文件
           </Text>
           <Text align="center" size="sm" mt="xs" color="dimmed">
-            Drag&apos;n&apos;drop files here to start your share. We can accept
-            only files that are less than {byteToHumanSizeString(maxShareSize)}{" "}
-            in total.
+            拖动 或 选择 文件放在此处开始共享。我们可以接受仅限小于 {byteToHumanSizeString(maxShareSize)}{" "}
+            的文件.
           </Text>
         </div>
       </MantineDropzone>

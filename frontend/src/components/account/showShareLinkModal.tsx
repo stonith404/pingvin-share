@@ -8,7 +8,7 @@ const showShareLinkModal = (
 ) => {
   const link = `${appUrl}/share/${shareId}`;
   return modals.openModal({
-    title: "Share link",
+    title: "分享链接",
     children: (
       <Stack align="stretch">
         <TextInput variant="filled" value={link} />

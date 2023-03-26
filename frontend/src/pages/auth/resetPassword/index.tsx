@@ -58,10 +58,10 @@ const ResetPassword = () => {
   return (
     <Container size={460} my={30}>
       <Title order={2} weight={900} align="center">
-        Forgot your password?
+        忘记密码?
       </Title>
       <Text color="dimmed" size="sm" align="center">
-        Enter your email to get a reset link
+        输入您的电子邮件以获取重置链接
       </Text>
 
       <Paper withBorder shadow="md" p={30} radius="md" mt="xl">
@@ -70,14 +70,14 @@ const ResetPassword = () => {
             authService
               .requestResetPassword(values.email)
               .then(() => {
-                toast.success("The email has been sent.");
+                toast.success("电子邮件已发送.");
                 router.push("/auth/signIn");
               })
               .catch(toast.axiosError)
           )}
         >
           <TextInput
-            label="Your email"
+            label="你的邮箱"
             placeholder="Your email"
             {...form.getInputProps("email")}
           />
@@ -91,11 +91,11 @@ const ResetPassword = () => {
             >
               <Center inline>
                 <TbArrowLeft size={12} />
-                <Box ml={5}>Back to login page</Box>
+                <Box ml={5}>返回登录页面</Box>
               </Center>
             </Anchor>
             <Button type="submit" className={classes.control}>
-              Reset password
+              重置密码
             </Button>
           </Group>
         </form>

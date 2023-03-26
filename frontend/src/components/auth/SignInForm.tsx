@@ -54,8 +54,8 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
             icon: <TbInfoCircle />,
             color: "blue",
             radius: "md",
-            title: "Two-factor authentication required",
-            message: "Please enter your two-factor authentication code",
+            title: "需要双因素身份验证",
+            message: "请输入您的双因素身份验证码",
           });
           setLoginToken(response.data["loginToken"]);
         } else {
@@ -88,11 +88,11 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
   return (
     <Container size={420} my={40}>
       <Title order={2} align="center" weight={900}>
-        Welcome back
+        欢迎回来
       </Title>
       {config.get("share.allowRegistration") && (
         <Text color="dimmed" size="sm" align="center" mt={5}>
-          You don't have an account yet?{" "}
+          你还没有账户吗？{" "}
           <Anchor component={Link} href={"signUp"} size="sm">
             {"Sign up"}
           </Anchor>
@@ -107,12 +107,12 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
           })}
         >
           <TextInput
-            label="Email or username"
+            label="电子邮件或用户名"
             placeholder="Your email or username"
             {...form.getInputProps("emailOrUsername")}
           />
           <PasswordInput
-            label="Password"
+            label="密码"
             placeholder="Your password"
             mt="md"
             {...form.getInputProps("password")}
@@ -120,7 +120,7 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
           {showTotp && (
             <TextInput
               variant="filled"
-              label="Code"
+              label="代码"
               placeholder="******"
               mt="md"
               {...form.getInputProps("totp")}
@@ -129,12 +129,12 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
           {config.get("smtp.enabled") && (
             <Group position="right" mt="xs">
               <Anchor component={Link} href="/auth/resetPassword" size="xs">
-                Forgot password?
+                忘记密码?
               </Anchor>
             </Group>
           )}
           <Button fullWidth mt="xl" type="submit">
-            Sign in
+            登录
           </Button>
         </form>
       </Paper>

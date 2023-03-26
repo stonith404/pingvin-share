@@ -71,7 +71,7 @@ const CreateUploadModalBody = ({
       .min(3)
       .max(50)
       .matches(new RegExp("^[a-zA-Z0-9_-]*$"), {
-        message: "Can only contain letters, numbers, underscores and hyphens",
+        message: "只能包含字母、数字、下划线和连字符",
       }),
     password: yup.string().min(3).max(30),
     maxViews: yup.number().min(1),
@@ -96,17 +96,16 @@ const CreateUploadModalBody = ({
           withCloseButton
           onClose={() => setShowNotSignedInAlert(false)}
           icon={<TbAlertCircle size={16} />}
-          title="You're not signed in"
+          title="您尚未登录"
           color="yellow"
         >
-          You will be unable to delete your share manually and view the visitor
-          count.
+          您将无法手动删除共享并查看访问者计数.
         </Alert>
       )}
       <form
         onSubmit={form.onSubmit(async (values) => {
           if (!(await shareService.isShareIdAvailable(values.link))) {
-            form.setFieldError("link", "This link is already in use");
+            form.setFieldError("link", "此链接已在使用中");
           } else {
             const expiration = form.values.never_expires
               ? "never"
@@ -130,7 +129,7 @@ const CreateUploadModalBody = ({
             <Col xs={9}>
               <TextInput
                 variant="filled"
-                label="Link"
+                label="链接"
                 placeholder="myAwesomeShare"
                 {...form.getInputProps("link")}
               />
@@ -147,7 +146,7 @@ const CreateUploadModalBody = ({
                   )
                 }
               >
-                Generate
+                生成
               </Button>
             </Col>
           </Grid>
@@ -184,43 +183,43 @@ const CreateUploadModalBody = ({
                     data={[
                       // Set the label to singular if the number is 1, else plural
                       {
-                        value: "-minutes",
+                        value: "-分钟",
                         label:
-                          "Minute" +
-                          (form.values.expiration_num == 1 ? "" : "s"),
+                          "分钟" +
+                          (form.values.expiration_num == 1 ? "" : " "),
                       },
                       {
-                        value: "-hours",
+                        value: "-小时",
                         label:
-                          "Hour" + (form.values.expiration_num == 1 ? "" : "s"),
+                          "小时" + (form.values.expiration_num == 1 ? "" : " "),
                       },
                       {
-                        value: "-days",
+                        value: "-天",
                         label:
-                          "Day" + (form.values.expiration_num == 1 ? "" : "s"),
+                          "天" + (form.values.expiration_num == 1 ? "" : " "),
                       },
                       {
-                        value: "-weeks",
+                        value: "-周",
                         label:
-                          "Week" + (form.values.expiration_num == 1 ? "" : "s"),
+                          "周" + (form.values.expiration_num == 1 ? "" : " "),
                       },
                       {
-                        value: "-months",
+                        value: "-月",
                         label:
-                          "Month" +
-                          (form.values.expiration_num == 1 ? "" : "s"),
+                          "月" +
+                          (form.values.expiration_num == 1 ? "" : " "),
                       },
                       {
-                        value: "-years",
+                        value: "-年",
                         label:
-                          "Year" + (form.values.expiration_num == 1 ? "" : "s"),
+                          "年" + (form.values.expiration_num == 1 ? "" : " "),
                       },
                     ]}
                   />
                 </Col>
               </Grid>
               <Checkbox
-                label="Never Expires"
+                label="永久有效"
                 {...form.getInputProps("never_expires")}
               />
               <Text
@@ -236,7 +235,7 @@ const CreateUploadModalBody = ({
           )}
           <Accordion>
             <Accordion.Item value="description" sx={{ borderBottom: "none" }}>
-              <Accordion.Control>Description</Accordion.Control>
+              <Accordion.Control>描述</Accordion.Control>
               <Accordion.Panel>
                 <Stack align="stretch">
                   <Textarea
@@ -249,11 +248,11 @@ const CreateUploadModalBody = ({
             </Accordion.Item>
             {options.enableEmailRecepients && (
               <Accordion.Item value="recipients" sx={{ borderBottom: "none" }}>
-                <Accordion.Control>Email recipients</Accordion.Control>
+                <Accordion.Control>邮件接收设置</Accordion.Control>
                 <Accordion.Panel>
                   <MultiSelect
                     data={form.values.recipients}
-                    placeholder="Enter email recipients"
+                    placeholder="输入邮件收件人"
                     searchable
                     {...form.getInputProps("recipients")}
                     creatable
@@ -262,7 +261,7 @@ const CreateUploadModalBody = ({
                       if (!query.match(/^\S+@\S+\.\S+$/)) {
                         form.setFieldError(
                           "recipients",
-                          "Invalid email address"
+                          "无效的电子邮件地址"
                         );
                       } else {
                         form.setFieldError("recipients", null);
@@ -279,13 +278,13 @@ const CreateUploadModalBody = ({
             )}
 
             <Accordion.Item value="security" sx={{ borderBottom: "none" }}>
-              <Accordion.Control>Security options</Accordion.Control>
+              <Accordion.Control>安全选项</Accordion.Control>
               <Accordion.Panel>
                 <Stack align="stretch">
                   <PasswordInput
                     variant="filled"
                     placeholder="No password"
-                    label="Password protection"
+                    label="密码保护"
                     {...form.getInputProps("password")}
                   />
                   <NumberInput
@@ -293,14 +292,14 @@ const CreateUploadModalBody = ({
                     type="number"
                     variant="filled"
                     placeholder="No limit"
-                    label="Maximal views"
+                    label="最大浏览"
                     {...form.getInputProps("maxViews")}
                   />
                 </Stack>
               </Accordion.Panel>
             </Accordion.Item>
           </Accordion>
-          <Button type="submit">Share</Button>
+          <Button type="submit">分享</Button>
         </Stack>
       </form>
     </>

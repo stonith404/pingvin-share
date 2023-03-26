@@ -20,14 +20,14 @@ const TestEmailButton = ({
   const sendTestEmail = async () => {
     await configService
       .sendTestEmail(user!.email)
-      .then(() => toast.success("Email sent successfully"))
+      .then(() => toast.success("电子邮件发送成功"))
       .catch((e) =>
         modals.openModal({
-          title: "Failed to send email",
+          title: "发送电子邮件失败",
           children: (
             <Stack spacing="xs">
               <Text size="sm">
-                While sending the test email, the following error occurred:
+              发送测试电子邮件时，出现以下错误：
               </Text>
               <Textarea minRows={4} readOnly value={e.response.data.message} />
             </Stack>
@@ -50,8 +50,7 @@ const TestEmailButton = ({
             title: "Save configuration",
             children: (
               <Text size="sm">
-                To continue you need to save the configuration first. Do you
-                want to save the configuration and send the test email?
+                要继续，您需要先保存配置。你想要保存配置并发送测试电子邮件吗？
               </Text>
             ),
             labels: { confirm: "Save and send", cancel: "Cancel" },
@@ -65,7 +64,7 @@ const TestEmailButton = ({
         }
       }}
     >
-      Send test email
+      发送测试电子邮件
     </Button>
   );
 };

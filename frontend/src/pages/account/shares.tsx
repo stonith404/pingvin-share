@@ -39,18 +39,18 @@ const MyShares = () => {
 
   return (
     <>
-      <Meta title="My shares" />
+      <Meta title="我的分享" />
       <Title mb={30} order={3}>
-        My shares
+        我的分享
       </Title>
       {shares.length == 0 ? (
         <Center style={{ height: "70vh" }}>
           <Stack align="center" spacing={10}>
-            <Title order={3}>It's empty here 👀</Title>
-            <Text>You don't have any shares.</Text>
+            <Title order={3}>这里是空的 👀</Title>
+            <Text>你没有任何分享.</Text>
             <Space h={5} />
             <Button component={Link} href="/upload" variant="light">
-              Create one
+              创建一个
             </Button>
           </Stack>
         </Center>
@@ -59,9 +59,9 @@ const MyShares = () => {
           <Table>
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Visitors</th>
-                <th>Expires at</th>
+                <th>名称</th>
+                <th>访问者</th>
+                <th>到期时间</th>
                 <th></th>
               </tr>
             </thead>
@@ -89,7 +89,7 @@ const MyShares = () => {
                               }`
                             );
                             toast.success(
-                              "Your link was copied to the keyboard."
+                              "您的链接已复制到剪贴板."
                             );
                           } else {
                             showShareLinkModal(
@@ -108,16 +108,16 @@ const MyShares = () => {
                         size={25}
                         onClick={() => {
                           modals.openConfirmModal({
-                            title: `Delete share ${share.id}`,
+                            title: `删除分享 ${share.id}`,
                             children: (
                               <Text size="sm">
-                                Do you really want to delete this share?
+                                是否确实要删除此共享?
                               </Text>
                             ),
                             confirmProps: {
                               color: "red",
                             },
-                            labels: { confirm: "Confirm", cancel: "Cancel" },
+                            labels: { confirm: "确认", cancel: "取消" },
                             onConfirm: () => {
                               shareService.remove(share.id);
                               setShares(

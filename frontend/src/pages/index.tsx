@@ -84,17 +84,16 @@ export default function Home() {
 
   return (
     <>
-      <Meta title="Home" />
+      <Meta title="主页" />
       <Container>
         <div className={classes.inner}>
           <div className={classes.content}>
             <Title className={classes.title}>
-              A <span className={classes.highlight}>self-hosted</span> <br />{" "}
-              file sharing platform.
+              一个 <span className={classes.highlight}>自托管的</span> <br />{" "}
+              文件共享平台.
             </Title>
             <Text color="dimmed" mt="md">
-              Do you really want to give your personal files in the hand of
-              third parties like WeTransfer?
+              你真的想把你的个人档案交给WeTransfer等第三方?
             </Text>
 
             <List
@@ -109,19 +108,17 @@ export default function Home() {
             >
               <List.Item>
                 <div>
-                  <b>Self-Hosted</b> - Host Pingvin Share on your own machine.
+                  <b>自托管</b> - 在您自己的机器上搭建 Pingvin share.
                 </div>
               </List.Item>
               <List.Item>
                 <div>
-                  <b>Privacy</b> - Your files are your files and should never
-                  get into the hands of third parties.
+                  <b>隐私</b> - 你的文件就是你的文件，永远不应该落入第三方手中.
                 </div>
               </List.Item>
               <List.Item>
                 <div>
-                  <b>No annoying file size limit</b> - Upload as big files as
-                  you want. Only your hard drive will be your limit.
+                  <b>没有恼人的文件大小限制</b> - 上传你想要的的文件大小。只有你的硬盘容量才是你的极限.
                 </div>
               </List.Item>
             </List>
@@ -134,7 +131,7 @@ export default function Home() {
                 size="md"
                 className={classes.control}
               >
-                Get started
+                开始使用
               </Button>
               <Button
                 component={Link}
@@ -145,7 +142,7 @@ export default function Home() {
                 size="md"
                 className={classes.control}
               >
-                Source code
+                Github源码
               </Button>
             </Group>
           </div>

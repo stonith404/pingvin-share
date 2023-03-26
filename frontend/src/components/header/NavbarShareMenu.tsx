@@ -12,14 +12,14 @@ const NavbarShareMneu = () => {
       </Menu.Target>
       <Menu.Dropdown>
         <Menu.Item component={Link} href="/account/shares" icon={<TbLink />}>
-          My shares
+          我的分享
         </Menu.Item>
         <Menu.Item
           component={Link}
           href="/account/reverseShares"
           icon={<TbArrowLoopLeft />}
         >
-          Reverse shares
+          外部分享
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>

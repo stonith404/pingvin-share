@@ -14,17 +14,17 @@ const error = (message: string, config?: Omit<NotificationProps, "message">) =>
   });
 
 const axiosError = (axiosError: any) =>
-  error(axiosError?.response?.data?.message ?? "An unknown error occurred");
+  error(axiosError?.response?.data?.message ?? "发生了一个未知错误");
 
 const success = (
   message: string,
-  config?: Omit<NotificationProps, "message">
+  config?: Omit<NotificationProps, "消息">
 ) =>
   showNotification({
     icon: <TbCheck />,
     color: "green",
     radius: "md",
-    title: "Success",
+    title: "成功",
     message: message,
     autoClose: true,
     ...config,

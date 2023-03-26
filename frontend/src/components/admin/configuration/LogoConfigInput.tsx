@@ -17,8 +17,7 @@ const LogoConfigInput = ({
       <Stack style={{ maxWidth: isMobile ? "100%" : "40%" }} spacing={0}>
         <Title order={6}>Logo</Title>
         <Text color="dimmed" size="sm" mb="xs">
-          Change your logo by uploading a new image. The image must be a PNG and
-          should have the format 1:1.
+        通过上传新图像更改您的Logo. 图像必须是PNG，并且应具有1:1的格式.
         </Text>
       </Stack>
       <Stack></Stack>

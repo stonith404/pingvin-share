@@ -4,7 +4,7 @@ import Meta from "../../components/Meta";
 const SignUp = () => {
   return (
     <>
-      <Meta title="Sign Up" />
+      <Meta title="注册" />
       <SignUpForm />
     </>
   );

@@ -47,15 +47,15 @@ const MyShares = () => {
   if (!reverseShares) return <CenterLoader />;
   return (
     <>
-      <Meta title="My shares" />
+      <Meta title="我的分享" />
       <Group position="apart" align="baseline" mb={20}>
         <Group align="center" spacing={3} mb={30}>
-          <Title order={3}>My reverse shares</Title>
+          <Title order={3}>我的外部分享</Title>
           <Tooltip
             position="bottom"
             multiline
             width={220}
-            label="A reverse share allows you to generate a unique URL that allows external users to create a share."
+            label="外部分享允许您生成一个唯一的URL，该URL允许外部用户创建分享."
             events={{ hover: true, focus: false, touch: true }}
           >
             <ActionIcon>
@@ -73,14 +73,14 @@ const MyShares = () => {
           }
           leftIcon={<TbPlus size={20} />}
         >
-          Create
+          创建
         </Button>
       </Group>
       {reverseShares.length == 0 ? (
         <Center style={{ height: "70vh" }}>
           <Stack align="center" spacing={10}>
-            <Title order={3}>It's empty here 👀</Title>
-            <Text>You don't have any reverse shares.</Text>
+            <Title order={3}>这里是空的 👀</Title>
+            <Text>您没有任何外部分享.</Text>
           </Stack>
         </Center>
       ) : (
@@ -88,10 +88,10 @@ const MyShares = () => {
           <Table>
             <thead>
               <tr>
-                <th>Shares</th>
-                <th>Remaining uses</th>
-                <th>Max share size</th>
-                <th>Expires at</th>
+                <th>分享</th>
+                <th>剩余使用量</th>
+                <th>最大共享大小</th>
+                <th>到期时间</th>
                 <th></th>
               </tr>
             </thead>
@@ -101,7 +101,7 @@ const MyShares = () => {
                   <td style={{ width: 220 }}>
                     {reverseShare.shares.length == 0 ? (
                       <Text color="dimmed" size="sm">
-                        No shares created yet
+                        尚未创建共享
                       </Text>
                     ) : (
                       <Accordion>
@@ -134,7 +134,7 @@ const MyShares = () => {
                                         )}/share/${share.id}`
                                       );
                                       toast.success(
-                                        "The share link was copied to the keyboard."
+                                        "分享链接已复制到剪贴板."
                                       );
                                     } else {
                                       showShareLinkModal(
@@ -171,18 +171,17 @@ const MyShares = () => {
                         size={25}
                         onClick={() => {
                           modals.openConfirmModal({
-                            title: `Delete reverse share`,
+                            title: `删除外部分享`,
                             children: (
                               <Text size="sm">
-                                Do you really want to delete this reverse share?
-                                If you do, the associated shares will be deleted
-                                as well.
+                                是否确实要删除此反向共享？
+                                如果您这样做，关联的共享也将被删除.
                               </Text>
                             ),
                             confirmProps: {
                               color: "red",
                             },
-                            labels: { confirm: "Delete", cancel: "Cancel" },
+                            labels: { confirm: "删除", cancel: "取消" },
                             onConfirm: () => {
                               shareService.removeReverseShare(reverseShare.id);
                               setReverseShares(

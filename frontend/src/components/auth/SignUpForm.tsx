@@ -54,13 +54,13 @@ const SignUpForm = () => {
   return (
     <Container size={420} my={40}>
       <Title order={2} align="center" weight={900}>
-        Sign up
+        注册
       </Title>
       {config.get("share.allowRegistration") && (
         <Text color="dimmed" size="sm" align="center" mt={5}>
-          You have an account already?{" "}
+          你已经有了一个帐户?{" "}
           <Anchor component={Link} href={"signIn"} size="sm">
-            Sign in
+            登录
           </Anchor>
         </Text>
       )}
@@ -71,24 +71,24 @@ const SignUpForm = () => {
           )}
         >
           <TextInput
-            label="Username"
+            label="用户名"
             placeholder="Your username"
             {...form.getInputProps("username")}
           />
           <TextInput
-            label="Email"
+            label="邮箱"
             placeholder="Your email"
             mt="md"
             {...form.getInputProps("email")}
           />
           <PasswordInput
-            label="Password"
+            label="密码"
             placeholder="Your password"
             mt="md"
             {...form.getInputProps("password")}
           />
           <Button fullWidth mt="xl" type="submit">
-            Let's get started
+            让我们开始吧
           </Button>
         </form>
       </Paper>

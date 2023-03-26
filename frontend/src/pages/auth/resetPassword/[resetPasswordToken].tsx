@@ -42,10 +42,10 @@ const ResetPassword = () => {
   return (
     <Container size={460} my={30}>
       <Title order={2} weight={900} align="center">
-        Reset password
+        重置密码
       </Title>
       <Text color="dimmed" size="sm" align="center">
-        Enter your new password
+        输入您的新密码
       </Text>
 
       <Paper withBorder shadow="md" p={30} radius="md" mt="xl">
@@ -54,7 +54,7 @@ const ResetPassword = () => {
             authService
               .resetPassword(resetPasswordToken, values.password)
               .then(() => {
-                toast.success("Your password has been reset successfully.");
+                toast.success("您的密码已成功重置.");
 
                 router.push("/auth/signIn");
               })
@@ -62,13 +62,13 @@ const ResetPassword = () => {
           })}
         >
           <PasswordInput
-            label="New password"
+            label="新密码"
             placeholder="••••••••••"
             {...form.getInputProps("password")}
           />
           <Group position="right" mt="lg">
             <Button type="submit" className={classes.control}>
-              Reset password
+              重置密码
             </Button>
           </Group>
         </form>

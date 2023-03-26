@@ -76,21 +76,21 @@ const Account = () => {
           .string()
           .min(6)
           .max(6)
-          .matches(/^[0-9]+$/, { message: "Code must be a number" }),
+          .matches(/^[0-9]+$/, { message: "代码必须是数字" }),
       })
     ),
   });
 
   return (
     <>
-      <Meta title="My account" />
+      <Meta title="我的账户" />
       <Container size="sm">
         <Title order={3} mb="xs">
-          My account
+          我的账户
         </Title>
         <Paper withBorder p="xl">
           <Title order={5} mb="xs">
-            Account Info
+            账户信息
           </Title>
           <form
             onSubmit={accountForm.onSubmit((values) =>
@@ -99,35 +99,35 @@ const Account = () => {
                   username: values.username,
                   email: values.email,
                 })
-                .then(() => toast.success("User updated successfully"))
+                .then(() => toast.success("用户更新成功"))
                 .catch(toast.axiosError)
             )}
           >
             <Stack>
               <TextInput
-                label="Username"
+                label="用户名"
                 {...accountForm.getInputProps("username")}
               />
               <TextInput
-                label="Email"
+                label="邮箱"
                 {...accountForm.getInputProps("email")}
               />
               <Group position="right">
-                <Button type="submit">Save</Button>
+                <Button type="submit">保存</Button>
               </Group>
             </Stack>
           </form>
         </Paper>
         <Paper withBorder p="xl" mt="lg">
           <Title order={5} mb="xs">
-            Password
+            密码
           </Title>
           <form
             onSubmit={passwordForm.onSubmit((values) =>
               authService
                 .updatePassword(values.oldPassword, values.password)
                 .then(() => {
-                  toast.success("Password updated successfully");
+                  toast.success("密码更新成功");
                   passwordForm.reset();
                 })
                 .catch(toast.axiosError)
@@ -135,15 +135,15 @@ const Account = () => {
           >
             <Stack>
               <PasswordInput
-                label="Old password"
+                label="旧密码"
                 {...passwordForm.getInputProps("oldPassword")}
               />
               <PasswordInput
-                label="New password"
+                label="新密码"
                 {...passwordForm.getInputProps("password")}
               />
               <Group position="right">
-                <Button type="submit">Save</Button>
+                <Button type="submit">保存</Button>
               </Group>
             </Stack>
           </form>
@@ -151,7 +151,7 @@ const Account = () => {
 
         <Paper withBorder p="xl" mt="lg">
           <Title order={5} mb="xs">
-            Security
+            安全
           </Title>
 
           <Tabs defaultValue="totp">
@@ -169,7 +169,7 @@ const Account = () => {
                       authService
                         .disableTOTP(values.code, values.password)
                         .then(() => {
-                          toast.success("Successfully disabled TOTP");
+                          toast.success("已成功禁用TOTP");
                           values.password = "";
                           values.code = "";
                           refreshUser();
@@ -179,21 +179,21 @@ const Account = () => {
                   >
                     <Stack>
                       <PasswordInput
-                        description="Enter your current password to disable TOTP"
-                        label="Password"
+                        description="输入当前密码以禁用TOTP"
+                        label="密码"
                         {...disableTotpForm.getInputProps("password")}
                       />
 
                       <TextInput
                         variant="filled"
-                        label="Code"
+                        label="代码"
                         placeholder="******"
                         {...disableTotpForm.getInputProps("code")}
                       />
 
                       <Group position="right">
                         <Button color="red" type="submit">
-                          Disable
+                          禁用
                         </Button>
                       </Group>
                     </Stack>
@@ -218,8 +218,8 @@ const Account = () => {
                   >
                     <Stack>
                       <PasswordInput
-                        label="Password"
-                        description="Enter your current password to start enabling TOTP"
+                        label="密码"
+                        description="输入当前密码以开始启用TOTP"
                         {...enableTotpForm.getInputProps("password")}
                       />
                       <Group position="right">
@@ -234,7 +234,7 @@ const Account = () => {
         </Paper>
         <Paper withBorder p="xl" mt="lg">
           <Title order={5} mb="xs">
-            Color scheme
+            配色方案
           </Title>
           <ThemeSwitcher />
         </Paper>
@@ -245,11 +245,10 @@ const Account = () => {
               color="red"
               onClick={() =>
                 modals.openConfirmModal({
-                  title: "Account deletion",
+                  title: "账户删除",
                   children: (
                     <Text size="sm">
-                      Do you really want to delete your account including all
-                      your active shares?
+                      你真的想删除你的帐户吗？包括所有您的活跃分享?
                     </Text>
                   ),
 
@@ -262,7 +261,7 @@ const Account = () => {
                 })
               }
             >
-              Delete Account
+              删除账户
             </Button>
           </Stack>
         </Center>

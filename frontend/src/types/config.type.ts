@@ -1,6 +1,5 @@
 type Config = {
   key: string;
-  defaultValue: string;
   value: string;
   type: string;
 };

@@ -29,7 +29,7 @@ const Share = ({ reverseShareToken }: { reverseShareToken: string }) => {
         showErrorModal(
           modals,
           "Invalid Link",
-          "This link is invalid. Please check your link."
+          "此链接无效.请检查您的链接."
         );
         setIsLoading(false);
       });

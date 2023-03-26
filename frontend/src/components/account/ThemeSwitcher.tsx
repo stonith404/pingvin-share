@@ -34,7 +34,7 @@ const ThemeSwitcher = () => {
             label: (
               <Center>
                 <TbMoon size={16} />
-                <Box ml={10}>Dark</Box>
+                <Box ml={10}>暗黑</Box>
               </Center>
             ),
             value: "dark",
@@ -43,7 +43,7 @@ const ThemeSwitcher = () => {
             label: (
               <Center>
                 <TbSun size={16} />
-                <Box ml={10}>Light</Box>
+                <Box ml={10}>明亮</Box>
               </Center>
             ),
             value: "light",
@@ -52,7 +52,7 @@ const ThemeSwitcher = () => {
             label: (
               <Center>
                 <TbDeviceLaptop size={16} />
-                <Box ml={10}>System</Box>
+                <Box ml={10}>系统</Box>
               </Center>
             ),
             value: "system",

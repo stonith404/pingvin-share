@@ -22,9 +22,9 @@ const ManageUserTable = ({
       <Table verticalSpacing="sm">
         <thead>
           <tr>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Admin</th>
+            <th>用户名</th>
+            <th>邮箱</th>
+            <th>管理员</th>
             <th></th>
           </tr>
         </thead>

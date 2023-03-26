@@ -20,7 +20,7 @@ const showUpdateUserModal = (
   getUsers: () => void
 ) => {
   return modals.openModal({
-    title: `Update ${user.username}`,
+    title: `升级 ${user.username}`,
     children: <Body user={user} modals={modals} getUsers={getUsers} />,
   });
 };
@@ -75,10 +75,10 @@ const Body = ({
       >
         <Stack>
           <TextInput
-            label="Username"
+            label="用户名"
             {...accountForm.getInputProps("username")}
           />
-          <TextInput label="Email" {...accountForm.getInputProps("email")} />
+          <TextInput label="邮箱" {...accountForm.getInputProps("email")} />
           <Switch
             mt="xs"
             labelPosition="left"
@@ -88,7 +88,7 @@ const Body = ({
         </Stack>
       </form>
       <Accordion>
-        <Accordion.Item sx={{ borderBottom: "none" }} value="changePassword">
+        <Accordion.Item sx={{ borderBottom: "none" }} value="更改密码">
           <Accordion.Control px={0}>Change password</Accordion.Control>
           <Accordion.Panel>
             <form
@@ -97,17 +97,17 @@ const Body = ({
                   .update(user.id, {
                     password: values.password,
                   })
-                  .then(() => toast.success("Password changed successfully"))
+                  .then(() => toast.success("密码更改成功"))
                   .catch(toast.axiosError);
               })}
             >
               <Stack>
                 <PasswordInput
-                  label="New password"
+                  label="新密码"
                   {...passwordForm.getInputProps("password")}
                 />
                 <Button variant="light" type="submit">
-                  Save new password
+                  保存新密码
                 </Button>
               </Stack>
             </form>
@@ -116,7 +116,7 @@ const Body = ({
       </Accordion>
       <Group position="right">
         <Button type="submit" form="accountForm">
-          Save
+          保存
         </Button>
       </Group>
     </Stack>

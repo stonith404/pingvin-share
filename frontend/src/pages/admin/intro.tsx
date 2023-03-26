@@ -14,40 +14,40 @@ import Meta from "../../components/Meta";
 const Intro = () => {
   return (
     <>
-      <Meta title="Intro" />
+      <Meta title="介绍" />
       <Container size="xs">
         <Stack>
           <Center>
             <Logo height={80} width={80} />
           </Center>
           <Center>
-            <Title order={2}>Welcome to Pingvin Share</Title>
+            <Title order={2}>欢迎来到 Pingvin Share</Title>
           </Center>
           <Text>
-            If you enjoy Pingvin Share please ⭐️ it on{" "}
+            如果你喜欢 Pingvin Share ，请 ⭐️ 打开{" "}
             <Anchor
               target="_blank"
               href="https://github.com/stonith404/pingvin-share"
             >
               GitHub
             </Anchor>{" "}
-            or{" "}
+            或{" "}
             <Anchor
               target="_blank"
               href="https://github.com/sponsors/stonith404"
             >
-              buy me a coffee
+              给我买杯咖啡
             </Anchor>{" "}
-            if you want to support my work.
+            如果你想支持我的工作.
           </Text>
-          <Text>Enough talked, have fun with Pingvin Share!</Text>
-          <Text mt="lg">How to you want to continue?</Text>
+          <Text>聊得够多了，与 Pingvin Share 一起玩得开心！</Text>
+          <Text mt="lg">你想如何继续？</Text>
           <Stack>
             <Button href="/admin/config/general" component={Link}>
-              Customize configuration
+              自定义配置
             </Button>
             <Button href="/" component={Link} variant="light">
-              Explore Pingvin Share
+              探索 Pingvin Share
             </Button>
           </Stack>
         </Stack>

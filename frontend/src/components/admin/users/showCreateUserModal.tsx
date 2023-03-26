@@ -18,7 +18,7 @@ const showCreateUserModal = (
   getUsers: () => void
 ) => {
   return modals.openModal({
-    title: "Create user",
+    title: "创建用户",
     children: (
       <Body modals={modals} smtpEnabled={smtpEnabled} getUsers={getUsers} />
     ),
@@ -65,14 +65,14 @@ const Body = ({
         })}
       >
         <Stack>
-          <TextInput label="Username" {...form.getInputProps("username")} />
-          <TextInput label="Email" {...form.getInputProps("email")} />
+          <TextInput label="用户名" {...form.getInputProps("username")} />
+          <TextInput label="邮箱" {...form.getInputProps("email")} />
           {smtpEnabled && (
             <Switch
               mt="xs"
               labelPosition="left"
-              label="Set password manually"
-              description="If not checked, the user will receive an email with a link to set their password."
+              label="手动设置密码"
+              description="如果未选中，用户将收到一封带有设置密码链接的电子邮件."
               {...form.getInputProps("setPasswordManually", {
                 type: "checkbox",
               })}
@@ -80,7 +80,7 @@ const Body = ({
           )}
           {(form.values.setPasswordManually || !smtpEnabled) && (
             <PasswordInput
-              label="Password"
+              label="密码"
               {...form.getInputProps("password")}
             />
           )}
@@ -93,12 +93,12 @@ const Body = ({
             }}
             mt="xs"
             labelPosition="left"
-            label="Admin privileges"
-            description="If checked, the user will be able to access the admin panel."
+            label="管理员权限"
+            description="如果选中，用户将能够访问管理面板."
             {...form.getInputProps("isAdmin", { type: "checkbox" })}
           />
           <Group position="right">
-            <Button type="submit">Create</Button>
+            <Button type="submit">创建</Button>
           </Group>
         </Stack>
       </form>

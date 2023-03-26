@@ -42,7 +42,7 @@ const FilePreview = ({
         target="_blank"
         href={`/api/shares/${shareId}/files/${fileId}?download=false`}
       >
-        View original file
+        查看原始文件
       </Button>
     </Stack>
   );
@@ -145,10 +145,9 @@ const UnSupportedFile = () => {
   return (
     <Center style={{ minHeight: 200 }}>
       <Stack align="center" spacing={10}>
-        <Title order={3}>Preview not supported</Title>
+        <Title order={3}>不支持预览</Title>
         <Text>
-          A preview for thise file type is unsupported. Please download the file
-          to view it.
+        不支持此文件类型的预览. 请下载文件查看它.
         </Text>
       </Stack>
     </Center>

@@ -34,12 +34,12 @@ const Admin = () => {
 
   const [managementOptions, setManagementOptions] = useState([
     {
-      title: "User management",
+      title: "用户管理",
       icon: TbUsers,
       route: "/admin/users",
     },
     {
-      title: "Configuration",
+      title: "配置",
       icon: TbSettings,
       route: "/admin/config/general",
     },
@@ -51,7 +51,7 @@ const Admin = () => {
         setManagementOptions([
           ...managementOptions,
           {
-            title: "Update",
+            title: "升级",
             icon: TbRefresh,
             route:
               "https://github.com/stonith404/pingvin-share/releases/latest",
@@ -63,9 +63,9 @@ const Admin = () => {
 
   return (
     <>
-      <Meta title="Administration" />
+      <Meta title="管理" />
       <Title mb={30} order={3}>
-        Administration
+        管理
       </Title>
       <Stack justify="space-between" style={{ height: "calc(100vh - 180px)" }}>
         <Paper withBorder p={40}>
@@ -91,7 +91,7 @@ const Admin = () => {
 
         <Center>
           <Text size="xs" color="dimmed">
-            Version {process.env.VERSION}
+            版本 {process.env.VERSION}
           </Text>
         </Center>
       </Stack>

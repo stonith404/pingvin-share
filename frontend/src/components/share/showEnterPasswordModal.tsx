@@ -10,7 +10,7 @@ const showEnterPasswordModal = (
     closeOnClickOutside: false,
     withCloseButton: false,
     closeOnEscape: false,
-    title: "Password required",
+    title: "需要密码",
     children: <Body submitCallback={submitCallback} />,
   });
 };
@@ -25,7 +25,7 @@ const Body = ({
   return (
     <Stack align="stretch">
       <Text size="sm">
-        This access this share please enter the password for the share.
+        此访问此共享请输入共享的密码.
       </Text>
 
       <form
@@ -43,7 +43,7 @@ const Body = ({
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit">提交</Button>
         </Stack>
       </form>
     </Stack>

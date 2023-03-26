@@ -126,7 +126,7 @@ const Upload = ({
     if (fileErrorCount > 0) {
       if (!errorToastShown) {
         toast.error(
-          `${fileErrorCount} file(s) failed to upload. Trying again.`,
+          `${fileErrorCount} 无法上载个文件.再试一次.`,
           {
             withCloseButton: false,
             autoClose: false,
@@ -153,14 +153,14 @@ const Upload = ({
           setFiles([]);
         })
         .catch(() =>
-          toast.error("An error occurred while finishing your share.")
+          toast.error("完成共享时出错.")
         );
     }
   }, [files]);
 
   return (
     <>
-      <Meta title="Upload" />
+      <Meta title="上传" />
       <Group position="right" mb={20}>
         <Button
           loading={isUploading}
@@ -183,7 +183,7 @@ const Upload = ({
             );
           }}
         >
-          Share
+          分享
         </Button>
       </Group>
       <Dropzone

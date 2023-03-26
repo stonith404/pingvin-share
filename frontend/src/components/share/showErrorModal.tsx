@@ -31,7 +31,7 @@ const Body = ({ text }: { text: string }) => {
             router.back();
           }}
         >
-          Go back
+          返回
         </Button>
       </Stack>
     </>
