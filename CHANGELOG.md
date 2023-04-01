@@ -1,3 +1,15 @@
+## [0.14.0](https://github.com/stonith404/pingvin-share/compare/v0.13.1...v0.14.0) (2023-04-01)
+
+
+### Features
+
+* **share, config:** more variables, placeholder and reset default ([#132](https://github.com/stonith404/pingvin-share/issues/132)) ([beece56](https://github.com/stonith404/pingvin-share/commit/beece56327da141c222fd9f5259697df6db9347a))
+
+
+### Bug Fixes
+
+* bool config variable can't be changed ([0e5c673](https://github.com/stonith404/pingvin-share/commit/0e5c67327092e4751208e559a2b0d5ee2b91b6e3))
+
 ### [0.13.1](https://github.com/stonith404/pingvin-share/compare/v0.13.0...v0.13.1) (2023-03-14)
 
 
