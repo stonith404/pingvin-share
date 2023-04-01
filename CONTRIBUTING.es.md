@@ -1,4 +1,4 @@
-### *Leer esto en otro idioma: [Inglés](CONTRIBUTING.md), [Español](CONTRIBUTING.es.md)* 
+*Leer esto en otro idioma: [Inglés](CONTRIBUTING.md), [Español](CONTRIBUTING.es.md)* 
 
 ---
 
