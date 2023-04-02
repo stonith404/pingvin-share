@@ -1,4 +1,4 @@
-*Read this in another language: [Spanish](CONTRIBUTING.es.md), [English](CONTRIBUTING.md), [Simplified Chinese](CONTRIBUTING.zh-cn.md)* 
+_Read this in another language: [Spanish](/docs/CONTRIBUTING.es.md), [English](/CONTRIBUTING.md), [Simplified Chinese](/docs/CONTRIBUTING.zh-cn.md)_
 
 ---
 

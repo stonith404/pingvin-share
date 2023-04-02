@@ -1,9 +1,8 @@
-
 # <div align="center"><img  src="https://user-images.githubusercontent.com/58886915/166198400-c2134044-1198-4647-a8b6-da9c4a204c68.svg" width="40"/> </br>Pingvin Share</div>
 
 ---
 
-*Leer esto en otro idioma: [Inglés](README.md), [Español](README.es.md), [Chino Simplificado](README.zh-cn.md)* 
+_Leer esto en otro idioma: [Inglés](/README.md), [Español](/docs/README.es.md), [Chino Simplificado](/docs/README.zh-cn.md)_
 
 ---
 
@@ -31,7 +30,7 @@ Pingvin Share es una plataforma de intercambio de archivos autoalojada y una alt
 
 ### Instalación con Docker (recomendada)
 
-1. Descarge el archivo `docker-compose.yml` 
+1. Descarge el archivo `docker-compose.yml`
 2. Ejecute `docker-compose up -d`
 
 El sitio web ahora está esperando conexiones en `http://localhost:3000`, ¡diviértase usando Pingvin Share 🐧!
@@ -96,24 +95,24 @@ docker compose up -d
 #### Instalación autónoma
 
 1. Deten la aplicación en ejecución
-   
+
    ```bash
    pm2 stop pingvin-share-backend pingvin-share-frontend
    ```
 
 2. Repite los pasos de la [guía de instalación](#instalación-autonoma) excepto el paso de `git clone`.
-   
+
    ```bash
    cd pingvin-share
-   
+
    # Consultar la última versión
    git fetch --tags && git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
-   
+
    # Iniciar el backend
    cd backend
    npm run build
    pm2 restart pingvin-share-backend
-   
+
    # Iniciar frontend
    cd ../frontend
    npm run build

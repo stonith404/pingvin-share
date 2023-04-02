@@ -2,7 +2,7 @@
 
 ---
 
-*Read this in another language: [Spanish](README.es.md), [English](README.md), [Simplified Chinese](README.zh-cn.md)* 
+_Read this in another language: [Spanish](/docs/README.es.md), [English]/(README.md), [Simplified Chinese](/docs/README.zh-cn.md)_
 
 ---
 
@@ -95,10 +95,11 @@ docker compose up -d
 #### Stand-alone
 
 1. Stop the running app
-    ```bash
-    pm2 stop pingvin-share-backend pingvin-share-frontend
-    ```
+   ```bash
+   pm2 stop pingvin-share-backend pingvin-share-frontend
+   ```
 2. Repeat the steps from the [installation guide](#stand-alone-installation) except the `git clone` step.
+
    ```bash
    cd pingvin-share
 

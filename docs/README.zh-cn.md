@@ -2,7 +2,7 @@
 
 ---
 
-*选择合适的语言阅读: [西班牙语](README.es.md), [英语](README.md), [简体中文](README.zh-cn.md)* 
+_选择合适的语言阅读: [西班牙语](/docs/README.es.md), [英语](/README.md), [简体中文](/docs/README.zh-cn.md)_
 
 ---
 
@@ -30,7 +30,7 @@ Pingvin Share 是一个可自建的文件分享平台，是 WeTransfer 的一个
 
 ### Docker 部署 (推荐)
 
-1. 下载 `docker-compose.yml` 
+1. 下载 `docker-compose.yml`
 2. 运行命令 `docker-compose up -d`
 
 现在网站运行在 `http://localhost:3000`，尝试一下你本地的 Pingvin Share 🐧!
@@ -85,7 +85,7 @@ pm2 start --name="pingvin-share-frontend" npm -- run start
 
 因为 Pingvin Share 仍处在开发阶段，在升级前请务必阅读 release notes 避免不可逆的改变
 
-#### Docker  升级
+#### Docker 升级
 
 ```bash
 docker compose pull
@@ -95,10 +95,11 @@ docker compose up -d
 #### Stand-alone 升级
 
 1. 停止正在运行的 app
-    ```bash
-    pm2 stop pingvin-share-backend pingvin-share-frontend
-    ```
+   ```bash
+   pm2 stop pingvin-share-backend pingvin-share-frontend
+   ```
 2. 重复 [installation guide](#stand-alone-installation) 中的步骤，除了 `git clone` 这一步
+
    ```bash
    cd pingvin-share
 

@@ -1,10 +1,10 @@
-*Leer esto en otro idioma: [Inglés](CONTRIBUTING.md), [Español](CONTRIBUTING.es.md), [Chino Simplificado](CONTRIBUTING.zh-cn.md)* 
+_Leer esto en otro idioma: [Inglés](/CONTRIBUTING.md), [Español](/docs/CONTRIBUTING.es.md), [Chino Simplificado](/docs/CONTRIBUTING.zh-cn.md)_
 
 ---
 
 # Contribuyendo
 
-¡Nos ❤️ encantaría que contribuyas a Pingvin Share y nos ayudes a hacerlo mejor! Todas las contribuciones son bienvenidas, incluyendo problemas, sugerencias, *pull requests* y más.
+¡Nos ❤️ encantaría que contribuyas a Pingvin Share y nos ayudes a hacerlo mejor! Todas las contribuciones son bienvenidas, incluyendo problemas, sugerencias, _pull requests_ y más.
 
 ## Para comenzar
 
@@ -15,17 +15,17 @@ Si encontraste un error, tienes una sugerencia o algo más, simplemente crea un 
 Antes de enviar la pull request para su revisión, asegúrate de que:
 
 - El nombre de la pull request sigue las [especificaciones de Commits Convencionales](https://www.conventionalcommits.org/):
-  
+
   `<tipo>[ámbito opcional]: <descripción>`
-  
+
   ejemplo:
-  
+
   ```
   feat(share): agregar protección con contraseña
   ```
-  
+
   Donde `tipo` puede ser:
-  
+
   - **feat** - es una nueva función
   - **doc** - cambios solo en la documentación
   - **fix** - una corrección de error

@@ -1,4 +1,4 @@
-*选择合适的语言阅读: [西班牙语](CONTRIBUTING.es.md), [英语](CONTRIBUTING.md), [简体中文](CONTRIBUTING.zh-cn.md)* 
+_选择合适的语言阅读: [西班牙语](/docs/CONTRIBUTING.es.md), [英语](/CONTRIBUTING.md), [简体中文](/docs/CONTRIBUTING.zh-cn.md)_
 
 ---
 
@@ -55,7 +55,8 @@ $ git push origin [你的新分支的名字]
 
 5. 提交你的代码以便代码审查
 
-   如果你进入你 fork 的  Github 仓库，你会看到一个 `Compare & pull request` 按钮，点击该按钮
+   如果你进入你 fork 的 Github 仓库，你会看到一个 `Compare & pull request` 按钮，点击该按钮
+
 6. 发起一个 PR
 7. 点击 `Create pull request` 来提交你的 PR
 8. 等待代码审查，通过或以某些原因拒绝
