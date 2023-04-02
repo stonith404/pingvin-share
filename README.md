@@ -2,7 +2,7 @@
 
 ---
 
-*Read this in another language: [Spanish](README.es.md), [English](README.md)* 
+*Read this in another language: [Spanish](README.es.md), [English](README.md), [Simplified Chinese](README.zh-cn.md)* 
 
 ---
 
