@@ -3,7 +3,7 @@
 
 ---
 
-*Leer esto en otro idioma: [Inglés](README.md), [Español](README.es.md)* 
+*Leer esto en otro idioma: [Inglés](README.md), [Español](README.es.md), [Chino Simplificado](README.zh-cn.md)* 
 
 ---
 
