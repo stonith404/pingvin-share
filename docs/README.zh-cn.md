@@ -28,6 +28,36 @@ Pingvin Share 是一个可自建的文件分享平台，是 WeTransfer 的一个
 
 > 注意：Pingvin Share 仍处于开发阶段并且可能存在 bugs
 
+### Railway 部署
+
+Railway 是一个简单而强大的部署平台，你可以轻松地使用 Dockerfile 或项目启动代码进行部署
+
+> Railway 提供免费的计划，并且在合理使用下能覆盖 Pingvin 的部署费用
+
+**一键部署**
+
+1. 点击下方的 **Deploy on Railway** 按钮
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/Vsidvt?referralCode=NstqG_)
+
+2. 授权 Railway 访问你的 Github 账户，Railway 会自动克隆一份仓库用于部署
+3. 部署时等待 1-3 分钟，休息一下吧
+4. Railway 会自动为你的部署生成域名，开始使用吧！
+
+<details>
+  <summary> 手动部署
+  </summary>
+
+1. 点击 Pingvin Share 仓库的 Fork 按钮，创建一个你的仓库分支
+
+2. 前往 [Railway Dashboard](https://railway.app/dashboard) 新建一个项目，如果提示则授权 Railway 访问你的 Github 账户
+
+3. 选择项目的 Github 仓库，选择你刚才创建的 Fork 分支仓库，点击 **Deploy Now**
+
+4. 前往 `pingvin-share` 生产环境的设置页面，找到 `Environment - Domains`，点击 **Generate Domain** 生成域名并开始使用吧！
+
+5. (可选) 点击步骤 4 中的 **Custom Domain** 绑定自定义域名
+</details>
 ### Docker 部署 (推荐)
 
 1. 下载 `docker-compose.yml`

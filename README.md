@@ -53,7 +53,7 @@ Railway is a simple and powerful deployment platform, you can easily deploy your
 
 2. Go to [Railway Dashboard](https://railway.app/dashboard) and create a new project, connect with your Github if asked.
 
-3. Deploy from Github repo. Select the repo you just forked! Then click **Deploy Now**
+3. Deploy from Github repo. Select the repo you just forked! Then click **Deploy Now**!
 
 4. Go to `pingvin-share` production env setting, find `Environment - Domains`, click **Generate Domain** and enjoy!
 
