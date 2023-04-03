@@ -28,6 +28,38 @@ Pingvin Share is self-hosted file sharing platform and an alternative for WeTran
 
 > Note: Pingvin Share is in its early stages and may contain bugs.
 
+### Deploy with Railway
+Railway is a simple and powerful deployment platform, you can easily deploy your project using Dockerfile or setup commands.
+
+> Railway provides **free plan** and this should cover the cost of Pingvin with limited usage.
+
+**One-Click Deploy**
+
+1. Click the **Deploy on Railway** button
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/Vsidvt?referralCode=NstqG_)
+
+2. Connect Railway with your Github account, Railway will automatically clone a repo for deployment.
+
+3. Wait 1-3 minutes for deployment, get a cup.
+
+4. Railway generated a domain for you in deployments. Enjoy!
+
+<details>
+  <summary> Deploy Manually
+  </summary>
+
+1. Create a fork of the repository by clicking on the `Fork` button in the Pingvin Share repository
+
+2. Go to [Railway Dashboard](https://railway.app/dashboard) and create a new project, connect with your Github if asked.
+
+3. Deploy from Github repo. Select the repo you just forked! Then click **Deploy Now**
+
+4. Go to `pingvin-share` production env setting, find `Environment - Domains`, click **Generate Domain** and enjoy!
+</details>
+
+5. (Optional) Add your custom domain by clicking **Custom Domain** in step 4.
+
 ### Installation with Docker (recommended)
 
 1. Download the `docker-compose.yml` file
