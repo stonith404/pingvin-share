@@ -58,6 +58,7 @@ Railway 是一个简单而强大的部署平台，你可以轻松地使用 Docke
 
 5. (可选) 点击步骤 4 中的 **Custom Domain** 绑定自定义域名
 </details>
+
 ### Docker 部署 (推荐)
 
 1. 下载 `docker-compose.yml`
