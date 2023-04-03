@@ -56,9 +56,10 @@ Railway is a simple and powerful deployment platform, you can easily deploy your
 3. Deploy from Github repo. Select the repo you just forked! Then click **Deploy Now**
 
 4. Go to `pingvin-share` production env setting, find `Environment - Domains`, click **Generate Domain** and enjoy!
-</details>
 
 5. (Optional) Add your custom domain by clicking **Custom Domain** in step 4.
+
+</details>
 
 ### Installation with Docker (recommended)
 
