@@ -81,7 +81,7 @@ export class ConfigService {
     if (!configVariable || configVariable.locked)
       throw new NotFoundException("Config variable not found");
 
-    if (value == "") {
+    if (value === "") {
       value = null;
     } else if (
       typeof value != configVariable.type &&
@@ -100,7 +100,7 @@ export class ConfigService {
           name: key.split(".")[1],
         },
       },
-      data: { value: value ? value.toString() : null },
+      data: { value: value === null ? null : value.toString() },
     });
 
     this.configVariables = await this.prisma.config.findMany();
