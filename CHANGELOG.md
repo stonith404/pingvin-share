@@ -1,3 +1,10 @@
+### [0.14.1](https://github.com/stonith404/pingvin-share/compare/v0.14.0...v0.14.1) (2023-04-07)
+
+
+### Bug Fixes
+
+* boolean config variables can't be set to false ([39a7451](https://github.com/stonith404/pingvin-share/commit/39a74510c1f00466acaead39f7bee003b3db60d7))
+
 ## [0.14.0](https://github.com/stonith404/pingvin-share/compare/v0.13.1...v0.14.0) (2023-04-01)
 
 
