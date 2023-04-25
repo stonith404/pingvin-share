@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import httpProxyMiddleware from "next-http-proxy-middleware";
+import getConfig from "next/config";
 
 export const config = {
   api: {
@@ -8,11 +9,13 @@ export const config = {
   },
 };
 
+const { apiURL } = getConfig().serverRuntimeConfig;
+
 export default (req: NextApiRequest, res: NextApiResponse) => {
   return httpProxyMiddleware(req, res, {
     headers: {
       "X-Forwarded-For": req.socket?.remoteAddress ?? "",
     },
-    target: "http://localhost:8080",
+    target: apiURL,
   });
 };

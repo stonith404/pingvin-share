@@ -22,7 +22,7 @@ export async function middleware(request: NextRequest) {
 
   // Get config from backend
   const config = await (
-    await fetch("http://localhost:8080/api/configs")
+    await fetch(`${request.nextUrl.origin}/api/configs`)
   ).json();
 
   const getConfig = (key: string) => {

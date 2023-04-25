@@ -11,6 +11,7 @@ import axios from "axios";
 import { getCookie, setCookie } from "cookies-next";
 import { GetServerSidePropsContext } from "next";
 import type { AppProps } from "next/app";
+import getConfig from "next/config";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Header from "../components/header/Header";
@@ -117,6 +118,8 @@ function App({ Component, pageProps }: AppProps) {
 // Fetch user and config variables on server side when the first request is made
 // These will get passed as a page prop to the App component and stored in the contexts
 App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
+  const { apiURL } = getConfig().serverRuntimeConfig;
+
   let pageProps: {
     user?: CurrentUser;
     configVariables?: Config[];
@@ -130,15 +133,13 @@ App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
   if (ctx.req) {
     const cookieHeader = ctx.req.headers.cookie;
 
-    pageProps.user = await axios(`http://localhost:8080/api/users/me`, {
+    pageProps.user = await axios(`${apiURL}/api/users/me`, {
       headers: { cookie: cookieHeader },
     })
       .then((res) => res.data)
       .catch(() => null);
 
-    pageProps.configVariables = (
-      await axios(`http://localhost:8080/api/configs`)
-    ).data;
+    pageProps.configVariables = (await axios(`${apiURL}/api/configs`)).data;
 
     pageProps.route = ctx.req.url;
   }
