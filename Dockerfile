@@ -31,7 +31,7 @@ RUN npm run build  && npm prune --production
 # Stage 5: Final image
 FROM node:19-slim AS runner
 ENV NODE_ENV=docker
-RUN apt-get update && apt-get install -y openssl
+RUN apt-get update && apt-get install -y curl openssl
 
 WORKDIR /opt/app/frontend
 COPY --from=frontend-builder /opt/app/public ./public
@@ -47,4 +47,6 @@ COPY --from=backend-builder /opt/app/package.json ./
 
 WORKDIR /opt/app
 EXPOSE 3000
+HEALTHCHECK --interval=10s --timeout=3s CMD curl -f http://localhost:3000/api/health || exit 1
+
 CMD cp -rn /tmp/img /opt/app/frontend/public && node frontend/server.js & cd backend && npm run prod
