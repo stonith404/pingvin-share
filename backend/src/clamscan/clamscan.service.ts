@@ -3,6 +3,7 @@ import * as NodeClam from "clamscan";
 import * as fs from "fs";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
+import { SHARE_DIRECTORY } from "../constants";
 
 const clamscanConfig = {
   clamdscan: {
@@ -39,12 +40,12 @@ export class ClamScanService {
     const infectedFiles = [];
 
     const files = fs
-      .readdirSync(`./data/uploads/shares/${shareId}`)
+      .readdirSync(`${SHARE_DIRECTORY}/${shareId}`)
       .filter((file) => file != "archive.zip");
 
     for (const fileId of files) {
       const { isInfected } = await clamScan
-        .isInfected(`./data/uploads/shares/${shareId}/${fileId}`)
+        .isInfected(`${SHARE_DIRECTORY}/${shareId}/${fileId}`)
         .catch(() => {
           console.log("ClamAV is not active");
           return { isInfected: false };

@@ -16,6 +16,7 @@ import { EmailService } from "src/email/email.service";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { ReverseShareService } from "src/reverseShare/reverseShare.service";
+import { SHARE_DIRECTORY } from "../constants";
 import { CreateShareDTO } from "./dto/createShare.dto";
 
 @Injectable()
@@ -65,7 +66,7 @@ export class ShareService {
       }
     }
 
-    fs.mkdirSync(`./data/uploads/shares/${share.id}`, {
+    fs.mkdirSync(`${SHARE_DIRECTORY}/${share.id}`, {
       recursive: true,
     });
 
@@ -99,7 +100,7 @@ export class ShareService {
   }
 
   async createZip(shareId: string) {
-    const path = `./data/uploads/shares/${shareId}`;
+    const path = `${SHARE_DIRECTORY}/${shareId}`;
 
     const files = await this.prisma.file.findMany({ where: { shareId } });
     const archive = archiver("zip", {

@@ -1,6 +1,5 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 import * as crypto from "crypto";
-
 const configVariables: ConfigVariables = {
   internal: {
     jwtSecret: {
@@ -162,7 +161,15 @@ type ConfigVariables = {
   };
 };
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+  datasources: {
+    db: {
+      url:
+        process.env.DATABASE_URL ||
+        "file:../data/pingvin-share.db?connection_limit=1",
+    },
+  },
+});
 
 async function seedConfigVariables() {
   for (const [category, configVariablesOfCategory] of Object.entries(

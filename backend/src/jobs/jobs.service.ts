@@ -5,6 +5,7 @@ import * as moment from "moment";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { ReverseShareService } from "src/reverseShare/reverseShare.service";
+import { SHARE_DIRECTORY } from "../constants";
 
 @Injectable()
 export class JobsService {
@@ -61,25 +62,25 @@ export class JobsService {
     let filesDeleted = 0;
 
     const shareDirectories = fs
-      .readdirSync("./data/uploads/shares", { withFileTypes: true })
+      .readdirSync(SHARE_DIRECTORY, { withFileTypes: true })
       .filter((dirent) => dirent.isDirectory())
       .map((dirent) => dirent.name);
 
     for (const shareDirectory of shareDirectories) {
       const temporaryFiles = fs
-        .readdirSync(`./data/uploads/shares/${shareDirectory}`)
+        .readdirSync(`${SHARE_DIRECTORY}/${shareDirectory}`)
         .filter((file) => file.endsWith(".tmp-chunk"));
 
       for (const file of temporaryFiles) {
         const stats = fs.statSync(
-          `./data/uploads/shares/${shareDirectory}/${file}`
+          `${SHARE_DIRECTORY}/${shareDirectory}/${file}`
         );
         const isOlderThanOneDay = moment(stats.mtime)
           .add(1, "day")
           .isBefore(moment());
 
         if (isOlderThanOneDay) {
-          fs.rmSync(`./data/uploads/shares/${shareDirectory}/${file}`);
+          fs.rmSync(`${SHARE_DIRECTORY}/${shareDirectory}/${file}`);
           filesDeleted++;
         }
       }
