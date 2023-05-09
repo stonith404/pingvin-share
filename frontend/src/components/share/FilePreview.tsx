@@ -116,10 +116,9 @@ const TextPreview = () => {
   const [text, setText] = useState<string | null>(null);
 
   useEffect(() => {
-    api.get(`/shares/${shareId}/files/${fileId}?download=false`).then((res) => {
-      console.log(res.data);
-      setText(res.data);
-    });
+    api
+      .get(`/shares/${shareId}/files/${fileId}?download=false`)
+      .then((res) => setText(res.data));
   }, [shareId, fileId]);
 
   return (

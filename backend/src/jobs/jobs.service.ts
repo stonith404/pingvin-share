@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, Logger } from "@nestjs/common";
 import { Cron } from "@nestjs/schedule";
 import * as fs from "fs";
 import * as moment from "moment";
@@ -9,6 +9,8 @@ import { SHARE_DIRECTORY } from "../constants";
 
 @Injectable()
 export class JobsService {
+  private readonly logger = new Logger(JobsService.name);
+
   constructor(
     private prisma: PrismaService,
     private reverseShareService: ReverseShareService,
@@ -35,8 +37,9 @@ export class JobsService {
       await this.fileService.deleteAllFiles(expiredShare.id);
     }
 
-    if (expiredShares.length > 0)
-      console.log(`job: deleted ${expiredShares.length} expired shares`);
+    if (expiredShares.length > 0) {
+      this.logger.log(`Deleted ${expiredShares.length} expired shares`);
+    }
   }
 
   @Cron("0 * * * *")
@@ -51,10 +54,11 @@ export class JobsService {
       await this.reverseShareService.remove(expiredReverseShare.id);
     }
 
-    if (expiredReverseShares.length > 0)
-      console.log(
-        `job: deleted ${expiredReverseShares.length} expired reverse shares`
+    if (expiredReverseShares.length > 0) {
+      this.logger.log(
+        `Deleted ${expiredReverseShares.length} expired reverse shares`
       );
+    }
   }
 
   @Cron("0 0 * * *")
@@ -86,7 +90,7 @@ export class JobsService {
       }
     }
 
-    console.log(`job: deleted ${filesDeleted} temporary files`);
+    this.logger.log(`Deleted ${filesDeleted} temporary files`);
   }
 
   @Cron("0 * * * *")
@@ -108,7 +112,8 @@ export class JobsService {
     const deletedTokensCount =
       refreshTokenCount + loginTokenCount + resetPasswordTokenCount;
 
-    if (deletedTokensCount > 0)
-      console.log(`job: deleted ${deletedTokensCount} expired refresh tokens`);
+    if (deletedTokensCount > 0) {
+      this.logger.log(`Deleted ${deletedTokensCount} expired refresh tokens`);
+    }
   }
 }
