@@ -1,3 +1,13 @@
+## [0.15.0](https://github.com/stonith404/pingvin-share/compare/v0.14.1...v0.15.0) (2023-05-09)
+
+
+### Features
+
+* add env variables for port, database url and data dir  ([98c0de7](https://github.com/stonith404/pingvin-share/commit/98c0de78e8a73e3e5bf0928226cfb8a024b566a1))
+* add healthcheck endpoint ([5132d17](https://github.com/stonith404/pingvin-share/commit/5132d177b8ab4e00a7e701e9956222fa2352d42c))
+* allow to configure clamav with environment variables ([1df5c71](https://github.com/stonith404/pingvin-share/commit/1df5c7123e4ca8695f4f1b7d49f46cdf147fb920))
+* configure ports, db url and api url with env variables ([e5071cb](https://github.com/stonith404/pingvin-share/commit/e5071cba1204093197b72e18d024b484e72e360a))
+
 ### [0.14.1](https://github.com/stonith404/pingvin-share/compare/v0.14.0...v0.14.1) (2023-04-07)
 
 
