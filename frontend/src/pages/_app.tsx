@@ -68,10 +68,14 @@ function App({Component, pageProps}: AppProps) {
         });
     };
 
-    // TODO: Add support for a locale switcher (via a user preference, env var, or something else)
-    const locale = LOCALES.GERMAN;
+    // TODO: Add a manual language selector
+    // NOTE: We shouldn't fallback to english, but rather the browser's language/user's preference
+    //       but this is just for now
+    // let lang = navigator.userLanguage || navigator.language || "en";
+    const locale = router.locale || "en";
 
     return (
+        // NOTE: Here as well, we should fallback to the browser language/user preference
         <IntlProvider messages={messages[locale]} locale={locale} defaultLocale={LOCALES.ENGLISH}>
             <MantineProvider
                 withGlobalStyles
