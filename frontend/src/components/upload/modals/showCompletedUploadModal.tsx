@@ -4,10 +4,11 @@ import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import moment from "moment";
 import { useRouter } from "next/router";
-import { TbCopy } from "react-icons/tb";
-import { useState } from "react";
+import { TbCopy, TbChecks } from "react-icons/tb";
+import { useState, useRef } from "react";
 import { Share } from "../../../types/share.type";
 import toast from "../../../utils/toast.util";
+import {TIMEOUT} from "dns";
 
 const showCompletedUploadModal = (
   modals: ModalsContextProps,
@@ -23,13 +24,34 @@ const showCompletedUploadModal = (
   });
 };
 
+
+
 const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
   const clipboard = useClipboard({ timeout: 500 });
   const modals = useModals();
   const router = useRouter();
   const [linkClicked, setLinkClicked] = useState(false);
+  const [checkState, setCheckState] = useState(false);
+  const timerRef = useRef<number | ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const link = `${appUrl}/share/${share.id}`;
+
+  const copyLink = () => {
+      clipboard.copy(link);
+      toast.success("Your link was copied to the keyboard.");
+
+      if (timerRef.current) {
+          clearTimeout(timerRef.current);
+      }
+
+      timerRef.current = setTimeout(() => {
+          setCheckState(false);
+      }, 1500);
+
+      setLinkClicked(true);
+      setCheckState(true);
+  }
+
   return (
     <Stack align="stretch">
       <TextInput
@@ -37,22 +59,13 @@ const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
         variant="filled"
         style={{ borderColor: "green" }}
         value={link}
-        onClick={() => {
-            if (linkClicked) return;
-            clipboard.copy(link);
-            toast.success("Your link was copied to the keyboard.");
-            setLinkClicked(true);
-        }}
+        onClick={copyLink}
         rightSection={
           window.isSecureContext && (
             <ActionIcon
-              onClick={() => {
-                clipboard.copy(link);
-                toast.success("Your link was copied to the keyboard.");
-                setLinkClicked(true);
-              }}
+              onClick={copyLink}
             >
-              <TbCopy />
+                { checkState ? <TbChecks /> : <TbCopy /> }
             </ActionIcon>
           )
         }
