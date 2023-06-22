@@ -29,24 +29,21 @@ const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
   const clipboard = useClipboard({ timeout: 500 });
   const modals = useModals();
   const router = useRouter();
+
   const [checkState, setCheckState] = useState(false);
   const timerRef = useRef<number | ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const link = `${appUrl}/share/${share.id}`;
 
   const copyLink = () => {
-      clipboard.copy(link);
-      toast.success("Your link was copied to the keyboard.");
-
-      if (timerRef.current) {
-          clearTimeout(timerRef.current);
-      }
-
-      timerRef.current = setTimeout(() => {
-          setCheckState(false);
-      }, 1500);
-
-      setCheckState(true);
+    clipboard.copy(link);
+    toast.success("Your link was copied to the keyboard.");
+    if (timerRef.current)
+      clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
+      setCheckState(false);
+    }, 1500);
+    setCheckState(true);
   }
 
   return (
@@ -54,7 +51,6 @@ const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
       <TextInput
         readOnly
         variant="filled"
-        style={{ borderColor: "green" }}
         value={link}
         onClick={copyLink}
         rightSection={
