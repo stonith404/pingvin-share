@@ -35,6 +35,7 @@ const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
       <TextInput
         readOnly
         variant="filled"
+        style={{ borderColor: "green" }}
         value={link}
         onClick={() => {
             if (linkClicked) return;
@@ -48,6 +49,7 @@ const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
               onClick={() => {
                 clipboard.copy(link);
                 toast.success("Your link was copied to the keyboard.");
+                setLinkClicked(true);
               }}
             >
               <TbCopy />
