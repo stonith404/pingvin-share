@@ -8,7 +8,6 @@ import { TbCopy, TbChecks } from "react-icons/tb";
 import { useState, useRef } from "react";
 import { Share } from "../../../types/share.type";
 import toast from "../../../utils/toast.util";
-import {TIMEOUT} from "dns";
 
 const showCompletedUploadModal = (
   modals: ModalsContextProps,
