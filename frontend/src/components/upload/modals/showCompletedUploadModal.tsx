@@ -5,6 +5,7 @@ import { ModalsContextProps } from "@mantine/modals/lib/context";
 import moment from "moment";
 import { useRouter } from "next/router";
 import { TbCopy } from "react-icons/tb";
+import { useState } from "react";
 import { Share } from "../../../types/share.type";
 import toast from "../../../utils/toast.util";
 
@@ -26,6 +27,7 @@ const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
   const clipboard = useClipboard({ timeout: 500 });
   const modals = useModals();
   const router = useRouter();
+  const [linkClicked, setLinkClicked] = useState(false);
 
   const link = `${appUrl}/share/${share.id}`;
   return (
@@ -34,6 +36,12 @@ const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
         readOnly
         variant="filled"
         value={link}
+        onClick={() => {
+            if (linkClicked) return;
+            clipboard.copy(link);
+            toast.success("Your link was copied to the keyboard.");
+            setLinkClicked(true);
+        }}
         rightSection={
           window.isSecureContext && (
             <ActionIcon
