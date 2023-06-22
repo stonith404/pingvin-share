@@ -23,28 +23,27 @@ const showCompletedUploadModal = (
   });
 };
 
-
-
 const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
   const clipboard = useClipboard({ timeout: 500 });
   const modals = useModals();
   const router = useRouter();
 
   const [checkState, setCheckState] = useState(false);
-  const timerRef = useRef<number | ReturnType<typeof setTimeout> | undefined>(undefined);
+  const timerRef = useRef<number | ReturnType<typeof setTimeout> | undefined>(
+    undefined
+  );
 
   const link = `${appUrl}/share/${share.id}`;
 
   const copyLink = () => {
     clipboard.copy(link);
     toast.success("Your link was copied to the keyboard.");
-    if (timerRef.current)
-      clearTimeout(timerRef.current);
+    if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = setTimeout(() => {
       setCheckState(false);
     }, 1500);
     setCheckState(true);
-  }
+  };
 
   return (
     <Stack align="stretch">
@@ -55,10 +54,8 @@ const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
         onClick={copyLink}
         rightSection={
           window.isSecureContext && (
-            <ActionIcon
-              onClick={copyLink}
-            >
-                { checkState ? <TbChecks /> : <TbCopy /> }
+            <ActionIcon onClick={copyLink}>
+              {checkState ? <TbChecks /> : <TbCopy />}
             </ActionIcon>
           )
         }
