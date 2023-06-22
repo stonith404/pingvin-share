@@ -30,7 +30,6 @@ const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
   const clipboard = useClipboard({ timeout: 500 });
   const modals = useModals();
   const router = useRouter();
-  const [linkClicked, setLinkClicked] = useState(false);
   const [checkState, setCheckState] = useState(false);
   const timerRef = useRef<number | ReturnType<typeof setTimeout> | undefined>(undefined);
 
@@ -48,7 +47,6 @@ const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
           setCheckState(false);
       }, 1500);
 
-      setLinkClicked(true);
       setCheckState(true);
   }
 
