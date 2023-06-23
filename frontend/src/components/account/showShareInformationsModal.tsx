@@ -38,7 +38,9 @@ const showShareInformationsModal = (
         </Text>
 
         <Text size="sm" color="lightgray">
-          <b>Expires at :</b> {moment(share.expiration).format("LLL")}
+          <b>Expires at :</b> {moment(share.expiration).unix() === 0
+                                          ? "Never"
+                                          : moment(share.expiration).format("LLL")}
         </Text>
 
         <Divider style={{ margin: '.5rem 0' }} />
