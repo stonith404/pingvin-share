@@ -1,12 +1,10 @@
-import { ActionIcon, Button, Stack, Text, TextInput } from "@mantine/core";
-import { useClipboard } from "@mantine/hooks";
+import { Button, Stack, Text } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import moment from "moment";
 import { useRouter } from "next/router";
-import { TbCopy } from "react-icons/tb";
 import { Share } from "../../../types/share.type";
-import toast from "../../../utils/toast.util";
+import CopyTextField from "../CopyTextField";
 
 const showCompletedUploadModal = (
   modals: ModalsContextProps,
@@ -23,30 +21,14 @@ const showCompletedUploadModal = (
 };
 
 const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
-  const clipboard = useClipboard({ timeout: 500 });
   const modals = useModals();
   const router = useRouter();
 
   const link = `${appUrl}/share/${share.id}`;
+
   return (
     <Stack align="stretch">
-      <TextInput
-        readOnly
-        variant="filled"
-        value={link}
-        rightSection={
-          window.isSecureContext && (
-            <ActionIcon
-              onClick={() => {
-                clipboard.copy(link);
-                toast.success("Your link was copied to the keyboard.");
-              }}
-            >
-              <TbCopy />
-            </ActionIcon>
-          )
-        }
-      />
+      <CopyTextField link={link} />
       <Text
         size="xs"
         sx={(theme) => ({
