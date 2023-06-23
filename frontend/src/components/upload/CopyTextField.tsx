@@ -3,7 +3,6 @@ import toast from "../../utils/toast.util";
 import { ActionIcon, TextInput } from "@mantine/core";
 import { TbCheck, TbCopy } from "react-icons/tb";
 import { useClipboard } from "@mantine/hooks";
-import { text } from "stream/consumers";
 
 function CopyTextField(props: { link: string }) {
   const clipboard = useClipboard({ timeout: 500 });
