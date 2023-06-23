@@ -3,12 +3,14 @@ import toast from "../../utils/toast.util";
 import {ActionIcon, TextInput} from "@mantine/core";
 import {TbCheck, TbCopy} from "react-icons/tb";
 import {useClipboard} from "@mantine/hooks";
+import {text} from "stream/consumers";
 
 function CopyTextField(props: { link: string })
 {
 
     const clipboard = useClipboard({ timeout: 500 });
     const [checkState, setCheckState] = useState(false);
+    const [textClicked, setTextClicked] = useState(false);
     const timerRef = useRef<number | ReturnType<typeof setTimeout> | undefined>(
         undefined
     );
@@ -30,7 +32,12 @@ function CopyTextField(props: { link: string })
             label="Link"
             variant="filled"
             value={props.link}
-            onClick={copyLink}
+            onClick={() => {
+                if (!textClicked) {
+                    copyLink();
+                    setTextClicked(true);
+                }
+            }}
             rightSection={
                 window.isSecureContext && (
                     <ActionIcon onClick={copyLink}>
