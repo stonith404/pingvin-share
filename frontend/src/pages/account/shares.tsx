@@ -88,7 +88,8 @@ const MyShares = () => {
                           showShareInformationsModal(
                             modals,
                             share,
-                            config.get("general.appUrl")
+                            config.get("general.appUrl"),
+                            config.get("share.maxSize")
                           );
                         }}
                       >
