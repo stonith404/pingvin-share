@@ -28,7 +28,7 @@ const Body = ({
 
   return (
     <Stack align="stretch">
-        <CopyTextField link={link} />
+      <CopyTextField link={link} />
 
       <Button
         onClick={() => {

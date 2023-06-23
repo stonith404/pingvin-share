@@ -21,7 +21,6 @@ const showCompletedUploadModal = (
 };
 
 const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
-
   const modals = useModals();
   const router = useRouter();
 
