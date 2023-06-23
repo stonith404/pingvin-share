@@ -55,7 +55,7 @@ const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
         rightSection={
           window.isSecureContext && (
             <ActionIcon onClick={copyLink}>
-              {checkState ? <TbChecks /> : <TbCopy />}
+              {checkState ? <TbCheck /> : <TbCopy />}
             </ActionIcon>
           )
         }
