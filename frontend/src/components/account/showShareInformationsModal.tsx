@@ -32,7 +32,7 @@ const showShareInformationsModal = (
     title: "Share informations",
 
     children: (
-      <Stack align="stretch" spacing="xs">
+      <Stack align="stretch" spacing="md">
         <Text size="sm" color="lightgray">
           <b>ID:</b> {share.id}
         </Text>
@@ -59,29 +59,28 @@ const showShareInformationsModal = (
 
         <Divider />
 
-        <Flex align="center" justify="space-between" style={{ marginTop: "1rem" }}>
-          <Text size="sm" color="lightgray">
-            <b>Size:</b> {formattedShareSize} / {formattedMaxShareSize} ({(shareProgress.toFixed(1))}%)
-          </Text>
+        <Text size="sm" color="lightgray">
+          <b>Size:</b> {formattedShareSize} / {formattedMaxShareSize} ({(shareProgress.toFixed(1))}%)
+        </Text>
 
-          <Flex align="center">
-            {shareSize / maxShareSize < 0.1 && (
-              <Text size="xs" color="lightgray" style={{ marginRight: '4px' }}>
-                {formattedShareSize}
-              </Text>
-            )}
-            <Progress
-              value={shareProgress}
-              label={shareSize / maxShareSize >= 0.1 ? formattedShareSize : ""}
-              color="blue"
-              style={{ width: shareSize / maxShareSize < 0.1 ? '70%' : '80%' }}
-              size="xl"
-              radius="xl"
-            />
-            <Text size="xs" color="lightgray" style={{ marginLeft: '4px' }}>
-              {formattedMaxShareSize}
+        <Flex align="center" justify="center">
+          {shareSize / maxShareSize < 0.1 && (
+            <Text size="xs" color="lightgray" style={{ marginRight: '4px' }}>
+              {formattedShareSize}
             </Text>
-          </Flex>
+          )}
+          <Progress
+            value={shareProgress}
+            label={shareSize / maxShareSize >= 0.1 ? formattedShareSize : ""}
+
+            color="blue"
+            style={{ width: shareSize / maxShareSize < 0.1 ? '70%' : '80%' }}
+            size="xl"
+            radius="xl"
+          />
+          <Text size="xs" color="lightgray" style={{ marginLeft: '4px' }}>
+            {formattedMaxShareSize}
+          </Text>
         </Flex>
       </Stack>
     ),
