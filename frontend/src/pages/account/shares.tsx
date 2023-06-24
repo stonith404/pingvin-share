@@ -38,8 +38,6 @@ const MyShares = () => {
 
   if (!shares) return <CenterLoader />;
 
-  console.log(shares);
-
   return (
     <>
       <Meta title="My shares" />

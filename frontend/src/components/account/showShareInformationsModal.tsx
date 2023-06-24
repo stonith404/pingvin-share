@@ -4,6 +4,7 @@ import { MyShare } from "../../types/share.type";
 import moment from "moment";
 import {byteToHumanSizeString} from "../../utils/fileSize.util";
 import CopyTextField from "../upload/CopyTextField";
+import { FileMetaData} from "../../types/File.type";
 
 const showShareInformationsModal = (
   modals: ModalsContextProps,
@@ -11,75 +12,77 @@ const showShareInformationsModal = (
   appUrl: string,
   maxShareSize: number | string
 ) => {
+
   const link = `${appUrl}/share/${share.id}`;
-  const shareSize = 565564769; // TODO: get share size from backend
-  if (typeof maxShareSize === "string") {
-    maxShareSize = parseInt(maxShareSize);
-  }
+
+  let shareSize: number = 0;
+  for(let file of (share.files) as FileMetaData[]) shareSize += parseInt(file.size);
+
+  if (typeof maxShareSize === "string") maxShareSize = parseInt(maxShareSize);
+
+  const formattedShareSize = byteToHumanSizeString(shareSize);
+  const formattedMaxShareSize = byteToHumanSizeString(maxShareSize);
+  const shareProgress = (shareSize / maxShareSize) * 100;
+
+  const formattedCreatedAt = moment(share.createdAt).format("LLL");
+  const formattedExpiration = moment(share.expiration).unix() === 0 ? "Never"
+    : moment(share.expiration).format("LLL");
+
   return modals.openModal({
     title: "Share informations",
 
     children: (
-      <Stack align="stretch">
-        <Text size="sm" color="lightgray" style={{ margin: '0.5rem 0' }}>
+      <Stack align="stretch" spacing="xs">
+        <Text size="sm" color="lightgray">
           <b>ID:</b> {share.id}
         </Text>
 
-        <Text size="sm" color="lightgray" style={{ marginBottom: '0.5rem' }}>
-          <b>Creator :</b> You
-        </Text>
-
-        <Text size="sm" color="lightgray" style={{ marginBottom: '0.5rem' }}>
-          <b>Description :</b> {share.description || "No description"}
-        </Text>
-
-        <Text size="sm" color="lightgray" style={{ marginBottom: '0.5rem' }}>
-          <b>Created at :</b> {moment(share.createdAt).format("LLL")}
+        <Text size="sm" color="lightgray">
+          <b>Creator:</b> You
         </Text>
 
         <Text size="sm" color="lightgray">
-          <b>Expires at :</b> {moment(share.expiration).unix() === 0
-                                          ? "Never"
-                                          : moment(share.expiration).format("LLL")}
+          <b>Description:</b> {share.description || "No description"}
         </Text>
 
-        <Divider style={{ margin: '.5rem 0' }} />
+        <Text size="sm" color="lightgray">
+          <b>Created at:</b> {formattedCreatedAt}
+        </Text>
+
+        <Text size="sm" color="lightgray">
+          <b>Expires at:</b> {formattedExpiration}
+        </Text>
+
+        <Divider />
 
         <CopyTextField link={link} />
 
-        <Divider style={{ margin: '1rem 0' }} />
+        <Divider />
 
-        <Text size="sm" color="lightgray" style={{ marginBottom: '0.5rem' }}>
-          <span>
-            <b>Size :</b> {byteToHumanSizeString(shareSize)} / {byteToHumanSizeString(maxShareSize)}
-          </span>
+        <Flex align="center" justify="space-between" style={{ marginTop: "1rem" }}>
+          <Text size="sm" color="lightgray">
+            <b>Size:</b> {formattedShareSize} / {formattedMaxShareSize} ({(shareProgress.toFixed(1))}%)
+          </Text>
 
-          { /* Faire un flex pour aligner le Progress et le text à droite */}
-
-          <Flex justify="center" direction={{base: 'row'}} align="center" style={{alignItems: "center", marginTop: "1rem"}}>
-            { (shareSize / maxShareSize < 0.1) && (
-              <Text size="xs" color="lightgray" style={{ marginRight: '4px'}}>
-                {byteToHumanSizeString(shareSize)}
+          <Flex align="center">
+            {shareSize / maxShareSize < 0.1 && (
+              <Text size="xs" color="lightgray" style={{ marginRight: '4px' }}>
+                {formattedShareSize}
               </Text>
-            ) }
+            )}
             <Progress
-              value={((shareSize / maxShareSize) * 100)}
-              label={(shareSize / maxShareSize >= 0.1) ? (byteToHumanSizeString(shareSize)) : ""}
+              value={shareProgress}
+              label={shareSize / maxShareSize >= 0.1 ? formattedShareSize : ""}
               color="blue"
-              style={{ width: (shareSize / maxShareSize < 0.1) ? '70%' : '80%' }}
+              style={{ width: shareSize / maxShareSize < 0.1 ? '70%' : '80%' }}
               size="xl"
               radius="xl"
-
             />
-            <Text size="xs" color="lightgray" style={{ marginLeft: '4px'}}>
-              {byteToHumanSizeString(maxShareSize)}
+            <Text size="xs" color="lightgray" style={{ marginLeft: '4px' }}>
+              {formattedMaxShareSize}
             </Text>
           </Flex>
-
-
-
-        </Text>
-
+        </Flex>
       </Stack>
     ),
   });
