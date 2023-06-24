@@ -61,6 +61,7 @@ const MyShares = () => {
             <thead>
               <tr>
                 <th>Name</th>
+                <th>Description</th>
                 <th>Visitors</th>
                 <th>Expires at</th>
                 <th></th>
@@ -70,6 +71,7 @@ const MyShares = () => {
               {shares.map((share) => (
                 <tr key={share.id}>
                   <td>{share.id}</td>
+                  <td>{share.description || ""}</td>
                   <td>{share.views}</td>
                   <td>
                     {moment(share.expiration).unix() === 0
