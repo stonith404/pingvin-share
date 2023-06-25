@@ -18,7 +18,6 @@ const showShareInformationsModal = (
   for (let file of share.files as FileMetaData[])
     shareSize += parseInt(file.size);
 
-  if (typeof maxShareSize === "string") maxShareSize = parseInt(maxShareSize);
 
   const formattedShareSize = byteToHumanSizeString(shareSize);
   const formattedMaxShareSize = byteToHumanSizeString(maxShareSize);
