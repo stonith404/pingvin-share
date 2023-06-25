@@ -4,6 +4,7 @@ import {
   Button,
   Center,
   Group,
+  MediaQuery,
   Space,
   Stack,
   Table,
@@ -61,7 +62,10 @@ const MyShares = () => {
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Description</th>
+                <MediaQuery smallerThan="md" styles={{ display: "none" }}>
+                  <th>Description</th>
+                </MediaQuery>
+
                 <th>Visitors</th>
                 <th>Expires at</th>
                 <th></th>
@@ -71,16 +75,18 @@ const MyShares = () => {
               {shares.map((share) => (
                 <tr key={share.id}>
                   <td>{share.id}</td>
-                  <td
-                    style={{
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      whiteSpace: "nowrap",
-                      maxWidth: "300px",
-                    }}
-                  >
-                    {share.description || ""}
-                  </td>
+                  <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
+                    <td
+                      style={{
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                        maxWidth: "300px",
+                      }}
+                    >
+                      {share.description || ""}
+                    </td>
+                  </MediaQuery>
                   <td>{share.views}</td>
                   <td>
                     {moment(share.expiration).unix() === 0
