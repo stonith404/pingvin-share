@@ -74,7 +74,6 @@ const showShareInformationsModal = (
           <Progress
             value={shareProgress}
             label={shareSize / maxShareSize >= 0.1 ? formattedShareSize : ""}
-            color="blue"
             style={{ width: shareSize / maxShareSize < 0.1 ? "70%" : "80%" }}
             size="xl"
             radius="xl"
