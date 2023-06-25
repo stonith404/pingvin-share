@@ -39,10 +39,6 @@ const showShareInformationsModal = (
         </Text>
 
         <Text size="sm" color="lightgray">
-          <b>Creator:</b> You
-        </Text>
-
-        <Text size="sm" color="lightgray">
           <b>Description:</b> {share.description || "No description"}
         </Text>
 
@@ -62,7 +58,7 @@ const showShareInformationsModal = (
 
         <Text size="sm" color="lightgray">
           <b>Size:</b> {formattedShareSize} / {formattedMaxShareSize} (
-          {shareProgress.toFixed(1)}%)
+          {shareSizeProgress.toFixed(1)}%)
         </Text>
 
         <Flex align="center" justify="center">
@@ -72,7 +68,7 @@ const showShareInformationsModal = (
             </Text>
           )}
           <Progress
-            value={shareProgress}
+            value={shareSizeProgress}
             label={shareSize / maxShareSize >= 0.1 ? formattedShareSize : ""}
             style={{ width: shareSize / maxShareSize < 0.1 ? "70%" : "80%" }}
             size="xl"

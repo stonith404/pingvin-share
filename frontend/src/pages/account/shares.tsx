@@ -71,7 +71,16 @@ const MyShares = () => {
               {shares.map((share) => (
                 <tr key={share.id}>
                   <td>{share.id}</td>
-                  <td>{share.description || ""}</td>
+                  <td
+                    style={{
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                      maxWidth: "300px",
+                    }}
+                  >
+                    {share.description || ""}
+                  </td>
                   <td>{share.views}</td>
                   <td>
                     {moment(share.expiration).unix() === 0
