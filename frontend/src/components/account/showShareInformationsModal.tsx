@@ -21,7 +21,7 @@ const showShareInformationsModal = (
 
   const formattedShareSize = byteToHumanSizeString(shareSize);
   const formattedMaxShareSize = byteToHumanSizeString(maxShareSize);
-  const shareProgress = (shareSize / maxShareSize) * 100;
+  const shareSizeProgress = (shareSize / maxShareSize) * 100;
 
   const formattedCreatedAt = moment(share.createdAt).format("LLL");
   const formattedExpiration =
