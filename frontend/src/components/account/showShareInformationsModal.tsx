@@ -10,7 +10,7 @@ const showShareInformationsModal = (
   modals: ModalsContextProps,
   share: MyShare,
   appUrl: string,
-  maxShareSize: number | string
+  maxShareSize: number
 ) => {
   const link = `${appUrl}/share/${share.id}`;
 
