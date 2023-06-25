@@ -89,7 +89,7 @@ const MyShares = () => {
                             modals,
                             share,
                             config.get("general.appUrl"),
-                            config.get("share.maxSize")
+                            parseInt(config.get("share.maxSize"))
                           );
                         }}
                       >
