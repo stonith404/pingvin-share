@@ -24,7 +24,7 @@ export type ShareMetaData = {
 
 export type MyShare = Share & {
   views: number;
-  cratedAt: Date;
+  createdAt: Date;
 };
 
 export type MyReverseShare = {
