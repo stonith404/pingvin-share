@@ -17,11 +17,11 @@ import { useModals } from "@mantine/modals";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { TbInfoCircle, TbLink, TbPlus, TbTrash } from "react-icons/tb";
+import Meta from "../../components/Meta";
+import showReverseShareLinkModal from "../../components/account/showReverseShareLinkModal";
 import showShareLinkModal from "../../components/account/showShareLinkModal";
 import CenterLoader from "../../components/core/CenterLoader";
-import Meta from "../../components/Meta";
 import showCreateReverseShareModal from "../../components/share/modals/showCreateReverseShareModal";
-import showReverseShareLinkModal from "../../components/account/showReverseShareLinkModal";
 import useConfig from "../../hooks/config.hook";
 import shareService from "../../services/share.service";
 import { MyReverseShare } from "../../types/share.type";
@@ -181,7 +181,7 @@ const MyShares = () => {
                               }`
                             );
                             toast.success(
-                              "Your link was copied to the keyboard."
+                              "The link was copied to your clipboard."
                             );
                           } else {
                             showReverseShareLinkModal(
