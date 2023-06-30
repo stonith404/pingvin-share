@@ -39,8 +39,8 @@ const MyShares = () => {
 
   const getReverseShares = () => {
     shareService
-        .getMyReverseShares()
-        .then((shares) => setReverseShares(shares));
+      .getMyReverseShares()
+      .then((shares) => setReverseShares(shares));
   };
 
   useEffect(() => {
@@ -49,165 +49,165 @@ const MyShares = () => {
 
   if (!reverseShares) return <CenterLoader />;
   return (
-      <>
-        <Meta title="My shares" />
-        <Group position="apart" align="baseline" mb={20}>
-          <Group align="center" spacing={3} mb={30}>
-            <Title order={3}>My reverse shares</Title>
-            <Tooltip
-                position="bottom"
-                multiline
-                width={220}
-                label="A reverse share allows you to generate a unique URL that allows external users to create a share."
-                events={{ hover: true, focus: false, touch: true }}
-            >
-              <ActionIcon>
-                <TbInfoCircle />
-              </ActionIcon>
-            </Tooltip>
-          </Group>
-          <Button
-              onClick={() =>
-                  showCreateReverseShareModal(
-                      modals,
-                      config.get("smtp.enabled"),
-                      getReverseShares
-                  )
-              }
-              leftIcon={<TbPlus size={20} />}
+    <>
+      <Meta title="My shares" />
+      <Group position="apart" align="baseline" mb={20}>
+        <Group align="center" spacing={3} mb={30}>
+          <Title order={3}>My reverse shares</Title>
+          <Tooltip
+            position="bottom"
+            multiline
+            width={220}
+            label="A reverse share allows you to generate a unique URL that allows external users to create a share."
+            events={{ hover: true, focus: false, touch: true }}
           >
-            Create
-          </Button>
+            <ActionIcon>
+              <TbInfoCircle />
+            </ActionIcon>
+          </Tooltip>
         </Group>
-        {reverseShares.length == 0 ? (
-            <Center style={{ height: "70vh" }}>
-              <Stack align="center" spacing={10}>
-                <Title order={3}>It's empty here 👀</Title>
-                <Text>You don't have any reverse shares.</Text>
-              </Stack>
-            </Center>
-        ) : (
-            <Box sx={{ display: "block", overflowX: "auto" }}>
-              <Table>
-                <thead>
-                <tr>
-                  <th>Shares</th>
-                  <th>Remaining uses</th>
-                  <th>Max share size</th>
-                  <th>Expires at</th>
-                  <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                {reverseShares.map((reverseShare) => (
-                    <tr key={reverseShare.id}>
-                      <td style={{ width: 220 }}>
-                        {reverseShare.shares.length == 0 ? (
-                            <Text color="dimmed" size="sm">
-                              No shares created yet
+        <Button
+          onClick={() =>
+            showCreateReverseShareModal(
+              modals,
+              config.get("smtp.enabled"),
+              getReverseShares
+            )
+          }
+          leftIcon={<TbPlus size={20} />}
+        >
+          Create
+        </Button>
+      </Group>
+      {reverseShares.length == 0 ? (
+        <Center style={{ height: "70vh" }}>
+          <Stack align="center" spacing={10}>
+            <Title order={3}>It's empty here 👀</Title>
+            <Text>You don't have any reverse shares.</Text>
+          </Stack>
+        </Center>
+      ) : (
+        <Box sx={{ display: "block", overflowX: "auto" }}>
+          <Table>
+            <thead>
+              <tr>
+                <th>Shares</th>
+                <th>Remaining uses</th>
+                <th>Max share size</th>
+                <th>Expires at</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {reverseShares.map((reverseShare) => (
+                <tr key={reverseShare.id}>
+                  <td style={{ width: 220 }}>
+                    {reverseShare.shares.length == 0 ? (
+                      <Text color="dimmed" size="sm">
+                        No shares created yet
+                      </Text>
+                    ) : (
+                      <Accordion>
+                        <Accordion.Item
+                          value="customization"
+                          sx={{ borderBottom: "none" }}
+                        >
+                          <Accordion.Control p={0}>
+                            <Text size="sm">
+                              {`${reverseShare.shares.length} share${
+                                reverseShare.shares.length > 1 ? "s" : ""
+                              }`}
                             </Text>
-                        ) : (
-                            <Accordion>
-                              <Accordion.Item
-                                  value="customization"
-                                  sx={{ borderBottom: "none" }}
-                              >
-                                <Accordion.Control p={0}>
-                                  <Text size="sm">
-                                    {`${reverseShare.shares.length} share${
-                                        reverseShare.shares.length > 1 ? "s" : ""
-                                    }`}
+                          </Accordion.Control>
+                          <Accordion.Panel>
+                            {reverseShare.shares.map((share) => (
+                              <Group key={share.id} mb={4}>
+                                <Anchor href={`${appUrl}/share/${share.id}`}>
+                                  <Text maw={120} truncate>
+                                    {share.id}
                                   </Text>
-                                </Accordion.Control>
-                                <Accordion.Panel>
-                                  {reverseShare.shares.map((share) => (
-                                      <Group key={share.id} mb={4}>
-                                        <Anchor href={`${appUrl}/share/${share.id}`}>
-                                          <Text maw={120} truncate>
-                                            {share.id}
-                                          </Text>
-                                        </Anchor>
-                                        <ActionIcon
-                                            color="victoria"
-                                            variant="light"
-                                            size={25}
-                                            onClick={() => {
-                                              if (window.isSecureContext) {
-                                                clipboard.copy(
-                                                    `${appUrl}/share/${share.id}`
-                                                );
-                                                toast.success(
-                                                    "The share link was copied to the keyboard."
-                                                );
-                                              } else {
-                                                showShareLinkModal(
-                                                    modals,
-                                                    share.id,
-                                                    config.get("general.appUrl")
-                                                );
-                                              }
-                                            }}
-                                        >
-                                          <TbLink />
-                                        </ActionIcon>
-                                      </Group>
-                                  ))}
-                                </Accordion.Panel>
-                              </Accordion.Item>
-                            </Accordion>
-                        )}
-                      </td>
-                      <td>{reverseShare.remainingUses}</td>
-                      <td>
-                        {byteToHumanSizeString(parseInt(reverseShare.maxShareSize))}
-                      </td>
-                      <td>
-                        {moment(reverseShare.shareExpiration).unix() === 0
-                            ? "Never"
-                            : moment(reverseShare.shareExpiration).format("LLL")}
-                      </td>
-                      <td>
-                        <Group position="right">
-                          <ActionIcon
-                              color="red"
-                              variant="light"
-                              size={25}
-                              onClick={() => {
-                                modals.openConfirmModal({
-                                  title: `Delete reverse share`,
-                                  children: (
-                                      <Text size="sm">
-                                        Do you really want to delete this reverse share?
-                                        If you do, the associated shares will be deleted
-                                        as well.
-                                      </Text>
-                                  ),
-                                  confirmProps: {
-                                    color: "red",
-                                  },
-                                  labels: { confirm: "Delete", cancel: "Cancel" },
-                                  onConfirm: () => {
-                                    shareService.removeReverseShare(reverseShare.id);
-                                    setReverseShares(
-                                        reverseShares.filter(
-                                            (item) => item.id !== reverseShare.id
-                                        )
-                                    );
-                                  },
-                                });
-                              }}
-                          >
-                            <TbTrash />
-                          </ActionIcon>
-                        </Group>
-                      </td>
-                    </tr>
-                ))}
-                </tbody>
-              </Table>
-            </Box>
-        )}
-      </>
+                                </Anchor>
+                                <ActionIcon
+                                  color="victoria"
+                                  variant="light"
+                                  size={25}
+                                  onClick={() => {
+                                    if (window.isSecureContext) {
+                                      clipboard.copy(
+                                        `${appUrl}/share/${share.id}`
+                                      );
+                                      toast.success(
+                                        "The share link was copied to the keyboard."
+                                      );
+                                    } else {
+                                      showShareLinkModal(
+                                        modals,
+                                        share.id,
+                                        config.get("general.appUrl")
+                                      );
+                                    }
+                                  }}
+                                >
+                                  <TbLink />
+                                </ActionIcon>
+                              </Group>
+                            ))}
+                          </Accordion.Panel>
+                        </Accordion.Item>
+                      </Accordion>
+                    )}
+                  </td>
+                  <td>{reverseShare.remainingUses}</td>
+                  <td>
+                    {byteToHumanSizeString(parseInt(reverseShare.maxShareSize))}
+                  </td>
+                  <td>
+                    {moment(reverseShare.shareExpiration).unix() === 0
+                      ? "Never"
+                      : moment(reverseShare.shareExpiration).format("LLL")}
+                  </td>
+                  <td>
+                    <Group position="right">
+                      <ActionIcon
+                        color="red"
+                        variant="light"
+                        size={25}
+                        onClick={() => {
+                          modals.openConfirmModal({
+                            title: `Delete reverse share`,
+                            children: (
+                              <Text size="sm">
+                                Do you really want to delete this reverse share?
+                                If you do, the associated shares will be deleted
+                                as well.
+                              </Text>
+                            ),
+                            confirmProps: {
+                              color: "red",
+                            },
+                            labels: { confirm: "Delete", cancel: "Cancel" },
+                            onConfirm: () => {
+                              shareService.removeReverseShare(reverseShare.id);
+                              setReverseShares(
+                                reverseShares.filter(
+                                  (item) => item.id !== reverseShare.id
+                                )
+                              );
+                            },
+                          });
+                        }}
+                      >
+                        <TbTrash />
+                      </ActionIcon>
+                    </Group>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </Box>
+      )}
+    </>
   );
 };
 
