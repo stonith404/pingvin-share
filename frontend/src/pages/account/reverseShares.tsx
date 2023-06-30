@@ -169,7 +169,7 @@ const MyShares = () => {
                   </td>
                   <td>
                     <Group position="right">
-                    <ActionIcon
+                      <ActionIcon
                         color="victoria"
                         variant="light"
                         size={25}
