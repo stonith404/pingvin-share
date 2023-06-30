@@ -123,7 +123,10 @@ const MyShares = () => {
                           <Accordion.Panel>
                             {reverseShare.shares.map((share) => (
                               <Group key={share.id} mb={4}>
-                                <Anchor href={`${appUrl}/share/${share.id}`}>
+                                <Anchor
+                                  href={`${appUrl}/share/${share.id}`}
+                                  target="_blank"
+                                >
                                   <Text maw={120} truncate>
                                     {share.id}
                                   </Text>
