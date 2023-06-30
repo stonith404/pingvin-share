@@ -21,6 +21,7 @@ import showShareLinkModal from "../../components/account/showShareLinkModal";
 import CenterLoader from "../../components/core/CenterLoader";
 import Meta from "../../components/Meta";
 import showCreateReverseShareModal from "../../components/share/modals/showCreateReverseShareModal";
+import showReverseShareLinkModal from "../../components/account/showReverseShareLinkModal";
 import useConfig from "../../hooks/config.hook";
 import shareService from "../../services/share.service";
 import { MyReverseShare } from "../../types/share.type";
@@ -46,6 +47,8 @@ const MyShares = () => {
   useEffect(() => {
     getReverseShares();
   }, []);
+
+  console.log(reverseShares);
 
   if (!reverseShares) return <CenterLoader />;
   return (
@@ -168,6 +171,31 @@ const MyShares = () => {
                   </td>
                   <td>
                     <Group position="right">
+                    <ActionIcon
+                        color="victoria"
+                        variant="light"
+                        size={25}
+                        onClick={() => {
+                          if (window.isSecureContext) {
+                            clipboard.copy(
+                              `${config.get("general.appUrl")}/upload/${
+                                reverseShare.token
+                              }`
+                            );
+                            toast.success(
+                              "Your link was copied to the keyboard."
+                            );
+                          } else {
+                            showReverseShareLinkModal(
+                              modals,
+                              reverseShare.token,
+                              config.get("general.appUrl")
+                            );
+                          }
+                        }}
+                      >
+                        <TbLink />
+                      </ActionIcon>
                       <ActionIcon
                         color="red"
                         variant="light"
