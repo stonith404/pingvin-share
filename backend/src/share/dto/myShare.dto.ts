@@ -1,7 +1,7 @@
 import { Expose, plainToClass, Type } from "class-transformer";
 import { ShareDTO } from "./share.dto";
-import {FileDTO} from "../../file/dto/file.dto";
-import {OmitType} from "@nestjs/swagger";
+import { FileDTO } from "../../file/dto/file.dto";
+import { OmitType } from "@nestjs/swagger";
 
 export class MyShareDTO extends OmitType(ShareDTO, [
   "files",
