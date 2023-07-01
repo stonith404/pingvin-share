@@ -6,6 +6,7 @@ import {
   CreateShare,
   MyReverseShare,
   MyShare,
+  ReverseShareOptions,
   Share,
   ShareMetaData,
 } from "../types/share.type";
@@ -92,7 +93,8 @@ const createReverseShare = async (
   shareExpiration: string,
   maxShareSize: number,
   maxUseCount: number,
-  sendEmailNotification: boolean
+  sendEmailNotification: boolean,
+  sharesOptions?: ReverseShareOptions
 ) => {
   return (
     await api.post("reverseShares", {
@@ -100,12 +102,16 @@ const createReverseShare = async (
       maxShareSize: maxShareSize.toString(),
       maxUseCount,
       sendEmailNotification,
+      sharesOptions: JSON.stringify(sharesOptions) || "{}",
     })
   ).data;
 };
 
 const getMyReverseShares = async (): Promise<MyReverseShare[]> => {
-  return (await api.get("reverseShares")).data;
+  const shares = (await api.get("reverseShares")).data;
+  for (const share of shares)
+    share.sharesOptions = JSON.parse(share.sharesOptions);
+  return shares;
 };
 
 const setReverseShare = async (reverseShareToken: string) => {

@@ -33,9 +33,19 @@ export type MyReverseShare = {
   shareExpiration: Date;
   remainingUses: number;
   shares: MyShare[];
+  sharesOptions: string;
 };
 
 export type ShareSecurity = {
   maxViews?: number;
   password?: string;
+};
+
+export type ReverseShareOptions = {
+  easyMode: boolean;
+
+  customLinkEnabled: boolean;
+  passwordEnabled: boolean;
+  descriptionEnabled: boolean;
+  maximalViewsEnabled: boolean;
 };
