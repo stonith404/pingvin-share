@@ -3,7 +3,7 @@ import mime from "mime-types";
 import { FileUploadResponse } from "../types/File.type";
 
 import {
-  CreateShare,
+  CreateShare, defaultReverseShareOptions,
   MyReverseShare,
   MyShare,
   ReverseShareOptions,
@@ -102,7 +102,7 @@ const createReverseShare = async (
       maxShareSize: maxShareSize.toString(),
       maxUseCount,
       sendEmailNotification,
-      sharesOptions: JSON.stringify(sharesOptions) || "{}",
+      ...sharesOptions,
     })
   ).data;
 };
@@ -110,7 +110,16 @@ const createReverseShare = async (
 const getMyReverseShares = async (): Promise<MyReverseShare[]> => {
   const shares = (await api.get("reverseShares")).data;
   for (const share of shares)
-    share.sharesOptions = JSON.parse(share.sharesOptions);
+  {
+    share.sharesOptions = {
+      easyMode: share.easyMode,
+      customLinkEnabled: share.customLinkEnabled,
+      passwordEnabled: share.passwordEnabled,
+      descriptionEnabled: share.descriptionEnabled,
+      maximalViewsEnabled: share.maximalViewsEnabled,
+    } as ReverseShareOptions;
+  }
+
   return shares;
 };
 

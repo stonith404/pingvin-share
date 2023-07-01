@@ -10,8 +10,21 @@ export class CreateReverseShareDTO {
   @IsString()
   shareExpiration: string;
 
-  @IsString()
-  sharesOptions?: string;
+  @IsBoolean()
+  easyMode: boolean;
+
+  @IsBoolean()
+  customLinkEnabled: boolean;
+
+  @IsBoolean()
+  passwordEnabled: boolean;
+
+  @IsBoolean()
+  descriptionEnabled: boolean;
+
+  @IsBoolean()
+  maximalViewsEnabled: boolean;
+
 
   @Min(1)
   @Max(1000)

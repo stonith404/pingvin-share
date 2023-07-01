@@ -49,3 +49,11 @@ export type ReverseShareOptions = {
   descriptionEnabled: boolean;
   maximalViewsEnabled: boolean;
 };
+
+export const defaultReverseShareOptions: ReverseShareOptions = {
+  easyMode: false,
+  customLinkEnabled: true,
+  passwordEnabled: true,
+  descriptionEnabled: true,
+  maximalViewsEnabled: true,
+};

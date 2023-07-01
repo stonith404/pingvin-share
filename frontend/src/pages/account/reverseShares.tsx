@@ -44,6 +44,8 @@ const MyShares = () => {
     getReverseShares();
   }, []);
 
+  console.log(reverseShares); // TODO: Remove this line after testing
+
   if (!reverseShares) return <CenterLoader />;
   return (
     <>

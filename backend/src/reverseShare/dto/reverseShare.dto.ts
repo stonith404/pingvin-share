@@ -1,4 +1,5 @@
 import { Expose, plainToClass } from "class-transformer";
+import {ReverseShareOptionsDTO} from "./reverseShareOptions.dto";
 
 export class ReverseShareDTO {
   @Expose()
@@ -11,7 +12,7 @@ export class ReverseShareDTO {
   shareExpiration: Date;
 
   @Expose()
-  sharesOptions: string;
+  sharesOptions: ReverseShareOptionsDTO;
 
   from(partial: Partial<ReverseShareDTO>) {
     return plainToClass(ReverseShareDTO, partial, {

@@ -96,7 +96,20 @@ model ReverseShare {
   creator   User   @relation(fields: [creatorId], references: [id], onDelete: Cascade)
 
   shares Share[]
-  sharesOptions String
+  sharesOptions ReverseShareOptions?
+}
+
+model ReverseShareOptions {
+  id        String   @id @default(uuid())
+  share    ReverseShare @relation(fields: [shareId], references: [id], onDelete: Cascade)
+  shareId  String @unique
+
+  easyMode Boolean
+
+  customLinkEnabled Boolean
+  passwordEnabled Boolean
+  descriptionEnabled Boolean
+  maximalViewsEnabled Boolean
 }
 
 model ShareRecipient {
