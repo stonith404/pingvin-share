@@ -8,5 +8,8 @@
     "release:patch": "cd backend && npm version patch --commit-hooks false && cd ../frontend && npm version patch --commit-hooks false && cd .. && git add . && npm version patch --force -m 'release: %s' && git push && git push --tags",
     "release:minor": "cd backend && npm version minor --commit-hooks false && cd ../frontend && npm version minor --commit-hooks false && cd .. && git add . && npm version minor --force -m 'release: %s' && git push && git push --tags",
     "deploy:dev": "docker buildx build --push --tag stonith404/pingvin-share:development --platform linux/amd64,linux/arm64 ."
+  },
+  "devDependencies": {
+    "conventional-changelog-cli": "^3.0.0"
   }
 }
