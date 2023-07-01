@@ -10,6 +10,9 @@ export class ReverseShareDTO {
   @Expose()
   shareExpiration: Date;
 
+  @Expose()
+  sharesOptions: string;
+
   from(partial: Partial<ReverseShareDTO>) {
     return plainToClass(ReverseShareDTO, partial, {
       excludeExtraneousValues: true,

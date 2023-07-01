@@ -10,6 +10,9 @@ export class CreateReverseShareDTO {
   @IsString()
   shareExpiration: string;
 
+  @IsString()
+  sharesOptions?: string;
+
   @Min(1)
   @Max(1000)
   maxUseCount: number;

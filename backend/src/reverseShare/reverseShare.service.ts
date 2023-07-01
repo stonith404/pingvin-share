@@ -26,6 +26,8 @@ export class ReverseShareService {
 
     const globalMaxShareSize = this.config.get("share.maxSize");
 
+    data.sharesOptions ??= "{}";
+
     if (globalMaxShareSize < data.maxShareSize)
       throw new BadRequestException(
         `Max share size can't be greater than ${globalMaxShareSize} bytes.`
@@ -36,6 +38,7 @@ export class ReverseShareService {
         shareExpiration: expirationDate,
         remainingUses: data.maxUseCount,
         maxShareSize: data.maxShareSize,
+        sharesOptions: data.sharesOptions,
         sendEmailNotification: data.sendEmailNotification,
         creatorId,
       },

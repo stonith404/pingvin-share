@@ -96,6 +96,7 @@ model ReverseShare {
   creator   User   @relation(fields: [creatorId], references: [id], onDelete: Cascade)
 
   shares Share[]
+  sharesOptions String
 }
 
 model ShareRecipient {
