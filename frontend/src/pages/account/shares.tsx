@@ -16,15 +16,15 @@ import { useModals } from "@mantine/modals";
 import moment from "moment";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { TbLink, TbTrash, TbInfoCircle } from "react-icons/tb";
+import { TbInfoCircle, TbLink, TbTrash } from "react-icons/tb";
+import Meta from "../../components/Meta";
+import showShareInformationsModal from "../../components/account/showShareInformationsModal";
 import showShareLinkModal from "../../components/account/showShareLinkModal";
 import CenterLoader from "../../components/core/CenterLoader";
-import Meta from "../../components/Meta";
 import useConfig from "../../hooks/config.hook";
 import shareService from "../../services/share.service";
 import { MyShare } from "../../types/share.type";
 import toast from "../../utils/toast.util";
-import showShareInformationsModal from "../../components/account/showShareInformationsModal";
 
 const MyShares = () => {
   const modals = useModals();
@@ -122,7 +122,7 @@ const MyShares = () => {
                               }`
                             );
                             toast.success(
-                              "Your link was copied to the keyboard."
+                              "The link was copied to your clipboard."
                             );
                           } else {
                             showShareLinkModal(
