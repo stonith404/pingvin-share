@@ -104,12 +104,12 @@ model ReverseShareOptions {
   share    ReverseShare @relation(fields: [shareId], references: [id], onDelete: Cascade)
   shareId  String @unique
 
-  easyMode Boolean
+  easyMode Boolean @default(false)
 
-  customLinkEnabled Boolean
-  passwordEnabled Boolean
-  descriptionEnabled Boolean
-  maximalViewsEnabled Boolean
+  customLinkEnabled Boolean @default(true)
+  passwordEnabled Boolean @default(true)
+  descriptionEnabled Boolean @default(true)
+  maximalViewsEnabled Boolean @default(true)
 }
 
 model ShareRecipient {

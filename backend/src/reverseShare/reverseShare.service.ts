@@ -74,7 +74,7 @@ export class ReverseShareService {
       orderBy: {
         shareExpiration: "desc",
       },
-      include: { shares: { include: { creator: true } }, /* include all the elements of the pair reverseshareoptions */ sharesOptions: true },
+      include: { shares: { include: { creator: true } } },
 
     });
 

@@ -12,3 +12,8 @@ CREATE TABLE "ReverseShareOptions" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "ReverseShareOptions_shareId_key" ON "ReverseShareOptions"("shareId");
+
+-- Insert a ReverseShareOptions for each ReverseShare
+INSERT INTO "ReverseShareOptions" ("shareId", "easyMode", "customLinkEnabled", "passwordEnabled", "descriptionEnabled", "maximalViewsEnabled")
+SELECT id, 0, 1, 1, 1, 1 FROM "ReverseShare";
+
