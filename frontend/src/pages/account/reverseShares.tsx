@@ -1,6 +1,7 @@
 import {
   Accordion,
   ActionIcon,
+  Anchor,
   Box,
   Button,
   Center,
@@ -33,6 +34,8 @@ const MyShares = () => {
   const config = useConfig();
 
   const [reverseShares, setReverseShares] = useState<MyReverseShare[]>();
+
+  const appUrl = config.get("general.appUrl");
 
   const getReverseShares = () => {
     shareService
@@ -119,9 +122,11 @@ const MyShares = () => {
                           <Accordion.Panel>
                             {reverseShare.shares.map((share) => (
                               <Group key={share.id} mb={4}>
-                                <Text maw={120} truncate>
-                                  {share.id}
-                                </Text>
+                                <Anchor href={`${appUrl}/share/${share.id}`}>
+                                  <Text maw={120} truncate>
+                                    {share.id}
+                                  </Text>
+                                </Anchor>
                                 <ActionIcon
                                   color="victoria"
                                   variant="light"
@@ -129,9 +134,7 @@ const MyShares = () => {
                                   onClick={() => {
                                     if (window.isSecureContext) {
                                       clipboard.copy(
-                                        `${config.get(
-                                          "general.appUrl"
-                                        )}/share/${share.id}`
+                                        `${appUrl}/share/${share.id}`
                                       );
                                       toast.success(
                                         "The share link was copied to the keyboard."
