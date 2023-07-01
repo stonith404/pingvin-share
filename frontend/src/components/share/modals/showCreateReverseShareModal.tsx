@@ -1,5 +1,7 @@
 import {
+  Accordion,
   Button,
+  Checkbox,
   Col,
   Grid,
   Group,
@@ -8,6 +10,7 @@ import {
   Stack,
   Switch,
   Text,
+  Textarea,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useModals } from "@mantine/modals";
@@ -50,6 +53,12 @@ const Body = ({
       sendEmailNotification: false,
       expiration_num: 1,
       expiration_unit: "-days",
+
+      easyMode: false,
+      customLinkEnabled: true,
+      passwordEnabled: false,
+      descriptionEnabled: false,
+      maximalViewsEnabled: false,
     },
   });
   return (
@@ -61,7 +70,14 @@ const Body = ({
               values.expiration_num + values.expiration_unit,
               values.maxShareSize,
               values.maxUseCount,
-              values.sendEmailNotification
+              values.sendEmailNotification,
+              {
+                easyMode: values.easyMode,
+                customLinkEnabled: values.customLinkEnabled,
+                passwordEnabled: values.passwordEnabled,
+                descriptionEnabled: values.descriptionEnabled,
+                maximalViewsEnabled: values.maximalViewsEnabled,
+              }
             )
             .then(({ link }) => {
               modals.closeAll();
@@ -153,6 +169,54 @@ const Body = ({
               })}
             />
           )}
+
+          <Accordion>
+            <Accordion.Item value="shareOptions" sx={{ borderBottom: "none" }}>
+              <Accordion.Control>Share options</Accordion.Control>
+              <Accordion.Panel>
+                <Stack align="stretch">
+                  <Checkbox
+                    label="Easy mode"
+                    description="Disable all options"
+                    {...form.getInputProps("easyMode", { type: "checkbox" })}
+                  />
+
+                  {!form.values.easyMode && (
+                    <Stack>
+                      <Checkbox
+                        label="Custom link"
+                        description="Allow the user to set a custom link"
+                        {...form.getInputProps("customLinkEnabled", {
+                          type: "checkbox",
+                        })}
+                      />
+                      <Checkbox
+                        label="Password"
+                        description="Possibility to add a password to access the share"
+                        {...form.getInputProps("passwordEnabled", {
+                          type: "checkbox",
+                        })}
+                      />
+                      <Checkbox
+                        label="Description"
+                        description="Add a description to the share"
+                        {...form.getInputProps("descriptionEnabled", {
+                          type: "checkbox",
+                        })}
+                      />
+                      <Checkbox
+                        label="Maximal views"
+                        description="Set a maximal number of views for the share"
+                        {...form.getInputProps("maximalViewsEnabled", {
+                          type: "checkbox",
+                        })}
+                      />
+                    </Stack>
+                  )}
+                </Stack>
+              </Accordion.Panel>
+            </Accordion.Item>
+          </Accordion>
 
           <Button mt="md" type="submit">
             Create
