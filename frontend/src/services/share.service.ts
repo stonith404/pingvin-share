@@ -109,17 +109,8 @@ const createReverseShare = async (
 
 const getMyReverseShares = async (): Promise<MyReverseShare[]> => {
   const shares = (await api.get("reverseShares")).data;
-  for (const share of shares)
-  {
-    share.sharesOptions = {
-      easyMode: share.easyMode,
-      customLinkEnabled: share.customLinkEnabled,
-      passwordEnabled: share.passwordEnabled,
-      descriptionEnabled: share.descriptionEnabled,
-      maximalViewsEnabled: share.maximalViewsEnabled,
-    } as ReverseShareOptions;
-  }
-
+  for(const share of shares)
+    share.sharesOptions ??= defaultReverseShareOptions;
   return shares;
 };
 

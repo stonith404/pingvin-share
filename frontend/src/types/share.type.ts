@@ -32,8 +32,9 @@ export type MyReverseShare = {
   maxShareSize: string;
   shareExpiration: Date;
   remainingUses: number;
+  token: string;
   shares: MyShare[];
-  sharesOptions: string;
+  sharesOptions: ReverseShareOptions;
 };
 
 export type ShareSecurity = {

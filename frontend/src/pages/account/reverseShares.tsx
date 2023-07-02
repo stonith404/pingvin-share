@@ -1,6 +1,7 @@
 import {
   Accordion,
   ActionIcon,
+  Anchor,
   Box,
   Button,
   Center,
@@ -16,9 +17,10 @@ import { useModals } from "@mantine/modals";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { TbInfoCircle, TbLink, TbPlus, TbTrash } from "react-icons/tb";
+import Meta from "../../components/Meta";
+import showReverseShareLinkModal from "../../components/account/showReverseShareLinkModal";
 import showShareLinkModal from "../../components/account/showShareLinkModal";
 import CenterLoader from "../../components/core/CenterLoader";
-import Meta from "../../components/Meta";
 import showCreateReverseShareModal from "../../components/share/modals/showCreateReverseShareModal";
 import useConfig from "../../hooks/config.hook";
 import shareService from "../../services/share.service";
@@ -33,6 +35,8 @@ const MyShares = () => {
   const config = useConfig();
 
   const [reverseShares, setReverseShares] = useState<MyReverseShare[]>();
+
+  const appUrl = config.get("general.appUrl");
 
   const getReverseShares = () => {
     shareService
@@ -121,9 +125,14 @@ const MyShares = () => {
                           <Accordion.Panel>
                             {reverseShare.shares.map((share) => (
                               <Group key={share.id} mb={4}>
-                                <Text maw={120} truncate>
-                                  {share.id}
-                                </Text>
+                                <Anchor
+                                  href={`${appUrl}/share/${share.id}`}
+                                  target="_blank"
+                                >
+                                  <Text maw={120} truncate>
+                                    {share.id}
+                                  </Text>
+                                </Anchor>
                                 <ActionIcon
                                   color="victoria"
                                   variant="light"
@@ -131,9 +140,7 @@ const MyShares = () => {
                                   onClick={() => {
                                     if (window.isSecureContext) {
                                       clipboard.copy(
-                                        `${config.get(
-                                          "general.appUrl"
-                                        )}/share/${share.id}`
+                                        `${appUrl}/share/${share.id}`
                                       );
                                       toast.success(
                                         "The share link was copied to the keyboard."
@@ -167,6 +174,31 @@ const MyShares = () => {
                   </td>
                   <td>
                     <Group position="right">
+                      <ActionIcon
+                        color="victoria"
+                        variant="light"
+                        size={25}
+                        onClick={() => {
+                          if (window.isSecureContext) {
+                            clipboard.copy(
+                              `${config.get("general.appUrl")}/upload/${
+                                reverseShare.token
+                              }`
+                            );
+                            toast.success(
+                              "The link was copied to your clipboard."
+                            );
+                          } else {
+                            showReverseShareLinkModal(
+                              modals,
+                              reverseShare.token,
+                              config.get("general.appUrl")
+                            );
+                          }
+                        }}
+                      >
+                        <TbLink />
+                      </ActionIcon>
                       <ActionIcon
                         color="red"
                         variant="light"
