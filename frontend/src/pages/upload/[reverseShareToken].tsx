@@ -1,11 +1,14 @@
 import { LoadingOverlay } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { GetServerSidePropsContext } from "next";
-import {useEffect, useRef, useState} from "react";
+import { useEffect, useRef, useState } from "react";
 import Upload from ".";
 import showErrorModal from "../../components/share/showErrorModal";
 import shareService from "../../services/share.service";
-import {defaultReverseShareOptions, MyReverseShare} from "../../types/share.type";
+import {
+  defaultReverseShareOptions,
+  MyReverseShare,
+} from "../../types/share.type";
 
 export function getServerSideProps(context: GetServerSidePropsContext) {
   return {
@@ -39,7 +42,13 @@ const Share = ({ reverseShareToken }: { reverseShareToken: string }) => {
 
   if (isLoading) return <LoadingOverlay visible />;
 
-  return <Upload isReverseShare shareOptions={reverseShareOptions.current} maxShareSize={maxShareSize} />;
+  return (
+    <Upload
+      isReverseShare
+      shareOptions={reverseShareOptions.current}
+      maxShareSize={maxShareSize}
+    />
+  );
 };
 
 export default Share;

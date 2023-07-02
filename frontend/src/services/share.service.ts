@@ -3,7 +3,8 @@ import mime from "mime-types";
 import { FileUploadResponse } from "../types/File.type";
 
 import {
-  CreateShare, defaultReverseShareOptions,
+  CreateShare,
+  defaultReverseShareOptions,
   MyReverseShare,
   MyShare,
   ReverseShareOptions,
@@ -109,7 +110,7 @@ const createReverseShare = async (
 
 const getMyReverseShares = async (): Promise<MyReverseShare[]> => {
   const shares = (await api.get("reverseShares")).data;
-  for(const share of shares)
+  for (const share of shares)
     share.sharesOptions ??= defaultReverseShareOptions;
   return shares;
 };

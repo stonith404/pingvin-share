@@ -18,11 +18,11 @@ import {
 import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { TbAlertCircle } from "react-icons/tb";
 import * as yup from "yup";
 import shareService from "../../../services/share.service";
-import {CreateShare, ReverseShareOptions} from "../../../types/share.type";
+import { CreateShare, ReverseShareOptions } from "../../../types/share.type";
 import { getExpirationPreview } from "../../../utils/date.util";
 
 const showCreateUploadModal = (
@@ -37,8 +37,6 @@ const showCreateUploadModal = (
   },
   uploadCallback: (createShare: CreateShare) => void
 ) => {
-
-
   return modals.openModal({
     title: "Share",
     children: (
@@ -72,20 +70,17 @@ const CreateUploadModalBody = ({
 
   const [showNotSignedInAlert, setShowNotSignedInAlert] = useState(true);
 
-
   let showModal = true;
-  if(options.isReverseShare)
-  {
-    if(options.shareOptions.easyMode)
-      showModal = false;
-    if(!options.shareOptions.maximalViewsEnabled &&
-       !options.shareOptions.passwordEnabled &&
-       !options.shareOptions.descriptionEnabled &&
-       !options.shareOptions.customLinkEnabled)
+  if (options.isReverseShare) {
+    if (options.shareOptions.easyMode) showModal = false;
+    if (
+      !options.shareOptions.maximalViewsEnabled &&
+      !options.shareOptions.passwordEnabled &&
+      !options.shareOptions.descriptionEnabled &&
+      !options.shareOptions.customLinkEnabled
+    )
       showModal = false;
   }
-
-
 
   const validationSchema = yup.object().shape({
     link: yup
@@ -135,8 +130,7 @@ const CreateUploadModalBody = ({
   });
 
   useEffect(() => {
-    if(!showModal)
-      onSubmit();
+    if (!showModal) onSubmit();
   }, []);
 
   return (
@@ -155,11 +149,21 @@ const CreateUploadModalBody = ({
       )}
 
       <form
-        onSubmit={() => {onSubmit();}}
-        style={{display: showModal ? "initial" : "none"}}
+        onSubmit={() => {
+          onSubmit();
+        }}
+        style={{ display: showModal ? "initial" : "none" }}
       >
         <Stack align="stretch">
-            <div style={{display: !options.isReverseShare || options.shareOptions.customLinkEnabled ? "initial" : "none"}}>
+          <div
+            style={{
+              display:
+                !options.isReverseShare ||
+                options.shareOptions.customLinkEnabled
+                  ? "initial"
+                  : "none",
+            }}
+          >
             <Grid align={form.errors.link ? "center" : "flex-end"}>
               <Col xs={9}>
                 <TextInput
@@ -187,17 +191,16 @@ const CreateUploadModalBody = ({
             </Grid>
 
             <Text
-            italic
-            size="xs"
-            sx={(theme) => ({
+              italic
+              size="xs"
+              sx={(theme) => ({
                 color: theme.colors.gray[6],
               })}
             >
-            {options.appUrl}/share/
-            {form.values.link == "" ? "myAwesomeShare" : form.values.link}
-          </Text>
+              {options.appUrl}/share/
+              {form.values.link == "" ? "myAwesomeShare" : form.values.link}
+            </Text>
           </div>
-
 
           {!options.isReverseShare && (
             <>
@@ -272,16 +275,17 @@ const CreateUploadModalBody = ({
             </>
           )}
 
-
           <Accordion>
-
             <Accordion.Item
               value="description"
               sx={{
                 borderBottom: "none",
-                display: !options.isReverseShare || options.shareOptions.descriptionEnabled ? "initial" : "none"
-            }}
-
+                display:
+                  !options.isReverseShare ||
+                  options.shareOptions.descriptionEnabled
+                    ? "initial"
+                    : "none",
+              }}
             >
               <Accordion.Control>Description</Accordion.Control>
               <Accordion.Panel>
@@ -329,14 +333,24 @@ const CreateUploadModalBody = ({
               value="security"
               sx={{
                 borderBottom: "none",
-                display: !options.isReverseShare || options.shareOptions.passwordEnabled || options.shareOptions.maximalViewsEnabled ? "initial" : "none"
-            }}>
+                display:
+                  !options.isReverseShare ||
+                  options.shareOptions.passwordEnabled ||
+                  options.shareOptions.maximalViewsEnabled
+                    ? "initial"
+                    : "none",
+              }}
+            >
               <Accordion.Control>Security options</Accordion.Control>
               <Accordion.Panel>
                 <Stack align="stretch">
                   <PasswordInput
                     sx={{
-                      display: !options.isReverseShare || options.shareOptions.passwordEnabled ? "initial" : "none"
+                      display:
+                        !options.isReverseShare ||
+                        options.shareOptions.passwordEnabled
+                          ? "initial"
+                          : "none",
                     }}
                     variant="filled"
                     placeholder="No password"
@@ -346,7 +360,11 @@ const CreateUploadModalBody = ({
 
                   <NumberInput
                     sx={{
-                      display: !options.isReverseShare || options.shareOptions.maximalViewsEnabled ? "initial" : "none"
+                      display:
+                        !options.isReverseShare ||
+                        options.shareOptions.maximalViewsEnabled
+                          ? "initial"
+                          : "none",
                     }}
                     min={1}
                     type="number"
@@ -360,16 +378,11 @@ const CreateUploadModalBody = ({
             </Accordion.Item>
           </Accordion>
 
-
           <Button type="submit">Share</Button>
-
-              </Stack>
-            </form>
-          </>
-
-          )}
-
-
-
+        </Stack>
+      </form>
+    </>
+  );
+};
 
 export default showCreateUploadModal;

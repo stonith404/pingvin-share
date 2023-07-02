@@ -18,7 +18,7 @@ import {
   defaultReverseShareOptions,
   MyReverseShare,
   ReverseShareOptions,
-  Share
+  Share,
 } from "../../types/share.type";
 import toast from "../../utils/toast.util";
 
