@@ -18,11 +18,11 @@ import {
 import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { TbAlertCircle } from "react-icons/tb";
 import * as yup from "yup";
 import shareService from "../../../services/share.service";
-import { CreateShare } from "../../../types/share.type";
+import {CreateShare, ReverseShareOptions} from "../../../types/share.type";
 import { getExpirationPreview } from "../../../utils/date.util";
 
 const showCreateUploadModal = (
@@ -30,12 +30,15 @@ const showCreateUploadModal = (
   options: {
     isUserSignedIn: boolean;
     isReverseShare: boolean;
+    shareOptions: ReverseShareOptions;
     appUrl: string;
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
   },
   uploadCallback: (createShare: CreateShare) => void
 ) => {
+
+
   return modals.openModal({
     title: "Share",
     children: (
@@ -56,6 +59,7 @@ const CreateUploadModalBody = ({
     isUserSignedIn: boolean;
     isReverseShare: boolean;
     appUrl: string;
+    shareOptions: ReverseShareOptions;
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
   };
@@ -67,6 +71,21 @@ const CreateUploadModalBody = ({
     .substr(10, 7);
 
   const [showNotSignedInAlert, setShowNotSignedInAlert] = useState(true);
+
+
+  let showModal = true;
+  if(options.isReverseShare)
+  {
+    if(options.shareOptions.easyMode)
+      showModal = false;
+    if(!options.shareOptions.maximalViewsEnabled &&
+       !options.shareOptions.passwordEnabled &&
+       !options.shareOptions.descriptionEnabled &&
+       !options.shareOptions.customLinkEnabled)
+      showModal = false;
+  }
+
+
 
   const validationSchema = yup.object().shape({
     link: yup
@@ -93,6 +112,33 @@ const CreateUploadModalBody = ({
     },
     validate: yupResolver(validationSchema),
   });
+
+  const onSubmit = form.onSubmit(async (values) => {
+    if (!(await shareService.isShareIdAvailable(values.link))) {
+      form.setFieldError("link", "This link is already in use");
+    } else {
+      const expiration = form.values.never_expires
+        ? "never"
+        : form.values.expiration_num + form.values.expiration_unit;
+      uploadCallback({
+        id: values.link,
+        expiration: expiration,
+        recipients: values.recipients,
+        description: values.description,
+        security: {
+          password: values.password,
+          maxViews: values.maxViews,
+        },
+      });
+      modals.closeAll();
+    }
+  });
+
+  useEffect(() => {
+    if(!showModal)
+      onSubmit();
+  }, []);
+
   return (
     <>
       {showNotSignedInAlert && !options.isUserSignedIn && (
@@ -107,65 +153,52 @@ const CreateUploadModalBody = ({
           count.
         </Alert>
       )}
+
       <form
-        onSubmit={form.onSubmit(async (values) => {
-          if (!(await shareService.isShareIdAvailable(values.link))) {
-            form.setFieldError("link", "This link is already in use");
-          } else {
-            const expiration = form.values.never_expires
-              ? "never"
-              : form.values.expiration_num + form.values.expiration_unit;
-            uploadCallback({
-              id: values.link,
-              expiration: expiration,
-              recipients: values.recipients,
-              description: values.description,
-              security: {
-                password: values.password,
-                maxViews: values.maxViews,
-              },
-            });
-            modals.closeAll();
-          }
-        })}
+        onSubmit={() => {onSubmit();}}
+        style={{display: showModal ? "initial" : "none"}}
       >
         <Stack align="stretch">
-          <Grid align={form.errors.link ? "center" : "flex-end"}>
-            <Col xs={9}>
-              <TextInput
-                variant="filled"
-                label="Link"
-                placeholder="myAwesomeShare"
-                {...form.getInputProps("link")}
-              />
-            </Col>
-            <Col xs={3}>
-              <Button
-                variant="outline"
-                onClick={() =>
-                  form.setFieldValue(
-                    "link",
-                    Buffer.from(Math.random().toString(), "utf8")
-                      .toString("base64")
-                      .substr(10, 7)
-                  )
-                }
-              >
-                Generate
-              </Button>
-            </Col>
-          </Grid>
+            <div style={{display: !options.isReverseShare || options.shareOptions.customLinkEnabled ? "initial" : "none"}}>
+            <Grid align={form.errors.link ? "center" : "flex-end"}>
+              <Col xs={9}>
+                <TextInput
+                  variant="filled"
+                  label="Link"
+                  placeholder="myAwesomeShare"
+                  {...form.getInputProps("link")}
+                />
+              </Col>
+              <Col xs={3}>
+                <Button
+                  variant="outline"
+                  onClick={() =>
+                    form.setFieldValue(
+                      "link",
+                      Buffer.from(Math.random().toString(), "utf8")
+                        .toString("base64")
+                        .substr(10, 7)
+                    )
+                  }
+                >
+                  Generate
+                </Button>
+              </Col>
+            </Grid>
 
-          <Text
+            <Text
             italic
             size="xs"
             sx={(theme) => ({
-              color: theme.colors.gray[6],
-            })}
-          >
+                color: theme.colors.gray[6],
+              })}
+            >
             {options.appUrl}/share/
             {form.values.link == "" ? "myAwesomeShare" : form.values.link}
           </Text>
+          </div>
+
+
           {!options.isReverseShare && (
             <>
               <Grid align={form.errors.link ? "center" : "flex-end"}>
@@ -238,8 +271,18 @@ const CreateUploadModalBody = ({
               </Text>
             </>
           )}
+
+
           <Accordion>
-            <Accordion.Item value="description" sx={{ borderBottom: "none" }}>
+
+            <Accordion.Item
+              value="description"
+              sx={{
+                borderBottom: "none",
+                display: !options.isReverseShare || options.shareOptions.descriptionEnabled ? "initial" : "none"
+            }}
+
+            >
               <Accordion.Control>Description</Accordion.Control>
               <Accordion.Panel>
                 <Stack align="stretch">
@@ -251,7 +294,8 @@ const CreateUploadModalBody = ({
                 </Stack>
               </Accordion.Panel>
             </Accordion.Item>
-            {options.enableEmailRecepients && (
+
+            {options.enableEmailRecepients && !options.isReverseShare && (
               <Accordion.Item value="recipients" sx={{ borderBottom: "none" }}>
                 <Accordion.Control>Email recipients</Accordion.Control>
                 <Accordion.Panel>
@@ -281,18 +325,29 @@ const CreateUploadModalBody = ({
                 </Accordion.Panel>
               </Accordion.Item>
             )}
-
-            <Accordion.Item value="security" sx={{ borderBottom: "none" }}>
+            <Accordion.Item
+              value="security"
+              sx={{
+                borderBottom: "none",
+                display: !options.isReverseShare || options.shareOptions.passwordEnabled || options.shareOptions.maximalViewsEnabled ? "initial" : "none"
+            }}>
               <Accordion.Control>Security options</Accordion.Control>
               <Accordion.Panel>
                 <Stack align="stretch">
                   <PasswordInput
+                    sx={{
+                      display: !options.isReverseShare || options.shareOptions.passwordEnabled ? "initial" : "none"
+                    }}
                     variant="filled"
                     placeholder="No password"
                     label="Password protection"
                     {...form.getInputProps("password")}
                   />
+
                   <NumberInput
+                    sx={{
+                      display: !options.isReverseShare || options.shareOptions.maximalViewsEnabled ? "initial" : "none"
+                    }}
                     min={1}
                     type="number"
                     variant="filled"
@@ -304,11 +359,17 @@ const CreateUploadModalBody = ({
               </Accordion.Panel>
             </Accordion.Item>
           </Accordion>
+
+
           <Button type="submit">Share</Button>
-        </Stack>
-      </form>
-    </>
-  );
-};
+
+              </Stack>
+            </form>
+          </>
+
+          )}
+
+
+
 
 export default showCreateUploadModal;

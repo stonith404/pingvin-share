@@ -13,7 +13,13 @@ import useConfig from "../../hooks/config.hook";
 import useUser from "../../hooks/user.hook";
 import shareService from "../../services/share.service";
 import { FileUpload } from "../../types/File.type";
-import { CreateShare, Share } from "../../types/share.type";
+import {
+  CreateShare,
+  defaultReverseShareOptions,
+  MyReverseShare,
+  ReverseShareOptions,
+  Share
+} from "../../types/share.type";
 import toast from "../../utils/toast.util";
 
 const promiseLimit = pLimit(3);
@@ -24,9 +30,11 @@ let createdShare: Share;
 const Upload = ({
   maxShareSize,
   isReverseShare = false,
+  shareOptions,
 }: {
   maxShareSize?: number;
   isReverseShare: boolean;
+  shareOptions: ReverseShareOptions;
 }) => {
   const modals = useModals();
 
@@ -36,6 +44,7 @@ const Upload = ({
   const [isUploading, setisUploading] = useState(false);
 
   maxShareSize ??= parseInt(config.get("share.maxSize"));
+  shareOptions ??= defaultReverseShareOptions;
 
   const uploadFiles = async (share: CreateShare) => {
     setisUploading(true);
@@ -171,6 +180,7 @@ const Upload = ({
               {
                 isUserSignedIn: user ? true : false,
                 isReverseShare,
+                shareOptions: shareOptions,
                 appUrl: config.get("general.appUrl"),
                 allowUnauthenticatedShares: config.get(
                   "share.allowUnauthenticatedShares"
