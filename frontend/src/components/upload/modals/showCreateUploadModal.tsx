@@ -25,6 +25,7 @@ import shareService from "../../../services/share.service";
 import { CreateShare, ReverseShareOptions } from "../../../types/share.type";
 import { getExpirationPreview } from "../../../utils/date.util";
 
+
 const showCreateUploadModal = (
   modals: ModalsContextProps,
   options: {
@@ -108,7 +109,7 @@ const CreateUploadModalBody = ({
     validate: yupResolver(validationSchema),
   });
 
-  const onSubmit = form.onSubmit(async (values) => {
+  const onFormSumbit = form.onSubmit(async (values) => {
     if (!(await shareService.isShareIdAvailable(values.link))) {
       form.setFieldError("link", "This link is already in use");
     } else {
@@ -129,8 +130,11 @@ const CreateUploadModalBody = ({
     }
   });
 
+
   useEffect(() => {
-    if (!showModal) onSubmit();
+    if (!showModal) {
+      onFormSumbit();
+    }
   }, []);
 
   return (
@@ -149,9 +153,7 @@ const CreateUploadModalBody = ({
       )}
 
       <form
-        onSubmit={() => {
-          onSubmit();
-        }}
+        onSubmit={onFormSumbit}
         style={{ display: showModal ? "initial" : "none" }}
       >
         <Stack align="stretch">
