@@ -13,7 +13,6 @@ import {
   Text,
   Textarea,
   TextInput,
-  Title,
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
