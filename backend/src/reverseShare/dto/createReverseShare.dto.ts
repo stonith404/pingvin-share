@@ -25,7 +25,6 @@ export class CreateReverseShareDTO {
   @IsBoolean()
   maximalViewsEnabled: boolean;
 
-
   @Min(1)
   @Max(1000)
   maxUseCount: number;

@@ -1,5 +1,5 @@
-import {Expose, plainToClass, Type} from "class-transformer";
-import {ReverseShareOptionsDTO} from "./reverseShareOptions.dto";
+import { Expose, plainToClass, Type } from "class-transformer";
+import { ReverseShareOptionsDTO } from "./reverseShareOptions.dto";
 
 export class ReverseShareDTO {
   @Expose()

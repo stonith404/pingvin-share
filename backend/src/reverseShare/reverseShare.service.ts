@@ -4,7 +4,7 @@ import { ConfigService } from "src/config/config.service";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { CreateReverseShareDTO } from "./dto/createReverseShare.dto";
-import {connect} from "rxjs";
+import { connect } from "rxjs";
 
 @Injectable()
 export class ReverseShareService {
@@ -27,7 +27,6 @@ export class ReverseShareService {
 
     const globalMaxShareSize = this.config.get("share.maxSize");
 
-
     if (globalMaxShareSize < data.maxShareSize)
       throw new BadRequestException(
         `Max share size can't be greater than ${globalMaxShareSize} bytes.`
@@ -45,7 +44,7 @@ export class ReverseShareService {
             passwordEnabled: data.passwordEnabled,
             descriptionEnabled: data.descriptionEnabled,
             maximalViewsEnabled: data.maximalViewsEnabled,
-          }
+          },
         },
         sendEmailNotification: data.sendEmailNotification,
         creatorId,
@@ -76,7 +75,6 @@ export class ReverseShareService {
         shareExpiration: "desc",
       },
       include: { sharesOptions: true, shares: { include: { creator: true } } },
-
     });
 
     return reverseShares;

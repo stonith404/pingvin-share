@@ -25,7 +25,6 @@ import shareService from "../../../services/share.service";
 import { CreateShare, ReverseShareOptions } from "../../../types/share.type";
 import { getExpirationPreview } from "../../../utils/date.util";
 
-
 const showCreateUploadModal = (
   modals: ModalsContextProps,
   options: {
@@ -129,7 +128,6 @@ const CreateUploadModalBody = ({
       modals.closeAll();
     }
   });
-
 
   useEffect(() => {
     if (!showModal) {
