@@ -4,7 +4,6 @@ import { ConfigService } from "src/config/config.service";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { CreateReverseShareDTO } from "./dto/createReverseShare.dto";
-import { connect } from "rxjs";
 
 @Injectable()
 export class ReverseShareService {
