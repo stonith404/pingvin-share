@@ -10,7 +10,6 @@ import {
   Stack,
   Switch,
   Text,
-  Textarea,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useModals } from "@mantine/modals";
