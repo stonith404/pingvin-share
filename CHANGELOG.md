@@ -1,3 +1,11 @@
+## [0.16.0](https://github.com/stonith404/pingvin-share/compare/v0.15.0...v0.16.0) (2023-07-09)
+
+
+### Features
+
+* Adding more informations on My Shares page (table and modal) ([#174](https://github.com/stonith404/pingvin-share/issues/174)) ([1466240](https://github.com/stonith404/pingvin-share/commit/14662404614f15bc25384d924d8cb0458ab06cd8))
+* Adding the possibility of copying the link by clicking text and icons ([#171](https://github.com/stonith404/pingvin-share/issues/171)) ([348852c](https://github.com/stonith404/pingvin-share/commit/348852cfa4275f5c642669b43697f83c35333044))
+
 ## [0.15.0](https://github.com/stonith404/pingvin-share/compare/v0.14.1...v0.15.0) (2023-05-09)
 
 
