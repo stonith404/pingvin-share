@@ -62,6 +62,10 @@ const CreateUploadModalBody = ({
 }) => {
   const modals = useModals();
 
+  const generatedLink = Buffer.from(Math.random().toString(), "utf8")
+    .toString("base64")
+    .substr(10, 7);
+
   const [showNotSignedInAlert, setShowNotSignedInAlert] = useState(true);
 
   const validationSchema = yup.object().shape({
@@ -78,7 +82,7 @@ const CreateUploadModalBody = ({
   });
   const form = useForm({
     initialValues: {
-      link: "",
+      link: generatedLink,
       recipients: [] as string[],
       password: undefined,
       maxViews: undefined,
