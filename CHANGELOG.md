@@ -1,3 +1,16 @@
+### [0.16.1](https://github.com/stonith404/pingvin-share/compare/v0.16.0...v0.16.1) (2023-07-10)
+
+
+### Features
+
+* Adding reverse share ability to copy the link ([#191](https://github.com/stonith404/pingvin-share/issues/191)) ([7574eb3](https://github.com/stonith404/pingvin-share/commit/7574eb3191f21aadd64f436e9e7c78d3e3973a07)), closes [#178](https://github.com/stonith404/pingvin-share/issues/178) [#181](https://github.com/stonith404/pingvin-share/issues/181)
+* Adding reverse shares' shares a clickable link ([#190](https://github.com/stonith404/pingvin-share/issues/190)) ([0276294](https://github.com/stonith404/pingvin-share/commit/0276294f5219a7edcc762bc52391b6720cfd741d))
+
+
+### Bug Fixes
+
+* set link default value to random ([#192](https://github.com/stonith404/pingvin-share/issues/192)) ([a1ea7c0](https://github.com/stonith404/pingvin-share/commit/a1ea7c026594a54eafd52f764eecbf06e1bb4d4e)), closes [#178](https://github.com/stonith404/pingvin-share/issues/178) [#181](https://github.com/stonith404/pingvin-share/issues/181)
+
 ## [0.16.0](https://github.com/stonith404/pingvin-share/compare/v0.15.0...v0.16.0) (2023-07-09)
 
 
