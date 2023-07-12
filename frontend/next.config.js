@@ -19,6 +19,9 @@ module.exports = withPWA({
   output: "standalone", env: {
     VERSION: version,
   },
+  serverRuntimeConfig: {
+    apiURL: process.env.API_URL ?? 'http://localhost:8080',
+  },
   i18n: {
     locales: ["en", "es"],
     defaultLocale: "en",

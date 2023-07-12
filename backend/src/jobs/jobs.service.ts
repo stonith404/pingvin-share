@@ -1,13 +1,16 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, Logger } from "@nestjs/common";
 import { Cron } from "@nestjs/schedule";
 import * as fs from "fs";
 import * as moment from "moment";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { ReverseShareService } from "src/reverseShare/reverseShare.service";
+import { SHARE_DIRECTORY } from "../constants";
 
 @Injectable()
 export class JobsService {
+  private readonly logger = new Logger(JobsService.name);
+
   constructor(
     private prisma: PrismaService,
     private reverseShareService: ReverseShareService,
@@ -34,8 +37,9 @@ export class JobsService {
       await this.fileService.deleteAllFiles(expiredShare.id);
     }
 
-    if (expiredShares.length > 0)
-      console.log(`job: deleted ${expiredShares.length} expired shares`);
+    if (expiredShares.length > 0) {
+      this.logger.log(`Deleted ${expiredShares.length} expired shares`);
+    }
   }
 
   @Cron("0 * * * *")
@@ -50,10 +54,11 @@ export class JobsService {
       await this.reverseShareService.remove(expiredReverseShare.id);
     }
 
-    if (expiredReverseShares.length > 0)
-      console.log(
-        `job: deleted ${expiredReverseShares.length} expired reverse shares`
+    if (expiredReverseShares.length > 0) {
+      this.logger.log(
+        `Deleted ${expiredReverseShares.length} expired reverse shares`
       );
+    }
   }
 
   @Cron("0 0 * * *")
@@ -61,31 +66,31 @@ export class JobsService {
     let filesDeleted = 0;
 
     const shareDirectories = fs
-      .readdirSync("./data/uploads/shares", { withFileTypes: true })
+      .readdirSync(SHARE_DIRECTORY, { withFileTypes: true })
       .filter((dirent) => dirent.isDirectory())
       .map((dirent) => dirent.name);
 
     for (const shareDirectory of shareDirectories) {
       const temporaryFiles = fs
-        .readdirSync(`./data/uploads/shares/${shareDirectory}`)
+        .readdirSync(`${SHARE_DIRECTORY}/${shareDirectory}`)
         .filter((file) => file.endsWith(".tmp-chunk"));
 
       for (const file of temporaryFiles) {
         const stats = fs.statSync(
-          `./data/uploads/shares/${shareDirectory}/${file}`
+          `${SHARE_DIRECTORY}/${shareDirectory}/${file}`
         );
         const isOlderThanOneDay = moment(stats.mtime)
           .add(1, "day")
           .isBefore(moment());
 
         if (isOlderThanOneDay) {
-          fs.rmSync(`./data/uploads/shares/${shareDirectory}/${file}`);
+          fs.rmSync(`${SHARE_DIRECTORY}/${shareDirectory}/${file}`);
           filesDeleted++;
         }
       }
     }
 
-    console.log(`job: deleted ${filesDeleted} temporary files`);
+    this.logger.log(`Deleted ${filesDeleted} temporary files`);
   }
 
   @Cron("0 * * * *")
@@ -107,7 +112,8 @@ export class JobsService {
     const deletedTokensCount =
       refreshTokenCount + loginTokenCount + resetPasswordTokenCount;
 
-    if (deletedTokensCount > 0)
-      console.log(`job: deleted ${deletedTokensCount} expired refresh tokens`);
+    if (deletedTokensCount > 0) {
+      this.logger.log(`Deleted ${deletedTokensCount} expired refresh tokens`);
+    }
   }
 }

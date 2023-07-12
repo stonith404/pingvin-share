@@ -11,6 +11,7 @@ import * as fs from "fs";
 import * as mime from "mime-types";
 import { ConfigService } from "src/config/config.service";
 import { PrismaService } from "src/prisma/prisma.service";
+import { SHARE_DIRECTORY } from "../constants";
 
 @Injectable()
 export class FileService {
@@ -39,7 +40,7 @@ export class FileService {
     let diskFileSize: number;
     try {
       diskFileSize = fs.statSync(
-        `./data/uploads/shares/${shareId}/${file.id}.tmp-chunk`
+        `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`
       ).size;
     } catch {
       diskFileSize = 0;
@@ -78,18 +79,18 @@ export class FileService {
     }
 
     fs.appendFileSync(
-      `./data/uploads/shares/${shareId}/${file.id}.tmp-chunk`,
+      `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
       buffer
     );
 
     const isLastChunk = chunk.index == chunk.total - 1;
     if (isLastChunk) {
       fs.renameSync(
-        `./data/uploads/shares/${shareId}/${file.id}.tmp-chunk`,
-        `./data/uploads/shares/${shareId}/${file.id}`
+        `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
+        `${SHARE_DIRECTORY}/${shareId}/${file.id}`
       );
       const fileSize = fs.statSync(
-        `./data/uploads/shares/${shareId}/${file.id}`
+        `${SHARE_DIRECTORY}/${shareId}/${file.id}`
       ).size;
       await this.prisma.file.create({
         data: {
@@ -111,9 +112,7 @@ export class FileService {
 
     if (!fileMetaData) throw new NotFoundException("File not found");
 
-    const file = fs.createReadStream(
-      `./data/uploads/shares/${shareId}/${fileId}`
-    );
+    const file = fs.createReadStream(`${SHARE_DIRECTORY}/${shareId}/${fileId}`);
 
     return {
       metaData: {
@@ -126,13 +125,13 @@ export class FileService {
   }
 
   async deleteAllFiles(shareId: string) {
-    await fs.promises.rm(`./data/uploads/shares/${shareId}`, {
+    await fs.promises.rm(`${SHARE_DIRECTORY}/${shareId}`, {
       recursive: true,
       force: true,
     });
   }
 
   getZip(shareId: string) {
-    return fs.createReadStream(`./data/uploads/shares/${shareId}/archive.zip`);
+    return fs.createReadStream(`${SHARE_DIRECTORY}/${shareId}/archive.zip`);
   }
 }

@@ -12,16 +12,7 @@ import {
 import api from "./api.service";
 
 const create = async (share: CreateShare) => {
-  const { id, expiration, recipients, security, description } = share;
-  return (
-    await api.post("shares", {
-      id,
-      expiration,
-      recipients,
-      security,
-      description,
-    })
-  ).data;
+  return (await api.post("shares", share)).data;
 };
 
 const completeShare = async (id: string) => {

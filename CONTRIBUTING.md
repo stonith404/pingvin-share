@@ -1,3 +1,7 @@
+_Read this in another language: [Spanish](/docs/CONTRIBUTING.es.md), [English](/CONTRIBUTING.md), [Simplified Chinese](/docs/CONTRIBUTING.zh-cn.md)_
+
+---
+
 # Contributing
 
 We would ❤️ for you to contribute to Pingvin Share and help make it better! All contributions are welcome, including issues, suggestions, pull requests and more.

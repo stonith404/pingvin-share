@@ -16,6 +16,7 @@ import { EmailService } from "src/email/email.service";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { ReverseShareService } from "src/reverseShare/reverseShare.service";
+import { SHARE_DIRECTORY } from "../constants";
 import { CreateShareDTO } from "./dto/createShare.dto";
 
 @Injectable()
@@ -65,7 +66,7 @@ export class ShareService {
       }
     }
 
-    fs.mkdirSync(`./data/uploads/shares/${share.id}`, {
+    fs.mkdirSync(`${SHARE_DIRECTORY}/${share.id}`, {
       recursive: true,
     });
 
@@ -99,7 +100,7 @@ export class ShareService {
   }
 
   async createZip(shareId: string) {
-    const path = `./data/uploads/shares/${shareId}`;
+    const path = `${SHARE_DIRECTORY}/${shareId}`;
 
     const files = await this.prisma.file.findMany({ where: { shareId } });
     const archive = archiver("zip", {
@@ -142,12 +143,14 @@ export class ShareService {
         this.prisma.share.update({ where: { id }, data: { isZipReady: true } })
       );
 
-    // Send email for each recepient
-    for (const recepient of share.recipients) {
-      await this.emailService.sendMailToShareRecepients(
-        recepient.email,
+    // Send email for each recipient
+    for (const recipient of share.recipients) {
+      await this.emailService.sendMailToShareRecipients(
+        recipient.email,
         share.id,
-        share.creator
+        share.creator,
+        share.description,
+        share.expiration
       );
     }
 
@@ -163,7 +166,7 @@ export class ShareService {
     }
 
     // Check if any file is malicious with ClamAV
-    this.clamScanService.checkAndRemove(share.id);
+    void this.clamScanService.checkAndRemove(share.id);
 
     if (share.reverseShare) {
       await this.prisma.reverseShare.update({
@@ -172,7 +175,7 @@ export class ShareService {
       });
     }
 
-    return await this.prisma.share.update({
+    return this.prisma.share.update({
       where: { id },
       data: { uploadLocked: true },
     });
@@ -192,17 +195,15 @@ export class ShareService {
       orderBy: {
         expiration: "desc",
       },
-      include: { recipients: true },
+      include: { recipients: true, files: true },
     });
 
-    const sharesWithEmailRecipients = shares.map((share) => {
+    return shares.map((share) => {
       return {
         ...share,
         recipients: share.recipients.map((recipients) => recipients.email),
       };
     });
-
-    return sharesWithEmailRecipients;
   }
 
   async get(id: string): Promise<any> {
@@ -222,7 +223,7 @@ export class ShareService {
       throw new NotFoundException("Share not found");
     return {
       ...share,
-      hasPassword: share.security?.password ? true : false,
+      hasPassword: !!share.security?.password,
     };
   }
 

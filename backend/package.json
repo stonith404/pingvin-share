@@ -1,12 +1,12 @@
 {
   "name": "pingvin-share-backend",
-  "version": "0.13.1",
+  "version": "0.16.1",
   "scripts": {
     "build": "nest build",
     "dev": "cross-env NODE_ENV=development nest start --watch",
     "prod": "prisma migrate deploy && prisma db seed && node dist/src/main",
     "lint": "eslint 'src/**/*.ts'",
-    "format": "prettier --write 'src/**/*.ts'",
+    "format": "prettier --end-of-line=auto --write 'src/**/*.ts'",
     "test:system": "prisma migrate reset -f && nest start & wait-on http://localhost:8080/api/configs && newman run ./test/newman-system-tests.json"
   },
   "prisma": {

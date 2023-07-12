@@ -1,13 +1,10 @@
-import {ActionIcon, Button, Stack, Text, TextInput} from "@mantine/core";
-import {useClipboard} from "@mantine/hooks";
-import {useModals} from "@mantine/modals";
-import {ModalsContextProps} from "@mantine/modals/lib/context";
+import { Button, Stack, Text } from "@mantine/core";
+import { useModals } from "@mantine/modals";
+import { ModalsContextProps } from "@mantine/modals/lib/context";
 import moment from "moment";
-import {useRouter} from "next/router";
-import {TbCopy} from "react-icons/tb";
-import {Share} from "../../../types/share.type";
-import toast from "../../../utils/toast.util";
-import {FormattedMessage, useIntl} from "react-intl";
+import { useRouter } from "next/router";
+import { Share } from "../../../types/share.type";
+import CopyTextField from "../CopyTextField";
 
 const showCompletedUploadModal = (
     modals: ModalsContextProps,
@@ -23,47 +20,28 @@ const showCompletedUploadModal = (
     });
 };
 
-const Body = ({share, appUrl}: { share: Share; appUrl: string }) => {
-    const clipboard = useClipboard({timeout: 500});
-    const modals = useModals();
-    const router = useRouter();
-    const intl = useIntl();
+const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
+  const modals = useModals();
+  const router = useRouter();
 
-    const link = `${appUrl}/share/${share.id}`;
-    return (
-        <Stack align="stretch">
-            <TextInput
-                readOnly
-                variant="filled"
-                value={link}
-                rightSection={
-                    window.isSecureContext && (
-                        <ActionIcon
-                            onClick={() => {
-                                clipboard.copy(link);
-                                toast.success("Your link was copied to the keyboard.");
-                            }}
-                        >
-                            <TbCopy/>
-                        </ActionIcon>
-                    )
-                }
-            />
-            <Text
-                size="xs"
-                sx={(theme) => ({
-                    color: theme.colors.gray[6],
-                })}
-            >
-                {/* If our share.expiration is timestamp 0, show a different message */}
-                {moment(share.expiration).unix() === 0
-                    ? intl.formatMessage({id:"upload.modal.completed.never-expires"})
-                    : intl.formatMessage({id: "upload.modal.completed.expires-on"}, {
-                        expiration: moment(share.expiration).format(
-                            "LLL"
-                        )
-                    })}
-            </Text>
+  const link = `${appUrl}/share/${share.id}`;
+
+  return (
+    <Stack align="stretch">
+      <CopyTextField link={link} />
+      <Text
+        size="xs"
+        sx={(theme) => ({
+          color: theme.colors.gray[6],
+        })}
+      >
+        {/* If our share.expiration is timestamp 0, show a different message */}
+        {moment(share.expiration).unix() === 0
+          ? "This share will never expire."
+          : `This share will expire on ${moment(share.expiration).format(
+              "LLL"
+            )}`}
+      </Text>
 
             <Button
                 onClick={() => {

@@ -1,20 +1,22 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, Logger } from "@nestjs/common";
 import * as NodeClam from "clamscan";
 import * as fs from "fs";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
+import { CLAMAV_HOST, CLAMAV_PORT, SHARE_DIRECTORY } from "../constants";
 
 const clamscanConfig = {
   clamdscan: {
-    host: process.env.NODE_ENV == "docker" ? "clamav" : "127.0.0.1",
-    port: 3310,
+    host: CLAMAV_HOST,
+    port: CLAMAV_PORT,
     localFallback: false,
   },
   preference: "clamdscan",
 };
-
 @Injectable()
 export class ClamScanService {
+  private readonly logger = new Logger(ClamScanService.name);
+
   constructor(
     private fileService: FileService,
     private prisma: PrismaService
@@ -23,11 +25,11 @@ export class ClamScanService {
   private ClamScan: Promise<NodeClam | null> = new NodeClam()
     .init(clamscanConfig)
     .then((res) => {
-      console.log("ClamAV is active");
+      this.logger.log("ClamAV is active");
       return res;
     })
     .catch(() => {
-      console.log("ClamAV is not active");
+      this.logger.log("ClamAV is not active");
       return null;
     });
 
@@ -39,14 +41,14 @@ export class ClamScanService {
     const infectedFiles = [];
 
     const files = fs
-      .readdirSync(`./data/uploads/shares/${shareId}`)
+      .readdirSync(`${SHARE_DIRECTORY}/${shareId}`)
       .filter((file) => file != "archive.zip");
 
     for (const fileId of files) {
       const { isInfected } = await clamScan
-        .isInfected(`./data/uploads/shares/${shareId}/${fileId}`)
+        .isInfected(`${SHARE_DIRECTORY}/${shareId}/${fileId}`)
         .catch(() => {
-          console.log("ClamAV is not active");
+          this.logger.log("ClamAV is not active");
           return { isInfected: false };
         });
 
@@ -78,7 +80,7 @@ export class ClamScanService {
         },
       });
 
-      console.log(
+      this.logger.warn(
         `Share ${shareId} deleted because it contained ${infectedFiles.length} malicious file(s)`
       );
     }

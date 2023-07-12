@@ -1,3 +1,53 @@
+### [0.16.1](https://github.com/stonith404/pingvin-share/compare/v0.16.0...v0.16.1) (2023-07-10)
+
+
+### Features
+
+* Adding reverse share ability to copy the link ([#191](https://github.com/stonith404/pingvin-share/issues/191)) ([7574eb3](https://github.com/stonith404/pingvin-share/commit/7574eb3191f21aadd64f436e9e7c78d3e3973a07)), closes [#178](https://github.com/stonith404/pingvin-share/issues/178) [#181](https://github.com/stonith404/pingvin-share/issues/181)
+* Adding reverse shares' shares a clickable link ([#190](https://github.com/stonith404/pingvin-share/issues/190)) ([0276294](https://github.com/stonith404/pingvin-share/commit/0276294f5219a7edcc762bc52391b6720cfd741d))
+
+
+### Bug Fixes
+
+* set link default value to random ([#192](https://github.com/stonith404/pingvin-share/issues/192)) ([a1ea7c0](https://github.com/stonith404/pingvin-share/commit/a1ea7c026594a54eafd52f764eecbf06e1bb4d4e)), closes [#178](https://github.com/stonith404/pingvin-share/issues/178) [#181](https://github.com/stonith404/pingvin-share/issues/181)
+
+## [0.16.0](https://github.com/stonith404/pingvin-share/compare/v0.15.0...v0.16.0) (2023-07-09)
+
+
+### Features
+
+* Adding more informations on My Shares page (table and modal) ([#174](https://github.com/stonith404/pingvin-share/issues/174)) ([1466240](https://github.com/stonith404/pingvin-share/commit/14662404614f15bc25384d924d8cb0458ab06cd8))
+* Adding the possibility of copying the link by clicking text and icons ([#171](https://github.com/stonith404/pingvin-share/issues/171)) ([348852c](https://github.com/stonith404/pingvin-share/commit/348852cfa4275f5c642669b43697f83c35333044))
+
+## [0.15.0](https://github.com/stonith404/pingvin-share/compare/v0.14.1...v0.15.0) (2023-05-09)
+
+
+### Features
+
+* add env variables for port, database url and data dir  ([98c0de7](https://github.com/stonith404/pingvin-share/commit/98c0de78e8a73e3e5bf0928226cfb8a024b566a1))
+* add healthcheck endpoint ([5132d17](https://github.com/stonith404/pingvin-share/commit/5132d177b8ab4e00a7e701e9956222fa2352d42c))
+* allow to configure clamav with environment variables ([1df5c71](https://github.com/stonith404/pingvin-share/commit/1df5c7123e4ca8695f4f1b7d49f46cdf147fb920))
+* configure ports, db url and api url with env variables ([e5071cb](https://github.com/stonith404/pingvin-share/commit/e5071cba1204093197b72e18d024b484e72e360a))
+
+### [0.14.1](https://github.com/stonith404/pingvin-share/compare/v0.14.0...v0.14.1) (2023-04-07)
+
+
+### Bug Fixes
+
+* boolean config variables can't be set to false ([39a7451](https://github.com/stonith404/pingvin-share/commit/39a74510c1f00466acaead39f7bee003b3db60d7))
+
+## [0.14.0](https://github.com/stonith404/pingvin-share/compare/v0.13.1...v0.14.0) (2023-04-01)
+
+
+### Features
+
+* **share, config:** more variables, placeholder and reset default ([#132](https://github.com/stonith404/pingvin-share/issues/132)) ([beece56](https://github.com/stonith404/pingvin-share/commit/beece56327da141c222fd9f5259697df6db9347a))
+
+
+### Bug Fixes
+
+* bool config variable can't be changed ([0e5c673](https://github.com/stonith404/pingvin-share/commit/0e5c67327092e4751208e559a2b0d5ee2b91b6e3))
+
 ### [0.13.1](https://github.com/stonith404/pingvin-share/compare/v0.13.0...v0.13.1) (2023-03-14)
 
 

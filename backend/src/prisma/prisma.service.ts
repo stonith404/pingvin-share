@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaClient } from "@prisma/client";
+import { DATABASE_URL } from "../constants";
 
 @Injectable()
 export class PrismaService extends PrismaClient {
@@ -7,7 +8,7 @@ export class PrismaService extends PrismaClient {
     super({
       datasources: {
         db: {
-          url: "file:../data/pingvin-share.db?connection_limit=1",
+          url: DATABASE_URL,
         },
       },
     });

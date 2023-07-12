@@ -6,6 +6,7 @@ import * as bodyParser from "body-parser";
 import * as cookieParser from "cookie-parser";
 import * as fs from "fs";
 import { AppModule } from "./app.module";
+import { DATA_DIRECTORY } from "./constants";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -16,7 +17,9 @@ async function bootstrap() {
   app.use(cookieParser());
   app.set("trust proxy", true);
 
-  await fs.promises.mkdir("./data/uploads/_temp", { recursive: true });
+  await fs.promises.mkdir(`${DATA_DIRECTORY}/uploads/_temp`, {
+    recursive: true,
+  });
 
   app.setGlobalPrefix("api");
 
@@ -30,6 +33,6 @@ async function bootstrap() {
     SwaggerModule.setup("api/swagger", app, document);
   }
 
-  await app.listen(8080);
+  await app.listen(parseInt(process.env.PORT) || 8080);
 }
 bootstrap();

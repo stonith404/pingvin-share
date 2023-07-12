@@ -1,10 +1,7 @@
-import { ActionIcon, Button, Stack, TextInput } from "@mantine/core";
-import { useClipboard } from "@mantine/hooks";
+import { Button, Stack } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
-import { TbCopy } from "react-icons/tb";
-import { FormattedMessage, useIntl } from "react-intl";
-import toast from "../../../utils/toast.util";
+import CopyTextField from "../../upload/CopyTextField";
 
 const showCompletedReverseShareModal = (
   modals: ModalsContextProps,
@@ -27,29 +24,13 @@ const Body = ({
   link: string;
   getReverseShares: () => void;
 }) => {
-  const clipboard = useClipboard({ timeout: 500 });
   const modals = useModals();
   const intl = useIntl();
 
   return (
     <Stack align="stretch">
-      <TextInput
-        readOnly
-        variant="filled"
-        value={link}
-        rightSection={
-          window.isSecureContext && (
-            <ActionIcon
-              onClick={() => {
-                clipboard.copy(link);
                 toast.success(intl.formatMessage({id:"common.notify.copied"}));
-              }}
-            >
-              <TbCopy />
-            </ActionIcon>
-          )
-        }
-      />
+      <CopyTextField link={link} />
 
       <Button
         onClick={() => {

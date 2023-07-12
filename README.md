@@ -1,5 +1,11 @@
 # <div align="center"><img  src="https://user-images.githubusercontent.com/58886915/166198400-c2134044-1198-4647-a8b6-da9c4a204c68.svg" width="40"/> </br>Pingvin Share</div>
 
+---
+
+_Read this in another language: [Spanish](/docs/README.es.md), [English](/README.md), [Simplified Chinese](/docs/README.zh-cn.md)_
+
+---
+
 Pingvin Share is self-hosted file sharing platform and an alternative for WeTransfer.
 
 ## ✨ Features
@@ -89,10 +95,11 @@ docker compose up -d
 #### Stand-alone
 
 1. Stop the running app
-    ```bash
-    pm2 stop pingvin-share-backend pingvin-share-frontend
-    ```
+   ```bash
+   pm2 stop pingvin-share-backend pingvin-share-frontend
+   ```
 2. Repeat the steps from the [installation guide](#stand-alone-installation) except the `git clone` step.
+
    ```bash
    cd pingvin-share
 
@@ -110,9 +117,30 @@ docker compose up -d
    pm2 restart pingvin-share-frontend
    ```
 
-### Custom branding
+### Configuration
 
-You can change the name and the logo of the app by visiting the admin configuration page.
+You can customize Pingvin Share by going to the configuration page in your admin dashboard.
+
+#### Environment variables
+
+For installation specific configuration, you can use environment variables. The following variables are available:
+
+##### Backend
+
+| Variable         | Default Value                                      | Description                            |
+| ---------------- | -------------------------------------------------- | -------------------------------------- |
+| `PORT`           | `8080`                                             | The port on which the backend listens. |
+| `DATABASE_URL`   | `file:../data/pingvin-share.db?connection_limit=1` | The URL of the SQLite database.        |
+| `DATA_DIRECTORY` | `./data`                                           | The directory where data is stored.    |
+| `CLAMAV_HOST`    | `127.0.0.1`                                        | The IP address of the ClamAV server.   |
+| `CLAMAV_PORT`    | `3310`                                             | The port number of the ClamAV server.  |
+
+##### Frontend
+
+| Variable  | Default Value           | Description                              |
+| --------- | ----------------------- | ---------------------------------------- |
+| `PORT`    | `3000`                  | The port on which the frontend listens.  |
+| `API_URL` | `http://localhost:8080` | The URL of the backend for the frontend. |
 
 ## 🖤 Contribute
 

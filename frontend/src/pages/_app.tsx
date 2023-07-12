@@ -8,12 +8,12 @@ import {useColorScheme} from "@mantine/hooks";
 import {ModalsProvider} from "@mantine/modals";
 import {Notifications} from "@mantine/notifications";
 import axios from "axios";
-import {getCookie, setCookie} from "cookies-next";
-import {GetServerSidePropsContext} from "next";
-import type {AppProps} from "next/app";
-import {useRouter} from "next/router";
-import {useEffect, useState} from "react";
-import {IntlProvider} from "react-intl";
+import { getCookie, setCookie } from "cookies-next";
+import { GetServerSidePropsContext } from "next";
+import type { AppProps } from "next/app";
+import getConfig from "next/config";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import Header from "../components/header/Header";
 import {ConfigContext} from "../hooks/config.hook";
 import usePreferences from "../hooks/usePreferences";
@@ -128,29 +128,29 @@ function App({Component, pageProps}: AppProps) {
 
 // Fetch user and config variables on server side when the first request is made
 // These will get passed as a page prop to the App component and stored in the contexts
-App.getInitialProps = async ({ctx}: { ctx: GetServerSidePropsContext }) => {
-    let pageProps: {
-        user?: CurrentUser;
-        configVariables?: Config[];
-        route?: string;
-        colorScheme: ColorScheme;
-    } = {
-        route: ctx.resolvedUrl,
-        colorScheme:
-            (getCookie("mantine-color-scheme", ctx) as ColorScheme) ?? "light",
-    };
-    if (ctx.req) {
-        const cookieHeader = ctx.req.headers.cookie;
+App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
+  const { apiURL } = getConfig().serverRuntimeConfig;
 
-        pageProps.user = await axios(`http://localhost:8080/api/users/me`, {
-            headers: {cookie: cookieHeader},
-        })
-            .then((res) => res.data)
-            .catch(() => null);
+  let pageProps: {
+    user?: CurrentUser;
+    configVariables?: Config[];
+    route?: string;
+    colorScheme: ColorScheme;
+  } = {
+    route: ctx.resolvedUrl,
+    colorScheme:
+      (getCookie("mantine-color-scheme", ctx) as ColorScheme) ?? "light",
+  };
+  if (ctx.req) {
+    const cookieHeader = ctx.req.headers.cookie;
 
-        pageProps.configVariables = (
-            await axios(`http://localhost:8080/api/configs`)
-        ).data;
+    pageProps.user = await axios(`${apiURL}/api/users/me`, {
+      headers: { cookie: cookieHeader },
+    })
+      .then((res) => res.data)
+      .catch(() => null);
+
+    pageProps.configVariables = (await axios(`${apiURL}/api/configs`)).data;
 
         pageProps.route = ctx.req.url;
     }
