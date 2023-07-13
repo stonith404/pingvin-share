@@ -1,3 +1,3 @@
 export const french = {
-    "home.title": "Bonjour",
-}
+  "home.title": "Bonjour",
+};

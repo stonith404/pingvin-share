@@ -11,9 +11,10 @@ import {
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { TbRefresh, TbSettings, TbUsers } from "react-icons/tb";
+import { FormattedMessage } from "react-intl";
 import Meta from "../../components/Meta";
+import useTranslate from "../../hooks/useTranslate.hook";
 import configService from "../../services/config.service";
-import {FormattedMessage, useIntl} from "react-intl";
 
 const useStyles = createStyles((theme) => ({
   item: {
@@ -32,16 +33,16 @@ const useStyles = createStyles((theme) => ({
 
 const Admin = () => {
   const { classes, theme } = useStyles();
-  const intl = useIntl();
+  const t = useTranslate();
 
   const [managementOptions, setManagementOptions] = useState([
     {
-      title: intl.formatMessage({id:"admin.button.users"}),
+      title: t("admin.button.users"),
       icon: TbUsers,
       route: "/admin/users",
     },
     {
-      title: intl.formatMessage({id:"admin.button.config"}),
+      title: t("admin.button.config"),
       icon: TbSettings,
       route: "/admin/config/general",
     },
@@ -65,7 +66,7 @@ const Admin = () => {
 
   return (
     <>
-      <Meta title={intl.formatMessage({id:"admin.title"})} />
+      <Meta title={intl.formatMessage({ id: "admin.title" })} />
       <Title mb={30} order={3}>
         <FormattedMessage id="admin.title" />
       </Title>

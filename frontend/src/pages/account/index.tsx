@@ -14,20 +14,21 @@ import {
 import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
 import { Tb2Fa } from "react-icons/tb";
+import { FormattedMessage } from "react-intl";
 import * as yup from "yup";
-import showEnableTotpModal from "../../components/account/showEnableTotpModal";
-import ThemeSwitcher from "../../components/account/ThemeSwitcher";
 import Meta from "../../components/Meta";
+import ThemeSwitcher from "../../components/account/ThemeSwitcher";
+import showEnableTotpModal from "../../components/account/showEnableTotpModal";
+import useTranslate from "../../hooks/useTranslate.hook";
 import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
 import userService from "../../services/user.service";
 import toast from "../../utils/toast.util";
-import {FormattedMessage, useIntl} from "react-intl";
 
 const Account = () => {
   const { user, refreshUser } = useUser();
   const modals = useModals();
-  const intl = useIntl();
+  const t = useTranslate();
 
   const accountForm = useForm({
     initialValues: {
@@ -85,7 +86,7 @@ const Account = () => {
 
   return (
     <>
-      <Meta title={intl.formatMessage({id:"account.title"})} />
+      <Meta title={t("account.title")} />
       <Container size="sm">
         <Title order={3} mb="xs">
           <FormattedMessage id="account.title" />
@@ -107,15 +108,17 @@ const Account = () => {
           >
             <Stack>
               <TextInput
-                label={intl.formatMessage({id:"account.card.info.username"})}
+                label={t("account.card.info.username")}
                 {...accountForm.getInputProps("username")}
               />
               <TextInput
-                label={intl.formatMessage({id:"account.card.info.email"})}
+                label={t("account.card.info.email")}
                 {...accountForm.getInputProps("email")}
               />
               <Group position="right">
-                <Button type="submit"><FormattedMessage id="common.button.save" /></Button>
+                <Button type="submit">
+                  <FormattedMessage id="common.button.save" />
+                </Button>
               </Group>
             </Stack>
           </form>
@@ -129,7 +132,7 @@ const Account = () => {
               authService
                 .updatePassword(values.oldPassword, values.password)
                 .then(() => {
-                  toast.success(intl.formatMessage({id:"account.notify.password.success"}));
+                  toast.success(t("account.notify.password.success"));
                   passwordForm.reset();
                 })
                 .catch(toast.axiosError)
@@ -137,15 +140,17 @@ const Account = () => {
           >
             <Stack>
               <PasswordInput
-                label={intl.formatMessage({id:"account.card.password.old"})}
+                label={t("account.card.password.old")}
                 {...passwordForm.getInputProps("oldPassword")}
               />
               <PasswordInput
-                label={intl.formatMessage({id:"account.card.password.new"})}
+                label={t("account.card.password.new")}
                 {...passwordForm.getInputProps("password")}
               />
               <Group position="right">
-                <Button type="submit"><FormattedMessage id="common.button.save" /></Button>
+                <Button type="submit">
+                  <FormattedMessage id="common.button.save" />
+                </Button>
               </Group>
             </Stack>
           </form>
@@ -171,7 +176,7 @@ const Account = () => {
                       authService
                         .disableTOTP(values.code, values.password)
                         .then(() => {
-                          toast.success(intl.formatMessage({id:"account.notify.totp.disable"}));
+                          toast.success(t("account.notify.totp.disable"));
                           values.password = "";
                           values.code = "";
                           refreshUser();
@@ -181,9 +186,9 @@ const Account = () => {
                   >
                     <Stack>
                       <PasswordInput
-                       // TODO: Translate
+                        // TODO: Translate
                         description="Enter your current password to disable TOTP"
-                        label={intl.formatMessage({id:"account.card.password.title"})}
+                        label={t("account.card.password.title")}
                         {...disableTotpForm.getInputProps("password")}
                       />
 
@@ -221,12 +226,16 @@ const Account = () => {
                   >
                     <Stack>
                       <PasswordInput
-                        label={intl.formatMessage({id:"account.card.password.title"})}
-                        description={intl.formatMessage({id:"account.card.security.totp.enable.description"})}
+                        label={t("account.card.password.title")}
+                        description={t(
+                          "account.card.security.totp.enable.description"
+                        )}
                         {...enableTotpForm.getInputProps("password")}
                       />
                       <Group position="right">
-                        <Button type="submit"><FormattedMessage id="account.card.security.totp.button.start" /></Button>
+                        <Button type="submit">
+                          <FormattedMessage id="account.card.security.totp.button.start" />
+                        </Button>
                       </Group>
                     </Stack>
                   </form>

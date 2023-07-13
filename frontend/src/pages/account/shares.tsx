@@ -11,49 +11,55 @@ import {
   Text,
   Title,
 } from "@mantine/core";
-import {useClipboard} from "@mantine/hooks";
-import {useModals} from "@mantine/modals";
+import { useClipboard } from "@mantine/hooks";
+import { useModals } from "@mantine/modals";
 import moment from "moment";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { TbInfoCircle, TbLink, TbTrash } from "react-icons/tb";
+import { FormattedMessage } from "react-intl";
 import Meta from "../../components/Meta";
 import showShareInformationsModal from "../../components/account/showShareInformationsModal";
 import showShareLinkModal from "../../components/account/showShareLinkModal";
 import CenterLoader from "../../components/core/CenterLoader";
 import useConfig from "../../hooks/config.hook";
+import useTranslate from "../../hooks/useTranslate.hook";
 import shareService from "../../services/share.service";
-import {MyShare} from "../../types/share.type";
+import { MyShare } from "../../types/share.type";
 import toast from "../../utils/toast.util";
 
 const MyShares = () => {
-    const modals = useModals();
-    const clipboard = useClipboard();
-    const config = useConfig();
-    const intl = useIntl();
+  const modals = useModals();
+  const clipboard = useClipboard();
+  const config = useConfig();
+  const t = useTranslate();
 
-    const [shares, setShares] = useState<MyShare[]>();
+  const [shares, setShares] = useState<MyShare[]>();
 
-    useEffect(() => {
-        shareService.getMyShares().then((shares) => setShares(shares));
-    }, []);
+  useEffect(() => {
+    shareService.getMyShares().then((shares) => setShares(shares));
+  }, []);
 
-    if (!shares) return <CenterLoader/>;
+  if (!shares) return <CenterLoader />;
 
   return (
     <>
-      <Meta title="My shares" />
+      <Meta title={t("account.shares.title")} />
       <Title mb={30} order={3}>
-        My shares
+        <FormattedMessage id="account.shares.title" />
       </Title>
       {shares.length == 0 ? (
         <Center style={{ height: "70vh" }}>
           <Stack align="center" spacing={10}>
-            <Title order={3}>It's empty here 👀</Title>
-            <Text>You don't have any shares.</Text>
+            <Title order={3}>
+              <FormattedMessage id="account.shares.title.empty" />
+            </Title>
+            <Text>
+              <FormattedMessage id="account.shares.description.empty" />
+            </Text>
             <Space h={5} />
             <Button component={Link} href="/upload" variant="light">
-              Create one
+              <FormattedMessage id="account.shares.button.create" />
             </Button>
           </Stack>
         </Center>
@@ -62,13 +68,19 @@ const MyShares = () => {
           <Table>
             <thead>
               <tr>
-                <th>Name</th>
+                <th>
+                  <FormattedMessage id="account.shares.table.name" />
+                </th>
                 <MediaQuery smallerThan="md" styles={{ display: "none" }}>
                   <th>Description</th>
                 </MediaQuery>
 
-                <th>Visitors</th>
-                <th>Expires at</th>
+                <th>
+                  <FormattedMessage id="account.shares.table.visitors" />
+                </th>
+                <th>
+                  <FormattedMessage id="account.shares.table.expires" />
+                </th>
                 <th></th>
               </tr>
             </thead>
@@ -122,9 +134,7 @@ const MyShares = () => {
                                 share.id
                               }`
                             );
-                            toast.success(
-                              "The link was copied to your clipboard."
-                            );
+                            toast.success(t("common.notify.copied"));
                           } else {
                             showShareLinkModal(
                               modals,

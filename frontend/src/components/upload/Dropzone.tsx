@@ -2,11 +2,11 @@ import { Button, Center, createStyles, Group, Text } from "@mantine/core";
 import { Dropzone as MantineDropzone } from "@mantine/dropzone";
 import { Dispatch, ForwardedRef, SetStateAction, useRef } from "react";
 import { TbCloudUpload, TbUpload } from "react-icons/tb";
-import useConfig from "../../hooks/config.hook";
+import { FormattedMessage } from "react-intl";
+import useTranslate from "../../hooks/useTranslate.hook";
 import { FileUpload } from "../../types/File.type";
 import { byteToHumanSizeString } from "../../utils/fileSize.util";
 import toast from "../../utils/toast.util";
-import {FormattedMessage, useIntl} from "react-intl";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -43,8 +43,7 @@ const Dropzone = ({
   files: FileUpload[];
   setFiles: Dispatch<SetStateAction<FileUpload[]>>;
 }) => {
-  const config = useConfig();
-  const intl = useIntl();
+  const t = useTranslate();
 
   const { classes } = useStyles();
   const openRef = useRef<() => void>();
@@ -64,7 +63,9 @@ const Dropzone = ({
 
           if (fileSizeSum > maxShareSize) {
             toast.error(
-                intl.formatMessage({id:"upload.dropzone.notify.file-too-big"}, {maxSize: byteToHumanSizeString(maxShareSize)}),
+              t("upload.dropzone.notify.file-too-big", {
+                maxSize: byteToHumanSizeString(maxShareSize),
+              })
             );
           } else {
             newFiles = newFiles.map((newFile) => {
@@ -85,7 +86,10 @@ const Dropzone = ({
             <FormattedMessage id="upload.dropzone.title" />
           </Text>
           <Text align="center" size="sm" mt="xs" color="dimmed">
-            <FormattedMessage id="upload.dropzone.description" values={{maxSize: byteToHumanSizeString(maxShareSize)}} />
+            <FormattedMessage
+              id="upload.dropzone.description"
+              values={{ maxSize: byteToHumanSizeString(maxShareSize) }}
+            />
           </Text>
         </div>
       </MantineDropzone>

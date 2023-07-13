@@ -4,7 +4,7 @@ import { TbTrash } from "react-icons/tb";
 import { FileUpload } from "../../types/File.type";
 import { byteToHumanSizeString } from "../../utils/fileSize.util";
 import UploadProgressIndicator from "./UploadProgressIndicator";
-import {FormattedMessage} from "react-intl";
+import { FormattedMessage } from "react-intl";
 
 const FileList = ({
   files,
@@ -42,8 +42,12 @@ const FileList = ({
     <Table>
       <thead>
         <tr>
-          <th><FormattedMessage id="upload.filelist.name" /></th>
-          <th><FormattedMessage id="upload.filelist.size" /></th>
+          <th>
+            <FormattedMessage id="upload.filelist.name" />
+          </th>
+          <th>
+            <FormattedMessage id="upload.filelist.size" />
+          </th>
           <th></th>
         </tr>
       </thead>

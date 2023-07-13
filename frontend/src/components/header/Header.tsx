@@ -14,9 +14,9 @@ import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ReactNode, useEffect, useState } from "react";
-import { useIntl } from "react-intl";
 import useConfig from "../../hooks/config.hook";
 import useUser from "../../hooks/user.hook";
+import useTranslate from "../../hooks/useTranslate.hook";
 import Logo from "../Logo";
 import ActionAvatar from "./ActionAvatar";
 import NavbarShareMenu from "./NavbarShareMenu";
@@ -113,7 +113,7 @@ const Header = () => {
   const { user } = useUser();
   const router = useRouter();
   const config = useConfig();
-  const intl = useIntl();
+  const t = useTranslate();
 
   const [opened, toggleOpened] = useDisclosure(false);
 
@@ -126,7 +126,7 @@ const Header = () => {
   const authenticatedLinks: NavLink[] = [
     {
       link: "/upload",
-      label: intl.formatMessage({ id: "navbar.upload" }),
+      label: t("navbar.upload"),
     },
     {
       component: <NavbarShareMenu />,
@@ -139,27 +139,27 @@ const Header = () => {
   let unauthenticatedLinks: NavLink[] = [
     {
       link: "/auth/signIn",
-      label: intl.formatMessage({ id: "navbar.signin" })
+      label: t("navbar.signin"),
     },
   ];
 
   if (config.get("share.allowUnauthenticatedShares")) {
     unauthenticatedLinks.unshift({
       link: "/upload",
-      label: intl.formatMessage({ id: "navbar.upload" })
+      label: t("navbar.upload"),
     });
   }
 
   if (config.get("general.showHomePage"))
     unauthenticatedLinks.unshift({
       link: "/",
-      label: intl.formatMessage({ id: "navbar.home" })
+      label: t("navbar.home"),
     });
 
   if (config.get("share.allowRegistration"))
     unauthenticatedLinks.push({
       link: "/auth/signUp",
-      label: intl.formatMessage({ id: "navbar.signup" })
+      label: t("navbar.signup"),
     });
 
   const { classes, cx } = useStyles();

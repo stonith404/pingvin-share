@@ -12,7 +12,8 @@ import {
 import { useForm } from "@mantine/form";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
+import useTranslate from "../../../hooks/useTranslate.hook";
 import shareService from "../../../services/share.service";
 import { getExpirationPreview } from "../../../utils/date.util";
 import toast from "../../../utils/toast.util";
@@ -43,7 +44,7 @@ const Body = ({
   showSendEmailNotificationOption: boolean;
 }) => {
   const modals = useModals();
-  const intl = useIntl();
+  const t = useTranslate();
 
   const form = useForm({
     initialValues: {
@@ -81,7 +82,7 @@ const Body = ({
                   max={99999}
                   precision={0}
                   variant="filled"
-                  label={intl.formatMessage({id:"account.reverseShares.modal.expiration.label"})}
+                  label={t("account.reverseShares.modal.expiration.label")}
                   {...form.getInputProps("expiration_num")}
                 />
               </Col>
@@ -93,44 +94,44 @@ const Body = ({
                     {
                       value: "-minutes",
                       label:
-                          form.values.expiration_num == 1 ?
-                              intl.formatMessage({id: "upload.modal.expires.minute-singular"})
-                              : intl.formatMessage({id: "upload.modal.expires.minute-plural"})
+                        form.values.expiration_num == 1
+                          ? t("upload.modal.expires.minute-singular")
+                          : t("upload.modal.expires.minute-plural"),
                     },
                     {
                       value: "-hours",
                       label:
-                          form.values.expiration_num == 1 ?
-                              intl.formatMessage({id: "upload.modal.expires.hour-singular"})
-                              : intl.formatMessage({id: "upload.modal.expires.hour-plural"})
+                        form.values.expiration_num == 1
+                          ? t("upload.modal.expires.hour-singular")
+                          : t("upload.modal.expires.hour-plural"),
                     },
                     {
                       value: "-days",
                       label:
-                          form.values.expiration_num == 1 ?
-                              intl.formatMessage({id: "upload.modal.expires.day-singular"})
-                              : intl.formatMessage({id: "upload.modal.expires.day-plural"})
+                        form.values.expiration_num == 1
+                          ? t("upload.modal.expires.day-singular")
+                          : t("upload.modal.expires.day-plural"),
                     },
                     {
                       value: "-weeks",
                       label:
-                          form.values.expiration_num == 1 ?
-                              intl.formatMessage({id: "upload.modal.expires.week-singular"})
-                              : intl.formatMessage({id: "upload.modal.expires.week-plural"})
+                        form.values.expiration_num == 1
+                          ? t("upload.modal.expires.week-singular")
+                          : t("upload.modal.expires.week-plural"),
                     },
                     {
                       value: "-months",
                       label:
-                          form.values.expiration_num == 1 ?
-                              intl.formatMessage({id: "upload.modal.expires.month-singular"})
-                              : intl.formatMessage({id: "upload.modal.expires.month-plural"})
+                        form.values.expiration_num == 1
+                          ? t("upload.modal.expires.month-singular")
+                          : t("upload.modal.expires.month-plural"),
                     },
                     {
                       value: "-years",
                       label:
-                          form.values.expiration_num == 1 ?
-                              intl.formatMessage({id: "upload.modal.expires.year-singular"})
-                              : intl.formatMessage({id: "upload.modal.expires.year-plural"})
+                        form.values.expiration_num == 1
+                          ? t("upload.modal.expires.year-singular")
+                          : t("upload.modal.expires.year-plural"),
                     },
                   ]}
                 />
@@ -149,7 +150,7 @@ const Body = ({
             </Text>
           </div>
           <FileSizeInput
-            label={intl.formatMessage({id:"account.reverseShares.modal.max-size.label"})}
+            label={t("account.reverseShares.modal.max-size.label")}
             value={form.values.maxShareSize}
             onChange={(number) => form.setFieldValue("maxShareSize", number)}
           />
@@ -158,16 +159,18 @@ const Body = ({
             max={1000}
             precision={0}
             variant="filled"
-            label={intl.formatMessage({id:"account.reverseShares.modal.max-use.label"})}
-            description={intl.formatMessage({id:"account.reverseShares.modal.max-use.description"})}
+            label={t("account.reverseShares.modal.max-use.label")}
+            description={t("account.reverseShares.modal.max-use.description")}
             {...form.getInputProps("maxUseCount")}
           />
           {showSendEmailNotificationOption && (
             <Switch
               mt="xs"
               labelPosition="left"
-              label={intl.formatMessage({id:"account.reverseShares.modal.send-email"})}
-              description={intl.formatMessage({id:"account.reverseShares.modal.send-email.description"})}
+              label={t("account.reverseShares.modal.send-email")}
+              description={t(
+                "account.reverseShares.modal.send-email.description"
+              )}
               {...form.getInputProps("sendEmailNotification", {
                 type: "checkbox",
               })}

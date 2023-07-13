@@ -1,12 +1,12 @@
 import {
-    ColorScheme,
-    ColorSchemeProvider,
-    Container,
-    MantineProvider,
+  ColorScheme,
+  ColorSchemeProvider,
+  Container,
+  MantineProvider,
 } from "@mantine/core";
-import {useColorScheme} from "@mantine/hooks";
-import {ModalsProvider} from "@mantine/modals";
-import {Notifications} from "@mantine/notifications";
+import { useColorScheme } from "@mantine/hooks";
+import { ModalsProvider } from "@mantine/modals";
+import { Notifications } from "@mantine/notifications";
 import axios from "axios";
 import { getCookie, setCookie } from "cookies-next";
 import { GetServerSidePropsContext } from "next";
@@ -15,115 +15,120 @@ import getConfig from "next/config";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Header from "../components/header/Header";
-import {ConfigContext} from "../hooks/config.hook";
+import { ConfigContext } from "../hooks/config.hook";
 import usePreferences from "../hooks/usePreferences";
-import {UserContext} from "../hooks/user.hook";
+import { UserContext } from "../hooks/user.hook";
 import authService from "../services/auth.service";
 import configService from "../services/config.service";
 import userService from "../services/user.service";
 import GlobalStyle from "../styles/global.style";
 import globalStyle from "../styles/mantine.style";
 import Config from "../types/config.type";
-import {CurrentUser} from "../types/user.type";
-import {LOCALES} from "../i18n/locales";
-import {messages} from "../i18n/messages";
+import { CurrentUser } from "../types/user.type";
+import { LOCALES } from "../i18n/locales";
+import { messages } from "../i18n/messages";
+import { IntlProvider } from "react-intl";
 
 const excludeDefaultLayoutRoutes = ["/admin/config/[category]"];
 
-function App({Component, pageProps}: AppProps) {
-    const systemTheme = useColorScheme(pageProps.colorScheme);
-    const router = useRouter();
+function App({ Component, pageProps }: AppProps) {
+  const systemTheme = useColorScheme(pageProps.colorScheme);
+  const router = useRouter();
 
-    const [colorScheme, setColorScheme] = useState<ColorScheme>(systemTheme);
-    const preferences = usePreferences();
+  const [colorScheme, setColorScheme] = useState<ColorScheme>(systemTheme);
+  const preferences = usePreferences();
 
-    const [user, setUser] = useState<CurrentUser | null>(pageProps.user);
-    const [route, setRoute] = useState<string>(pageProps.route);
+  const [user, setUser] = useState<CurrentUser | null>(pageProps.user);
+  const [route, setRoute] = useState<string>(pageProps.route);
 
-    const [configVariables, setConfigVariables] = useState<Config[]>(
-        pageProps.configVariables
-    );
+  const [configVariables, setConfigVariables] = useState<Config[]>(
+    pageProps.configVariables
+  );
 
-    useEffect(() => {
-        setRoute(router.pathname);
-    }, [router.pathname]);
+  useEffect(() => {
+    setRoute(router.pathname);
+  }, [router.pathname]);
 
-    useEffect(() => {
-        setInterval(async () => await authService.refreshAccessToken(), 30 * 1000);
-    }, []);
+  useEffect(() => {
+    setInterval(async () => await authService.refreshAccessToken(), 30 * 1000);
+  }, []);
 
-    useEffect(() => {
-        const colorScheme =
-            preferences.get("colorScheme") == "system"
-                ? systemTheme
-                : preferences.get("colorScheme");
+  useEffect(() => {
+    const colorScheme =
+      preferences.get("colorScheme") == "system"
+        ? systemTheme
+        : preferences.get("colorScheme");
 
-        toggleColorScheme(colorScheme);
-    }, [systemTheme]);
+    toggleColorScheme(colorScheme);
+  }, [systemTheme]);
 
-    const toggleColorScheme = (value: ColorScheme) => {
-        setColorScheme(value ?? "light");
-        setCookie("mantine-color-scheme", value ?? "light", {
-            sameSite: "lax",
-        });
-    };
+  const toggleColorScheme = (value: ColorScheme) => {
+    setColorScheme(value ?? "light");
+    setCookie("mantine-color-scheme", value ?? "light", {
+      sameSite: "lax",
+    });
+  };
 
-    // TODO: Add a manual language selector
-    // NOTE: We shouldn't fallback to english, but rather the browser's language/user's preference
-    //       but this is just for now
-    // let lang = navigator.userLanguage || navigator.language || "en";
-    const locale = router.locale || "en";
+  // TODO: Add a manual language selector
+  // NOTE: We shouldn't fallback to english, but rather the browser's language/user's preference
+  //       but this is just for now
+  // let lang = navigator.userLanguage || navigator.language || "en";
+  const locale = router.locale || "en";
 
-    return (
-        // NOTE: Here as well, we should fallback to the browser language/user preference
-        <IntlProvider messages={messages[locale]} locale={locale} defaultLocale={LOCALES.ENGLISH}>
-            <MantineProvider
-                withGlobalStyles
-                withNormalizeCSS
-                theme={{colorScheme, ...globalStyle}}
+  return (
+    // NOTE: Here as well, we should fallback to the browser language/user preference
+    <IntlProvider
+      messages={messages[locale]}
+      locale={locale}
+      defaultLocale={LOCALES.ENGLISH}
+    >
+      <MantineProvider
+        withGlobalStyles
+        withNormalizeCSS
+        theme={{ colorScheme, ...globalStyle }}
+      >
+        <ColorSchemeProvider
+          colorScheme={colorScheme}
+          toggleColorScheme={toggleColorScheme}
+        >
+          <GlobalStyle />
+          <Notifications />
+          <ModalsProvider>
+            <ConfigContext.Provider
+              value={{
+                configVariables,
+                refresh: async () => {
+                  setConfigVariables(await configService.list());
+                },
+              }}
             >
-                <ColorSchemeProvider
-                    colorScheme={colorScheme}
-                    toggleColorScheme={toggleColorScheme}
-                >
-                    <GlobalStyle/>
-                    <Notifications/>
-                    <ModalsProvider>
-                        <ConfigContext.Provider
-                            value={{
-                                configVariables,
-                                refresh: async () => {
-                                    setConfigVariables(await configService.list());
-                                },
-                            }}
-                        >
-                            <UserContext.Provider
-                                value={{
-                                    user,
-                                    refreshUser: async () => {
-                                        const user = await userService.getCurrentUser();
-                                        setUser(user);
-                                        return user;
-                                    },
-                                }}
-                            >
-                                {excludeDefaultLayoutRoutes.includes(route) ? (
-                                    <Component {...pageProps} />
-                                ) : (
-                                    <>
-                                        <Header/>
-                                        <Container>
-                                            <Component {...pageProps} />
-                                        </Container>
-                                    </>
-                                )}
-                            </UserContext.Provider>
-                        </ConfigContext.Provider>
-                    </ModalsProvider>
-                </ColorSchemeProvider>
-            </MantineProvider>
-        </IntlProvider>
-    );
+              <UserContext.Provider
+                value={{
+                  user,
+                  refreshUser: async () => {
+                    const user = await userService.getCurrentUser();
+                    setUser(user);
+                    return user;
+                  },
+                }}
+              >
+                {excludeDefaultLayoutRoutes.includes(route) ? (
+                  <Component {...pageProps} />
+                ) : (
+                  <>
+                    <Header />
+                    <Container>
+                      <Component {...pageProps} />
+                    </Container>
+                  </>
+                )}
+              </UserContext.Provider>
+            </ConfigContext.Provider>
+          </ModalsProvider>
+        </ColorSchemeProvider>
+      </MantineProvider>
+    </IntlProvider>
+  );
 }
 
 // Fetch user and config variables on server side when the first request is made
@@ -152,10 +157,10 @@ App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
 
     pageProps.configVariables = (await axios(`${apiURL}/api/configs`)).data;
 
-        pageProps.route = ctx.req.url;
-    }
+    pageProps.route = ctx.req.url;
+  }
 
-    return {pageProps};
+  return { pageProps };
 };
 
 export default App;

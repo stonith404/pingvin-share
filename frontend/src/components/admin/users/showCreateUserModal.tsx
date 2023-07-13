@@ -8,10 +8,11 @@ import {
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
+import { FormattedMessage } from "react-intl";
 import * as yup from "yup";
+import useTranslate from "../../../hooks/useTranslate.hook";
 import userService from "../../../services/user.service";
 import toast from "../../../utils/toast.util";
-import {FormattedMessage, useIntl} from "react-intl";
 
 const showCreateUserModal = (
   modals: ModalsContextProps,
@@ -52,7 +53,7 @@ const Body = ({
     ),
   });
 
-  const intl = useIntl();
+  const t = useTranslate();
 
   return (
     <Stack>
@@ -68,14 +69,22 @@ const Body = ({
         })}
       >
         <Stack>
-          <TextInput label={intl.formatMessage({id:"admin.users.modal.create.username"})} {...form.getInputProps("username")} />
-          <TextInput label={intl.formatMessage({id:"admin.users.modal.create.email"})} {...form.getInputProps("email")} />
+          <TextInput
+            label={t("admin.users.modal.create.username")}
+            {...form.getInputProps("username")}
+          />
+          <TextInput
+            label={t("admin.users.modal.create.email")}
+            {...form.getInputProps("email")}
+          />
           {smtpEnabled && (
             <Switch
               mt="xs"
               labelPosition="left"
-              label={intl.formatMessage({id:"admin.users.modal.create.manual-password"})}
-              description={intl.formatMessage({id:"admin.users.modal.create.manual-password.description"})}
+              label={t("admin.users.modal.create.manual-password")}
+              description={t(
+                "admin.users.modal.create.manual-password.description"
+              )}
               {...form.getInputProps("setPasswordManually", {
                 type: "checkbox",
               })}
@@ -83,7 +92,7 @@ const Body = ({
           )}
           {(form.values.setPasswordManually || !smtpEnabled) && (
             <PasswordInput
-              label={intl.formatMessage({id:"admin.users.modal.create.password"})}
+              label={t("admin.users.modal.create.password")}
               {...form.getInputProps("password")}
             />
           )}
@@ -96,12 +105,14 @@ const Body = ({
             }}
             mt="xs"
             labelPosition="left"
-            label={intl.formatMessage({id:"admin.users.modal.create.admin"})}
-            description={intl.formatMessage({id:"admin.users.modal.create.admin.description"})}
+            label={t("admin.users.modal.create.admin")}
+            description={t("admin.users.modal.create.admin.description")}
             {...form.getInputProps("isAdmin", { type: "checkbox" })}
           />
           <Group position="right">
-            <Button type="submit"><FormattedMessage id="common.button.create" /></Button>
+            <Button type="submit">
+              <FormattedMessage id="common.button.create" />
+            </Button>
           </Group>
         </Stack>
       </form>

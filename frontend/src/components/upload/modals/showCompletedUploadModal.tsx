@@ -7,17 +7,17 @@ import { Share } from "../../../types/share.type";
 import CopyTextField from "../CopyTextField";
 
 const showCompletedUploadModal = (
-    modals: ModalsContextProps,
-    share: Share,
-    appUrl: string
+  modals: ModalsContextProps,
+  share: Share,
+  appUrl: string
 ) => {
-    return modals.openModal({
-        closeOnClickOutside: false,
-        withCloseButton: false,
-        closeOnEscape: false,
-        title: "Share ready",
-        children: <Body share={share} appUrl={appUrl}/>,
-    });
+  return modals.openModal({
+    closeOnClickOutside: false,
+    withCloseButton: false,
+    closeOnEscape: false,
+    title: "Share ready",
+    children: <Body share={share} appUrl={appUrl} />,
+  });
 };
 
 const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
@@ -43,16 +43,16 @@ const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
             )}`}
       </Text>
 
-            <Button
-                onClick={() => {
-                    modals.closeAll();
-                    router.push("/upload");
-                }}
-            >
-                <FormattedMessage id="common.button.done"/>
-            </Button>
-        </Stack>
-    );
+      <Button
+        onClick={() => {
+          modals.closeAll();
+          router.push("/upload");
+        }}
+      >
+        <FormattedMessage id="common.button.done" />
+      </Button>
+    </Stack>
+  );
 };
 
 export default showCompletedUploadModal;

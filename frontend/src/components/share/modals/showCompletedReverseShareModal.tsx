@@ -25,11 +25,9 @@ const Body = ({
   getReverseShares: () => void;
 }) => {
   const modals = useModals();
-  const intl = useIntl();
 
   return (
     <Stack align="stretch">
-                toast.success(intl.formatMessage({id:"common.notify.copied"}));
       <CopyTextField link={link} />
 
       <Button
@@ -38,7 +36,7 @@ const Body = ({
           getReverseShares();
         }}
       >
-        <FormattedMessage id="common.button.done" />
+        Done
       </Button>
     </Stack>
   );

@@ -2,14 +2,15 @@ import { Button, Group, Space, Text, Title } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { useEffect, useState } from "react";
 import { TbPlus } from "react-icons/tb";
+import { FormattedMessage } from "react-intl";
+import Meta from "../../components/Meta";
 import ManageUserTable from "../../components/admin/users/ManageUserTable";
 import showCreateUserModal from "../../components/admin/users/showCreateUserModal";
-import Meta from "../../components/Meta";
 import useConfig from "../../hooks/config.hook";
+import useTranslate from "../../hooks/useTranslate.hook";
 import userService from "../../services/user.service";
 import User from "../../types/user.type";
 import toast from "../../utils/toast.util";
-import {FormattedMessage, useIntl} from "react-intl";
 
 const Users = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -17,7 +18,7 @@ const Users = () => {
 
   const config = useConfig();
   const modals = useModals();
-  const intl = useIntl();
+  const t = useTranslate();
 
   const getUsers = () => {
     setIsLoading(true);
@@ -29,13 +30,19 @@ const Users = () => {
 
   const deleteUser = (user: User) => {
     modals.openConfirmModal({
-      title: `${intl.formatMessage({id:"admin.users.edit.delete.title"})} ${user.username}?`,
+      title: `${t("admin.users.edit.delete.title")} ${user.username}?`,
       children: (
         <Text size="sm">
-          <FormattedMessage id="admin.users.edit.delete.description" values={{username: <b>{user.username}</b>}} />
+          <FormattedMessage
+            id="admin.users.edit.delete.description"
+            values={{ username: <b>{user.username}</b> }}
+          />
         </Text>
       ),
-      labels: { confirm: intl.formatMessage({id:"common.button.cancel"}), cancel: intl.formatMessage({id:"common.button.delete"}) },
+      labels: {
+        confirm: t("common.button.cancel"),
+        cancel: t("common.button.delete"),
+      },
       confirmProps: { color: "red" },
       onConfirm: async () => {
         userService
@@ -52,7 +59,7 @@ const Users = () => {
 
   return (
     <>
-      <Meta title={intl.formatMessage({id:"admin.users.title"})} />
+      <Meta title={t("admin.users.title")} />
       <Group position="apart" align="baseline" mb={20}>
         <Title mb={30} order={3}>
           <FormattedMessage id="admin.users.title" />

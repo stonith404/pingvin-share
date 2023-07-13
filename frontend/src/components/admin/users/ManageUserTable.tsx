@@ -3,7 +3,7 @@ import { useModals } from "@mantine/modals";
 import { TbCheck, TbEdit, TbTrash } from "react-icons/tb";
 import User from "../../../types/user.type";
 import showUpdateUserModal from "./showUpdateUserModal";
-import {FormattedMessage, useIntl} from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 const ManageUserTable = ({
   users,
@@ -23,9 +23,15 @@ const ManageUserTable = ({
       <Table verticalSpacing="sm">
         <thead>
           <tr>
-            <th><FormattedMessage id="admin.users.table.username" /></th>
-            <th><FormattedMessage id="admin.users.table.email" /></th>
-            <th><FormattedMessage id="admin.users.table.admin" /></th>
+            <th>
+              <FormattedMessage id="admin.users.table.username" />
+            </th>
+            <th>
+              <FormattedMessage id="admin.users.table.email" />
+            </th>
+            <th>
+              <FormattedMessage id="admin.users.table.admin" />
+            </th>
             <th></th>
           </tr>
         </thead>
