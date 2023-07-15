@@ -90,12 +90,14 @@ export default function Home() {
         <div className={classes.inner}>
           <div className={classes.content}>
             <Title className={classes.title}>
-              {/* FIXME: This really upsets me but I couldn't find a better way to do this */}
-              <FormattedMessage id="home.title.a" />{" "}
-              <span className={classes.highlight}>
-                <FormattedMessage id="home.title.b" />
-              </span>
-              <br /> <FormattedMessage id="home.title.c" />
+              <FormattedMessage
+                id="home.title"
+                values={{
+                  h: (chunks) => (
+                    <span className={classes.highlight}>{chunks} </span>
+                  ),
+                }}
+              />
             </Title>
             <Text color="dimmed" mt="md">
               <FormattedMessage id="home.description" />

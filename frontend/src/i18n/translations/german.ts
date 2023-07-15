@@ -14,6 +14,7 @@ export const german = {
   // END Navbar
 
   // /
+  "home.title": "Eine <h> selbst gehostete </h> Plattform zur Dateifreigabe.",
   "home.title.a": "Eine",
   "home.title.b": "selbst gehostete",
   "home.title.c": "Plattform zur Dateifreigabe.",

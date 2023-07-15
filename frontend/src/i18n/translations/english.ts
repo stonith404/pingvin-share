@@ -14,9 +14,7 @@ export const english = {
   // END navbar
 
   // /
-  "home.title.a": "A",
-  "home.title.b": "self-hosted",
-  "home.title.c": "file sharing platform.",
+  "home.title": "A <h>self-hosted</h> file sharing platform.",
 
   "home.description":
     "Do you really want to give your personal files in the hand of third parties like WeTransfer?",
