@@ -12,7 +12,11 @@ import {
 import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
+import { FormattedMessage } from "react-intl";
 import * as yup from "yup";
+import useTranslate, {
+  translateOutsideContext,
+} from "../../hooks/useTranslate.hook";
 import authService from "../../services/auth.service";
 import toast from "../../utils/toast.util";
 
@@ -25,8 +29,9 @@ const showEnableTotpModal = (
     password: string;
   }
 ) => {
+  const t = translateOutsideContext();
   return modals.openModal({
-    title: "Enable TOTP",
+    title: t("account.modal.totp.title"),
     children: (
       <CreateEnableTotpModal options={options} refreshUser={refreshUser} />
     ),
@@ -45,6 +50,7 @@ const CreateEnableTotpModal = ({
   refreshUser: () => {};
 }) => {
   const modals = useModals();
+  const t = useTranslate();
 
   const validationSchema = yup.object().shape({
     code: yup
@@ -66,14 +72,19 @@ const CreateEnableTotpModal = ({
     <div>
       <Center>
         <Stack>
-          <Text>Step 1: Add your authenticator</Text>
+          <Text>
+            <FormattedMessage id="account.modal.totp.step1" />
+          </Text>
           <Image src={options.qrCode} alt="QR Code" />
 
           <Center>
-            <span>OR</span>
+            <span>
+              {" "}
+              <FormattedMessage id="common.text.or" />
+            </span>
           </Center>
 
-          <Tooltip label="Click to copy">
+          <Tooltip label={t("account.modal.totp.clickToCopy")}>
             <Button
               onClick={() => {
                 navigator.clipboard.writeText(options.secret);
@@ -84,17 +95,19 @@ const CreateEnableTotpModal = ({
             </Button>
           </Tooltip>
           <Center>
-            <Text fz="xs">Enter manually</Text>
+            <Text fz="xs"></Text>
           </Center>
 
-          <Text>Step 2: Validate your code</Text>
+          <Text>
+            <FormattedMessage id="account.modal.totp.step2" />
+          </Text>
 
           <form
             onSubmit={form.onSubmit((values) => {
               authService
                 .verifyTOTP(values.code, options.password)
                 .then(() => {
-                  toast.success("Successfully enabled TOTP");
+                  toast.success(t("account.notify.totp.enable"));
                   modals.closeAll();
                   refreshUser();
                 })
@@ -105,14 +118,14 @@ const CreateEnableTotpModal = ({
               <Col xs={9}>
                 <TextInput
                   variant="filled"
-                  label="Code"
+                  label={t("account.modal.totp.code")}
                   placeholder="******"
                   {...form.getInputProps("code")}
                 />
               </Col>
               <Col xs={3}>
                 <Button variant="outline" type="submit">
-                  Verify
+                  <FormattedMessage id="account.modal.totp.verify" />
                 </Button>
               </Col>
             </Grid>

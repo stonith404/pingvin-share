@@ -13,11 +13,13 @@ import { GetServerSidePropsContext } from "next";
 import type { AppProps } from "next/app";
 import getConfig from "next/config";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { IntlProvider } from "react-intl";
 import Header from "../components/header/Header";
 import { ConfigContext } from "../hooks/config.hook";
-import usePreferences from "../hooks/usePreferences";
 import { UserContext } from "../hooks/user.hook";
+import { LOCALES } from "../i18n/locales";
+import { messages } from "../i18n/messages";
 import authService from "../services/auth.service";
 import configService from "../services/config.service";
 import userService from "../services/user.service";
@@ -25,9 +27,7 @@ import GlobalStyle from "../styles/global.style";
 import globalStyle from "../styles/mantine.style";
 import Config from "../types/config.type";
 import { CurrentUser } from "../types/user.type";
-import { LOCALES } from "../i18n/locales";
-import { messages } from "../i18n/messages";
-import { IntlProvider } from "react-intl";
+import userPreferences from "../utils/userPreferences.util";
 
 const excludeDefaultLayoutRoutes = ["/admin/config/[category]"];
 
@@ -36,7 +36,6 @@ function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   const [colorScheme, setColorScheme] = useState<ColorScheme>(systemTheme);
-  const preferences = usePreferences();
 
   const [user, setUser] = useState<CurrentUser | null>(pageProps.user);
   const [route, setRoute] = useState<string>(pageProps.route);
@@ -55,9 +54,9 @@ function App({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     const colorScheme =
-      preferences.get("colorScheme") == "system"
+      userPreferences.get("colorScheme") == "system"
         ? systemTheme
-        : preferences.get("colorScheme");
+        : userPreferences.get("colorScheme");
 
     toggleColorScheme(colorScheme);
   }, [systemTheme]);
@@ -69,17 +68,12 @@ function App({ Component, pageProps }: AppProps) {
     });
   };
 
-  // TODO: Add a manual language selector
-  // NOTE: We shouldn't fallback to english, but rather the browser's language/user's preference
-  //       but this is just for now
-  // let lang = navigator.userLanguage || navigator.language || "en";
-  const locale = router.locale || "en";
+  const language = useRef(pageProps.language);
 
   return (
-    // NOTE: Here as well, we should fallback to the browser language/user preference
     <IntlProvider
-      messages={messages[locale]}
-      locale={locale}
+      messages={messages[language.current]}
+      locale={language.current}
       defaultLocale={LOCALES.ENGLISH}
     >
       <MantineProvider
@@ -141,11 +135,13 @@ App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
     configVariables?: Config[];
     route?: string;
     colorScheme: ColorScheme;
+    language?: string;
   } = {
     route: ctx.resolvedUrl,
     colorScheme:
       (getCookie("mantine-color-scheme", ctx) as ColorScheme) ?? "light",
   };
+
   if (ctx.req) {
     const cookieHeader = ctx.req.headers.cookie;
 
@@ -158,8 +154,10 @@ App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
     pageProps.configVariables = (await axios(`${apiURL}/api/configs`)).data;
 
     pageProps.route = ctx.req.url;
+    pageProps.language =
+      ctx.req.cookies["language"] ??
+      ctx.req.headers["accept-language"]?.substring(0, 2);
   }
-
   return { pageProps };
 };
 

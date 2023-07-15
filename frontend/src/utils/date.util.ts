@@ -1,7 +1,10 @@
 import moment from "moment";
 
 export const getExpirationPreview = (
-  name: string,
+  messages: {
+    neverExpires: string;
+    expiresOn: string;
+  },
   form: {
     values: {
       never_expires?: boolean;
@@ -13,7 +16,7 @@ export const getExpirationPreview = (
   const value = form.values.never_expires
     ? "never"
     : form.values.expiration_num + form.values.expiration_unit;
-  if (value === "never") return `This ${name} will never expire.`;
+  if (value === "never") return messages.neverExpires;
 
   const expirationDate = moment()
     .add(
@@ -22,5 +25,8 @@ export const getExpirationPreview = (
     )
     .toDate();
 
-  return `This ${name} will expire on ${moment(expirationDate).format("LLL")}`;
+  return messages.expiresOn.replace(
+    "{expiration}",
+    moment(expirationDate).format("LLL")
+  );
 };

@@ -102,7 +102,7 @@ const Account = () => {
                   username: values.username,
                   email: values.email,
                 })
-                .then(() => toast.success("User updated successfully"))
+                .then(() => toast.success(t("account.notify.info.success")))
                 .catch(toast.axiosError)
             )}
           >
@@ -186,22 +186,23 @@ const Account = () => {
                   >
                     <Stack>
                       <PasswordInput
-                        // TODO: Translate
-                        description="Enter your current password to disable TOTP"
+                        description={t(
+                          "account.card.security.totp.disable.description"
+                        )}
                         label={t("account.card.password.title")}
                         {...disableTotpForm.getInputProps("password")}
                       />
 
                       <TextInput
                         variant="filled"
-                        label="Code"
+                        label={t("account.modal.totp.code")}
                         placeholder="******"
                         {...disableTotpForm.getInputProps("code")}
                       />
 
                       <Group position="right">
                         <Button color="red" type="submit">
-                          Disable
+                          <FormattedMessage id="common.button.disable" />
                         </Button>
                       </Group>
                     </Stack>
@@ -257,15 +258,17 @@ const Account = () => {
               color="red"
               onClick={() =>
                 modals.openConfirmModal({
-                  title: "Account deletion",
+                  title: t("account.modal.delete.title"),
                   children: (
                     <Text size="sm">
-                      Do you really want to delete your account including all
-                      your active shares?
+                      <FormattedMessage id="account.modal.delete.description" />
                     </Text>
                   ),
 
-                  labels: { confirm: "Delete", cancel: "Cancel" },
+                  labels: {
+                    confirm: t("common.button.delete"),
+                    cancel: t("common.button.cancel"),
+                  },
                   confirmProps: { color: "red" },
                   onConfirm: async () => {
                     await userService.removeCurrentUser();

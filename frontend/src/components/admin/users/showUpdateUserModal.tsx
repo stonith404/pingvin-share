@@ -11,7 +11,9 @@ import { useForm, yupResolver } from "@mantine/form";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import { FormattedMessage } from "react-intl";
 import * as yup from "yup";
-import useTranslate from "../../../hooks/useTranslate.hook";
+import useTranslate, {
+  translateOutsideContext,
+} from "../../../hooks/useTranslate.hook";
 import userService from "../../../services/user.service";
 import User from "../../../types/user.type";
 import toast from "../../../utils/toast.util";
@@ -21,18 +23,9 @@ const showUpdateUserModal = (
   user: User,
   getUsers: () => void
 ) => {
-  // TODO: Figure out how to get the intl object here
-  // We can't use hooks since this is not a component
-  // And we can't just render the <FormattedMessage> component because its out of context
-  console.log(<FormattedMessage id="admin.users.edit.update.title" />);
-
+  const t = translateOutsideContext();
   return modals.openModal({
-    // Set the title to the rendered formatted message components + the username
-    title:
-      <FormattedMessage id="admin.users.edit.update.title" /> +
-      " " +
-      user.username,
-    // title: `${t( "admin.users.edit.update.title")} ${user.username}`,
+    title: t("admin.users.edit.update.title", { username: user.username }),
     children: <Body user={user} modals={modals} getUsers={getUsers} />,
   });
 };

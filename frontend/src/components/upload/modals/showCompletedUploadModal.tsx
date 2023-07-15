@@ -3,6 +3,10 @@ import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import moment from "moment";
 import { useRouter } from "next/router";
+import { FormattedMessage } from "react-intl";
+import useTranslate, {
+  translateOutsideContext,
+} from "../../../hooks/useTranslate.hook";
 import { Share } from "../../../types/share.type";
 import CopyTextField from "../CopyTextField";
 
@@ -11,11 +15,12 @@ const showCompletedUploadModal = (
   share: Share,
   appUrl: string
 ) => {
+  const t = translateOutsideContext();
   return modals.openModal({
     closeOnClickOutside: false,
     withCloseButton: false,
     closeOnEscape: false,
-    title: "Share ready",
+    title: t("upload.modal.completed.share-ready"),
     children: <Body share={share} appUrl={appUrl} />,
   });
 };
@@ -23,6 +28,7 @@ const showCompletedUploadModal = (
 const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
   const modals = useModals();
   const router = useRouter();
+  const t = useTranslate();
 
   const link = `${appUrl}/share/${share.id}`;
 
@@ -37,10 +43,10 @@ const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
       >
         {/* If our share.expiration is timestamp 0, show a different message */}
         {moment(share.expiration).unix() === 0
-          ? "This share will never expire."
-          : `This share will expire on ${moment(share.expiration).format(
-              "LLL"
-            )}`}
+          ? t("upload.modal.completed.never-expires")
+          : t("upload.modal.completed.expires-on", {
+              expiration: moment(share.expiration).format("LLL"),
+            })}
       </Text>
 
       <Button

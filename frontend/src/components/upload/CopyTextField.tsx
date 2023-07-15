@@ -28,7 +28,7 @@ function CopyTextField(props: { link: string }) {
   return (
     <TextInput
       readOnly
-      label="Link"
+      label={t("common.text.link")}
       variant="filled"
       value={props.link}
       onClick={() => {

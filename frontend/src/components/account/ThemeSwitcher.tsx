@@ -9,13 +9,12 @@ import {
 import { useColorScheme } from "@mantine/hooks";
 import { useState } from "react";
 import { TbDeviceLaptop, TbMoon, TbSun } from "react-icons/tb";
-import usePreferences from "../../hooks/usePreferences";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
+import userPreferences from "../../utils/userPreferences.util";
 
 const ThemeSwitcher = () => {
-  const preferences = usePreferences();
   const [colorScheme, setColorScheme] = useState(
-    preferences.get("colorScheme")
+    userPreferences.get("colorScheme")
   );
   const { toggleColorScheme } = useMantineColorScheme();
   const systemColorScheme = useColorScheme();
@@ -24,7 +23,7 @@ const ThemeSwitcher = () => {
       <SegmentedControl
         value={colorScheme}
         onChange={(value) => {
-          preferences.set("colorScheme", value);
+          userPreferences.set("colorScheme", value);
           setColorScheme(value);
           toggleColorScheme(
             value == "system" ? systemColorScheme : (value as ColorScheme)

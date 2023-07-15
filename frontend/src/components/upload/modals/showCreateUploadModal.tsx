@@ -81,7 +81,7 @@ const CreateUploadModalBody = ({
       .min(3)
       .max(50)
       .matches(new RegExp("^[a-zA-Z0-9_-]*$"), {
-        message: "Can only contain letters, numbers, underscores and hyphens",
+        message: t("upload.modal.link.error.invalid"),
       }),
     password: yup.string().min(3).max(30),
     maxViews: yup.number().min(1),
@@ -237,18 +237,28 @@ const CreateUploadModalBody = ({
                   color: theme.colors.gray[6],
                 })}
               >
-                {getExpirationPreview("share", form)}
+                {getExpirationPreview(
+                  {
+                    neverExpires: t("upload.modal.completed.never-expires"),
+                    expiresOn: t("upload.modal.completed.expires-on"),
+                  },
+                  form
+                )}
               </Text>
             </>
           )}
           <Accordion>
             <Accordion.Item value="description" sx={{ borderBottom: "none" }}>
-              <Accordion.Control>Description</Accordion.Control>
+              <Accordion.Control>
+                <FormattedMessage id="upload.modal.accordion.description.title" />
+              </Accordion.Control>
               <Accordion.Panel>
                 <Stack align="stretch">
                   <Textarea
                     variant="filled"
-                    placeholder="Note for the recepients"
+                    placeholder={t(
+                      "upload.modal.accordion.description.placeholder"
+                    )}
                     {...form.getInputProps("description")}
                   />
                 </Stack>
@@ -256,11 +266,13 @@ const CreateUploadModalBody = ({
             </Accordion.Item>
             {options.enableEmailRecepients && (
               <Accordion.Item value="recipients" sx={{ borderBottom: "none" }}>
-                <Accordion.Control>Email recipients</Accordion.Control>
+                <Accordion.Control>
+                  <FormattedMessage id="upload.modal.accordion.email.tile" />
+                </Accordion.Control>
                 <Accordion.Panel>
                   <MultiSelect
                     data={form.values.recipients}
-                    placeholder="Enter email recipients"
+                    placeholder={t("upload.modal.accordion.email.placeholder")}
                     searchable
                     {...form.getInputProps("recipients")}
                     creatable
@@ -269,7 +281,7 @@ const CreateUploadModalBody = ({
                       if (!query.match(/^\S+@\S+\.\S+$/)) {
                         form.setFieldError(
                           "recipients",
-                          "Invalid email address"
+                          t("upload.modal.accordion.email.invalid-email")
                         );
                       } else {
                         form.setFieldError("recipients", null);
@@ -286,28 +298,36 @@ const CreateUploadModalBody = ({
             )}
 
             <Accordion.Item value="security" sx={{ borderBottom: "none" }}>
-              <Accordion.Control>Security options</Accordion.Control>
+              <Accordion.Control>
+                <FormattedMessage id="upload.modal.accordion.security.title" />
+              </Accordion.Control>
               <Accordion.Panel>
                 <Stack align="stretch">
                   <PasswordInput
                     variant="filled"
-                    placeholder="No password"
-                    label="Password protection"
+                    placeholder={t(
+                      "upload.modal.accordion.security.password.placeholder"
+                    )}
+                    label={t("upload.modal.accordion.security.password.label")}
                     {...form.getInputProps("password")}
                   />
                   <NumberInput
                     min={1}
                     type="number"
                     variant="filled"
-                    placeholder="No limit"
-                    label="Maximal views"
+                    placeholder={t(
+                      "upload.modal.accordion.security.max-views.placeholder"
+                    )}
+                    label={t("upload.modal.accordion.security.max-views.label")}
                     {...form.getInputProps("maxViews")}
                   />
                 </Stack>
               </Accordion.Panel>
             </Accordion.Item>
           </Accordion>
-          <Button type="submit">Share</Button>
+          <Button type="submit">
+            <FormattedMessage id="common.button.share" />
+          </Button>
         </Stack>
       </form>
     </>

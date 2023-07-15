@@ -72,14 +72,16 @@ const MyShares = () => {
                   <FormattedMessage id="account.shares.table.name" />
                 </th>
                 <MediaQuery smallerThan="md" styles={{ display: "none" }}>
-                  <th>Description</th>
+                  <th>
+                    <FormattedMessage id="account.shares.table.description" />
+                  </th>
                 </MediaQuery>
 
                 <th>
                   <FormattedMessage id="account.shares.table.visitors" />
                 </th>
                 <th>
-                  <FormattedMessage id="account.shares.table.expires" />
+                  <FormattedMessage id="account.shares.table.expiresAt" />
                 </th>
                 <th></th>
               </tr>
@@ -152,16 +154,21 @@ const MyShares = () => {
                         size={25}
                         onClick={() => {
                           modals.openConfirmModal({
-                            title: `Delete share ${share.id}`,
+                            title: t("account.shares.modal.delete.title", {
+                              share: share.id,
+                            }),
                             children: (
                               <Text size="sm">
-                                Do you really want to delete this share?
+                                <FormattedMessage id="account.shares.modal.delete.description" />
                               </Text>
                             ),
                             confirmProps: {
                               color: "red",
                             },
-                            labels: { confirm: "Confirm", cancel: "Cancel" },
+                            labels: {
+                              confirm: t("common.button.delete"),
+                              cancel: t("common.button.cancel"),
+                            },
                             onConfirm: () => {
                               shareService.remove(share.id);
                               setShares(

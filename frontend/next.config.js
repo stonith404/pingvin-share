@@ -23,7 +23,7 @@ module.exports = withPWA({
     apiURL: process.env.API_URL ?? 'http://localhost:8080',
   },
   i18n: {
-    locales: ["en", "es"],
+    locales: ["en", "de"],
     defaultLocale: "en",
     localeDetection: true,
   }

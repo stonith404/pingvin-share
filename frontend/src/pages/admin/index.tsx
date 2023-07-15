@@ -66,7 +66,7 @@ const Admin = () => {
 
   return (
     <>
-      <Meta title={intl.formatMessage({ id: "admin.title" })} />
+      <Meta title={t("admin.title")} />
       <Title mb={30} order={3}>
         <FormattedMessage id="admin.title" />
       </Title>

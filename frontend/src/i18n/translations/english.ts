@@ -39,6 +39,7 @@ export const english = {
   "account.card.info.title": "Account info",
   "account.card.info.username": "Username",
   "account.card.info.email": "Email",
+  "account.notify.info.success": "Account updated successfully",
 
   "account.card.password.title": "Password",
   "account.card.password.old": "Old password",
@@ -49,8 +50,18 @@ export const english = {
   "account.card.security.title": "Security",
   "account.card.security.totp.enable.description":
     "Enter your current password to start enabling TOTP",
+  "account.card.security.totp.disable.description":
+    "Enter your current password to start enabling TOTP",
   "account.card.security.totp.button.start": "Start",
+  "account.modal.totp.title": "Enable TOTP",
+  "account.modal.totp.step1": "Step 1: Add your authenticator",
+  "account.modal.totp.step2": "Step 2: Validate your code",
+  "account.modal.totp.enterManually": "Enter manually",
+  "account.modal.totp.code": "Code",
+  "account.modal.totp.clickToCopy": "Click to copy",
+  "account.modal.totp.verify": "Verify",
   "account.notify.totp.disable": "TOTP disabled successfully",
+  "account.notify.totp.enable": "TOTP enabled successfully",
 
   "account.card.color.title": "Color scheme",
 
@@ -60,6 +71,9 @@ export const english = {
   "account.theme.system": "System",
 
   "account.button.delete": "Delete Account",
+  "account.modal.delete.title": "Delete Account",
+  "account.modal.delete.description":
+    "Do you really want to delete your account including all your active shares?",
   // END /account
 
   // /account/shares
@@ -68,9 +82,17 @@ export const english = {
   "account.shares.description.empty": "You don't have any shares.",
   "account.shares.button.create": "Create one",
 
+  "account.shares.table.id": "ID",
   "account.shares.table.name": "Name",
+  "account.shares.table.description": "Description",
   "account.shares.table.visitors": "Visitors",
-  "account.shares.table.expires": "Expires at",
+  "account.shares.table.expiresAt": "Expires at",
+  "account.shares.table.createdAt": "Created at",
+  "account.shares.table.size": "Size",
+
+  "account.shares.modal.delete.title": "Delete {share}",
+  "account.shares.modal.delete.description":
+    "Do you really want to delete this share?",
 
   // END /account/shares
 
@@ -107,6 +129,9 @@ export const english = {
   "account.reverseShares.modal.max-use.label": "Max uses",
   "account.reverseShares.modal.max-use.description":
     "The maximum amount of times this URL can be used to create a share.",
+  "account.reverseShare.never-expires": "This reverse share will never expire.",
+  "account.reverseShare.expires-on":
+    "This reverse share will expire on {expiration}.",
 
   "account.reverseShares.table.no-shares": "No shares created yet",
   "account.reverseShares.table.count.singular": "share",
@@ -134,7 +159,7 @@ export const english = {
   "admin.users.table.email": "Email",
   "admin.users.table.admin": "Admin",
 
-  "admin.users.edit.update.title": "Update",
+  "admin.users.edit.update.title": "Update user {username}",
   "admin.users.edit.update.admin-privileges": "Admin privileges",
   "admin.users.edit.update.change-password.title": "Change password",
   "admin.users.edit.update.change-password.field": "New password",
@@ -225,6 +250,7 @@ export const english = {
   "upload.modal.completed.never-expires": "This share will never expire.",
   "upload.modal.completed.expires-on":
     "This share will expire on {expiration}.",
+  "upload.modal.completed.share-ready": "Share ready",
 
   // END /upload
 
@@ -234,8 +260,11 @@ export const english = {
   "common.button.delete": "Delete",
   "common.button.cancel": "Cancel",
   "common.button.confirm": "Confirm",
+  "common.button.disable": "Disable",
   "common.button.share": "Share",
   "common.button.generate": "Generate",
   "common.button.done": "Done",
+  "common.text.link": "Link",
+  "common.text.or": "or",
   "common.notify.copied": "Your link was copied to the clipboard",
 };
