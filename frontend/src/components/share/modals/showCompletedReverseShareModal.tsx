@@ -1,6 +1,8 @@
 import { Button, Stack } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
+import { FormattedMessage } from "react-intl";
+import { translateOutsideContext } from "../../../hooks/useTranslate.hook";
 import CopyTextField from "../../upload/CopyTextField";
 
 const showCompletedReverseShareModal = (
@@ -8,11 +10,12 @@ const showCompletedReverseShareModal = (
   link: string,
   getReverseShares: () => void
 ) => {
+  const t = translateOutsideContext();
   return modals.openModal({
     closeOnClickOutside: false,
     withCloseButton: false,
     closeOnEscape: false,
-    title: "Reverse share link",
+    title: t("account.reverseShares.modal.reverse-share-link"),
     children: <Body link={link} getReverseShares={getReverseShares} />,
   });
 };
@@ -36,7 +39,7 @@ const Body = ({
           getReverseShares();
         }}
       >
-        Done
+        <FormattedMessage id="common.button.done" />
       </Button>
     </Stack>
   );

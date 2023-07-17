@@ -220,10 +220,12 @@ const MyShares = () => {
                         size={25}
                         onClick={() => {
                           modals.openConfirmModal({
-                            title: `Delete reverse share`,
+                            title: t(
+                              "account.reverseShares.modal.delete.title"
+                            ),
                             children: (
                               <Text size="sm">
-                                <FormattedMessage id="account.reverseShares.delete.confirm" />
+                                <FormattedMessage id="account.reverseShares.modal.delete.description" />
                               </Text>
                             ),
                             confirmProps: {

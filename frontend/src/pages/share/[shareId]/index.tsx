@@ -7,6 +7,7 @@ import DownloadAllButton from "../../../components/share/DownloadAllButton";
 import FileList from "../../../components/share/FileList";
 import showEnterPasswordModal from "../../../components/share/showEnterPasswordModal";
 import showErrorModal from "../../../components/share/showErrorModal";
+import useTranslate from "../../../hooks/useTranslate.hook";
 import shareService from "../../../services/share.service";
 import { Share as ShareType } from "../../../types/share.type";
 import toast from "../../../utils/toast.util";
@@ -20,6 +21,7 @@ export function getServerSideProps(context: GetServerSidePropsContext) {
 const Share = ({ shareId }: { shareId: string }) => {
   const modals = useModals();
   const [share, setShare] = useState<ShareType>();
+  const t = useTranslate();
 
   const getShareToken = async (password?: string) => {
     await shareService
@@ -33,8 +35,8 @@ const Share = ({ shareId }: { shareId: string }) => {
         if (error == "share_max_views_exceeded") {
           showErrorModal(
             modals,
-            "Visitor limit exceeded",
-            "The visitor limit from this share has been exceeded."
+            t("share.error.visitor-limit-exceeded.title"),
+            t("share.error.visitor-limit-exceeded.description")
           );
         } else {
           toast.axiosError(e);
@@ -52,12 +54,16 @@ const Share = ({ shareId }: { shareId: string }) => {
         const { error } = e.response.data;
         if (e.response.status == 404) {
           if (error == "share_removed") {
-            showErrorModal(modals, "Share removed", e.response.data.message);
+            showErrorModal(
+              modals,
+              t("share.error.removed.title"),
+              e.response.data.message
+            );
           } else {
             showErrorModal(
               modals,
-              "Not found",
-              "This share can't be found. Please check your link."
+              t("share.error.not-found.title"),
+              t("share.error.not-found.description")
             );
           }
         } else if (error == "share_password_required") {
@@ -65,7 +71,7 @@ const Share = ({ shareId }: { shareId: string }) => {
         } else if (error == "share_token_required") {
           getShareToken();
         } else {
-          showErrorModal(modals, "Error", "An unknown error occurred.");
+          showErrorModal(modals, t("common.error"), t("common.error.unknown"));
         }
       });
   };
@@ -77,8 +83,8 @@ const Share = ({ shareId }: { shareId: string }) => {
   return (
     <>
       <Meta
-        title={`Share ${shareId}`}
-        description="Look what I've shared with you."
+        title={t("share.title", { shareId })}
+        description={t("share.description")}
       />
 
       <Group position="apart" mb="lg">

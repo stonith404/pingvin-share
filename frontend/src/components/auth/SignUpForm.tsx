@@ -11,8 +11,10 @@ import {
 import { useForm, yupResolver } from "@mantine/form";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { FormattedMessage } from "react-intl";
 import * as yup from "yup";
 import useConfig from "../../hooks/config.hook";
+import useTranslate from "../../hooks/useTranslate.hook";
 import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
 import toast from "../../utils/toast.util";
@@ -20,6 +22,7 @@ import toast from "../../utils/toast.util";
 const SignUpForm = () => {
   const config = useConfig();
   const router = useRouter();
+  const t = useTranslate();
   const { refreshUser } = useUser();
 
   const validationSchema = yup.object().shape({
@@ -54,13 +57,13 @@ const SignUpForm = () => {
   return (
     <Container size={420} my={40}>
       <Title order={2} align="center" weight={900}>
-        Sign up
+        <FormattedMessage id="signup.title" />
       </Title>
       {config.get("share.allowRegistration") && (
         <Text color="dimmed" size="sm" align="center" mt={5}>
-          You have an account already?{" "}
+          <FormattedMessage id="signup.description" />{" "}
           <Anchor component={Link} href={"signIn"} size="sm">
-            Sign in
+            <FormattedMessage id="signup.button.signin" />
           </Anchor>
         </Text>
       )}
@@ -71,24 +74,24 @@ const SignUpForm = () => {
           )}
         >
           <TextInput
-            label="Username"
-            placeholder="Your username"
+            label={t("signup.input.username")}
+            placeholder={t("signup.input.username.placeholder")}
             {...form.getInputProps("username")}
           />
           <TextInput
-            label="Email"
-            placeholder="Your email"
+            label={t("signup.input.email")}
+            placeholder={t("signup.input.email.placeholder")}
             mt="md"
             {...form.getInputProps("email")}
           />
           <PasswordInput
-            label="Password"
-            placeholder="Your password"
+            label={t("signin.input.password")}
+            placeholder={t("signin.input.password.placeholder")}
             mt="md"
             {...form.getInputProps("password")}
           />
           <Button fullWidth mt="xl" type="submit">
-            Let's get started
+            <FormattedMessage id="signup.button.submit" />
           </Button>
         </form>
       </Paper>

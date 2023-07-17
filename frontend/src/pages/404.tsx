@@ -8,6 +8,7 @@ import {
 } from "@mantine/core";
 import Link from "next/link";
 import Meta from "../components/Meta";
+import { FormattedMessage } from "react-intl";
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -42,9 +43,9 @@ const ErrorNotFound = () => {
     <>
       <Meta title="Not found" />
       <Container className={classes.root}>
-        <div className={classes.label}>404</div>
+        <div className={classes.label}><FormattedMessage id="404.title"/></div>
         <Title align="center" order={3}>
-          Oops this page doesn't exist.
+          <FormattedMessage id="404.description"/>
         </Title>
         <Text
           color="dimmed"
@@ -53,7 +54,7 @@ const ErrorNotFound = () => {
         ></Text>
         <Group position="center">
           <Button component={Link} href="/" variant="light">
-            Bring me back
+            <FormattedMessage id="404.button.home"/>
           </Button>
         </Group>
       </Container>

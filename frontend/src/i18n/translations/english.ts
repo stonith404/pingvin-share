@@ -31,6 +31,45 @@ export const english = {
   "home.button.source": "Source code",
   // END /
 
+  // /auth/signin
+  "signin.title": "Welcome back",
+  "signin.description": "You don't have an account yet?",
+  "signin.button.signup": "Sign up",
+  "signin.input.email-or-username": "Email or username",
+  "signin.input.email-or-username.placeholder": "Your email or username",
+  "signin.input.password": "Password",
+  "signin.input.password.placeholder": "Your password",
+  "signin.button.submit": "Sign in",
+  "signIn.notify.totp-required.title": "Two-factor authentication required",
+  "signIn.notify.totp-required.description":
+    "Please enter your two-factor authentication code",
+
+  // END /auth/signin
+
+  // /auth/signup
+  "signup.title": "Create an account",
+  "signup.description": "Already have an account?",
+  "signup.button.signin": "Sign in",
+  "signup.input.username": "Username",
+  "signup.input.username.placeholder": "Your username",
+  "signup.input.email": "Email",
+  "signup.input.email.placeholder": "Your email",
+  "signup.button.submit": "Let's get started",
+
+  // END /auth/signup
+
+  // /auth/reset-password
+  "resetPassword.title": "Forgot your password?",
+  "resetPassword.description": "Enter your email to reset your password.",
+  "resetPassword.notify.success":
+    "An email has been sent with a link to reset your password.",
+  "resetPassword.button.back": "Back to sign in page",
+  "resetPassword.text.resetPassword": "Reset password",
+  "resetPassword.text.enterNewPassword": "Enter your new password",
+  "resetPassword.input.password": "New password",
+  "resetPassword.notify.passwordReset":
+    "Your password has been reset successfully.",
+
   // /account
   "account.title": "My account",
 
@@ -44,7 +83,6 @@ export const english = {
   "account.card.password.new": "New password",
   "account.notify.password.success": "Password changed successfully",
 
-  // TODO: Add translations for disable totp
   "account.card.security.title": "Security",
   "account.card.security.totp.enable.description":
     "Enter your current password to start enabling TOTP",
@@ -80,6 +118,7 @@ export const english = {
   "account.shares.description.empty": "You don't have any shares.",
   "account.shares.button.create": "Create one",
 
+  "account.shares.info.title": "Share informatons",
   "account.shares.table.id": "ID",
   "account.shares.table.name": "Name",
   "account.shares.table.description": "Description",
@@ -87,6 +126,8 @@ export const english = {
   "account.shares.table.expiresAt": "Expires at",
   "account.shares.table.createdAt": "Created at",
   "account.shares.table.size": "Size",
+
+  "account.shares.modal.share-link": "Share link",  
 
   "account.shares.modal.delete.title": "Delete {share}",
   "account.shares.modal.delete.description":
@@ -139,7 +180,11 @@ export const english = {
   "account.reverseShares.table.max-size": "Max share size",
   "account.reverseShares.table.expires": "Expires at",
 
-  "account.reverseShares.delete.confirm":
+  "account.reverseShares.modal.reverse-share-link": "Reverse share link",
+
+  "account.reverseShares.modal.delete.title":
+    "Do you really want to delete this reverse share? If you do, the associated shares will be deleted as well.",
+  "account.reverseShares.modal.delete.description":
     "Do you really want to delete this reverse share? If you do, the associated shares will be deleted as well.",
 
   // END /account/reverseShares
@@ -252,9 +297,46 @@ export const english = {
 
   // END /upload
 
+  // /share/[id]
+  "share.title": "Share {shareId}",
+  "share.description": "Look what I've shared with you!",
+  "share.error.visitor-limit-exceeded.title": "Visitor limit exceeded",
+  "share.error.visitor-limit-exceeded.description":
+    "The visitor limit from this share has been exceeded.",
+  "share.error.removed.title": "Share removed",
+  "share.error.not-found.title": "Share not found",
+  "share.error.not-found.description":
+    "The share you're looking for doesn't exist.",
+
+  "share.modal.password.title": "Password required",
+  "share.modal.password.description":
+    "To access this share please enter the password for the share.",
+  "share.modal.password": "Password",
+  "share.modal.error.invalid-password": "Invalid password",
+
+  "share.button.download-all": "Download all",
+  "share.notify.download-all-preparing":
+    "The share is preparing. Try again in a few minutes.",
+
+  "share.modal.file-link": "File link",
+  "share.table.name": "Name",
+  "share.table.size": "Size",
+
+  "share.modal.file-preview.error.not-supported.title": "Preview not supported",
+  "share.modal.file-preview.error.not-supported.description":
+    "A preview for thise file type is unsupported. Please download the file to view it.",
+
+  // END /share/[id]
+
+  // 404
+  "404.title": "404",
+  "404.description": "Oops this page doesn't exist.",
+  "404.button.home": "Gring me back home",
+
   // Common translations
   "common.button.save": "Save",
   "common.button.create": "Create",
+  "common.button.submit": "Submit",
   "common.button.delete": "Delete",
   "common.button.cancel": "Cancel",
   "common.button.confirm": "Confirm",
@@ -264,5 +346,8 @@ export const english = {
   "common.button.done": "Done",
   "common.text.link": "Link",
   "common.text.or": "or",
+  "common.button.go-back": "Go back",
   "common.notify.copied": "Your link was copied to the clipboard",
+  "common.error": "Error",
+  "common.error.unknown": "An unknown error occurred",
 };

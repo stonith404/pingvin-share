@@ -1,16 +1,19 @@
 import { Button, PasswordInput, Stack, Text } from "@mantine/core";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import { useState } from "react";
+import { FormattedMessage } from "react-intl";
+import useTranslate, { translateOutsideContext } from "../../hooks/useTranslate.hook";
 
 const showEnterPasswordModal = (
   modals: ModalsContextProps,
   submitCallback: (password: string) => Promise<void>
 ) => {
+  const t = translateOutsideContext();
   return modals.openModal({
     closeOnClickOutside: false,
     withCloseButton: false,
     closeOnEscape: false,
-    title: "Password required",
+    title: t("share.modal.password.title"),
     children: <Body submitCallback={submitCallback} />,
   });
 };
@@ -22,10 +25,11 @@ const Body = ({
 }) => {
   const [password, setPassword] = useState("");
   const [passwordWrong, setPasswordWrong] = useState(false);
+  const t = useTranslate();
   return (
     <Stack align="stretch">
       <Text size="sm">
-        This access this share please enter the password for the share.
+        <FormattedMessage id="share.modal.password.description" />
       </Text>
 
       <form
@@ -37,13 +41,15 @@ const Body = ({
         <Stack>
           <PasswordInput
             variant="filled"
-            placeholder="Password"
-            error={passwordWrong && "Wrong password"}
+            placeholder={t("share.modal.password")}
+            error={passwordWrong && t("share.modal.error.invalid-password")}
             onFocus={() => setPasswordWrong(false)}
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit">
+            <FormattedMessage id="common.button.submit" />
+          </Button>
         </Stack>
       </form>
     </Stack>

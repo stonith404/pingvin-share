@@ -15,8 +15,10 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { TbInfoCircle } from "react-icons/tb";
+import { FormattedMessage } from "react-intl";
 import * as yup from "yup";
 import useConfig from "../../hooks/config.hook";
+import useTranslate from "../../hooks/useTranslate.hook";
 import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
 import toast from "../../utils/toast.util";
@@ -24,6 +26,7 @@ import toast from "../../utils/toast.util";
 const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
   const config = useConfig();
   const router = useRouter();
+  const t = useTranslate();
   const { refreshUser } = useUser();
 
   const [showTotp, setShowTotp] = React.useState(false);
@@ -54,8 +57,8 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
             icon: <TbInfoCircle />,
             color: "blue",
             radius: "md",
-            title: "Two-factor authentication required",
-            message: "Please enter your two-factor authentication code",
+            title: t("signIn.notify.totp-required.title"),
+            message: t("signIn.notify.totp-required.description"),
           });
           setLoginToken(response.data["loginToken"]);
         } else {
@@ -88,13 +91,13 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
   return (
     <Container size={420} my={40}>
       <Title order={2} align="center" weight={900}>
-        Welcome back
+        <FormattedMessage id="signin.title" />
       </Title>
       {config.get("share.allowRegistration") && (
         <Text color="dimmed" size="sm" align="center" mt={5}>
-          You don't have an account yet?{" "}
+          <FormattedMessage id="signin.description" />{" "}
           <Anchor component={Link} href={"signUp"} size="sm">
-            {"Sign up"}
+            <FormattedMessage id="signin.button.signup" />
           </Anchor>
         </Text>
       )}
@@ -107,20 +110,20 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
           })}
         >
           <TextInput
-            label="Email or username"
-            placeholder="Your email or username"
+            label={t("signin.input.email-or-username")}
+            placeholder={t("signin.input.email-or-username.placeholder")}
             {...form.getInputProps("emailOrUsername")}
           />
           <PasswordInput
-            label="Password"
-            placeholder="Your password"
+            label={t("signin.input.password")}
+            placeholder={t("signin.input.password.placeholder")}
             mt="md"
             {...form.getInputProps("password")}
           />
           {showTotp && (
             <TextInput
               variant="filled"
-              label="Code"
+              label={t("account.modal.totp.code")}
               placeholder="******"
               mt="md"
               {...form.getInputProps("totp")}
@@ -129,12 +132,12 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
           {config.get("smtp.enabled") && (
             <Group position="right" mt="xs">
               <Anchor component={Link} href="/auth/resetPassword" size="xs">
-                Forgot password?
+                <FormattedMessage id="resetPassword.title" />
               </Anchor>
             </Group>
           )}
           <Button fullWidth mt="xl" type="submit">
-            Sign in
+            <FormattedMessage id="signin.button.submit" />
           </Button>
         </form>
       </Paper>

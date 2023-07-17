@@ -2,6 +2,7 @@ import { Divider, Flex, Progress, Stack, Text } from "@mantine/core";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import moment from "moment";
 import { FormattedMessage } from "react-intl";
+import { translateOutsideContext } from "../../hooks/useTranslate.hook";
 import { FileMetaData } from "../../types/File.type";
 import { MyShare } from "../../types/share.type";
 import { byteToHumanSizeString } from "../../utils/fileSize.util";
@@ -13,6 +14,7 @@ const showShareInformationsModal = (
   appUrl: string,
   maxShareSize: number
 ) => {
+  const t = translateOutsideContext();
   const link = `${appUrl}/share/${share.id}`;
 
   let shareSize: number = 0;
@@ -30,7 +32,7 @@ const showShareInformationsModal = (
       : moment(share.expiration).format("LLL");
 
   return modals.openModal({
-    title: "Share informations",
+    title: t("account.shares.modal.share-informations"),
 
     children: (
       <Stack align="stretch" spacing="md">

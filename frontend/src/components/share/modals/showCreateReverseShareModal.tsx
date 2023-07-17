@@ -145,7 +145,6 @@ const Body = ({
                 color: theme.colors.gray[6],
               })}
             >
-              {/* TODO: Translate this */}
               {getExpirationPreview(
                 {
                   expiresOn: t("account.reverseShare.expires-on"),
