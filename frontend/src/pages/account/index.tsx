@@ -37,8 +37,10 @@ const Account = () => {
     },
     validate: yupResolver(
       yup.object().shape({
-        email: yup.string().email(),
-        username: yup.string().min(3),
+        email: yup.string().email(t("common.error.invalid-email")),
+        username: yup
+          .string()
+          .min(3, t("common.error.too-short", { length: 3 })),
       })
     ),
   });
@@ -50,8 +52,14 @@ const Account = () => {
     },
     validate: yupResolver(
       yup.object().shape({
-        oldPassword: yup.string().min(8),
-        password: yup.string().min(8),
+        oldPassword: yup
+          .string()
+          .min(8, t("common.error.too-short", { length: 8 }))
+          .required(t("common.error.field-required")),
+        password: yup
+          .string()
+          .min(8, t("common.error.too-short", { length: 8 }))
+          .required(t("common.error.field-required")),
       })
     ),
   });
@@ -62,7 +70,10 @@ const Account = () => {
     },
     validate: yupResolver(
       yup.object().shape({
-        password: yup.string().min(8),
+        password: yup
+          .string()
+          .min(8, t("common.error.too-short", { length: 8 }))
+          .required(t("common.error.field-required")),
       })
     ),
   });
@@ -77,9 +88,9 @@ const Account = () => {
         password: yup.string().min(8),
         code: yup
           .string()
-          .min(6)
-          .max(6)
-          .matches(/^[0-9]+$/, { message: "Code must be a number" }),
+          .min(6, t("common.error.exact-length", { length: 6 }))
+          .max(6, t("common.error.exact-length", { length: 6 }))
+          .matches(/^[0-9]+$/, { message: t("common.error.invalid-number") }),
       })
     ),
   });

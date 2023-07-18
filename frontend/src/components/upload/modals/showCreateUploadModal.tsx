@@ -77,9 +77,9 @@ const CreateUploadModalBody = ({
   const validationSchema = yup.object().shape({
     link: yup
       .string()
-      .required()
-      .min(3)
-      .max(50)
+      .required(t("common.error.field-required"))
+      .min(3, t("common.error.too-short", { length: 3 }))
+      .max(50, t("common.error.too-long", { length: 50 }))
       .matches(new RegExp("^[a-zA-Z0-9_-]*$"), {
         message: t("upload.modal.link.error.invalid"),
       }),

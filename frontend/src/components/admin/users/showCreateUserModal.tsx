@@ -36,6 +36,7 @@ const Body = ({
   smtpEnabled: boolean;
   getUsers: () => void;
 }) => {
+  const t = useTranslate();
   const form = useForm({
     initialValues: {
       username: "",
@@ -46,14 +47,17 @@ const Body = ({
     },
     validate: yupResolver(
       yup.object().shape({
-        email: yup.string().email(),
-        username: yup.string().min(3),
-        password: yup.string().min(8).optional(),
+        email: yup.string().email(t("common.error.invalid-email")),
+        username: yup
+          .string()
+          .min(3, t("common.error.too-short", { length: 3 })),
+        password: yup
+          .string()
+          .min(8, t("common.error.too-short", { length: 8 }))
+          .optional(),
       })
     ),
   });
-
-  const t = useTranslate();
 
   return (
     <Stack>

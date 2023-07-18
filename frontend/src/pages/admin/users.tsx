@@ -30,13 +30,12 @@ const Users = () => {
 
   const deleteUser = (user: User) => {
     modals.openConfirmModal({
-      title: `${t("admin.users.edit.delete.title")} ${user.username}?`,
+      title: t("admin.users.edit.delete.title", {
+        username: user.username,
+      }),
       children: (
         <Text size="sm">
-          <FormattedMessage
-            id="admin.users.edit.delete.description"
-            values={{ username: <b>{user.username}</b> }}
-          />
+          <FormattedMessage id="admin.users.edit.delete.description" />
         </Text>
       ),
       labels: {

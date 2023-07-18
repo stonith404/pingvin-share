@@ -53,7 +53,10 @@ const ResetPassword = () => {
     },
     validate: yupResolver(
       yup.object().shape({
-        email: yup.string().email().required(),
+        email: yup
+          .string()
+          .email(t("common.error.invalid-email"))
+          .required(t("common.error.field-required")),
       })
     ),
   });

@@ -26,9 +26,15 @@ const SignUpForm = () => {
   const { refreshUser } = useUser();
 
   const validationSchema = yup.object().shape({
-    email: yup.string().email().required(),
-    username: yup.string().min(3).required(),
-    password: yup.string().min(8).required(),
+    email: yup.string().email(t("common.error.invalid-email")).required(),
+    username: yup
+      .string()
+      .min(3, t("common.error.too-short", { length: 3 }))
+      .required(t("common.error.field-required")),
+    password: yup
+      .string()
+      .min(8, t("common.error.too-short", { length: 8 }))
+      .required(t("common.error.field-required")),
   });
 
   const form = useForm({

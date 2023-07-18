@@ -35,7 +35,10 @@ const ResetPassword = () => {
     },
     validate: yupResolver(
       yup.object().shape({
-        password: yup.string().min(8).required(),
+        password: yup
+          .string()
+          .min(8, t("common.error.too-short", { length: 8 }))
+          .required(t("common.error.field-required")),
       })
     ),
   });

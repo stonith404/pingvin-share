@@ -33,8 +33,11 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
   const [loginToken, setLoginToken] = React.useState("");
 
   const validationSchema = yup.object().shape({
-    emailOrUsername: yup.string().required(),
-    password: yup.string().min(8).required(),
+    emailOrUsername: yup.string().required(t("common.error.field-required")),
+    password: yup
+      .string()
+      .min(8, t("common.error.too-short", { length: 8 }))
+      .required(t("common.error.field-required")),
   });
 
   const form = useForm({

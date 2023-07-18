@@ -49,8 +49,10 @@ const Body = ({
     },
     validate: yupResolver(
       yup.object().shape({
-        email: yup.string().email(),
-        username: yup.string().min(3),
+        email: yup.string().email(t("common.error.invalid-email")),
+        username: yup
+          .string()
+          .min(3, t("common.error.too-short", { length: 3 })),
       })
     ),
   });
@@ -61,7 +63,9 @@ const Body = ({
     },
     validate: yupResolver(
       yup.object().shape({
-        password: yup.string().min(8),
+        password: yup
+          .string()
+          .min(8, t("common.error.too-short", { length: 8 })),
       })
     ),
   });
