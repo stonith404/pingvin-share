@@ -99,7 +99,7 @@ const FileList = ({
             </th>
             <th>
               <Group spacing="xs">
-              <FormattedMessage id="share.table.size" />
+                <FormattedMessage id="share.table.size" />
                 <TableSortIcon sort={sort} setSort={setSort} property="size" />
               </Group>
             </th>

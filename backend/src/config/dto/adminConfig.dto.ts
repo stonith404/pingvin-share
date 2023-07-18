@@ -15,9 +15,6 @@ export class AdminConfigDTO extends ConfigDTO {
   updatedAt: Date;
 
   @Expose()
-  description: string;
-
-  @Expose()
   obscured: boolean;
 
   from(partial: Partial<AdminConfigDTO>) {

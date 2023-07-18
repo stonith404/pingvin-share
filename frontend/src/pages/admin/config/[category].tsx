@@ -13,26 +13,28 @@ import { useMediaQuery } from "@mantine/hooks";
 
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
+import Meta from "../../../components/Meta";
 import AdminConfigInput from "../../../components/admin/configuration/AdminConfigInput";
 import ConfigurationHeader from "../../../components/admin/configuration/ConfigurationHeader";
 import ConfigurationNavBar from "../../../components/admin/configuration/ConfigurationNavBar";
 import LogoConfigInput from "../../../components/admin/configuration/LogoConfigInput";
 import TestEmailButton from "../../../components/admin/configuration/TestEmailButton";
 import CenterLoader from "../../../components/core/CenterLoader";
-import Meta from "../../../components/Meta";
 import useConfig from "../../../hooks/config.hook";
 import configService from "../../../services/config.service";
 import { AdminConfig, UpdateConfig } from "../../../types/config.type";
 import {
+  camelToKebab,
   capitalizeFirstLetter,
-  configVariableToFriendlyName,
 } from "../../../utils/string.util";
 import toast from "../../../utils/toast.util";
-import { FormattedMessage, useIntl } from "react-intl";
+import useTranslate from "../../../hooks/useTranslate.hook";
 
 export default function AppShellDemo() {
   const theme = useMantineTheme();
   const router = useRouter();
+  const t = useTranslate();
 
   const [isMobileNavBarOpened, setIsMobileNavBarOpened] = useState(false);
   const isMobile = useMediaQuery("(max-width: 560px)");
@@ -95,7 +97,7 @@ export default function AppShellDemo() {
 
   return (
     <>
-      <Meta title="Configuration" />
+      <Meta title={t("admin.config.title")} />
       <AppShell
         styles={{
           main: {
@@ -135,26 +137,28 @@ export default function AppShellDemo() {
                       spacing={0}
                     >
                       <Title order={6}>
-                        {configVariableToFriendlyName(configVariable.name)}
+                        <FormattedMessage
+                          id={`admin.config.${camelToKebab(
+                            configVariable.key
+                          )}`}
+                        />
                       </Title>
-                      {configVariable.description.split("\n").length == 1 ? (
-                        <Text color="dimmed" size="sm" mb="xs">
-                          {configVariable.description}
-                        </Text>
-                      ) : (
-                        configVariable.description.split("\n").map((line) => (
-                          <Text
-                            key={line}
-                            color="dimmed"
-                            size="sm"
-                            style={{
-                              marginBottom: line === "" ? "1rem" : "0",
-                            }}
-                          >
-                            {line}
-                          </Text>
-                        ))
-                      )}
+
+                      <Text
+                        sx={{
+                          whiteSpace: "pre-line",
+                        }}
+                        color="dimmed"
+                        size="sm"
+                        mb="xs"
+                      >
+                        <FormattedMessage
+                          id={`admin.config.${camelToKebab(
+                            configVariable.key
+                          )}.description`}
+                          values={{ br: <br /> }}
+                        />
+                      </Text>
                     </Stack>
                     <Stack></Stack>
                     <Box style={{ width: isMobile ? "100%" : "50%" }}>

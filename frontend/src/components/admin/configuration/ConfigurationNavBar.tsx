@@ -12,6 +12,7 @@ import {
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 import { TbAt, TbMail, TbShare, TbSquare } from "react-icons/tb";
+import { FormattedMessage } from "react-intl";
 
 const categories = [
   { name: "General", icon: <TbSquare /> },
@@ -53,7 +54,7 @@ const ConfigurationNavBar = ({
     >
       <Navbar.Section>
         <Text size="xs" color="dimmed" mb="sm">
-          Configuration
+          <FormattedMessage id="admin.config.title" />
         </Text>
         <Stack spacing="xs">
           {categories.map((category) => (
@@ -79,7 +80,11 @@ const ConfigurationNavBar = ({
                 >
                   {category.icon}
                 </ThemeIcon>
-                <Text size="sm">{category.name}</Text>
+                <Text size="sm">
+                  <FormattedMessage
+                    id={`admin.config.category.${category.name.toLowerCase()}`}
+                  />
+                </Text>
               </Group>
             </Box>
           ))}
@@ -87,7 +92,7 @@ const ConfigurationNavBar = ({
       </Navbar.Section>
       <MediaQuery largerThan="sm" styles={{ display: "none" }}>
         <Button mt="xl" variant="light" component={Link} href="/admin">
-          Go back
+          <FormattedMessage id="common.button.go-back" />
         </Button>
       </MediaQuery>
     </Navbar>

@@ -36,7 +36,7 @@ const SignIn = ({ redirectPath }: { redirectPath?: string }) => {
 
   return (
     <>
-      <Meta title={t("signin.title")}/>
+      <Meta title={t("signin.title")} />
       <SignInForm redirectPath={redirectPath ?? "/upload"} />
     </>
   );

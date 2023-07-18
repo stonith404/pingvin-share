@@ -294,6 +294,83 @@ export const german = {
   "upload.modal.completed.share-ready": "Freigabe bereit",
 
   // END /upload
+  "admin.config.title": "Configuration",
+  "admin.config.category.general": "Allgemein",
+  "admin.config.category.share": "Freigabe",
+  "admin.config.category.email": "E-Mail",
+  "admin.config.category.smtp": "SMTP",
+
+  "admin.config.general.app-name": "App-Name",
+  "admin.config.general.app-name.description": "Name der Anwendung",
+  "admin.config.general.app-url": "App-URL",
+  "admin.config.general.app-url.description":
+    "Auf welcher URL Pingvin Share verfügbar ist",
+  "admin.config.general.show-home-page": "Startseite anzeigen",
+  "admin.config.general.show-home-page.description":
+    "Ob die Startseite angezeigt werden soll",
+  "admin.config.general.logo": "Logo",
+  "admin.config.general.logo.description":
+    "Ändern Sie Ihr Logo, indem Sie ein neues Bild hochladen. Das Bild muss im PNG-Format vorliegen und im Seitenverhältnis 1:1 sein.",
+
+  "admin.config.email.enable-share-email-recipients":
+    "Freigabe-Empfänger per E-Mail aktivieren",
+  "admin.config.email.enable-share-email-recipients.description":
+    "Gibt an, ob E-Mails an Freigabe-Empfänger ermöglicht werden sollen. Aktivieren Sie dies nur, wenn Sie SMTP aktiviert haben.",
+  "admin.config.email.share-recipients-subject":
+    "Betreff für Freigabe-Empfänger",
+  "admin.config.email.share-recipients-subject.description":
+    "Betreff der E-Mail, die an die Freigabe-Empfänger gesendet wird.",
+  "admin.config.email.share-recipients-message":
+    "Nachricht für Freigabe-Empfänger",
+  "admin.config.email.share-recipients-message.description":
+    "Nachricht, die an die Freigabe-Empfänger gesendet wird. Verfügbare Variablen:\n- {creator} - Der Benutzername des Erstellers der Freigabe\n- {shareUrl} - Die URL der Freigabe\n- {desc} - Die Beschreibung der Freigabe\n- {expires} - Das Ablaufdatum der Freigabe\nVariablen werden durch die tatsächlichen Werte ersetzt.",
+  "admin.config.email.reverse-share-subject": "Betreff für umgekehrte Freigabe",
+  "admin.config.email.reverse-share-subject.description":
+    "Betreff der E-Mail, die gesendet wird, wenn jemand eine Freigabe mit Ihrem umgekehrten Freigabe-Link erstellt.",
+  "admin.config.email.reverse-share-message":
+    "Nachricht für umgekehrte Freigabe",
+  "admin.config.email.reverse-share-message.description":
+    "Nachricht, die gesendet wird, wenn jemand eine Freigabe mit Ihrem umgekehrten Freigabe-Link erstellt. {shareUrl} wird durch den Namen des Erstellers und die Freigabe-URL ersetzt.",
+  "admin.config.email.reset-password-subject":
+    "Betreff für Passwortzurücksetzung",
+  "admin.config.email.reset-password-subject.description":
+    "Betreff der E-Mail, die gesendet wird, wenn ein Benutzer eine Passwortzurücksetzung anfordert.",
+  "admin.config.email.reset-password-message":
+    "Nachricht für Passwortzurücksetzung",
+  "admin.config.email.reset-password-message.description":
+    "Nachricht, die gesendet wird, wenn ein Benutzer eine Passwortzurücksetzung anfordert. {url} wird durch die URL für das Zurücksetzen des Passworts ersetzt.",
+  "admin.config.email.invite-subject": "Betreff für Einladung",
+  "admin.config.email.invite-subject.description":
+    "Betreff der E-Mail, die gesendet wird, wenn ein Administrator einen Benutzer einlädt.",
+  "admin.config.email.invite-message": "Nachricht für Einladung",
+  "admin.config.email.invite-message.description":
+    "Nachricht, die gesendet wird, wenn ein Administrator einen Benutzer einlädt. {url} wird durch die Einladungs-URL und {password} durch das Passwort ersetzt.",
+  "admin.config.share.allow-registration": "Registrierung erlauben",
+  "admin.config.share.allow-registration.description":
+    "Gibt an, ob eine Registrierung erlaubt ist.",
+  "admin.config.share.allow-unauthenticated-shares":
+    "Nicht authentifizierte Freigaben erlauben",
+  "admin.config.share.allow-unauthenticated-shares.description":
+    "Gibt an, ob nicht authentifizierte Benutzer Freigaben erstellen können.",
+  "admin.config.share.max-size": "Maximale Größe",
+  "admin.config.share.max-size.description":
+    "Maximale Größe einer Freigabe in Bytes.",
+
+  "admin.config.smtp.enabled": "Aktiviert",
+  "admin.config.smtp.enabled.description":
+    "Ob SMTP aktiviert ist. Setzen Sie dies nur auf true, wenn Sie Host, Port, E-Mail, Benutzer und Passwort Ihres SMTP-Servers eingegeben haben.",
+  "admin.config.smtp.host": "Host",
+  "admin.config.smtp.host.description": "Host des SMTP-Servers",
+  "admin.config.smtp.port": "Port",
+  "admin.config.smtp.port.description": "Port des SMTP-Servers",
+  "admin.config.smtp.email": "E-Mail",
+  "admin.config.smtp.email.description":
+    "E-Mail-Adresse, von der die E-Mails gesendet werden",
+  "admin.config.smtp.username": "Benutzername",
+  "admin.config.smtp.username.description": "Benutzername des SMTP-Servers",
+  "admin.config.smtp.password": "Passwort",
+  "admin.config.smtp.password.description": "Passwort des SMTP-Servers",
+  "admin.config.smtp.button.test": "Test-E-Mail senden",
 
   // Allgemeine Übersetzungen
   "common.button.save": "Speichern",

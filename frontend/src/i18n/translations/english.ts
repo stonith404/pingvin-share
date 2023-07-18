@@ -127,7 +127,7 @@ export const english = {
   "account.shares.table.createdAt": "Created at",
   "account.shares.table.size": "Size",
 
-  "account.shares.modal.share-link": "Share link",  
+  "account.shares.modal.share-link": "Share link",
 
   "account.shares.modal.delete.title": "Delete {share}",
   "account.shares.modal.delete.description":
@@ -327,6 +327,80 @@ export const english = {
     "A preview for thise file type is unsupported. Please download the file to view it.",
 
   // END /share/[id]
+
+  // /admin/config
+  "admin.config.title": "Configuration",
+  "admin.config.category.general": "General",
+  "admin.config.category.share": "Share",
+  "admin.config.category.email": "Email",
+  "admin.config.category.smtp": "SMTP",
+
+  "admin.config.general.app-name": "App name",
+  "admin.config.general.app-name.description": "Name of the application",
+  "admin.config.general.app-url": "App URL",
+  "admin.config.general.app-url.description":
+    "On which URL Pingvin Share is available",
+  "admin.config.general.show-home-page": "Show home page",
+  "admin.config.general.show-home-page.description":
+    "Whether to show the home page",
+  "admin.config.general.logo": "Logo",
+  "admin.config.general.logo.description":
+    "Change your logo by uploading a new image. The image must be a PNG and should have the format 1:1.",
+  "admin.config.general.logo.placeholder": "Pick image",
+
+  "admin.config.email.enable-share-email-recipients":
+    "Enable share email recipients",
+  "admin.config.email.enable-share-email-recipients.description":
+    "Whether to allow emails to share recipients. Only enable this if you have enabled SMTP.",
+  "admin.config.email.share-recipients-subject": "Share recipients subject",
+  "admin.config.email.share-recipients-subject.description":
+    "Subject of the email which gets sent to the share recipients.",
+  "admin.config.email.share-recipients-message": "Share recipients message",
+  "admin.config.email.share-recipients-message.description":
+    "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n The variables will be replaced with the actual values.",
+  "admin.config.email.reverse-share-subject": "Reverse share subject",
+  "admin.config.email.reverse-share-subject.description":
+    "Subject of the email which gets sent when someone created a share with your reverse share link.",
+  "admin.config.email.reverse-share-message": "Reverse share message",
+  "admin.config.email.reverse-share-message.description":
+    "Message which gets sent when someone created a share with your reverse share link. {shareUrl} will be replaced with the creator's name and the share URL.",
+  "admin.config.email.reset-password-subject": "Reset password subject",
+  "admin.config.email.reset-password-subject.description":
+    "Subject of the email which gets sent when a user requests a password reset.",
+  "admin.config.email.reset-password-message": "Reset password message",
+  "admin.config.email.reset-password-message.description":
+    "Message which gets sent when a user requests a password reset. {url} will be replaced with the reset password URL.",
+  "admin.config.email.invite-subject": "Invite subject",
+  "admin.config.email.invite-subject.description":
+    "Subject of the email which gets sent when an admin invites a user.",
+  "admin.config.email.invite-message": "Invite message",
+  "admin.config.email.invite-message.description":
+    "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL and {password} with the password.",
+  "admin.config.share.allow-registration": "Allow registration",
+  "admin.config.share.allow-registration.description":
+    "Whether registration is allowed",
+  "admin.config.share.allow-unauthenticated-shares":
+    "Allow unauthenticated shares",
+  "admin.config.share.allow-unauthenticated-shares.description":
+    "Whether unauthorized users can create shares",
+  "admin.config.share.max-size": "Max size",
+  "admin.config.share.max-size.description": "Maximum share size in bytes",
+
+  "admin.config.smtp.enabled": "Enabled",
+  "admin.config.smtp.enabled.description":
+    "Whether SMTP is enabled. Only set this to true if you entered the host, port, email, user and password of your SMTP server.",
+  "admin.config.smtp.host": "Host",
+  "admin.config.smtp.host.description": "Host of the SMTP server",
+  "admin.config.smtp.port": "Port",
+  "admin.config.smtp.port.description": "Port of the SMTP server",
+  "admin.config.smtp.email": "Email",
+  "admin.config.smtp.email.description":
+    "Email address which the emails get sent from",
+  "admin.config.smtp.username": "Username",
+  "admin.config.smtp.username.description": "Username of the SMTP server",
+  "admin.config.smtp.password": "Password",
+  "admin.config.smtp.password.description": "Password of the SMTP server",
+  "admin.config.smtp.button.test": "Send test email",
 
   // 404
   "404.title": "404",
