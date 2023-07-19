@@ -39,8 +39,8 @@ const Users = () => {
         </Text>
       ),
       labels: {
-        confirm: t("common.button.cancel"),
-        cancel: t("common.button.delete"),
+        confirm: t("common.button.delete"),
+        cancel: t("common.button.cancel"),
       },
       confirmProps: { color: "red" },
       onConfirm: async () => {
