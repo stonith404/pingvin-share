@@ -1,6 +1,6 @@
 import { getCookie } from "cookies-next";
 import { createIntl, createIntlCache, useIntl } from "react-intl";
-import { messages } from "../i18n/messages";
+import { getLocaleByCode } from "../utils/i18n.util";
 
 const useTranslate = () => {
   const intl = useIntl();
@@ -22,7 +22,7 @@ export const translateOutsideContext = () => {
   const intl = createIntl(
     {
       locale,
-      messages: messages[locale],
+      messages: getLocaleByCode(locale)?.messages,
       defaultLocale: "en",
     },
     cache

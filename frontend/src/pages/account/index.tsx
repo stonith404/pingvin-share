@@ -24,6 +24,7 @@ import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
 import userService from "../../services/user.service";
 import toast from "../../utils/toast.util";
+import LanguagePicker from "../../components/account/LanguagePicker";
 
 const Account = () => {
   const { user, refreshUser } = useUser();
@@ -255,6 +256,12 @@ const Account = () => {
               )}
             </Tabs.Panel>
           </Tabs>
+        </Paper>
+        <Paper withBorder p="xl" mt="lg">
+          <Title order={5} mb="xs">
+            <FormattedMessage id="account.card.language.title" />
+          </Title>
+          <LanguagePicker />
         </Paper>
         <Paper withBorder p="xl" mt="lg">
           <Title order={5} mb="xs">

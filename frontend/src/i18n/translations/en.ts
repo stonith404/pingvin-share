@@ -1,4 +1,4 @@
-export const english = {
+export default {
   // Navbar
   "navbar.upload": "Upload",
   "navbar.signin": "Sign in",
@@ -99,6 +99,7 @@ export const english = {
   "account.notify.totp.disable": "TOTP disabled successfully",
   "account.notify.totp.enable": "TOTP enabled successfully",
 
+  "account.card.language.title": "Language",
   "account.card.color.title": "Color scheme",
 
   // ThemeSwitcher.tsx
@@ -210,9 +211,9 @@ export const english = {
   "admin.users.edit.update.notify.password.success":
     "Password changed successfully",
 
-  "admin.users.edit.delete.title": "Delete",
+  "admin.users.edit.delete.title": "Delete user {username}",
   "admin.users.edit.delete.description":
-    "Do you really want to delete {username} and all their shares?",
+    "Do you really want to delete this user and all his shares?",
 
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "Create user",
@@ -422,6 +423,13 @@ export const english = {
   "common.text.or": "or",
   "common.button.go-back": "Go back",
   "common.notify.copied": "Your link was copied to the clipboard",
+
   "common.error": "Error",
   "common.error.unknown": "An unknown error occurred",
+  "common.error.invalid-email": "Invalid email address",
+  "common.error.too-short": "Must be at least {length} characters",
+  "common.error.too-long": "Must be at most {length} characters",
+  "common.error.exact-length": "Must be exactly {length} characters",
+  "common.error.invalid-number": "Must be a number",
+  "common.error.field-required": "This field is required",
 };

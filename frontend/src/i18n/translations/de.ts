@@ -1,4 +1,4 @@
-export const german = {
+export default {
   // Navbar
   "navbar.upload": "Hochladen",
   "navbar.signin": "Anmelden",

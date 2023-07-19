@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-
 const { version } = require('./package.json');
 
 const withPWA = require("next-pwa")({
@@ -22,9 +21,4 @@ module.exports = withPWA({
   serverRuntimeConfig: {
     apiURL: process.env.API_URL ?? 'http://localhost:8080',
   },
-  i18n: {
-    locales: ["en", "de"],
-    defaultLocale: "en",
-    localeDetection: true,
-  }
 });

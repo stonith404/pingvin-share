@@ -19,7 +19,6 @@ import Header from "../components/header/Header";
 import { ConfigContext } from "../hooks/config.hook";
 import { UserContext } from "../hooks/user.hook";
 import { LOCALES } from "../i18n/locales";
-import { messages } from "../i18n/messages";
 import authService from "../services/auth.service";
 import configService from "../services/config.service";
 import userService from "../services/user.service";
@@ -27,6 +26,11 @@ import GlobalStyle from "../styles/global.style";
 import globalStyle from "../styles/mantine.style";
 import Config from "../types/config.type";
 import { CurrentUser } from "../types/user.type";
+import {
+  getLocaleByCode,
+  isLanguageSupported,
+  setLanguageCookie,
+} from "../utils/i18n.util";
 import userPreferences from "../utils/userPreferences.util";
 
 const excludeDefaultLayoutRoutes = ["/admin/config/[category]"];
@@ -53,6 +57,14 @@ function App({ Component, pageProps }: AppProps) {
   }, []);
 
   useEffect(() => {
+    const cookieLanguage = getCookie("language");
+    if (pageProps.language != cookieLanguage) {
+      setLanguageCookie(pageProps.language);
+      if (cookieLanguage) location.reload();
+    }
+  }, []);
+
+  useEffect(() => {
     const colorScheme =
       userPreferences.get("colorScheme") == "system"
         ? systemTheme
@@ -72,9 +84,9 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <IntlProvider
-      messages={messages[language.current]}
+      messages={getLocaleByCode(language.current)?.messages}
       locale={language.current}
-      defaultLocale={LOCALES.ENGLISH}
+      defaultLocale={LOCALES.ENGLISH.code}
     >
       <MantineProvider
         withGlobalStyles
@@ -154,9 +166,13 @@ App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
     pageProps.configVariables = (await axios(`${apiURL}/api/configs`)).data;
 
     pageProps.route = ctx.req.url;
+
+    const requestLanguage =
+      ctx.req.headers["accept-language"]?.substring(0, 2) ?? "en";
+
     pageProps.language =
       ctx.req.cookies["language"] ??
-      ctx.req.headers["accept-language"]?.substring(0, 2);
+      (isLanguageSupported(requestLanguage) ? requestLanguage : "en");
   }
   return { pageProps };
 };
