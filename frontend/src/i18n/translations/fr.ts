@@ -1,435 +1,320 @@
 export default {
   // Navbar
-  "navbar.upload": "Upload",
-  "navbar.signin": "Sign in",
-  "navbar.home": "Home",
-  "navbar.signup": "Sign Up",
-
-  "navbar.links.shares": "My shares",
-  "navbar.links.reverse": "Reverse shares",
-
-  "navbar.avatar.account": "My account",
+  "navbar.upload": "Envoyer",
+  "navbar.signin": "Se connecter",
+  "navbar.home": "Accueil",
+  "navbar.signup": "S'inscrire",
+  "navbar.links.shares": "Mes partages",
+  "navbar.links.reverse": "Partages inversés",
+  "navbar.avatar.account": "Mon compte",
   "navbar.avatar.admin": "Administration",
-  "navbar.avatar.signout": "Sign out",
+  "navbar.avatar.signout": "Se déconnecter",
   // END navbar
-
   // /
-  "home.title": "A <h>self-hosted</h> file sharing platform.",
-
-  "home.description":
-    "Do you really want to give your personal files in the hand of third parties like WeTransfer?",
-  "home.bullet.a.name": "Self-Hosted",
-  "home.bullet.a.description": "Host Pingvin Share on your own machine.",
-  "home.bullet.b.name": "Privacy",
-  "home.bullet.b.description":
-    "Your files are your files and should never get into the hands of third parties.",
-  "home.bullet.c.name": "No annoying file size limit",
-  "home.bullet.c.description":
-    "Upload as big files as you want. Only your hard drive will be your limit.",
-
-  "home.button.start": "Get started",
-  "home.button.source": "Source code",
+  "home.title": "Une plateforme de partage de fichier <h>auto-hébergée</h>.",
+  "home.description": "Voulez-vous vraiment remettre vos fichiers personnels dans les mains de tiers comme WeTransfer ?",
+  "home.bullet.a.name": "Auto-hébergé",
+  "home.bullet.a.description": "Hébergez Pingvin Share sur votre propre machine.",
+  "home.bullet.b.name": "Confidentialité",
+  "home.bullet.b.description": "Vos fichiers sont vos fichiers et ne devraient jamais être mis entre les mains de tiers.",
+  "home.bullet.c.name": "Aucune rébarbative limite de taille",
+  "home.bullet.c.description": "Téléchargez des fichiers volumineux que vous le souhaitez. Seul votre disque dur est la limite.",
+  "home.button.start": "Commencer",
+  "home.button.source": "Code source",
   // END /
-
   // /auth/signin
-  "signin.title": "Welcome back",
-  "signin.description": "You don't have an account yet?",
-  "signin.button.signup": "Sign up",
-  "signin.input.email-or-username": "Email or username",
-  "signin.input.email-or-username.placeholder": "Your email or username",
-  "signin.input.password": "Password",
-  "signin.input.password.placeholder": "Your password",
-  "signin.button.submit": "Sign in",
-  "signIn.notify.totp-required.title": "Two-factor authentication required",
-  "signIn.notify.totp-required.description":
-    "Please enter your two-factor authentication code",
-
+  "signin.title": "Content de vous revoir",
+  "signin.description": "Pas encore de compte ?",
+  "signin.button.signup": "S'inscrire",
+  "signin.input.email-or-username": "Email ou pseudo",
+  "signin.input.email-or-username.placeholder": "Votre email ou pseudo",
+  "signin.input.password": "Mot de passe",
+  "signin.input.password.placeholder": "Votre mot de passe",
+  "signin.button.submit": "Se connecter",
+  "signIn.notify.totp-required.title": "Une authentification à deux facteurs est requise",
+  "signIn.notify.totp-required.description": "Veuillez entrer votre code d'authentification à deux facteurs",
   // END /auth/signin
-
   // /auth/signup
-  "signup.title": "Create an account",
-  "signup.description": "Already have an account?",
-  "signup.button.signin": "Sign in",
-  "signup.input.username": "Username",
-  "signup.input.username.placeholder": "Your username",
-  "signup.input.email": "Email",
-  "signup.input.email.placeholder": "Your email",
-  "signup.button.submit": "Let's get started",
-
+  "signup.title": "Créer un compte",
+  "signup.description": "Vous avez déjà un compte ?",
+  "signup.button.signin": "Se connecter",
+  "signup.input.username": "Pseudo",
+  "signup.input.username.placeholder": "Votre pseudo",
+  "signup.input.email": "Adresse mail",
+  "signup.input.email.placeholder": "Votre adresse mail",
+  "signup.button.submit": "Commençons",
   // END /auth/signup
-
   // /auth/reset-password
-  "resetPassword.title": "Forgot your password?",
-  "resetPassword.description": "Enter your email to reset your password.",
-  "resetPassword.notify.success":
-    "An email has been sent with a link to reset your password.",
-  "resetPassword.button.back": "Back to sign in page",
-  "resetPassword.text.resetPassword": "Reset password",
-  "resetPassword.text.enterNewPassword": "Enter your new password",
-  "resetPassword.input.password": "New password",
-  "resetPassword.notify.passwordReset":
-    "Your password has been reset successfully.",
-
+  "resetPassword.title": "Mot de passe oublié ?",
+  "resetPassword.description": "Saisissez votre email pour réinitialiser votre mot de passe.",
+  "resetPassword.notify.success": "Un mail a été envoyé avec un lien pour réinitialiser votre mot de passe.",
+  "resetPassword.button.back": "Retour à la page de connexion",
+  "resetPassword.text.resetPassword": "Réinitialiser le mot de passe",
+  "resetPassword.text.enterNewPassword": "Saisissez votre nouveau mot de passe",
+  "resetPassword.input.password": "Nouveau mot de passe",
+  "resetPassword.notify.passwordReset": "Votre mot de passe a bien été réinitialisé.",
   // /account
-  "account.title": "My account",
-
-  "account.card.info.title": "Account info",
-  "account.card.info.username": "Username",
-  "account.card.info.email": "Email",
-  "account.notify.info.success": "Account updated successfully",
-
-  "account.card.password.title": "Password",
-  "account.card.password.old": "Old password",
-  "account.card.password.new": "New password",
-  "account.notify.password.success": "Password changed successfully",
-
-  "account.card.security.title": "Security",
-  "account.card.security.totp.enable.description":
-    "Enter your current password to start enabling TOTP",
-  "account.card.security.totp.disable.description":
-    "Enter your current password to start enabling TOTP",
-  "account.card.security.totp.button.start": "Start",
-  "account.modal.totp.title": "Enable TOTP",
-  "account.modal.totp.step1": "Step 1: Add your authenticator",
-  "account.modal.totp.step2": "Step 2: Validate your code",
-  "account.modal.totp.enterManually": "Enter manually",
+  "account.title": "Mon compte",
+  "account.card.info.title": "Détails du compte",
+  "account.card.info.username": "Pseudo",
+  "account.card.info.email": "Adresse mail",
+  "account.notify.info.success": "Compte mis à jour avec succès",
+  "account.card.password.title": "Mot de passe",
+  "account.card.password.old": "Ancien mot de passe",
+  "account.card.password.new": "Nouveau mot de passe",
+  "account.notify.password.success": "Le mot de passe a été modifié avec succès",
+  "account.card.security.title": "Sécurité",
+  "account.card.security.totp.enable.description": "Entrez votre mot de passe actuel pour commencer à activer TOTP",
+  "account.card.security.totp.disable.description": "Entrez votre mot de passe pour désactiver TOTP",
+  "account.card.security.totp.button.start": "Commencer",
+  "account.modal.totp.title": "Activer TOTP",
+  "account.modal.totp.step1": "Étape 1 : Ajouter votre authentificateur",
+  "account.modal.totp.step2": "Étape 2 : Valider votre code",
+  "account.modal.totp.enterManually": "Saisir manuellement",
   "account.modal.totp.code": "Code",
-  "account.modal.totp.clickToCopy": "Click to copy",
-  "account.modal.totp.verify": "Verify",
-  "account.notify.totp.disable": "TOTP disabled successfully",
-  "account.notify.totp.enable": "TOTP enabled successfully",
-
-  "account.card.language.title": "Language",
-  "account.card.color.title": "Color scheme",
-
+  "account.modal.totp.clickToCopy": "Cliquez pour copier",
+  "account.modal.totp.verify": "Vérifier",
+  "account.notify.totp.disable": "TOTP désactivé",
+  "account.notify.totp.enable": "TOTP activé",
+  "account.card.language.title": "Langue",
+  "account.card.color.title": "Thème de couleurs",
   // ThemeSwitcher.tsx
-  "account.theme.dark": "Dark",
-  "account.theme.light": "Light",
-  "account.theme.system": "System",
-
-  "account.button.delete": "Delete Account",
-  "account.modal.delete.title": "Delete Account",
-  "account.modal.delete.description":
-    "Do you really want to delete your account including all your active shares?",
+  "account.theme.dark": "Sombre",
+  "account.theme.light": "Clair",
+  "account.theme.system": "Système",
+  "account.button.delete": "Supprimer le compte",
+  "account.modal.delete.title": "Supprimer le compte",
+  "account.modal.delete.description": "Voulez-vous vraiment supprimer votre compte, y compris tous vos partages actifs ?",
   // END /account
-
   // /account/shares
-  "account.shares.title": "My shares",
-  "account.shares.title.empty": "It's empty here 👀",
-  "account.shares.description.empty": "You don't have any shares.",
-  "account.shares.button.create": "Create one",
-
-  "account.shares.info.title": "Share informatons",
+  "account.shares.title": "Mes partages",
+  "account.shares.title.empty": "Il n'y a rien ici 👀",
+  "account.shares.description.empty": "Vous n’avez aucun partage.",
+  "account.shares.button.create": "Créez-en un",
+  "account.shares.info.title": "Détails du partage",
   "account.shares.table.id": "ID",
-  "account.shares.table.name": "Name",
+  "account.shares.table.name": "Nom",
   "account.shares.table.description": "Description",
-  "account.shares.table.visitors": "Visitors",
-  "account.shares.table.expiresAt": "Expires at",
-  "account.shares.table.createdAt": "Created at",
-  "account.shares.table.size": "Size",
-
-  "account.shares.modal.share-link": "Share link",
-
-  "account.shares.modal.delete.title": "Delete {share}",
-  "account.shares.modal.delete.description":
-    "Do you really want to delete this share?",
-
+  "account.shares.table.visitors": "Visiteurs",
+  "account.shares.table.expiresAt": "Expire le",
+  "account.shares.table.createdAt": "Créé le",
+  "account.shares.table.size": "Taille",
+  "account.shares.modal.share-link": "Lien de partage",
+  "account.shares.modal.delete.title": "Supprimer le partage {share}",
+  "account.shares.modal.delete.description": "Voulez-vous vraiment supprimer ce partage ?",
   // END /account/shares
-
   // /account/reverseShares
-  "account.reverseShares.title": "Reverse shares",
-  "account.reverseShares.description":
-    "A reverse share allows you to generate a unique URL that allows external users to create a share.",
-
-  "account.reverseShares.title.empty": "It's empty here 👀",
-  "account.reverseShares.description.empty":
-    "You don't have any reverse shares.",
-
+  "account.reverseShares.title": "Partages inversés",
+  "account.reverseShares.description": "Un partage unversé vous permet de générer une URL unique qui permet à des utilisateurs externes de créer un partage.",
+  "account.reverseShares.title.empty": "Il n'y a rien ici 👀",
+  "account.reverseShares.description.empty": "Vous n'avez aucun partage inversé.",
   // showCreateReverseShareModal.tsx
   "account.reverseShares.modal.expiration.label": "Expiration",
   "account.reverseShares.modal.expiration.minute-singular": "Minute",
   "account.reverseShares.modal.expiration.minute-plural": "Minutes",
-  "account.reverseShares.modal.expiration.hour-singular": "Hour",
-  "account.reverseShares.modal.expiration.hour-plural": "Hours",
-  "account.reverseShares.modal.expiration.day-singular": "Day",
-  "account.reverseShares.modal.expiration.day-plural": "Days",
-  "account.reverseShares.modal.expiration.week-singular": "Week",
-  "account.reverseShares.modal.expiration.week-plural": "Weeks",
-  "account.reverseShares.modal.expiration.month-singular": "Month",
-  "account.reverseShares.modal.expiration.month-plural": "Months",
-  "account.reverseShares.modal.expiration.year-singular": "Year",
-  "account.reverseShares.modal.expiration.year-plural": "Years",
-
-  "account.reverseShares.modal.max-size.label": "Max share size",
-
-  "account.reverseShares.modal.send-email": "Send email notification",
-  "account.reverseShares.modal.send-email.description":
-    "Send an email notification when a share is created with this reverse share link.",
-
-  "account.reverseShares.modal.max-use.label": "Max uses",
-  "account.reverseShares.modal.max-use.description":
-    "The maximum amount of times this URL can be used to create a share.",
-  "account.reverseShare.never-expires": "This reverse share will never expire.",
-  "account.reverseShare.expires-on":
-    "This reverse share will expire on {expiration}.",
-
-  "account.reverseShares.table.no-shares": "No shares created yet",
-  "account.reverseShares.table.count.singular": "share",
-  "account.reverseShares.table.count.plural": "shares",
-  "account.reverseShares.table.shares": "Shares",
-  "account.reverseShares.table.remaining": "Remaining uses",
-  "account.reverseShares.table.max-size": "Max share size",
-  "account.reverseShares.table.expires": "Expires at",
-
-  "account.reverseShares.modal.reverse-share-link": "Reverse share link",
-
-  "account.reverseShares.modal.delete.title":
-    "Do you really want to delete this reverse share? If you do, the associated shares will be deleted as well.",
-  "account.reverseShares.modal.delete.description":
-    "Do you really want to delete this reverse share? If you do, the associated shares will be deleted as well.",
-
+  "account.reverseShares.modal.expiration.hour-singular": "Heure",
+  "account.reverseShares.modal.expiration.hour-plural": "Heures",
+  "account.reverseShares.modal.expiration.day-singular": "Jour",
+  "account.reverseShares.modal.expiration.day-plural": "Jours",
+  "account.reverseShares.modal.expiration.week-singular": "Semaine",
+  "account.reverseShares.modal.expiration.week-plural": "Semaines",
+  "account.reverseShares.modal.expiration.month-singular": "Mois",
+  "account.reverseShares.modal.expiration.month-plural": "Mois",
+  "account.reverseShares.modal.expiration.year-singular": "An",
+  "account.reverseShares.modal.expiration.year-plural": "Ans",
+  "account.reverseShares.modal.max-size.label": "Taille maximale du partage",
+  "account.reverseShares.modal.send-email": "Envoyer un mail de notification",
+  "account.reverseShares.modal.send-email.description": "Envoyer une notification par courriel lorsqu'un partage est créé depuis ce partage inversé.",
+  "account.reverseShares.modal.max-use.label": "Nombre d'utilisation max",
+  "account.reverseShares.modal.max-use.description": "Le nombre maximal de fois que cette URL peut être utilisée pour créer un partage.",
+  "account.reverseShare.never-expires": "Ce partage inversé n'expirera jamais.",
+  "account.reverseShare.expires-on": "Ce partage inversé expirera le {expiration}.",
+  "account.reverseShares.table.no-shares": "Aucun partage créé pour le moment",
+  "account.reverseShares.table.count.singular": "partage",
+  "account.reverseShares.table.count.plural": "partages",
+  "account.reverseShares.table.shares": "Partages",
+  "account.reverseShares.table.remaining": "Utilisations restantes",
+  "account.reverseShares.table.max-size": "Taille maximale du partage",
+  "account.reverseShares.table.expires": "Expire dans",
+  "account.reverseShares.modal.reverse-share-link": "Lien du partage inversé",
+  "account.reverseShares.modal.delete.title": "Supprimer le partage inversé",
+  "account.reverseShares.modal.delete.description": "Voulez-vous vraiment supprimer ce pot commun ? Si vous le faites, les partages qu'il contient seront également supprimés.",
   // END /account/reverseShares
-
   // /admin
   "admin.title": "Administration",
-  "admin.button.users": "User management",
-  "admin.button.config": "Configuration",
+  "admin.button.users": "Gestion des utilisateurs",
+  "admin.button.config": "Paramètres",
   "admin.version": "Version",
   // END /admin
-
   // /admin/users
-  "admin.users.title": "User management",
-  "admin.users.table.username": "Username",
-  "admin.users.table.email": "Email",
+  "admin.users.title": "Gestion des utilisateurs",
+  "admin.users.table.username": "Pseudo",
+  "admin.users.table.email": "Adresse mail",
   "admin.users.table.admin": "Admin",
-
-  "admin.users.edit.update.title": "Update user {username}",
-  "admin.users.edit.update.admin-privileges": "Admin privileges",
-  "admin.users.edit.update.change-password.title": "Change password",
-  "admin.users.edit.update.change-password.field": "New password",
-  "admin.users.edit.update.change-password.button": "Save new password",
-  "admin.users.edit.update.notify.password.success":
-    "Password changed successfully",
-
-  "admin.users.edit.delete.title": "Delete user {username}",
-  "admin.users.edit.delete.description":
-    "Do you really want to delete this user and all his shares?",
-
+  "admin.users.edit.update.title": "Modifier l'utilisateur {username}",
+  "admin.users.edit.update.admin-privileges": "Privilèges admin",
+  "admin.users.edit.update.change-password.title": "Changer le mot de passe",
+  "admin.users.edit.update.change-password.field": "Nouveau mot de passe",
+  "admin.users.edit.update.change-password.button": "Enregistrer le nouveau mot de passe",
+  "admin.users.edit.update.notify.password.success": "Le mot de passe a été modifié",
+  "admin.users.edit.delete.title": "Supprimer l'utilisateur {username}",
+  "admin.users.edit.delete.description": "Voulez-vous vraiment supprimer cet utilisateur et toutes ses partages ?",
   // showCreateUserModal.tsx
-  "admin.users.modal.create.title": "Create user",
-  "admin.users.modal.create.username": "Username",
-  "admin.users.modal.create.email": "Email",
-  "admin.users.modal.create.password": "Password",
-  "admin.users.modal.create.manual-password": "Set password manually",
-  "admin.users.modal.create.manual-password.description":
-    "If not checked, the user will receive an email with a link to set their password.",
-  "admin.users.modal.create.admin": "Admin privileges",
-  "admin.users.modal.create.admin.description":
-    "If checked, the user will be able to access the admin panel.",
-
+  "admin.users.modal.create.title": "Créer un utilisateur",
+  "admin.users.modal.create.username": "Surnom",
+  "admin.users.modal.create.email": "Courriel",
+  "admin.users.modal.create.password": "Mot de passe",
+  "admin.users.modal.create.manual-password": "Définir le mot de passe manuellement",
+  "admin.users.modal.create.manual-password.description": "S'il n'est pas coché, l'utilisateur recevra un mail avec un lien pour définir son mot de passe.",
+  "admin.users.modal.create.admin": "Privilèges admin",
+  "admin.users.modal.create.admin.description": "Si coché, l'utilisateur pourra accéder au panneau d'administration.",
   // END /admin/users
-
   // /upload
-  "upload.title": "Upload",
-
-  "upload.notify.generic-error":
-    "An error occurred while finishing your share.",
-  "upload.notify.count-failed": "{count} filed failed to upload. Trying again.",
-
+  "upload.title": "Téléverser",
+  "upload.notify.generic-error": "Une erreur est survenue durant le traitement de votre partage.",
+  "upload.notify.count-failed": "{count} fichier(s) n'a(ont) pas pu être envoyés. Veuillez réessayer.",
   // Dropzone.tsx
-  "upload.dropzone.title": "Upload files",
-  "upload.dropzone.description":
-    "Drag'n'drop files here to start your share. We can accept only files that are less than {maxSize} in total.",
-  "upload.dropzone.notify.file-too-big":
-    "Your files exceed the maximum share size of {maxSize}.",
-
+  "upload.dropzone.title": "Téléverser des fichiers",
+  "upload.dropzone.description": "Glissez-déposez des fichiers ici pour commencer votre partage. Ils ne peuvent avoir une taille supérieur à {maxSize} au total.",
+  "upload.dropzone.notify.file-too-big": "Vos fichiers dépassent la taille maximale de {maxSize}.",
   // FileList.tsx
-  "upload.filelist.name": "Name",
-  "upload.filelist.size": "Size",
-
+  "upload.filelist.name": "Nom",
+  "upload.filelist.size": "Taille",
   // showCreateUploadModal.tsx
-  "upload.modal.title": "Create Share",
-  "upload.modal.link.error.invalid":
-    "Can only contain letters, numbers, underscores, and hyphens",
-  "upload.modal.link.error.taken": "This link is already in use",
-  "upload.modal.not-signed-in": "You're not signed in",
-  "upload.modal.not-signed-in-description":
-    "You will be unable to delete your share manually and view the visitor count.",
-
-  "upload.modal.expires.never": "never",
-  "upload.modal.expires.never-long": "Never Expires",
-
-  "upload.modal.link.label": "Link",
-  "upload.modal.link.placeholder": "myAwesomeShare",
-
+  "upload.modal.title": "Créer un partage",
+  "upload.modal.link.error.invalid": "Ne peut contenir que des lettres, des chiffres, des tirets bas et des traits d'union",
+  "upload.modal.link.error.taken": "Ce lien est déjà utilisé",
+  "upload.modal.not-signed-in": "Vous n'êtes pas connecté",
+  "upload.modal.not-signed-in-description": "Vous ne pourrez pas supprimer votre partage manuellement et afficher le nombre de visiteurs.",
+  "upload.modal.expires.never": "jamais",
+  "upload.modal.expires.never-long": "N'expire jamais",
+  "upload.modal.link.label": "Lien",
+  "upload.modal.link.placeholder": "monSuperPartage",
   "upload.modal.expires.label": "Expiration",
   "upload.modal.expires.minute-singular": "Minute",
   "upload.modal.expires.minute-plural": "Minutes",
-  "upload.modal.expires.hour-singular": "Hour",
-  "upload.modal.expires.hour-plural": "Hours",
-  "upload.modal.expires.day-singular": "Day",
-  "upload.modal.expires.day-plural": "Days",
-  "upload.modal.expires.week-singular": "Week",
-  "upload.modal.expires.week-plural": "Weeks",
-  "upload.modal.expires.month-singular": "Month",
-  "upload.modal.expires.month-plural": "Months",
-  "upload.modal.expires.year-singular": "Year",
-  "upload.modal.expires.year-plural": "Years",
-
+  "upload.modal.expires.hour-singular": "Heure",
+  "upload.modal.expires.hour-plural": "Heures",
+  "upload.modal.expires.day-singular": "Jour",
+  "upload.modal.expires.day-plural": "Jours",
+  "upload.modal.expires.week-singular": "Semaine",
+  "upload.modal.expires.week-plural": "Semaines",
+  "upload.modal.expires.month-singular": "Mois",
+  "upload.modal.expires.month-plural": "Mois",
+  "upload.modal.expires.year-singular": "An",
+  "upload.modal.expires.year-plural": "Ans",
   "upload.modal.accordion.description.title": "Description",
-  "upload.modal.accordion.description.placeholder":
-    "Note for the recipients of this share",
-
-  "upload.modal.accordion.email.title": "Email recipients",
-  "upload.modal.accordion.email.placeholder": "Enter email recipients",
-  "upload.modal.accordion.email.invalid-email": "Invalid email address",
-
-  "upload.modal.accordion.security.title": "Security options",
-  "upload.modal.accordion.security.password.label": "Password protection",
-  "upload.modal.accordion.security.password.placeholder": "No password",
-  "upload.modal.accordion.security.max-views.label": "Maximum views",
-  "upload.modal.accordion.security.max-views.placeholder": "No limit",
-
+  "upload.modal.accordion.description.placeholder": "Note pour les destinataires de ce partage",
+  "upload.modal.accordion.email.title": "Destinataires du mail",
+  "upload.modal.accordion.email.placeholder": "Saisir les destinataires du mail",
+  "upload.modal.accordion.email.invalid-email": "Adresse mail invalide",
+  "upload.modal.accordion.security.title": "Options de sécurité",
+  "upload.modal.accordion.security.password.label": "Protection par mot de passe",
+  "upload.modal.accordion.security.password.placeholder": "Aucun mot de passe",
+  "upload.modal.accordion.security.max-views.label": "Nombre de vues maximum",
+  "upload.modal.accordion.security.max-views.placeholder": "Aucune limite",
   // showCompletedUploadModal.tsx
-  "upload.modal.completed.never-expires": "This share will never expire.",
-  "upload.modal.completed.expires-on":
-    "This share will expire on {expiration}.",
-  "upload.modal.completed.share-ready": "Share ready",
-
+  "upload.modal.completed.never-expires": "Ce partage n'expirera jamais.",
+  "upload.modal.completed.expires-on": "Ce partage expirera le {expiration}.",
+  "upload.modal.completed.share-ready": "Partage prêt",
   // END /upload
-
   // /share/[id]
-  "share.title": "Share {shareId}",
-  "share.description": "Look what I've shared with you!",
-  "share.error.visitor-limit-exceeded.title": "Visitor limit exceeded",
-  "share.error.visitor-limit-exceeded.description":
-    "The visitor limit from this share has been exceeded.",
-  "share.error.removed.title": "Share removed",
-  "share.error.not-found.title": "Share not found",
-  "share.error.not-found.description":
-    "The share you're looking for doesn't exist.",
-
-  "share.modal.password.title": "Password required",
-  "share.modal.password.description":
-    "To access this share please enter the password for the share.",
-  "share.modal.password": "Password",
-  "share.modal.error.invalid-password": "Invalid password",
-
-  "share.button.download-all": "Download all",
-  "share.notify.download-all-preparing":
-    "The share is preparing. Try again in a few minutes.",
-
-  "share.modal.file-link": "File link",
-  "share.table.name": "Name",
-  "share.table.size": "Size",
-
-  "share.modal.file-preview.error.not-supported.title": "Preview not supported",
-  "share.modal.file-preview.error.not-supported.description":
-    "A preview for thise file type is unsupported. Please download the file to view it.",
-
+  "share.title": "Partage {shareId}",
+  "share.description": "Regardez ce que j'ai partagé !",
+  "share.error.visitor-limit-exceeded.title": "Limite de visiteurs dépassée",
+  "share.error.visitor-limit-exceeded.description": "La limite de visiteurs de ce partage a été dépassée.",
+  "share.error.removed.title": "Partage supprimé",
+  "share.error.not-found.title": "Partage introuvable",
+  "share.error.not-found.description": "Le partage que vous cherchez n'existe pas.",
+  "share.modal.password.title": "Mot de passe requis",
+  "share.modal.password.description": "Pour accéder à ce partage, veuillez entrer le mot de passe du partage.",
+  "share.modal.password": "Mot de passe",
+  "share.modal.error.invalid-password": "Mot de passe incorrect",
+  "share.button.download-all": "Télécharger tout",
+  "share.notify.download-all-preparing": "Le partage est en préparation. Réessayez dans quelques minutes.",
+  "share.modal.file-link": "Lien du fichier",
+  "share.table.name": "Nom",
+  "share.table.size": "Taille",
+  "share.modal.file-preview.error.not-supported.title": "Aperçu non supporté",
+  "share.modal.file-preview.error.not-supported.description": "Un aperçu pour ce type de fichier n'est pas pris en charge. Veuillez télécharger le fichier pour le voir.",
   // END /share/[id]
-
   // /admin/config
-  "admin.config.title": "Configuration",
-  "admin.config.category.general": "General",
-  "admin.config.category.share": "Share",
-  "admin.config.category.email": "Email",
+  "admin.config.title": "Paramètres",
+  "admin.config.category.general": "Général",
+  "admin.config.category.share": "Partage",
+  "admin.config.category.email": "Adresse mail",
   "admin.config.category.smtp": "SMTP",
-
-  "admin.config.general.app-name": "App name",
-  "admin.config.general.app-name.description": "Name of the application",
-  "admin.config.general.app-url": "App URL",
-  "admin.config.general.app-url.description":
-    "On which URL Pingvin Share is available",
-  "admin.config.general.show-home-page": "Show home page",
-  "admin.config.general.show-home-page.description":
-    "Whether to show the home page",
+  "admin.config.general.app-name": "Nom de l'app",
+  "admin.config.general.app-name.description": "Nom de l'application",
+  "admin.config.general.app-url": "URL de l’application",
+  "admin.config.general.app-url.description": "Depuis quel URL le partage Pingvin est disponible",
+  "admin.config.general.show-home-page": "Afficher la page d'accueil",
+  "admin.config.general.show-home-page.description": "Afficher ou non la page d'accueil",
   "admin.config.general.logo": "Logo",
-  "admin.config.general.logo.description":
-    "Change your logo by uploading a new image. The image must be a PNG and should have the format 1:1.",
-  "admin.config.general.logo.placeholder": "Pick image",
-
-  "admin.config.email.enable-share-email-recipients":
-    "Enable share email recipients",
-  "admin.config.email.enable-share-email-recipients.description":
-    "Whether to allow emails to share recipients. Only enable this if you have enabled SMTP.",
-  "admin.config.email.share-recipients-subject": "Share recipients subject",
-  "admin.config.email.share-recipients-subject.description":
-    "Subject of the email which gets sent to the share recipients.",
-  "admin.config.email.share-recipients-message": "Share recipients message",
-  "admin.config.email.share-recipients-message.description":
-    "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n The variables will be replaced with the actual values.",
-  "admin.config.email.reverse-share-subject": "Reverse share subject",
-  "admin.config.email.reverse-share-subject.description":
-    "Subject of the email which gets sent when someone created a share with your reverse share link.",
-  "admin.config.email.reverse-share-message": "Reverse share message",
-  "admin.config.email.reverse-share-message.description":
-    "Message which gets sent when someone created a share with your reverse share link. {shareUrl} will be replaced with the creator's name and the share URL.",
-  "admin.config.email.reset-password-subject": "Reset password subject",
-  "admin.config.email.reset-password-subject.description":
-    "Subject of the email which gets sent when a user requests a password reset.",
-  "admin.config.email.reset-password-message": "Reset password message",
-  "admin.config.email.reset-password-message.description":
-    "Message which gets sent when a user requests a password reset. {url} will be replaced with the reset password URL.",
-  "admin.config.email.invite-subject": "Invite subject",
-  "admin.config.email.invite-subject.description":
-    "Subject of the email which gets sent when an admin invites a user.",
-  "admin.config.email.invite-message": "Invite message",
-  "admin.config.email.invite-message.description":
-    "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL and {password} with the password.",
-  "admin.config.share.allow-registration": "Allow registration",
-  "admin.config.share.allow-registration.description":
-    "Whether registration is allowed",
-  "admin.config.share.allow-unauthenticated-shares":
-    "Allow unauthenticated shares",
-  "admin.config.share.allow-unauthenticated-shares.description":
-    "Whether unauthorized users can create shares",
-  "admin.config.share.max-size": "Max size",
-  "admin.config.share.max-size.description": "Maximum share size in bytes",
-
-  "admin.config.smtp.enabled": "Enabled",
-  "admin.config.smtp.enabled.description":
-    "Whether SMTP is enabled. Only set this to true if you entered the host, port, email, user and password of your SMTP server.",
-  "admin.config.smtp.host": "Host",
-  "admin.config.smtp.host.description": "Host of the SMTP server",
+  "admin.config.general.logo.description": "Changez votre logo en téléchargeant une nouvelle image. L'image doit être un PNG et doit avoir un ratio 1:1.",
+  "admin.config.general.logo.placeholder": "Sélectionner une image",
+  "admin.config.email.enable-share-email-recipients": "Activer les destinataires du courriel du partage",
+  "admin.config.email.enable-share-email-recipients.description": "Autorise les mails des destinataires du partage. N'activez cette option que si vous avez activé SMTP.",
+  "admin.config.email.share-recipients-subject": "Sujet des destinataires du partage",
+  "admin.config.email.share-recipients-subject.description": "Sujet du mail qui est envoyé aux destinataires du partage.",
+  "admin.config.email.share-recipients-message": "Message des destinataires du partage",
+  "admin.config.email.share-recipients-message.description": "Message qui est envoyé aux destinataires du partage. Valeurs possibles:\n {creator} - Le pseudo de l'auteur du partage\n {shareUrl} - L'URL du partage\n {desc} - La description du partage\n {expires} - La date d'expiration du partage\n Les variables seront remplacées par les vraies valeurs.",
+  "admin.config.email.reverse-share-subject": "Sujet du partage inversé",
+  "admin.config.email.reverse-share-subject.description": "Sujet du courriel qui est envoyé lorsque quelqu'un a créé un partage avec le lien de votre pot commun.",
+  "admin.config.email.reverse-share-message": "Message du partage inversé",
+  "admin.config.email.reverse-share-message.description": "Message qui est envoyé lorsque quelqu'un créé un partage avec le lien de votre partage inversé. {shareUrl} sera remplacé par le nom du créateur et l'URL de partage.",
+  "admin.config.email.reset-password-subject": "Sujet de réinitialisation du mot de passe",
+  "admin.config.email.reset-password-subject.description": "Sujet du mail qui est envoyé lorsqu'un utilisateur demande une réinitialisation du mot de passe.",
+  "admin.config.email.reset-password-message": "Message de réinitialisation du mot de passe",
+  "admin.config.email.reset-password-message.description": "Message qui est envoyé lorsqu'un utilisateur demande à réinitialiser son mot de passe. {url} sera remplacé par l'URL de réinitialisation du mot de passe.",
+  "admin.config.email.invite-subject": "Sujet de l'invitation",
+  "admin.config.email.invite-subject.description": "Sujet du courriel qui est envoyé lorsqu'un administrateur invite un utilisateur.",
+  "admin.config.email.invite-message": "Message de l'invitation",
+  "admin.config.email.invite-message.description": "Message qui est envoyé lorsqu'un administrateur invite un utilisateur. {url} sera remplacé par l'URL d'invitation et {password} avec le mot de passe.",
+  "admin.config.share.allow-registration": "Autoriser les inscriptions",
+  "admin.config.share.allow-registration.description": "Autorise l'inscription",
+  "admin.config.share.allow-unauthenticated-shares": "Autoriser les partages non authentifiés",
+  "admin.config.share.allow-unauthenticated-shares.description": "Si les utilisateurs non connectés peuvent créer des partages",
+  "admin.config.share.max-size": "Taille max",
+  "admin.config.share.max-size.description": "Taille maximale du fichier en octets",
+  "admin.config.smtp.enabled": "Activé",
+  "admin.config.smtp.enabled.description": "Active SMTP. Activez ceci uniquement si vous avez saisit l'hôte, le port, le courriel, l'utilisateur et le mot de passe de votre serveur SMTP.",
+  "admin.config.smtp.host": "Hôte",
+  "admin.config.smtp.host.description": "Hôte du serveur SMTP",
   "admin.config.smtp.port": "Port",
-  "admin.config.smtp.port.description": "Port of the SMTP server",
-  "admin.config.smtp.email": "Email",
-  "admin.config.smtp.email.description":
-    "Email address which the emails get sent from",
-  "admin.config.smtp.username": "Username",
-  "admin.config.smtp.username.description": "Username of the SMTP server",
-  "admin.config.smtp.password": "Password",
-  "admin.config.smtp.password.description": "Password of the SMTP server",
-  "admin.config.smtp.button.test": "Send test email",
-
+  "admin.config.smtp.port.description": "Port du serveur SMTP",
+  "admin.config.smtp.email": "Adresse mail",
+  "admin.config.smtp.email.description": "Adresse à partir de laquelle les mails sont envoyés",
+  "admin.config.smtp.username": "Nom d'utilisateur",
+  "admin.config.smtp.username.description": "Nom d'utilisateur du serveur SMTP",
+  "admin.config.smtp.password": "Mot de passe",
+  "admin.config.smtp.password.description": "Mot de passe du serveur SMTP",
+  "admin.config.smtp.button.test": "Envoyer un mail de test",
   // 404
   "404.title": "404",
-  "404.description": "Oops this page doesn't exist.",
-  "404.button.home": "Gring me back home",
-
+  "404.description": "Désolé, mais cette page n’existe pas.",
+  "404.button.home": "Retour à l'accueil",
   // Common translations
-  "common.button.save": "Save",
-  "common.button.create": "Create",
-  "common.button.submit": "Submit",
-  "common.button.delete": "Delete",
-  "common.button.cancel": "Cancel",
-  "common.button.confirm": "Confirm",
-  "common.button.disable": "Disable",
-  "common.button.share": "Share",
-  "common.button.generate": "Generate",
-  "common.button.done": "Done",
-  "common.text.link": "Link",
-  "common.text.or": "or",
-  "common.button.go-back": "Go back",
-  "common.notify.copied": "Your link was copied to the clipboard",
-
-  "common.error": "Error",
-  "common.error.unknown": "An unknown error occurred",
-  "common.error.invalid-email": "Invalid email address",
-  "common.error.too-short": "Must be at least {length} characters",
-  "common.error.too-long": "Must be at most {length} characters",
-  "common.error.exact-length": "Must be exactly {length} characters",
-  "common.error.invalid-number": "Must be a number",
-  "common.error.field-required": "This field is required",
+  "common.button.save": "Sauvegarder",
+  "common.button.create": "Créer",
+  "common.button.submit": "Envoyer",
+  "common.button.delete": "Supprimer",
+  "common.button.cancel": "Annuler",
+  "common.button.confirm": "Confirmer",
+  "common.button.disable": "Désactiver",
+  "common.button.share": "Partager",
+  "common.button.generate": "Générer",
+  "common.button.done": "Terminer",
+  "common.text.link": "Lien",
+  "common.text.or": "ou",
+  "common.button.go-back": "Précédent",
+  "common.notify.copied": "Votre lien a été copié dans le presse-papiers",
+  "common.error": "Erreur",
+  "common.error.unknown": "Une erreur inconnue est survenue",
+  "common.error.invalid-email": "Courriel invalid",
+  "common.error.too-short": "Doit comporter au moins {length} caractères",
+  "common.error.too-long": "Doit comporter au plus {length} caractères",
+  "common.error.exact-length": "Doit comporter exactement {length} caractères",
+  "common.error.invalid-number": "Doit être un nombre",
+  "common.error.field-required": "Ce champ est obligatoire"
 };
