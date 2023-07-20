@@ -1,21 +1,21 @@
 export default {
   // Navbar
-  "navbar.upload": "Upload",
-  "navbar.signin": "Sign in",
-  "navbar.home": "Home",
-  "navbar.signup": "Sign Up",
-  "navbar.links.shares": "My shares",
+  "navbar.upload": "Hochladen",
+  "navbar.signin": "Anmelden",
+  "navbar.home": "Startseite",
+  "navbar.signup": "Registrieren",
+  "navbar.links.shares": "Meine Freigaben",
   "navbar.links.reverse": "Reverse shares",
-  "navbar.avatar.account": "My account",
+  "navbar.avatar.account": "Mein Konto",
   "navbar.avatar.admin": "Administration",
-  "navbar.avatar.signout": "Sign out",
+  "navbar.avatar.signout": "Abmelden",
   // END navbar
   // /
-  "home.title": "A <h>self-hosted</h> file sharing platform.",
+  "home.title": "Eine <h>selbst gehostete</h> Dateifreigabe-Plattform.",
   "home.description": "Do you really want to give your personal files in the hand of third parties like WeTransfer?",
-  "home.bullet.a.name": "Self-Hosted",
+  "home.bullet.a.name": "Selbst gehostet",
   "home.bullet.a.description": "Host Pingvin Share on your own machine.",
-  "home.bullet.b.name": "Privacy",
+  "home.bullet.b.name": "Privatsphäre",
   "home.bullet.b.description": "Your files are your files and should never get into the hands of third parties.",
   "home.bullet.c.name": "No annoying file size limit",
   "home.bullet.c.description": "Upload as big files as you want. Only your hard drive will be your limit.",
@@ -24,7 +24,7 @@ export default {
   // END /
   // /auth/signin
   "signin.title": "Willkommen zurück",
-  "signin.description": "Du hast bisher kein Konto?",
+  "signin.description": "Du hast noch kein Konto?",
   "signin.button.signup": "Registrieren",
   "signin.input.email-or-username": "Email oder Benutzername",
   "signin.input.email-or-username.placeholder": "Deine Email Adresse oder Benutzername",
@@ -315,6 +315,6 @@ export default {
   "common.error.too-short": "Must be at least {length} characters",
   "common.error.too-long": "Must be at most {length} characters",
   "common.error.exact-length": "Must be exactly {length} characters",
-  "common.error.invalid-number": "Must be a number",
-  "common.error.field-required": "This field is required"
+  "common.error.invalid-number": "Muss eine Zahl sein",
+  "common.error.field-required": "Dieses Feld ist erforderlich"
 };
