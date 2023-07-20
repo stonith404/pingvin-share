@@ -65,7 +65,7 @@ export default {
   "account.notify.password.success": "Adgangskoden er ændret",
   "account.card.security.title": "Sikkerhed",
   "account.card.security.totp.enable.description": "Indtast din nuværende adgangskode for at begynde opsætningen af 2-faktor login",
-  "account.card.security.totp.disable.description": "Indtast din nuværende adgangskode for at begynde opsætningen af 2-faktor login",
+  "account.card.security.totp.disable.description": "Enter your current password to disable TOTP",
   "account.card.security.totp.button.start": "Start",
   "account.modal.totp.title": "Aktiver 2-faktor login",
   "account.modal.totp.step1": "Trin 1: Tilføj din 2-faktor Authenticator",
@@ -91,7 +91,7 @@ export default {
   "account.shares.title.empty": "Der er tomt her 👀",
   "account.shares.description.empty": "Du har ingen delinger.",
   "account.shares.button.create": "Opret en",
-  "account.shares.info.title": "Delings informationer",
+  "account.shares.info.title": "Share informations",
   "account.shares.table.id": "ID",
   "account.shares.table.name": "Navn",
   "account.shares.table.description": "Beskrivelse",
@@ -100,7 +100,7 @@ export default {
   "account.shares.table.createdAt": "Oprettet d.",
   "account.shares.table.size": "Størrelse",
   "account.shares.modal.share-link": "Del link",
-  "account.shares.modal.delete.title": "Slet {share}",
+  "account.shares.modal.delete.title": "Delete share {share}",
   "account.shares.modal.delete.description": "Ønsker du virkelig at slette denne deling?",
   // END /account/shares
   // /account/reverseShares
@@ -137,7 +137,7 @@ export default {
   "account.reverseShares.table.max-size": "Maksimal størrelse for deling",
   "account.reverseShares.table.expires": "Udløber d",
   "account.reverseShares.modal.reverse-share-link": "Omvendt deling",
-  "account.reverseShares.modal.delete.title": "Ønsker du virkelig at slette denne omvendte deling? Hvis du gør det, vil de tilknyttede delinger også blive slettet.",
+  "account.reverseShares.modal.delete.title": "Delete reverse share",
   "account.reverseShares.modal.delete.description": "Ønsker du virkelig at slette denne omvendte deling? Hvis du gør det, vil de tilknyttede delinger også blive slettet.",
   // END /account/reverseShares
   // /admin
@@ -172,7 +172,7 @@ export default {
   // /upload
   "upload.title": "Upload",
   "upload.notify.generic-error": "Der opstod en fejl under afslutningen af din deling.",
-  "upload.notify.count-failed": "{count} filed failed to upload. Trying again.",
+  "upload.notify.count-failed": "{count} files failed to upload. Trying again.",
   // Dropzone.tsx
   "upload.dropzone.title": "Upload filer",
   "upload.dropzone.description": "Drag'n'drop files here to start your share. We can accept only files that are less than {maxSize} in total.",
@@ -258,7 +258,7 @@ export default {
   "admin.config.email.share-recipients-subject": "Share recipients subject",
   "admin.config.email.share-recipients-subject.description": "Subject of the email which gets sent to the share recipients.",
   "admin.config.email.share-recipients-message": "Share recipients message",
-  "admin.config.email.share-recipients-message.description": "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n The variables will be replaced with the actual values.",
+  "admin.config.email.share-recipients-message.description": "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n The variables will be replaced with the actual value.",
   "admin.config.email.reverse-share-subject": "Reverse share subject",
   "admin.config.email.reverse-share-subject.description": "Subject of the email which gets sent when someone created a share with your reverse share link.",
   "admin.config.email.reverse-share-message": "Reverse share message",
@@ -274,7 +274,7 @@ export default {
   "admin.config.share.allow-registration": "Tillad oprettelser",
   "admin.config.share.allow-registration.description": "Om alle skal kunne oprette en bruger",
   "admin.config.share.allow-unauthenticated-shares": "Tillad uautoriserede delinger",
-  "admin.config.share.allow-unauthenticated-shares.description": "Om besøgende som ikke er logget ind, skal kunne oprette delinger",
+  "admin.config.share.allow-unauthenticated-shares.description": "Whether unauthenticated users can create shares",
   "admin.config.share.max-size": "Maks. størrelse",
   "admin.config.share.max-size.description": "Maksimal filstørrelse i bytes",
   "admin.config.smtp.enabled": "Aktiveret",
@@ -293,7 +293,7 @@ export default {
   // 404
   "404.title": "404",
   "404.description": "Ups! Denne side findes ikke.",
-  "404.button.home": "Gå tilbage",
+  "404.button.home": "Bring me back home",
   // Common translations
   "common.button.save": "Gem",
   "common.button.create": "Opret",
