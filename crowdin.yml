@@ -1,0 +1,3 @@
+files:
+  - source: /frontend/src/i18n/translations/en.ts
+    translation: /%original_path%/%two_letters_code%.ts
