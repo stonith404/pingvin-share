@@ -26,11 +26,7 @@ import GlobalStyle from "../styles/global.style";
 import globalStyle from "../styles/mantine.style";
 import Config from "../types/config.type";
 import { CurrentUser } from "../types/user.type";
-import {
-  getLocaleByCode,
-  isLanguageSupported,
-  setLanguageCookie,
-} from "../utils/i18n.util";
+import i18nUtil from "../utils/i18n.util";
 import userPreferences from "../utils/userPreferences.util";
 
 const excludeDefaultLayoutRoutes = ["/admin/config/[category]"];
@@ -57,9 +53,10 @@ function App({ Component, pageProps }: AppProps) {
   }, []);
 
   useEffect(() => {
+    if (!pageProps.language) return;
     const cookieLanguage = getCookie("language");
     if (pageProps.language != cookieLanguage) {
-      setLanguageCookie(pageProps.language);
+      i18nUtil.setLanguageCookie(pageProps.language);
       if (cookieLanguage) location.reload();
     }
   }, []);
@@ -84,7 +81,7 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <IntlProvider
-      messages={getLocaleByCode(language.current)?.messages}
+      messages={i18nUtil.getLocaleByCode(language.current)?.messages}
       locale={language.current}
       defaultLocale={LOCALES.ENGLISH.code}
     >
@@ -167,12 +164,11 @@ App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
 
     pageProps.route = ctx.req.url;
 
-    const requestLanguage =
-      ctx.req.headers["accept-language"]?.substring(0, 2) ?? "en";
+    const requestLanguage = i18nUtil.getLanguageFromAcceptHeader(
+      ctx.req.headers["accept-language"]
+    );
 
-    pageProps.language =
-      ctx.req.cookies["language"] ??
-      (isLanguageSupported(requestLanguage) ? requestLanguage : "en");
+    pageProps.language = ctx.req.cookies["language"] ?? requestLanguage;
   }
   return { pageProps };
 };
