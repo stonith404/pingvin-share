@@ -65,7 +65,7 @@ export default {
   "account.notify.password.success": "Le mot de passe a été modifié avec succès",
   "account.card.security.title": "Sécurité",
   "account.card.security.totp.enable.description": "Entrez votre mot de passe actuel pour commencer à activer TOTP",
-  "account.card.security.totp.disable.description": "Enter your current password to disable TOTP",
+  "account.card.security.totp.disable.description": "Entrez votre mot de passe pour désactiver TOTP",
   "account.card.security.totp.button.start": "Commencer",
   "account.modal.totp.title": "Activer TOTP",
   "account.modal.totp.step1": "Étape 1 : Ajouter votre authentificateur",
@@ -91,7 +91,7 @@ export default {
   "account.shares.title.empty": "Il n'y a rien ici 👀",
   "account.shares.description.empty": "Vous n’avez aucun partage.",
   "account.shares.button.create": "Créez-en un",
-  "account.shares.info.title": "Share informations",
+  "account.shares.info.title": "Détails du partage",
   "account.shares.table.id": "ID",
   "account.shares.table.name": "Nom",
   "account.shares.table.description": "Description",
@@ -100,7 +100,7 @@ export default {
   "account.shares.table.createdAt": "Créé le",
   "account.shares.table.size": "Taille",
   "account.shares.modal.share-link": "Lien de partage",
-  "account.shares.modal.delete.title": "Delete share {share}",
+  "account.shares.modal.delete.title": "Supprimer le partage {share}",
   "account.shares.modal.delete.description": "Voulez-vous vraiment supprimer ce partage ?",
   // END /account/shares
   // /account/reverseShares
@@ -137,7 +137,7 @@ export default {
   "account.reverseShares.table.max-size": "Taille maximale du partage",
   "account.reverseShares.table.expires": "Expire dans",
   "account.reverseShares.modal.reverse-share-link": "Lien du partage inversé",
-  "account.reverseShares.modal.delete.title": "Delete reverse share",
+  "account.reverseShares.modal.delete.title": "Supprimer le partage inversé",
   "account.reverseShares.modal.delete.description": "Voulez-vous vraiment supprimer ce pot commun ? Si vous le faites, les partages qu'il contient seront également supprimés.",
   // END /account/reverseShares
   // /admin
@@ -172,7 +172,7 @@ export default {
   // /upload
   "upload.title": "Téléverser",
   "upload.notify.generic-error": "Une erreur est survenue durant le traitement de votre partage.",
-  "upload.notify.count-failed": "{count} files failed to upload. Trying again.",
+  "upload.notify.count-failed": "{count} fichier(s) n'a(ont) pas pu être envoyés. Veuillez réessayer.",
   // Dropzone.tsx
   "upload.dropzone.title": "Téléverser des fichiers",
   "upload.dropzone.description": "Glissez-déposez des fichiers ici pour commencer votre partage. Ils ne peuvent avoir une taille supérieur à {maxSize} au total.",
@@ -258,7 +258,7 @@ export default {
   "admin.config.email.share-recipients-subject": "Sujet des destinataires du partage",
   "admin.config.email.share-recipients-subject.description": "Sujet du mail qui est envoyé aux destinataires du partage.",
   "admin.config.email.share-recipients-message": "Message des destinataires du partage",
-  "admin.config.email.share-recipients-message.description": "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n The variables will be replaced with the actual value.",
+  "admin.config.email.share-recipients-message.description": "Message qui est envoyé aux destinataires du partage. Valeurs possibles:\n {creator} - Le pseudo de l'auteur du partage\n {shareUrl} - L'URL du partage\n {desc} - La description du partage\n {expires} - La date d'expiration du partage\n Les variables seront remplacées par les vraies valeurs.",
   "admin.config.email.reverse-share-subject": "Sujet du partage inversé",
   "admin.config.email.reverse-share-subject.description": "Sujet du courriel qui est envoyé lorsque quelqu'un a créé un partage avec le lien de votre pot commun.",
   "admin.config.email.reverse-share-message": "Message du partage inversé",
@@ -274,7 +274,7 @@ export default {
   "admin.config.share.allow-registration": "Autoriser les inscriptions",
   "admin.config.share.allow-registration.description": "Autorise l'inscription",
   "admin.config.share.allow-unauthenticated-shares": "Autoriser les partages non authentifiés",
-  "admin.config.share.allow-unauthenticated-shares.description": "Whether unauthenticated users can create shares",
+  "admin.config.share.allow-unauthenticated-shares.description": "Si les utilisateurs non connectés peuvent créer des partages",
   "admin.config.share.max-size": "Taille max",
   "admin.config.share.max-size.description": "Taille maximale du fichier en octets",
   "admin.config.smtp.enabled": "Activé",
@@ -293,7 +293,7 @@ export default {
   // 404
   "404.title": "404",
   "404.description": "Désolé, mais cette page n’existe pas.",
-  "404.button.home": "Bring me back home",
+  "404.button.home": "Retour à l'accueil",
   // Common translations
   "common.button.save": "Sauvegarder",
   "common.button.create": "Créer",
