@@ -1,9 +1,9 @@
 export default {
   // Navbar
   "navbar.upload": "Upload",
-  "navbar.signin": "Sign in",
-  "navbar.home": "Home",
-  "navbar.signup": "Sign Up",
+  "navbar.signin": "Se connecter",
+  "navbar.home": "Accueil",
+  "navbar.signup": "S'inscrire",
   "navbar.links.shares": "My shares",
   "navbar.links.reverse": "Reverse shares",
   "navbar.avatar.account": "My account",
