@@ -19,6 +19,8 @@ import { byteToHumanSizeString } from "../../utils/fileSize.util";
 import toast from "../../utils/toast.util";
 import TableSortIcon, { TableSort } from "../core/SortIcon";
 import showFilePreviewModal from "./modals/showFilePreviewModal";
+import useTranslate from "../../hooks/useTranslate.hook";
+import { FormattedMessage } from "react-intl";
 
 const FileList = ({
   files,
@@ -34,6 +36,7 @@ const FileList = ({
   const clipboard = useClipboard();
   const config = useConfig();
   const modals = useModals();
+  const t = useTranslate();
 
   const [sort, setSort] = useState<TableSort>({
     property: undefined,
@@ -68,10 +71,10 @@ const FileList = ({
 
     if (window.isSecureContext) {
       clipboard.copy(link);
-      toast.success("Your file link was copied to the keyboard.");
+      toast.success(t("common.notify.copied"));
     } else {
       modals.openModal({
-        title: "File link",
+        title: t("share.modal.file-link"),
         children: (
           <Stack align="stretch">
             <TextInput variant="filled" value={link} />
@@ -90,13 +93,13 @@ const FileList = ({
           <tr>
             <th>
               <Group spacing="xs">
-                Name
+                <FormattedMessage id="share.table.name" />
                 <TableSortIcon sort={sort} setSort={setSort} property="name" />
               </Group>
             </th>
             <th>
               <Group spacing="xs">
-                Size
+                <FormattedMessage id="share.table.size" />
                 <TableSortIcon sort={sort} setSort={setSort} property="size" />
               </Group>
             </th>

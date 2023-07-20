@@ -1,5 +1,10 @@
 {
-  "extends": ["eslint-config-next", "eslint:recommended", "prettier"],
+  "extends": [
+    "next/babel",
+    "eslint-config-next",
+    "eslint:recommended",
+    "prettier"
+  ],
   "plugins": ["react"],
   "rules": {
     "quotes": ["warn", "double", { "allowTemplateLiterals": true }],

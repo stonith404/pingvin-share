@@ -1,6 +1,7 @@
 import { Button, Stack, Text, Textarea } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { useState } from "react";
+import { FormattedMessage } from "react-intl";
 import useUser from "../../../hooks/user.hook";
 import configService from "../../../services/config.service";
 import toast from "../../../utils/toast.util";
@@ -65,7 +66,7 @@ const TestEmailButton = ({
         }
       }}
     >
-      Send test email
+      <FormattedMessage id="admin.config.smtp.button.test" />
     </Button>
   );
 };

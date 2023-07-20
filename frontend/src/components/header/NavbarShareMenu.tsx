@@ -1,6 +1,7 @@
 import { ActionIcon, Menu } from "@mantine/core";
 import Link from "next/link";
 import { TbArrowLoopLeft, TbLink } from "react-icons/tb";
+import { FormattedMessage } from "react-intl";
 
 const NavbarShareMneu = () => {
   return (
@@ -12,14 +13,14 @@ const NavbarShareMneu = () => {
       </Menu.Target>
       <Menu.Dropdown>
         <Menu.Item component={Link} href="/account/shares" icon={<TbLink />}>
-          My shares
+          <FormattedMessage id="navbar.links.shares" />
         </Menu.Item>
         <Menu.Item
           component={Link}
           href="/account/reverseShares"
           icon={<TbArrowLoopLeft />}
         >
-          Reverse shares
+          <FormattedMessage id="navbar.links.reverse" />
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>

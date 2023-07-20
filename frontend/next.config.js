@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-
 const { version } = require('./package.json');
 
 const withPWA = require("next-pwa")({

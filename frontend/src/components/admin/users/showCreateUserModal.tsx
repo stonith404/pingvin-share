@@ -8,7 +8,9 @@ import {
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
+import { FormattedMessage } from "react-intl";
 import * as yup from "yup";
+import useTranslate from "../../../hooks/useTranslate.hook";
 import userService from "../../../services/user.service";
 import toast from "../../../utils/toast.util";
 
@@ -34,6 +36,7 @@ const Body = ({
   smtpEnabled: boolean;
   getUsers: () => void;
 }) => {
+  const t = useTranslate();
   const form = useForm({
     initialValues: {
       username: "",
@@ -44,9 +47,14 @@ const Body = ({
     },
     validate: yupResolver(
       yup.object().shape({
-        email: yup.string().email(),
-        username: yup.string().min(3),
-        password: yup.string().min(8).optional(),
+        email: yup.string().email(t("common.error.invalid-email")),
+        username: yup
+          .string()
+          .min(3, t("common.error.too-short", { length: 3 })),
+        password: yup
+          .string()
+          .min(8, t("common.error.too-short", { length: 8 }))
+          .optional(),
       })
     ),
   });
@@ -65,14 +73,22 @@ const Body = ({
         })}
       >
         <Stack>
-          <TextInput label="Username" {...form.getInputProps("username")} />
-          <TextInput label="Email" {...form.getInputProps("email")} />
+          <TextInput
+            label={t("admin.users.modal.create.username")}
+            {...form.getInputProps("username")}
+          />
+          <TextInput
+            label={t("admin.users.modal.create.email")}
+            {...form.getInputProps("email")}
+          />
           {smtpEnabled && (
             <Switch
               mt="xs"
               labelPosition="left"
-              label="Set password manually"
-              description="If not checked, the user will receive an email with a link to set their password."
+              label={t("admin.users.modal.create.manual-password")}
+              description={t(
+                "admin.users.modal.create.manual-password.description"
+              )}
               {...form.getInputProps("setPasswordManually", {
                 type: "checkbox",
               })}
@@ -80,7 +96,7 @@ const Body = ({
           )}
           {(form.values.setPasswordManually || !smtpEnabled) && (
             <PasswordInput
-              label="Password"
+              label={t("admin.users.modal.create.password")}
               {...form.getInputProps("password")}
             />
           )}
@@ -93,12 +109,14 @@ const Body = ({
             }}
             mt="xs"
             labelPosition="left"
-            label="Admin privileges"
-            description="If checked, the user will be able to access the admin panel."
+            label={t("admin.users.modal.create.admin")}
+            description={t("admin.users.modal.create.admin.description")}
             {...form.getInputProps("isAdmin", { type: "checkbox" })}
           />
           <Group position="right">
-            <Button type="submit">Create</Button>
+            <Button type="submit">
+              <FormattedMessage id="common.button.create" />
+            </Button>
           </Group>
         </Stack>
       </form>

@@ -9,7 +9,11 @@ import {
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
+import { FormattedMessage } from "react-intl";
 import * as yup from "yup";
+import useTranslate, {
+  translateOutsideContext,
+} from "../../../hooks/useTranslate.hook";
 import userService from "../../../services/user.service";
 import User from "../../../types/user.type";
 import toast from "../../../utils/toast.util";
@@ -19,8 +23,9 @@ const showUpdateUserModal = (
   user: User,
   getUsers: () => void
 ) => {
+  const t = translateOutsideContext();
   return modals.openModal({
-    title: `Update ${user.username}`,
+    title: t("admin.users.edit.update.title", { username: user.username }),
     children: <Body user={user} modals={modals} getUsers={getUsers} />,
   });
 };
@@ -34,6 +39,8 @@ const Body = ({
   user: User;
   getUsers: () => void;
 }) => {
+  const t = useTranslate();
+
   const accountForm = useForm({
     initialValues: {
       username: user.username,
@@ -42,8 +49,10 @@ const Body = ({
     },
     validate: yupResolver(
       yup.object().shape({
-        email: yup.string().email(),
-        username: yup.string().min(3),
+        email: yup.string().email(t("common.error.invalid-email")),
+        username: yup
+          .string()
+          .min(3, t("common.error.too-short", { length: 3 })),
       })
     ),
   });
@@ -54,7 +63,9 @@ const Body = ({
     },
     validate: yupResolver(
       yup.object().shape({
-        password: yup.string().min(8),
+        password: yup
+          .string()
+          .min(8, t("common.error.too-short", { length: 8 })),
       })
     ),
   });
@@ -75,21 +86,26 @@ const Body = ({
       >
         <Stack>
           <TextInput
-            label="Username"
+            label={t("admin.users.table.username")}
             {...accountForm.getInputProps("username")}
           />
-          <TextInput label="Email" {...accountForm.getInputProps("email")} />
+          <TextInput
+            label={t("admin.users.table.email")}
+            {...accountForm.getInputProps("email")}
+          />
           <Switch
             mt="xs"
             labelPosition="left"
-            label="Admin privileges"
+            label={t("admin.users.edit.update.admin-privileges")}
             {...accountForm.getInputProps("isAdmin", { type: "checkbox" })}
           />
         </Stack>
       </form>
       <Accordion>
         <Accordion.Item sx={{ borderBottom: "none" }} value="changePassword">
-          <Accordion.Control px={0}>Change password</Accordion.Control>
+          <Accordion.Control px={0}>
+            <FormattedMessage id="admin.users.edit.update.change-password.title" />
+          </Accordion.Control>
           <Accordion.Panel>
             <form
               onSubmit={passwordForm.onSubmit(async (values) => {
@@ -97,17 +113,21 @@ const Body = ({
                   .update(user.id, {
                     password: values.password,
                   })
-                  .then(() => toast.success("Password changed successfully"))
+                  .then(() =>
+                    toast.success(
+                      t("admin.users.edit.update.notify.password.success")
+                    )
+                  )
                   .catch(toast.axiosError);
               })}
             >
               <Stack>
                 <PasswordInput
-                  label="New password"
+                  label={t("admin.users.edit.update.change-password.field")}
                   {...passwordForm.getInputProps("password")}
                 />
                 <Button variant="light" type="submit">
-                  Save new password
+                  <FormattedMessage id="admin.users.edit.update.change-password.button" />
                 </Button>
               </Stack>
             </form>
@@ -116,7 +136,7 @@ const Body = ({
       </Accordion>
       <Group position="right">
         <Button type="submit" form="accountForm">
-          Save
+          <FormattedMessage id="common.button.save" />
         </Button>
       </Group>
     </Stack>

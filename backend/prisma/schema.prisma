@@ -136,7 +136,6 @@ model Config {
   type         String
   defaultValue String @default("")
   value        String?
-  description  String
   obscured     Boolean @default(false)
   secret       Boolean @default(true)
   locked       Boolean @default(false)

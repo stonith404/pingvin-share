@@ -15,7 +15,9 @@ import { useForm, yupResolver } from "@mantine/form";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { TbArrowLeft } from "react-icons/tb";
+import { FormattedMessage } from "react-intl";
 import * as yup from "yup";
+import useTranslate from "../../../hooks/useTranslate.hook";
 import authService from "../../../services/auth.service";
 import toast from "../../../utils/toast.util";
 
@@ -43,6 +45,7 @@ const useStyles = createStyles((theme) => ({
 const ResetPassword = () => {
   const { classes } = useStyles();
   const router = useRouter();
+  const t = useTranslate();
 
   const form = useForm({
     initialValues: {
@@ -50,7 +53,10 @@ const ResetPassword = () => {
     },
     validate: yupResolver(
       yup.object().shape({
-        email: yup.string().email().required(),
+        email: yup
+          .string()
+          .email(t("common.error.invalid-email"))
+          .required(t("common.error.field-required")),
       })
     ),
   });
@@ -58,10 +64,10 @@ const ResetPassword = () => {
   return (
     <Container size={460} my={30}>
       <Title order={2} weight={900} align="center">
-        Forgot your password?
+        <FormattedMessage id="resetPassword.title" />
       </Title>
       <Text color="dimmed" size="sm" align="center">
-        Enter your email to get a reset link
+        <FormattedMessage id="resetPassword.description" />
       </Text>
 
       <Paper withBorder shadow="md" p={30} radius="md" mt="xl">
@@ -70,15 +76,15 @@ const ResetPassword = () => {
             authService
               .requestResetPassword(values.email)
               .then(() => {
-                toast.success("The email has been sent.");
+                toast.success(t("resetPassword.notify.success"));
                 router.push("/auth/signIn");
               })
               .catch(toast.axiosError)
           )}
         >
           <TextInput
-            label="Your email"
-            placeholder="Your email"
+            label={t("signup.input.email")}
+            placeholder={t("signup.input.email.placeholder")}
             {...form.getInputProps("email")}
           />
           <Group position="apart" mt="lg" className={classes.controls}>
@@ -91,11 +97,13 @@ const ResetPassword = () => {
             >
               <Center inline>
                 <TbArrowLeft size={12} />
-                <Box ml={5}>Back to login page</Box>
+                <Box ml={5}>
+                  <FormattedMessage id="resetPassword.button.back" />
+                </Box>
               </Center>
             </Anchor>
             <Button type="submit" className={classes.control}>
-              Reset password
+              <FormattedMessage id="resetPassword.text.resetPassword" />
             </Button>
           </Group>
         </form>

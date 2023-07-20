@@ -9,6 +9,7 @@ import {
 } from "@mantine/core";
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
+import { FormattedMessage } from "react-intl";
 import useConfig from "../../../hooks/config.hook";
 import Logo from "../../Logo";
 
@@ -42,7 +43,7 @@ const ConfigurationHeader = ({
           </Link>
           <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
             <Button variant="light" component={Link} href="/admin">
-              Go back
+              <FormattedMessage id="common.button.go-back" />
             </Button>
           </MediaQuery>
         </Group>

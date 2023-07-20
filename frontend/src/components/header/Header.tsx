@@ -16,6 +16,7 @@ import { useRouter } from "next/router";
 import { ReactNode, useEffect, useState } from "react";
 import useConfig from "../../hooks/config.hook";
 import useUser from "../../hooks/user.hook";
+import useTranslate from "../../hooks/useTranslate.hook";
 import Logo from "../Logo";
 import ActionAvatar from "./ActionAvatar";
 import NavbarShareMenu from "./NavbarShareMenu";
@@ -112,6 +113,7 @@ const Header = () => {
   const { user } = useUser();
   const router = useRouter();
   const config = useConfig();
+  const t = useTranslate();
 
   const [opened, toggleOpened] = useDisclosure(false);
 
@@ -124,7 +126,7 @@ const Header = () => {
   const authenticatedLinks: NavLink[] = [
     {
       link: "/upload",
-      label: "Upload",
+      label: t("navbar.upload"),
     },
     {
       component: <NavbarShareMenu />,
@@ -137,27 +139,27 @@ const Header = () => {
   let unauthenticatedLinks: NavLink[] = [
     {
       link: "/auth/signIn",
-      label: "Sign in",
+      label: t("navbar.signin"),
     },
   ];
 
   if (config.get("share.allowUnauthenticatedShares")) {
     unauthenticatedLinks.unshift({
       link: "/upload",
-      label: "Upload",
+      label: t("navbar.upload"),
     });
   }
 
   if (config.get("general.showHomePage"))
     unauthenticatedLinks.unshift({
       link: "/",
-      label: "Home",
+      label: t("navbar.home"),
     });
 
   if (config.get("share.allowRegistration"))
     unauthenticatedLinks.push({
       link: "/auth/signUp",
-      label: "Sign up",
+      label: t("navbar.signup"),
     });
 
   const { classes, cx } = useStyles();

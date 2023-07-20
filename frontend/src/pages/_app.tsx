@@ -13,11 +13,12 @@ import { GetServerSidePropsContext } from "next";
 import type { AppProps } from "next/app";
 import getConfig from "next/config";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { IntlProvider } from "react-intl";
 import Header from "../components/header/Header";
 import { ConfigContext } from "../hooks/config.hook";
-import usePreferences from "../hooks/usePreferences";
 import { UserContext } from "../hooks/user.hook";
+import { LOCALES } from "../i18n/locales";
 import authService from "../services/auth.service";
 import configService from "../services/config.service";
 import userService from "../services/user.service";
@@ -25,6 +26,8 @@ import GlobalStyle from "../styles/global.style";
 import globalStyle from "../styles/mantine.style";
 import Config from "../types/config.type";
 import { CurrentUser } from "../types/user.type";
+import i18nUtil from "../utils/i18n.util";
+import userPreferences from "../utils/userPreferences.util";
 
 const excludeDefaultLayoutRoutes = ["/admin/config/[category]"];
 
@@ -33,7 +36,6 @@ function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   const [colorScheme, setColorScheme] = useState<ColorScheme>(systemTheme);
-  const preferences = usePreferences();
 
   const [user, setUser] = useState<CurrentUser | null>(pageProps.user);
   const [route, setRoute] = useState<string>(pageProps.route);
@@ -51,10 +53,19 @@ function App({ Component, pageProps }: AppProps) {
   }, []);
 
   useEffect(() => {
+    if (!pageProps.language) return;
+    const cookieLanguage = getCookie("language");
+    if (pageProps.language != cookieLanguage) {
+      i18nUtil.setLanguageCookie(pageProps.language);
+      if (cookieLanguage) location.reload();
+    }
+  }, []);
+
+  useEffect(() => {
     const colorScheme =
-      preferences.get("colorScheme") == "system"
+      userPreferences.get("colorScheme") == "system"
         ? systemTheme
-        : preferences.get("colorScheme");
+        : userPreferences.get("colorScheme");
 
     toggleColorScheme(colorScheme);
   }, [systemTheme]);
@@ -66,52 +77,60 @@ function App({ Component, pageProps }: AppProps) {
     });
   };
 
+  const language = useRef(pageProps.language);
+
   return (
-    <MantineProvider
-      withGlobalStyles
-      withNormalizeCSS
-      theme={{ colorScheme, ...globalStyle }}
+    <IntlProvider
+      messages={i18nUtil.getLocaleByCode(language.current)?.messages}
+      locale={language.current}
+      defaultLocale={LOCALES.ENGLISH.code}
     >
-      <ColorSchemeProvider
-        colorScheme={colorScheme}
-        toggleColorScheme={toggleColorScheme}
+      <MantineProvider
+        withGlobalStyles
+        withNormalizeCSS
+        theme={{ colorScheme, ...globalStyle }}
       >
-        <GlobalStyle />
-        <Notifications />
-        <ModalsProvider>
-          <ConfigContext.Provider
-            value={{
-              configVariables,
-              refresh: async () => {
-                setConfigVariables(await configService.list());
-              },
-            }}
-          >
-            <UserContext.Provider
+        <ColorSchemeProvider
+          colorScheme={colorScheme}
+          toggleColorScheme={toggleColorScheme}
+        >
+          <GlobalStyle />
+          <Notifications />
+          <ModalsProvider>
+            <ConfigContext.Provider
               value={{
-                user,
-                refreshUser: async () => {
-                  const user = await userService.getCurrentUser();
-                  setUser(user);
-                  return user;
+                configVariables,
+                refresh: async () => {
+                  setConfigVariables(await configService.list());
                 },
               }}
             >
-              {excludeDefaultLayoutRoutes.includes(route) ? (
-                <Component {...pageProps} />
-              ) : (
-                <>
-                  <Header />
-                  <Container>
-                    <Component {...pageProps} />
-                  </Container>
-                </>
-              )}
-            </UserContext.Provider>
-          </ConfigContext.Provider>
-        </ModalsProvider>
-      </ColorSchemeProvider>
-    </MantineProvider>
+              <UserContext.Provider
+                value={{
+                  user,
+                  refreshUser: async () => {
+                    const user = await userService.getCurrentUser();
+                    setUser(user);
+                    return user;
+                  },
+                }}
+              >
+                {excludeDefaultLayoutRoutes.includes(route) ? (
+                  <Component {...pageProps} />
+                ) : (
+                  <>
+                    <Header />
+                    <Container>
+                      <Component {...pageProps} />
+                    </Container>
+                  </>
+                )}
+              </UserContext.Provider>
+            </ConfigContext.Provider>
+          </ModalsProvider>
+        </ColorSchemeProvider>
+      </MantineProvider>
+    </IntlProvider>
   );
 }
 
@@ -125,11 +144,13 @@ App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
     configVariables?: Config[];
     route?: string;
     colorScheme: ColorScheme;
+    language?: string;
   } = {
     route: ctx.resolvedUrl,
     colorScheme:
       (getCookie("mantine-color-scheme", ctx) as ColorScheme) ?? "light",
   };
+
   if (ctx.req) {
     const cookieHeader = ctx.req.headers.cookie;
 
@@ -142,8 +163,13 @@ App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
     pageProps.configVariables = (await axios(`${apiURL}/api/configs`)).data;
 
     pageProps.route = ctx.req.url;
-  }
 
+    const requestLanguage = i18nUtil.getLanguageFromAcceptHeader(
+      ctx.req.headers["accept-language"]
+    );
+
+    pageProps.language = ctx.req.cookies["language"] ?? requestLanguage;
+  }
   return { pageProps };
 };
 

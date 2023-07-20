@@ -1,9 +1,9 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 import * as crypto from "crypto";
+
 const configVariables: ConfigVariables = {
   internal: {
     jwtSecret: {
-      description: "Long random string used to sign JWT tokens",
       type: "string",
       defaultValue: crypto.randomBytes(256).toString("base64"),
       locked: true,
@@ -11,20 +11,17 @@ const configVariables: ConfigVariables = {
   },
   general: {
     appName: {
-      description: "Name of the application",
       type: "string",
       defaultValue: "Pingvin Share",
       secret: false,
     },
     appUrl: {
-      description: "On which URL Pingvin Share is available",
       type: "string",
       defaultValue: "http://localhost:3000",
 
       secret: false,
     },
     showHomePage: {
-      description: "Whether to show the home page",
       type: "boolean",
       defaultValue: "true",
       secret: false,
@@ -32,21 +29,17 @@ const configVariables: ConfigVariables = {
   },
   share: {
     allowRegistration: {
-      description: "Whether registration is allowed",
       type: "boolean",
       defaultValue: "true",
-
       secret: false,
     },
     allowUnauthenticatedShares: {
-      description: "Whether unauthorized users can create shares",
       type: "boolean",
       defaultValue: "false",
 
       secret: false,
     },
     maxSize: {
-      description: "Maximum share size in bytes",
       type: "number",
       defaultValue: "1073741824",
 
@@ -55,61 +48,43 @@ const configVariables: ConfigVariables = {
   },
   email: {
     enableShareEmailRecipients: {
-      description:
-        "Whether to allow emails to share recipients. Only enable this if you have enabled SMTP.",
       type: "boolean",
       defaultValue: "false",
 
       secret: false,
     },
     shareRecipientsSubject: {
-      description:
-        "Subject of the email which gets sent to the share recipients.",
       type: "string",
       defaultValue: "Files shared with you",
     },
     shareRecipientsMessage: {
-      description:
-        "Message which gets sent to the share recipients.\n\nAvailable variables:\n{creator} - The username of the creator of the share\n{shareUrl} - The URL of the share\n{desc} - The description of the share\n{expires} - The expiration date of the share\n\nVariables will be replaced with the actual values.",
       type: "text",
       defaultValue:
         "Hey!\n\n{creator} shared some files with you, view or download the files with this link: {shareUrl}\n\nThe share will expire {expires}.\n\nNote: {desc}\n\nShared securely with Pingvin Share 🐧",
     },
     reverseShareSubject: {
-      description:
-        "Subject of the email which gets sent when someone created a share with your reverse share link.",
       type: "string",
       defaultValue: "Reverse share link used",
     },
     reverseShareMessage: {
-      description:
-        "Message which gets sent when someone created a share with your reverse share link. {shareUrl} will be replaced with the creator's name and the share URL.",
       type: "text",
       defaultValue:
         "Hey!\n\nA share was just created with your reverse share link: {shareUrl}\n\nShared securely with Pingvin Share 🐧",
     },
     resetPasswordSubject: {
-      description:
-        "Subject of the email which gets sent when a user requests a password reset.",
       type: "string",
       defaultValue: "Pingvin Share password reset",
     },
     resetPasswordMessage: {
-      description:
-        "Message which gets sent when a user requests a password reset. {url} will be replaced with the reset password URL.",
       type: "text",
       defaultValue:
         "Hey!\n\nYou requested a password reset. Click this link to reset your password: {url}\nThe link expires in a hour.\n\nPingvin Share 🐧",
     },
     inviteSubject: {
-      description:
-        "Subject of the email which gets sent when an admin invites an user.",
       type: "string",
       defaultValue: "Pingvin Share invite",
     },
     inviteMessage: {
-      description:
-        "Message which gets sent when an admin invites an user. {url} will be replaced with the invite URL and {password} with the password.",
       type: "text",
       defaultValue:
         "Hey!\n\nYou were invited to Pingvin Share. Click this link to accept the invite: {url}\n\nYour password is: {password}\n\nPingvin Share 🐧",
@@ -117,34 +92,27 @@ const configVariables: ConfigVariables = {
   },
   smtp: {
     enabled: {
-      description:
-        "Whether SMTP is enabled. Only set this to true if you entered the host, port, email, user and password of your SMTP server.",
       type: "boolean",
       defaultValue: "false",
       secret: false,
     },
     host: {
-      description: "Host of the SMTP server",
       type: "string",
       defaultValue: "",
     },
     port: {
-      description: "Port of the SMTP server",
       type: "number",
       defaultValue: "0",
     },
     email: {
-      description: "Email address which the emails get sent from",
       type: "string",
       defaultValue: "",
     },
     username: {
-      description: "Username of the SMTP server",
       type: "string",
       defaultValue: "",
     },
     password: {
-      description: "Password of the SMTP server",
       type: "string",
       defaultValue: "",
       obscured: true,

@@ -2,6 +2,7 @@ import { Button, Center, Stack, Text, Title } from "@mantine/core";
 import { modals } from "@mantine/modals";
 import Link from "next/link";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
 import api from "../../services/api.service";
 
 const FilePreviewContext = React.createContext<{
@@ -144,10 +145,11 @@ const UnSupportedFile = () => {
   return (
     <Center style={{ minHeight: 200 }}>
       <Stack align="center" spacing={10}>
-        <Title order={3}>Preview not supported</Title>
+        <Title order={3}>
+          <FormattedMessage id="share.modal.file-preview.error.not-supported.title" />
+        </Title>
         <Text>
-          A preview for thise file type is unsupported. Please download the file
-          to view it.
+          <FormattedMessage id="share.modal.file-preview.error.not-supported.description" />
         </Text>
       </Stack>
     </Center>

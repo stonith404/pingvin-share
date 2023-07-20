@@ -3,6 +3,10 @@ const defaultPreferences = [
     key: "colorScheme",
     value: "system",
   },
+  {
+    key: "locale",
+    value: "system",
+  },
 ];
 
 const get = (key: string) => {
@@ -23,8 +27,9 @@ const set = (key: string, value: string) => {
     localStorage.setItem("preferences", JSON.stringify(preferences));
   }
 };
-const usePreferences = () => {
-  return { get, set };
+const userPreferences = {
+  get,
+  set,
 };
 
-export default usePreferences;
+export default userPreferences;

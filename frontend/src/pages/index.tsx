@@ -12,6 +12,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { TbCheck } from "react-icons/tb";
+import { FormattedMessage } from "react-intl";
 import Logo from "../components/Logo";
 import Meta from "../components/Meta";
 import useUser from "../hooks/user.hook";
@@ -89,12 +90,17 @@ export default function Home() {
         <div className={classes.inner}>
           <div className={classes.content}>
             <Title className={classes.title}>
-              A <span className={classes.highlight}>self-hosted</span> <br />{" "}
-              file sharing platform.
+              <FormattedMessage
+                id="home.title"
+                values={{
+                  h: (chunks) => (
+                    <span className={classes.highlight}>{chunks} </span>
+                  ),
+                }}
+              />
             </Title>
             <Text color="dimmed" mt="md">
-              Do you really want to give your personal files in the hand of
-              third parties like WeTransfer?
+              <FormattedMessage id="home.description" />
             </Text>
 
             <List
@@ -109,19 +115,26 @@ export default function Home() {
             >
               <List.Item>
                 <div>
-                  <b>Self-Hosted</b> - Host Pingvin Share on your own machine.
+                  <b>
+                    <FormattedMessage id="home.bullet.a.name" />
+                  </b>{" "}
+                  - <FormattedMessage id="home.bullet.a.description" />
                 </div>
               </List.Item>
               <List.Item>
                 <div>
-                  <b>Privacy</b> - Your files are your files and should never
-                  get into the hands of third parties.
+                  <b>
+                    <FormattedMessage id="home.bullet.b.name" />
+                  </b>{" "}
+                  - <FormattedMessage id="home.bullet.b.description" />
                 </div>
               </List.Item>
               <List.Item>
                 <div>
-                  <b>No annoying file size limit</b> - Upload as big files as
-                  you want. Only your hard drive will be your limit.
+                  <b>
+                    <FormattedMessage id="home.bullet.c.name" />
+                  </b>{" "}
+                  - <FormattedMessage id="home.bullet.c.description" />
                 </div>
               </List.Item>
             </List>
@@ -134,7 +147,7 @@ export default function Home() {
                 size="md"
                 className={classes.control}
               >
-                Get started
+                <FormattedMessage id="home.button.start" />
               </Button>
               <Button
                 component={Link}
@@ -145,7 +158,7 @@ export default function Home() {
                 size="md"
                 className={classes.control}
               >
-                Source code
+                <FormattedMessage id="home.button.source" />
               </Button>
             </Group>
           </div>

@@ -1,10 +1,12 @@
 import SignUpForm from "../../components/auth/SignUpForm";
 import Meta from "../../components/Meta";
+import useTranslate from "../../hooks/useTranslate.hook";
 
 const SignUp = () => {
+  const t = useTranslate();
   return (
     <>
-      <Meta title="Sign Up" />
+      <Meta title={t("signup.title")} />
       <SignUpForm />
     </>
   );

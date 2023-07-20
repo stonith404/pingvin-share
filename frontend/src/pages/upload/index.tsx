@@ -4,12 +4,14 @@ import { cleanNotifications } from "@mantine/notifications";
 import { AxiosError } from "axios";
 import pLimit from "p-limit";
 import { useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
 import Meta from "../../components/Meta";
 import Dropzone from "../../components/upload/Dropzone";
 import FileList from "../../components/upload/FileList";
 import showCompletedUploadModal from "../../components/upload/modals/showCompletedUploadModal";
 import showCreateUploadModal from "../../components/upload/modals/showCreateUploadModal";
 import useConfig from "../../hooks/config.hook";
+import useTranslate from "../../hooks/useTranslate.hook";
 import useUser from "../../hooks/user.hook";
 import shareService from "../../services/share.service";
 import { FileUpload } from "../../types/File.type";
@@ -29,6 +31,7 @@ const Upload = ({
   isReverseShare: boolean;
 }) => {
   const modals = useModals();
+  const t = useTranslate();
 
   const { user } = useUser();
   const config = useConfig();
@@ -126,7 +129,7 @@ const Upload = ({
     if (fileErrorCount > 0) {
       if (!errorToastShown) {
         toast.error(
-          `${fileErrorCount} file(s) failed to upload. Trying again.`,
+          t("upload.notify.count-failed", { count: fileErrorCount }),
           {
             withCloseButton: false,
             autoClose: false,
@@ -152,15 +155,13 @@ const Upload = ({
           showCompletedUploadModal(modals, share, config.get("general.appUrl"));
           setFiles([]);
         })
-        .catch(() =>
-          toast.error("An error occurred while finishing your share.")
-        );
+        .catch(() => toast.error(t("upload.notify.generic-error")));
     }
   }, [files]);
 
   return (
     <>
-      <Meta title="Upload" />
+      <Meta title={t("upload.title")} />
       <Group position="right" mb={20}>
         <Button
           loading={isUploading}
@@ -183,7 +184,7 @@ const Upload = ({
             );
           }}
         >
-          Share
+          <FormattedMessage id="common.button.share" />
         </Button>
       </Group>
       <Dropzone

@@ -17,12 +17,14 @@ import { useModals } from "@mantine/modals";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { TbInfoCircle, TbLink, TbPlus, TbTrash } from "react-icons/tb";
+import { FormattedMessage } from "react-intl";
 import Meta from "../../components/Meta";
 import showReverseShareLinkModal from "../../components/account/showReverseShareLinkModal";
 import showShareLinkModal from "../../components/account/showShareLinkModal";
 import CenterLoader from "../../components/core/CenterLoader";
 import showCreateReverseShareModal from "../../components/share/modals/showCreateReverseShareModal";
 import useConfig from "../../hooks/config.hook";
+import useTranslate from "../../hooks/useTranslate.hook";
 import shareService from "../../services/share.service";
 import { MyReverseShare } from "../../types/share.type";
 import { byteToHumanSizeString } from "../../utils/fileSize.util";
@@ -31,12 +33,13 @@ import toast from "../../utils/toast.util";
 const MyShares = () => {
   const modals = useModals();
   const clipboard = useClipboard();
+  const t = useTranslate();
 
   const config = useConfig();
 
-  const [reverseShares, setReverseShares] = useState<MyReverseShare[]>();
-
   const appUrl = config.get("general.appUrl");
+
+  const [reverseShares, setReverseShares] = useState<MyReverseShare[]>();
 
   const getReverseShares = () => {
     shareService
@@ -51,15 +54,17 @@ const MyShares = () => {
   if (!reverseShares) return <CenterLoader />;
   return (
     <>
-      <Meta title="My shares" />
+      <Meta title={t("account.reverseShares.title")} />
       <Group position="apart" align="baseline" mb={20}>
         <Group align="center" spacing={3} mb={30}>
-          <Title order={3}>My reverse shares</Title>
+          <Title order={3}>
+            <FormattedMessage id="account.reverseShares.title" />
+          </Title>
           <Tooltip
             position="bottom"
             multiline
             width={220}
-            label="A reverse share allows you to generate a unique URL that allows external users to create a share."
+            label={t("account.reverseShares.description")}
             events={{ hover: true, focus: false, touch: true }}
           >
             <ActionIcon>
@@ -77,14 +82,18 @@ const MyShares = () => {
           }
           leftIcon={<TbPlus size={20} />}
         >
-          Create
+          <FormattedMessage id="common.button.create" />
         </Button>
       </Group>
       {reverseShares.length == 0 ? (
         <Center style={{ height: "70vh" }}>
           <Stack align="center" spacing={10}>
-            <Title order={3}>It's empty here 👀</Title>
-            <Text>You don't have any reverse shares.</Text>
+            <Title order={3}>
+              <FormattedMessage id="account.reverseShares.title.empty" />
+            </Title>
+            <Text>
+              <FormattedMessage id="account.reverseShares.description.empty" />
+            </Text>
           </Stack>
         </Center>
       ) : (
@@ -92,10 +101,18 @@ const MyShares = () => {
           <Table>
             <thead>
               <tr>
-                <th>Shares</th>
-                <th>Remaining uses</th>
-                <th>Max share size</th>
-                <th>Expires at</th>
+                <th>
+                  <FormattedMessage id="account.reverseShares.table.shares" />
+                </th>
+                <th>
+                  <FormattedMessage id="account.reverseShares.table.remaining" />
+                </th>
+                <th>
+                  <FormattedMessage id="account.reverseShares.table.max-size" />
+                </th>
+                <th>
+                  <FormattedMessage id="account.reverseShares.table.expires" />
+                </th>
                 <th></th>
               </tr>
             </thead>
@@ -105,7 +122,7 @@ const MyShares = () => {
                   <td style={{ width: 220 }}>
                     {reverseShare.shares.length == 0 ? (
                       <Text color="dimmed" size="sm">
-                        No shares created yet
+                        <FormattedMessage id="account.reverseShares.table.no-shares" />
                       </Text>
                     ) : (
                       <Accordion>
@@ -115,9 +132,13 @@ const MyShares = () => {
                         >
                           <Accordion.Control p={0}>
                             <Text size="sm">
-                              {`${reverseShare.shares.length} share${
-                                reverseShare.shares.length > 1 ? "s" : ""
-                              }`}
+                              {reverseShare.shares.length == 1
+                                ? `1 ${t(
+                                    "account.reverseShares.table.count.singular"
+                                  )}`
+                                : `${reverseShare.shares.length} ${t(
+                                    "account.reverseShares.table.count.plural"
+                                  )}`}
                             </Text>
                           </Accordion.Control>
                           <Accordion.Panel>
@@ -140,9 +161,7 @@ const MyShares = () => {
                                       clipboard.copy(
                                         `${appUrl}/share/${share.id}`
                                       );
-                                      toast.success(
-                                        "The share link was copied to the keyboard."
-                                      );
+                                      toast.success(t("common.notify.copied"));
                                     } else {
                                       showShareLinkModal(
                                         modals,
@@ -183,9 +202,7 @@ const MyShares = () => {
                                 reverseShare.token
                               }`
                             );
-                            toast.success(
-                              "The link was copied to your clipboard."
-                            );
+                            toast.success(t("common.notify.copied"));
                           } else {
                             showReverseShareLinkModal(
                               modals,
@@ -203,18 +220,21 @@ const MyShares = () => {
                         size={25}
                         onClick={() => {
                           modals.openConfirmModal({
-                            title: `Delete reverse share`,
+                            title: t(
+                              "account.reverseShares.modal.delete.title"
+                            ),
                             children: (
                               <Text size="sm">
-                                Do you really want to delete this reverse share?
-                                If you do, the associated shares will be deleted
-                                as well.
+                                <FormattedMessage id="account.reverseShares.modal.delete.description" />
                               </Text>
                             ),
                             confirmProps: {
                               color: "red",
                             },
-                            labels: { confirm: "Delete", cancel: "Cancel" },
+                            labels: {
+                              confirm: t("common.button.delete"),
+                              cancel: t("common.button.cancel"),
+                            },
                             onConfirm: () => {
                               shareService.removeReverseShare(reverseShare.id);
                               setReverseShares(

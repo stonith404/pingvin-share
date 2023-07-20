@@ -2,7 +2,8 @@ import { Button, Center, createStyles, Group, Text } from "@mantine/core";
 import { Dropzone as MantineDropzone } from "@mantine/dropzone";
 import { Dispatch, ForwardedRef, SetStateAction, useRef } from "react";
 import { TbCloudUpload, TbUpload } from "react-icons/tb";
-import useConfig from "../../hooks/config.hook";
+import { FormattedMessage } from "react-intl";
+import useTranslate from "../../hooks/useTranslate.hook";
 import { FileUpload } from "../../types/File.type";
 import { byteToHumanSizeString } from "../../utils/fileSize.util";
 import toast from "../../utils/toast.util";
@@ -42,7 +43,7 @@ const Dropzone = ({
   files: FileUpload[];
   setFiles: Dispatch<SetStateAction<FileUpload[]>>;
 }) => {
-  const config = useConfig();
+  const t = useTranslate();
 
   const { classes } = useStyles();
   const openRef = useRef<() => void>();
@@ -62,9 +63,9 @@ const Dropzone = ({
 
           if (fileSizeSum > maxShareSize) {
             toast.error(
-              `Your files exceed the maximum share size of ${byteToHumanSizeString(
-                maxShareSize
-              )}.`
+              t("upload.dropzone.notify.file-too-big", {
+                maxSize: byteToHumanSizeString(maxShareSize),
+              })
             );
           } else {
             newFiles = newFiles.map((newFile) => {
@@ -82,12 +83,13 @@ const Dropzone = ({
             <TbCloudUpload size={50} />
           </Group>
           <Text align="center" weight={700} size="lg" mt="xl">
-            Upload files
+            <FormattedMessage id="upload.dropzone.title" />
           </Text>
           <Text align="center" size="sm" mt="xs" color="dimmed">
-            Drag&apos;n&apos;drop files here to start your share. We can accept
-            only files that are less than {byteToHumanSizeString(maxShareSize)}{" "}
-            in total.
+            <FormattedMessage
+              id="upload.dropzone.description"
+              values={{ maxSize: byteToHumanSizeString(maxShareSize) }}
+            />
           </Text>
         </div>
       </MantineDropzone>

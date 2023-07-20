@@ -1,10 +1,12 @@
-import { Text, Divider, Progress, Stack, Group, Flex } from "@mantine/core";
+import { Divider, Flex, Progress, Stack, Text } from "@mantine/core";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
-import { MyShare } from "../../types/share.type";
 import moment from "moment";
+import { FormattedMessage } from "react-intl";
+import { translateOutsideContext } from "../../hooks/useTranslate.hook";
+import { FileMetaData } from "../../types/File.type";
+import { MyShare } from "../../types/share.type";
 import { byteToHumanSizeString } from "../../utils/fileSize.util";
 import CopyTextField from "../upload/CopyTextField";
-import { FileMetaData } from "../../types/File.type";
 
 const showShareInformationsModal = (
   modals: ModalsContextProps,
@@ -12,6 +14,7 @@ const showShareInformationsModal = (
   appUrl: string,
   maxShareSize: number
 ) => {
+  const t = translateOutsideContext();
   const link = `${appUrl}/share/${share.id}`;
 
   let shareSize: number = 0;
@@ -29,34 +32,45 @@ const showShareInformationsModal = (
       : moment(share.expiration).format("LLL");
 
   return modals.openModal({
-    title: "Share informations",
+    title: t("account.shares.modal.share-informations"),
 
     children: (
       <Stack align="stretch" spacing="md">
         <Text size="sm" color="lightgray">
-          <b>ID:</b> {share.id}
+          <b>
+            <FormattedMessage id="account.shares.table.id" />:{" "}
+          </b>
+          {share.id}
         </Text>
 
         <Text size="sm" color="lightgray">
-          <b>Description:</b> {share.description || "No description"}
+          <b>
+            <FormattedMessage id="account.shares.table.description" />:{" "}
+          </b>
+          {share.description || "No description"}
         </Text>
 
         <Text size="sm" color="lightgray">
-          <b>Created at:</b> {formattedCreatedAt}
+          <b>
+            <FormattedMessage id="account.shares.table.createdAt" />:{" "}
+          </b>
+          {formattedCreatedAt}
         </Text>
 
         <Text size="sm" color="lightgray">
-          <b>Expires at:</b> {formattedExpiration}
+          <b>
+            <FormattedMessage id="account.shares.table.expiresAt" />:{" "}
+          </b>
+          {formattedExpiration}
         </Text>
-
         <Divider />
-
         <CopyTextField link={link} />
-
         <Divider />
-
         <Text size="sm" color="lightgray">
-          <b>Size:</b> {formattedShareSize} / {formattedMaxShareSize} (
+          <b>
+            <FormattedMessage id="account.shares.table.size" />:{" "}
+          </b>
+          {formattedShareSize} / {formattedMaxShareSize} (
           {shareSizeProgress.toFixed(1)}%)
         </Text>
 

@@ -11,7 +11,9 @@ import {
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { TbRefresh, TbSettings, TbUsers } from "react-icons/tb";
+import { FormattedMessage } from "react-intl";
 import Meta from "../../components/Meta";
+import useTranslate from "../../hooks/useTranslate.hook";
 import configService from "../../services/config.service";
 
 const useStyles = createStyles((theme) => ({
@@ -31,15 +33,16 @@ const useStyles = createStyles((theme) => ({
 
 const Admin = () => {
   const { classes, theme } = useStyles();
+  const t = useTranslate();
 
   const [managementOptions, setManagementOptions] = useState([
     {
-      title: "User management",
+      title: t("admin.button.users"),
       icon: TbUsers,
       route: "/admin/users",
     },
     {
-      title: "Configuration",
+      title: t("admin.button.config"),
       icon: TbSettings,
       route: "/admin/config/general",
     },
@@ -63,9 +66,9 @@ const Admin = () => {
 
   return (
     <>
-      <Meta title="Administration" />
+      <Meta title={t("admin.title")} />
       <Title mb={30} order={3}>
-        Administration
+        <FormattedMessage id="admin.title" />
       </Title>
       <Stack justify="space-between" style={{ height: "calc(100vh - 180px)" }}>
         <Paper withBorder p={40}>
@@ -91,7 +94,7 @@ const Admin = () => {
 
         <Center>
           <Text size="xs" color="dimmed">
-            Version {process.env.VERSION}
+            <FormattedMessage id="admin.version" /> {process.env.VERSION}
           </Text>
         </Center>
       </Stack>
