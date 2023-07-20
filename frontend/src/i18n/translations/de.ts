@@ -65,7 +65,7 @@ export default {
   "account.notify.password.success": "Password changed successfully",
   "account.card.security.title": "Security",
   "account.card.security.totp.enable.description": "Enter your current password to start enabling TOTP",
-  "account.card.security.totp.disable.description": "Enter your current password to start enabling TOTP",
+  "account.card.security.totp.disable.description": "Enter your current password to disable TOTP",
   "account.card.security.totp.button.start": "Start",
   "account.modal.totp.title": "Enable TOTP",
   "account.modal.totp.step1": "Step 1: Add your authenticator",
@@ -91,7 +91,7 @@ export default {
   "account.shares.title.empty": "It's empty here 👀",
   "account.shares.description.empty": "You don't have any shares.",
   "account.shares.button.create": "Create one",
-  "account.shares.info.title": "Share informatons",
+  "account.shares.info.title": "Share informations",
   "account.shares.table.id": "ID",
   "account.shares.table.name": "Name",
   "account.shares.table.description": "Description",
@@ -100,7 +100,7 @@ export default {
   "account.shares.table.createdAt": "Created at",
   "account.shares.table.size": "Size",
   "account.shares.modal.share-link": "Share link",
-  "account.shares.modal.delete.title": "Delete {share}",
+  "account.shares.modal.delete.title": "Delete share {share}",
   "account.shares.modal.delete.description": "Do you really want to delete this share?",
   // END /account/shares
   // /account/reverseShares
@@ -137,7 +137,7 @@ export default {
   "account.reverseShares.table.max-size": "Max share size",
   "account.reverseShares.table.expires": "Expires at",
   "account.reverseShares.modal.reverse-share-link": "Reverse share link",
-  "account.reverseShares.modal.delete.title": "Do you really want to delete this reverse share? If you do, the associated shares will be deleted as well.",
+  "account.reverseShares.modal.delete.title": "Delete reverse share",
   "account.reverseShares.modal.delete.description": "Do you really want to delete this reverse share? If you do, the associated shares will be deleted as well.",
   // END /account/reverseShares
   // /admin
@@ -172,7 +172,7 @@ export default {
   // /upload
   "upload.title": "Upload",
   "upload.notify.generic-error": "An error occurred while finishing your share.",
-  "upload.notify.count-failed": "{count} filed failed to upload. Trying again.",
+  "upload.notify.count-failed": "{count} files failed to upload. Trying again.",
   // Dropzone.tsx
   "upload.dropzone.title": "Upload files",
   "upload.dropzone.description": "Drag'n'drop files here to start your share. We can accept only files that are less than {maxSize} in total.",
@@ -258,7 +258,7 @@ export default {
   "admin.config.email.share-recipients-subject": "Share recipients subject",
   "admin.config.email.share-recipients-subject.description": "Subject of the email which gets sent to the share recipients.",
   "admin.config.email.share-recipients-message": "Share recipients message",
-  "admin.config.email.share-recipients-message.description": "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n The variables will be replaced with the actual values.",
+  "admin.config.email.share-recipients-message.description": "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n The variables will be replaced with the actual value.",
   "admin.config.email.reverse-share-subject": "Reverse share subject",
   "admin.config.email.reverse-share-subject.description": "Subject of the email which gets sent when someone created a share with your reverse share link.",
   "admin.config.email.reverse-share-message": "Reverse share message",
@@ -274,7 +274,7 @@ export default {
   "admin.config.share.allow-registration": "Allow registration",
   "admin.config.share.allow-registration.description": "Whether registration is allowed",
   "admin.config.share.allow-unauthenticated-shares": "Allow unauthenticated shares",
-  "admin.config.share.allow-unauthenticated-shares.description": "Whether unauthorized users can create shares",
+  "admin.config.share.allow-unauthenticated-shares.description": "Whether unauthenticated users can create shares",
   "admin.config.share.max-size": "Max size",
   "admin.config.share.max-size.description": "Maximum share size in bytes",
   "admin.config.smtp.enabled": "Enabled",
@@ -293,7 +293,7 @@ export default {
   // 404
   "404.title": "404",
   "404.description": "Oops this page doesn't exist.",
-  "404.button.home": "Gring me back home",
+  "404.button.home": "Bring me back home",
   // Common translations
   "common.button.save": "Save",
   "common.button.create": "Create",
