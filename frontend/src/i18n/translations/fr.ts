@@ -40,7 +40,7 @@ export default {
   "signup.button.signin": "Se connecter",
   "signup.input.username": "Pseudo",
   "signup.input.username.placeholder": "Votre pseudo",
-  "signup.input.email": "Adresse mail",
+  "signup.input.email": "Email",
   "signup.input.email.placeholder": "Votre adresse mail",
   "signup.button.submit": "Commençons",
   // END /auth/signup
@@ -105,7 +105,7 @@ export default {
   // END /account/shares
   // /account/reverseShares
   "account.reverseShares.title": "Partages inversés",
-  "account.reverseShares.description": "Un partage unversé vous permet de générer une URL unique qui permet à des utilisateurs externes de créer un partage.",
+  "account.reverseShares.description": "Un partage inversé vous permet de générer une URL unique qui permet à des utilisateurs externes de créer un partage.",
   "account.reverseShares.title.empty": "Il n'y a rien ici 👀",
   "account.reverseShares.description.empty": "Vous n'avez aucun partage inversé.",
   // showCreateReverseShareModal.tsx
@@ -138,7 +138,7 @@ export default {
   "account.reverseShares.table.expires": "Expire dans",
   "account.reverseShares.modal.reverse-share-link": "Lien du partage inversé",
   "account.reverseShares.modal.delete.title": "Supprimer le partage inversé",
-  "account.reverseShares.modal.delete.description": "Voulez-vous vraiment supprimer ce pot commun ? Si vous le faites, les partages qu'il contient seront également supprimés.",
+  "account.reverseShares.modal.delete.description": "Voulez-vous vraiment supprimer ce partage inversé ? Si vous le faites, les partages qu'il contient seront également supprimés.",
   // END /account/reverseShares
   // /admin
   "admin.title": "Administration",
@@ -260,7 +260,7 @@ export default {
   "admin.config.email.share-recipients-message": "Message des destinataires du partage",
   "admin.config.email.share-recipients-message.description": "Message qui est envoyé aux destinataires du partage. Valeurs possibles:\n {creator} - Le pseudo de l'auteur du partage\n {shareUrl} - L'URL du partage\n {desc} - La description du partage\n {expires} - La date d'expiration du partage\n Les variables seront remplacées par les vraies valeurs.",
   "admin.config.email.reverse-share-subject": "Sujet du partage inversé",
-  "admin.config.email.reverse-share-subject.description": "Sujet du courriel qui est envoyé lorsque quelqu'un a créé un partage avec le lien de votre pot commun.",
+  "admin.config.email.reverse-share-subject.description": "Sujet du courriel qui est envoyé lorsque quelqu'un a créé un partage avec le lien de votre partage inversé.",
   "admin.config.email.reverse-share-message": "Message du partage inversé",
   "admin.config.email.reverse-share-message.description": "Message qui est envoyé lorsque quelqu'un créé un partage avec le lien de votre partage inversé. {shareUrl} sera remplacé par le nom du créateur et l'URL de partage.",
   "admin.config.email.reset-password-subject": "Sujet de réinitialisation du mot de passe",
