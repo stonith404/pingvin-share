@@ -1,435 +1,436 @@
 export default {
   // Navbar
-  "navbar.upload": "Upload",
-  "navbar.signin": "Sign in",
-  "navbar.home": "Home",
-  "navbar.signup": "Sign Up",
+  "navbar.upload": "上传",
+  "navbar.signin": "登录",
+  "navbar.home": "首页",
+  "navbar.signup": "注册",
 
-  "navbar.links.shares": "My shares",
-  "navbar.links.reverse": "Reverse shares",
+  "navbar.links.shares": "我的共享",
+  "navbar.links.reverse": "预留共享",
 
-  "navbar.avatar.account": "My account",
-  "navbar.avatar.admin": "Administration",
-  "navbar.avatar.signout": "Sign out",
+  "navbar.avatar.account": "我的账户",
+  "navbar.avatar.admin": "管理",
+  "navbar.avatar.signout": "登出",
   // END navbar
 
   // /
-  "home.title": "A <h>self-hosted</h> file sharing platform.",
+  "home.title": "<h>自建</h> 文件共享平台！",
 
   "home.description":
-    "Do you really want to give your personal files in the hand of third parties like WeTransfer?",
-  "home.bullet.a.name": "Self-Hosted",
-  "home.bullet.a.description": "Host Pingvin Share on your own machine.",
-  "home.bullet.b.name": "Privacy",
+    "你真的放心把文件交到第三方文件平台手中吗？",
+  "home.bullet.a.name": "完全自建",
+  "home.bullet.a.description": "轻松使用私有服务器搭建文件共享平台",
+  "home.bullet.b.name": "完全隐私",
   "home.bullet.b.description":
-    "Your files are your files and should never get into the hands of third parties.",
-  "home.bullet.c.name": "No annoying file size limit",
+    "你的文件只属于你！不要将它放到第三方文件平台",
+  "home.bullet.c.name": "完全无限",
   "home.bullet.c.description":
-    "Upload as big files as you want. Only your hard drive will be your limit.",
+    "想上传多大都可以，更需要担心的是你的存储卷容量",
 
-  "home.button.start": "Get started",
-  "home.button.source": "Source code",
+  "home.button.start": "开始使用",
+  "home.button.source": "源代码",
   // END /
 
   // /auth/signin
-  "signin.title": "Welcome back",
-  "signin.description": "You don't have an account yet?",
-  "signin.button.signup": "Sign up",
-  "signin.input.email-or-username": "Email or username",
-  "signin.input.email-or-username.placeholder": "Your email or username",
-  "signin.input.password": "Password",
-  "signin.input.password.placeholder": "Your password",
-  "signin.button.submit": "Sign in",
-  "signIn.notify.totp-required.title": "Two-factor authentication required",
+  "signin.title": "欢迎回来",
+  "signin.description": "还没有账户吗？请",
+  "signin.button.signup": "注册",
+  "signin.input.email-or-username": "电子邮件或用户名",
+  "signin.input.email-or-username.placeholder": "请输入电子邮件或用户名",
+  "signin.input.password": "密码",
+  "signin.input.password.placeholder": "请输入密码",
+  "signin.button.submit": "登录",
+  "signIn.notify.totp-required.title": "请继续两步验证",
   "signIn.notify.totp-required.description":
-    "Please enter your two-factor authentication code",
+    "请输入一次性验证码",
 
   // END /auth/signin
 
   // /auth/signup
-  "signup.title": "Create an account",
-  "signup.description": "Already have an account?",
-  "signup.button.signin": "Sign in",
-  "signup.input.username": "Username",
-  "signup.input.username.placeholder": "Your username",
-  "signup.input.email": "Email",
-  "signup.input.email.placeholder": "Your email",
-  "signup.button.submit": "Let's get started",
+  "signup.title": "创建账户",
+  "signup.description": "已经有账户了？请",
+  "signup.button.signin": "登录",
+  "signup.input.username": "用户名",
+  "signup.input.username.placeholder": "请输入用户名",
+  "signup.input.email": "电子邮件",
+  "signup.input.email.placeholder": "请输入电子邮件",
+  "signup.button.submit": "注册",
 
   // END /auth/signup
 
   // /auth/reset-password
-  "resetPassword.title": "Forgot your password?",
-  "resetPassword.description": "Enter your email to reset your password.",
+  "resetPassword.title": "忘记密码？",
+  "resetPassword.description": "请输入电子邮件接受重置密码邮件",
   "resetPassword.notify.success":
-    "An email has been sent with a link to reset your password.",
-  "resetPassword.button.back": "Back to sign in page",
-  "resetPassword.text.resetPassword": "Reset password",
-  "resetPassword.text.enterNewPassword": "Enter your new password",
-  "resetPassword.input.password": "New password",
+    "一封包含密码重置地址的邮件已发送到你的邮箱中",
+  "resetPassword.button.back": "返回登录页面",
+  "resetPassword.text.resetPassword": "重置密码",
+  "resetPassword.text.enterNewPassword": "请输入新密码",
+  "resetPassword.input.password": "新密码",
   "resetPassword.notify.passwordReset":
-    "Your password has been reset successfully.",
+    "密码重置成功！",
 
   // /account
-  "account.title": "My account",
+  "account.title": "我的账户",
 
-  "account.card.info.title": "Account info",
-  "account.card.info.username": "Username",
-  "account.card.info.email": "Email",
-  "account.notify.info.success": "Account updated successfully",
+  "account.card.info.title": "账户信息",
+  "account.card.info.username": "用户名",
+  "account.card.info.email": "电子邮件",
+  "account.notify.info.success": "账户信息更新成功！",
 
-  "account.card.password.title": "Password",
-  "account.card.password.old": "Old password",
-  "account.card.password.new": "New password",
-  "account.notify.password.success": "Password changed successfully",
+  "account.card.password.title": "密码",
+  "account.card.password.old": "旧密码",
+  "account.card.password.new": "新密码",
+  "account.notify.password.success": "密码更改成功！",
 
-  "account.card.security.title": "Security",
+  "account.card.security.title": "安全",
   "account.card.security.totp.enable.description":
-    "Enter your current password to start enabling TOTP",
+    "请输入当前密码开启两步验证",
   "account.card.security.totp.disable.description":
-    "Enter your current password to start enabling TOTP",
-  "account.card.security.totp.button.start": "Start",
-  "account.modal.totp.title": "Enable TOTP",
-  "account.modal.totp.step1": "Step 1: Add your authenticator",
-  "account.modal.totp.step2": "Step 2: Validate your code",
-  "account.modal.totp.enterManually": "Enter manually",
-  "account.modal.totp.code": "Code",
-  "account.modal.totp.clickToCopy": "Click to copy",
-  "account.modal.totp.verify": "Verify",
-  "account.notify.totp.disable": "TOTP disabled successfully",
-  "account.notify.totp.enable": "TOTP enabled successfully",
+    "请输入当前密码关闭两步验证",
+  "account.card.security.totp.button.start": "开启",
+  "account.modal.totp.title": "开启两步验证",
+  "account.modal.totp.step1": "第一步：添加验证器 Authenticator",
+  "account.modal.totp.step2": "第二步：输入一次性验证码",
+  "account.modal.totp.enterManually": "手动输入",
+  "account.modal.totp.code": "验证码",
+  "account.modal.totp.clickToCopy": "点击复制",
+  "account.modal.totp.verify": "确定",
+  "account.notify.totp.disable": "成功关闭两步验证！",
+  "account.notify.totp.enable": "成功开启两步验证！",
 
-  "account.card.language.title": "Language",
-  "account.card.color.title": "Color scheme",
+  "account.card.language.title": "语言",
+  "account.card.color.title": "颜色外观",
 
   // ThemeSwitcher.tsx
-  "account.theme.dark": "Dark",
-  "account.theme.light": "Light",
-  "account.theme.system": "System",
+  "account.theme.dark": "暗黑模式",
+  "account.theme.light": "明亮模式",
+  "account.theme.system": "跟随系统",
 
-  "account.button.delete": "Delete Account",
-  "account.modal.delete.title": "Delete Account",
+  "account.button.delete": "删除账户",
+  "account.modal.delete.title": "删除账户",
   "account.modal.delete.description":
-    "Do you really want to delete your account including all your active shares?",
+    "你真的想删除你的账户，并删除所有的共享吗？",
   // END /account
 
-  // /account/shares
-  "account.shares.title": "My shares",
-  "account.shares.title.empty": "It's empty here 👀",
-  "account.shares.description.empty": "You don't have any shares.",
-  "account.shares.button.create": "Create one",
-
-  "account.shares.info.title": "Share informatons",
+  // /account/shares、
+  "account.shares.modal.share-informations": "共享信息",
+  "account.shares.title": "我的共享",
+  "account.shares.title.empty": "这里空空如也 👀",
+  "account.shares.description.empty": "你没有创建任何共享",
+  "account.shares.button.create": "创建共享",
+  
+  "account.shares.info.title": "共享信息",
   "account.shares.table.id": "ID",
-  "account.shares.table.name": "Name",
-  "account.shares.table.description": "Description",
-  "account.shares.table.visitors": "Visitors",
-  "account.shares.table.expiresAt": "Expires at",
-  "account.shares.table.createdAt": "Created at",
-  "account.shares.table.size": "Size",
+  "account.shares.table.name": "共享后缀",
+  "account.shares.table.description": "描述",
+  "account.shares.table.visitors": "已访问",
+  "account.shares.table.expiresAt": "过期时间",
+  "account.shares.table.createdAt": "创建时间",
+  "account.shares.table.size": "文件大小",
 
-  "account.shares.modal.share-link": "Share link",
+  "account.shares.modal.share-link": "共享链接",
 
-  "account.shares.modal.delete.title": "Delete {share}",
+  "account.shares.modal.delete.title": "删除 {share}",
   "account.shares.modal.delete.description":
-    "Do you really want to delete this share?",
+    "你真的想删除这个共享吗？",
 
   // END /account/shares
 
   // /account/reverseShares
-  "account.reverseShares.title": "Reverse shares",
+  "account.reverseShares.title": "预留共享",
   "account.reverseShares.description":
-    "A reverse share allows you to generate a unique URL that allows external users to create a share.",
+    "预留共享允许你创建一个特定共享链接，以便外部用户以此创建共享",
 
-  "account.reverseShares.title.empty": "It's empty here 👀",
+  "account.reverseShares.title.empty": "这里空空如也 👀",
   "account.reverseShares.description.empty":
-    "You don't have any reverse shares.",
+    "你没有创建任何预留共享",
 
   // showCreateReverseShareModal.tsx
-  "account.reverseShares.modal.expiration.label": "Expiration",
-  "account.reverseShares.modal.expiration.minute-singular": "Minute",
-  "account.reverseShares.modal.expiration.minute-plural": "Minutes",
-  "account.reverseShares.modal.expiration.hour-singular": "Hour",
-  "account.reverseShares.modal.expiration.hour-plural": "Hours",
-  "account.reverseShares.modal.expiration.day-singular": "Day",
-  "account.reverseShares.modal.expiration.day-plural": "Days",
-  "account.reverseShares.modal.expiration.week-singular": "Week",
-  "account.reverseShares.modal.expiration.week-plural": "Weeks",
-  "account.reverseShares.modal.expiration.month-singular": "Month",
-  "account.reverseShares.modal.expiration.month-plural": "Months",
-  "account.reverseShares.modal.expiration.year-singular": "Year",
-  "account.reverseShares.modal.expiration.year-plural": "Years",
+  "account.reverseShares.modal.expiration.label": "过期时间",
+  "account.reverseShares.modal.expiration.minute-singular": "1 分钟",
+  "account.reverseShares.modal.expiration.minute-plural": "分钟",
+  "account.reverseShares.modal.expiration.hour-singular": "1 小时",
+  "account.reverseShares.modal.expiration.hour-plural": "小时",
+  "account.reverseShares.modal.expiration.day-singular": "1 天",
+  "account.reverseShares.modal.expiration.day-plural": "天",
+  "account.reverseShares.modal.expiration.week-singular": "1 周",
+  "account.reverseShares.modal.expiration.week-plural": "周",
+  "account.reverseShares.modal.expiration.month-singular": "1 月",
+  "account.reverseShares.modal.expiration.month-plural": "月",
+  "account.reverseShares.modal.expiration.year-singular": "1 年",
+  "account.reverseShares.modal.expiration.year-plural": "年",
 
-  "account.reverseShares.modal.max-size.label": "Max share size",
+  "account.reverseShares.modal.max-size.label": "共享文件上限",
 
-  "account.reverseShares.modal.send-email": "Send email notification",
+  "account.reverseShares.modal.send-email": "发送邮件提醒",
   "account.reverseShares.modal.send-email.description":
-    "Send an email notification when a share is created with this reverse share link.",
+    "当这个预留共享链接被用于共享时，发送邮件提醒",
 
-  "account.reverseShares.modal.max-use.label": "Max uses",
+  "account.reverseShares.modal.max-use.label": "最大使用次数",
   "account.reverseShares.modal.max-use.description":
-    "The maximum amount of times this URL can be used to create a share.",
-  "account.reverseShare.never-expires": "This reverse share will never expire.",
+    "这个预留共享链接可被用于创建共享的最大使用次数",
+  "account.reverseShare.never-expires": "这个预留共享永不过期",
   "account.reverseShare.expires-on":
-    "This reverse share will expire on {expiration}.",
+    "这个预留共享将过期于 {expiration}",
 
-  "account.reverseShares.table.no-shares": "No shares created yet",
-  "account.reverseShares.table.count.singular": "share",
-  "account.reverseShares.table.count.plural": "shares",
-  "account.reverseShares.table.shares": "Shares",
-  "account.reverseShares.table.remaining": "Remaining uses",
-  "account.reverseShares.table.max-size": "Max share size",
-  "account.reverseShares.table.expires": "Expires at",
+  "account.reverseShares.table.no-shares": "当前没有创建任何共享",
+  "account.reverseShares.table.count.singular": "共享",
+  "account.reverseShares.table.count.plural": "共享",
+  "account.reverseShares.table.shares": "共享",
+  "account.reverseShares.table.remaining": "剩余使用次数",
+  "account.reverseShares.table.max-size": "共享文件上限",
+  "account.reverseShares.table.expires": "过期时间",
 
-  "account.reverseShares.modal.reverse-share-link": "Reverse share link",
+  "account.reverseShares.modal.reverse-share-link": "预留共享链接",
 
   "account.reverseShares.modal.delete.title":
-    "Do you really want to delete this reverse share? If you do, the associated shares will be deleted as well.",
+    "删除预留共享链接",
   "account.reverseShares.modal.delete.description":
-    "Do you really want to delete this reverse share? If you do, the associated shares will be deleted as well.",
+    "你真的想删除此预留共享链接吗？链接下所有关联的共享都将被删除",
 
   // END /account/reverseShares
 
   // /admin
-  "admin.title": "Administration",
-  "admin.button.users": "User management",
-  "admin.button.config": "Configuration",
-  "admin.version": "Version",
+  "admin.title": "管理",
+  "admin.button.users": "用户管理",
+  "admin.button.config": "配置管理",
+  "admin.version": "版本",
   // END /admin
 
   // /admin/users
-  "admin.users.title": "User management",
-  "admin.users.table.username": "Username",
-  "admin.users.table.email": "Email",
-  "admin.users.table.admin": "Admin",
+  "admin.users.title": "用户管理",
+  "admin.users.table.username": "用户名",
+  "admin.users.table.email": "电子邮件",
+  "admin.users.table.admin": "管理员",
 
-  "admin.users.edit.update.title": "Update user {username}",
-  "admin.users.edit.update.admin-privileges": "Admin privileges",
-  "admin.users.edit.update.change-password.title": "Change password",
-  "admin.users.edit.update.change-password.field": "New password",
-  "admin.users.edit.update.change-password.button": "Save new password",
+  "admin.users.edit.update.title": "更新用户 {username}",
+  "admin.users.edit.update.admin-privileges": "管理员",
+  "admin.users.edit.update.change-password.title": "更改密码",
+  "admin.users.edit.update.change-password.field": "新密码",
+  "admin.users.edit.update.change-password.button": "保存新密码",
   "admin.users.edit.update.notify.password.success":
-    "Password changed successfully",
+    "密码更新成功！",
 
-  "admin.users.edit.delete.title": "Delete user {username}",
+  "admin.users.edit.delete.title": "删除用户 {username}",
   "admin.users.edit.delete.description":
-    "Do you really want to delete this user and all his shares?",
+    "你真的想删除这个账户，并删除该用户所有的共享吗？",
 
   // showCreateUserModal.tsx
-  "admin.users.modal.create.title": "Create user",
-  "admin.users.modal.create.username": "Username",
-  "admin.users.modal.create.email": "Email",
-  "admin.users.modal.create.password": "Password",
-  "admin.users.modal.create.manual-password": "Set password manually",
+  "admin.users.modal.create.title": "创建用户",
+  "admin.users.modal.create.username": "用户名",
+  "admin.users.modal.create.email": "电子邮件",
+  "admin.users.modal.create.password": "密码",
+  "admin.users.modal.create.manual-password": "手动设置密码",
   "admin.users.modal.create.manual-password.description":
-    "If not checked, the user will receive an email with a link to set their password.",
-  "admin.users.modal.create.admin": "Admin privileges",
+    "如果不勾选，用户将会收到一封电子邮件来设置他们的密码",
+  "admin.users.modal.create.admin": "管理员",
   "admin.users.modal.create.admin.description":
-    "If checked, the user will be able to access the admin panel.",
+    "如果勾选，用户将能访问管理员面板",
 
   // END /admin/users
 
   // /upload
-  "upload.title": "Upload",
+  "upload.title": "上传",
 
   "upload.notify.generic-error":
-    "An error occurred while finishing your share.",
-  "upload.notify.count-failed": "{count} filed failed to upload. Trying again.",
+    "创建共享的过程中发生了错误",
+  "upload.notify.count-failed": "{count} 文件上传失败，请重试",
 
   // Dropzone.tsx
-  "upload.dropzone.title": "Upload files",
+  "upload.dropzone.title": "上传文件",
   "upload.dropzone.description":
-    "Drag'n'drop files here to start your share. We can accept only files that are less than {maxSize} in total.",
+    "拖放至此以上传文件，文件大小不能超过上限 {maxSize}",
   "upload.dropzone.notify.file-too-big":
-    "Your files exceed the maximum share size of {maxSize}.",
+    "你的文件超过了最大上传限制 {maxSize}",
 
   // FileList.tsx
-  "upload.filelist.name": "Name",
-  "upload.filelist.size": "Size",
+  "upload.filelist.name": "文件名",
+  "upload.filelist.size": "文件大小",
 
   // showCreateUploadModal.tsx
-  "upload.modal.title": "Create Share",
+  "upload.modal.title": "创建共享",
   "upload.modal.link.error.invalid":
-    "Can only contain letters, numbers, underscores, and hyphens",
-  "upload.modal.link.error.taken": "This link is already in use",
-  "upload.modal.not-signed-in": "You're not signed in",
+    "只能包括字母，数字，下划线(_)，和横线(-)",
+  "upload.modal.link.error.taken": "这个链接已经存在了",
+  "upload.modal.not-signed-in": "当前没有登录",
   "upload.modal.not-signed-in-description":
-    "You will be unable to delete your share manually and view the visitor count.",
+    "你将不能删除你的共享或查看访问次数",
 
-  "upload.modal.expires.never": "never",
-  "upload.modal.expires.never-long": "Never Expires",
+  "upload.modal.expires.never": "永不",
+  "upload.modal.expires.never-long": "永不过期",
 
-  "upload.modal.link.label": "Link",
-  "upload.modal.link.placeholder": "myAwesomeShare",
+  "upload.modal.link.label": "共享链接",
+  "upload.modal.link.placeholder": "共享链接",
 
-  "upload.modal.expires.label": "Expiration",
-  "upload.modal.expires.minute-singular": "Minute",
-  "upload.modal.expires.minute-plural": "Minutes",
-  "upload.modal.expires.hour-singular": "Hour",
-  "upload.modal.expires.hour-plural": "Hours",
-  "upload.modal.expires.day-singular": "Day",
-  "upload.modal.expires.day-plural": "Days",
-  "upload.modal.expires.week-singular": "Week",
-  "upload.modal.expires.week-plural": "Weeks",
-  "upload.modal.expires.month-singular": "Month",
-  "upload.modal.expires.month-plural": "Months",
-  "upload.modal.expires.year-singular": "Year",
-  "upload.modal.expires.year-plural": "Years",
+  "upload.modal.expires.label": "过期时间",
+  "upload.modal.expires.minute-singular": "1 分钟",
+  "upload.modal.expires.minute-plural": "分钟",
+  "upload.modal.expires.hour-singular": "1 小时",
+  "upload.modal.expires.hour-plural": "小时",
+  "upload.modal.expires.day-singular": "1 天",
+  "upload.modal.expires.day-plural": "天",
+  "upload.modal.expires.week-singular": "1 周",
+  "upload.modal.expires.week-plural": "周",
+  "upload.modal.expires.month-singular": "1 月",
+  "upload.modal.expires.month-plural": "月",
+  "upload.modal.expires.year-singular": "1 年",
+  "upload.modal.expires.year-plural": "年",
 
-  "upload.modal.accordion.description.title": "Description",
+  "upload.modal.accordion.description.title": "描述",
   "upload.modal.accordion.description.placeholder":
-    "Note for the recipients of this share",
+    "共享文件备注信息",
 
-  "upload.modal.accordion.email.title": "Email recipients",
-  "upload.modal.accordion.email.placeholder": "Enter email recipients",
-  "upload.modal.accordion.email.invalid-email": "Invalid email address",
+  "upload.modal.accordion.email.title": "邮件提醒",
+  "upload.modal.accordion.email.placeholder": "收件人电子邮件地址",
+  "upload.modal.accordion.email.invalid-email": "邮件地址不可用",
 
-  "upload.modal.accordion.security.title": "Security options",
-  "upload.modal.accordion.security.password.label": "Password protection",
-  "upload.modal.accordion.security.password.placeholder": "No password",
-  "upload.modal.accordion.security.max-views.label": "Maximum views",
-  "upload.modal.accordion.security.max-views.placeholder": "No limit",
+  "upload.modal.accordion.security.title": "安全选项",
+  "upload.modal.accordion.security.password.label": "密码保护",
+  "upload.modal.accordion.security.password.placeholder": "无密码",
+  "upload.modal.accordion.security.max-views.label": "最大访问次数",
+  "upload.modal.accordion.security.max-views.placeholder": "无限",
 
   // showCompletedUploadModal.tsx
-  "upload.modal.completed.never-expires": "This share will never expire.",
+  "upload.modal.completed.never-expires": "这个共享永不过期",
   "upload.modal.completed.expires-on":
-    "This share will expire on {expiration}.",
-  "upload.modal.completed.share-ready": "Share ready",
+    "这个共享将过期于 {expiration}.",
+  "upload.modal.completed.share-ready": "共享创建完毕",
 
   // END /upload
 
   // /share/[id]
-  "share.title": "Share {shareId}",
-  "share.description": "Look what I've shared with you!",
-  "share.error.visitor-limit-exceeded.title": "Visitor limit exceeded",
+  "share.title": "共享 {shareId}",
+  "share.description": "瞧瞧我给你共享了些什么！",
+  "share.error.visitor-limit-exceeded.title": "访问次数达到上限",
   "share.error.visitor-limit-exceeded.description":
-    "The visitor limit from this share has been exceeded.",
-  "share.error.removed.title": "Share removed",
-  "share.error.not-found.title": "Share not found",
+    "访问次数达到上限",
+  "share.error.removed.title": "共享已删除",
+  "share.error.not-found.title": "共享未找到",
   "share.error.not-found.description":
-    "The share you're looking for doesn't exist.",
+    "共享文件走丢了",
 
-  "share.modal.password.title": "Password required",
+  "share.modal.password.title": "需要密码",
   "share.modal.password.description":
-    "To access this share please enter the password for the share.",
-  "share.modal.password": "Password",
-  "share.modal.error.invalid-password": "Invalid password",
+    "请输入密码来访问此共享",
+  "share.modal.password": "密码",
+  "share.modal.error.invalid-password": "密码错误",
 
-  "share.button.download-all": "Download all",
+  "share.button.download-all": "全部下载",
   "share.notify.download-all-preparing":
-    "The share is preparing. Try again in a few minutes.",
+    "该共享正在处理中，请稍等片刻",
 
-  "share.modal.file-link": "File link",
-  "share.table.name": "Name",
-  "share.table.size": "Size",
+  "share.modal.file-link": "文件链接",
+  "share.table.name": "文件名",
+  "share.table.size": "文件大小",
 
-  "share.modal.file-preview.error.not-supported.title": "Preview not supported",
+  "share.modal.file-preview.error.not-supported.title": "该文件类型不支持预览",
   "share.modal.file-preview.error.not-supported.description":
-    "A preview for thise file type is unsupported. Please download the file to view it.",
+    "该文件类型不支持预览，请下载后打开查看",
 
   // END /share/[id]
 
   // /admin/config
-  "admin.config.title": "Configuration",
-  "admin.config.category.general": "General",
-  "admin.config.category.share": "Share",
-  "admin.config.category.email": "Email",
+  "admin.config.title": "配置管理",
+  "admin.config.category.general": "通用",
+  "admin.config.category.share": "共享",
+  "admin.config.category.email": "电子邮件",
   "admin.config.category.smtp": "SMTP",
 
-  "admin.config.general.app-name": "App name",
-  "admin.config.general.app-name.description": "Name of the application",
-  "admin.config.general.app-url": "App URL",
+  "admin.config.general.app-name": "App 名称",
+  "admin.config.general.app-name.description": "这个 App 的名称",
+  "admin.config.general.app-url": "App 的地址",
   "admin.config.general.app-url.description":
-    "On which URL Pingvin Share is available",
-  "admin.config.general.show-home-page": "Show home page",
+    "Pingvin Share 的 URL 地址",
+  "admin.config.general.show-home-page": "显示首页",
   "admin.config.general.show-home-page.description":
-    "Whether to show the home page",
+    "是否显示首页",
   "admin.config.general.logo": "Logo",
   "admin.config.general.logo.description":
-    "Change your logo by uploading a new image. The image must be a PNG and should have the format 1:1.",
-  "admin.config.general.logo.placeholder": "Pick image",
+    "上传个性化 Logo，图片必须是长宽比 1:1 的 PNG 格式",
+  "admin.config.general.logo.placeholder": "选择图片",
 
   "admin.config.email.enable-share-email-recipients":
-    "Enable share email recipients",
+    "开启共享邮件通知",
   "admin.config.email.enable-share-email-recipients.description":
-    "Whether to allow emails to share recipients. Only enable this if you have enabled SMTP.",
-  "admin.config.email.share-recipients-subject": "Share recipients subject",
+    "是否允许通过邮件通知发送共享信息，只有设置了 SMTP 后该选项才有效",
+  "admin.config.email.share-recipients-subject": "共享邮件通知主题",
   "admin.config.email.share-recipients-subject.description":
-    "Subject of the email which gets sent to the share recipients.",
-  "admin.config.email.share-recipients-message": "Share recipients message",
+    "发送共享邮件通知的邮件主题",
+  "admin.config.email.share-recipients-message": "共享邮件通知内容",
   "admin.config.email.share-recipients-message.description":
-    "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n The variables will be replaced with the actual values.",
-  "admin.config.email.reverse-share-subject": "Reverse share subject",
+    "发送到接收者的共享邮件通知具体内容。可选的变量有：\n {creator} - 共享创建者\n {shareUrl} - 共享链接\n {desc} - 共享描述\n {expires} - 共享过期时间\n 这些变量会被实际的值所替代",
+  "admin.config.email.reverse-share-subject": "预留共享邮件通知主题",
   "admin.config.email.reverse-share-subject.description":
-    "Subject of the email which gets sent when someone created a share with your reverse share link.",
-  "admin.config.email.reverse-share-message": "Reverse share message",
+    "当有人使用了你的预留共享链接时，发送的预留共享邮件通知主题",
+  "admin.config.email.reverse-share-message": "预留共享邮件通知内容",
   "admin.config.email.reverse-share-message.description":
-    "Message which gets sent when someone created a share with your reverse share link. {shareUrl} will be replaced with the creator's name and the share URL.",
-  "admin.config.email.reset-password-subject": "Reset password subject",
+    "当有人使用了你的预留共享链接时，发送的通知内容。{shareUrl} 会被创建者的用户名和共享链接代替",
+  "admin.config.email.reset-password-subject": "重置密码邮件通知主题",
   "admin.config.email.reset-password-subject.description":
-    "Subject of the email which gets sent when a user requests a password reset.",
-  "admin.config.email.reset-password-message": "Reset password message",
+    "当用户发起重置密码时，发送的重置密码邮件通知主题",
+  "admin.config.email.reset-password-message": "重置密码邮件通知内容",
   "admin.config.email.reset-password-message.description":
-    "Message which gets sent when a user requests a password reset. {url} will be replaced with the reset password URL.",
-  "admin.config.email.invite-subject": "Invite subject",
+    "当用户发起重置密码时，重置密码邮件通知内容。{url} 会被重置密码链接代替",
+  "admin.config.email.invite-subject": "邀请邮件通知主题",
   "admin.config.email.invite-subject.description":
-    "Subject of the email which gets sent when an admin invites a user.",
-  "admin.config.email.invite-message": "Invite message",
+    "当管理员邀请用户时，发送的邀请邮件通知主题",
+  "admin.config.email.invite-message": "邀请邮件通知内容",
   "admin.config.email.invite-message.description":
-    "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL and {password} with the password.",
-  "admin.config.share.allow-registration": "Allow registration",
+    "当管理员邀请用户时，发送的邀请邮件通知内容。{url} 会被邀请链接代替，{password} 会被密码代替",
+  "admin.config.share.allow-registration": "允许注册",
   "admin.config.share.allow-registration.description":
-    "Whether registration is allowed",
+    "是否允许注册",
   "admin.config.share.allow-unauthenticated-shares":
-    "Allow unauthenticated shares",
+    "是否允许未验证的共享",
   "admin.config.share.allow-unauthenticated-shares.description":
-    "Whether unauthorized users can create shares",
-  "admin.config.share.max-size": "Max size",
-  "admin.config.share.max-size.description": "Maximum share size in bytes",
+    "是否允许未验证的用户创建共享",
+  "admin.config.share.max-size": "最大文件上限",
+  "admin.config.share.max-size.description": "最大文件上限，单位 bytes (1GB=1024MB=1048576KB=1073741824bytes)",
 
-  "admin.config.smtp.enabled": "Enabled",
+  "admin.config.smtp.enabled": "启用",
   "admin.config.smtp.enabled.description":
-    "Whether SMTP is enabled. Only set this to true if you entered the host, port, email, user and password of your SMTP server.",
-  "admin.config.smtp.host": "Host",
-  "admin.config.smtp.host.description": "Host of the SMTP server",
-  "admin.config.smtp.port": "Port",
-  "admin.config.smtp.port.description": "Port of the SMTP server",
-  "admin.config.smtp.email": "Email",
+    "是否开启 SMTP，仅当输入主机名、端口、发送邮箱、用户名和密码后开启",
+  "admin.config.smtp.host": "主机名",
+  "admin.config.smtp.host.description": "SMTP 主机名",
+  "admin.config.smtp.port": "端口",
+  "admin.config.smtp.port.description": "SMTP 主机端口",
+  "admin.config.smtp.email": "发送邮箱",
   "admin.config.smtp.email.description":
-    "Email address which the emails get sent from",
-  "admin.config.smtp.username": "Username",
-  "admin.config.smtp.username.description": "Username of the SMTP server",
-  "admin.config.smtp.password": "Password",
-  "admin.config.smtp.password.description": "Password of the SMTP server",
-  "admin.config.smtp.button.test": "Send test email",
+    "发送邮箱地址",
+  "admin.config.smtp.username": "用户名",
+  "admin.config.smtp.username.description": "SMTP 主机用户名",
+  "admin.config.smtp.password": "密码",
+  "admin.config.smtp.password.description": "SMTP 主机密码",
+  "admin.config.smtp.button.test": "发送测试邮件",
 
   // 404
   "404.title": "404",
-  "404.description": "Oops this page doesn't exist.",
-  "404.button.home": "Gring me back home",
+  "404.description": "当前的页面走丢啦",
+  "404.button.home": "返回主页",
 
   // Common translations
-  "common.button.save": "Save",
-  "common.button.create": "Create",
-  "common.button.submit": "Submit",
-  "common.button.delete": "Delete",
-  "common.button.cancel": "Cancel",
-  "common.button.confirm": "Confirm",
-  "common.button.disable": "Disable",
-  "common.button.share": "Share",
-  "common.button.generate": "Generate",
-  "common.button.done": "Done",
-  "common.text.link": "Link",
-  "common.text.or": "or",
-  "common.button.go-back": "Go back",
-  "common.notify.copied": "Your link was copied to the clipboard",
+  "common.button.save": "保存",
+  "common.button.create": "创建",
+  "common.button.submit": "提交",
+  "common.button.delete": "删除",
+  "common.button.cancel": "取消",
+  "common.button.confirm": "确认",
+  "common.button.disable": "关闭",
+  "common.button.share": "共享",
+  "common.button.generate": "生成",
+  "common.button.done": "完成",
+  "common.text.link": "链接",
+  "common.text.or": "或",
+  "common.button.go-back": "返回",
+  "common.notify.copied": "已复制到剪贴板",
 
-  "common.error": "Error",
-  "common.error.unknown": "An unknown error occurred",
-  "common.error.invalid-email": "Invalid email address",
-  "common.error.too-short": "Must be at least {length} characters",
-  "common.error.too-long": "Must be at most {length} characters",
-  "common.error.exact-length": "Must be exactly {length} characters",
-  "common.error.invalid-number": "Must be a number",
-  "common.error.field-required": "This field is required",
+  "common.error": "错误",
+  "common.error.unknown": "发生未知错误",
+  "common.error.invalid-email": "邮件地址不可用",
+  "common.error.too-short": "必须不少于 {length} 个字符",
+  "common.error.too-long": "必须不超过 {length} 个字符",
+  "common.error.exact-length": "必须为 {length} 个字符",
+  "common.error.invalid-number": "必须为数字",
+  "common.error.field-required": "必填项",
 };
