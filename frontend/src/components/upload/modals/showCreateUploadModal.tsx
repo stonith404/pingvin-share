@@ -267,7 +267,7 @@ const CreateUploadModalBody = ({
             {options.enableEmailRecepients && (
               <Accordion.Item value="recipients" sx={{ borderBottom: "none" }}>
                 <Accordion.Control>
-                  <FormattedMessage id="upload.modal.accordion.email.tile" />
+                  <FormattedMessage id="upload.modal.accordion.email.title" />
                 </Accordion.Control>
                 <Accordion.Panel>
                   <MultiSelect
