@@ -41,7 +41,7 @@ const configVariables: ConfigVariables = {
     },
     maxSize: {
       type: "number",
-      defaultValue: "1073741824",
+      defaultValue: "1000000000",
 
       secret: false,
     },
