@@ -1,4 +1,4 @@
 files:
   - source: /frontend/src/i18n/translations/en.ts
-    translation: /%original_path%/%two_letters_code%.ts
+    translation: /%original_path%/%locale%.ts
 pull_request_title: "chore: update translations via Crowdin"

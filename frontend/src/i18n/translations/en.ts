@@ -128,6 +128,7 @@ export default {
   "account.shares.table.createdAt": "Created at",
   "account.shares.table.size": "Size",
 
+  "account.shares.modal.share-informations": "Share informations",
   "account.shares.modal.share-link": "Share link",
 
   "account.shares.modal.delete.title": "Delete share {share}",
@@ -403,7 +404,6 @@ export default {
   "admin.config.smtp.button.test": "Send test email",
 
   // 404
-  "404.title": "404",
   "404.description": "Oops this page doesn't exist.",
   "404.button.home": "Bring me back home",
 

@@ -113,8 +113,7 @@ export default {
     "你真的想删除你的账户，并删除所有的共享吗？",
   // END /account
 
-  // /account/shares、
-  "account.shares.modal.share-informations": "共享信息",
+  // /account/shares
   "account.shares.title": "我的共享",
   "account.shares.title.empty": "这里空空如也 👀",
   "account.shares.description.empty": "你没有创建任何共享",
@@ -129,6 +128,7 @@ export default {
   "account.shares.table.createdAt": "创建时间",
   "account.shares.table.size": "文件大小",
 
+  "account.shares.modal.share-informations": "共享信息",
   "account.shares.modal.share-link": "共享链接",
 
   "account.shares.modal.delete.title": "删除 {share}",
