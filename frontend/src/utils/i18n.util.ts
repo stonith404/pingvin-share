@@ -11,13 +11,21 @@ const getLanguageFromAcceptHeader = (acceptLanguage?: string) => {
 
   const languages = acceptLanguage.split(",").map((l) => l.split(";")[0]);
   const supportedLanguages = Object.values(LOCALES).map((l) => l.code);
+  const supportedLanguagesWithoutRegion = supportedLanguages.map(
+    (l) => l.split("-")[0]
+  );
 
   for (const language of languages) {
     // Try to match the full language code first, then the language code without the region
     if (supportedLanguages.includes(language)) {
       return language;
-    } else if (supportedLanguages.includes(language.split("-")[0])) {
-      return language.split("-")[0];
+    } else if (
+      supportedLanguagesWithoutRegion.includes(language.split("-")[0])
+    ) {
+      const similarLanguage = supportedLanguages.find((l) =>
+        l.startsWith(language.split("-")[0])
+      );
+      return similarLanguage;
     }
   }
   return "en";

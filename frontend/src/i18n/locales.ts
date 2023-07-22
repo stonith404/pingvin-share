@@ -1,46 +1,46 @@
-import danish from "./translations/da";
-import german from "./translations/de";
-import english from "./translations/en";
-import spanish from "./translations/es";
-import french from "./translations/fr";
-import portugueze from "./translations/pt";
-import thai from "./translations/th";
+import danish from "./translations/da-DK";
+import german from "./translations/de-DE";
+import english from "./translations/en-US";
+import spanish from "./translations/es-ES";
+import french from "./translations/fr-FR";
+import portugueze from "./translations/pt-PT";
+import thai from "./translations/th-TH";
 import chineseSimplified from "./translations/zh-CN";
 
 export const LOCALES = {
   ENGLISH: {
     name: "English",
-    code: "en",
+    code: "en-US",
     messages: english,
   },
   GERMAN: {
     name: "Deutsch",
-    code: "de",
+    code: "de-DE",
     messages: german,
   },
   FRENCH: {
     name: "Français",
-    code: "fr",
+    code: "fr-FR",
     messages: french,
   },
   PORTUGUEZE: {
     name: "Português",
-    code: "pt",
+    code: "pt-PT",
     messages: portugueze,
   },
   DANISH: {
     name: "Dansk",
-    code: "da",
+    code: "da-DK",
     messages: danish,
   },
   THAI: {
     name: "ไทย",
-    code: "th",
+    code: "th-TH",
     messages: thai,
   },
   SPANISH: {
     name: "Español",
-    code: "es",
+    code: "es-ES",
     messages: spanish,
   },
   CHINESE_SIMPLIFIED: {
