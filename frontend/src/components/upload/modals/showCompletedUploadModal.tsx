@@ -30,7 +30,7 @@ const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
   const router = useRouter();
   const t = useTranslate();
 
-  const link = `${appUrl}/share/${share.id}`;
+  const link = `${appUrl}/s/${share.id}`;
 
   return (
     <Stack align="stretch">

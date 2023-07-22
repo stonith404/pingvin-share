@@ -168,8 +168,7 @@ const CreateUploadModalBody = ({
               color: theme.colors.gray[6],
             })}
           >
-            {options.appUrl}/share/
-            {form.values.link == "" ? "myAwesomeShare" : form.values.link}
+            {`${options.appUrl}/s/${form.values.link}`}
           </Text>
           {!options.isReverseShare && (
             <>

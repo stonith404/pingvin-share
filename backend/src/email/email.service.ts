@@ -54,7 +54,7 @@ export class EmailService {
     if (!this.config.get("email.enableShareEmailRecipients"))
       throw new InternalServerErrorException("Email service disabled");
 
-    const shareUrl = `${this.config.get("general.appUrl")}/share/${shareId}`;
+    const shareUrl = `${this.config.get("general.appUrl")}/s/${shareId}`;
 
     await this.sendMail(
       recipientEmail,
@@ -75,7 +75,7 @@ export class EmailService {
   }
 
   async sendMailToReverseShareCreator(recipientEmail: string, shareId: string) {
-    const shareUrl = `${this.config.get("general.appUrl")}/share/${shareId}`;
+    const shareUrl = `${this.config.get("general.appUrl")}/s/${shareId}`;
 
     await this.sendMail(
       recipientEmail,

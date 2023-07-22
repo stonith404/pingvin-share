@@ -15,7 +15,7 @@ const showShareInformationsModal = (
   maxShareSize: number
 ) => {
   const t = translateOutsideContext();
-  const link = `${appUrl}/share/${share.id}`;
+  const link = `${appUrl}/s/${share.id}`;
 
   let shareSize: number = 0;
   for (let file of share.files as FileMetaData[])

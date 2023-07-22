@@ -159,7 +159,7 @@ const MyShares = () => {
                                   onClick={() => {
                                     if (window.isSecureContext) {
                                       clipboard.copy(
-                                        `${appUrl}/share/${share.id}`
+                                        `${appUrl}/s/${share.id}`
                                       );
                                       toast.success(t("common.notify.copied"));
                                     } else {

@@ -132,7 +132,7 @@ const MyShares = () => {
                         onClick={() => {
                           if (window.isSecureContext) {
                             clipboard.copy(
-                              `${config.get("general.appUrl")}/share/${
+                              `${config.get("general.appUrl")}/s/${
                                 share.id
                               }`
                             );
