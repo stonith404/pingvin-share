@@ -260,8 +260,6 @@ export default {
   "upload.modal.expires.never-long": "Never Expires",
 
   "upload.modal.link.label": "Link",
-  "upload.modal.link.placeholder": "myAwesomeShare",
-
   "upload.modal.expires.label": "Expiration",
   "upload.modal.expires.minute-singular": "Minute",
   "upload.modal.expires.minute-plural": "Minutes",

@@ -1,8 +1,7 @@
 import {
   Button,
   Center,
-  Col,
-  Grid,
+  Group,
   Image,
   Stack,
   Text,
@@ -114,21 +113,23 @@ const CreateEnableTotpModal = ({
                 .catch(toast.axiosError);
             })}
           >
-            <Grid align="flex-end">
-              <Col xs={9}>
-                <TextInput
-                  variant="filled"
-                  label={t("account.modal.totp.code")}
-                  placeholder="******"
-                  {...form.getInputProps("code")}
-                />
-              </Col>
-              <Col xs={3}>
-                <Button variant="outline" type="submit">
-                  <FormattedMessage id="account.modal.totp.verify" />
-                </Button>
-              </Col>
-            </Grid>
+            <Group align="end">
+              <TextInput
+                style={{ flex: "1" }}
+                variant="filled"
+                label={t("account.modal.totp.code")}
+                placeholder="******"
+                {...form.getInputProps("code")}
+              />
+
+              <Button
+                style={{ flex: "0 0 auto" }}
+                variant="outline"
+                type="submit"
+              >
+                <FormattedMessage id="account.modal.totp.verify" />
+              </Button>
+            </Group>
           </form>
         </Stack>
       </Center>

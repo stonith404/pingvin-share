@@ -5,6 +5,7 @@ import {
   Checkbox,
   Col,
   Grid,
+  Group,
   MultiSelect,
   NumberInput,
   PasswordInput,
@@ -135,31 +136,29 @@ const CreateUploadModalBody = ({
         })}
       >
         <Stack align="stretch">
-          <Grid align={form.errors.link ? "center" : "flex-end"}>
-            <Col xs={9}>
-              <TextInput
-                variant="filled"
-                label="Link"
-                placeholder="myAwesomeShare"
-                {...form.getInputProps("link")}
-              />
-            </Col>
-            <Col xs={3}>
-              <Button
-                variant="outline"
-                onClick={() =>
-                  form.setFieldValue(
-                    "link",
-                    Buffer.from(Math.random().toString(), "utf8")
-                      .toString("base64")
-                      .substr(10, 7)
-                  )
-                }
-              >
-                <FormattedMessage id="common.button.generate" />
-              </Button>
-            </Col>
-          </Grid>
+          <Group align="end">
+            <TextInput
+              style={{ flex: "1" }}
+              variant="filled"
+              label="Link"
+              placeholder="myAwesomeShare"
+              {...form.getInputProps("link")}
+            />
+            <Button
+              style={{ flex: "0 0 auto" }}
+              variant="outline"
+              onClick={() =>
+                form.setFieldValue(
+                  "link",
+                  Buffer.from(Math.random().toString(), "utf8")
+                    .toString("base64")
+                    .substr(10, 7)
+                )
+              }
+            >
+              <FormattedMessage id="common.button.generate" />
+            </Button>
+          </Group>
 
           <Text
             italic
@@ -173,6 +172,17 @@ const CreateUploadModalBody = ({
           {!options.isReverseShare && (
             <>
               <Grid align={form.errors.link ? "center" : "flex-end"}>
+                <Col xs={6}>
+                  <NumberInput
+                    min={1}
+                    max={99999}
+                    precision={0}
+                    variant="filled"
+                    label={t("upload.modal.expires.label")}
+                    disabled={form.values.never_expires}
+                    {...form.getInputProps("expiration_num")}
+                  />
+                </Col>
                 <Col xs={6}>
                   <Select
                     disabled={form.values.never_expires}
