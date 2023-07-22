@@ -49,7 +49,7 @@ const DownloadAllButton = ({ shareId }: { shareId: string }) => {
         }
       }}
     >
-      <FormattedMessage id="share.download-all" />
+      <FormattedMessage id="share.button.download-all" />
     </Button>
   );
 };

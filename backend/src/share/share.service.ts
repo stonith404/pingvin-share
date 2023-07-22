@@ -104,7 +104,7 @@ export class ShareService {
 
     const files = await this.prisma.file.findMany({ where: { shareId } });
     const archive = archiver("zip", {
-      zlib: { level: 9 },
+      zlib: { level: this.config.get("share.zipCompressionLevel") },
     });
     const writeStream = fs.createWriteStream(`${path}/archive.zip`);
 

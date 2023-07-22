@@ -18,7 +18,6 @@ const configVariables: ConfigVariables = {
     appUrl: {
       type: "string",
       defaultValue: "http://localhost:3000",
-
       secret: false,
     },
     showHomePage: {
@@ -36,14 +35,16 @@ const configVariables: ConfigVariables = {
     allowUnauthenticatedShares: {
       type: "boolean",
       defaultValue: "false",
-
       secret: false,
     },
     maxSize: {
       type: "number",
       defaultValue: "1000000000",
-
       secret: false,
+    },
+    zipCompressionLevel: {
+      type: "number",
+      defaultValue: "9",
     },
   },
   email: {

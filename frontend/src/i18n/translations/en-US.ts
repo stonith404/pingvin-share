@@ -386,6 +386,9 @@ export default {
     "Whether unauthenticated users can create shares",
   "admin.config.share.max-size": "Max size",
   "admin.config.share.max-size.description": "Maximum share size in bytes",
+  "admin.config.share.zip-compression-level": "Zip compression level",
+  "admin.config.share.zip-compression-level.description":
+    "Adjust the level to balance between file size and compression speed. Valid values range from 0 to 9, with 0 being no compression and 9 being maximum compression. ",
 
   "admin.config.smtp.enabled": "Enabled",
   "admin.config.smtp.enabled.description":
