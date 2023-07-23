@@ -1,11 +1,13 @@
 import { NotificationProps, showNotification } from "@mantine/notifications";
 import { TbCheck, TbX } from "react-icons/tb";
+import { FormattedMessage } from "react-intl";
+
 const error = (message: string, config?: Omit<NotificationProps, "message">) =>
   showNotification({
     icon: <TbX />,
     color: "red",
     radius: "md",
-    title: "Error",
+    title: <FormattedMessage id="common.error" />,
     message: message,
 
     autoClose: true,
@@ -24,7 +26,7 @@ const success = (
     icon: <TbCheck />,
     color: "green",
     radius: "md",
-    title: "Success",
+    title: <FormattedMessage id="common.success" />,
     message: message,
     autoClose: true,
     ...config,
