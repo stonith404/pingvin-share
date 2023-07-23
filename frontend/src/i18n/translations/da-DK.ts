@@ -311,6 +311,7 @@ export default {
   "common.text.or": "eller",
   "common.button.go-back": "Gå tilbage",
   "common.notify.copied": "Linket blev kopieret til udklipsholderen",
+  "common.success": "Success",
   "common.error": "Fejl",
   "common.error.unknown": "En ukendt fejl opstod",
   "common.error.invalid-email": "Ugyldig e-mail",
