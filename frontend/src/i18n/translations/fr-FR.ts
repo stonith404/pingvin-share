@@ -77,6 +77,7 @@ export default {
   "account.notify.totp.disable": "TOTP désactivé",
   "account.notify.totp.enable": "TOTP activé",
   "account.card.language.title": "Langue",
+  "account.card.language.description": "The project is translated by the community. Some languages might be incomplete.",
   "account.card.color.title": "Thème de couleurs",
   // ThemeSwitcher.tsx
   "account.theme.dark": "Sombre",
