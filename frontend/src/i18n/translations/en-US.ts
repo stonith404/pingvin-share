@@ -100,6 +100,8 @@ export default {
   "account.notify.totp.enable": "TOTP enabled successfully",
 
   "account.card.language.title": "Language",
+  "account.card.language.description":
+    "The project is translated by the community. Some languages might be incomplete.",
   "account.card.color.title": "Color scheme",
 
   // ThemeSwitcher.tsx
