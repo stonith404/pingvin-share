@@ -40,7 +40,7 @@ export default {
   "signup.button.signin": "Se connecter",
   "signup.input.username": "Pseudo",
   "signup.input.username.placeholder": "Votre pseudo",
-  "signup.input.email": "Email",
+  "signup.input.email": "Adresse mail",
   "signup.input.email.placeholder": "Votre adresse mail",
   "signup.button.submit": "Commençons",
   // END /auth/signup
@@ -77,7 +77,7 @@ export default {
   "account.notify.totp.disable": "TOTP désactivé",
   "account.notify.totp.enable": "TOTP activé",
   "account.card.language.title": "Langue",
-  "account.card.language.description": "The project is translated by the community. Some languages might be incomplete.",
+  "account.card.language.description": "Le projet est traduit par la communauté. Certaines traductions peuvent être incomplètes.",
   "account.card.color.title": "Thème de couleurs",
   // ThemeSwitcher.tsx
   "account.theme.dark": "Sombre",
@@ -100,7 +100,7 @@ export default {
   "account.shares.table.expiresAt": "Expire le",
   "account.shares.table.createdAt": "Créé le",
   "account.shares.table.size": "Taille",
-  "account.shares.modal.share-informations": "Share informations",
+  "account.shares.modal.share-informations": "Détails du partage",
   "account.shares.modal.share-link": "Lien de partage",
   "account.shares.modal.delete.title": "Supprimer le partage {share}",
   "account.shares.modal.delete.description": "Voulez-vous vraiment supprimer ce partage ?",
@@ -172,7 +172,7 @@ export default {
   "admin.users.modal.create.admin.description": "Si coché, l'utilisateur pourra accéder au panneau d'administration.",
   // END /admin/users
   // /upload
-  "upload.title": "Téléverser",
+  "upload.title": "Envoyer",
   "upload.notify.generic-error": "Une erreur est survenue durant le traitement de votre partage.",
   "upload.notify.count-failed": "{count} fichier(s) n'a(ont) pas pu être envoyé(s). Veuillez réessayer.",
   // Dropzone.tsx
@@ -278,10 +278,10 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "Autorise des utilisateurs non authentifiés à créer des partages",
   "admin.config.share.max-size": "Taille max",
   "admin.config.share.max-size.description": "Taille maximale du fichier en octets",
-  "admin.config.share.zip-compression-level": "Zip compression level",
-  "admin.config.share.zip-compression-level.description": "Adjust the level to balance between file size and compression speed. Valid values range from 0 to 9, with 0 being no compression and 9 being maximum compression. ",
+  "admin.config.share.zip-compression-level": "Niveau de compression",
+  "admin.config.share.zip-compression-level.description": "Ajustez le niveau pour trouver l'équilibre entre la taille du fichier et la vitesse de compression. Les valeurs valides vont de 0 à 9, 0 étant sans compression et 9 étant la compression maximale. ",
   "admin.config.smtp.enabled": "Activé",
-  "admin.config.smtp.enabled.description": "Active SMTP. Activez ceci uniquement si vous avez saisit l'hôte, le port, le courriel, l'utilisateur et le mot de passe de votre serveur SMTP.",
+  "admin.config.smtp.enabled.description": "Active SMTP. Activez ceci uniquement si vous avez saisi l'hôte, le port, le courriel, l'utilisateur et le mot de passe de votre serveur SMTP.",
   "admin.config.smtp.host": "Hôte",
   "admin.config.smtp.host.description": "Hôte du serveur SMTP",
   "admin.config.smtp.port": "Port",
