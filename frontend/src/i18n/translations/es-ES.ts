@@ -311,6 +311,7 @@ export default {
   "common.text.or": "o",
   "common.button.go-back": "Volver",
   "common.notify.copied": "Tu enlace se ha copiado al portapapeles",
+  "common.success": "Success",
   "common.error": "Error",
   "common.error.unknown": "Ocurrió un error desconocido",
   "common.error.invalid-email": "Correo electrónico no válido",
