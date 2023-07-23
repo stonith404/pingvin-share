@@ -77,6 +77,7 @@ export default {
   "account.notify.totp.disable": "成功关闭两步验证！",
   "account.notify.totp.enable": "成功开启两步验证！",
   "account.card.language.title": "语言",
+  "account.card.language.description": "The project is translated by the community. Some languages might be incomplete.",
   "account.card.color.title": "颜色外观",
   // ThemeSwitcher.tsx
   "account.theme.dark": "暗黑模式",

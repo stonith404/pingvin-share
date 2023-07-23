@@ -77,6 +77,7 @@ export default {
   "account.notify.totp.disable": "2-faktor blev deaktiveret",
   "account.notify.totp.enable": "2-faktor blev deaktiveret",
   "account.card.language.title": "Sprog",
+  "account.card.language.description": "The project is translated by the community. Some languages might be incomplete.",
   "account.card.color.title": "Farveskema",
   // ThemeSwitcher.tsx
   "account.theme.dark": "Mørkt",

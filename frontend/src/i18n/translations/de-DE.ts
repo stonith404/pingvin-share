@@ -77,6 +77,7 @@ export default {
   "account.notify.totp.disable": "TOTP erfolgreich deaktiviert",
   "account.notify.totp.enable": "TOTP erfolgreich aktiviert",
   "account.card.language.title": "Sprache",
+  "account.card.language.description": "Das Projekt wird von der Community übersetzt. Einige Sprachen könnten unvollständig sein.",
   "account.card.color.title": "Farbschema",
   // ThemeSwitcher.tsx
   "account.theme.dark": "Dunkel",
@@ -277,7 +278,7 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "Gibt an, ob nicht authentifizierte Benutzer Freigaben erstellen können",
   "admin.config.share.max-size": "Maximale Größe",
   "admin.config.share.max-size.description": "Maximale Größe einer Freigabe in Bytes",
-  "admin.config.share.zip-compression-level": "Zip compression level",
+  "admin.config.share.zip-compression-level": "Zip Komprimierungsstufe",
   "admin.config.share.zip-compression-level.description": "Adjust the level to balance between file size and compression speed. Valid values range from 0 to 9, with 0 being no compression and 9 being maximum compression. ",
   "admin.config.smtp.enabled": "Aktiviert",
   "admin.config.smtp.enabled.description": "Gibt an, ob SMTP aktiviert ist. Aktiviere dies nur, wenn Du den Host, den Port, die Email, den Benutzernamen und das Passwort deines SMTP-Servers eingegeben hast.",
