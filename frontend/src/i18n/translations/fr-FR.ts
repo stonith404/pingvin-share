@@ -311,6 +311,7 @@ export default {
   "common.text.or": "ou",
   "common.button.go-back": "Précédent",
   "common.notify.copied": "Votre lien a été copié dans le presse-papiers",
+  "common.success": "Success",
   "common.error": "Erreur",
   "common.error.unknown": "Une erreur inconnue est survenue",
   "common.error.invalid-email": "Adresse email invalide",
