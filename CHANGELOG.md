@@ -1,3 +1,21 @@
+## [0.17.0](https://github.com/stonith404/pingvin-share/compare/v0.16.1...v0.17.0) (2023-07-23)
+
+
+### Features
+
+* ability to define zip compression level ([7827b68](https://github.com/stonith404/pingvin-share/commit/7827b687fa022e86a2643e7a1951af8c7e80608c))
+* add note to language picker ([7f0c31c](https://github.com/stonith404/pingvin-share/commit/7f0c31c2e09b3ee9aae6c3dfb54fac2f2b1dfe23))
+* add share url alias `/s` ([231a2e9](https://github.com/stonith404/pingvin-share/commit/231a2e95b9734cf4704454e1945698753dbb378b))
+* localization ([#196](https://github.com/stonith404/pingvin-share/issues/196)) ([b9f6e3b](https://github.com/stonith404/pingvin-share/commit/b9f6e3bd08dcfc050048fba582b35958bc7b6184))
+* update default value of `maxSize` from `1073741824` to `1000000000` ([389dc87](https://github.com/stonith404/pingvin-share/commit/389dc87cac775d916d0cff9b71d3c5ff90bfe916))
+
+
+### Bug Fixes
+
+* confusion between GB and GiB ([5816b39](https://github.com/stonith404/pingvin-share/commit/5816b39fc6ef6fe6b7cf8e7925aa297561f5b796))
+* mistakes in English translations ([70b425b](https://github.com/stonith404/pingvin-share/commit/70b425b3807be79a3b518cc478996c71dffcf986))
+* wrong layout if button text is too long in modals ([f4c88ae](https://github.com/stonith404/pingvin-share/commit/f4c88aeb0823c2c18535c25fcf8e16afa8b53a56))
+
 ### [0.16.1](https://github.com/stonith404/pingvin-share/compare/v0.16.0...v0.16.1) (2023-07-10)
 
 
