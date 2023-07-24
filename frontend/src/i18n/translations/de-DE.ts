@@ -311,7 +311,7 @@ export default {
   "common.text.or": "oder",
   "common.button.go-back": "Zurück",
   "common.notify.copied": "Dein Link wurde in die Zwischenablage kopiert",
-  "common.success": "Success",
+  "common.success": "Erfolg",
   "common.error": "Fehler",
   "common.error.unknown": "Ein unbekannter Fehler ist aufgetreten",
   "common.error.invalid-email": "Ungültige E-Mail-Adresse",
