@@ -77,7 +77,7 @@ export default {
   "account.notify.totp.disable": "TOTP deshabilitado correctamente",
   "account.notify.totp.enable": "TOTP habilitado correctamente",
   "account.card.language.title": "Idioma",
-  "account.card.language.description": "The project is translated by the community. Some languages might be incomplete.",
+  "account.card.language.description": "El proyecto ha sido traducido por la comunidad. Algunos idiomas pueden estar incompletos.",
   "account.card.color.title": "Esquema de colores",
   // ThemeSwitcher.tsx
   "account.theme.dark": "Oscuro",
@@ -311,7 +311,7 @@ export default {
   "common.text.or": "o",
   "common.button.go-back": "Volver",
   "common.notify.copied": "Tu enlace se ha copiado al portapapeles",
-  "common.success": "Success",
+  "common.success": "Éxito",
   "common.error": "Error",
   "common.error.unknown": "Ocurrió un error desconocido",
   "common.error.invalid-email": "Correo electrónico no válido",
