@@ -311,6 +311,7 @@ export default {
   "common.text.or": "或",
   "common.button.go-back": "返回",
   "common.notify.copied": "已复制到剪贴板",
+  "common.success": "Success",
   "common.error": "错误",
   "common.error.unknown": "发生未知错误",
   "common.error.invalid-email": "邮件地址不可用",
