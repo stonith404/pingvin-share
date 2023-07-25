@@ -3,7 +3,7 @@ import german from "./translations/de-DE";
 import english from "./translations/en-US";
 import spanish from "./translations/es-ES";
 import french from "./translations/fr-FR";
-import portugueze from "./translations/pt-PT";
+import portuguese from "./translations/pt-BR";
 import thai from "./translations/th-TH";
 import chineseSimplified from "./translations/zh-CN";
 
@@ -23,10 +23,10 @@ export const LOCALES = {
     code: "fr-FR",
     messages: french,
   },
-  PORTUGUEZE: {
-    name: "Português",
-    code: "pt-PT",
-    messages: portugueze,
+  PORTUGUESE_BRAZIL: {
+    name: "Português (Brasil)",
+    code: "pt-BR",
+    messages: portuguese,
   },
   DANISH: {
     name: "Dansk",

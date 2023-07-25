@@ -425,6 +425,7 @@ export default {
   "common.text.or": "or",
   "common.button.go-back": "Go back",
   "common.notify.copied": "Your link was copied to the clipboard",
+  "common.success": "Success",
 
   "common.error": "Error",
   "common.error.unknown": "An unknown error occurred",
