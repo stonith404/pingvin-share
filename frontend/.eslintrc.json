@@ -1,6 +1,6 @@
 {
   "extends": [
-    "next/babel",
+    "next",
     "eslint-config-next",
     "eslint:recommended",
     "prettier"
