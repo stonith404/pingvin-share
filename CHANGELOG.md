@@ -1,3 +1,10 @@
+## [0.17.1](https://github.com/stonith404/pingvin-share/compare/v0.17.0...v0.17.1) (2023-07-30)
+
+
+### Bug Fixes
+
+* rename pt-PT.ts to pt-BR.ts ([2584bb0](https://github.com/stonith404/pingvin-share/commit/2584bb0d48c761940eafc03d5cd98d47e7a5b0ae))
+
 ## [0.17.0](https://github.com/stonith404/pingvin-share/compare/v0.16.1...v0.17.0) (2023-07-23)
 
 
