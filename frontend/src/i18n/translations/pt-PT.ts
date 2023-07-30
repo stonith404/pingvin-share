@@ -172,11 +172,11 @@ export default {
   "admin.users.modal.create.admin.description": "Se marcado, o usuário poderá acessar o painel de administração.",
   // END /admin/users
   // /upload
-  "upload.title": "Carregar",
+  "upload.title": "Upload",
   "upload.notify.generic-error": "Ocorreu um erro ao terminar seu compartilhamento.",
   "upload.notify.count-failed": "Falha ao enviar {count} arquivos. Tentando novamente.",
   // Dropzone.tsx
-  "upload.dropzone.title": "Carregar arquivos",
+  "upload.dropzone.title": "Upload de arquivos",
   "upload.dropzone.description": "Arraste os arquivos aqui para iniciar o seu compartilhamento. Podemos aceitar apenas arquivos que são menores que {maxSize} no total.",
   "upload.dropzone.notify.file-too-big": "Seus arquivos excedem o tamanho máximo do compartilhamento {maxSize}.",
   // FileList.tsx
