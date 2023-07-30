@@ -2,6 +2,7 @@ import danish from "./translations/da-DK";
 import german from "./translations/de-DE";
 import english from "./translations/en-US";
 import spanish from "./translations/es-ES";
+import finnish from "./translations/fi-FI";
 import french from "./translations/fr-FR";
 import portuguese from "./translations/pt-BR";
 import thai from "./translations/th-TH";
@@ -47,5 +48,10 @@ export const LOCALES = {
     name: "简体中文",
     code: "zh-CN",
     messages: chineseSimplified,
+  },
+  FINNISH: {
+    name: "Suomi",
+    code: "fi-FI",
+    messages: finnish,
   },
 };
