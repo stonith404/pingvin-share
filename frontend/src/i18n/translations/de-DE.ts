@@ -279,7 +279,7 @@ export default {
   "admin.config.share.max-size": "Maximale Größe",
   "admin.config.share.max-size.description": "Maximale Größe einer Freigabe in Bytes",
   "admin.config.share.zip-compression-level": "Zip Komprimierungsstufe",
-  "admin.config.share.zip-compression-level.description": "Adjust the level to balance between file size and compression speed. Valid values range from 0 to 9, with 0 being no compression and 9 being maximum compression. ",
+  "admin.config.share.zip-compression-level.description": "Passe den Wert an, um ein Gleichgewicht zwischen Dateigröße und Komprimierungsgeschwindigkeit herzustellen. Gültige Werte liegen zwischen 0 und 9, wobei 0 für keine Komprimierung und 9 für maximale Komprimierung steht.",
   "admin.config.smtp.enabled": "Aktiviert",
   "admin.config.smtp.enabled.description": "Gibt an, ob SMTP aktiviert ist. Aktiviere dies nur, wenn Du den Host, den Port, die Email, den Benutzernamen und das Passwort deines SMTP-Servers eingegeben hast.",
   "admin.config.smtp.host": "Host",
