@@ -26,7 +26,7 @@ export default {
   "signin.title": "Bem-vindo de volta",
   "signin.description": "Ainda não tem uma conta?",
   "signin.button.signup": "Registo",
-  "signin.input.email-or-username": "Correio ou Nome de utilizador",
+  "signin.input.email-or-username": "E-mail ou nome de usuário",
   "signin.input.email-or-username.placeholder": "Seu e-mail ou nome de usuário",
   "signin.input.password": "Senha",
   "signin.input.password.placeholder": "A sua senha",
@@ -56,7 +56,7 @@ export default {
   // /account
   "account.title": "A minha conta",
   "account.card.info.title": "Informação sobre a conta",
-  "account.card.info.username": "Nome do usuário",
+  "account.card.info.username": "Nome de usuário",
   "account.card.info.email": "E-mail",
   "account.notify.info.success": "A conta foi atualizada com sucesso",
   "account.card.password.title": "Senha",
