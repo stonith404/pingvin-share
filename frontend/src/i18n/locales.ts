@@ -5,6 +5,7 @@ import spanish from "./translations/es-ES";
 import finnish from "./translations/fi-FI";
 import french from "./translations/fr-FR";
 import portuguese from "./translations/pt-BR";
+import russian from "./translations/ru-RU";
 import thai from "./translations/th-TH";
 import chineseSimplified from "./translations/zh-CN";
 
@@ -53,5 +54,10 @@ export const LOCALES = {
     name: "Suomi",
     code: "fi-FI",
     messages: finnish,
+  },
+  RUSSIAN: {
+    name: "Русский",
+    code: "ru-RU",
+    messages: russian,
   },
 };
