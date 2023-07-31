@@ -1,438 +1,323 @@
 export default {
   // Navbar
-  "navbar.upload": "Upload",
-  "navbar.signin": "Sign in",
-  "navbar.home": "Home",
-  "navbar.signup": "Sign Up",
-
-  "navbar.links.shares": "My shares",
-  "navbar.links.reverse": "Reverse shares",
-
-  "navbar.avatar.account": "My account",
-  "navbar.avatar.admin": "Administration",
-  "navbar.avatar.signout": "Sign out",
+  "navbar.upload": "Загрузить",
+  "navbar.signin": "Вход",
+  "navbar.home": "Главная",
+  "navbar.signup": "Зарегистрироваться",
+  "navbar.links.shares": "Мои загрузки",
+  "navbar.links.reverse": "Обратные загрузки",
+  "navbar.avatar.account": "Мой аккаунт",
+  "navbar.avatar.admin": "Администрирование",
+  "navbar.avatar.signout": "Выйти",
   // END navbar
-
   // /
-  "home.title": "A <h>self-hosted</h> file sharing platform.",
-
-  "home.description":
-    "Do you really want to give your personal files in the hand of third parties like WeTransfer?",
-  "home.bullet.a.name": "Self-Hosted",
-  "home.bullet.a.description": "Host Pingvin Share on your own machine.",
-  "home.bullet.b.name": "Privacy",
-  "home.bullet.b.description":
-    "Your files are your files and should never get into the hands of third parties.",
-  "home.bullet.c.name": "No annoying file size limit",
-  "home.bullet.c.description":
-    "Upload as big files as you want. Only your hard drive will be your limit.",
-
-  "home.button.start": "Get started",
-  "home.button.source": "Source code",
+  "home.title": "Платформа для обмена файлами с <h>собственного хостинга</h>.",
+  "home.description": "Вы действительно хотите предоставить свои личные файлы в руки третьих лиц, таких как WeTransfer?",
+  "home.bullet.a.name": "На собственном сервере",
+  "home.bullet.a.description": "Pingvin Share работает на вашей машине.",
+  "home.bullet.b.name": "Конфиденциальность",
+  "home.bullet.b.description": "Ваши файлы - это ваши файлы и никогда не должны попадать в руки третьих лиц.",
+  "home.bullet.c.name": "Без раздражающего ограничения размера файла",
+  "home.bullet.c.description": "Загружайте файлы с любым размером. Только ваш жесткий диск будет пределом.",
+  "home.button.start": "Начнем",
+  "home.button.source": "Исходный код",
   // END /
-
   // /auth/signin
-  "signin.title": "Welcome back",
-  "signin.description": "You don't have an account yet?",
-  "signin.button.signup": "Sign up",
-  "signin.input.email-or-username": "Email or username",
-  "signin.input.email-or-username.placeholder": "Your email or username",
-  "signin.input.password": "Password",
-  "signin.input.password.placeholder": "Your password",
-  "signin.button.submit": "Sign in",
-  "signIn.notify.totp-required.title": "Two-factor authentication required",
-  "signIn.notify.totp-required.description":
-    "Please enter your two-factor authentication code",
-
+  "signin.title": "С возвращением",
+  "signin.description": "У вас еще нет учетной записи?",
+  "signin.button.signup": "Зарегистрироваться",
+  "signin.input.email-or-username": "Email или логин",
+  "signin.input.email-or-username.placeholder": "Эл. почта или логин",
+  "signin.input.password": "Пароль",
+  "signin.input.password.placeholder": "Ваш пароль",
+  "signin.button.submit": "Вход",
+  "signIn.notify.totp-required.title": "Требуется двухфакторная аутентификация",
+  "signIn.notify.totp-required.description": "Пожалуйста, введите код Вашей 2-х факторной аутентификации",
   // END /auth/signin
-
   // /auth/signup
-  "signup.title": "Create an account",
-  "signup.description": "Already have an account?",
-  "signup.button.signin": "Sign in",
-  "signup.input.username": "Username",
-  "signup.input.username.placeholder": "Your username",
-  "signup.input.email": "Email",
-  "signup.input.email.placeholder": "Your email",
-  "signup.button.submit": "Let's get started",
-
+  "signup.title": "Создать аккаунт",
+  "signup.description": "Уже есть учётная запись?",
+  "signup.button.signin": "Вход",
+  "signup.input.username": "Логин",
+  "signup.input.username.placeholder": "Ваш логин (имя пользователя)",
+  "signup.input.email": "Электронная почта",
+  "signup.input.email.placeholder": "Адрес эл. почты",
+  "signup.button.submit": "Давайте начнём",
   // END /auth/signup
-
   // /auth/reset-password
-  "resetPassword.title": "Forgot your password?",
-  "resetPassword.description": "Enter your email to reset your password.",
-  "resetPassword.notify.success":
-    "An email has been sent with a link to reset your password.",
-  "resetPassword.button.back": "Back to sign in page",
-  "resetPassword.text.resetPassword": "Reset password",
-  "resetPassword.text.enterNewPassword": "Enter your new password",
-  "resetPassword.input.password": "New password",
-  "resetPassword.notify.passwordReset":
-    "Your password has been reset successfully.",
-
+  "resetPassword.title": "Забыли пароль?",
+  "resetPassword.description": "Введите ваш email для восстановления пароля.",
+  "resetPassword.notify.success": "Вам направлено письмо со ссылкой для сброса пароля.",
+  "resetPassword.button.back": "Вернуться на страницу входа",
+  "resetPassword.text.resetPassword": "Сбросить пароль",
+  "resetPassword.text.enterNewPassword": "Введите новый пароль",
+  "resetPassword.input.password": "Новый пароль",
+  "resetPassword.notify.passwordReset": "Ваш пароль был успешно сброшен!",
   // /account
-  "account.title": "My account",
-
-  "account.card.info.title": "Account info",
-  "account.card.info.username": "Username",
-  "account.card.info.email": "Email",
-  "account.notify.info.success": "Account updated successfully",
-
-  "account.card.password.title": "Password",
-  "account.card.password.old": "Old password",
-  "account.card.password.new": "New password",
-  "account.notify.password.success": "Password changed successfully",
-
-  "account.card.security.title": "Security",
-  "account.card.security.totp.enable.description":
-    "Enter your current password to start enabling TOTP",
-  "account.card.security.totp.disable.description":
-    "Enter your current password to disable TOTP",
-  "account.card.security.totp.button.start": "Start",
-  "account.modal.totp.title": "Enable TOTP",
-  "account.modal.totp.step1": "Step 1: Add your authenticator",
-  "account.modal.totp.step2": "Step 2: Validate your code",
-  "account.modal.totp.enterManually": "Enter manually",
-  "account.modal.totp.code": "Code",
-  "account.modal.totp.clickToCopy": "Click to copy",
-  "account.modal.totp.verify": "Verify",
-  "account.notify.totp.disable": "TOTP disabled successfully",
-  "account.notify.totp.enable": "TOTP enabled successfully",
-
-  "account.card.language.title": "Language",
-  "account.card.language.description":
-    "The project is translated by the community. Some languages might be incomplete.",
-  "account.card.color.title": "Color scheme",
-
+  "account.title": "Мой аккаунт",
+  "account.card.info.title": "Информация об аккаунте",
+  "account.card.info.username": "Логин",
+  "account.card.info.email": "Электронная почта",
+  "account.notify.info.success": "Настройки учетной записи успешно обновлены",
+  "account.card.password.title": "Пароль",
+  "account.card.password.old": "Старый пароль",
+  "account.card.password.new": "Новый пароль",
+  "account.notify.password.success": "Пароль успешно изменён",
+  "account.card.security.title": "Безопасность",
+  "account.card.security.totp.enable.description": "Введите ваш текущий пароль для начала включения TOTP",
+  "account.card.security.totp.disable.description": "Введите ваш текущий пароль, чтобы отключить TOTP",
+  "account.card.security.totp.button.start": "Начать",
+  "account.modal.totp.title": "Включить TOTP",
+  "account.modal.totp.step1": "Шаг 1: Добавьте свой аутентификатор",
+  "account.modal.totp.step2": "Шаг 2: Проверка кода",
+  "account.modal.totp.enterManually": "Ввести вручную",
+  "account.modal.totp.code": "Код",
+  "account.modal.totp.clickToCopy": "Нажмите, чтобы скопировать",
+  "account.modal.totp.verify": "Подтвердить",
+  "account.notify.totp.disable": "TOTP успешно отключен",
+  "account.notify.totp.enable": "TOTP успешно включен",
+  "account.card.language.title": "Язык",
+  "account.card.language.description": "Проект переведен сообществом. Некоторые языки могут быть неполными.",
+  "account.card.color.title": "Цветовая схема",
   // ThemeSwitcher.tsx
-  "account.theme.dark": "Dark",
-  "account.theme.light": "Light",
-  "account.theme.system": "System",
-
-  "account.button.delete": "Delete Account",
-  "account.modal.delete.title": "Delete Account",
-  "account.modal.delete.description":
-    "Do you really want to delete your account including all your active shares?",
+  "account.theme.dark": "Тёмная",
+  "account.theme.light": "Светлая",
+  "account.theme.system": "Системная",
+  "account.button.delete": "Удалить аккаунт",
+  "account.modal.delete.title": "Удалить аккаунт",
+  "account.modal.delete.description": "Вы действительно хотите удалить свою учетную запись, включая все ваши загрузки?",
   // END /account
-
   // /account/shares
-  "account.shares.title": "My shares",
-  "account.shares.title.empty": "It's empty here 👀",
-  "account.shares.description.empty": "You don't have any shares.",
-  "account.shares.button.create": "Create one",
-
-  "account.shares.info.title": "Share informations",
+  "account.shares.title": "Мои загрузки",
+  "account.shares.title.empty": "Тут пусто 👀",
+  "account.shares.description.empty": "У вас нет загрузок.",
+  "account.shares.button.create": "Создать одну",
+  "account.shares.info.title": "Сведения",
   "account.shares.table.id": "ID",
-  "account.shares.table.name": "Name",
-  "account.shares.table.description": "Description",
-  "account.shares.table.visitors": "Visitors",
-  "account.shares.table.expiresAt": "Expires at",
-  "account.shares.table.createdAt": "Created at",
-  "account.shares.table.size": "Size",
-
-  "account.shares.modal.share-informations": "Share informations",
-  "account.shares.modal.share-link": "Share link",
-
-  "account.shares.modal.delete.title": "Delete share {share}",
-  "account.shares.modal.delete.description":
-    "Do you really want to delete this share?",
-
+  "account.shares.table.name": "Название",
+  "account.shares.table.description": "Описание",
+  "account.shares.table.visitors": "Посетителей",
+  "account.shares.table.expiresAt": "Действительно до",
+  "account.shares.table.createdAt": "Создано",
+  "account.shares.table.size": "Размер",
+  "account.shares.modal.share-informations": "Сведения",
+  "account.shares.modal.share-link": "Поделиться ссылкой",
+  "account.shares.modal.delete.title": "Удалить загрузку {share}",
+  "account.shares.modal.delete.description": "Вы действительно хотите удалить эту загрузку?",
   // END /account/shares
-
   // /account/reverseShares
-  "account.reverseShares.title": "Reverse shares",
-  "account.reverseShares.description":
-    "A reverse share allows you to generate a unique URL that allows external users to create a share.",
-
-  "account.reverseShares.title.empty": "It's empty here 👀",
-  "account.reverseShares.description.empty":
-    "You don't have any reverse shares.",
-
+  "account.reverseShares.title": "Обратные загрузки",
+  "account.reverseShares.description": "Обратная загрузка позволяет генерировать уникальный URL, позволяющий внешним пользователям загружать файлы.",
+  "account.reverseShares.title.empty": "Тут пусто 👀",
+  "account.reverseShares.description.empty": "У вас пока нет обратных загрузок.",
   // showCreateReverseShareModal.tsx
-  "account.reverseShares.modal.expiration.label": "Expiration",
-  "account.reverseShares.modal.expiration.minute-singular": "Minute",
-  "account.reverseShares.modal.expiration.minute-plural": "Minutes",
-  "account.reverseShares.modal.expiration.hour-singular": "Hour",
-  "account.reverseShares.modal.expiration.hour-plural": "Hours",
-  "account.reverseShares.modal.expiration.day-singular": "Day",
-  "account.reverseShares.modal.expiration.day-plural": "Days",
-  "account.reverseShares.modal.expiration.week-singular": "Week",
-  "account.reverseShares.modal.expiration.week-plural": "Weeks",
-  "account.reverseShares.modal.expiration.month-singular": "Month",
-  "account.reverseShares.modal.expiration.month-plural": "Months",
-  "account.reverseShares.modal.expiration.year-singular": "Year",
-  "account.reverseShares.modal.expiration.year-plural": "Years",
-
-  "account.reverseShares.modal.max-size.label": "Max share size",
-
-  "account.reverseShares.modal.send-email": "Send email notification",
-  "account.reverseShares.modal.send-email.description":
-    "Send an email notification when a share is created with this reverse share link.",
-
-  "account.reverseShares.modal.max-use.label": "Max uses",
-  "account.reverseShares.modal.max-use.description":
-    "The maximum amount of times this URL can be used to create a share.",
-  "account.reverseShare.never-expires": "This reverse share will never expire.",
-  "account.reverseShare.expires-on":
-    "This reverse share will expire on {expiration}.",
-
-  "account.reverseShares.table.no-shares": "No shares created yet",
-  "account.reverseShares.table.count.singular": "share",
-  "account.reverseShares.table.count.plural": "shares",
-  "account.reverseShares.table.shares": "Shares",
-  "account.reverseShares.table.remaining": "Remaining uses",
-  "account.reverseShares.table.max-size": "Max share size",
-  "account.reverseShares.table.expires": "Expires at",
-
-  "account.reverseShares.modal.reverse-share-link": "Reverse share link",
-
-  "account.reverseShares.modal.delete.title": "Delete reverse share",
-  "account.reverseShares.modal.delete.description":
-    "Do you really want to delete this reverse share? If you do, the associated shares will be deleted as well.",
-
+  "account.reverseShares.modal.expiration.label": "Истекает",
+  "account.reverseShares.modal.expiration.minute-singular": "Минута",
+  "account.reverseShares.modal.expiration.minute-plural": "Минут(ы)",
+  "account.reverseShares.modal.expiration.hour-singular": "Час",
+  "account.reverseShares.modal.expiration.hour-plural": "Часов",
+  "account.reverseShares.modal.expiration.day-singular": "День",
+  "account.reverseShares.modal.expiration.day-plural": "Дней",
+  "account.reverseShares.modal.expiration.week-singular": "Неделя",
+  "account.reverseShares.modal.expiration.week-plural": "Недель",
+  "account.reverseShares.modal.expiration.month-singular": "Месяц",
+  "account.reverseShares.modal.expiration.month-plural": "Месяца(-ев)",
+  "account.reverseShares.modal.expiration.year-singular": "Год",
+  "account.reverseShares.modal.expiration.year-plural": "Года (лет)",
+  "account.reverseShares.modal.max-size.label": "Макс. размер загрузки",
+  "account.reverseShares.modal.send-email": "Отправить уведомление по эл. почте",
+  "account.reverseShares.modal.send-email.description": "Отправлять уведомление по электронной почте, когда загрузка создается с помощью этой обратной ссылки.",
+  "account.reverseShares.modal.max-use.label": "Максимум использований",
+  "account.reverseShares.modal.max-use.description": "Максимальное количество раз, когда URL может быть использован для создания загрузки.",
+  "account.reverseShare.never-expires": "Эта обратная загрузка никогда не устареет.",
+  "account.reverseShare.expires-on": "Эта обратная загрузка устареет {expiration}.",
+  "account.reverseShares.table.no-shares": "Нет созданных загрузок",
+  "account.reverseShares.table.count.singular": "загрузка",
+  "account.reverseShares.table.count.plural": "загрузки",
+  "account.reverseShares.table.shares": "Загрузки",
+  "account.reverseShares.table.remaining": "Осталось использований",
+  "account.reverseShares.table.max-size": "Макс. размер загрузки",
+  "account.reverseShares.table.expires": "Действительно до",
+  "account.reverseShares.modal.reverse-share-link": "Ссылка обратной загрузки",
+  "account.reverseShares.modal.delete.title": "Удалить обратную загрузку",
+  "account.reverseShares.modal.delete.description": "Вы действительно хотите удалить эту обратную загрузку? Если вы это сделаете, то все связанные обратные загрузки будут также удалены.",
   // END /account/reverseShares
-
   // /admin
-  "admin.title": "Administration",
-  "admin.button.users": "User management",
-  "admin.button.config": "Configuration",
-  "admin.version": "Version",
+  "admin.title": "Администрирование",
+  "admin.button.users": "Управление пользователями",
+  "admin.button.config": "Конфигурация",
+  "admin.version": "Версия",
   // END /admin
-
   // /admin/users
-  "admin.users.title": "User management",
-  "admin.users.table.username": "Username",
-  "admin.users.table.email": "Email",
-  "admin.users.table.admin": "Admin",
-
-  "admin.users.edit.update.title": "Update user {username}",
-  "admin.users.edit.update.admin-privileges": "Admin privileges",
-  "admin.users.edit.update.change-password.title": "Change password",
-  "admin.users.edit.update.change-password.field": "New password",
-  "admin.users.edit.update.change-password.button": "Save new password",
-  "admin.users.edit.update.notify.password.success":
-    "Password changed successfully",
-
-  "admin.users.edit.delete.title": "Delete user {username}",
-  "admin.users.edit.delete.description":
-    "Do you really want to delete this user and all his shares?",
-
+  "admin.users.title": "Управление пользователями",
+  "admin.users.table.username": "Логин",
+  "admin.users.table.email": "Электронная почта",
+  "admin.users.table.admin": "Администратор",
+  "admin.users.edit.update.title": "Обновить пользователя {username}",
+  "admin.users.edit.update.admin-privileges": "Права администратора",
+  "admin.users.edit.update.change-password.title": "Изменить пароль",
+  "admin.users.edit.update.change-password.field": "Новый пароль",
+  "admin.users.edit.update.change-password.button": "Сохранить новый пароль",
+  "admin.users.edit.update.notify.password.success": "Пароль успешно изменён",
+  "admin.users.edit.delete.title": "Удалить пользователя {username}",
+  "admin.users.edit.delete.description": "Вы действительно хотите удалить этого пользователя и все его загрузки?",
   // showCreateUserModal.tsx
-  "admin.users.modal.create.title": "Create user",
-  "admin.users.modal.create.username": "Username",
-  "admin.users.modal.create.email": "Email",
-  "admin.users.modal.create.password": "Password",
-  "admin.users.modal.create.manual-password": "Set password manually",
-  "admin.users.modal.create.manual-password.description":
-    "If not checked, the user will receive an email with a link to set their password.",
-  "admin.users.modal.create.admin": "Admin privileges",
-  "admin.users.modal.create.admin.description":
-    "If checked, the user will be able to access the admin panel.",
-
+  "admin.users.modal.create.title": "Создать пользователя",
+  "admin.users.modal.create.username": "Логин",
+  "admin.users.modal.create.email": "Электронная почта",
+  "admin.users.modal.create.password": "Пароль",
+  "admin.users.modal.create.manual-password": "Установить пароль вручную",
+  "admin.users.modal.create.manual-password.description": "Если флажок не установлен, пользователь получит письмо со ссылкой для установки пароля.",
+  "admin.users.modal.create.admin": "Права администратора",
+  "admin.users.modal.create.admin.description": "Если отмечено, пользователь будет иметь доступ к панели администратора.",
   // END /admin/users
-
   // /upload
-  "upload.title": "Upload",
-
-  "upload.notify.generic-error":
-    "An error occurred while finishing your share.",
-  "upload.notify.count-failed": "{count} files failed to upload. Trying again.",
-
+  "upload.title": "Загрузить",
+  "upload.notify.generic-error": "Произошла ошибка при завершении вашей загрузки.",
+  "upload.notify.count-failed": "Не удалось загрузить файлы {count}. Повтор попытки.",
   // Dropzone.tsx
-  "upload.dropzone.title": "Upload files",
-  "upload.dropzone.description":
-    "Drag'n'drop files here to start your share. We can accept only files that are less than {maxSize} in total.",
-  "upload.dropzone.notify.file-too-big":
-    "Your files exceed the maximum share size of {maxSize}.",
-
+  "upload.dropzone.title": "Загрузить файлы",
+  "upload.dropzone.description": "Перетащите сюда файлы для начала загрузки. Мы можем принимать только файлы, которые меньше {maxSize}.",
+  "upload.dropzone.notify.file-too-big": "Ваши файлы превышают максимальный размер в {maxSize}.",
   // FileList.tsx
-  "upload.filelist.name": "Name",
-  "upload.filelist.size": "Size",
-
+  "upload.filelist.name": "Название",
+  "upload.filelist.size": "Размер",
   // showCreateUploadModal.tsx
-  "upload.modal.title": "Create Share",
-  "upload.modal.link.error.invalid":
-    "Can only contain letters, numbers, underscores, and hyphens",
-  "upload.modal.link.error.taken": "This link is already in use",
-  "upload.modal.not-signed-in": "You're not signed in",
-  "upload.modal.not-signed-in-description":
-    "You will be unable to delete your share manually and view the visitor count.",
-
-  "upload.modal.expires.never": "never",
-  "upload.modal.expires.never-long": "Never Expires",
-
-  "upload.modal.link.label": "Link",
-  "upload.modal.expires.label": "Expiration",
-  "upload.modal.expires.minute-singular": "Minute",
-  "upload.modal.expires.minute-plural": "Minutes",
-  "upload.modal.expires.hour-singular": "Hour",
-  "upload.modal.expires.hour-plural": "Hours",
-  "upload.modal.expires.day-singular": "Day",
-  "upload.modal.expires.day-plural": "Days",
-  "upload.modal.expires.week-singular": "Week",
-  "upload.modal.expires.week-plural": "Weeks",
-  "upload.modal.expires.month-singular": "Month",
-  "upload.modal.expires.month-plural": "Months",
-  "upload.modal.expires.year-singular": "Year",
-  "upload.modal.expires.year-plural": "Years",
-
-  "upload.modal.accordion.description.title": "Description",
-  "upload.modal.accordion.description.placeholder":
-    "Note for the recipients of this share",
-
-  "upload.modal.accordion.email.title": "Email recipients",
-  "upload.modal.accordion.email.placeholder": "Enter email recipients",
-  "upload.modal.accordion.email.invalid-email": "Invalid email address",
-
-  "upload.modal.accordion.security.title": "Security options",
-  "upload.modal.accordion.security.password.label": "Password protection",
-  "upload.modal.accordion.security.password.placeholder": "No password",
-  "upload.modal.accordion.security.max-views.label": "Maximum views",
-  "upload.modal.accordion.security.max-views.placeholder": "No limit",
-
+  "upload.modal.title": "Загрузить",
+  "upload.modal.link.error.invalid": "Имя пользователя должно состоять только из букв, цифр, подчёркиваний и дефисов",
+  "upload.modal.link.error.taken": "Эта ссылка уже используется",
+  "upload.modal.not-signed-in": "Вы не авторизованы",
+  "upload.modal.not-signed-in-description": "Вы не сможете удалить свои файлы вручную и просмотреть количество посетителей.",
+  "upload.modal.expires.never": "никогда",
+  "upload.modal.expires.never-long": "Никогда не истекает",
+  "upload.modal.link.label": "Ссылка",
+  "upload.modal.expires.label": "Истекает",
+  "upload.modal.expires.minute-singular": "Минута",
+  "upload.modal.expires.minute-plural": "Минут(ы)",
+  "upload.modal.expires.hour-singular": "Час",
+  "upload.modal.expires.hour-plural": "Часов",
+  "upload.modal.expires.day-singular": "День",
+  "upload.modal.expires.day-plural": "Дней",
+  "upload.modal.expires.week-singular": "Неделя",
+  "upload.modal.expires.week-plural": "Недель",
+  "upload.modal.expires.month-singular": "Месяц",
+  "upload.modal.expires.month-plural": "Месяца(-ев)",
+  "upload.modal.expires.year-singular": "Год",
+  "upload.modal.expires.year-plural": "Года (лет)",
+  "upload.modal.accordion.description.title": "Описание",
+  "upload.modal.accordion.description.placeholder": "Примечание для получателей этой загрузки",
+  "upload.modal.accordion.email.title": "Получатели письма",
+  "upload.modal.accordion.email.placeholder": "Получатели e-mail",
+  "upload.modal.accordion.email.invalid-email": "Недопустимый адрес электронной почты",
+  "upload.modal.accordion.security.title": "Параметры безопасности",
+  "upload.modal.accordion.security.password.label": "Защита паролем",
+  "upload.modal.accordion.security.password.placeholder": "Без пароля",
+  "upload.modal.accordion.security.max-views.label": "Максимум просмотров",
+  "upload.modal.accordion.security.max-views.placeholder": "Без ограничения",
   // showCompletedUploadModal.tsx
-  "upload.modal.completed.never-expires": "This share will never expire.",
-  "upload.modal.completed.expires-on":
-    "This share will expire on {expiration}.",
-  "upload.modal.completed.share-ready": "Share ready",
-
+  "upload.modal.completed.never-expires": "Эта загрузка никогда не устареет.",
+  "upload.modal.completed.expires-on": "Эта загрузка устареет {expiration}.",
+  "upload.modal.completed.share-ready": "Готово",
   // END /upload
-
   // /share/[id]
-  "share.title": "Share {shareId}",
-  "share.description": "Look what I've shared with you!",
-  "share.error.visitor-limit-exceeded.title": "Visitor limit exceeded",
-  "share.error.visitor-limit-exceeded.description":
-    "The visitor limit from this share has been exceeded.",
-  "share.error.removed.title": "Share removed",
-  "share.error.not-found.title": "Share not found",
-  "share.error.not-found.description":
-    "The share you're looking for doesn't exist.",
-
-  "share.modal.password.title": "Password required",
-  "share.modal.password.description":
-    "To access this share please enter the password for the share.",
-  "share.modal.password": "Password",
-  "share.modal.error.invalid-password": "Invalid password",
-
-  "share.button.download-all": "Download all",
-  "share.notify.download-all-preparing":
-    "The share is preparing. Try again in a few minutes.",
-
-  "share.modal.file-link": "File link",
-  "share.table.name": "Name",
-  "share.table.size": "Size",
-
-  "share.modal.file-preview.error.not-supported.title": "Preview not supported",
-  "share.modal.file-preview.error.not-supported.description":
-    "A preview for thise file type is unsupported. Please download the file to view it.",
-
+  "share.title": "Загрузка {shareId}",
+  "share.description": "Посмотрите, чем я поделился с вами!",
+  "share.error.visitor-limit-exceeded.title": "Превышен лимит посетителей",
+  "share.error.visitor-limit-exceeded.description": "Превышен лимит посетителей.",
+  "share.error.removed.title": "Загрузка удалена",
+  "share.error.not-found.title": "Загрузка не найдена",
+  "share.error.not-found.description": "Страница, которую вы ищете, не существует.",
+  "share.modal.password.title": "Требуется пароль",
+  "share.modal.password.description": "Для доступа к этому ресурсу введите пароль для общего доступа.",
+  "share.modal.password": "Пароль",
+  "share.modal.error.invalid-password": "Неверный пароль",
+  "share.button.download-all": "Скачать все",
+  "share.notify.download-all-preparing": "Загрузка готовится. Повторите попытку через несколько минут.",
+  "share.modal.file-link": "Ссылка на файл",
+  "share.table.name": "Название",
+  "share.table.size": "Размер",
+  "share.modal.file-preview.error.not-supported.title": "Предпросмотр не поддерживается",
+  "share.modal.file-preview.error.not-supported.description": "Предварительный просмотр этого типа файла не поддерживается. Пожалуйста, скачайте файл для его просмотра.",
   // END /share/[id]
-
   // /admin/config
-  "admin.config.title": "Configuration",
-  "admin.config.category.general": "General",
-  "admin.config.category.share": "Share",
-  "admin.config.category.email": "Email",
+  "admin.config.title": "Конфигурация",
+  "admin.config.category.general": "Общее",
+  "admin.config.category.share": "Загрузки",
+  "admin.config.category.email": "Электронная почта",
   "admin.config.category.smtp": "SMTP",
-
-  "admin.config.general.app-name": "App name",
-  "admin.config.general.app-name.description": "Name of the application",
-  "admin.config.general.app-url": "App URL",
-  "admin.config.general.app-url.description":
-    "On which URL Pingvin Share is available",
-  "admin.config.general.show-home-page": "Show home page",
-  "admin.config.general.show-home-page.description":
-    "Whether to show the home page",
-  "admin.config.general.logo": "Logo",
-  "admin.config.general.logo.description":
-    "Change your logo by uploading a new image. The image must be a PNG and should have the format 1:1.",
-  "admin.config.general.logo.placeholder": "Pick image",
-
-  "admin.config.email.enable-share-email-recipients":
-    "Enable share email recipients",
-  "admin.config.email.enable-share-email-recipients.description":
-    "Whether to allow emails to share recipients. Only enable this if you have enabled SMTP.",
-  "admin.config.email.share-recipients-subject": "Share recipients subject",
-  "admin.config.email.share-recipients-subject.description":
-    "Subject of the email which gets sent to the share recipients.",
-  "admin.config.email.share-recipients-message": "Share recipients message",
-  "admin.config.email.share-recipients-message.description":
-    "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n The variables will be replaced with the actual value.",
-  "admin.config.email.reverse-share-subject": "Reverse share subject",
-  "admin.config.email.reverse-share-subject.description":
-    "Subject of the email which gets sent when someone created a share with your reverse share link.",
-  "admin.config.email.reverse-share-message": "Reverse share message",
-  "admin.config.email.reverse-share-message.description":
-    "Message which gets sent when someone created a share with your reverse share link. {shareUrl} will be replaced with the creator's name and the share URL.",
-  "admin.config.email.reset-password-subject": "Reset password subject",
-  "admin.config.email.reset-password-subject.description":
-    "Subject of the email which gets sent when a user requests a password reset.",
-  "admin.config.email.reset-password-message": "Reset password message",
-  "admin.config.email.reset-password-message.description":
-    "Message which gets sent when a user requests a password reset. {url} will be replaced with the reset password URL.",
-  "admin.config.email.invite-subject": "Invite subject",
-  "admin.config.email.invite-subject.description":
-    "Subject of the email which gets sent when an admin invites a user.",
-  "admin.config.email.invite-message": "Invite message",
-  "admin.config.email.invite-message.description":
-    "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL and {password} with the password.",
-  "admin.config.share.allow-registration": "Allow registration",
-  "admin.config.share.allow-registration.description":
-    "Whether registration is allowed",
-  "admin.config.share.allow-unauthenticated-shares":
-    "Allow unauthenticated shares",
-  "admin.config.share.allow-unauthenticated-shares.description":
-    "Whether unauthenticated users can create shares",
-  "admin.config.share.max-size": "Max size",
-  "admin.config.share.max-size.description": "Maximum share size in bytes",
-  "admin.config.share.zip-compression-level": "Zip compression level",
-  "admin.config.share.zip-compression-level.description":
-    "Adjust the level to balance between file size and compression speed. Valid values range from 0 to 9, with 0 being no compression and 9 being maximum compression. ",
-
-  "admin.config.smtp.enabled": "Enabled",
-  "admin.config.smtp.enabled.description":
-    "Whether SMTP is enabled. Only set this to true if you entered the host, port, email, user and password of your SMTP server.",
-  "admin.config.smtp.host": "Host",
-  "admin.config.smtp.host.description": "Host of the SMTP server",
-  "admin.config.smtp.port": "Port",
-  "admin.config.smtp.port.description": "Port of the SMTP server",
-  "admin.config.smtp.email": "Email",
-  "admin.config.smtp.email.description":
-    "Email address which the emails get sent from",
-  "admin.config.smtp.username": "Username",
-  "admin.config.smtp.username.description": "Username of the SMTP server",
-  "admin.config.smtp.password": "Password",
-  "admin.config.smtp.password.description": "Password of the SMTP server",
-  "admin.config.smtp.button.test": "Send test email",
-
+  "admin.config.general.app-name": "Название приложения",
+  "admin.config.general.app-name.description": "Видимое название приложения",
+  "admin.config.general.app-url": "URL-адрес приложения",
+  "admin.config.general.app-url.description": "Адрес на котором доступен Pingvin Share",
+  "admin.config.general.show-home-page": "Показывать домашнюю страницу",
+  "admin.config.general.show-home-page.description": "Показывать ли домашнюю страницу или нет",
+  "admin.config.general.logo": "Логотип",
+  "admin.config.general.logo.description": "Измените свой логотип, загрузив новое изображение. Изображение должно быть PNG и должно иметь формат 1:1.",
+  "admin.config.general.logo.placeholder": "Выберите изображение",
+  "admin.config.email.enable-share-email-recipients": "Включить обмен с получателями электронной почты",
+  "admin.config.email.enable-share-email-recipients.description": "Разрешить ли отправку писем получателям. Включите, только если вы включили SMTP.",
+  "admin.config.email.share-recipients-subject": "Заголовок письма (загрузка)",
+  "admin.config.email.share-recipients-subject.description": "Тема письма, которое отправляется получателям акции.",
+  "admin.config.email.share-recipients-message": "Сообщение письма загрузки",
+  "admin.config.email.share-recipients-message.description": "Сообщение, которое отправляется получателям публикации. Доступные переменные:\n {creator} - Имя пользователя создателя загрузки\n {shareUrl} - URL загрузки\n {desc} - Описание загрузки\n {expires} - Дата истечения загрузки\n Переменные будут заменены на фактическое значение.",
+  "admin.config.email.reverse-share-subject": "Заголовок письма (обратная загрузка)",
+  "admin.config.email.reverse-share-subject.description": "Тема письма, которое отправляется, когда кто-то создал загрузку с вашей обратной ссылкой.",
+  "admin.config.email.reverse-share-message": "Сообщение письма обратной загрузки",
+  "admin.config.email.reverse-share-message.description": "Сообщение, которое отправляется, когда кто-то создал загрузку с вашей обратной ссылкой. {shareUrl} будет заменен именем создателя и URL-адресом общего доступа.",
+  "admin.config.email.reset-password-subject": "Тема сброса пароля",
+  "admin.config.email.reset-password-subject.description": "Тема письма, которое отправляется, когда пользователь запрашивает сброс пароля.",
+  "admin.config.email.reset-password-message": "Сообщение о сбросе пароля",
+  "admin.config.email.reset-password-message.description": "Сообщение, которое отправляется при запросе сброса пароля. {url} будет заменён ссылкой.",
+  "admin.config.email.invite-subject": "Тема приглашения",
+  "admin.config.email.invite-subject.description": "Тема письма, которое отправляется, когда администратор приглашает пользователя.",
+  "admin.config.email.invite-message": "Сообщение с приглашением",
+  "admin.config.email.invite-message.description": "Сообщение приглашения. {url} будет заменён ссылкой приглашения, а {password} паролем.",
+  "admin.config.share.allow-registration": "Разрешить регистрацию",
+  "admin.config.share.allow-registration.description": "Разрешена ли регистрация",
+  "admin.config.share.allow-unauthenticated-shares": "Разрешить неавторизованные загрузки",
+  "admin.config.share.allow-unauthenticated-shares.description": "Могут ли неавторизованные пользователи создавать загрузки",
+  "admin.config.share.max-size": "Максимальный размер",
+  "admin.config.share.max-size.description": "Максимальный размер файла в байтах",
+  "admin.config.share.zip-compression-level": "Уровень сжатия Zip",
+  "admin.config.share.zip-compression-level.description": "Регулировка уровня баланса между размером файла и скоростью сжатия. Допустимые значения от 0 до 9, с 0 без сжатия, а 9 - максимальное сжатие. ",
+  "admin.config.smtp.enabled": "Включено",
+  "admin.config.smtp.enabled.description": "Включено ли SMTP. Установите значение true только если вы ввели хост, порт, email, пользователь и пароль вашего SMTP-сервера.",
+  "admin.config.smtp.host": "Хост",
+  "admin.config.smtp.host.description": "Сервер SMTP сервера",
+  "admin.config.smtp.port": "Порт",
+  "admin.config.smtp.port.description": "Порт SMTP сервера",
+  "admin.config.smtp.email": "Электронная почта",
+  "admin.config.smtp.email.description": "Адрес электронной почты, от которого отправляются письма",
+  "admin.config.smtp.username": "Логин",
+  "admin.config.smtp.username.description": "Имя пользователя SMTP сервера",
+  "admin.config.smtp.password": "Пароль",
+  "admin.config.smtp.password.description": "Пароль SMTP-сервера",
+  "admin.config.smtp.button.test": "Отправить тестовое письмо",
   // 404
-  "404.description": "Oops this page doesn't exist.",
-  "404.button.home": "Bring me back home",
-
+  "404.description": "Упс, этой страницы не существует.",
+  "404.button.home": "Верните меня домой",
   // Common translations
-  "common.button.save": "Save",
-  "common.button.create": "Create",
-  "common.button.submit": "Submit",
-  "common.button.delete": "Delete",
-  "common.button.cancel": "Cancel",
-  "common.button.confirm": "Confirm",
-  "common.button.disable": "Disable",
-  "common.button.share": "Share",
-  "common.button.generate": "Generate",
-  "common.button.done": "Done",
-  "common.text.link": "Link",
-  "common.text.or": "or",
-  "common.button.go-back": "Go back",
-  "common.notify.copied": "Your link was copied to the clipboard",
-  "common.success": "Success",
-
-  "common.error": "Error",
-  "common.error.unknown": "An unknown error occurred",
-  "common.error.invalid-email": "Invalid email address",
-  "common.error.too-short": "Must be at least {length} characters",
-  "common.error.too-long": "Must be at most {length} characters",
-  "common.error.exact-length": "Must be exactly {length} characters",
-  "common.error.invalid-number": "Must be a number",
-  "common.error.field-required": "This field is required",
+  "common.button.save": "Сохранить",
+  "common.button.create": "Создать",
+  "common.button.submit": "Отправить",
+  "common.button.delete": "Удалить",
+  "common.button.cancel": "Отмена",
+  "common.button.confirm": "Подтвердить",
+  "common.button.disable": "Отключить",
+  "common.button.share": "Поделиться",
+  "common.button.generate": "Сгенерировать",
+  "common.button.done": "Готово",
+  "common.text.link": "Ссылка",
+  "common.text.or": "или",
+  "common.button.go-back": "Назад",
+  "common.notify.copied": "Ваша ссылка скопирована в буфер обмена",
+  "common.success": "Успешно",
+  "common.error": "Ошибочка",
+  "common.error.unknown": "Произошла неизвестная ошибка",
+  "common.error.invalid-email": "Недопустимый адрес электронной почты",
+  "common.error.too-short": "Должно быть не менее {length} символов",
+  "common.error.too-long": "Должно быть не больше {length} символов",
+  "common.error.exact-length": "Должно быть ровно {length} символов",
+  "common.error.invalid-number": "Должно быть числом",
+  "common.error.field-required": "Поле обязательно для заполнения"
 };
