@@ -1,3 +1,11 @@
+## [0.17.3](https://github.com/stonith404/pingvin-share/compare/v0.17.2...v0.17.3) (2023-07-31)
+
+
+### Bug Fixes
+
+* logo doesn't get loaded correctly ([9ba2b4c](https://github.com/stonith404/pingvin-share/commit/9ba2b4c82cdad9097b33f0451771818c7b972a6b))
+* share expiration never doesn't work if using another language than English ([a47d080](https://github.com/stonith404/pingvin-share/commit/a47d080657e1d08ef06ec7425d8bdafd5a26c24a))
+
 ## [0.17.2](https://github.com/stonith404/pingvin-share/compare/v0.17.1...v0.17.2) (2023-07-31)
 
 
