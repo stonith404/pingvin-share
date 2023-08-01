@@ -17,6 +17,7 @@ import { Tb2Fa } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 import * as yup from "yup";
 import Meta from "../../components/Meta";
+import LanguagePicker from "../../components/account/LanguagePicker";
 import ThemeSwitcher from "../../components/account/ThemeSwitcher";
 import showEnableTotpModal from "../../components/account/showEnableTotpModal";
 import useTranslate from "../../hooks/useTranslate.hook";
@@ -24,7 +25,6 @@ import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
 import userService from "../../services/user.service";
 import toast from "../../utils/toast.util";
-import LanguagePicker from "../../components/account/LanguagePicker";
 
 const Account = () => {
   const { user, refreshUser } = useUser();
@@ -181,7 +181,7 @@ const Account = () => {
             </Tabs.List>
 
             <Tabs.Panel value="totp" pt="xs">
-              {user!.totpVerified ? (
+              {user?.totpVerified ? (
                 <>
                   <form
                     onSubmit={disableTotpForm.onSubmit((values) => {

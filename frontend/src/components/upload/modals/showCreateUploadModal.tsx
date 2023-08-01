@@ -119,7 +119,7 @@ const CreateUploadModalBody = ({
             form.setFieldError("link", t("upload.modal.link.error.taken"));
           } else {
             const expiration = form.values.never_expires
-              ? t("upload.modal.expires.never")
+              ? "never"
               : form.values.expiration_num + form.values.expiration_unit;
             uploadCallback({
               id: values.link,

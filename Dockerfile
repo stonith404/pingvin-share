@@ -49,4 +49,5 @@ WORKDIR /opt/app
 EXPOSE 3000
 HEALTHCHECK --interval=10s --timeout=3s CMD curl -f http://localhost:3000/api/health || exit 1
 
-CMD cp -rn /tmp/img /opt/app/frontend/public && node frontend/server.js & cd backend && npm run prod
+# HOSTNAME=0.0.0.0 fixes https://github.com/vercel/next.js/issues/51684. It can be removed as soon as the issue is fixed
+CMD cp -rn /tmp/img /opt/app/frontend/public && HOSTNAME=0.0.0.0 node frontend/server.js & cd backend && npm run prod
