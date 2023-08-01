@@ -1,3 +1,10 @@
+## [0.17.4](https://github.com/stonith404/pingvin-share/compare/v0.17.3...v0.17.4) (2023-08-01)
+
+
+### Bug Fixes
+
+* redirection to `localhost:3000` ([ea0d521](https://github.com/stonith404/pingvin-share/commit/ea0d5216e89346b8d3ef0277b76fdc6302e9de15))
+
 ## [0.17.3](https://github.com/stonith404/pingvin-share/compare/v0.17.2...v0.17.3) (2023-07-31)
 
 
