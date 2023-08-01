@@ -258,7 +258,7 @@ export default {
   "admin.config.email.enable-share-email-recipients.description": "Salli sähköpostien jakaminen vastaanottajille. Ota tämä käyttöön vain, jos olet ottanut SMTP:n käyttöön.",
   "admin.config.email.share-recipients-subject": "Sähköpostijaon otsikko",
   "admin.config.email.share-recipients-subject.description": "Sähköpostin aihe, joka saa lähetetään jaon vastaanottajille.",
-  "admin.config.email.share-recipients-message": "Sähköpostijaon otsikko",
+  "admin.config.email.share-recipients-message": "Sähköpostijaon viesti",
   "admin.config.email.share-recipients-message.description": "Viesti joka lähetetään jaon vastaanottajille. Saatavilla olevat muuttujat:\n {creator} - Jaon luojan käyttäjänimi\n {shareUrl} - Jaon URL\n {desc} - Jaon kuvaus\n {expires} - Jaon päättymispäivä\n Muuttujat korvataan todellisella arvolla.",
   "admin.config.email.reverse-share-subject": "Käänteisen jaon aihe",
   "admin.config.email.reverse-share-subject.description": "Aihe sähköpostin joka lähetetään kun joku loi jaon käänteisen jakolinkin kanssa.",
