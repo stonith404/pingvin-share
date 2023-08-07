@@ -64,8 +64,8 @@ export default {
   "account.card.password.new": "Neues Passwort",
   "account.notify.password.success": "Passwort erfolgreich geändert",
   "account.card.security.title": "Sicherheit",
-  "account.card.security.totp.enable.description": "Geben dein aktuelles Passwort ein, um TOTP zu aktivieren",
-  "account.card.security.totp.disable.description": "Geben dein aktuelles Passwort ein, um TOTP zu deaktivieren",
+  "account.card.security.totp.enable.description": "Gib dein aktuelles Passwort ein, um TOTP zu aktivieren",
+  "account.card.security.totp.disable.description": "Gib dein aktuelles Passwort ein, um TOTP zu deaktivieren",
   "account.card.security.totp.button.start": "Starten",
   "account.modal.totp.title": "TOTP aktivieren",
   "account.modal.totp.step1": "Schritt 1: Füge deinen Authenticator hinzu",
@@ -177,7 +177,7 @@ export default {
   "upload.notify.count-failed": "{count} Dateien konnten nicht hochgeladen werden. Wird erneut versucht.",
   // Dropzone.tsx
   "upload.dropzone.title": "Dateien hochladen",
-  "upload.dropzone.description": "Ziehen Sie Dateien hierher, um Ihre Freigabe zu starten. Wir können nur Dateien akzeptieren, die insgesamt weniger als {maxSize} groß sind.",
+  "upload.dropzone.description": "Ziehe Dateien hierher, um deine Freigabe zu starten. Wir können nur Dateien akzeptieren, die insgesamt weniger als {maxSize} groß sind.",
   "upload.dropzone.notify.file-too-big": "Ihre Dateien überschreiten die maximale Freigabegröße von {maxSize}.",
   // FileList.tsx
   "upload.filelist.name": "Name",
@@ -228,7 +228,7 @@ export default {
   "share.error.not-found.title": "Freigabe nicht gefunden",
   "share.error.not-found.description": "Die gesuchte Freigabe existiert nicht.",
   "share.modal.password.title": "Passwort erforderlich",
-  "share.modal.password.description": "Um auf diese Freigabe zuzugreifen, geben Sie bitte das Passwort für die Freigabe ein.",
+  "share.modal.password.description": "Um auf diese Freigabe zuzugreifen, gib bitte das Passwort für die Freigabe ein.",
   "share.modal.password": "Passwort",
   "share.modal.error.invalid-password": "Ungültiges Passwort",
   "share.button.download-all": "Alles herunterladen",
@@ -237,7 +237,7 @@ export default {
   "share.table.name": "Name",
   "share.table.size": "Größe",
   "share.modal.file-preview.error.not-supported.title": "Vorschau wird nicht unterstützt",
-  "share.modal.file-preview.error.not-supported.description": "Eine Vorschau für diesen Dateityp wird nicht unterstützt. Bitte laden Sie die Datei herunter, um sie anzuzeigen.",
+  "share.modal.file-preview.error.not-supported.description": "Eine Vorschau für diesen Dateityp wird nicht unterstützt. Bitte lade die Datei herunter, um sie anzuzeigen.",
   // END /share/[id]
   // /admin/config
   "admin.config.title": "Einstellungen",
