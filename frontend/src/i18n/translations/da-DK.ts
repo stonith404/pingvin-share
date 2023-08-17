@@ -71,10 +71,8 @@ export default {
   "account.card.password.new": "Ny adgangskode",
   "account.notify.password.success": "Adgangskoden er ændret",
   "account.card.security.title": "Sikkerhed",
-  "account.card.security.totp.enable.description":
-    "Indtast din nuværende adgangskode for at begynde opsætningen af 2-faktor login",
-  "account.card.security.totp.disable.description":
-    "Enter your current password to disable TOTP",
+  "account.card.security.totp.enable.description": "Indtast din nuværende adgangskode for at begynde opsætningen af 2-faktor login",
+  "account.card.security.totp.disable.description": "Indtast din nuværende adgangskode for at begynde opsætningen af 2-faktor login",
   "account.card.security.totp.button.start": "Start",
   "account.modal.totp.title": "Aktiver 2-faktor login",
   "account.modal.totp.step1": "Trin 1: Tilføj din 2-faktor Authenticator",
@@ -113,9 +111,8 @@ export default {
   "account.shares.table.size": "Størrelse",
   "account.shares.modal.share-informations": "Share informations",
   "account.shares.modal.share-link": "Del link",
-  "account.shares.modal.delete.title": "Delete share {share}",
-  "account.shares.modal.delete.description":
-    "Ønsker du virkelig at slette denne deling?",
+  "account.shares.modal.delete.title": "Slet share {share}",
+  "account.shares.modal.delete.description": "Ønsker du virkelig at slette denne deling?",
   // END /account/shares
   // /account/reverseShares
   "account.reverseShares.title": "Omvendt deling",
@@ -151,12 +148,12 @@ export default {
   "account.reverseShares.table.no-shares":
     "Der er ikke oprettet nogle delinger endnu",
   "account.reverseShares.table.count.singular": "del",
-  "account.reverseShares.table.count.plural": "delinger",
+  "account.reverseShares.table.count.plural": "shares",
   "account.reverseShares.table.shares": "Delinger",
   "account.reverseShares.table.remaining": "Resterende anvendelser",
   "account.reverseShares.table.max-size": "Maksimal størrelse for deling",
   "account.reverseShares.table.expires": "Udløber d",
-  "account.reverseShares.modal.reverse-share-link": "Omvendt deling",
+  "account.reverseShares.modal.reverse-share-link": "Reverse share link",
   "account.reverseShares.modal.delete.title": "Delete reverse share",
   "account.reverseShares.modal.delete.description":
     "Ønsker du virkelig at slette denne omvendte deling? Hvis du gør det, vil de tilknyttede delinger også blive slettet.",
@@ -187,11 +184,9 @@ export default {
   "admin.users.modal.create.email": "E-mail",
   "admin.users.modal.create.password": "Adgangskode",
   "admin.users.modal.create.manual-password": "Angiv adgangskode manuelt",
-  "admin.users.modal.create.manual-password.description":
-    "If not checked, the user will receive an email with a link to set their password.",
-  "admin.users.modal.create.admin": "Admin privileges",
-  "admin.users.modal.create.admin.description":
-    "If checked, the user will be able to access the admin panel.",
+  "admin.users.modal.create.manual-password.description": "If not checked, the user will receive an email with a link to set their password.",
+  "admin.users.modal.create.admin": "Admin rettigheder",
+  "admin.users.modal.create.admin.description": "If checked, the user will be able to access the admin panel.",
   // END /admin/users
   // /upload
   "upload.title": "Upload",
@@ -232,8 +227,7 @@ export default {
   "upload.modal.expires.year-singular": "År",
   "upload.modal.expires.year-plural": "År",
   "upload.modal.accordion.description.title": "Beskrivelse",
-  "upload.modal.accordion.description.placeholder":
-    "Note for the recipients of this share",
+  "upload.modal.accordion.description.placeholder": "Bemærkning til modtagerne af dette share",
   "upload.modal.accordion.email.title": "E-mail modtagere",
   "upload.modal.accordion.email.placeholder": "Indtast e-mail modtagere",
   "upload.modal.accordion.email.invalid-email": "Ugyldig e-mailadresse",
@@ -349,7 +343,7 @@ export default {
   "admin.config.smtp.button.test": "Send test e-mail",
   // 404
   "404.description": "Ups! Denne side findes ikke.",
-  "404.button.home": "Bring me back home",
+  "404.button.home": "Gå tilbage",
   // Common translations
   "common.button.save": "Gem",
   "common.button.create": "Opret",
