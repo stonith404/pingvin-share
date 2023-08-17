@@ -7,6 +7,7 @@ import french from "./translations/fr-FR";
 import portuguese from "./translations/pt-BR";
 import russian from "./translations/ru-RU";
 import chineseSimplified from "./translations/zh-CN";
+import thai from "./translations/th-TH";
 
 export const LOCALES = {
   ENGLISH: {
@@ -53,5 +54,10 @@ export const LOCALES = {
     name: "Русский",
     code: "ru-RU",
     messages: russian,
+  },
+  THAI: {
+    name: "ไทย",
+    code: "th-TH",
+    messages: thai,
   },
 };

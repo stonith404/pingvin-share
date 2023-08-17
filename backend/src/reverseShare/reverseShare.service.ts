@@ -10,7 +10,7 @@ export class ReverseShareService {
   constructor(
     private config: ConfigService,
     private prisma: PrismaService,
-    private fileService: FileService
+    private fileService: FileService,
   ) {}
 
   async create(data: CreateReverseShareDTO, creatorId: string) {
@@ -19,8 +19,8 @@ export class ReverseShareService {
       .add(
         data.shareExpiration.split("-")[0],
         data.shareExpiration.split(
-          "-"
-        )[1] as moment.unitOfTime.DurationConstructor
+          "-",
+        )[1] as moment.unitOfTime.DurationConstructor,
       )
       .toDate();
 
@@ -28,7 +28,7 @@ export class ReverseShareService {
 
     if (globalMaxShareSize < data.maxShareSize)
       throw new BadRequestException(
-        `Max share size can't be greater than ${globalMaxShareSize} bytes.`
+        `Max share size can't be greater than ${globalMaxShareSize} bytes.`,
       );
 
     const reverseShare = await this.prisma.reverseShare.create({

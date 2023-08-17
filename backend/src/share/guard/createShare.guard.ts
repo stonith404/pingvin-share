@@ -7,7 +7,7 @@ import { ReverseShareService } from "src/reverseShare/reverseShare.service";
 export class CreateShareGuard extends JwtGuard {
   constructor(
     configService: ConfigService,
-    private reverseShareService: ReverseShareService
+    private reverseShareService: ReverseShareService,
   ) {
     super(configService);
   }
@@ -21,7 +21,7 @@ export class CreateShareGuard extends JwtGuard {
     if (!reverseShareTokenId) return false;
 
     const isReverseShareTokenValid = await this.reverseShareService.isValid(
-      reverseShareTokenId
+      reverseShareTokenId,
     );
 
     return isReverseShareTokenValid;

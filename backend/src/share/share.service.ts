@@ -28,7 +28,7 @@ export class ShareService {
     private config: ConfigService,
     private jwtService: JwtService,
     private reverseShareService: ReverseShareService,
-    private clamScanService: ClamScanService
+    private clamScanService: ClamScanService,
   ) {}
 
   async create(share: CreateShareDTO, user?: User, reverseShareToken?: string) {
@@ -46,7 +46,7 @@ export class ShareService {
 
     // If share is created by a reverse share token override the expiration date
     const reverseShare = await this.reverseShareService.getByToken(
-      reverseShareToken
+      reverseShareToken,
     );
     if (reverseShare) {
       expirationDate = reverseShare.shareExpiration;
@@ -57,8 +57,8 @@ export class ShareService {
           .add(
             share.expiration.split("-")[0],
             share.expiration.split(
-              "-"
-            )[1] as moment.unitOfTime.DurationConstructor
+              "-",
+            )[1] as moment.unitOfTime.DurationConstructor,
           )
           .toDate();
       } else {
@@ -134,13 +134,13 @@ export class ShareService {
 
     if (share.files.length == 0)
       throw new BadRequestException(
-        "You need at least on file in your share to complete it."
+        "You need at least on file in your share to complete it.",
       );
 
     // Asynchronously create a zip of all files
     if (share.files.length > 1)
       this.createZip(id).then(() =>
-        this.prisma.share.update({ where: { id }, data: { isZipReady: true } })
+        this.prisma.share.update({ where: { id }, data: { isZipReady: true } }),
       );
 
     // Send email for each recipient
@@ -150,7 +150,7 @@ export class ShareService {
         share.id,
         share.creator,
         share.description,
-        share.expiration
+        share.expiration,
       );
     }
 
@@ -161,7 +161,7 @@ export class ShareService {
     ) {
       await this.emailService.sendMailToReverseShareCreator(
         share.reverseShare.creator.email,
-        share.id
+        share.id,
       );
     }
 
@@ -285,7 +285,7 @@ export class ShareService {
     if (share.security?.maxViews && share.security.maxViews <= share.views) {
       throw new ForbiddenException(
         "Maximum views exceeded",
-        "share_max_views_exceeded"
+        "share_max_views_exceeded",
       );
     }
 
@@ -305,7 +305,7 @@ export class ShareService {
       {
         expiresIn: moment(expiration).diff(new Date(), "seconds") + "s",
         secret: this.config.get("internal.jwtSecret"),
-      }
+      },
     );
   }
 

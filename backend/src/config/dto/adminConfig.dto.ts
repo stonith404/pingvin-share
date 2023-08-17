@@ -25,7 +25,7 @@ export class AdminConfigDTO extends ConfigDTO {
 
   fromList(partial: Partial<AdminConfigDTO>[]) {
     return partial.map((part) =>
-      plainToClass(AdminConfigDTO, part, { excludeExtraneousValues: true })
+      plainToClass(AdminConfigDTO, part, { excludeExtraneousValues: true }),
     );
   }
 }

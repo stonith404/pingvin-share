@@ -11,7 +11,7 @@ import { UpdateUserDto } from "./dto/updateUser.dto";
 export class UserSevice {
   constructor(
     private prisma: PrismaService,
-    private emailService: EmailService
+    private emailService: EmailService,
   ) {}
 
   async list() {
@@ -46,7 +46,7 @@ export class UserSevice {
         if (e.code == "P2002") {
           const duplicatedField: string = e.meta.target[0];
           throw new BadRequestException(
-            `A user with this ${duplicatedField} already exists`
+            `A user with this ${duplicatedField} already exists`,
           );
         }
       }
@@ -66,7 +66,7 @@ export class UserSevice {
         if (e.code == "P2002") {
           const duplicatedField: string = e.meta.target[0];
           throw new BadRequestException(
-            `A user with this ${duplicatedField} already exists`
+            `A user with this ${duplicatedField} already exists`,
           );
         }
       }

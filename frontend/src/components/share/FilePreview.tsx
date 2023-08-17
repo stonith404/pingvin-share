@@ -44,6 +44,7 @@ const FilePreview = ({
         href={`/api/shares/${shareId}/files/${fileId}?download=false`}
       >
         View original file
+        {/* Add translation? */}
       </Button>
     </Stack>
   );

@@ -33,7 +33,7 @@ export class ShareController {
   @UseGuards(JwtGuard)
   async getMyShares(@GetUser() user: User) {
     return new MyShareDTO().fromList(
-      await this.shareService.getSharesByUser(user.id)
+      await this.shareService.getSharesByUser(user.id),
     );
   }
 
@@ -54,11 +54,11 @@ export class ShareController {
   async create(
     @Body() body: CreateShareDTO,
     @Req() request: Request,
-    @GetUser() user: User
+    @GetUser() user: User,
   ) {
     const { reverse_share_token } = request.cookies;
     return new ShareDTO().from(
-      await this.shareService.create(body, user, reverse_share_token)
+      await this.shareService.create(body, user, reverse_share_token),
     );
   }
 
@@ -74,7 +74,7 @@ export class ShareController {
   async complete(@Param("id") id: string, @Req() request: Request) {
     const { reverse_share_token } = request.cookies;
     return new ShareDTO().from(
-      await this.shareService.complete(id, reverse_share_token)
+      await this.shareService.complete(id, reverse_share_token),
     );
   }
 
@@ -91,7 +91,7 @@ export class ShareController {
   async getShareToken(
     @Param("id") id: string,
     @Res({ passthrough: true }) response: Response,
-    @Body() body: SharePasswordDto
+    @Body() body: SharePasswordDto,
   ) {
     const token = await this.shareService.getShareToken(id, body.password);
     response.cookie(`share_${id}_token`, token, {

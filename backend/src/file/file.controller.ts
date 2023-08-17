@@ -28,7 +28,7 @@ export class FileController {
     @Query() query: any,
 
     @Body() body: string,
-    @Param("shareId") shareId: string
+    @Param("shareId") shareId: string,
   ) {
     const { id, name, chunkIndex, totalChunks } = query;
 
@@ -39,7 +39,7 @@ export class FileController {
       data,
       { index: parseInt(chunkIndex), total: parseInt(totalChunks) },
       { id, name },
-      shareId
+      shareId,
     );
   }
 
@@ -47,7 +47,7 @@ export class FileController {
   @UseGuards(FileSecurityGuard)
   async getZip(
     @Res({ passthrough: true }) res: Response,
-    @Param("shareId") shareId: string
+    @Param("shareId") shareId: string,
   ) {
     const zip = this.fileService.getZip(shareId);
     res.set({
@@ -64,7 +64,7 @@ export class FileController {
     @Res({ passthrough: true }) res: Response,
     @Param("shareId") shareId: string,
     @Param("fileId") fileId: string,
-    @Query("download") download = "true"
+    @Query("download") download = "true",
   ) {
     const file = await this.fileService.get(shareId, fileId);
 

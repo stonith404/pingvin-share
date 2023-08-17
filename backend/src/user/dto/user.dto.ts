@@ -31,7 +31,7 @@ export class UserDTO {
 
   fromList(partial: Partial<UserDTO>[]) {
     return partial.map((part) =>
-      plainToClass(UserDTO, part, { excludeExtraneousValues: true })
+      plainToClass(UserDTO, part, { excludeExtraneousValues: true }),
     );
   }
 }

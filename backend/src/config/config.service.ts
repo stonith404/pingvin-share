@@ -11,12 +11,12 @@ import { PrismaService } from "src/prisma/prisma.service";
 export class ConfigService {
   constructor(
     @Inject("CONFIG_VARIABLES") private configVariables: Config[],
-    private prisma: PrismaService
+    private prisma: PrismaService,
   ) {}
 
   get(key: `${string}.${string}`): any {
     const configVariable = this.configVariables.filter(
-      (variable) => `${variable.category}.${variable.name}` == key
+      (variable) => `${variable.category}.${variable.name}` == key,
     )[0];
 
     if (!configVariable) throw new Error(`Config variable ${key} not found`);
@@ -89,7 +89,7 @@ export class ConfigService {
       configVariable.type != "text"
     ) {
       throw new BadRequestException(
-        `Config variable must be of type ${configVariable.type}`
+        `Config variable must be of type ${configVariable.type}`,
       );
     }
 

@@ -19,7 +19,7 @@ export class ClamScanService {
 
   constructor(
     private fileService: FileService,
-    private prisma: PrismaService
+    private prisma: PrismaService,
   ) {}
 
   private ClamScan: Promise<NodeClam | null> = new NodeClam()
@@ -81,7 +81,7 @@ export class ClamScanService {
       });
 
       this.logger.warn(
-        `Share ${shareId} deleted because it contained ${infectedFiles.length} malicious file(s)`
+        `Share ${shareId} deleted because it contained ${infectedFiles.length} malicious file(s)`,
       );
     }
   }

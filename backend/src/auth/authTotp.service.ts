@@ -18,7 +18,7 @@ export class AuthTotpService {
   constructor(
     private prisma: PrismaService,
     private authService: AuthService,
-    private config: ConfigService
+    private config: ConfigService,
   ) {}
 
   async signInTotp(dto: AuthSignInTotpDTO) {
@@ -72,7 +72,7 @@ export class AuthTotpService {
       await this.authService.createRefreshToken(user.id);
     const accessToken = await this.authService.createAccessToken(
       user,
-      refreshTokenId
+      refreshTokenId,
     );
 
     return { accessToken, refreshToken };
@@ -98,7 +98,7 @@ export class AuthTotpService {
     const otpURL = totp.keyuri(
       user.username || user.email,
       this.config.get("general.appName"),
-      secret
+      secret,
     );
 
     await this.prisma.user.update({

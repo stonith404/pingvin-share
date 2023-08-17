@@ -14,7 +14,7 @@ import { ShareService } from "src/share/share.service";
 export class ShareSecurityGuard implements CanActivate {
   constructor(
     private shareService: ShareService,
-    private prisma: PrismaService
+    private prisma: PrismaService,
   ) {}
 
   async canActivate(context: ExecutionContext) {
@@ -22,7 +22,7 @@ export class ShareSecurityGuard implements CanActivate {
 
     const shareId = Object.prototype.hasOwnProperty.call(
       request.params,
-      "shareId"
+      "shareId",
     )
       ? request.params.shareId
       : request.params.id;
@@ -44,13 +44,13 @@ export class ShareSecurityGuard implements CanActivate {
     if (share.security?.password && !shareToken)
       throw new ForbiddenException(
         "This share is password protected",
-        "share_password_required"
+        "share_password_required",
       );
 
     if (!(await this.shareService.verifyShareToken(shareId, shareToken)))
       throw new ForbiddenException(
         "Share token required",
-        "share_token_required"
+        "share_token_required",
       );
 
     return true;

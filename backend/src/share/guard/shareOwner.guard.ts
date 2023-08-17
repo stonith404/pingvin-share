@@ -16,7 +16,7 @@ export class ShareOwnerGuard implements CanActivate {
     const request: Request = context.switchToHttp().getRequest();
     const shareId = Object.prototype.hasOwnProperty.call(
       request.params,
-      "shareId"
+      "shareId",
     )
       ? request.params.shareId
       : request.params.id;

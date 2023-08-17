@@ -12,7 +12,7 @@ export class ConfigDTO {
 
   fromList(partial: Partial<ConfigDTO>[]) {
     return partial.map((part) =>
-      plainToClass(ConfigDTO, part, { excludeExtraneousValues: true })
+      plainToClass(ConfigDTO, part, { excludeExtraneousValues: true }),
     );
   }
 }
