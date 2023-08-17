@@ -76,7 +76,7 @@ const SignUpForm = () => {
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
         <form
           onSubmit={form.onSubmit((values) =>
-            signUp(values.email, values.username, values.password)
+            signUp(values.email, values.username, values.password),
           )}
         >
           <TextInput

@@ -12,7 +12,7 @@ const getLanguageFromAcceptHeader = (acceptLanguage?: string) => {
   const languages = acceptLanguage.split(",").map((l) => l.split(";")[0]);
   const supportedLanguages = Object.values(LOCALES).map((l) => l.code);
   const supportedLanguagesWithoutRegion = supportedLanguages.map(
-    (l) => l.split("-")[0]
+    (l) => l.split("-")[0],
   );
 
   for (const language of languages) {
@@ -23,7 +23,7 @@ const getLanguageFromAcceptHeader = (acceptLanguage?: string) => {
       supportedLanguagesWithoutRegion.includes(language.split("-")[0])
     ) {
       const similarLanguage = supportedLanguages.find((l) =>
-        l.startsWith(language.split("-")[0])
+        l.startsWith(language.split("-")[0]),
       );
       return similarLanguage;
     }

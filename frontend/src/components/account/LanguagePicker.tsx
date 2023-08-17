@@ -7,7 +7,7 @@ import { LOCALES } from "../../i18n/locales";
 const LanguagePicker = () => {
   const t = useTranslate();
   const [selectedLanguage, setSelectedLanguage] = useState(
-    getCookie("language")?.toString()
+    getCookie("language")?.toString(),
   );
 
   const languages = Object.values(LOCALES).map((locale) => ({
@@ -23,7 +23,7 @@ const LanguagePicker = () => {
         setCookie("language", value, {
           sameSite: "lax",
           expires: new Date(
-            new Date().setFullYear(new Date().getFullYear() + 1)
+            new Date().setFullYear(new Date().getFullYear() + 1),
           ),
         });
         location.reload();

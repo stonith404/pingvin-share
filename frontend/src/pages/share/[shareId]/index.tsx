@@ -36,7 +36,7 @@ const Share = ({ shareId }: { shareId: string }) => {
           showErrorModal(
             modals,
             t("share.error.visitor-limit-exceeded.title"),
-            t("share.error.visitor-limit-exceeded.description")
+            t("share.error.visitor-limit-exceeded.description"),
           );
         } else {
           toast.axiosError(e);
@@ -57,13 +57,13 @@ const Share = ({ shareId }: { shareId: string }) => {
             showErrorModal(
               modals,
               t("share.error.removed.title"),
-              e.response.data.message
+              e.response.data.message,
             );
           } else {
             showErrorModal(
               modals,
               t("share.error.not-found.title"),
-              t("share.error.not-found.description")
+              t("share.error.not-found.description"),
             );
           }
         } else if (error == "share_password_required") {

@@ -18,7 +18,7 @@ const get = (key: string, configVariables: Config[]): any => {
   if (!configVariables) return null;
 
   const configVariable = configVariables.filter(
-    (variable) => variable.key == key
+    (variable) => variable.key == key,
   )[0];
 
   if (!configVariable) throw new Error(`Config variable ${key} not found`);
@@ -42,7 +42,7 @@ const sendTestEmail = async (email: string) => {
 const isNewReleaseAvailable = async () => {
   const response = (
     await axios.get(
-      "https://api.github.com/repos/stonith404/pingvin-share/releases/latest"
+      "https://api.github.com/repos/stonith404/pingvin-share/releases/latest",
     )
   ).data;
   return response.tag_name.replace("v", "") != process.env.VERSION;

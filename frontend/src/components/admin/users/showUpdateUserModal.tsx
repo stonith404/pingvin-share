@@ -21,7 +21,7 @@ import toast from "../../../utils/toast.util";
 const showUpdateUserModal = (
   modals: ModalsContextProps,
   user: User,
-  getUsers: () => void
+  getUsers: () => void,
 ) => {
   const t = translateOutsideContext();
   return modals.openModal({
@@ -53,7 +53,7 @@ const Body = ({
         username: yup
           .string()
           .min(3, t("common.error.too-short", { length: 3 })),
-      })
+      }),
     ),
   });
 
@@ -66,7 +66,7 @@ const Body = ({
         password: yup
           .string()
           .min(8, t("common.error.too-short", { length: 8 })),
-      })
+      }),
     ),
   });
 
@@ -115,8 +115,8 @@ const Body = ({
                   })
                   .then(() =>
                     toast.success(
-                      t("admin.users.edit.update.notify.password.success")
-                    )
+                      t("admin.users.edit.update.notify.password.success"),
+                    ),
                   )
                   .catch(toast.axiosError);
               })}

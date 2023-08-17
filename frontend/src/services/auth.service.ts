@@ -19,7 +19,7 @@ const signInTotp = async (
   emailOrUsername: string,
   password: string,
   totp: string,
-  loginToken: string
+  loginToken: string,
 ) => {
   const emailOrUsernameBody = emailOrUsername.includes("@")
     ? { email: emailOrUsername }

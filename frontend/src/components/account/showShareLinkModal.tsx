@@ -5,7 +5,7 @@ import { translateOutsideContext } from "../../hooks/useTranslate.hook";
 const showShareLinkModal = (
   modals: ModalsContextProps,
   shareId: string,
-  appUrl: string
+  appUrl: string,
 ) => {
   const t = translateOutsideContext();
   const link = `${appUrl}/s/${shareId}`;

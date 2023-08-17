@@ -39,7 +39,7 @@ const ResetPassword = () => {
           .string()
           .min(8, t("common.error.too-short", { length: 8 }))
           .required(t("common.error.field-required")),
-      })
+      }),
     ),
   });
 

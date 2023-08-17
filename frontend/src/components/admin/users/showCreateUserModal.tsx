@@ -17,7 +17,7 @@ import toast from "../../../utils/toast.util";
 const showCreateUserModal = (
   modals: ModalsContextProps,
   smtpEnabled: boolean,
-  getUsers: () => void
+  getUsers: () => void,
 ) => {
   return modals.openModal({
     title: "Create user",
@@ -55,7 +55,7 @@ const Body = ({
           .string()
           .min(8, t("common.error.too-short", { length: 8 }))
           .optional(),
-      })
+      }),
     ),
   });
 
@@ -87,7 +87,7 @@ const Body = ({
               labelPosition="left"
               label={t("admin.users.modal.create.manual-password")}
               description={t(
-                "admin.users.modal.create.manual-password.description"
+                "admin.users.modal.create.manual-password.description",
               )}
               {...form.getInputProps("setPasswordManually", {
                 type: "checkbox",
