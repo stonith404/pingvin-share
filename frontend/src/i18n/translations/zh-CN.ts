@@ -47,8 +47,7 @@ export default {
   // /auth/reset-password
   "resetPassword.title": "忘记密码？",
   "resetPassword.description": "请输入电子邮件接受重置密码邮件",
-  "resetPassword.notify.success":
-    "一封包含密码重置地址的邮件已发送到你的邮箱中",
+  "resetPassword.notify.success": "一封包含密码重置地址的邮件已发送到你的邮箱中",
   "resetPassword.button.back": "返回登录页面",
   "resetPassword.text.resetPassword": "重置密码",
   "resetPassword.text.enterNewPassword": "请输入新密码",
@@ -66,8 +65,7 @@ export default {
   "account.notify.password.success": "密码更改成功！",
   "account.card.security.title": "安全",
   "account.card.security.totp.enable.description": "请输入当前密码开启两步验证",
-  "account.card.security.totp.disable.description":
-    "请输入当前密码关闭两步验证",
+  "account.card.security.totp.disable.description": "请输入当前密码关闭两步验证",
   "account.card.security.totp.button.start": "开启",
   "account.modal.totp.title": "开启两步验证",
   "account.modal.totp.step1": "第一步：添加验证器 Authenticator",
@@ -79,8 +77,7 @@ export default {
   "account.notify.totp.disable": "成功关闭两步验证！",
   "account.notify.totp.enable": "成功开启两步验证！",
   "account.card.language.title": "语言",
-  "account.card.language.description":
-    "The project is translated by the community. Some languages might be incomplete.",
+  "account.card.language.description": "The project is translated by the community. Some languages might be incomplete.",
   "account.card.color.title": "颜色外观",
   // ThemeSwitcher.tsx
   "account.theme.dark": "暗黑模式",
@@ -88,8 +85,7 @@ export default {
   "account.theme.system": "跟随系统",
   "account.button.delete": "删除账户",
   "account.modal.delete.title": "删除账户",
-  "account.modal.delete.description":
-    "你真的想删除你的账户，并删除所有的共享吗？",
+  "account.modal.delete.description": "你真的想删除你的账户，并删除所有的共享吗？",
   // END /account
   // /account/shares
   "account.shares.title": "我的共享",
@@ -111,8 +107,7 @@ export default {
   // END /account/shares
   // /account/reverseShares
   "account.reverseShares.title": "预留共享",
-  "account.reverseShares.description":
-    "预留共享允许你创建一个特定共享链接，以便外部用户以此创建共享",
+  "account.reverseShares.description": "预留共享允许你创建一个特定共享链接，以便外部用户以此创建共享",
   "account.reverseShares.title.empty": "这里空空如也 👀",
   "account.reverseShares.description.empty": "你没有创建任何预留共享",
   // showCreateReverseShareModal.tsx
@@ -131,11 +126,9 @@ export default {
   "account.reverseShares.modal.expiration.year-plural": "年",
   "account.reverseShares.modal.max-size.label": "共享文件上限",
   "account.reverseShares.modal.send-email": "发送邮件提醒",
-  "account.reverseShares.modal.send-email.description":
-    "当这个预留共享链接被用于共享时，发送邮件提醒",
+  "account.reverseShares.modal.send-email.description": "当这个预留共享链接被用于共享时，发送邮件提醒",
   "account.reverseShares.modal.max-use.label": "最大使用次数",
-  "account.reverseShares.modal.max-use.description":
-    "这个预留共享链接可被用于创建共享的最大使用次数",
+  "account.reverseShares.modal.max-use.description": "这个预留共享链接可被用于创建共享的最大使用次数",
   "account.reverseShare.never-expires": "这个预留共享永不过期",
   "account.reverseShare.expires-on": "这个预留共享将过期于 {expiration}",
   "account.reverseShares.table.no-shares": "当前没有创建任何共享",
@@ -147,8 +140,7 @@ export default {
   "account.reverseShares.table.expires": "过期时间",
   "account.reverseShares.modal.reverse-share-link": "预留共享链接",
   "account.reverseShares.modal.delete.title": "删除预留共享链接",
-  "account.reverseShares.modal.delete.description":
-    "你真的想删除此预留共享链接吗？链接下所有关联的共享都将被删除",
+  "account.reverseShares.modal.delete.description": "你真的想删除此预留共享链接吗？链接下所有关联的共享都将被删除",
   // END /account/reverseShares
   // /admin
   "admin.title": "管理",
@@ -168,19 +160,16 @@ export default {
   "admin.users.edit.update.change-password.button": "保存新密码",
   "admin.users.edit.update.notify.password.success": "密码更新成功！",
   "admin.users.edit.delete.title": "删除用户 {username}",
-  "admin.users.edit.delete.description":
-    "你真的想删除这个账户，并删除该用户所有的共享吗？",
+  "admin.users.edit.delete.description": "你真的想删除这个账户，并删除该用户所有的共享吗？",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "创建用户",
   "admin.users.modal.create.username": "用户名",
   "admin.users.modal.create.email": "电子邮件",
   "admin.users.modal.create.password": "密码",
   "admin.users.modal.create.manual-password": "手动设置密码",
-  "admin.users.modal.create.manual-password.description":
-    "如果不勾选，用户将会收到一封电子邮件来设置他们的密码",
+  "admin.users.modal.create.manual-password.description": "如果不勾选，用户将会收到一封电子邮件来设置他们的密码",
   "admin.users.modal.create.admin": "管理员",
-  "admin.users.modal.create.admin.description":
-    "如果勾选，用户将能访问管理员面板",
+  "admin.users.modal.create.admin.description": "如果勾选，用户将能访问管理员面板",
   // END /admin/users
   // /upload
   "upload.title": "上传",
@@ -188,8 +177,7 @@ export default {
   "upload.notify.count-failed": "{count} 文件上传失败，请重试",
   // Dropzone.tsx
   "upload.dropzone.title": "上传文件",
-  "upload.dropzone.description":
-    "拖放至此以上传文件，文件大小不能超过上限 {maxSize}",
+  "upload.dropzone.description": "拖放至此以上传文件，文件大小不能超过上限 {maxSize}",
   "upload.dropzone.notify.file-too-big": "你的文件超过了最大上传限制 {maxSize}",
   // FileList.tsx
   "upload.filelist.name": "文件名",
@@ -199,8 +187,7 @@ export default {
   "upload.modal.link.error.invalid": "只能包括字母，数字，下划线(_)，和横线(-)",
   "upload.modal.link.error.taken": "这个链接已经存在了",
   "upload.modal.not-signed-in": "当前没有登录",
-  "upload.modal.not-signed-in-description":
-    "你将不能删除你的共享或查看访问次数",
+  "upload.modal.not-signed-in-description": "你将不能删除你的共享或查看访问次数",
   "upload.modal.expires.never": "永不",
   "upload.modal.expires.never-long": "永不过期",
   "upload.modal.link.label": "共享链接",
@@ -250,8 +237,7 @@ export default {
   "share.table.name": "文件名",
   "share.table.size": "文件大小",
   "share.modal.file-preview.error.not-supported.title": "该文件类型不支持预览",
-  "share.modal.file-preview.error.not-supported.description":
-    "该文件类型不支持预览，请下载后打开查看",
+  "share.modal.file-preview.error.not-supported.description": "该文件类型不支持预览，请下载后打开查看",
   // END /share/[id]
   // /admin/config
   "admin.config.title": "配置管理",
@@ -266,50 +252,36 @@ export default {
   "admin.config.general.show-home-page": "显示首页",
   "admin.config.general.show-home-page.description": "是否显示首页",
   "admin.config.general.logo": "Logo",
-  "admin.config.general.logo.description":
-    "上传个性化 Logo，图片必须是长宽比 1:1 的 PNG 格式",
+  "admin.config.general.logo.description": "上传个性化 Logo，图片必须是长宽比 1:1 的 PNG 格式",
   "admin.config.general.logo.placeholder": "选择图片",
   "admin.config.email.enable-share-email-recipients": "开启共享邮件通知",
-  "admin.config.email.enable-share-email-recipients.description":
-    "是否允许通过邮件通知发送共享信息，只有设置了 SMTP 后该选项才有效",
+  "admin.config.email.enable-share-email-recipients.description": "是否允许通过邮件通知发送共享信息，只有设置了 SMTP 后该选项才有效",
   "admin.config.email.share-recipients-subject": "共享邮件通知主题",
-  "admin.config.email.share-recipients-subject.description":
-    "发送共享邮件通知的邮件主题",
+  "admin.config.email.share-recipients-subject.description": "发送共享邮件通知的邮件主题",
   "admin.config.email.share-recipients-message": "共享邮件通知内容",
-  "admin.config.email.share-recipients-message.description":
-    "发送到接收者的共享邮件通知具体内容。可选的变量有：\n {creator} - 共享创建者\n {shareUrl} - 共享链接\n {desc} - 共享描述\n {expires} - 共享过期时间\n 这些变量会被实际的值所替代",
+  "admin.config.email.share-recipients-message.description": "发送到接收者的共享邮件通知具体内容。可选的变量有：\n {creator} - 共享创建者\n {shareUrl} - 共享链接\n {desc} - 共享描述\n {expires} - 共享过期时间\n 这些变量会被实际的值所替代",
   "admin.config.email.reverse-share-subject": "预留共享邮件通知主题",
-  "admin.config.email.reverse-share-subject.description":
-    "当有人使用了你的预留共享链接时，发送的预留共享邮件通知主题",
+  "admin.config.email.reverse-share-subject.description": "当有人使用了你的预留共享链接时，发送的预留共享邮件通知主题",
   "admin.config.email.reverse-share-message": "预留共享邮件通知内容",
-  "admin.config.email.reverse-share-message.description":
-    "当有人使用了你的预留共享链接时，发送的通知内容。{shareUrl} 会被创建者的用户名和共享链接代替",
+  "admin.config.email.reverse-share-message.description": "当有人使用了你的预留共享链接时，发送的通知内容。{shareUrl} 会被创建者的用户名和共享链接代替",
   "admin.config.email.reset-password-subject": "重置密码邮件通知主题",
-  "admin.config.email.reset-password-subject.description":
-    "当用户发起重置密码时，发送的重置密码邮件通知主题",
+  "admin.config.email.reset-password-subject.description": "当用户发起重置密码时，发送的重置密码邮件通知主题",
   "admin.config.email.reset-password-message": "重置密码邮件通知内容",
-  "admin.config.email.reset-password-message.description":
-    "当用户发起重置密码时，重置密码邮件通知内容。{url} 会被重置密码链接代替",
+  "admin.config.email.reset-password-message.description": "当用户发起重置密码时，重置密码邮件通知内容。{url} 会被重置密码链接代替",
   "admin.config.email.invite-subject": "邀请邮件通知主题",
-  "admin.config.email.invite-subject.description":
-    "当管理员邀请用户时，发送的邀请邮件通知主题",
+  "admin.config.email.invite-subject.description": "当管理员邀请用户时，发送的邀请邮件通知主题",
   "admin.config.email.invite-message": "邀请邮件通知内容",
-  "admin.config.email.invite-message.description":
-    "当管理员邀请用户时，发送的邀请邮件通知内容。{url} 会被邀请链接代替，{password} 会被密码代替",
+  "admin.config.email.invite-message.description": "当管理员邀请用户时，发送的邀请邮件通知内容。{url} 会被邀请链接代替，{password} 会被密码代替",
   "admin.config.share.allow-registration": "允许注册",
   "admin.config.share.allow-registration.description": "是否允许注册",
   "admin.config.share.allow-unauthenticated-shares": "是否允许未验证的共享",
-  "admin.config.share.allow-unauthenticated-shares.description":
-    "是否允许未验证的用户创建共享",
+  "admin.config.share.allow-unauthenticated-shares.description": "是否允许未验证的用户创建共享",
   "admin.config.share.max-size": "最大文件上限",
-  "admin.config.share.max-size.description":
-    "最大文件上限，单位 bytes (1GB=1024MB=1048576KB=1073741824bytes)",
+  "admin.config.share.max-size.description": "最大文件上限，单位 bytes (1GB=1024MB=1048576KB=1073741824bytes)",
   "admin.config.share.zip-compression-level": "Zip compression level",
-  "admin.config.share.zip-compression-level.description":
-    "Adjust the level to balance between file size and compression speed. Valid values range from 0 to 9, with 0 being no compression and 9 being maximum compression. ",
+  "admin.config.share.zip-compression-level.description": "Adjust the level to balance between file size and compression speed. Valid values range from 0 to 9, with 0 being no compression and 9 being maximum compression. ",
   "admin.config.smtp.enabled": "启用",
-  "admin.config.smtp.enabled.description":
-    "是否开启 SMTP，仅当输入主机名、端口、发送邮箱、用户名和密码后开启",
+  "admin.config.smtp.enabled.description": "是否开启 SMTP，仅当输入主机名、端口、发送邮箱、用户名和密码后开启",
   "admin.config.smtp.host": "主机名",
   "admin.config.smtp.host.description": "SMTP 主机名",
   "admin.config.smtp.port": "端口",
@@ -347,5 +319,5 @@ export default {
   "common.error.too-long": "必须不超过 {length} 个字符",
   "common.error.exact-length": "必须为 {length} 个字符",
   "common.error.invalid-number": "必须为数字",
-  "common.error.field-required": "必填项",
+  "common.error.field-required": "必填项"
 };
