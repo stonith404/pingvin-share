@@ -140,7 +140,7 @@ const CreateUploadModalBody = ({
             <TextInput
               style={{ flex: "1" }}
               variant="filled"
-              label="Link"
+              label={t("upload.modal.link.label")}
               placeholder="myAwesomeShare"
               {...form.getInputProps("link")}
             />
