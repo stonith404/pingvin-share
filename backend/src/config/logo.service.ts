@@ -25,7 +25,7 @@ export class LogoService {
       fs.promises.writeFile(
         `${IMAGES_PATH}/icons/icon-${size}x${size}.png`,
         resized,
-        "binary"
+        "binary",
       );
     }
   }

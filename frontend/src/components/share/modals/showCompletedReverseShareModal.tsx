@@ -8,7 +8,7 @@ import CopyTextField from "../../upload/CopyTextField";
 const showCompletedReverseShareModal = (
   modals: ModalsContextProps,
   link: string,
-  getReverseShares: () => void
+  getReverseShares: () => void,
 ) => {
   const t = translateOutsideContext();
   return modals.openModal({

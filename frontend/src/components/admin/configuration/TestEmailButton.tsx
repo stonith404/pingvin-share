@@ -33,7 +33,7 @@ const TestEmailButton = ({
               <Textarea minRows={4} readOnly value={e.response.data.message} />
             </Stack>
           ),
-        })
+        }),
       );
   };
 

@@ -59,5 +59,5 @@ export const LOCALES = {
     name: "ไทย",
     code: "th-TH",
     messages: thai,
-  }
+  },
 };

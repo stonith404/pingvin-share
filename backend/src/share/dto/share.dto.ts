@@ -29,7 +29,7 @@ export class ShareDTO {
 
   fromList(partial: Partial<ShareDTO>[]) {
     return partial.map((part) =>
-      plainToClass(ShareDTO, part, { excludeExtraneousValues: true })
+      plainToClass(ShareDTO, part, { excludeExtraneousValues: true }),
     );
   }
 }

@@ -32,7 +32,7 @@ export class EmailService {
     await this.getTransporter()
       .sendMail({
         from: `"${this.config.get("general.appName")}" <${this.config.get(
-          "smtp.email"
+          "smtp.email",
         )}>`,
         to: email,
         subject,
@@ -49,7 +49,7 @@ export class EmailService {
     shareId: string,
     creator?: User,
     description?: string,
-    expiration?: Date
+    expiration?: Date,
   ) {
     if (!this.config.get("email.enableShareEmailRecipients"))
       throw new InternalServerErrorException("Email service disabled");
@@ -69,8 +69,8 @@ export class EmailService {
           "{expires}",
           moment(expiration).unix() != 0
             ? moment(expiration).fromNow()
-            : "in: never"
-        )
+            : "in: never",
+        ),
     );
   }
 
@@ -83,13 +83,13 @@ export class EmailService {
       this.config
         .get("email.reverseShareMessage")
         .replaceAll("\\n", "\n")
-        .replaceAll("{shareUrl}", shareUrl)
+        .replaceAll("{shareUrl}", shareUrl),
     );
   }
 
   async sendResetPasswordEmail(recipientEmail: string, token: string) {
     const resetPasswordUrl = `${this.config.get(
-      "general.appUrl"
+      "general.appUrl",
     )}/auth/resetPassword/${token}`;
 
     await this.sendMail(
@@ -98,7 +98,7 @@ export class EmailService {
       this.config
         .get("email.resetPasswordMessage")
         .replaceAll("\\n", "\n")
-        .replaceAll("{url}", resetPasswordUrl)
+        .replaceAll("{url}", resetPasswordUrl),
     );
   }
 
@@ -111,7 +111,7 @@ export class EmailService {
       this.config
         .get("email.inviteMessage")
         .replaceAll("{url}", loginUrl)
-        .replaceAll("{password}", password)
+        .replaceAll("{password}", password),
     );
   }
 
@@ -119,7 +119,7 @@ export class EmailService {
     await this.getTransporter()
       .sendMail({
         from: `"${this.config.get("general.appName")}" <${this.config.get(
-          "smtp.email"
+          "smtp.email",
         )}>`,
         to: recipientEmail,
         subject: "Test email",

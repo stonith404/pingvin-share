@@ -28,7 +28,7 @@ export class ConfigController {
   constructor(
     private configService: ConfigService,
     private logoService: LogoService,
-    private emailService: EmailService
+    private emailService: EmailService,
   ) {}
 
   @Get()
@@ -41,7 +41,7 @@ export class ConfigController {
   @UseGuards(JwtGuard, AdministratorGuard)
   async getByCategory(@Param("category") category: string) {
     return new AdminConfigDTO().fromList(
-      await this.configService.getByCategory(category)
+      await this.configService.getByCategory(category),
     );
   }
 
@@ -49,7 +49,7 @@ export class ConfigController {
   @UseGuards(JwtGuard, AdministratorGuard)
   async updateMany(@Body() data: UpdateConfigDTO[]) {
     return new AdminConfigDTO().fromList(
-      await this.configService.updateMany(data)
+      await this.configService.updateMany(data),
     );
   }
 
@@ -66,9 +66,9 @@ export class ConfigController {
     @UploadedFile(
       new ParseFilePipe({
         validators: [new FileTypeValidator({ fileType: "image/png" })],
-      })
+      }),
     )
-    file: Express.Multer.File
+    file: Express.Multer.File,
   ) {
     return await this.logoService.create(file.buffer);
   }

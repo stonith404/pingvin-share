@@ -77,7 +77,7 @@ const MyShares = () => {
             showCreateReverseShareModal(
               modals,
               config.get("smtp.enabled"),
-              getReverseShares
+              getReverseShares,
             )
           }
           leftIcon={<TbPlus size={20} />}
@@ -134,10 +134,10 @@ const MyShares = () => {
                             <Text size="sm">
                               {reverseShare.shares.length == 1
                                 ? `1 ${t(
-                                    "account.reverseShares.table.count.singular"
+                                    "account.reverseShares.table.count.singular",
                                   )}`
                                 : `${reverseShare.shares.length} ${t(
-                                    "account.reverseShares.table.count.plural"
+                                    "account.reverseShares.table.count.plural",
                                   )}`}
                             </Text>
                           </Accordion.Control>
@@ -158,15 +158,13 @@ const MyShares = () => {
                                   size={25}
                                   onClick={() => {
                                     if (window.isSecureContext) {
-                                      clipboard.copy(
-                                        `${appUrl}/s/${share.id}`
-                                      );
+                                      clipboard.copy(`${appUrl}/s/${share.id}`);
                                       toast.success(t("common.notify.copied"));
                                     } else {
                                       showShareLinkModal(
                                         modals,
                                         share.id,
-                                        config.get("general.appUrl")
+                                        config.get("general.appUrl"),
                                       );
                                     }
                                   }}
@@ -200,14 +198,14 @@ const MyShares = () => {
                             clipboard.copy(
                               `${config.get("general.appUrl")}/upload/${
                                 reverseShare.token
-                              }`
+                              }`,
                             );
                             toast.success(t("common.notify.copied"));
                           } else {
                             showReverseShareLinkModal(
                               modals,
                               reverseShare.token,
-                              config.get("general.appUrl")
+                              config.get("general.appUrl"),
                             );
                           }
                         }}
@@ -221,7 +219,7 @@ const MyShares = () => {
                         onClick={() => {
                           modals.openConfirmModal({
                             title: t(
-                              "account.reverseShares.modal.delete.title"
+                              "account.reverseShares.modal.delete.title",
                             ),
                             children: (
                               <Text size="sm">
@@ -239,8 +237,8 @@ const MyShares = () => {
                               shareService.removeReverseShare(reverseShare.id);
                               setReverseShares(
                                 reverseShares.filter(
-                                  (item) => item.id !== reverseShare.id
-                                )
+                                  (item) => item.id !== reverseShare.id,
+                                ),
                               );
                             },
                           });

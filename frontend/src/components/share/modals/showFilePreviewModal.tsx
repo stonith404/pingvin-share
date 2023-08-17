@@ -6,7 +6,7 @@ import FilePreview from "../FilePreview";
 const showFilePreviewModal = (
   shareId: string,
   file: FileMetaData,
-  modals: ModalsContextProps
+  modals: ModalsContextProps,
 ) => {
   const mimeType = (mime.contentType(file.name) || "").split(";")[0];
   return modals.openModal({

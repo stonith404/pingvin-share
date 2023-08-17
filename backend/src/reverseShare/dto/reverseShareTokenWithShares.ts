@@ -23,7 +23,7 @@ export class ReverseShareTokenWithShares extends OmitType(ReverseShareDTO, [
     return partial.map((part) =>
       plainToClass(ReverseShareTokenWithShares, part, {
         excludeExtraneousValues: true,
-      })
+      }),
     );
   }
 }

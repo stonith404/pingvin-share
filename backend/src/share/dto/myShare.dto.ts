@@ -27,7 +27,7 @@ export class MyShareDTO extends OmitType(ShareDTO, [
 
   fromList(partial: Partial<MyShareDTO>[]) {
     return partial.map((part) =>
-      plainToClass(MyShareDTO, part, { excludeExtraneousValues: true })
+      plainToClass(MyShareDTO, part, { excludeExtraneousValues: true }),
     );
   }
 }

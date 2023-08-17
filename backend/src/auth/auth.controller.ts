@@ -33,14 +33,14 @@ export class AuthController {
   constructor(
     private authService: AuthService,
     private authTotpService: AuthTotpService,
-    private config: ConfigService
+    private config: ConfigService,
   ) {}
 
   @Post("signUp")
   @Throttle(10, 5 * 60)
   async signUp(
     @Body() dto: AuthRegisterDTO,
-    @Res({ passthrough: true }) response: Response
+    @Res({ passthrough: true }) response: Response,
   ) {
     if (!this.config.get("share.allowRegistration"))
       throw new ForbiddenException("Registration is not allowed");
@@ -50,7 +50,7 @@ export class AuthController {
     response = this.addTokensToResponse(
       response,
       result.refreshToken,
-      result.accessToken
+      result.accessToken,
     );
 
     return result;
@@ -61,7 +61,7 @@ export class AuthController {
   @HttpCode(200)
   async signIn(
     @Body() dto: AuthSignInDTO,
-    @Res({ passthrough: true }) response: Response
+    @Res({ passthrough: true }) response: Response,
   ) {
     const result = await this.authService.signIn(dto);
 
@@ -69,7 +69,7 @@ export class AuthController {
       response = this.addTokensToResponse(
         response,
         result.refreshToken,
-        result.accessToken
+        result.accessToken,
       );
     }
 
@@ -81,14 +81,14 @@ export class AuthController {
   @HttpCode(200)
   async signInTotp(
     @Body() dto: AuthSignInTotpDTO,
-    @Res({ passthrough: true }) response: Response
+    @Res({ passthrough: true }) response: Response,
   ) {
     const result = await this.authTotpService.signInTotp(dto);
 
     response = this.addTokensToResponse(
       response,
       result.refreshToken,
-      result.accessToken
+      result.accessToken,
     );
 
     return new TokenDTO().from(result);
@@ -113,12 +113,12 @@ export class AuthController {
   async updatePassword(
     @GetUser() user: User,
     @Res({ passthrough: true }) response: Response,
-    @Body() dto: UpdatePasswordDTO
+    @Body() dto: UpdatePasswordDTO,
   ) {
     const result = await this.authService.updatePassword(
       user,
       dto.oldPassword,
-      dto.password
+      dto.password,
     );
 
     response = this.addTokensToResponse(response, result.refreshToken);
@@ -129,12 +129,12 @@ export class AuthController {
   @HttpCode(200)
   async refreshAccessToken(
     @Req() request: Request,
-    @Res({ passthrough: true }) response: Response
+    @Res({ passthrough: true }) response: Response,
   ) {
     if (!request.cookies.refresh_token) throw new UnauthorizedException();
 
     const accessToken = await this.authService.refreshAccessToken(
-      request.cookies.refresh_token
+      request.cookies.refresh_token,
     );
     response = this.addTokensToResponse(response, undefined, accessToken);
     return new TokenDTO().from({ accessToken });
@@ -143,7 +143,7 @@ export class AuthController {
   @Post("signOut")
   async signOut(
     @Req() request: Request,
-    @Res({ passthrough: true }) response: Response
+    @Res({ passthrough: true }) response: Response,
   ) {
     await this.authService.signOut(request.cookies.access_token);
     response.cookie("access_token", "accessToken", { maxAge: -1 });
@@ -176,7 +176,7 @@ export class AuthController {
   private addTokensToResponse(
     response: Response,
     refreshToken?: string,
-    accessToken?: string
+    accessToken?: string,
   ) {
     if (accessToken)
       response.cookie("access_token", accessToken, { sameSite: "lax" });

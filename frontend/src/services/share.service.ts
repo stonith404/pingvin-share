@@ -71,7 +71,7 @@ const uploadFile = async (
     name: string;
   },
   chunkIndex: number,
-  totalChunks: number
+  totalChunks: number,
 ): Promise<FileUploadResponse> => {
   const data = readerEvent.target!.result;
 
@@ -92,7 +92,7 @@ const createReverseShare = async (
   shareExpiration: string,
   maxShareSize: number,
   maxUseCount: number,
-  sendEmailNotification: boolean
+  sendEmailNotification: boolean,
 ) => {
   return (
     await api.post("reverseShares", {

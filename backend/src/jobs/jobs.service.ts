@@ -14,7 +14,7 @@ export class JobsService {
   constructor(
     private prisma: PrismaService,
     private reverseShareService: ReverseShareService,
-    private fileService: FileService
+    private fileService: FileService,
   ) {}
 
   @Cron("0 * * * *")
@@ -56,7 +56,7 @@ export class JobsService {
 
     if (expiredReverseShares.length > 0) {
       this.logger.log(
-        `Deleted ${expiredReverseShares.length} expired reverse shares`
+        `Deleted ${expiredReverseShares.length} expired reverse shares`,
       );
     }
   }
@@ -77,7 +77,7 @@ export class JobsService {
 
       for (const file of temporaryFiles) {
         const stats = fs.statSync(
-          `${SHARE_DIRECTORY}/${shareDirectory}/${file}`
+          `${SHARE_DIRECTORY}/${shareDirectory}/${file}`,
         );
         const isOlderThanOneDay = moment(stats.mtime)
           .add(1, "day")

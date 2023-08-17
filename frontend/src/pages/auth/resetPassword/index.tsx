@@ -57,7 +57,7 @@ const ResetPassword = () => {
           .string()
           .email(t("common.error.invalid-email"))
           .required(t("common.error.field-required")),
-      })
+      }),
     ),
   });
 
@@ -79,7 +79,7 @@ const ResetPassword = () => {
                 toast.success(t("resetPassword.notify.success"));
                 router.push("/auth/signIn");
               })
-              .catch(toast.axiosError)
+              .catch(toast.axiosError),
           )}
         >
           <TextInput

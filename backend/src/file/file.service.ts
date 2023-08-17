@@ -18,14 +18,14 @@ export class FileService {
   constructor(
     private prisma: PrismaService,
     private jwtService: JwtService,
-    private config: ConfigService
+    private config: ConfigService,
   ) {}
 
   async create(
     data: string,
     chunk: { index: number; total: number },
     file: { id?: string; name: string },
-    shareId: string
+    shareId: string,
   ) {
     if (!file.id) file.id = crypto.randomUUID();
 
@@ -40,7 +40,7 @@ export class FileService {
     let diskFileSize: number;
     try {
       diskFileSize = fs.statSync(
-        `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`
+        `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
       ).size;
     } catch {
       diskFileSize = 0;
@@ -62,7 +62,7 @@ export class FileService {
     // Check if share size limit is exceeded
     const fileSizeSum = share.files.reduce(
       (n, { size }) => n + parseInt(size),
-      0
+      0,
     );
 
     const shareSizeSum = fileSizeSum + diskFileSize + buffer.byteLength;
@@ -74,23 +74,23 @@ export class FileService {
     ) {
       throw new HttpException(
         "Max share size exceeded",
-        HttpStatus.PAYLOAD_TOO_LARGE
+        HttpStatus.PAYLOAD_TOO_LARGE,
       );
     }
 
     fs.appendFileSync(
       `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
-      buffer
+      buffer,
     );
 
     const isLastChunk = chunk.index == chunk.total - 1;
     if (isLastChunk) {
       fs.renameSync(
         `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
-        `${SHARE_DIRECTORY}/${shareId}/${file.id}`
+        `${SHARE_DIRECTORY}/${shareId}/${file.id}`,
       );
       const fileSize = fs.statSync(
-        `${SHARE_DIRECTORY}/${shareId}/${file.id}`
+        `${SHARE_DIRECTORY}/${shareId}/${file.id}`,
       ).size;
       await this.prisma.file.create({
         data: {

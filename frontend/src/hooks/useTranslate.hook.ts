@@ -7,7 +7,7 @@ const useTranslate = () => {
   return (
     id: string,
     values?: Parameters<typeof intl.formatMessage>[1],
-    opts?: Parameters<typeof intl.formatMessage>[2]
+    opts?: Parameters<typeof intl.formatMessage>[2],
   ) => {
     return intl.formatMessage({ id }, values, opts) as string;
   };
@@ -25,12 +25,12 @@ export const translateOutsideContext = () => {
       messages: i18nUtil.getLocaleByCode(locale)?.messages,
       defaultLocale: "en",
     },
-    cache
+    cache,
   );
   return (
     id: string,
     values?: Parameters<typeof intl.formatMessage>[1],
-    opts?: Parameters<typeof intl.formatMessage>[2]
+    opts?: Parameters<typeof intl.formatMessage>[2],
   ) => {
     return intl.formatMessage({ id }, values, opts) as string;
   };

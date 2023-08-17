@@ -20,7 +20,7 @@ const axiosError = (axiosError: any) =>
 
 const success = (
   message: string,
-  config?: Omit<NotificationProps, "message">
+  config?: Omit<NotificationProps, "message">,
 ) =>
   showNotification({
     icon: <TbCheck />,

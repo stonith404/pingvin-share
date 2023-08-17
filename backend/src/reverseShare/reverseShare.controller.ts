@@ -23,7 +23,7 @@ import { ReverseShareService } from "./reverseShare.service";
 export class ReverseShareController {
   constructor(
     private reverseShareService: ReverseShareService,
-    private config: ConfigService
+    private config: ConfigService,
   ) {}
 
   @Post()
@@ -44,7 +44,7 @@ export class ReverseShareController {
     if (!isValid) throw new NotFoundException("Reverse share token not found");
 
     return new ReverseShareDTO().from(
-      await this.reverseShareService.getByToken(reverseShareToken)
+      await this.reverseShareService.getByToken(reverseShareToken),
     );
   }
 
@@ -52,7 +52,7 @@ export class ReverseShareController {
   @UseGuards(JwtGuard)
   async getAllByUser(@GetUser() user: User) {
     return new ReverseShareTokenWithShares().fromList(
-      await this.reverseShareService.getAllByUser(user.id)
+      await this.reverseShareService.getAllByUser(user.id),
     );
   }
 

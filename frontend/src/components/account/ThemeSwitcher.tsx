@@ -14,7 +14,7 @@ import userPreferences from "../../utils/userPreferences.util";
 
 const ThemeSwitcher = () => {
   const [colorScheme, setColorScheme] = useState(
-    userPreferences.get("colorScheme")
+    userPreferences.get("colorScheme"),
   );
   const { toggleColorScheme } = useMantineColorScheme();
   const systemColorScheme = useColorScheme();
@@ -26,7 +26,7 @@ const ThemeSwitcher = () => {
           userPreferences.set("colorScheme", value);
           setColorScheme(value);
           toggleColorScheme(
-            value == "system" ? systemColorScheme : (value as ColorScheme)
+            value == "system" ? systemColorScheme : (value as ColorScheme),
           );
         }}
         data={[

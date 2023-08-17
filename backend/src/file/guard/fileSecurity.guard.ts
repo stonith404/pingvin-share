@@ -14,7 +14,7 @@ import { ShareService } from "src/share/share.service";
 export class FileSecurityGuard extends ShareSecurityGuard {
   constructor(
     private _shareService: ShareService,
-    private _prisma: PrismaService
+    private _prisma: PrismaService,
   ) {
     super(_shareService, _prisma);
   }
@@ -24,7 +24,7 @@ export class FileSecurityGuard extends ShareSecurityGuard {
 
     const shareId = Object.prototype.hasOwnProperty.call(
       request.params,
-      "shareId"
+      "shareId",
     )
       ? request.params.shareId
       : request.params.id;
@@ -52,7 +52,7 @@ export class FileSecurityGuard extends ShareSecurityGuard {
       if (share.security?.maxViews && share.security.maxViews <= share.views) {
         throw new ForbiddenException(
           "Maximum views exceeded",
-          "share_max_views_exceeded"
+          "share_max_views_exceeded",
         );
       }
 

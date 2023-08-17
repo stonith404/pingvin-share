@@ -26,7 +26,7 @@ export type AdminConfigGroupedByCategory = {
       description: string;
       obscured: boolean;
       category: string;
-    }
+    },
   ];
 };
 

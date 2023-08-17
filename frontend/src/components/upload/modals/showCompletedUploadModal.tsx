@@ -13,7 +13,7 @@ import CopyTextField from "../CopyTextField";
 const showCompletedUploadModal = (
   modals: ModalsContextProps,
   share: Share,
-  appUrl: string
+  appUrl: string,
 ) => {
   const t = translateOutsideContext();
   return modals.openModal({
