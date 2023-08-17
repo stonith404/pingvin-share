@@ -11,14 +11,17 @@ export default {
   "navbar.avatar.signout": "Kirjaudu ulos",
   // END navbar
   // /
-  "home.title": "<h>\"Itse isännöitty\"</h> tiedostojen jakamisen alusta.",
-  "home.description": "Haluatko oikeasti jakaa yksityisiä tiedostojasi kolmannen osapuolen yhtiöille niin kuin WeTransfer?",
+  "home.title": '<h>"Itse isännöitty"</h> tiedostojen jakamisen alusta.',
+  "home.description":
+    "Haluatko oikeasti jakaa yksityisiä tiedostojasi kolmannen osapuolen yhtiöille niin kuin WeTransfer?",
   "home.bullet.a.name": "Itse-Isännöitty",
-  "home.bullet.a.description": "Isännöi \"Pingvin Share\" omalla palvelimellasi.",
+  "home.bullet.a.description": 'Isännöi "Pingvin Share" omalla palvelimellasi.',
   "home.bullet.b.name": "Yksityisyys",
-  "home.bullet.b.description": "Sinun tiedostosi ovat sinun ja niiden ei ikinä pidä päättyä kolmannen osapuolen käsiin.",
+  "home.bullet.b.description":
+    "Sinun tiedostosi ovat sinun ja niiden ei ikinä pidä päättyä kolmannen osapuolen käsiin.",
   "home.bullet.c.name": "Ei ärsyttävää tiedoston kokorajoitusta",
-  "home.bullet.c.description": "Lataa niin paljon isoja tiedostoja kuin tykkäät. Vain kovalevysi on rajana.",
+  "home.bullet.c.description":
+    "Lataa niin paljon isoja tiedostoja kuin tykkäät. Vain kovalevysi on rajana.",
   "home.button.start": "Aloita",
   "home.button.source": "Lähdekoodi",
   // END /
@@ -27,12 +30,15 @@ export default {
   "signin.description": "Eikö sinulla ole vielä tiliä?",
   "signin.button.signup": "Rekisteröidy",
   "signin.input.email-or-username": "Sähköposti tai käyttäjänimi",
-  "signin.input.email-or-username.placeholder": "Sähköpostisi tai käyttäjänimesi",
+  "signin.input.email-or-username.placeholder":
+    "Sähköpostisi tai käyttäjänimesi",
   "signin.input.password": "Salasana",
   "signin.input.password.placeholder": "Salasana",
   "signin.button.submit": "Kirjaudu sisään",
-  "signIn.notify.totp-required.title": "Kaksivaiheinen tunnistautuminen vaadittu",
-  "signIn.notify.totp-required.description": "Syötä kaksivaiheisen tunnistautumisen koodi tähän",
+  "signIn.notify.totp-required.title":
+    "Kaksivaiheinen tunnistautuminen vaadittu",
+  "signIn.notify.totp-required.description":
+    "Syötä kaksivaiheisen tunnistautumisen koodi tähän",
   // END /auth/signin
   // /auth/signup
   "signup.title": "Rekisteröidy",
@@ -46,8 +52,10 @@ export default {
   // END /auth/signup
   // /auth/reset-password
   "resetPassword.title": "Unohditko salasanan?",
-  "resetPassword.description": "Kirjoita sähköpostiosoitteesi palauttaaksesi salasanasi.",
-  "resetPassword.notify.success": "Sähköpostiosoite on lähetetty linkillä, jolla voit nollata salasanasi.",
+  "resetPassword.description":
+    "Kirjoita sähköpostiosoitteesi palauttaaksesi salasanasi.",
+  "resetPassword.notify.success":
+    "Sähköpostiosoite on lähetetty linkillä, jolla voit nollata salasanasi.",
   "resetPassword.button.back": "Takaisin kirjautumiseen",
   "resetPassword.text.resetPassword": "Nollaa salasana",
   "resetPassword.text.enterNewPassword": "Anna uusi salasana",
@@ -64,8 +72,10 @@ export default {
   "account.card.password.new": "Uusi salasana",
   "account.notify.password.success": "Salasana vaihdettu",
   "account.card.security.title": "Turvallisuus",
-  "account.card.security.totp.enable.description": "Anna nykyinen salasanasi aloittaaksesi TOTP käytön",
-  "account.card.security.totp.disable.description": "Syötä nykyinen salasanasi poistaaksesi TOTP käytöstä",
+  "account.card.security.totp.enable.description":
+    "Anna nykyinen salasanasi aloittaaksesi TOTP käytön",
+  "account.card.security.totp.disable.description":
+    "Syötä nykyinen salasanasi poistaaksesi TOTP käytöstä",
   "account.card.security.totp.button.start": "Aloita",
   "account.modal.totp.title": "Ota Käyttöön TOTP",
   "account.modal.totp.step1": "Vaihe 1: Lisää todentaja",
@@ -77,7 +87,8 @@ export default {
   "account.notify.totp.disable": "TOTP poistettu käytöstä",
   "account.notify.totp.enable": "TOTP otettu käyttöön onnistuneesti",
   "account.card.language.title": "Kieli",
-  "account.card.language.description": "Projekti on yhteisön kääntämä. Jotkut kielet saattavat olla puutteellisia.",
+  "account.card.language.description":
+    "Projekti on yhteisön kääntämä. Jotkut kielet saattavat olla puutteellisia.",
   "account.card.color.title": "Väriteema",
   // ThemeSwitcher.tsx
   "account.theme.dark": "Tumma",
@@ -85,7 +96,8 @@ export default {
   "account.theme.system": "Järjestelmä",
   "account.button.delete": "Poista tili",
   "account.modal.delete.title": "Poista tili",
-  "account.modal.delete.description": "Haluatko varmasti poistaa tilisi mukaan lukien kaikki aktiiviset jaetut tiedostot?",
+  "account.modal.delete.description":
+    "Haluatko varmasti poistaa tilisi mukaan lukien kaikki aktiiviset jaetut tiedostot?",
   // END /account
   // /account/shares
   "account.shares.title": "Minun jakaukset",
@@ -103,13 +115,16 @@ export default {
   "account.shares.modal.share-informations": "Jaetun tiedot",
   "account.shares.modal.share-link": "Jaa linkki",
   "account.shares.modal.delete.title": "Poista jaettu {share}",
-  "account.shares.modal.delete.description": "Haluatko todella poistaa tämän jaetun tiedoston/ot?",
+  "account.shares.modal.delete.description":
+    "Haluatko todella poistaa tämän jaetun tiedoston/ot?",
   // END /account/shares
   // /account/reverseShares
   "account.reverseShares.title": "Takaperin jaetut",
-  "account.reverseShares.description": "Käänteisen jaon avulla voit luoda ainutlaatuisen URL-osoitteen, jonka avulla ulkoiset käyttäjät voivat luoda jaon.",
+  "account.reverseShares.description":
+    "Käänteisen jaon avulla voit luoda ainutlaatuisen URL-osoitteen, jonka avulla ulkoiset käyttäjät voivat luoda jaon.",
   "account.reverseShares.title.empty": "Täällä on tyhjää 👀",
-  "account.reverseShares.description.empty": "Sinulla ei ole käänteisiä jakoja.",
+  "account.reverseShares.description.empty":
+    "Sinulla ei ole käänteisiä jakoja.",
   // showCreateReverseShareModal.tsx
   "account.reverseShares.modal.expiration.label": "Vanhentuminen",
   "account.reverseShares.modal.expiration.minute-singular": "Minuutti",
@@ -126,11 +141,15 @@ export default {
   "account.reverseShares.modal.expiration.year-plural": "Vuotta",
   "account.reverseShares.modal.max-size.label": "Suurin tiedostonkoko",
   "account.reverseShares.modal.send-email": "Lähetä sähköposti-ilmoitus",
-  "account.reverseShares.modal.send-email.description": "Lähetä sähköpostiilmoitus kun jako on luotu tällä käänteisellä jakolinkillä.",
+  "account.reverseShares.modal.send-email.description":
+    "Lähetä sähköpostiilmoitus kun jako on luotu tällä käänteisellä jakolinkillä.",
   "account.reverseShares.modal.max-use.label": "Käyttökertoja enintään",
-  "account.reverseShares.modal.max-use.description": "Enimmäismäärä kertoja, joilla tämä URL-osoite voidaan käyttää joita luomiseen.",
-  "account.reverseShare.never-expires": "Tämä käänteinen jako ei koskaan vanhene.",
-  "account.reverseShare.expires-on": "Tämä käänteinen jako vanhenee kun on {expiration}.",
+  "account.reverseShares.modal.max-use.description":
+    "Enimmäismäärä kertoja, joilla tämä URL-osoite voidaan käyttää joita luomiseen.",
+  "account.reverseShare.never-expires":
+    "Tämä käänteinen jako ei koskaan vanhene.",
+  "account.reverseShare.expires-on":
+    "Tämä käänteinen jako vanhenee kun on {expiration}.",
   "account.reverseShares.table.no-shares": "Ei vielä luotuja jakoja",
   "account.reverseShares.table.count.singular": "jaa",
   "account.reverseShares.table.count.plural": "jaot",
@@ -138,9 +157,11 @@ export default {
   "account.reverseShares.table.remaining": "Jäljellä olevat käyttökerrat",
   "account.reverseShares.table.max-size": "Suurin tiedostonkoko",
   "account.reverseShares.table.expires": "Vanhenee",
-  "account.reverseShares.modal.reverse-share-link": "Takaperin jaetun jaon linkki",
+  "account.reverseShares.modal.reverse-share-link":
+    "Takaperin jaetun jaon linkki",
   "account.reverseShares.modal.delete.title": "Poista käänteinen jako",
-  "account.reverseShares.modal.delete.description": "Haluatko varmasti poistaa tämän käänteisen jaon? Jos kyllä, myös siihen liittyvät jaot poistetaan.",
+  "account.reverseShares.modal.delete.description":
+    "Haluatko varmasti poistaa tämän käänteisen jaon? Jos kyllä, myös siihen liittyvät jaot poistetaan.",
   // END /account/reverseShares
   // /admin
   "admin.title": "Ylläpito",
@@ -160,34 +181,43 @@ export default {
   "admin.users.edit.update.change-password.button": "Tallenna uusi salasana",
   "admin.users.edit.update.notify.password.success": "Salasana vaihdettu",
   "admin.users.edit.delete.title": "Poista käyttäjä {username}",
-  "admin.users.edit.delete.description": "Haluatko varmasti poistaa tämän käyttäjän ja kaikki hänen jaot?",
+  "admin.users.edit.delete.description":
+    "Haluatko varmasti poistaa tämän käyttäjän ja kaikki hänen jaot?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "Luo käyttäjä",
   "admin.users.modal.create.username": "Käyttäjätunnus",
   "admin.users.modal.create.email": "Sähköposti",
   "admin.users.modal.create.password": "Salasana",
   "admin.users.modal.create.manual-password": "Aseta salasana manuaalisesti",
-  "admin.users.modal.create.manual-password.description": "Jos ei ole valittuna, käyttäjä saa sähköpostiviestin, jossa on linkki, joka määrittää heidän salasanansa.",
+  "admin.users.modal.create.manual-password.description":
+    "Jos ei ole valittuna, käyttäjä saa sähköpostiviestin, jossa on linkki, joka määrittää heidän salasanansa.",
   "admin.users.modal.create.admin": "Ylläpitäjän oikeudet",
-  "admin.users.modal.create.admin.description": "Jos valittu, käyttäjä voi käyttää hallintapaneelia.",
+  "admin.users.modal.create.admin.description":
+    "Jos valittu, käyttäjä voi käyttää hallintapaneelia.",
   // END /admin/users
   // /upload
   "upload.title": "Pilvetä",
-  "upload.notify.generic-error": "Kohdattiin odottamaton virhe jaon luomisessa.",
-  "upload.notify.count-failed": "{count} tiedostoa ei voitu ladata. Yritetään uudelleen.",
+  "upload.notify.generic-error":
+    "Kohdattiin odottamaton virhe jaon luomisessa.",
+  "upload.notify.count-failed":
+    "{count} tiedostoa ei voitu ladata. Yritetään uudelleen.",
   // Dropzone.tsx
   "upload.dropzone.title": "Pilvetä tiedostoja",
-  "upload.dropzone.description": "Vedä ja pudota tiedostot tähän aloittaaksesi jakamisen. Voimme hyväksyä vain tiedostot, jotka ovat yhteensä alle {maxSize}.",
-  "upload.dropzone.notify.file-too-big": "Tiedostojen enimmäiskoko ylittää {maxSize} -arvon enimmäismäärän.",
+  "upload.dropzone.description":
+    "Vedä ja pudota tiedostot tähän aloittaaksesi jakamisen. Voimme hyväksyä vain tiedostot, jotka ovat yhteensä alle {maxSize}.",
+  "upload.dropzone.notify.file-too-big":
+    "Tiedostojen enimmäiskoko ylittää {maxSize} -arvon enimmäismäärän.",
   // FileList.tsx
   "upload.filelist.name": "Nimi",
   "upload.filelist.size": "Koko",
   // showCreateUploadModal.tsx
   "upload.modal.title": "Luo Jako",
-  "upload.modal.link.error.invalid": "Voi sisältää vain kirjaimia, numeroita, alaviivoja ja väliviivoja",
+  "upload.modal.link.error.invalid":
+    "Voi sisältää vain kirjaimia, numeroita, alaviivoja ja väliviivoja",
   "upload.modal.link.error.taken": "Tämä linkki on jo käytössä",
   "upload.modal.not-signed-in": "Et ole kirjautunut sisään",
-  "upload.modal.not-signed-in-description": "Et voi poistaa jakoasi manuaalisesti ja tarkastella kävijöiden määrää.",
+  "upload.modal.not-signed-in-description":
+    "Et voi poistaa jakoasi manuaalisesti ja tarkastella kävijöiden määrää.",
   "upload.modal.expires.never": "ei koskaan",
   "upload.modal.expires.never-long": "Ei vanhene koskaan",
   "upload.modal.link.label": "Linkki",
@@ -205,9 +235,11 @@ export default {
   "upload.modal.expires.year-singular": "Vuosi",
   "upload.modal.expires.year-plural": "Vuotta",
   "upload.modal.accordion.description.title": "Kuvaus",
-  "upload.modal.accordion.description.placeholder": "Huomautus tämän jaon vastaanottajille",
+  "upload.modal.accordion.description.placeholder":
+    "Huomautus tämän jaon vastaanottajille",
   "upload.modal.accordion.email.title": "Sähköpostin vastaanottajat",
-  "upload.modal.accordion.email.placeholder": "Syötä sähköpostin vastaanottajat",
+  "upload.modal.accordion.email.placeholder":
+    "Syötä sähköpostin vastaanottajat",
   "upload.modal.accordion.email.invalid-email": "Virheellinen sähköpostiosoite",
   "upload.modal.accordion.security.title": "Turvallisuusasetukset",
   "upload.modal.accordion.security.password.label": "Salasanasuojaus",
@@ -215,29 +247,35 @@ export default {
   "upload.modal.accordion.security.max-views.label": "Näkymien enimmäismäärä",
   "upload.modal.accordion.security.max-views.placeholder": "Ei rajoitusta",
   // showCompletedUploadModal.tsx
-  "upload.modal.completed.never-expires": "Tämä käänteinen jako ei koskaan vanhene.",
-  "upload.modal.completed.expires-on": "Tämä käänteinen jako vanhenee kun on {expiration}.",
+  "upload.modal.completed.never-expires":
+    "Tämä käänteinen jako ei koskaan vanhene.",
+  "upload.modal.completed.expires-on":
+    "Tämä käänteinen jako vanhenee kun on {expiration}.",
   "upload.modal.completed.share-ready": "Jako valmiina",
   // END /upload
   // /share/[id]
   "share.title": "Jaa {shareId}",
   "share.description": "Katso, mitä olen jakanut kanssasi!",
   "share.error.visitor-limit-exceeded.title": "Vierailijoiden raja ylitetty",
-  "share.error.visitor-limit-exceeded.description": "Tämän jaon kävijäraja on ylittynyt.",
+  "share.error.visitor-limit-exceeded.description":
+    "Tämän jaon kävijäraja on ylittynyt.",
   "share.error.removed.title": "Jako poistettu",
   "share.error.not-found.title": "Jakoa ei löydetty",
   "share.error.not-found.description": "Etsimääsi sivua ei ole olemassa.",
   "share.modal.password.title": "Salasana vaaditaan",
-  "share.modal.password.description": "Päästäksesi käsiksi tähän jakoon anna jaon salasana.",
+  "share.modal.password.description":
+    "Päästäksesi käsiksi tähän jakoon anna jaon salasana.",
   "share.modal.password": "Salasana",
   "share.modal.error.invalid-password": "Virheellinen salasana",
   "share.button.download-all": "Lataa kaikki",
-  "share.notify.download-all-preparing": "Jako on valmistumassa. Yritä uudelleen muutaman minuutin kuluttua.",
+  "share.notify.download-all-preparing":
+    "Jako on valmistumassa. Yritä uudelleen muutaman minuutin kuluttua.",
   "share.modal.file-link": "Tiedoston linkki",
   "share.table.name": "Nimi",
   "share.table.size": "Koko",
   "share.modal.file-preview.error.not-supported.title": "Esikatselua ei tuettu",
-  "share.modal.file-preview.error.not-supported.description": "Esikatselua thise tiedostotyypille ei tueta. Ole hyvä ja lataa tiedosto nähdäksesi sen.",
+  "share.modal.file-preview.error.not-supported.description":
+    "Esikatselua thise tiedostotyypille ei tueta. Ole hyvä ja lataa tiedosto nähdäksesi sen.",
   // END /share/[id]
   // /admin/config
   "admin.config.title": "Asetukset",
@@ -248,46 +286,65 @@ export default {
   "admin.config.general.app-name": "Sovelluksen nimi",
   "admin.config.general.app-name.description": "Sovelluksen nimi",
   "admin.config.general.app-url": "Sovelluksen URL",
-  "admin.config.general.app-url.description": "Millä URL-osoitteella Pingvin Share on saatavilla",
+  "admin.config.general.app-url.description":
+    "Millä URL-osoitteella Pingvin Share on saatavilla",
   "admin.config.general.show-home-page": "Näytä kotisivu",
-  "admin.config.general.show-home-page.description": "Näytetäänkö kotisivu vai ei",
+  "admin.config.general.show-home-page.description":
+    "Näytetäänkö kotisivu vai ei",
   "admin.config.general.logo": "Logo",
-  "admin.config.general.logo.description": "Muuta logoa lataamalla uusi kuva. Kuvan on oltava PNG ja sen on oltava formaatti 1:1.",
+  "admin.config.general.logo.description":
+    "Muuta logoa lataamalla uusi kuva. Kuvan on oltava PNG ja sen on oltava formaatti 1:1.",
   "admin.config.general.logo.placeholder": "Valitse kuva",
-  "admin.config.email.enable-share-email-recipients": "Salli sähköpostin vastaanottajien jakaminen",
-  "admin.config.email.enable-share-email-recipients.description": "Salli sähköpostien jakaminen vastaanottajille. Ota tämä käyttöön vain, jos olet ottanut SMTP:n käyttöön.",
+  "admin.config.email.enable-share-email-recipients":
+    "Salli sähköpostin vastaanottajien jakaminen",
+  "admin.config.email.enable-share-email-recipients.description":
+    "Salli sähköpostien jakaminen vastaanottajille. Ota tämä käyttöön vain, jos olet ottanut SMTP:n käyttöön.",
   "admin.config.email.share-recipients-subject": "Sähköpostijaon otsikko",
-  "admin.config.email.share-recipients-subject.description": "Sähköpostin aihe, joka saa lähetetään jaon vastaanottajille.",
+  "admin.config.email.share-recipients-subject.description":
+    "Sähköpostin aihe, joka saa lähetetään jaon vastaanottajille.",
   "admin.config.email.share-recipients-message": "Sähköpostijaon viesti",
-  "admin.config.email.share-recipients-message.description": "Viesti joka lähetetään jaon vastaanottajille. Saatavilla olevat muuttujat:\n {creator} - Jaon luojan käyttäjänimi\n {shareUrl} - Jaon URL\n {desc} - Jaon kuvaus\n {expires} - Jaon päättymispäivä\n Muuttujat korvataan todellisella arvolla.",
+  "admin.config.email.share-recipients-message.description":
+    "Viesti joka lähetetään jaon vastaanottajille. Saatavilla olevat muuttujat:\n {creator} - Jaon luojan käyttäjänimi\n {shareUrl} - Jaon URL\n {desc} - Jaon kuvaus\n {expires} - Jaon päättymispäivä\n Muuttujat korvataan todellisella arvolla.",
   "admin.config.email.reverse-share-subject": "Käänteisen jaon aihe",
-  "admin.config.email.reverse-share-subject.description": "Aihe sähköpostin joka lähetetään kun joku loi jaon käänteisen jakolinkin kanssa.",
+  "admin.config.email.reverse-share-subject.description":
+    "Aihe sähköpostin joka lähetetään kun joku loi jaon käänteisen jakolinkin kanssa.",
   "admin.config.email.reverse-share-message": "Käänteisen jakoviestin viesti",
-  "admin.config.email.reverse-share-message.description": "Viesti joka lähetetään kun joku loi jaon käänteisen jakolinkin kanssa. {shareUrl} korvataan luojan nimellä ja jaon URL:lla.",
+  "admin.config.email.reverse-share-message.description":
+    "Viesti joka lähetetään kun joku loi jaon käänteisen jakolinkin kanssa. {shareUrl} korvataan luojan nimellä ja jaon URL:lla.",
   "admin.config.email.reset-password-subject": "Nollaa salasanan aihe",
-  "admin.config.email.reset-password-subject.description": "Sähköpostin aihe, joka lähetetään kun käyttäjä pyytää salasanan palauttamista.",
+  "admin.config.email.reset-password-subject.description":
+    "Sähköpostin aihe, joka lähetetään kun käyttäjä pyytää salasanan palauttamista.",
   "admin.config.email.reset-password-message": "Nollaa salasanan viesti",
-  "admin.config.email.reset-password-message.description": "Viesti joka lähetetään kun käyttäjä pyytää salasanan nollausta. {url} korvataan nollaussalasanan URL-osoitteella.",
+  "admin.config.email.reset-password-message.description":
+    "Viesti joka lähetetään kun käyttäjä pyytää salasanan nollausta. {url} korvataan nollaussalasanan URL-osoitteella.",
   "admin.config.email.invite-subject": "Kutsun aihe",
-  "admin.config.email.invite-subject.description": "Sähköpostin aihe, mikä lähetetään kun ylläpitäjä kutsuu käyttäjää.",
+  "admin.config.email.invite-subject.description":
+    "Sähköpostin aihe, mikä lähetetään kun ylläpitäjä kutsuu käyttäjää.",
   "admin.config.email.invite-message": "Kutsun viesti",
-  "admin.config.email.invite-message.description": "Viesti mikä lähetetään kuin yp invaa käyttäjän. {url} korvataan kutsuosoitteella ja {password} salasanalla.",
+  "admin.config.email.invite-message.description":
+    "Viesti mikä lähetetään kuin yp invaa käyttäjän. {url} korvataan kutsuosoitteella ja {password} salasanalla.",
   "admin.config.share.allow-registration": "Salli rekisteröinti",
-  "admin.config.share.allow-registration.description": "Onko rekisteröinti sallittu",
+  "admin.config.share.allow-registration.description":
+    "Onko rekisteröinti sallittu",
   "admin.config.share.allow-unauthenticated-shares": "Salli anonyymit jaot",
-  "admin.config.share.allow-unauthenticated-shares.description": "Voiko tunnistamattomat käyttäjät luoda jakoja",
+  "admin.config.share.allow-unauthenticated-shares.description":
+    "Voiko tunnistamattomat käyttäjät luoda jakoja",
   "admin.config.share.max-size": "Maksimikoko",
-  "admin.config.share.max-size.description": "Jaon enimmäiskoko tavuissa (bytes)",
+  "admin.config.share.max-size.description":
+    "Jaon enimmäiskoko tavuissa (bytes)",
   "admin.config.share.zip-compression-level": "Zip puristustaso",
-  "admin.config.share.zip-compression-level.description": "Säädä tasoa tiedoston koon ja pakkausnopeuden välillä. Kelvolliset arvot vaihtelevat 0–9, 0 ei puristusta ja 9 on suurin puristusvoima. ",
+  "admin.config.share.zip-compression-level.description":
+    "Säädä tasoa tiedoston koon ja pakkausnopeuden välillä. Kelvolliset arvot vaihtelevat 0–9, 0 ei puristusta ja 9 on suurin puristusvoima. ",
   "admin.config.smtp.enabled": "Käytössä",
-  "admin.config.smtp.enabled.description": "Onko SMTP käytössä. Aseta tämä todeksi vain, jos olet syöttänyt SMTP-palvelimen isäntän, portin, sähköpostin, käyttäjän ja salasanan.",
+  "admin.config.smtp.enabled.description":
+    "Onko SMTP käytössä. Aseta tämä todeksi vain, jos olet syöttänyt SMTP-palvelimen isäntän, portin, sähköpostin, käyttäjän ja salasanan.",
   "admin.config.smtp.host": "Isäntä",
   "admin.config.smtp.host.description": "SMTP palvelimen isäntä",
   "admin.config.smtp.port": "Portti",
   "admin.config.smtp.port.description": "SMTP palvelimen portti",
   "admin.config.smtp.email": "Sähköposti",
-  "admin.config.smtp.email.description": "Sähköpostiosoite, josta sähköpostit on lähetetty",
+  "admin.config.smtp.email.description":
+    "Sähköpostiosoite, josta sähköpostit on lähetetty",
   "admin.config.smtp.username": "Käyttäjätunnus",
   "admin.config.smtp.username.description": "SMTP palvelimen käyttäjänimi",
   "admin.config.smtp.password": "Salasana",
@@ -319,5 +376,5 @@ export default {
   "common.error.too-long": "Täytyy olla enintään {length} merkkiä",
   "common.error.exact-length": "On oltava tarkasti {length} merkkiä pitkä",
   "common.error.invalid-number": "Pitää olla luku",
-  "common.error.field-required": "Tämä kenttä on pakollinen"
+  "common.error.field-required": "Tämä kenttä on pakollinen",
 };

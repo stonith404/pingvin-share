@@ -7,7 +7,7 @@ import { FormattedMessage } from "react-intl";
 const showErrorModal = (
   modals: ModalsContextProps,
   title: string,
-  text: string
+  text: string,
 ) => {
   return modals.openModal({
     closeOnClickOutside: false,

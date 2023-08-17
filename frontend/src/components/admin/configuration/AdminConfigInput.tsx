@@ -21,7 +21,7 @@ const AdminConfigInput = ({
       stringValue: configVariable.value ?? configVariable.defaultValue,
       textValue: configVariable.value ?? configVariable.defaultValue,
       numberValue: parseInt(
-        configVariable.value ?? configVariable.defaultValue
+        configVariable.value ?? configVariable.defaultValue,
       ),
       booleanValue:
         (configVariable.value ?? configVariable.defaultValue) == "true",

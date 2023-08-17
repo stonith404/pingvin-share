@@ -119,7 +119,7 @@ const MyShares = () => {
                             modals,
                             share,
                             config.get("general.appUrl"),
-                            parseInt(config.get("share.maxSize"))
+                            parseInt(config.get("share.maxSize")),
                           );
                         }}
                       >
@@ -132,16 +132,14 @@ const MyShares = () => {
                         onClick={() => {
                           if (window.isSecureContext) {
                             clipboard.copy(
-                              `${config.get("general.appUrl")}/s/${
-                                share.id
-                              }`
+                              `${config.get("general.appUrl")}/s/${share.id}`,
                             );
                             toast.success(t("common.notify.copied"));
                           } else {
                             showShareLinkModal(
                               modals,
                               share.id,
-                              config.get("general.appUrl")
+                              config.get("general.appUrl"),
                             );
                           }
                         }}
@@ -172,7 +170,7 @@ const MyShares = () => {
                             onConfirm: () => {
                               shareService.remove(share.id);
                               setShares(
-                                shares.filter((item) => item.id !== share.id)
+                                shares.filter((item) => item.id !== share.id),
                               );
                             },
                           });

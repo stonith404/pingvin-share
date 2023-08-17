@@ -56,7 +56,7 @@ const Upload = ({
                 file.uploadingProgress = progress;
               }
               return file;
-            })
+            }),
           );
         };
 
@@ -84,7 +84,7 @@ const Upload = ({
                       name: file.name,
                     },
                     chunkIndex,
-                    chunks
+                    chunks,
                   )
                   .then((response) => {
                     fileId = response.id;
@@ -114,7 +114,7 @@ const Upload = ({
             }
           }
         }
-      })
+      }),
     );
 
     Promise.all(fileUploadPromises);
@@ -123,7 +123,7 @@ const Upload = ({
   useEffect(() => {
     // Check if there are any files that failed to upload
     const fileErrorCount = files.filter(
-      (file) => file.uploadingProgress == -1
+      (file) => file.uploadingProgress == -1,
     ).length;
 
     if (fileErrorCount > 0) {
@@ -133,7 +133,7 @@ const Upload = ({
           {
             withCloseButton: false,
             autoClose: false,
-          }
+          },
         );
       }
       errorToastShown = true;
@@ -174,13 +174,13 @@ const Upload = ({
                 isReverseShare,
                 appUrl: config.get("general.appUrl"),
                 allowUnauthenticatedShares: config.get(
-                  "share.allowUnauthenticatedShares"
+                  "share.allowUnauthenticatedShares",
                 ),
                 enableEmailRecepients: config.get(
-                  "email.enableShareEmailRecipients"
+                  "email.enableShareEmailRecipients",
                 ),
               },
-              uploadFiles
+              uploadFiles,
             );
           }}
         >

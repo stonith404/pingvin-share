@@ -11,7 +11,7 @@ export const getExpirationPreview = (
       expiration_num: number;
       expiration_unit: string;
     };
-  }
+  },
 ) => {
   const value = form.values.never_expires
     ? "never"
@@ -21,12 +21,12 @@ export const getExpirationPreview = (
   const expirationDate = moment()
     .add(
       value.split("-")[0],
-      value.split("-")[1] as moment.unitOfTime.DurationConstructor
+      value.split("-")[1] as moment.unitOfTime.DurationConstructor,
     )
     .toDate();
 
   return messages.expiresOn.replace(
     "{expiration}",
-    moment(expirationDate).format("LLL")
+    moment(expirationDate).format("LLL"),
   );
 };

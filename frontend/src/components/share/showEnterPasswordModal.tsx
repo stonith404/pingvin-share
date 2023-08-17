@@ -8,7 +8,7 @@ import useTranslate, {
 
 const showEnterPasswordModal = (
   modals: ModalsContextProps,
-  submitCallback: (password: string) => Promise<void>
+  submitCallback: (password: string) => Promise<void>,
 ) => {
   const t = translateOutsideContext();
   return modals.openModal({
