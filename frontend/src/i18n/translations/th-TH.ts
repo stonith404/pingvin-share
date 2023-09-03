@@ -111,6 +111,7 @@ export default {
   "account.reverseShares.title.empty": "มันว่างเปล่าที่นี่ 👀",
   "account.reverseShares.description.empty": "คุณยังไม่ได้สร้างรีเวิร์สแชร์ใดๆ",
   // showCreateReverseShareModal.tsx
+  "account.reverseShares.modal.title": "Create reverse share",
   "account.reverseShares.modal.expiration.label": "ลิงค์หมดอายุใน",
   "account.reverseShares.modal.expiration.minute-singular": "นาที",
   "account.reverseShares.modal.expiration.minute-plural": "นาที",
