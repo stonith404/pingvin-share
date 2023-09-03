@@ -111,6 +111,7 @@ export default {
   "account.reverseShares.title.empty": "Aquí está vacío 👀",
   "account.reverseShares.description.empty": "No tienes ningún Reverse Share.",
   // showCreateReverseShareModal.tsx
+  "account.reverseShares.modal.title": "Create reverse share",
   "account.reverseShares.modal.expiration.label": "Expiración",
   "account.reverseShares.modal.expiration.minute-singular": "Minuto",
   "account.reverseShares.modal.expiration.minute-plural": "Minutos",

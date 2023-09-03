@@ -111,6 +111,7 @@ export default {
   "account.reverseShares.title.empty": "Es ist leer hier 👀",
   "account.reverseShares.description.empty": "Du hast keine externen Freigaben erstellt.",
   // showCreateReverseShareModal.tsx
+  "account.reverseShares.modal.title": "Create reverse share",
   "account.reverseShares.modal.expiration.label": "Gültig bis",
   "account.reverseShares.modal.expiration.minute-singular": "Minute",
   "account.reverseShares.modal.expiration.minute-plural": "Minuten",

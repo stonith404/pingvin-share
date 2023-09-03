@@ -111,6 +111,7 @@ export default {
   "account.reverseShares.title.empty": "Täällä on tyhjää 👀",
   "account.reverseShares.description.empty": "Sinulla ei ole käänteisiä jakoja.",
   // showCreateReverseShareModal.tsx
+  "account.reverseShares.modal.title": "Create reverse share",
   "account.reverseShares.modal.expiration.label": "Vanhentuminen",
   "account.reverseShares.modal.expiration.minute-singular": "Minuutti",
   "account.reverseShares.modal.expiration.minute-plural": "Minuuttia",
