@@ -1,3 +1,16 @@
+## [0.17.5](https://github.com/stonith404/pingvin-share/compare/v0.17.4...v0.17.5) (2023-09-03)
+
+
+### Features
+
+* **localization:** Added thai language ([#231](https://github.com/stonith404/pingvin-share/issues/231)) ([bddb87b](https://github.com/stonith404/pingvin-share/commit/bddb87b9b3ec5426a3c7a14a96caf2eb45b93ff7))
+
+
+### Bug Fixes
+
+* autocomplete on create share modal ([d4e8d4f](https://github.com/stonith404/pingvin-share/commit/d4e8d4f58b9b7d10b865eff49aa784547891c4e8))
+* missing translation ([7647a9f](https://github.com/stonith404/pingvin-share/commit/7647a9f620cbc5d38e019225a680a53bd3027698))
+
 ## [0.17.4](https://github.com/stonith404/pingvin-share/compare/v0.17.3...v0.17.4) (2023-08-01)
 
 
