@@ -23,7 +23,7 @@ import showCompletedReverseShareModal from "./showCompletedReverseShareModal";
 const showCreateReverseShareModal = (
   modals: ModalsContextProps,
   showSendEmailNotificationOption: boolean,
-  getReverseShares: () => void,
+  getReverseShares: () => void
 ) => {
   return modals.openModal({
     title: "Create reverse share",
@@ -64,7 +64,7 @@ const Body = ({
               values.expiration_num + values.expiration_unit,
               values.maxShareSize,
               values.maxUseCount,
-              values.sendEmailNotification,
+              values.sendEmailNotification
             )
             .then(({ link }) => {
               modals.closeAll();
@@ -150,7 +150,7 @@ const Body = ({
                   expiresOn: t("account.reverseShare.expires-on"),
                   neverExpires: t("account.reverseShare.never-expires"),
                 },
-                form,
+                form
               )}
             </Text>
           </div>
@@ -174,7 +174,7 @@ const Body = ({
               labelPosition="left"
               label={t("account.reverseShares.modal.send-email")}
               description={t(
-                "account.reverseShares.modal.send-email.description",
+                "account.reverseShares.modal.send-email.description"
               )}
               {...form.getInputProps("sendEmailNotification", {
                 type: "checkbox",
