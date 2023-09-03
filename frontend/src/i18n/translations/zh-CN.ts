@@ -111,6 +111,7 @@ export default {
   "account.reverseShares.title.empty": "这里空空如也 👀",
   "account.reverseShares.description.empty": "你没有创建任何预留共享",
   // showCreateReverseShareModal.tsx
+  "account.reverseShares.modal.title": "Create reverse share",
   "account.reverseShares.modal.expiration.label": "过期时间",
   "account.reverseShares.modal.expiration.minute-singular": "1 分钟",
   "account.reverseShares.modal.expiration.minute-plural": "分钟",
