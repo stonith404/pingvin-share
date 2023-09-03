@@ -13,7 +13,9 @@ import { useForm } from "@mantine/form";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import { FormattedMessage } from "react-intl";
-import useTranslate from "../../../hooks/useTranslate.hook";
+import useTranslate, {
+  translateOutsideContext,
+} from "../../../hooks/useTranslate.hook";
 import shareService from "../../../services/share.service";
 import { getExpirationPreview } from "../../../utils/date.util";
 import toast from "../../../utils/toast.util";
@@ -25,8 +27,9 @@ const showCreateReverseShareModal = (
   showSendEmailNotificationOption: boolean,
   getReverseShares: () => void
 ) => {
+  const t = translateOutsideContext();
   return modals.openModal({
-    title: "Create reverse share",
+    title: t("account.reverseShares.modal.title"),
     children: (
       <Body
         showSendEmailNotificationOption={showSendEmailNotificationOption}

@@ -149,6 +149,7 @@ export default {
     "You don't have any reverse shares.",
 
   // showCreateReverseShareModal.tsx
+  "account.reverseShares.modal.title": "Create reverse share",
   "account.reverseShares.modal.expiration.label": "Expiration",
   "account.reverseShares.modal.expiration.minute-singular": "Minute",
   "account.reverseShares.modal.expiration.minute-plural": "Minutes",
