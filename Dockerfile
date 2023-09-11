@@ -29,6 +29,12 @@ RUN npm run build  && npm prune --production
 FROM node:19-alpine AS runner
 ENV NODE_ENV=docker
 
+ARG UID=1000
+ARG GID=1000
+RUN deluser node
+RUN adduser -u $UID -g $GID node -D
+USER node
+
 WORKDIR /opt/app/frontend
 COPY --from=frontend-builder /opt/app/public ./public
 COPY --from=frontend-builder /opt/app/.next/standalone ./
@@ -41,14 +47,8 @@ COPY --from=backend-builder /opt/app/dist ./dist
 COPY --from=backend-builder /opt/app/prisma ./prisma
 COPY --from=backend-builder /opt/app/package.json ./
 
-ARG UID=1000
-ARG GID=1000
-RUN deluser node
-RUN adduser -u $UID -g $GID node -D
-
 WORKDIR /opt/app
-RUN chown -R node /opt/app
-USER node
+
 EXPOSE 3000
 HEALTHCHECK --interval=10s --timeout=3s CMD curl -f http://localhost:3000/api/health || exit 1
 
