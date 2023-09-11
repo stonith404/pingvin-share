@@ -21,7 +21,7 @@ RUN npm ci
 
 # Stage 4:on backend change
 FROM node:19-alpine AS backend-builder
-RUN apt-get update && apt-get install -y openssl
+RUN apk add -y openssl
 WORKDIR /opt/app
 COPY ./backend .
 COPY --from=backend-dependencies /opt/app/node_modules ./node_modules
