@@ -1,5 +1,3 @@
-# Using node slim because prisma ORM needs libc for ARM builds
-
 # Stage 1: on frontend dependency change
 FROM node:19-alpine AS frontend-dependencies
 WORKDIR /opt/app
@@ -21,7 +19,6 @@ RUN npm ci
 
 # Stage 4:on backend change
 FROM node:19-alpine AS backend-builder
-RUN apk add -y openssl
 WORKDIR /opt/app
 COPY ./backend .
 COPY --from=backend-dependencies /opt/app/node_modules ./node_modules
@@ -44,8 +41,6 @@ COPY --from=backend-builder /opt/app/dist ./dist
 COPY --from=backend-builder /opt/app/prisma ./prisma
 COPY --from=backend-builder /opt/app/package.json ./
 
-RUN apk add curl openssl \
-&&   rm -rf /var/cache/apk/*
 ARG UID=1000
 ARG GID=1000
 RUN deluser node
