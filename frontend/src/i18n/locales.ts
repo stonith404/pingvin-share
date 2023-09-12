@@ -6,8 +6,9 @@ import finnish from "./translations/fi-FI";
 import french from "./translations/fr-FR";
 import portuguese from "./translations/pt-BR";
 import russian from "./translations/ru-RU";
-import chineseSimplified from "./translations/zh-CN";
+import serbian from "./translations/sr-SP";
 import thai from "./translations/th-TH";
+import chineseSimplified from "./translations/zh-CN";
 
 export const LOCALES = {
   ENGLISH: {
@@ -59,5 +60,10 @@ export const LOCALES = {
     name: "ไทย",
     code: "th-TH",
     messages: thai,
+  },
+  SERBIAN: {
+    name: "Srpski",
+    code: "sr-SP",
+    messages: serbian,
   },
 };
