@@ -1,439 +1,324 @@
 export default {
   // Navbar
-  "navbar.upload": "Upload",
-  "navbar.signin": "Sign in",
-  "navbar.home": "Home",
-  "navbar.signup": "Sign Up",
-
-  "navbar.links.shares": "My shares",
-  "navbar.links.reverse": "Reverse shares",
-
-  "navbar.avatar.account": "My account",
-  "navbar.avatar.admin": "Administration",
-  "navbar.avatar.signout": "Sign out",
+  "navbar.upload": "Пошаљи",
+  "navbar.signin": "Пријавите се",
+  "navbar.home": "Почетна",
+  "navbar.signup": "Региструј се",
+  "navbar.links.shares": "Moja дељења",
+  "navbar.links.reverse": "Обрнуто дељење",
+  "navbar.avatar.account": "Мој налог",
+  "navbar.avatar.admin": "Администрација",
+  "navbar.avatar.signout": "Одјави се",
   // END navbar
-
   // /
-  "home.title": "A <h>self-hosted</h> file sharing platform.",
-
-  "home.description":
-    "Do you really want to give your personal files in the hand of third parties like WeTransfer?",
-  "home.bullet.a.name": "Self-Hosted",
-  "home.bullet.a.description": "Host Pingvin Share on your own machine.",
-  "home.bullet.b.name": "Privacy",
-  "home.bullet.b.description":
-    "Your files are your files and should never get into the hands of third parties.",
-  "home.bullet.c.name": "No annoying file size limit",
-  "home.bullet.c.description":
-    "Upload as big files as you want. Only your hard drive will be your limit.",
-
-  "home.button.start": "Get started",
-  "home.button.source": "Source code",
+  "home.title": "<h>self-hosted</h> платформа за дељење фајлова.",
+  "home.description": "Да ли заиста желите да дате своје личне датотеке у руке трећих страна као што је WeTransfer?",
+  "home.bullet.a.name": "Личан хостинг",
+  "home.bullet.a.description": "Хостујте Pingvin Share на својој машини.",
+  "home.bullet.b.name": "Privatnost",
+  "home.bullet.b.description": "Ваше датотеке су ваше датотеке и никада не би требало да дођу у руке трећих лица.",
+  "home.bullet.c.name": "Нема досадног ограничења величине датотеке",
+  "home.bullet.c.description": "Отпремите онолико великих датотека колико желите. Само ваш чврсти диск ће бити ваше ограничење.",
+  "home.button.start": "Почети",
+  "home.button.source": "Изворни код",
   // END /
-
   // /auth/signin
-  "signin.title": "Welcome back",
-  "signin.description": "You don't have an account yet?",
-  "signin.button.signup": "Sign up",
-  "signin.input.email-or-username": "Email or username",
-  "signin.input.email-or-username.placeholder": "Your email or username",
-  "signin.input.password": "Password",
-  "signin.input.password.placeholder": "Your password",
-  "signin.button.submit": "Sign in",
-  "signIn.notify.totp-required.title": "Two-factor authentication required",
-  "signIn.notify.totp-required.description":
-    "Please enter your two-factor authentication code",
-
+  "signin.title": "Добродошли назад",
+  "signin.description": "Још увек немате налог?",
+  "signin.button.signup": "Региструј се",
+  "signin.input.email-or-username": "Е-пошта или корисничко име",
+  "signin.input.email-or-username.placeholder": "Ваша Е-пошта или корисничко име",
+  "signin.input.password": "Лозинка",
+  "signin.input.password.placeholder": "Ваша лозинка",
+  "signin.button.submit": "Пријавите се",
+  "signIn.notify.totp-required.title": "Потребна је двофакторска аутентификација",
+  "signIn.notify.totp-required.description": "Унесите свој двофакторски код за аутентификацију",
   // END /auth/signin
-
   // /auth/signup
-  "signup.title": "Create an account",
-  "signup.description": "Already have an account?",
-  "signup.button.signin": "Sign in",
-  "signup.input.username": "Username",
-  "signup.input.username.placeholder": "Your username",
-  "signup.input.email": "Email",
-  "signup.input.email.placeholder": "Your email",
-  "signup.button.submit": "Let's get started",
-
+  "signup.title": "Направи налог",
+  "signup.description": "Већ имате налог?",
+  "signup.button.signin": "Пријавите се",
+  "signup.input.username": "Корисничко име",
+  "signup.input.username.placeholder": "Ваше корисничко име",
+  "signup.input.email": "E-пошта",
+  "signup.input.email.placeholder": "Ваш и-мејл",
+  "signup.button.submit": "Хајде да почнемо",
   // END /auth/signup
-
   // /auth/reset-password
-  "resetPassword.title": "Forgot your password?",
-  "resetPassword.description": "Enter your email to reset your password.",
-  "resetPassword.notify.success":
-    "An email has been sent with a link to reset your password.",
-  "resetPassword.button.back": "Back to sign in page",
-  "resetPassword.text.resetPassword": "Reset password",
-  "resetPassword.text.enterNewPassword": "Enter your new password",
-  "resetPassword.input.password": "New password",
-  "resetPassword.notify.passwordReset":
-    "Your password has been reset successfully.",
-
+  "resetPassword.title": "Заборавили сте лозинку?",
+  "resetPassword.description": "Унесите своју е-пошту да бисте ресетовали лозинку.",
+  "resetPassword.notify.success": "Послат је емаил са везом за ресетовање ваше лозинке.",
+  "resetPassword.button.back": "Назад на страницу за пријаву",
+  "resetPassword.text.resetPassword": "Обнови лозинку",
+  "resetPassword.text.enterNewPassword": "Унесите вашу нову лозинку",
+  "resetPassword.input.password": "Нова лозинка",
+  "resetPassword.notify.passwordReset": "Ваша лозинка је успешно ресетована.",
   // /account
-  "account.title": "My account",
-
-  "account.card.info.title": "Account info",
-  "account.card.info.username": "Username",
-  "account.card.info.email": "Email",
-  "account.notify.info.success": "Account updated successfully",
-
-  "account.card.password.title": "Password",
-  "account.card.password.old": "Old password",
-  "account.card.password.new": "New password",
-  "account.notify.password.success": "Password changed successfully",
-
-  "account.card.security.title": "Security",
-  "account.card.security.totp.enable.description":
-    "Enter your current password to start enabling TOTP",
-  "account.card.security.totp.disable.description":
-    "Enter your current password to disable TOTP",
-  "account.card.security.totp.button.start": "Start",
-  "account.modal.totp.title": "Enable TOTP",
-  "account.modal.totp.step1": "Step 1: Add your authenticator",
-  "account.modal.totp.step2": "Step 2: Validate your code",
-  "account.modal.totp.enterManually": "Enter manually",
-  "account.modal.totp.code": "Code",
-  "account.modal.totp.clickToCopy": "Click to copy",
-  "account.modal.totp.verify": "Verify",
-  "account.notify.totp.disable": "TOTP disabled successfully",
-  "account.notify.totp.enable": "TOTP enabled successfully",
-
-  "account.card.language.title": "Language",
-  "account.card.language.description":
-    "The project is translated by the community. Some languages might be incomplete.",
-  "account.card.color.title": "Color scheme",
-
+  "account.title": "Мој налог",
+  "account.card.info.title": "Подаци о налогу",
+  "account.card.info.username": "Корисничко име",
+  "account.card.info.email": "E-пошта",
+  "account.notify.info.success": "Налог је успешно ажуриран",
+  "account.card.password.title": "Лозинка",
+  "account.card.password.old": "Стара лозинка",
+  "account.card.password.new": "Нова лозинка",
+  "account.notify.password.success": "Лозинка је успешно промењена",
+  "account.card.security.title": "Безбедност",
+  "account.card.security.totp.enable.description": "Унесите своју тренутну лозинку да бисте почели да омогућавате ТОТП",
+  "account.card.security.totp.disable.description": "Унесите своју тренутну лозинку да бисте онемогућили ТОТП",
+  "account.card.security.totp.button.start": "Започни",
+  "account.modal.totp.title": "Омогући ТОТП",
+  "account.modal.totp.step1": "Корак 1: Додајте свој аутентификатор",
+  "account.modal.totp.step2": "Корак 2: Потврдите свој код",
+  "account.modal.totp.enterManually": "Унесите ручно",
+  "account.modal.totp.code": "Код",
+  "account.modal.totp.clickToCopy": "Кликните за копирање",
+  "account.modal.totp.verify": "Верификуј",
+  "account.notify.totp.disable": "ТОТП је успешно онемогућен",
+  "account.notify.totp.enable": "ТОТП је успешно омогућен",
+  "account.card.language.title": "Језик",
+  "account.card.language.description": "Пројекат је преведен од стране заједнице. Неки језици могу бити непотпуни.",
+  "account.card.color.title": "Шема боја",
   // ThemeSwitcher.tsx
-  "account.theme.dark": "Dark",
-  "account.theme.light": "Light",
-  "account.theme.system": "System",
-
-  "account.button.delete": "Delete Account",
-  "account.modal.delete.title": "Delete Account",
-  "account.modal.delete.description":
-    "Do you really want to delete your account including all your active shares?",
+  "account.theme.dark": "Тамно",
+  "account.theme.light": "Светло",
+  "account.theme.system": "Систем",
+  "account.button.delete": "Избриши Налог",
+  "account.modal.delete.title": "Избриши Налог",
+  "account.modal.delete.description": "Да ли заиста желите да избришете свој налог укључујући све ваше активне дељења?",
   // END /account
-
   // /account/shares
-  "account.shares.title": "My shares",
-  "account.shares.title.empty": "It's empty here 👀",
-  "account.shares.description.empty": "You don't have any shares.",
-  "account.shares.button.create": "Create one",
-
-  "account.shares.info.title": "Share informations",
-  "account.shares.table.id": "ID",
-  "account.shares.table.name": "Name",
-  "account.shares.table.description": "Description",
-  "account.shares.table.visitors": "Visitors",
-  "account.shares.table.expiresAt": "Expires at",
-  "account.shares.table.createdAt": "Created at",
-  "account.shares.table.size": "Size",
-
-  "account.shares.modal.share-informations": "Share informations",
-  "account.shares.modal.share-link": "Share link",
-
-  "account.shares.modal.delete.title": "Delete share {share}",
-  "account.shares.modal.delete.description":
-    "Do you really want to delete this share?",
-
+  "account.shares.title": "Moja дељења",
+  "account.shares.title.empty": "Овде је празно 👀",
+  "account.shares.description.empty": "Немате никаква дељења.",
+  "account.shares.button.create": "Направите",
+  "account.shares.info.title": "Делите информације",
+  "account.shares.table.id": "ИД",
+  "account.shares.table.name": "Назив",
+  "account.shares.table.description": "Опис",
+  "account.shares.table.visitors": "Посетици",
+  "account.shares.table.expiresAt": "Истиче у",
+  "account.shares.table.createdAt": "Направљено у",
+  "account.shares.table.size": "Величина",
+  "account.shares.modal.share-informations": "Делите информације",
+  "account.shares.modal.share-link": "Дели везу",
+  "account.shares.modal.delete.title": "Избриши дељење {share}",
+  "account.shares.modal.delete.description": "Да ли заиста желите да избришете ово дељење?",
   // END /account/shares
-
   // /account/reverseShares
-  "account.reverseShares.title": "Reverse shares",
-  "account.reverseShares.description":
-    "A reverse share allows you to generate a unique URL that allows external users to create a share.",
-
-  "account.reverseShares.title.empty": "It's empty here 👀",
-  "account.reverseShares.description.empty":
-    "You don't have any reverse shares.",
-
+  "account.reverseShares.title": "Обрнуто дељење",
+  "account.reverseShares.description": "Обрнуто дељење вам омогућава да генеришете јединствени URL који омогућава спољним корисницима да креирају дељење.",
+  "account.reverseShares.title.empty": "Овде је празно 👀",
+  "account.reverseShares.description.empty": "Немате обрнутих дељења.",
   // showCreateReverseShareModal.tsx
-  "account.reverseShares.modal.title": "Create reverse share",
-  "account.reverseShares.modal.expiration.label": "Expiration",
-  "account.reverseShares.modal.expiration.minute-singular": "Minute",
-  "account.reverseShares.modal.expiration.minute-plural": "Minutes",
-  "account.reverseShares.modal.expiration.hour-singular": "Hour",
-  "account.reverseShares.modal.expiration.hour-plural": "Hours",
-  "account.reverseShares.modal.expiration.day-singular": "Day",
-  "account.reverseShares.modal.expiration.day-plural": "Days",
-  "account.reverseShares.modal.expiration.week-singular": "Week",
-  "account.reverseShares.modal.expiration.week-plural": "Weeks",
-  "account.reverseShares.modal.expiration.month-singular": "Month",
-  "account.reverseShares.modal.expiration.month-plural": "Months",
-  "account.reverseShares.modal.expiration.year-singular": "Year",
-  "account.reverseShares.modal.expiration.year-plural": "Years",
-
-  "account.reverseShares.modal.max-size.label": "Max share size",
-
-  "account.reverseShares.modal.send-email": "Send email notification",
-  "account.reverseShares.modal.send-email.description":
-    "Send an email notification when a share is created with this reverse share link.",
-
-  "account.reverseShares.modal.max-use.label": "Max uses",
-  "account.reverseShares.modal.max-use.description":
-    "The maximum amount of times this URL can be used to create a share.",
-  "account.reverseShare.never-expires": "This reverse share will never expire.",
-  "account.reverseShare.expires-on":
-    "This reverse share will expire on {expiration}.",
-
-  "account.reverseShares.table.no-shares": "No shares created yet",
-  "account.reverseShares.table.count.singular": "share",
-  "account.reverseShares.table.count.plural": "shares",
-  "account.reverseShares.table.shares": "Shares",
-  "account.reverseShares.table.remaining": "Remaining uses",
-  "account.reverseShares.table.max-size": "Max share size",
-  "account.reverseShares.table.expires": "Expires at",
-
-  "account.reverseShares.modal.reverse-share-link": "Reverse share link",
-
-  "account.reverseShares.modal.delete.title": "Delete reverse share",
-  "account.reverseShares.modal.delete.description":
-    "Do you really want to delete this reverse share? If you do, the associated shares will be deleted as well.",
-
+  "account.reverseShares.modal.title": "Креирајте обрнуто дељење",
+  "account.reverseShares.modal.expiration.label": "Истиче",
+  "account.reverseShares.modal.expiration.minute-singular": "Минут",
+  "account.reverseShares.modal.expiration.minute-plural": "Минуте",
+  "account.reverseShares.modal.expiration.hour-singular": "Сат",
+  "account.reverseShares.modal.expiration.hour-plural": "Сати",
+  "account.reverseShares.modal.expiration.day-singular": "Дан",
+  "account.reverseShares.modal.expiration.day-plural": "Дани",
+  "account.reverseShares.modal.expiration.week-singular": "Седмица",
+  "account.reverseShares.modal.expiration.week-plural": "Седмице",
+  "account.reverseShares.modal.expiration.month-singular": "Месец",
+  "account.reverseShares.modal.expiration.month-plural": "Месеци",
+  "account.reverseShares.modal.expiration.year-singular": "Година",
+  "account.reverseShares.modal.expiration.year-plural": "Године",
+  "account.reverseShares.modal.max-size.label": "Максимална величина дељења",
+  "account.reverseShares.modal.send-email": "Пошаљите обавештење путем е-поште",
+  "account.reverseShares.modal.send-email.description": "Пошаљите обавештење е-поштом када се креира дељење помоћу ове обрнуте везе за дељење.",
+  "account.reverseShares.modal.max-use.label": "Максималан број коришћења",
+  "account.reverseShares.modal.max-use.description": "Максималан број пута који овај URL може да се користи за прављење дељења.",
+  "account.reverseShare.never-expires": "Ово обрнуто дељење никада неће истећи.",
+  "account.reverseShare.expires-on": "Ово обрнуто дељење ће истећи {expiration}.",
+  "account.reverseShares.table.no-shares": "Још нема креираних дељења",
+  "account.reverseShares.table.count.singular": "дељење",
+  "account.reverseShares.table.count.plural": "дељења",
+  "account.reverseShares.table.shares": "Дељења",
+  "account.reverseShares.table.remaining": "Преостала употреба",
+  "account.reverseShares.table.max-size": "Максимална величина дељења",
+  "account.reverseShares.table.expires": "Истиче у",
+  "account.reverseShares.modal.reverse-share-link": "Линк за обрнуто дељење",
+  "account.reverseShares.modal.delete.title": "Обришите обрнуто дељење",
+  "account.reverseShares.modal.delete.description": "Да ли заиста желите да избришете ово обрнуто дељење? Ако то учините, придружена дељења ће такође бити избрисана.",
   // END /account/reverseShares
-
   // /admin
-  "admin.title": "Administration",
-  "admin.button.users": "User management",
-  "admin.button.config": "Configuration",
-  "admin.version": "Version",
+  "admin.title": "Администрација",
+  "admin.button.users": "Управљање корисницима",
+  "admin.button.config": "Конфигурација",
+  "admin.version": "Верзија",
   // END /admin
-
   // /admin/users
-  "admin.users.title": "User management",
-  "admin.users.table.username": "Username",
-  "admin.users.table.email": "Email",
-  "admin.users.table.admin": "Admin",
-
-  "admin.users.edit.update.title": "Update user {username}",
-  "admin.users.edit.update.admin-privileges": "Admin privileges",
-  "admin.users.edit.update.change-password.title": "Change password",
-  "admin.users.edit.update.change-password.field": "New password",
-  "admin.users.edit.update.change-password.button": "Save new password",
-  "admin.users.edit.update.notify.password.success":
-    "Password changed successfully",
-
-  "admin.users.edit.delete.title": "Delete user {username}",
-  "admin.users.edit.delete.description":
-    "Do you really want to delete this user and all his shares?",
-
+  "admin.users.title": "Управљање корисницима",
+  "admin.users.table.username": "Корисничко име",
+  "admin.users.table.email": "E-пошта",
+  "admin.users.table.admin": "Админ",
+  "admin.users.edit.update.title": "Ажурирајте корисника {username}",
+  "admin.users.edit.update.admin-privileges": "Администраторске привилегије",
+  "admin.users.edit.update.change-password.title": "Промените лозинку",
+  "admin.users.edit.update.change-password.field": "Нова лозинка",
+  "admin.users.edit.update.change-password.button": "Снимите нову лозинку",
+  "admin.users.edit.update.notify.password.success": "Лозинка је успешно промењена",
+  "admin.users.edit.delete.title": "Обришите корисника {username}",
+  "admin.users.edit.delete.description": "Да ли заиста желите да избришете овог корисника и сва његова дељења?",
   // showCreateUserModal.tsx
-  "admin.users.modal.create.title": "Create user",
-  "admin.users.modal.create.username": "Username",
-  "admin.users.modal.create.email": "Email",
-  "admin.users.modal.create.password": "Password",
-  "admin.users.modal.create.manual-password": "Set password manually",
-  "admin.users.modal.create.manual-password.description":
-    "If not checked, the user will receive an email with a link to set their password.",
-  "admin.users.modal.create.admin": "Admin privileges",
-  "admin.users.modal.create.admin.description":
-    "If checked, the user will be able to access the admin panel.",
-
+  "admin.users.modal.create.title": "Креирај корисника",
+  "admin.users.modal.create.username": "Корисничко име",
+  "admin.users.modal.create.email": "E-пошта",
+  "admin.users.modal.create.password": "Лозинка",
+  "admin.users.modal.create.manual-password": "Поставите лозинку ручно",
+  "admin.users.modal.create.manual-password.description": "Ако није означено, корисник ће добити е-пошту са везом за постављање лозинке.",
+  "admin.users.modal.create.admin": "Администраторске привилегије",
+  "admin.users.modal.create.admin.description": "Ако је означено, корисник ће моћи да приступи административном панелу.",
   // END /admin/users
-
   // /upload
-  "upload.title": "Upload",
-
-  "upload.notify.generic-error":
-    "An error occurred while finishing your share.",
-  "upload.notify.count-failed": "{count} files failed to upload. Trying again.",
-
+  "upload.title": "Пошаљи",
+  "upload.notify.generic-error": "Дошло је до грешке при довршавању дељења.",
+  "upload.notify.count-failed": "Отпремање {count} датотека није успело. Покушавам поново.",
   // Dropzone.tsx
-  "upload.dropzone.title": "Upload files",
-  "upload.dropzone.description":
-    "Drag'n'drop files here to start your share. We can accept only files that are less than {maxSize} in total.",
-  "upload.dropzone.notify.file-too-big":
-    "Your files exceed the maximum share size of {maxSize}.",
-
+  "upload.dropzone.title": "Пошаљи датотеке",
+  "upload.dropzone.description": "Превуците и отпустите датотеке овде да бисте започели дељење. Можемо да прихватимо само датотеке које су укупно мање од {maxSize}.",
+  "upload.dropzone.notify.file-too-big": "Ваше датотеке премашују максималну величину дељења од {maxSize}.",
   // FileList.tsx
-  "upload.filelist.name": "Name",
-  "upload.filelist.size": "Size",
-
+  "upload.filelist.name": "Назив",
+  "upload.filelist.size": "Величина",
   // showCreateUploadModal.tsx
-  "upload.modal.title": "Create Share",
-  "upload.modal.link.error.invalid":
-    "Can only contain letters, numbers, underscores, and hyphens",
-  "upload.modal.link.error.taken": "This link is already in use",
-  "upload.modal.not-signed-in": "You're not signed in",
-  "upload.modal.not-signed-in-description":
-    "You will be unable to delete your share manually and view the visitor count.",
-
-  "upload.modal.expires.never": "never",
-  "upload.modal.expires.never-long": "Never Expires",
-
-  "upload.modal.link.label": "Link",
-  "upload.modal.expires.label": "Expiration",
-  "upload.modal.expires.minute-singular": "Minute",
-  "upload.modal.expires.minute-plural": "Minutes",
-  "upload.modal.expires.hour-singular": "Hour",
-  "upload.modal.expires.hour-plural": "Hours",
-  "upload.modal.expires.day-singular": "Day",
-  "upload.modal.expires.day-plural": "Days",
-  "upload.modal.expires.week-singular": "Week",
-  "upload.modal.expires.week-plural": "Weeks",
-  "upload.modal.expires.month-singular": "Month",
-  "upload.modal.expires.month-plural": "Months",
-  "upload.modal.expires.year-singular": "Year",
-  "upload.modal.expires.year-plural": "Years",
-
-  "upload.modal.accordion.description.title": "Description",
-  "upload.modal.accordion.description.placeholder":
-    "Note for the recipients of this share",
-
-  "upload.modal.accordion.email.title": "Email recipients",
-  "upload.modal.accordion.email.placeholder": "Enter email recipients",
-  "upload.modal.accordion.email.invalid-email": "Invalid email address",
-
-  "upload.modal.accordion.security.title": "Security options",
-  "upload.modal.accordion.security.password.label": "Password protection",
-  "upload.modal.accordion.security.password.placeholder": "No password",
-  "upload.modal.accordion.security.max-views.label": "Maximum views",
-  "upload.modal.accordion.security.max-views.placeholder": "No limit",
-
+  "upload.modal.title": "Направи дељење",
+  "upload.modal.link.error.invalid": "Може да садржи само слова, бројеве, доње црте и цртице",
+  "upload.modal.link.error.taken": "Овај линк је већ у употреби",
+  "upload.modal.not-signed-in": "Нисте пријављени",
+  "upload.modal.not-signed-in-description": "Нећете моћи ручно да избришете своје дељење и видите број посетилаца.",
+  "upload.modal.expires.never": "никад",
+  "upload.modal.expires.never-long": "Никада не истиче",
+  "upload.modal.link.label": "Линк",
+  "upload.modal.expires.label": "Истиче",
+  "upload.modal.expires.minute-singular": "Минут",
+  "upload.modal.expires.minute-plural": "Минуте",
+  "upload.modal.expires.hour-singular": "Сат",
+  "upload.modal.expires.hour-plural": "Сати",
+  "upload.modal.expires.day-singular": "Дан",
+  "upload.modal.expires.day-plural": "Дани",
+  "upload.modal.expires.week-singular": "Седмица",
+  "upload.modal.expires.week-plural": "Седмице",
+  "upload.modal.expires.month-singular": "Месец",
+  "upload.modal.expires.month-plural": "Месеци",
+  "upload.modal.expires.year-singular": "Година",
+  "upload.modal.expires.year-plural": "Године",
+  "upload.modal.accordion.description.title": "Опис",
+  "upload.modal.accordion.description.placeholder": "Напомена за примаоце овог дељења",
+  "upload.modal.accordion.email.title": "Примаоци е-поште",
+  "upload.modal.accordion.email.placeholder": "Унесите примаоце е-поште",
+  "upload.modal.accordion.email.invalid-email": "Неисправна адреса е-поште",
+  "upload.modal.accordion.security.title": "Сигурносна подешавања",
+  "upload.modal.accordion.security.password.label": "Заштита лозинком",
+  "upload.modal.accordion.security.password.placeholder": "Нема лозинке",
+  "upload.modal.accordion.security.max-views.label": "Максималан број прегледа",
+  "upload.modal.accordion.security.max-views.placeholder": "Без лимита",
   // showCompletedUploadModal.tsx
-  "upload.modal.completed.never-expires": "This share will never expire.",
-  "upload.modal.completed.expires-on":
-    "This share will expire on {expiration}.",
-  "upload.modal.completed.share-ready": "Share ready",
-
+  "upload.modal.completed.never-expires": "Ово дељење никада неће истећи.",
+  "upload.modal.completed.expires-on": "Ово дељење ће истећи {expiration}.",
+  "upload.modal.completed.share-ready": "Дељење је спремно",
   // END /upload
-
   // /share/[id]
-  "share.title": "Share {shareId}",
-  "share.description": "Look what I've shared with you!",
-  "share.error.visitor-limit-exceeded.title": "Visitor limit exceeded",
-  "share.error.visitor-limit-exceeded.description":
-    "The visitor limit from this share has been exceeded.",
-  "share.error.removed.title": "Share removed",
-  "share.error.not-found.title": "Share not found",
-  "share.error.not-found.description":
-    "The share you're looking for doesn't exist.",
-
-  "share.modal.password.title": "Password required",
-  "share.modal.password.description":
-    "To access this share please enter the password for the share.",
-  "share.modal.password": "Password",
-  "share.modal.error.invalid-password": "Invalid password",
-
-  "share.button.download-all": "Download all",
-  "share.notify.download-all-preparing":
-    "The share is preparing. Try again in a few minutes.",
-
-  "share.modal.file-link": "File link",
-  "share.table.name": "Name",
-  "share.table.size": "Size",
-
-  "share.modal.file-preview.error.not-supported.title": "Preview not supported",
-  "share.modal.file-preview.error.not-supported.description":
-    "A preview for thise file type is unsupported. Please download the file to view it.",
-
+  "share.title": "Дељење {shareId}",
+  "share.description": "Погледајте шта сам поделио са вама!",
+  "share.error.visitor-limit-exceeded.title": "Прекорачено је ограничење посетилаца",
+  "share.error.visitor-limit-exceeded.description": "Ограничење посетилаца из овог дељења је премашено.",
+  "share.error.removed.title": "Дељење је уклоњено",
+  "share.error.not-found.title": "Дељење није пронађено",
+  "share.error.not-found.description": "Удео који тражите не постоји.",
+  "share.modal.password.title": "Обавезна лозинка",
+  "share.modal.password.description": "Да бисте приступили овом дељењу, унесите лозинку за дељење.",
+  "share.modal.password": "Лозинка",
+  "share.modal.error.invalid-password": "Неисправна лозинка",
+  "share.button.download-all": "Преузми све",
+  "share.notify.download-all-preparing": "Дељење се спрема. Покушајте поново за неколико минута.",
+  "share.modal.file-link": "Веза датотеке",
+  "share.table.name": "Назив",
+  "share.table.size": "Величина",
+  "share.modal.file-preview.error.not-supported.title": "Преглед није подржан",
+  "share.modal.file-preview.error.not-supported.description": "Преглед за овај тип датотеке није подржан. Преузмите датотеку да бисте је видели.",
   // END /share/[id]
-
   // /admin/config
-  "admin.config.title": "Configuration",
-  "admin.config.category.general": "General",
-  "admin.config.category.share": "Share",
-  "admin.config.category.email": "Email",
+  "admin.config.title": "Конфигурација",
+  "admin.config.category.general": "Опште",
+  "admin.config.category.share": "Дељење",
+  "admin.config.category.email": "E-пошта",
   "admin.config.category.smtp": "SMTP",
-
-  "admin.config.general.app-name": "App name",
-  "admin.config.general.app-name.description": "Name of the application",
-  "admin.config.general.app-url": "App URL",
-  "admin.config.general.app-url.description":
-    "On which URL Pingvin Share is available",
-  "admin.config.general.show-home-page": "Show home page",
-  "admin.config.general.show-home-page.description":
-    "Whether to show the home page",
-  "admin.config.general.logo": "Logo",
-  "admin.config.general.logo.description":
-    "Change your logo by uploading a new image. The image must be a PNG and should have the format 1:1.",
-  "admin.config.general.logo.placeholder": "Pick image",
-
-  "admin.config.email.enable-share-email-recipients":
-    "Enable share email recipients",
-  "admin.config.email.enable-share-email-recipients.description":
-    "Whether to allow emails to share recipients. Only enable this if you have enabled SMTP.",
-  "admin.config.email.share-recipients-subject": "Share recipients subject",
-  "admin.config.email.share-recipients-subject.description":
-    "Subject of the email which gets sent to the share recipients.",
-  "admin.config.email.share-recipients-message": "Share recipients message",
-  "admin.config.email.share-recipients-message.description":
-    "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n The variables will be replaced with the actual value.",
-  "admin.config.email.reverse-share-subject": "Reverse share subject",
-  "admin.config.email.reverse-share-subject.description":
-    "Subject of the email which gets sent when someone created a share with your reverse share link.",
-  "admin.config.email.reverse-share-message": "Reverse share message",
-  "admin.config.email.reverse-share-message.description":
-    "Message which gets sent when someone created a share with your reverse share link. {shareUrl} will be replaced with the creator's name and the share URL.",
-  "admin.config.email.reset-password-subject": "Reset password subject",
-  "admin.config.email.reset-password-subject.description":
-    "Subject of the email which gets sent when a user requests a password reset.",
-  "admin.config.email.reset-password-message": "Reset password message",
-  "admin.config.email.reset-password-message.description":
-    "Message which gets sent when a user requests a password reset. {url} will be replaced with the reset password URL.",
-  "admin.config.email.invite-subject": "Invite subject",
-  "admin.config.email.invite-subject.description":
-    "Subject of the email which gets sent when an admin invites a user.",
-  "admin.config.email.invite-message": "Invite message",
-  "admin.config.email.invite-message.description":
-    "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL and {password} with the password.",
-  "admin.config.share.allow-registration": "Allow registration",
-  "admin.config.share.allow-registration.description":
-    "Whether registration is allowed",
-  "admin.config.share.allow-unauthenticated-shares":
-    "Allow unauthenticated shares",
-  "admin.config.share.allow-unauthenticated-shares.description":
-    "Whether unauthenticated users can create shares",
-  "admin.config.share.max-size": "Max size",
-  "admin.config.share.max-size.description": "Maximum share size in bytes",
-  "admin.config.share.zip-compression-level": "Zip compression level",
-  "admin.config.share.zip-compression-level.description":
-    "Adjust the level to balance between file size and compression speed. Valid values range from 0 to 9, with 0 being no compression and 9 being maximum compression. ",
-
-  "admin.config.smtp.enabled": "Enabled",
-  "admin.config.smtp.enabled.description":
-    "Whether SMTP is enabled. Only set this to true if you entered the host, port, email, user and password of your SMTP server.",
-  "admin.config.smtp.host": "Host",
-  "admin.config.smtp.host.description": "Host of the SMTP server",
-  "admin.config.smtp.port": "Port",
-  "admin.config.smtp.port.description": "Port of the SMTP server",
-  "admin.config.smtp.email": "Email",
-  "admin.config.smtp.email.description":
-    "Email address which the emails get sent from",
-  "admin.config.smtp.username": "Username",
-  "admin.config.smtp.username.description": "Username of the SMTP server",
-  "admin.config.smtp.password": "Password",
-  "admin.config.smtp.password.description": "Password of the SMTP server",
-  "admin.config.smtp.button.test": "Send test email",
-
+  "admin.config.general.app-name": "Назив апликације",
+  "admin.config.general.app-name.description": "Назив апликације",
+  "admin.config.general.app-url": "URL апликације",
+  "admin.config.general.app-url.description": "На којој URL адреси је доступан Pingvin Share",
+  "admin.config.general.show-home-page": "Прикажи почетну страницу",
+  "admin.config.general.show-home-page.description": "Да ли да се прикаже почетна страница",
+  "admin.config.general.logo": "Лого",
+  "admin.config.general.logo.description": "Промените свој логотип тако што ћете отпремити нову слику. Слика мора да буде PNG и треба да има формат 1:1.",
+  "admin.config.general.logo.placeholder": "Изабери слику",
+  "admin.config.email.enable-share-email-recipients": "Омогућите дељење прималаца е-поште",
+  "admin.config.email.enable-share-email-recipients.description": "Да ли да дозволите да имејлови деле примаоце. Омогућите ово само ако сте омогућили SMTP.",
+  "admin.config.email.share-recipients-subject": "Поделите наслов примаоца",
+  "admin.config.email.share-recipients-subject.description": "Тема е-поруке која се шаље примаоцима дељења.",
+  "admin.config.email.share-recipients-message": "Делите поруку примаоца",
+  "admin.config.email.share-recipients-message.description": "Порука која се шаље примаоцима дељења. Доступне променљиве:\n {creator} – корисничко име креатора дељења\n {shareUrl} – URL дељења\n {desc} – Опис дељења\n {expires} - Датум истека акције\n Променљиве ће бити замењене стварном вредношћу.",
+  "admin.config.email.reverse-share-subject": "Тема обрнутог дељења",
+  "admin.config.email.reverse-share-subject.description": "Тема е-поруке која се шаље када је неко направио дељење са вашом обрнутим линком за дељење.",
+  "admin.config.email.reverse-share-message": "Обрнуто дељење порука",
+  "admin.config.email.reverse-share-message.description": "Порука која се шаље када је неко направио дељење са вашом обрнутом везом за дељење. {shareUrl} ће бити замењен именом креатора и УРЛ-ом за дељење.",
+  "admin.config.email.reset-password-subject": "Ресетујте тему лозинке",
+  "admin.config.email.reset-password-subject.description": "Предмет е-поште која се шаље када корисник затражи ресетовање лозинке.",
+  "admin.config.email.reset-password-message": "Порука за ресетовање лозинке",
+  "admin.config.email.reset-password-message.description": "Порука која се шаље када корисник затражи ресетовање лозинке. {url} ће бити замењен УРЛ-ом за ресетовање лозинке.",
+  "admin.config.email.invite-subject": "Позивна тема",
+  "admin.config.email.invite-subject.description": "Тема е-поруке која се шаље када администратор позове корисника.",
+  "admin.config.email.invite-message": "Позивна порука",
+  "admin.config.email.invite-message.description": "Порука која се шаље када администратор позове корисника. {url} ће бити замењен УРЛ-ом позива, а {password} лозинком.",
+  "admin.config.share.allow-registration": "Дозволи регистрацију",
+  "admin.config.share.allow-registration.description": "Да ли је регистрација дозвољена",
+  "admin.config.share.allow-unauthenticated-shares": "Дозволи дељење без аутентификације",
+  "admin.config.share.allow-unauthenticated-shares.description": "Да ли корисници без аутентификације могу да креирају дељења",
+  "admin.config.share.max-size": "Максимална величина",
+  "admin.config.share.max-size.description": "Максимална величина дељења у бајтовима",
+  "admin.config.share.zip-compression-level": "Ниво zip компресије",
+  "admin.config.share.zip-compression-level.description": "Подесите ниво да бисте балансирали између величине датотеке и брзине компресије. Важеће вредности се крећу од 0 до 9, при чему је 0 без компресије, а 9 је максимална компресија. ",
+  "admin.config.smtp.enabled": "Омогућено",
+  "admin.config.smtp.enabled.description": "Да ли је SMTP омогућен. Поставите ово на тачно само ако сте унели хост, порт, е-пошту, корисника и лозинку вашег SMTP сервера.",
+  "admin.config.smtp.host": "Домаћин",
+  "admin.config.smtp.host.description": "Домаћин SMTP сервера",
+  "admin.config.smtp.port": "Порт",
+  "admin.config.smtp.port.description": "Порт домаћина SMTP сервера",
+  "admin.config.smtp.email": "E-пошта",
+  "admin.config.smtp.email.description": "Адреса е-поште са које се е-поруке шаљу",
+  "admin.config.smtp.username": "Корисничко име",
+  "admin.config.smtp.username.description": "Корисничко име SMTP сервера",
+  "admin.config.smtp.password": "Лозинка",
+  "admin.config.smtp.password.description": "Лозинка SMTP сервера",
+  "admin.config.smtp.button.test": "Пошаљи тестну е-пошту",
   // 404
-  "404.description": "Oops this page doesn't exist.",
-  "404.button.home": "Bring me back home",
-
+  "404.description": "Опа - Ова страна не постоји.",
+  "404.button.home": "Врати ме на почетак",
   // Common translations
-  "common.button.save": "Save",
-  "common.button.create": "Create",
-  "common.button.submit": "Submit",
-  "common.button.delete": "Delete",
-  "common.button.cancel": "Cancel",
-  "common.button.confirm": "Confirm",
-  "common.button.disable": "Disable",
-  "common.button.share": "Share",
-  "common.button.generate": "Generate",
-  "common.button.done": "Done",
-  "common.text.link": "Link",
-  "common.text.or": "or",
-  "common.button.go-back": "Go back",
-  "common.notify.copied": "Your link was copied to the clipboard",
-  "common.success": "Success",
-
-  "common.error": "Error",
-  "common.error.unknown": "An unknown error occurred",
-  "common.error.invalid-email": "Invalid email address",
-  "common.error.too-short": "Must be at least {length} characters",
-  "common.error.too-long": "Must be at most {length} characters",
-  "common.error.exact-length": "Must be exactly {length} characters",
-  "common.error.invalid-number": "Must be a number",
-  "common.error.field-required": "This field is required",
+  "common.button.save": "Сачувај",
+  "common.button.create": "Направи",
+  "common.button.submit": "Пошаљи",
+  "common.button.delete": "Обриши",
+  "common.button.cancel": "Откажи",
+  "common.button.confirm": "Потврди",
+  "common.button.disable": "Онемогући",
+  "common.button.share": "Дељење",
+  "common.button.generate": "Генериши",
+  "common.button.done": "Готово",
+  "common.text.link": "Линк",
+  "common.text.or": "или",
+  "common.button.go-back": "Иди назад",
+  "common.notify.copied": "Ваша веза је копирана у clipboard",
+  "common.success": "Успешно",
+  "common.error": "Грешка",
+  "common.error.unknown": "Дошло је до непознате грешке",
+  "common.error.invalid-email": "Неисправна адреса е-поште",
+  "common.error.too-short": "Мора да има најмање {length} знакова",
+  "common.error.too-long": "Мора да има највише {length} знакова",
+  "common.error.exact-length": "Мора да има тачно {length} знакова",
+  "common.error.invalid-number": "Мора бити број",
+  "common.error.field-required": "Поље је обавезно"
 };
