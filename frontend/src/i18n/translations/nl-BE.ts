@@ -36,16 +36,16 @@ export default {
   // END /auth/signin
   // /auth/signup
   "signup.title": "Account aanmaken",
-  "signup.description": "Already have an account?",
-  "signup.button.signin": "Sign in",
-  "signup.input.username": "Username",
-  "signup.input.username.placeholder": "Your username",
-  "signup.input.email": "Email",
-  "signup.input.email.placeholder": "Your email",
-  "signup.button.submit": "Let's get started",
+  "signup.description": "Heeft u al een account?",
+  "signup.button.signin": "Aanmelden",
+  "signup.input.username": "Gebruikersnaam",
+  "signup.input.username.placeholder": "Uw gebruikersnaam",
+  "signup.input.email": "E-mailadres",
+  "signup.input.email.placeholder": "Uw e-mailadres",
+  "signup.button.submit": "Laten we beginnen",
   // END /auth/signup
   // /auth/reset-password
-  "resetPassword.title": "Forgot your password?",
+  "resetPassword.title": "Wachtwoord vergeten?",
   "resetPassword.description": "Enter your email to reset your password.",
   "resetPassword.notify.success": "An email has been sent with a link to reset your password.",
   "resetPassword.button.back": "Back to sign in page",
