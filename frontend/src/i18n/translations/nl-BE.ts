@@ -1,10 +1,10 @@
 export default {
   // Navbar
-  "navbar.upload": "Upload",
-  "navbar.signin": "Sign in",
-  "navbar.home": "Home",
-  "navbar.signup": "Sign Up",
-  "navbar.links.shares": "My shares",
+  "navbar.upload": "Verzenden",
+  "navbar.signin": "Aanmelden",
+  "navbar.home": "Startpagina",
+  "navbar.signup": "Registreren",
+  "navbar.links.shares": "Mijn gedeelde bestanden",
   "navbar.links.reverse": "Reverse shares",
   "navbar.avatar.account": "My account",
   "navbar.avatar.admin": "Administration",
