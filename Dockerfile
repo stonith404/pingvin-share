@@ -29,7 +29,7 @@ RUN npm run build && npm prune --production
 FROM node:20-alpine AS runner
 ENV NODE_ENV=docker
 
-#Alpine specific dependencies
+# Alpine specific dependencies
 RUN apk update --no-cache
 RUN apk upgrade --no-cache
 RUN apk add --no-cache curl
@@ -60,5 +60,5 @@ EXPOSE 3000
 # Add a health check to ensure the container is healthy
 HEALTHCHECK --interval=10s --timeout=3s CMD curl -f http://localhost:3000/api/health || exit 1
 
-# Use a more explicit CMD command with a shell script to handle the application startup
+# Application startup
 CMD cp -rn /tmp/img /opt/app/frontend/public && HOSTNAME=0.0.0.0 node frontend/server.js & cd backend && npm run prod
