@@ -251,7 +251,7 @@ export default {
   "admin.config.general.app-url": "App URL",
   "admin.config.general.app-url.description": "On which URL Pingvin Share is available",
   "admin.config.general.show-home-page": "Toon startpagina",
-  "admin.config.general.show-home-page.description": "Whether to show the home page",
+  "admin.config.general.show-home-page.description": "Toon of verberg de home pagina",
   "admin.config.general.logo": "Logo",
   "admin.config.general.logo.description": "Verander uw logo door een nieuwe afbeelding te uploaden. De afbeelding moet PNG zijn en het formaat moet 1:1 hebben.",
   "admin.config.general.logo.placeholder": "Afbeelding kiezen",
