@@ -40,7 +40,7 @@ const Upload = ({
 
   maxShareSize ??= parseInt(config.get("share.maxSize"));
 
-  const uploadFiles = async (share: CreateShare) => {
+  const uploadFiles = async (share: CreateShare, files: FileUpload[]) => {
     setisUploading(true);
     createdShare = await shareService.create(share);
 
@@ -56,7 +56,7 @@ const Upload = ({
                 file.uploadingProgress = progress;
               }
               return file;
-            }),
+            })
           );
         };
 
@@ -84,7 +84,7 @@ const Upload = ({
                       name: file.name,
                     },
                     chunkIndex,
-                    chunks,
+                    chunks
                   )
                   .then((response) => {
                     fileId = response.id;
@@ -114,16 +114,34 @@ const Upload = ({
             }
           }
         }
-      }),
+      })
     );
 
     Promise.all(fileUploadPromises);
   };
 
+  const showCreateUploadModalCallback = (files: FileUpload[]) => {
+    setFiles(files);
+    showCreateUploadModal(
+      modals,
+      {
+        isUserSignedIn: user ? true : false,
+        isReverseShare,
+        appUrl: config.get("general.appUrl"),
+        allowUnauthenticatedShares: config.get(
+          "share.allowUnauthenticatedShares"
+        ),
+        enableEmailRecepients: config.get("email.enableShareEmailRecipients"),
+      },
+      files,
+      uploadFiles
+    );
+  };
+
   useEffect(() => {
     // Check if there are any files that failed to upload
     const fileErrorCount = files.filter(
-      (file) => file.uploadingProgress == -1,
+      (file) => file.uploadingProgress == -1
     ).length;
 
     if (fileErrorCount > 0) {
@@ -133,7 +151,7 @@ const Upload = ({
           {
             withCloseButton: false,
             autoClose: false,
-          },
+          }
         );
       }
       errorToastShown = true;
@@ -166,31 +184,14 @@ const Upload = ({
         <Button
           loading={isUploading}
           disabled={files.length <= 0}
-          onClick={() => {
-            showCreateUploadModal(
-              modals,
-              {
-                isUserSignedIn: user ? true : false,
-                isReverseShare,
-                appUrl: config.get("general.appUrl"),
-                allowUnauthenticatedShares: config.get(
-                  "share.allowUnauthenticatedShares",
-                ),
-                enableEmailRecepients: config.get(
-                  "email.enableShareEmailRecipients",
-                ),
-              },
-              uploadFiles,
-            );
-          }}
+          onClick={() => showCreateUploadModalCallback(files)}
         >
           <FormattedMessage id="common.button.share" />
         </Button>
       </Group>
       <Dropzone
         maxShareSize={maxShareSize}
-        files={files}
-        setFiles={setFiles}
+        showCreateUploadModalCallback={showCreateUploadModalCallback}
         isUploading={isUploading}
       />
       {files.length > 0 && <FileList files={files} setFiles={setFiles} />}
