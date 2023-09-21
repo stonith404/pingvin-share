@@ -1,6 +1,6 @@
 import { Button, Center, createStyles, Group, Text } from "@mantine/core";
 import { Dropzone as MantineDropzone } from "@mantine/dropzone";
-import { Dispatch, ForwardedRef, SetStateAction, useRef } from "react";
+import { ForwardedRef, useRef } from "react";
 import { TbCloudUpload, TbUpload } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 import useTranslate from "../../hooks/useTranslate.hook";
@@ -35,13 +35,11 @@ const useStyles = createStyles((theme) => ({
 const Dropzone = ({
   isUploading,
   maxShareSize,
-  files,
-  setFiles,
+  showCreateUploadModalCallback,
 }: {
   isUploading: boolean;
   maxShareSize: number;
-  files: FileUpload[];
-  setFiles: Dispatch<SetStateAction<FileUpload[]>>;
+  showCreateUploadModalCallback: (files: FileUpload[]) => void;
 }) => {
   const t = useTranslate();
 
@@ -55,24 +53,21 @@ const Dropzone = ({
         }}
         disabled={isUploading}
         openRef={openRef as ForwardedRef<() => void>}
-        onDrop={(newFiles: FileUpload[]) => {
-          const fileSizeSum = [...newFiles, ...files].reduce(
-            (n, { size }) => n + size,
-            0,
-          );
+        onDrop={(files: FileUpload[]) => {
+          const fileSizeSum = files.reduce((n, { size }) => n + size, 0);
 
           if (fileSizeSum > maxShareSize) {
             toast.error(
               t("upload.dropzone.notify.file-too-big", {
                 maxSize: byteToHumanSizeString(maxShareSize),
-              }),
+              })
             );
           } else {
-            newFiles = newFiles.map((newFile) => {
+            files = files.map((newFile) => {
               newFile.uploadingProgress = 0;
               return newFile;
             });
-            setFiles([...newFiles, ...files]);
+            showCreateUploadModalCallback(files);
           }
         }}
         className={classes.dropzone}

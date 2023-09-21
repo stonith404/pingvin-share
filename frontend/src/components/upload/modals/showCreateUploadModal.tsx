@@ -26,6 +26,7 @@ import useTranslate, {
   translateOutsideContext,
 } from "../../../hooks/useTranslate.hook";
 import shareService from "../../../services/share.service";
+import { FileUpload } from "../../../types/File.type";
 import { CreateShare } from "../../../types/share.type";
 import { getExpirationPreview } from "../../../utils/date.util";
 
@@ -38,7 +39,8 @@ const showCreateUploadModal = (
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
   },
-  uploadCallback: (createShare: CreateShare) => void,
+  files: FileUpload[],
+  uploadCallback: (createShare: CreateShare, files: FileUpload[]) => void
 ) => {
   const t = translateOutsideContext();
 
@@ -47,6 +49,7 @@ const showCreateUploadModal = (
     children: (
       <CreateUploadModalBody
         options={options}
+        files={files}
         uploadCallback={uploadCallback}
       />
     ),
@@ -55,9 +58,11 @@ const showCreateUploadModal = (
 
 const CreateUploadModalBody = ({
   uploadCallback,
+  files,
   options,
 }: {
-  uploadCallback: (createShare: CreateShare) => void;
+  files: FileUpload[];
+  uploadCallback: (createShare: CreateShare, files: FileUpload[]) => void;
   options: {
     isUserSignedIn: boolean;
     isReverseShare: boolean;
@@ -121,16 +126,19 @@ const CreateUploadModalBody = ({
             const expiration = form.values.never_expires
               ? "never"
               : form.values.expiration_num + form.values.expiration_unit;
-            uploadCallback({
-              id: values.link,
-              expiration: expiration,
-              recipients: values.recipients,
-              description: values.description,
-              security: {
-                password: values.password,
-                maxViews: values.maxViews,
+            uploadCallback(
+              {
+                id: values.link,
+                expiration: expiration,
+                recipients: values.recipients,
+                description: values.description,
+                security: {
+                  password: values.password,
+                  maxViews: values.maxViews,
+                },
               },
-            });
+              files
+            );
             modals.closeAll();
           }
         })}
@@ -152,7 +160,7 @@ const CreateUploadModalBody = ({
                   "link",
                   Buffer.from(Math.random().toString(), "utf8")
                     .toString("base64")
-                    .substr(10, 7),
+                    .substr(10, 7)
                 )
               }
             >
@@ -251,7 +259,7 @@ const CreateUploadModalBody = ({
                     neverExpires: t("upload.modal.completed.never-expires"),
                     expiresOn: t("upload.modal.completed.expires-on"),
                   },
-                  form,
+                  form
                 )}
               </Text>
             </>
@@ -266,7 +274,7 @@ const CreateUploadModalBody = ({
                   <Textarea
                     variant="filled"
                     placeholder={t(
-                      "upload.modal.accordion.description.placeholder",
+                      "upload.modal.accordion.description.placeholder"
                     )}
                     {...form.getInputProps("description")}
                   />
@@ -290,7 +298,7 @@ const CreateUploadModalBody = ({
                       if (!query.match(/^\S+@\S+\.\S+$/)) {
                         form.setFieldError(
                           "recipients",
-                          t("upload.modal.accordion.email.invalid-email"),
+                          t("upload.modal.accordion.email.invalid-email")
                         );
                       } else {
                         form.setFieldError("recipients", null);
@@ -316,7 +324,7 @@ const CreateUploadModalBody = ({
                   <PasswordInput
                     variant="filled"
                     placeholder={t(
-                      "upload.modal.accordion.security.password.placeholder",
+                      "upload.modal.accordion.security.password.placeholder"
                     )}
                     label={t("upload.modal.accordion.security.password.label")}
                     autoComplete="off"
@@ -327,7 +335,7 @@ const CreateUploadModalBody = ({
                     type="number"
                     variant="filled"
                     placeholder={t(
-                      "upload.modal.accordion.security.max-views.placeholder",
+                      "upload.modal.accordion.security.max-views.placeholder"
                     )}
                     label={t("upload.modal.accordion.security.max-views.label")}
                     {...form.getInputProps("maxViews")}
@@ -336,7 +344,7 @@ const CreateUploadModalBody = ({
               </Accordion.Panel>
             </Accordion.Item>
           </Accordion>
-          <Button type="submit">
+          <Button type="submit" data-autofocus>
             <FormattedMessage id="common.button.share" />
           </Button>
         </Stack>
