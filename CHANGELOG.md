@@ -1,3 +1,16 @@
+## [0.18.0](https://github.com/stonith404/pingvin-share/compare/v0.17.5...v0.18.0) (2023-09-21)
+
+
+### Features
+
+* show upload modal on file drop ([13e7a30](https://github.com/stonith404/pingvin-share/commit/13e7a30bb96faeb25936ff08a107834fd7af5766))
+
+
+### Bug Fixes
+
+* **docker:** Updated to newest version of alpine linux and fixed missing dependencies ([#255](https://github.com/stonith404/pingvin-share/issues/255)) ([6fa7af7](https://github.com/stonith404/pingvin-share/commit/6fa7af79051c964060bd291c9faad90fc01a1b72))
+* nextjs proxy warning ([e9efbc1](https://github.com/stonith404/pingvin-share/commit/e9efbc17bcf4827e935e2018dcdf3b70a9a49991))
+
 ## [0.17.5](https://github.com/stonith404/pingvin-share/compare/v0.17.4...v0.17.5) (2023-09-03)
 
 
