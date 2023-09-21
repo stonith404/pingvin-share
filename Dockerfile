@@ -1,34 +1,40 @@
-# Stage 1: on frontend dependency change
-FROM node:19-alpine AS frontend-dependencies
+# Stage 1: Frontend dependencies
+FROM node:20-alpine AS frontend-dependencies
 WORKDIR /opt/app
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci
 
-# Stage 2: on frontend change
-FROM node:19-alpine AS frontend-builder
+# Stage 2: Build frontend
+FROM node:20-alpine AS frontend-builder
 WORKDIR /opt/app
 COPY ./frontend .
 COPY --from=frontend-dependencies /opt/app/node_modules ./node_modules
 RUN npm run build
 
-# Stage 3: on backend dependency change
-FROM node:19-alpine AS backend-dependencies
+# Stage 3: Backend dependencies
+FROM node:20-alpine AS backend-dependencies
 WORKDIR /opt/app
 COPY backend/package.json backend/package-lock.json ./
 RUN npm ci
 
-# Stage 4:on backend change
-FROM node:19-alpine AS backend-builder
+# Stage 4: Build backend
+FROM node:20-alpine AS backend-builder
 WORKDIR /opt/app
 COPY ./backend .
 COPY --from=backend-dependencies /opt/app/node_modules ./node_modules
 RUN npx prisma generate
-RUN npm run build  && npm prune --production
+RUN npm run build && npm prune --production
 
 # Stage 5: Final image
-FROM node:19-alpine AS runner
+FROM node:20-alpine AS runner
 ENV NODE_ENV=docker
 
+# Alpine specific dependencies
+RUN apk update --no-cache
+RUN apk upgrade --no-cache
+RUN apk add --no-cache curl
+
+# Set user and group IDs for the node user
 ARG UID=1000
 ARG GID=1000
 RUN deluser node
@@ -50,7 +56,10 @@ COPY --from=backend-builder /opt/app/package.json ./
 WORKDIR /opt/app
 
 EXPOSE 3000
+
+# Add a health check to ensure the container is healthy
 HEALTHCHECK --interval=10s --timeout=3s CMD curl -f http://localhost:3000/api/health || exit 1
 
-# HOSTNAME=0.0.0.0 fixes https://github.com/vercel/next.js/issues/51684. It can be removed as soon as the issue is fixed
+# Application startup
+# HOSTNAME=0.0.0.0 fixes https://github.com/vercel/next.js/issues/51684. It can be removed as soon as the issue is fixed
 CMD cp -rn /tmp/img /opt/app/frontend/public && HOSTNAME=0.0.0.0 node frontend/server.js & cd backend && npm run prod
