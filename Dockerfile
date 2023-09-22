@@ -34,13 +34,6 @@ RUN apk update --no-cache
 RUN apk upgrade --no-cache
 RUN apk add --no-cache curl
 
-# Set user and group IDs for the node user
-ARG UID=1000
-ARG GID=1000
-RUN deluser node
-RUN adduser -u $UID -g $GID node -D
-USER node
-
 WORKDIR /opt/app/frontend
 COPY --from=frontend-builder /opt/app/public ./public
 COPY --from=frontend-builder /opt/app/.next/standalone ./
