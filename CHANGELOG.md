@@ -1,3 +1,10 @@
+## [0.18.1](https://github.com/stonith404/pingvin-share/compare/v0.18.0...v0.18.1) (2023-09-22)
+
+
+### Bug Fixes
+
+* permission changes of docker container brakes existing installations ([6a4108e](https://github.com/stonith404/pingvin-share/commit/6a4108ed6138e7297e66fd1e38450f23afe99aae))
+
 ## [0.18.0](https://github.com/stonith404/pingvin-share/compare/v0.17.5...v0.18.0) (2023-09-21)
 
 
