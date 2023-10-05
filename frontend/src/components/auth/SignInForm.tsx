@@ -2,9 +2,11 @@ import {
   Anchor,
   Button,
   Container,
+  createStyles,
   Group,
   Paper,
   PasswordInput,
+  Stack,
   Text,
   TextInput,
   Title,
@@ -22,15 +24,43 @@ import useTranslate from "../../hooks/useTranslate.hook";
 import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
 import toast from "../../utils/toast.util";
+import { getOAuthIcon, getOAuthUrl } from "../../utils/oauth.util";
+
+const useStyles = createStyles((theme) => ({
+  or: {
+    "&:before": {
+      content: "''",
+      flex: 1,
+      display: 'block',
+      borderTopWidth: 1,
+      borderTopStyle: 'solid',
+      borderColor: theme.colorScheme === "dark"
+        ? theme.colors.dark[3]
+        : theme.colors.gray[4],
+    },
+    "&:after": {
+      content: "''",
+      flex: 1,
+      display: 'block',
+      borderTopWidth: 1,
+      borderTopStyle: 'solid',
+      borderColor: theme.colorScheme === "dark"
+        ? theme.colors.dark[3]
+        : theme.colors.gray[4],
+    },
+  },
+}));
 
 const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
   const config = useConfig();
   const router = useRouter();
   const t = useTranslate();
   const { refreshUser } = useUser();
+  const { classes } = useStyles();
 
   const [showTotp, setShowTotp] = React.useState(false);
   const [loginToken, setLoginToken] = React.useState("");
+  const [oauth, setOAuth] = React.useState<string[]>([]);
 
   const validationSchema = yup.object().shape({
     emailOrUsername: yup.string().required(t("common.error.field-required")),
@@ -91,6 +121,15 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
       });
   };
 
+  const getAvailableOAuth = async () => {
+    const oauth = await authService.getAvailableOAuth();
+    setOAuth(oauth.data);
+  }
+
+  React.useEffect(() => {
+    getAvailableOAuth().catch(toast.axiosError);
+  }, []);
+
   return (
     <Container size={420} my={40}>
       <Title order={2} align="center" weight={900}>
@@ -143,6 +182,27 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
             <FormattedMessage id="signin.button.submit" />
           </Button>
         </form>
+        {oauth.length > 0 && (
+          <Stack mt="xl">
+            <Group align="center" className={classes.or}>
+              <Text>{t('signIn.oauth.or')}</Text>
+            </Group>
+            <Group position="center">
+              {
+                oauth.map((provider) =>
+                  <Button
+                    component="a"
+                    target="_blank"
+                    title={t(`signIn.oauth.${provider}`)}
+                    href={getOAuthUrl(config.get('general.appUrl'), provider)}
+                    variant="light">
+                    {getOAuthIcon(provider)}
+                  </Button>
+                )
+              }
+            </Group>
+          </Stack>
+        )}
       </Paper>
     </Container>
   );

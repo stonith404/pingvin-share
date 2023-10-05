@@ -43,7 +43,7 @@ export class AuthService {
       );
       const accessToken = await this.createAccessToken(user, refreshTokenId);
 
-      return { accessToken, refreshToken };
+      return { accessToken, refreshToken, user };
     } catch (e) {
       if (e instanceof PrismaClientKnownRequestError) {
         if (e.code == "P2002") {
@@ -69,9 +69,13 @@ export class AuthService {
     if (!user || !(await argon.verify(user.password, dto.password)))
       throw new UnauthorizedException("Wrong email or password");
 
+    return this.generateToken(user);
+  }
+
+  async generateToken(user: User, isOAuth = false) {
     // TODO: Make all old loginTokens invalid when a new one is created
     // Check if the user has TOTP enabled
-    if (user.totpVerified) {
+    if (user.totpVerified && !(isOAuth && this.config.get('oauth.ignoreTotp'))) {
       const loginToken = await this.createLoginToken(user.id);
 
       return { loginToken };

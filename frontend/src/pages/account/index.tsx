@@ -25,11 +25,21 @@ import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
 import userService from "../../services/user.service";
 import toast from "../../utils/toast.util";
+import { useEffect, useState } from "react";
+import useConfig from "../../hooks/config.hook";
+import { getOAuthIcon, getOAuthUrl, revokeOAuth } from "../../utils/oauth.util";
 
 const Account = () => {
+  const [oauth, setOAuth] = useState<string[]>([]);
+  const [oauthStatus, setOAuthStatus] = useState<Record<string, {
+    provider: string;
+    providerUsername: string;
+  }> | null>(null);
+
   const { user, refreshUser } = useUser();
   const modals = useModals();
   const t = useTranslate();
+  const config = useConfig();
 
   const accountForm = useForm({
     initialValues: {
@@ -95,6 +105,15 @@ const Account = () => {
       }),
     ),
   });
+
+  useEffect(() => {
+    authService.getAvailableOAuth().then(data => {
+      setOAuth(data.data);
+    }).catch(toast.axiosError);
+    authService.getOAuthStatus().then(data => {
+      setOAuthStatus(data.data);
+    }).catch(toast.axiosError);
+  }, []);
 
   return (
     <>
@@ -167,7 +186,50 @@ const Account = () => {
             </Stack>
           </form>
         </Paper>
+        {oauth.length > 0 && (
+          <Paper withBorder p="xl" mt="lg">
+            <Title order={5} mb="xs">
+              <FormattedMessage id="account.card.oauth.title" />
+            </Title>
 
+            <Tabs defaultValue="github">
+              <Tabs.List>
+                {
+                  oauth.map(provider =>
+                    <Tabs.Tab value={provider} icon={getOAuthIcon(provider)}>
+                      {t(`account.card.oauth.${provider}`)}
+                    </Tabs.Tab>
+                  )
+                }
+              </Tabs.List>
+              {
+                oauth.map(provider =>
+                  <Tabs.Panel value={provider} pt="xs">
+                    <Group position="apart">
+                      <Text>{
+                        oauthStatus?.[provider]
+                          ? oauthStatus[provider].providerUsername
+                          : t('account.card.oauth.unlinked')
+                      }</Text>
+                      {
+                        oauthStatus?.[provider]
+                          ? <Button
+                            onClick={() => revokeOAuth(config.get('general.appUrl'), provider)}>{
+                            t('account.card.oauth.unlink')
+                          }</Button>
+                          : <Button
+                            component="a"
+                            target="_blank"
+                            href={getOAuthUrl(config.get('general.appUrl'), provider)}
+                          >{t('account.card.oauth.link')}</Button>
+                      }
+                    </Group>
+                  </Tabs.Panel>
+                )
+              }
+            </Tabs>
+          </Paper>
+        )}
         <Paper withBorder p="xl" mt="lg">
           <Title order={5} mb="xs">
             <FormattedMessage id="account.card.security.title" />

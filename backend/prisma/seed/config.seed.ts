@@ -119,6 +119,54 @@ const configVariables: ConfigVariables = {
       obscured: true,
     },
   },
+  oauth: {
+    "allowRegistration": {
+      type: "boolean",
+      defaultValue: "true",
+    },
+    "ignoreTotp": {
+      type: "boolean",
+      defaultValue: "false",
+    },
+    "github-enabled": {
+      type: "boolean",
+      defaultValue: "false",
+    },
+    "github-clientId": {
+      type: "string",
+      defaultValue: "",
+    },
+    "github-clientSecret": {
+      type: "string",
+      defaultValue: "",
+      obscured: true,
+    },
+    "google-enabled": {
+      type: "boolean",
+      defaultValue: "false",
+    },
+    "google-clientId": {
+      type: "string",
+      defaultValue: "",
+    },
+    "google-clientSecret": {
+      type: "string",
+      defaultValue: "",
+      obscured: true,
+    },
+    // "oidc-enabled": {
+    //   type: "boolean",
+    //   defaultValue: "false",
+    // },
+    // "oidc-clientId": {
+    //   type: "string",
+    //   defaultValue: "",
+    // },
+    // "oidc-clientSecret": {
+    //   type: "string",
+    //   defaultValue: "",
+    // },
+  }
 };
 
 type ConfigVariables = {

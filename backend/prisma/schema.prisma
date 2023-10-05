@@ -26,6 +26,8 @@ model User {
   totpVerified       Boolean             @default(false)
   totpSecret         String?
   resetPasswordToken ResetPasswordToken?
+
+  oAuthUsers OAuthUser[]
 }
 
 model RefreshToken {
@@ -58,6 +60,15 @@ model ResetPasswordToken {
 
   userId String @unique
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model OAuthUser {
+  id               String @id @default(uuid())
+  provider         String
+  providerUserId   String
+  providerUsername String
+  userId           String
+  user             User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Share {
@@ -134,7 +145,7 @@ model Config {
   name         String
   category     String
   type         String
-  defaultValue String @default("")
+  defaultValue String  @default("")
   value        String?
   obscured     Boolean @default(false)
   secret       Boolean @default(true)

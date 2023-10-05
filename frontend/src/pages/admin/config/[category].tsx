@@ -24,10 +24,7 @@ import CenterLoader from "../../../components/core/CenterLoader";
 import useConfig from "../../../hooks/config.hook";
 import configService from "../../../services/config.service";
 import { AdminConfig, UpdateConfig } from "../../../types/config.type";
-import {
-  camelToKebab,
-  capitalizeFirstLetter,
-} from "../../../utils/string.util";
+import { camelToKebab, } from "../../../utils/string.util";
 import toast from "../../../utils/toast.util";
 import useTranslate from "../../../hooks/useTranslate.hook";
 
@@ -128,7 +125,7 @@ export default function AppShellDemo() {
             <>
               <Stack>
                 <Title mb="md" order={3}>
-                  {capitalizeFirstLetter(categoryId)}
+                  {t("admin.config.category." + categoryId)}
                 </Title>
                 {configVariables.map((configVariable) => (
                   <Group key={configVariable.key} position="apart">
