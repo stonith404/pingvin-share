@@ -47,7 +47,7 @@ export class AuthController {
 
     const result = await this.authService.signUp(dto);
 
-    response = this.addTokensToResponse(
+    response = AuthController.addTokensToResponse(
       response,
       result.refreshToken,
       result.accessToken,
@@ -66,7 +66,7 @@ export class AuthController {
     const result = await this.authService.signIn(dto);
 
     if (result.accessToken && result.refreshToken) {
-      response = this.addTokensToResponse(
+      response = AuthController.addTokensToResponse(
         response,
         result.refreshToken,
         result.accessToken,
@@ -85,7 +85,7 @@ export class AuthController {
   ) {
     const result = await this.authTotpService.signInTotp(dto);
 
-    response = this.addTokensToResponse(
+    response = AuthController.addTokensToResponse(
       response,
       result.refreshToken,
       result.accessToken,
@@ -121,7 +121,7 @@ export class AuthController {
       dto.password,
     );
 
-    response = this.addTokensToResponse(response, result.refreshToken);
+    response = AuthController.addTokensToResponse(response, result.refreshToken);
     return new TokenDTO().from(result);
   }
 
@@ -136,7 +136,7 @@ export class AuthController {
     const accessToken = await this.authService.refreshAccessToken(
       request.cookies.refresh_token,
     );
-    response = this.addTokensToResponse(response, undefined, accessToken);
+    response = AuthController.addTokensToResponse(response, undefined, accessToken);
     return new TokenDTO().from({ accessToken });
   }
 
@@ -173,7 +173,7 @@ export class AuthController {
     return this.authTotpService.disableTotp(user, body.password, body.code);
   }
 
-  private addTokensToResponse(
+  static addTokensToResponse(
     response: Response,
     refreshToken?: string,
     accessToken?: string,

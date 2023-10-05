@@ -15,6 +15,7 @@ import { UserModule } from "./user/user.module";
 import { ClamScanModule } from "./clamscan/clamscan.module";
 import { ReverseShareModule } from "./reverseShare/reverseShare.module";
 import { AppController } from "./app.controller";
+import { OAuthModule } from './oauth/oauth.module';
 
 @Module({
   imports: [
@@ -33,8 +34,9 @@ import { AppController } from "./app.controller";
     ScheduleModule.forRoot(),
     ClamScanModule,
     ReverseShareModule,
+    OAuthModule,
   ],
-  controllers:[
+  controllers: [
     AppController,
   ],
   providers: [

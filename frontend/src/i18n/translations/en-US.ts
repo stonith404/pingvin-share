@@ -43,6 +43,9 @@ export default {
   "signIn.notify.totp-required.title": "Two-factor authentication required",
   "signIn.notify.totp-required.description":
     "Please enter your two-factor authentication code",
+  "signIn.oauth.or": "OR",
+  "signIn.oauth.github": "GitHub",
+  "signIn.oauth.google": "Google",
 
   // END /auth/signin
 
@@ -82,6 +85,13 @@ export default {
   "account.card.password.old": "Old password",
   "account.card.password.new": "New password",
   "account.notify.password.success": "Password changed successfully",
+
+  "account.card.oauth.title": "Social login",
+  "account.card.oauth.github": "GitHub",
+  "account.card.oauth.google": "google",
+  "account.card.oauth.link": "Link",
+  "account.card.oauth.unlink": "Unlink",
+  "account.card.oauth.unlinked": "Unlinked",
 
   "account.card.security.title": "Security",
   "account.card.security.totp.enable.description":
@@ -336,6 +346,7 @@ export default {
   "admin.config.category.share": "Share",
   "admin.config.category.email": "Email",
   "admin.config.category.smtp": "SMTP",
+  "admin.config.category.oauth": "Social Login",
 
   "admin.config.general.app-name": "App name",
   "admin.config.general.app-name.description": "Name of the application",
@@ -406,6 +417,21 @@ export default {
   "admin.config.smtp.password": "Password",
   "admin.config.smtp.password.description": "Password of the SMTP server",
   "admin.config.smtp.button.test": "Send test email",
+
+  "admin.config.oauth.allow-registration": "Allow registration",
+  "admin.config.oauth.allow-registration.description": "Allow users to register via social login",
+  "admin.config.oauth.github-enabled": "GitHub",
+  "admin.config.oauth.github-enabled.description": "Whether GitHub login is enabled",
+  "admin.config.oauth.github-client-id": "GitHub Client ID",
+  "admin.config.oauth.github-client-id.description": "Client ID of the GitHub OAuth app",
+  "admin.config.oauth.github-client-secret": "GitHub Client secret",
+  "admin.config.oauth.github-client-secret.description": "Client secret of the GitHub OAuth app",
+  "admin.config.oauth.google-enabled": "Google",
+  "admin.config.oauth.google-enabled.description": "Whether Google login is enabled",
+  "admin.config.oauth.google-client-id": "Google Client ID",
+  "admin.config.oauth.google-client-id.description": "Client ID of the Google OAuth app",
+  "admin.config.oauth.google-client-secret": "Google Client secret",
+  "admin.config.oauth.google-client-secret.description": "Client secret of the Google OAuth app",
 
   // 404
   "404.description": "Oops this page doesn't exist.",
