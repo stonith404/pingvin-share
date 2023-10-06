@@ -4,6 +4,7 @@ import english from "./translations/en-US";
 import spanish from "./translations/es-ES";
 import finnish from "./translations/fi-FI";
 import french from "./translations/fr-FR";
+import japanese from "./translations/ja-JP";
 import dutch from "./translations/nl-BE";
 import portuguese from "./translations/pt-BR";
 import russian from "./translations/ru-RU";
@@ -71,5 +72,10 @@ export const LOCALES = {
     name: "Nederlands",
     code: "nl-BE",
     messages: dutch,
+  },
+  JAPANESE: {
+    name: "日本語",
+    code: "ja-JP",
+    messages: japanese,
   },
 };
