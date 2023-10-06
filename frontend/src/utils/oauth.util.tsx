@@ -2,8 +2,8 @@ import { SiGithub, SiGoogle, SiOpenid } from "react-icons/si";
 import React from "react";
 import toast from "./toast.util";
 
-const getOAuthUrl = (appUrl: string, provider: string, isRevoke = false) => {
-  return appUrl + '/api/oauth/' + provider + (isRevoke ? '/revoke' : '');
+const getOAuthUrl = (appUrl: string, provider: string) => {
+  return `${appUrl}/api/oauth/${provider}`;
 }
 
 const getOAuthIcon = (provider: string) => {

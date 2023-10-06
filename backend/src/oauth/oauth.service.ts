@@ -1,10 +1,10 @@
-import { BadRequestException, Inject, Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Inject, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { PrismaService } from "../prisma/prisma.service";
 import { ConfigService } from "../config/config.service";
 import { AuthService } from "../auth/auth.service";
 import { User } from "@prisma/client";
 import { nanoid } from "nanoid";
-import fetch from "node-fetch";
+import { OAuthRequestService } from "./oauthRequest.service";
 
 
 @Injectable()
@@ -13,51 +13,39 @@ export class OAuthService {
     private prisma: PrismaService,
     private config: ConfigService,
     private auth: AuthService,
+    private request: OAuthRequestService,
     @Inject("OAUTH_PLATFORMS") private platforms: string[],
   ) {
   }
 
-  getAvailable(): string[] {
+  validate(provider: string, cookies: Record<string, string>, state: string) {
+    if (!this.config.get(`oauth.${provider}-enabled`)) {
+      throw new NotFoundException();
+    }
+
+    if (cookies[`${provider}_oauth_state`] !== state) {
+      throw new BadRequestException("Invalid state");
+    }
+  }
+
+  available(): string[] {
     return this.platforms
       .map(platform => [platform, this.config.get(`oauth.${platform}-enabled`)])
       .filter(([_, enabled]) => enabled)
       .map(([platform, _]) => platform);
   }
 
-  private async getGitHubToken(code: string): Promise<GitHubToken> {
-    const qs = new URLSearchParams();
-    qs.append("client_id", this.config.get("oauth.github-clientId"));
-    qs.append("client_secret", this.config.get("oauth.github-clientSecret"));
-    qs.append("code", code);
-
-    const res = await fetch("https://github.com/login/oauth/access_token?" + qs.toString(), {
-      method: "post",
-      headers: {
-        "Accept": "application/json",
-      }
+  async status(user: User) {
+    const oauthUsers = await this.prisma.oAuthUser.findMany({
+      select: {
+        provider: true,
+        providerUsername: true,
+      },
+      where: {
+        userId: user.id,
+      },
     });
-    return await res.json() as GitHubToken;
-  }
-
-  private async getGitHubUser(token: GitHubToken): Promise<GitHubUser> {
-    const res = await fetch("https://api.github.com/user", {
-      headers: {
-        "Accept": "application/vnd.github+json",
-        "Authorization": `${token.token_type} ${token.access_token}`,
-      }
-    });
-    return await res.json() as GitHubUser;
-  }
-
-  private async getGitHubEmails(token: GitHubToken): Promise<string | undefined> {
-    const res = await fetch("https://api.github.com/user/public_emails", {
-      headers: {
-        "Accept": "application/vnd.github+json",
-        "Authorization": `${token.token_type} ${token.access_token}`,
-      }
-    });
-    const emails = await res.json() as GitHubEmail[];
-    return emails.find(e => e.primary && e.verified)?.email;
+    return Object.fromEntries(oauthUsers.map(u => [u.provider, u]));
   }
 
   async signIn(user: OAuthSignInDto) {
@@ -124,13 +112,34 @@ export class OAuthService {
     return result;
   }
 
+  async link(userId: string, provider: string, providerUserId: string, providerUsername: string) {
+    const oauthUser = await this.prisma.oAuthUser.findFirst({
+      where: {
+        provider,
+        providerUserId,
+      }
+    });
+    if (oauthUser) {
+      throw new BadRequestException(`This ${provider} account has been linked to another account`);
+    }
+
+    await this.prisma.oAuthUser.create({
+      data: {
+        userId,
+        provider,
+        providerUsername,
+        providerUserId,
+      }
+    });
+  }
+
   async github(code: string) {
-    const ghToken = await this.getGitHubToken(code);
-    const ghUser = await this.getGitHubUser(ghToken);
+    const ghToken = await this.request.getGitHubToken(code);
+    const ghUser = await this.request.getGitHubUser(ghToken);
     if (!ghToken.scope.includes("user:email")) {
       throw new BadRequestException("No email permission granted");
     }
-    const email = await this.getGitHubEmails(ghToken);
+    const email = await this.request.getGitHubEmail(ghToken);
     return this.signIn({
       provider: "github",
       providerId: ghUser.id.toString(),
@@ -139,37 +148,9 @@ export class OAuthService {
     });
   }
 
-  async status(user: User) {
-    const oauthUsers = await this.prisma.oAuthUser.findMany({
-      select: {
-        provider: true,
-        providerUsername: true,
-      },
-      where: {
-        userId: user.id,
-      },
-    });
-    return Object.fromEntries(oauthUsers.map(u => [u.provider, u]));
+  async githubLink(code: string, user: User) {
+    const ghToken = await this.request.getGitHubToken(code);
+    const ghUser = await this.request.getGitHubUser(ghToken);
+    await this.link(user.id, 'github', ghUser.id.toString(), ghUser.name);
   }
-}
-
-
-interface GitHubToken {
-  access_token: string;
-  token_type: string;
-  scope: string;
-}
-
-interface GitHubUser {
-  login: string;
-  id: number;
-  name?: string;
-  email?: string; // this filed seems only return null
-}
-
-interface GitHubEmail {
-  email: string;
-  primary: boolean,
-  verified: boolean,
-  visibility: string | null
 }

@@ -219,8 +219,7 @@ const Account = () => {
                           }</Button>
                           : <Button
                             component="a"
-                            target="_blank"
-                            href={getOAuthUrl(config.get('general.appUrl'), provider)}
+                            href={getOAuthUrl(config.get('general.appUrl'), provider) + '?link=true'}
                           >{t('account.card.oauth.link')}</Button>
                       }
                     </Group>
