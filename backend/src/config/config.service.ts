@@ -6,13 +6,20 @@ import {
 } from "@nestjs/common";
 import { Config } from "@prisma/client";
 import { PrismaService } from "src/prisma/prisma.service";
+import { EventEmitter } from "events";
 
+/**
+ * ConfigService extends EventEmitter to allow listening for config updates,
+ * now only `update` event will be emitted.
+ */
 @Injectable()
-export class ConfigService {
+export class ConfigService extends EventEmitter {
   constructor(
     @Inject("CONFIG_VARIABLES") private configVariables: Config[],
     private prisma: PrismaService,
-  ) {}
+  ) {
+    super();
+  }
 
   get(key: `${string}.${string}`): any {
     const configVariable = this.configVariables.filter(
@@ -104,6 +111,8 @@ export class ConfigService {
     });
 
     this.configVariables = await this.prisma.config.findMany();
+
+    this.emit("update", key, value);
 
     return updatedVariable;
   }

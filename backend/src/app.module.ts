@@ -16,6 +16,7 @@ import { ClamScanModule } from "./clamscan/clamscan.module";
 import { ReverseShareModule } from "./reverseShare/reverseShare.module";
 import { AppController } from "./app.controller";
 import { OAuthModule } from './oauth/oauth.module';
+import { CacheModule } from "@nestjs/cache-manager";
 
 @Module({
   imports: [
@@ -35,6 +36,9 @@ import { OAuthModule } from './oauth/oauth.module';
     ClamScanModule,
     ReverseShareModule,
     OAuthModule,
+    CacheModule.register({
+      isGlobal: true,
+    }),
   ],
   controllers: [
     AppController,

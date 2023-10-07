@@ -88,7 +88,7 @@ export default {
 
   "account.card.oauth.title": "Social login",
   "account.card.oauth.github": "GitHub",
-  "account.card.oauth.google": "google",
+  "account.card.oauth.google": "Google",
   "account.card.oauth.link": "Link",
   "account.card.oauth.unlink": "Unlink",
   "account.card.oauth.unlinked": "Unlinked",
