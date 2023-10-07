@@ -7,7 +7,12 @@ import { AuthTotpService } from "./authTotp.service";
 import { JwtStrategy } from "./strategy/jwt.strategy";
 
 @Module({
-  imports: [JwtModule.register({}), EmailModule],
+  imports: [
+    JwtModule.register({
+      global: true,
+    }),
+    EmailModule
+  ],
   controllers: [AuthController],
   providers: [AuthService, AuthTotpService, JwtStrategy],
   exports: [AuthService],

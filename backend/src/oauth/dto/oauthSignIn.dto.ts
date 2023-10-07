@@ -1,5 +1,5 @@
 interface OAuthSignInDto {
-  provider: 'github' | 'google';
+  provider: 'github' | 'google' | 'oidc';
   providerId: string;
   providerUsername: string;
   email: string;

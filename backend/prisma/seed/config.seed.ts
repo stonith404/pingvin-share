@@ -154,18 +154,23 @@ const configVariables: ConfigVariables = {
       defaultValue: "",
       obscured: true,
     },
-    // "oidc-enabled": {
-    //   type: "boolean",
-    //   defaultValue: "false",
-    // },
-    // "oidc-clientId": {
-    //   type: "string",
-    //   defaultValue: "",
-    // },
-    // "oidc-clientSecret": {
-    //   type: "string",
-    //   defaultValue: "",
-    // },
+    "oidc-enabled": {
+      type: "boolean",
+      defaultValue: "false",
+    },
+    "oidc-discoveryUri": {
+      type: "string",
+      defaultValue: "",
+    },
+    "oidc-clientId": {
+      type: "string",
+      defaultValue: "",
+    },
+    "oidc-clientSecret": {
+      type: "string",
+      defaultValue: "",
+      obscured: true,
+    },
   }
 };
 
@@ -223,7 +228,7 @@ async function migrateConfigVariables() {
     const configVariable =
       configVariables[existingConfigVariable.category]?.[
         existingConfigVariable.name
-      ];
+        ];
     if (!configVariable) {
       await prisma.config.delete({
         where: {
