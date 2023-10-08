@@ -14,6 +14,7 @@ import { EmailService } from "src/email/email.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { AuthRegisterDTO } from "./dto/authRegister.dto";
 import { AuthSignInDTO } from "./dto/authSignIn.dto";
+import { Request, Response } from "express";
 
 @Injectable()
 export class AuthService {
@@ -213,5 +214,36 @@ export class AuthService {
     ).token;
 
     return loginToken;
+  }
+
+  addTokensToResponse(
+    response: Response,
+    refreshToken?: string,
+    accessToken?: string,
+  ) {
+    if (accessToken)
+      response.cookie("access_token", accessToken, { sameSite: "lax" });
+    if (refreshToken)
+      response.cookie("refresh_token", refreshToken, {
+        path: "/api/auth/token",
+        httpOnly: true,
+        sameSite: "strict",
+        maxAge: 1000 * 60 * 60 * 24 * 30 * 3,
+      });
+  }
+
+  /**
+   * Returns the user id if the user is logged in, false otherwise
+   */
+  async getIdIfLogin(request: Request): Promise<string | false> {
+    if (!request.cookies.access_token) return false;
+    try {
+      const payload = await this.jwtService.verifyAsync(request.cookies.access_token, {
+        secret: this.config.get("internal.jwtSecret"),
+      });
+      return payload.sub;
+    } catch (e) {
+      return false;
+    }
   }
 }

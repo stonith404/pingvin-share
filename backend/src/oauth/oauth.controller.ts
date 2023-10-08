@@ -1,21 +1,21 @@
-import { Controller, Get, Query, Req, Res, SetMetadata, UseGuards } from '@nestjs/common';
+import { Controller, Get, NotFoundException, Query, Req, Res, UseGuards } from '@nestjs/common';
 import { OAuthService } from "./oauth.service";
 import { Request, Response } from "express";
-import { GithubDto } from "./dto/github.dto";
 import { JwtGuard } from "../auth/guard/jwt.guard";
 import { ConfigService } from "../config/config.service";
 import { nanoid } from "nanoid";
-import { AuthController } from "../auth/auth.controller";
 import { GetUser } from "../auth/decorator/getUser.decorator";
 import { User } from "@prisma/client";
 import { OidcService } from "./oidc.service";
 import { OidcCallbackDto } from "./dto/oidcCallback.dto";
 import { OAuthGuard } from "./guard/oauth.guard";
 import { OAuthProvider } from "./decorator/oauthProvider.decorator";
+import { AuthService } from "../auth/auth.service";
 
 @Controller('oauth')
 export class OAuthController {
   constructor(
+    private authService: AuthService,
     private oauthService: OAuthService,
     private config: ConfigService,
     private oidcService: OidcService,
@@ -96,6 +96,8 @@ export class OAuthController {
   // }
 
   @Get("oidc")
+  @OAuthProvider("oidc", "auth")
+  @UseGuards(OAuthGuard)
   async oidc(@Res({ passthrough: true }) response: Response) {
     const state = nanoid(16);
     const url = await this.oidcService.getAuthEndpoint(state);
@@ -104,20 +106,22 @@ export class OAuthController {
   }
 
   @Get("oidc/callback")
-  @OAuthProvider("oidc")
+  @OAuthProvider("oidc", "callback")
   @UseGuards(OAuthGuard)
   async oidcCallback(@Query() query: OidcCallbackDto,
                      @Req() request: Request,
                      @Res({ passthrough: true }) response: Response) {
-    const user = await this.oidcService.getUserInfo(query.code);
-    // TODO check is login
-    const token = await this.oauthService.signIn(user);
-    // TODO totp
-    AuthController.addTokensToResponse(
-      response,
-      token.refreshToken,
-      token.accessToken,
-    );
-    response.redirect(this.config.get("general.appUrl"));
+    const user = await this.oidcService.getUserInfo(query);
+    const id = await this.authService.getIdIfLogin(request);
+
+    if (id) {
+      await this.oauthService.link(id, "oidc", user.providerId, user.providerUsername);
+      response.redirect(this.config.get("general.appUrl") + '/account');
+    } else {
+      const token = await this.oauthService.signIn(user);
+      // TODO totp
+      this.authService.addTokensToResponse(response, token.refreshToken, token.accessToken);
+      response.redirect(this.config.get("general.appUrl"));
+    }
   }
 }

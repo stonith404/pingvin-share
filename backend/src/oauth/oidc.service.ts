@@ -4,6 +4,8 @@ import { ConfigService } from "../config/config.service";
 import { JwtService } from "@nestjs/jwt";
 import { CACHE_MANAGER } from "@nestjs/cache-manager";
 import { Cache } from "cache-manager";
+import { nanoid } from "nanoid";
+import { OidcCallbackDto } from "./dto/oidcCallback.dto";
 
 @Injectable()
 export class OidcService {
@@ -19,8 +21,8 @@ export class OidcService {
     this.redirectUri = `${this.config.get("general.appUrl")}/api/oauth/${name}/callback`;
     this.config.addListener("update", (key: string, _: unknown) => {
       if (key === `oauth.${name}-enabled` || key === `oauth.${name}-discoveryUri`) {
-        this.discoveryUri = this.config.get(`oauth.${name}-discoveryUri`);
         this.deinit();
+        this.discoveryUri = this.config.get(`oauth.${name}-discoveryUri`);
       }
     });
   }
@@ -67,13 +69,17 @@ export class OidcService {
   async getAuthEndpoint(state: string) {
     const configuration = await this.getConfiguration();
     const endpoint = configuration.authorization_endpoint;
-    // TODO nonce
+
+    const nonce = nanoid();
+    await this.cache.set(`oauth-${this.name}-nonce-${state}`, nonce, 1000 * 60 * 5);
+
     return endpoint + "?" + new URLSearchParams({
       client_id: this.config.get(`oauth.${this.name}-clientId`),
       response_type: "code",
       scope: "openid profile email",
       redirect_uri: this.redirectUri,
       state,
+      nonce,
     }).toString();
   }
 
@@ -100,10 +106,10 @@ export class OidcService {
     return this.jwtService.decode(idToken) as OidcIdToken;
   }
 
-  async getUserInfo(code: string): Promise<OAuthSignInDto> {
-    const token = await this.getToken(code);
+  async getUserInfo(query: OidcCallbackDto): Promise<OAuthSignInDto> {
+    const token = await this.getToken(query.code);
     const idTokenData = this.decodeIdToken(token.id_token);
-    // TODO verify id token
+    // TODO verify id token and nonce
     return {
       provider: this.name as any,
       email: idTokenData.email,
