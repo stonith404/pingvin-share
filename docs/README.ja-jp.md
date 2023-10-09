@@ -2,7 +2,7 @@
 
 ---
 
-_Read this in another language: [Spanish](/docs/README.es.md), [English](/README.md), [Simplified Chinese](/docs/README.zh-cn.md), [日本語](/docs/README.ja-jp.md)_
+_READMEを別の言語で読む: [Spanish](/docs/README.es.md), [English](/README.md), [Simplified Chinese](/docs/README.zh-cn.md), [日本語](/docs/README.ja-jp.md)_
 
 ---
 
