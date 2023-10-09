@@ -1,3 +1,11 @@
+## [0.18.2](https://github.com/stonith404/pingvin-share/compare/v0.18.1...v0.18.2) (2023-10-09)
+
+
+### Bug Fixes
+
+* disable image optimizations for logo to prevent caching issues with custom logos ([3891900](https://github.com/stonith404/pingvin-share/commit/38919003e9091203b507d0f0b061f4a1835ff4f4))
+* memory leak while downloading large files ([97e7d71](https://github.com/stonith404/pingvin-share/commit/97e7d7190dfe219caf441dffcd7830c304c3c939))
+
 ## [0.18.1](https://github.com/stonith404/pingvin-share/compare/v0.18.0...v0.18.1) (2023-09-22)
 
 
