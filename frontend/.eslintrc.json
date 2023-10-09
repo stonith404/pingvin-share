@@ -11,6 +11,7 @@
     "react-hooks/exhaustive-deps": ["off"],
     "import/no-anonymous-default-export": ["off"],
     "no-unused-vars": ["warn"],
-    "react/no-unescaped-entities": ["off"]
+    "react/no-unescaped-entities": ["off"],
+    "@next/next/no-img-element": ["off"]
   }
 }
