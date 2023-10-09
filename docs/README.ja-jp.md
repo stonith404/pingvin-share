@@ -127,20 +127,20 @@ docker compose up -d
 
 ##### バックエンド
 
-| Variable         | Default Value                                      | Description                            |
+| 変数名            | デフォルト値                                        | 説明                                   |
 | ---------------- | -------------------------------------------------- | -------------------------------------- |
-| `PORT`           | `8080`                                             | The port on which the backend listens. |
-| `DATABASE_URL`   | `file:../data/pingvin-share.db?connection_limit=1` | The URL of the SQLite database.        |
-| `DATA_DIRECTORY` | `./data`                                           | The directory where data is stored.    |
-| `CLAMAV_HOST`    | `127.0.0.1`                                        | The IP address of the ClamAV server.   |
-| `CLAMAV_PORT`    | `3310`                                             | The port number of the ClamAV server.  |
+| `PORT`           | `8080`                                             | バックエンドがリッスンするポート番号       |
+| `DATABASE_URL`   | `file:../data/pingvin-share.db?connection_limit=1` | SQLiteのURL                             |
+| `DATA_DIRECTORY` | `./data`                                           | データを保管するディレクトリ               |
+| `CLAMAV_HOST`    | `127.0.0.1`                                        | ClamAVサーバーのIPアドレス               |
+| `CLAMAV_PORT`    | `3310`                                             | ClamAVサーバーのポート番号                |
 
 ##### フロントエンド
 
-| Variable  | Default Value           | Description                              |
-| --------- | ----------------------- | ---------------------------------------- |
-| `PORT`    | `3000`                  | The port on which the frontend listens.  |
-| `API_URL` | `http://localhost:8080` | The URL of the backend for the frontend. |
+| 変数名     | デフォルト値             | 説明                                          |
+| --------- | ----------------------- | ----------------------------------------      |
+| `PORT`    | `3000`                  | フロントエンドがリッスンするポート番号            |
+| `API_URL` | `http://localhost:8080` | フロントエンドからアクセスするバックエンドへのURL |
 
 ## 🖤 コントリビュート
 
