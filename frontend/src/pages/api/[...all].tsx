@@ -11,6 +11,8 @@ export const config = {
 
 const { apiURL } = getConfig().serverRuntimeConfig;
 
+// A proxy to the API server only used in development.
+// In production this route gets overridden by nginx.
 export default (req: NextApiRequest, res: NextApiResponse) => {
   httpProxyMiddleware(req, res, {
     headers: {
