@@ -32,7 +32,9 @@ ENV NODE_ENV=docker
 # Alpine specific dependencies
 RUN apk update --no-cache
 RUN apk upgrade --no-cache
-RUN apk add --no-cache curl
+RUN apk add --no-cache curl nginx
+
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 
 WORKDIR /opt/app/frontend
 COPY --from=frontend-builder /opt/app/public ./public
@@ -55,4 +57,4 @@ HEALTHCHECK --interval=10s --timeout=3s CMD curl -f http://localhost:3000/api/he
 
 # Application startup
 # HOSTNAME=0.0.0.0 fixes https://github.com/vercel/next.js/issues/51684. It can be removed as soon as the issue is fixed
-CMD cp -rn /tmp/img /opt/app/frontend/public && HOSTNAME=0.0.0.0 node frontend/server.js & cd backend && npm run prod
+CMD cp -rn /tmp/img /opt/app/frontend/public && nginx && PORT=3333 HOSTNAME=0.0.0.0 node frontend/server.js & cd backend && npm run prod
