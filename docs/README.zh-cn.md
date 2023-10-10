@@ -2,7 +2,7 @@
 
 ---
 
-_选择合适的语言阅读: [西班牙语](/docs/README.es.md), [英语](/README.md), [简体中文](/docs/README.zh-cn.md)_
+_选择合适的语言阅读: [西班牙语](/docs/README.es.md), [英语](/README.md), [简体中文](/docs/README.zh-cn.md), [日本语](/docs/README.ja-jp.md)_
 
 ---
 

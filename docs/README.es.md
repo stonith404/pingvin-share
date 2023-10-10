@@ -2,7 +2,7 @@
 
 ---
 
-_Leer esto en otro idioma: [Inglés](/README.md), [Español](/docs/README.es.md), [Chino Simplificado](/docs/README.zh-cn.md)_
+_Leer esto en otro idioma: [Inglés](/README.md), [Español](/docs/README.es.md), [Chino Simplificado](/docs/README.zh-cn.md), [日本語](/docs/README.ja-jp.md)_
 
 ---
 
