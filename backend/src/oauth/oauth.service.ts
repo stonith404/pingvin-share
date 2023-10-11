@@ -1,10 +1,10 @@
-import { BadRequestException, Inject, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { PrismaService } from "../prisma/prisma.service";
 import { ConfigService } from "../config/config.service";
 import { AuthService } from "../auth/auth.service";
 import { User } from "@prisma/client";
 import { nanoid } from "nanoid";
-import { OAuthRequestService } from "./oauthRequest.service";
+import { OAuthSignInDto } from "./dto/oauthSignIn.dto";
 
 
 @Injectable()
@@ -13,19 +13,8 @@ export class OAuthService {
     private prisma: PrismaService,
     private config: ConfigService,
     private auth: AuthService,
-    private request: OAuthRequestService,
     @Inject("OAUTH_PLATFORMS") private platforms: string[],
   ) {
-  }
-
-  validate(provider: string, cookies: Record<string, string>, state: string) {
-    if (!this.config.get(`oauth.${provider}-enabled`)) {
-      throw new NotFoundException();
-    }
-
-    if (cookies[`${provider}_oauth_state`] !== state) {
-      throw new BadRequestException("Invalid state");
-    }
   }
 
   available(): string[] {
@@ -63,6 +52,45 @@ export class OAuthService {
     }
 
     return this.signUp(user);
+  }
+
+  async link(userId: string, provider: string, providerUserId: string, providerUsername: string) {
+    const oauthUser = await this.prisma.oAuthUser.findFirst({
+      where: {
+        provider,
+        providerUserId,
+      }
+    });
+    if (oauthUser) {
+      throw new BadRequestException(`This ${provider} account has been linked to another account`);
+    }
+
+    await this.prisma.oAuthUser.create({
+      data: {
+        userId,
+        provider,
+        providerUsername,
+        providerUserId,
+      }
+    });
+  }
+
+  async unlink(user: User, provider: string) {
+    const oauthUser = await this.prisma.oAuthUser.findFirst({
+      where: {
+        userId: user.id,
+        provider,
+      },
+    });
+    if (oauthUser) {
+      await this.prisma.oAuthUser.delete({
+        where: {
+          id: oauthUser.id,
+        },
+      });
+    } else {
+      throw new BadRequestException(`You have not linked your account to ${provider} yet.`);
+    }
   }
 
   private async signUp(user: OAuthSignInDto) {
@@ -111,66 +139,4 @@ export class OAuthService {
 
     return result;
   }
-
-  async link(userId: string, provider: string, providerUserId: string, providerUsername: string) {
-    const oauthUser = await this.prisma.oAuthUser.findFirst({
-      where: {
-        provider,
-        providerUserId,
-      }
-    });
-    if (oauthUser) {
-      throw new BadRequestException(`This ${provider} account has been linked to another account`);
-    }
-
-    await this.prisma.oAuthUser.create({
-      data: {
-        userId,
-        provider,
-        providerUsername,
-        providerUserId,
-      }
-    });
-  }
-
-
-  async unlink(user: User, provider: string) {
-    const oauthUser = await this.prisma.oAuthUser.findFirst({
-      where: {
-        userId: user.id,
-        provider,
-      },
-    });
-    if (oauthUser) {
-      await this.prisma.oAuthUser.delete({
-        where: {
-          id: oauthUser.id,
-        },
-      });
-    } else {
-      throw new BadRequestException(`You have not linked your account to ${provider} yet.`);
-    }
-  }
-
-  async github(code: string) {
-    const ghToken = await this.request.getGitHubToken(code);
-    const ghUser = await this.request.getGitHubUser(ghToken);
-    if (!ghToken.scope.includes("user:email")) {
-      throw new BadRequestException("No email permission granted");
-    }
-    const email = await this.request.getGitHubEmail(ghToken);
-    return this.signIn({
-      provider: "github",
-      providerId: ghUser.id.toString(),
-      providerUsername: ghUser.login,
-      email,
-    });
-  }
-
-  async githubLink(code: string, user: User) {
-    const ghToken = await this.request.getGitHubToken(code);
-    const ghUser = await this.request.getGitHubUser(ghToken);
-    await this.link(user.id, 'github', ghUser.id.toString(), ghUser.name);
-  }
-
 }
