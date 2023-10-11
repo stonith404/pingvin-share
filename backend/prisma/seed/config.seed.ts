@@ -126,7 +126,7 @@ const configVariables: ConfigVariables = {
     },
     "ignoreTotp": {
       type: "boolean",
-      defaultValue: "false",
+      defaultValue: "true",
     },
     "github-enabled": {
       type: "boolean",

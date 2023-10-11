@@ -27,7 +27,7 @@ import userService from "../../services/user.service";
 import toast from "../../utils/toast.util";
 import { useEffect, useState } from "react";
 import useConfig from "../../hooks/config.hook";
-import { getOAuthIcon, getOAuthUrl, revokeOAuth } from "../../utils/oauth.util";
+import { getOAuthIcon, getOAuthUrl, unlinkOAuth } from "../../utils/oauth.util";
 
 const Account = () => {
   const [oauth, setOAuth] = useState<string[]>([]);
@@ -106,13 +106,17 @@ const Account = () => {
     ),
   });
 
+  const refreshOAuthStatus = () => {
+    authService.getOAuthStatus().then(data => {
+      setOAuthStatus(data.data);
+    }).catch(toast.axiosError);
+  }
+
   useEffect(() => {
     authService.getAvailableOAuth().then(data => {
       setOAuth(data.data);
     }).catch(toast.axiosError);
-    authService.getOAuthStatus().then(data => {
-      setOAuthStatus(data.data);
-    }).catch(toast.axiosError);
+    refreshOAuthStatus();
   }, []);
 
   return (
@@ -192,11 +196,11 @@ const Account = () => {
               <FormattedMessage id="account.card.oauth.title" />
             </Title>
 
-            <Tabs defaultValue="github">
+            <Tabs defaultValue={oauth[0] || ""}>
               <Tabs.List>
                 {
                   oauth.map(provider =>
-                    <Tabs.Tab value={provider} icon={getOAuthIcon(provider)}>
+                    <Tabs.Tab value={provider} icon={getOAuthIcon(provider)} key={provider}>
                       {t(`account.card.oauth.${provider}`)}
                     </Tabs.Tab>
                   )
@@ -204,7 +208,7 @@ const Account = () => {
               </Tabs.List>
               {
                 oauth.map(provider =>
-                  <Tabs.Panel value={provider} pt="xs">
+                  <Tabs.Panel value={provider} pt="xs" key={provider}>
                     <Group position="apart">
                       <Text>{
                         oauthStatus?.[provider]
@@ -213,13 +217,28 @@ const Account = () => {
                       }</Text>
                       {
                         oauthStatus?.[provider]
-                          ? <Button
-                            onClick={() => revokeOAuth(config.get('general.appUrl'), provider)}>{
+                          ? <Button onClick={() => {
+                            modals.openConfirmModal({
+                              title: t("account.modal.unlink.title"),
+                              children: <Text>{t("account.modal.unlink.description")}</Text>,
+                              labels: {
+                                confirm: t("account.card.oauth.unlink"),
+                                cancel: t("common.button.cancel"),
+                              },
+                              confirmProps: { color: "red" },
+                              onConfirm: () => {
+                                unlinkOAuth(provider).then(() => {
+                                  toast.success(t("account.notify.oauth.unlinked.success"));
+                                  refreshOAuthStatus();
+                                }).catch(toast.axiosError);
+                              },
+                            });
+                          }}>{
                             t('account.card.oauth.unlink')
                           }</Button>
                           : <Button
                             component="a"
-                            href={getOAuthUrl(config.get('general.appUrl'), provider) + '?link=true'}
+                            href={getOAuthUrl(config.get('general.appUrl'), provider)}
                           >{t('account.card.oauth.link')}</Button>
                       }
                     </Group>

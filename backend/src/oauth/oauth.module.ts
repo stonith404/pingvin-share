@@ -15,11 +15,6 @@ import { ConfigService } from "../config/config.service";
       provide: "OAUTH_PLATFORMS",
       useValue: ["oidc"],
     },
-
-    {
-      provide: "OIDC_NAME",
-      useValue: "oidc",
-    },
     {
       provide: "OIDC_DISCOVERY_URI",
       useFactory: (config: ConfigService) => config.get("oauth.oidc-discoveryUri"),

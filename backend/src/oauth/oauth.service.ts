@@ -133,6 +133,25 @@ export class OAuthService {
     });
   }
 
+
+  async unlink(user: User, provider: string) {
+    const oauthUser = await this.prisma.oAuthUser.findFirst({
+      where: {
+        userId: user.id,
+        provider,
+      },
+    });
+    if (oauthUser) {
+      await this.prisma.oAuthUser.delete({
+        where: {
+          id: oauthUser.id,
+        },
+      });
+    } else {
+      throw new BadRequestException(`You have not linked your account to ${provider} yet.`);
+    }
+  }
+
   async github(code: string) {
     const ghToken = await this.request.getGitHubToken(code);
     const ghUser = await this.request.getGitHubUser(ghToken);
@@ -153,4 +172,5 @@ export class OAuthService {
     const ghUser = await this.request.getGitHubUser(ghToken);
     await this.link(user.id, 'github', ghUser.id.toString(), ghUser.name);
   }
+
 }
