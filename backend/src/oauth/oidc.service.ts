@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@nestjs/common";
+import { BadRequestException, Inject, Injectable } from "@nestjs/common";
 import fetch from "node-fetch";
 import { ConfigService } from "../config/config.service";
 import { JwtService } from "@nestjs/jwt";
@@ -9,20 +9,21 @@ import { OidcCallbackDto } from "./dto/oidcCallback.dto";
 
 @Injectable()
 export class OidcService {
-  private configuration: OidcConfigurationCache;
-  private jwk: OidcJwkCache;
-  private redirectUri: string;
+  protected configuration: OidcConfigurationCache;
+  protected jwk: OidcJwkCache;
+  protected redirectUri: string;
+  protected name: string = "oidc";
+  protected keyOfConfigUpdateEvents: string[] = ["oauth.oidc-enabled", "oauth.oidc-discoveryUri"];
 
-  constructor(@Inject("OIDC_NAME") private name: string,
-              @Inject("OIDC_DISCOVERY_URI") private discoveryUri: string,
-              private config: ConfigService,
-              private jwtService: JwtService,
-              @Inject(CACHE_MANAGER) private cache: Cache) {
-    this.redirectUri = `${this.config.get("general.appUrl")}/api/oauth/${name}/callback`;
+  constructor(@Inject("OIDC_DISCOVERY_URI") protected discoveryUri: string,
+              protected config: ConfigService,
+              protected jwtService: JwtService,
+              @Inject(CACHE_MANAGER) protected cache: Cache) {
+    this.redirectUri = `${this.config.get("general.appUrl")}/api/oauth/${this.name}/callback`;
     this.config.addListener("update", (key: string, _: unknown) => {
-      if (key === `oauth.${name}-enabled` || key === `oauth.${name}-discoveryUri`) {
+      if (this.keyOfConfigUpdateEvents.includes(key)) {
         this.deinit();
-        this.discoveryUri = this.config.get(`oauth.${name}-discoveryUri`);
+        this.discoveryUri = this.config.get(`oauth.${this.name}-discoveryUri`);
       }
     });
   }
@@ -109,7 +110,15 @@ export class OidcService {
   async getUserInfo(query: OidcCallbackDto): Promise<OAuthSignInDto> {
     const token = await this.getToken(query.code);
     const idTokenData = this.decodeIdToken(token.id_token);
-    // TODO verify id token and nonce
+    // maybe it's not necessary to verify the id token since it's directly obtained from the provider
+
+    const key = `oauth-${this.name}-nonce-${query.state}`;
+    const nonce = await this.cache.get(key);
+    await this.cache.del(key);
+    if (nonce !== idTokenData.nonce) {
+      throw new BadRequestException("Invalid token");
+    }
+
     return {
       provider: this.name as any,
       email: idTokenData.email,
@@ -165,4 +174,5 @@ export interface OidcIdToken {
   iat: number;
   email: string;
   name: string;
+  nonce: string;
 }

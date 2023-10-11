@@ -1,4 +1,4 @@
-import { Controller, Get, NotFoundException, Query, Req, Res, UseGuards } from '@nestjs/common';
+import { Controller, Get, NotFoundException, Param, Post, Query, Req, Res, UseGuards } from '@nestjs/common';
 import { OAuthService } from "./oauth.service";
 import { Request, Response } from "express";
 import { JwtGuard } from "../auth/guard/jwt.guard";
@@ -31,6 +31,15 @@ export class OAuthController {
   @UseGuards(JwtGuard)
   async status(@GetUser() user: User) {
     return this.oauthService.status(user);
+  }
+
+  @Post("unlink/:provider")
+  @UseGuards(JwtGuard)
+  unlink(@GetUser() user: User, @Param("provider") provider: string) {
+    if (!this.oauthService.available().includes(provider)) {
+      throw new NotFoundException("No such provider.");
+    }
+    return this.oauthService.unlink(user, provider);
   }
 
   // @Get("github")
