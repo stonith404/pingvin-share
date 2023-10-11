@@ -2,25 +2,36 @@ import { Module } from '@nestjs/common';
 import { OAuthController } from './oauth.controller';
 import { OAuthService } from './oauth.service';
 import { AuthModule } from "../auth/auth.module";
-import { OAuthRequestService } from "./oauthRequest.service";
-import { OidcService } from "./oidc.service";
-import { ConfigService } from "../config/config.service";
+import { GitHubProvider } from "./provider/github.provider";
+import { GoogleProvider } from "./provider/google.provider";
+import { OAuthProvider } from "./provider/oauthProvider.interface";
+import { OidcProvider } from "./provider/oidc.provider";
 
 @Module({
   controllers: [OAuthController],
   providers: [
     OAuthService,
-    OAuthRequestService,
+    GitHubProvider,
+    GoogleProvider,
+    OidcProvider,
+    {
+      provide: "OAUTH_PROVIDERS",
+      useFactory(github: GitHubProvider, google: GoogleProvider, oidc: OidcProvider): Record<string, OAuthProvider<unknown>> {
+        return {
+          github,
+          google,
+          oidc,
+        };
+      },
+      inject: [GitHubProvider, GoogleProvider, OidcProvider],
+    },
     {
       provide: "OAUTH_PLATFORMS",
-      useValue: ["oidc"],
+      useFactory(providers: Record<string, OAuthProvider<unknown>>): string[] {
+        return Object.keys(providers);
+      },
+      inject: ["OAUTH_PROVIDERS"],
     },
-    {
-      provide: "OIDC_DISCOVERY_URI",
-      useFactory: (config: ConfigService) => config.get("oauth.oidc-discoveryUri"),
-      inject: [ConfigService],
-    },
-    OidcService,
   ],
   imports: [AuthModule],
 })

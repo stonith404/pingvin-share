@@ -4,7 +4,7 @@ import toast from "./toast.util";
 import api from "../services/api.service";
 
 const getOAuthUrl = (appUrl: string, provider: string) => {
-  return `${appUrl}/api/oauth/${provider}`;
+  return `${appUrl}/api/oauth/auth/${provider}`;
 }
 
 const getOAuthIcon = (provider: string) => {

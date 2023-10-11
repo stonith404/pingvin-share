@@ -1,56 +1,33 @@
-import { BadRequestException, Inject, Injectable } from "@nestjs/common";
+import { BadRequestException } from "@nestjs/common";
 import fetch from "node-fetch";
-import { ConfigService } from "../config/config.service";
+import { ConfigService } from "../../config/config.service";
 import { JwtService } from "@nestjs/jwt";
-import { CACHE_MANAGER } from "@nestjs/cache-manager";
 import { Cache } from "cache-manager";
 import { nanoid } from "nanoid";
-import { OidcCallbackDto } from "./dto/oidcCallback.dto";
+import { OAuthCallbackDto } from "../dto/oauthCallback.dto";
+import { OAuthProvider } from "./oauthProvider.interface";
+import { OAuthSignInDto } from "../dto/oauthSignIn.dto";
 
-@Injectable()
-export class OidcService {
-  protected configuration: OidcConfigurationCache;
-  protected jwk: OidcJwkCache;
-  protected redirectUri: string;
-  protected name: string = "oidc";
-  protected keyOfConfigUpdateEvents: string[] = ["oauth.oidc-enabled", "oauth.oidc-discoveryUri"];
+export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
+  private configuration: OidcConfigurationCache;
+  private jwk: OidcJwkCache;
+  private redirectUri: string;
 
-  constructor(@Inject("OIDC_DISCOVERY_URI") protected discoveryUri: string,
-              protected config: ConfigService,
-              protected jwtService: JwtService,
-              @Inject(CACHE_MANAGER) protected cache: Cache) {
-    this.redirectUri = `${this.config.get("general.appUrl")}/api/oauth/${this.name}/callback`;
+  protected constructor(
+    protected name: string,
+    protected discoveryUri: string,
+    protected keyOfConfigUpdateEvents: string[],
+    protected config: ConfigService,
+    protected jwtService: JwtService,
+    protected cache: Cache,
+  ) {
+    this.redirectUri = `${this.config.get("general.appUrl")}/api/oauth/callback/${this.name}`;
     this.config.addListener("update", (key: string, _: unknown) => {
       if (this.keyOfConfigUpdateEvents.includes(key)) {
         this.deinit();
         this.discoveryUri = this.config.get(`oauth.${this.name}-discoveryUri`);
       }
     });
-  }
-
-  private async fetchConfiguration(): Promise<void> {
-    const res = await fetch(this.discoveryUri);
-    const expires = res.headers.has("expires") ? new Date(res.headers.get("expires")).getTime() : Date.now() + 1000 * 60 * 60 * 24;
-    this.configuration = {
-      expires,
-      data: await res.json(),
-    };
-  }
-
-  private async fetchJwk(): Promise<void> {
-    const configuration = await this.getConfiguration();
-    const res = await fetch(configuration.jwks_uri);
-    const expires = res.headers.has("expires") ? new Date(res.headers.get("expires")).getTime() : Date.now() + 1000 * 60 * 60 * 24;
-    this.jwk = {
-      expires,
-      data: (await res.json())['keys'],
-    };
-  }
-
-  private deinit() {
-    this.discoveryUri = undefined;
-    this.configuration = undefined;
-    this.jwk = undefined;
   }
 
   async getConfiguration(): Promise<OidcConfiguration> {
@@ -103,11 +80,7 @@ export class OidcService {
     return await res.json();
   }
 
-  private decodeIdToken(idToken: string): OidcIdToken {
-    return this.jwtService.decode(idToken) as OidcIdToken;
-  }
-
-  async getUserInfo(query: OidcCallbackDto): Promise<OAuthSignInDto> {
+  async getUserInfo(query: OAuthCallbackDto): Promise<OAuthSignInDto> {
     const token = await this.getToken(query.code);
     const idTokenData = this.decodeIdToken(token.id_token);
     // maybe it's not necessary to verify the id token since it's directly obtained from the provider
@@ -125,6 +98,35 @@ export class OidcService {
       providerId: idTokenData.sub,
       providerUsername: idTokenData.name,
     }
+  }
+
+  private async fetchConfiguration(): Promise<void> {
+    const res = await fetch(this.discoveryUri);
+    const expires = res.headers.has("expires") ? new Date(res.headers.get("expires")).getTime() : Date.now() + 1000 * 60 * 60 * 24;
+    this.configuration = {
+      expires,
+      data: await res.json(),
+    };
+  }
+
+  private async fetchJwk(): Promise<void> {
+    const configuration = await this.getConfiguration();
+    const res = await fetch(configuration.jwks_uri);
+    const expires = res.headers.has("expires") ? new Date(res.headers.get("expires")).getTime() : Date.now() + 1000 * 60 * 60 * 24;
+    this.jwk = {
+      expires,
+      data: (await res.json())['keys'],
+    };
+  }
+
+  private deinit() {
+    this.discoveryUri = undefined;
+    this.configuration = undefined;
+    this.jwk = undefined;
+  }
+
+  private decodeIdToken(idToken: string): OidcIdToken {
+    return this.jwtService.decode(idToken) as OidcIdToken;
   }
 
 }
