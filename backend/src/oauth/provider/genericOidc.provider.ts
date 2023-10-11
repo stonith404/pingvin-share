@@ -9,23 +9,24 @@ import { OAuthProvider } from "./oauthProvider.interface";
 import { OAuthSignInDto } from "../dto/oauthSignIn.dto";
 
 export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
+  protected redirectUri: string;
+  protected discoveryUri: string;
   private configuration: OidcConfigurationCache;
   private jwk: OidcJwkCache;
-  private redirectUri: string;
 
   protected constructor(
     protected name: string,
-    protected discoveryUri: string,
     protected keyOfConfigUpdateEvents: string[],
     protected config: ConfigService,
     protected jwtService: JwtService,
     protected cache: Cache,
   ) {
+    this.discoveryUri = this.getDiscoveryUri();
     this.redirectUri = `${this.config.get("general.appUrl")}/api/oauth/callback/${this.name}`;
-    this.config.addListener("update", (key: string, _: unknown) => {
+    this.config.addListener("update", (key: string, value: string) => {
       if (this.keyOfConfigUpdateEvents.includes(key)) {
         this.deinit();
-        this.discoveryUri = this.config.get(`oauth.${this.name}-discoveryUri`);
+        this.discoveryUri = this.getDiscoveryUri();
       }
     });
   }
@@ -99,6 +100,8 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
       providerUsername: idTokenData.name,
     }
   }
+
+  protected abstract getDiscoveryUri(): string;
 
   private async fetchConfiguration(): Promise<void> {
     const res = await fetch(this.discoveryUri);
