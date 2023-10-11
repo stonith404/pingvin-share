@@ -12,12 +12,15 @@ export class OidcProvider extends GenericOidcProvider {
               @Inject(CACHE_MANAGER) protected cache: Cache) {
     super(
       "oidc",
-      config.get("oauth.oidc-discoveryUri"),
       ["oauth.oidc-enabled", "oauth.oidc-discoveryUri"],
       config,
       jwtService,
       cache,
     );
+  }
+
+  protected getDiscoveryUri(): string {
+    return this.config.get("oauth.oidc-discoveryUri");
   }
 
 }

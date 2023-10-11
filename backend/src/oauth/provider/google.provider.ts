@@ -10,11 +10,14 @@ export class GoogleProvider extends GenericOidcProvider {
   constructor(config: ConfigService, jwtService: JwtService, @Inject(CACHE_MANAGER) cache: Cache) {
     super(
       "google",
-      "https://accounts.google.com/.well-known/openid-configuration",
       ["oauth.google-enabled"],
       config,
       jwtService,
       cache,
     );
+  }
+
+  protected getDiscoveryUri(): string {
+    return "https://accounts.google.com/.well-known/openid-configuration";
   }
 }
