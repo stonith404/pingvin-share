@@ -83,18 +83,8 @@ Please note that ClamAV needs a lot of [ressources](https://docs.clamav.net/manu
 
 To enable social login, you need to create an OAuth app for each provider you want to use.
 
-##### GitHub
-
-Please follow the [official guide](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app).
-
-Redirect URL: `http(s)://<your-domain>/api/oauth/github/callback`
-
 
 ##### Google
-
-Please follow the [official guide](https://developers.google.com/identity/protocols/oauth2/web-server#prerequisites) to complete the prerequisites part.
-
-Redirect URL: `http(s)://<your-domain>/api/oauth/google/callback`
 
 ### Additional resources
 

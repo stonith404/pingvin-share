@@ -154,6 +154,36 @@ const configVariables: ConfigVariables = {
       defaultValue: "",
       obscured: true,
     },
+    "microsoft-enabled": {
+      type: "boolean",
+      defaultValue: "false",
+    },
+    "microsoft-tenant": {
+      type: "string",
+      defaultValue: "common",
+    },
+    "microsoft-clientId": {
+      type: "string",
+      defaultValue: "",
+    },
+    "microsoft-clientSecret": {
+      type: "string",
+      defaultValue: "",
+      obscured: true,
+    },
+    "discord-enabled": {
+      type: "boolean",
+      defaultValue: "false",
+    },
+    "discord-clientId": {
+      type: "string",
+      defaultValue: "",
+    },
+    "discord-clientSecret": {
+      type: "string",
+      defaultValue: "",
+      obscured: true,
+    },
     "oidc-enabled": {
       type: "boolean",
       defaultValue: "false",

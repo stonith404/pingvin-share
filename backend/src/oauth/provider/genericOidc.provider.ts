@@ -23,7 +23,7 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
   ) {
     this.discoveryUri = this.getDiscoveryUri();
     this.redirectUri = `${this.config.get("general.appUrl")}/api/oauth/callback/${this.name}`;
-    this.config.addListener("update", (key: string, value: string) => {
+    this.config.addListener("update", (key: string, _: unknown) => {
       if (this.keyOfConfigUpdateEvents.includes(key)) {
         this.deinit();
         this.discoveryUri = this.getDiscoveryUri();
