@@ -77,12 +77,9 @@ ClamAV is used to scan shares for malicious files and remove them if found.
 
 Please note that ClamAV needs a lot of [ressources](https://docs.clamav.net/manual/Installing/Docker.html#memory-ram-requirements).
 
-#### Social Login
+#### OAuth 2 Login
 
-To enable social login, you need to create an OAuth app for each provider you want to use.
-
-
-##### Google
+View the [OAuth 2 guide](/docs/oauth2-guide.md) for more information.
 
 ### Additional resources
 

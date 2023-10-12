@@ -6,7 +6,7 @@
 - [Google](#google)
 - [Microsoft](#microsoft)
 - [Discord](#discord)
-- [OpenID Connect](#oidc)
+- [OpenID Connect](#openid-connect)
 
 ### GitHub
 
