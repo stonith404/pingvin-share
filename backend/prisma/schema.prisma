@@ -14,7 +14,7 @@ model User {
 
   username String  @unique
   email    String  @unique
-  password String
+  password String?
   isAdmin  Boolean @default(false)
 
   shares        Share[]

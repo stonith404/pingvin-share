@@ -20,33 +20,35 @@ import { TbInfoCircle } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 import * as yup from "yup";
 import useConfig from "../../hooks/config.hook";
-import useTranslate from "../../hooks/useTranslate.hook";
 import useUser from "../../hooks/user.hook";
+import useTranslate from "../../hooks/useTranslate.hook";
 import authService from "../../services/auth.service";
-import toast from "../../utils/toast.util";
 import { getOAuthIcon, getOAuthUrl } from "../../utils/oauth.util";
+import toast from "../../utils/toast.util";
 
 const useStyles = createStyles((theme) => ({
   or: {
     "&:before": {
       content: "''",
       flex: 1,
-      display: 'block',
+      display: "block",
       borderTopWidth: 1,
-      borderTopStyle: 'solid',
-      borderColor: theme.colorScheme === "dark"
-        ? theme.colors.dark[3]
-        : theme.colors.gray[4],
+      borderTopStyle: "solid",
+      borderColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[3]
+          : theme.colors.gray[4],
     },
     "&:after": {
       content: "''",
       flex: 1,
-      display: 'block',
+      display: "block",
       borderTopWidth: 1,
-      borderTopStyle: 'solid',
-      borderColor: theme.colorScheme === "dark"
-        ? theme.colors.dark[3]
-        : theme.colors.gray[4],
+      borderTopStyle: "solid",
+      borderColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[3]
+          : theme.colors.gray[4],
     },
   },
 }));
@@ -124,7 +126,7 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
   const getAvailableOAuth = async () => {
     const oauth = await authService.getAvailableOAuth();
     setOAuth(oauth.data);
-  }
+  };
 
   React.useEffect(() => {
     getAvailableOAuth().catch(toast.axiosError);
@@ -185,21 +187,21 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
         {oauth.length > 0 && (
           <Stack mt="xl">
             <Group align="center" className={classes.or}>
-              <Text>{t('signIn.oauth.or')}</Text>
+              <Text>{t("signIn.oauth.or")}</Text>
             </Group>
             <Group position="center">
-              {
-                oauth.map((provider) =>
-                  <Button
-                    component="a"
-                    target="_blank"
-                    title={t(`signIn.oauth.${provider}`)}
-                    href={getOAuthUrl(config.get('general.appUrl'), provider)}
-                    variant="light">
-                    {getOAuthIcon(provider)}
-                  </Button>
-                )
-              }
+              {oauth.map((provider) => (
+                <Button
+                  key={provider}
+                  component="a"
+                  target="_blank"
+                  title={t(`signIn.oauth.${provider}`)}
+                  href={getOAuthUrl(config.get("general.appUrl"), provider)}
+                  variant="light"
+                >
+                  {getOAuthIcon(provider)}
+                </Button>
+              ))}
             </Group>
           </Stack>
         )}

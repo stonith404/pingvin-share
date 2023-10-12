@@ -87,6 +87,7 @@ export default {
   "account.card.password.title": "Password",
   "account.card.password.old": "Old password",
   "account.card.password.new": "New password",
+  "account.card.password.noPasswordSet": "You don't have a password set. If you want to sign in with email and password you need to set a password.",
   "account.notify.password.success": "Password changed successfully",
 
   "account.card.oauth.title": "Social login",
