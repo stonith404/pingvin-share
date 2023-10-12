@@ -125,7 +125,7 @@ export class OAuthService {
     const result = await this.auth.signUp({
       email: user.email,
       username: nanoid().replaceAll("-", ''),
-      password: nanoid(),
+      password: null,
     });
 
     await this.prisma.oAuthUser.create({

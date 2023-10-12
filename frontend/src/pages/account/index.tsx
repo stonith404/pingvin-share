@@ -13,6 +13,7 @@ import {
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
+import { useEffect, useState } from "react";
 import { Tb2Fa } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 import * as yup from "yup";
@@ -20,21 +21,23 @@ import Meta from "../../components/Meta";
 import LanguagePicker from "../../components/account/LanguagePicker";
 import ThemeSwitcher from "../../components/account/ThemeSwitcher";
 import showEnableTotpModal from "../../components/account/showEnableTotpModal";
+import useConfig from "../../hooks/config.hook";
 import useTranslate from "../../hooks/useTranslate.hook";
 import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
 import userService from "../../services/user.service";
-import toast from "../../utils/toast.util";
-import { useEffect, useState } from "react";
-import useConfig from "../../hooks/config.hook";
 import { getOAuthIcon, getOAuthUrl, unlinkOAuth } from "../../utils/oauth.util";
+import toast from "../../utils/toast.util";
 
 const Account = () => {
   const [oauth, setOAuth] = useState<string[]>([]);
-  const [oauthStatus, setOAuthStatus] = useState<Record<string, {
-    provider: string;
-    providerUsername: string;
-  }> | null>(null);
+  const [oauthStatus, setOAuthStatus] = useState<Record<
+    string,
+    {
+      provider: string;
+      providerUsername: string;
+    }
+  > | null>(null);
 
   const { user, refreshUser } = useUser();
   const modals = useModals();
@@ -52,7 +55,7 @@ const Account = () => {
         username: yup
           .string()
           .min(3, t("common.error.too-short", { length: 3 })),
-      }),
+      })
     ),
   });
 
@@ -63,15 +66,19 @@ const Account = () => {
     },
     validate: yupResolver(
       yup.object().shape({
-        oldPassword: yup
-          .string()
-          .min(8, t("common.error.too-short", { length: 8 }))
-          .required(t("common.error.field-required")),
+        oldPassword: yup.string().when([], {
+          is: () => !!user?.hasPassword,
+          then: (schema) =>
+            schema
+              .min(8, t("common.error.too-short", { length: 8 }))
+              .required(t("common.error.field-required")),
+          otherwise: (schema) => schema.notRequired(),
+        }),
         password: yup
           .string()
           .min(8, t("common.error.too-short", { length: 8 }))
           .required(t("common.error.field-required")),
-      }),
+      })
     ),
   });
 
@@ -85,7 +92,7 @@ const Account = () => {
           .string()
           .min(8, t("common.error.too-short", { length: 8 }))
           .required(t("common.error.field-required")),
-      }),
+      })
     ),
   });
 
@@ -102,20 +109,26 @@ const Account = () => {
           .min(6, t("common.error.exact-length", { length: 6 }))
           .max(6, t("common.error.exact-length", { length: 6 }))
           .matches(/^[0-9]+$/, { message: t("common.error.invalid-number") }),
-      }),
+      })
     ),
   });
 
   const refreshOAuthStatus = () => {
-    authService.getOAuthStatus().then(data => {
-      setOAuthStatus(data.data);
-    }).catch(toast.axiosError);
-  }
+    authService
+      .getOAuthStatus()
+      .then((data) => {
+        setOAuthStatus(data.data);
+      })
+      .catch(toast.axiosError);
+  };
 
   useEffect(() => {
-    authService.getAvailableOAuth().then(data => {
-      setOAuth(data.data);
-    }).catch(toast.axiosError);
+    authService
+      .getAvailableOAuth()
+      .then((data) => {
+        setOAuth(data.data);
+      })
+      .catch(toast.axiosError);
     refreshOAuthStatus();
   }, []);
 
@@ -138,7 +151,7 @@ const Account = () => {
                   email: values.email,
                 })
                 .then(() => toast.success(t("account.notify.info.success")))
-                .catch(toast.axiosError),
+                .catch(toast.axiosError)
             )}
           >
             <Stack>
@@ -166,18 +179,25 @@ const Account = () => {
             onSubmit={passwordForm.onSubmit((values) =>
               authService
                 .updatePassword(values.oldPassword, values.password)
-                .then(() => {
+                .then(async () => {
+                  refreshUser();
                   toast.success(t("account.notify.password.success"));
                   passwordForm.reset();
                 })
-                .catch(toast.axiosError),
+                .catch(toast.axiosError)
             )}
           >
             <Stack>
-              <PasswordInput
-                label={t("account.card.password.old")}
-                {...passwordForm.getInputProps("oldPassword")}
-              />
+              {user?.hasPassword ? (
+                <PasswordInput
+                  label={t("account.card.password.old")}
+                  {...passwordForm.getInputProps("oldPassword")}
+                />
+              ) : (
+                <Text size="sm" color="dimmed">
+                  <FormattedMessage id="account.card.password.noPasswordSet" />
+                </Text>
+              )}
               <PasswordInput
                 label={t("account.card.password.new")}
                 {...passwordForm.getInputProps("password")}
@@ -198,53 +218,68 @@ const Account = () => {
 
             <Tabs defaultValue={oauth[0] || ""}>
               <Tabs.List>
-                {
-                  oauth.map(provider =>
-                    <Tabs.Tab value={provider} icon={getOAuthIcon(provider)} key={provider}>
-                      {t(`account.card.oauth.${provider}`)}
-                    </Tabs.Tab>
-                  )
-                }
+                {oauth.map((provider) => (
+                  <Tabs.Tab
+                    value={provider}
+                    icon={getOAuthIcon(provider)}
+                    key={provider}
+                  >
+                    {t(`account.card.oauth.${provider}`)}
+                  </Tabs.Tab>
+                ))}
               </Tabs.List>
-              {
-                oauth.map(provider =>
-                  <Tabs.Panel value={provider} pt="xs" key={provider}>
-                    <Group position="apart">
-                      <Text>{
-                        oauthStatus?.[provider]
-                          ? oauthStatus[provider].providerUsername
-                          : t('account.card.oauth.unlinked')
-                      }</Text>
-                      {
-                        oauthStatus?.[provider]
-                          ? <Button onClick={() => {
-                            modals.openConfirmModal({
-                              title: t("account.modal.unlink.title"),
-                              children: <Text>{t("account.modal.unlink.description")}</Text>,
-                              labels: {
-                                confirm: t("account.card.oauth.unlink"),
-                                cancel: t("common.button.cancel"),
-                              },
-                              confirmProps: { color: "red" },
-                              onConfirm: () => {
-                                unlinkOAuth(provider).then(() => {
-                                  toast.success(t("account.notify.oauth.unlinked.success"));
+              {oauth.map((provider) => (
+                <Tabs.Panel value={provider} pt="xs" key={provider}>
+                  <Group position="apart">
+                    <Text>
+                      {oauthStatus?.[provider]
+                        ? oauthStatus[provider].providerUsername
+                        : t("account.card.oauth.unlinked")}
+                    </Text>
+                    {oauthStatus?.[provider] ? (
+                      <Button
+                        onClick={() => {
+                          modals.openConfirmModal({
+                            title: t("account.modal.unlink.title"),
+                            children: (
+                              <Text>
+                                {t("account.modal.unlink.description")}
+                              </Text>
+                            ),
+                            labels: {
+                              confirm: t("account.card.oauth.unlink"),
+                              cancel: t("common.button.cancel"),
+                            },
+                            confirmProps: { color: "red" },
+                            onConfirm: () => {
+                              unlinkOAuth(provider)
+                                .then(() => {
+                                  toast.success(
+                                    t("account.notify.oauth.unlinked.success")
+                                  );
                                   refreshOAuthStatus();
-                                }).catch(toast.axiosError);
-                              },
-                            });
-                          }}>{
-                            t('account.card.oauth.unlink')
-                          }</Button>
-                          : <Button
-                            component="a"
-                            href={getOAuthUrl(config.get('general.appUrl'), provider)}
-                          >{t('account.card.oauth.link')}</Button>
-                      }
-                    </Group>
-                  </Tabs.Panel>
-                )
-              }
+                                })
+                                .catch(toast.axiosError);
+                            },
+                          });
+                        }}
+                      >
+                        {t("account.card.oauth.unlink")}
+                      </Button>
+                    ) : (
+                      <Button
+                        component="a"
+                        href={getOAuthUrl(
+                          config.get("general.appUrl"),
+                          provider
+                        )}
+                      >
+                        {t("account.card.oauth.link")}
+                      </Button>
+                    )}
+                  </Group>
+                </Tabs.Panel>
+              ))}
             </Tabs>
           </Paper>
         )}
@@ -279,7 +314,7 @@ const Account = () => {
                     <Stack>
                       <PasswordInput
                         description={t(
-                          "account.card.security.totp.disable.description",
+                          "account.card.security.totp.disable.description"
                         )}
                         label={t("account.card.password.title")}
                         {...disableTotpForm.getInputProps("password")}
@@ -321,7 +356,7 @@ const Account = () => {
                       <PasswordInput
                         label={t("account.card.password.title")}
                         description={t(
-                          "account.card.security.totp.enable.description",
+                          "account.card.security.totp.enable.description"
                         )}
                         {...enableTotpForm.getInputProps("password")}
                       />

@@ -16,6 +16,9 @@ export class UserDTO {
   @IsEmail()
   email: string;
 
+  @Expose()
+  hasPassword: boolean;
+
   @MinLength(8)
   password: string;
 

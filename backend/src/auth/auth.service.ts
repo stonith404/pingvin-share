@@ -8,13 +8,13 @@ import { JwtService } from "@nestjs/jwt";
 import { User } from "@prisma/client";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import * as argon from "argon2";
+import { Request, Response } from "express";
 import * as moment from "moment";
 import { ConfigService } from "src/config/config.service";
 import { EmailService } from "src/email/email.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { AuthRegisterDTO } from "./dto/authRegister.dto";
 import { AuthSignInDTO } from "./dto/authSignIn.dto";
-import { Request, Response } from "express";
 
 @Injectable()
 export class AuthService {
@@ -22,7 +22,7 @@ export class AuthService {
     private prisma: PrismaService,
     private jwtService: JwtService,
     private config: ConfigService,
-    private emailService: EmailService,
+    private emailService: EmailService
   ) {}
 
   async signUp(dto: AuthRegisterDTO) {
@@ -40,7 +40,7 @@ export class AuthService {
       });
 
       const { refreshToken, refreshTokenId } = await this.createRefreshToken(
-        user.id,
+        user.id
       );
       const accessToken = await this.createAccessToken(user, refreshTokenId);
 
@@ -50,7 +50,7 @@ export class AuthService {
         if (e.code == "P2002") {
           const duplicatedField: string = e.meta.target[0];
           throw new BadRequestException(
-            `A user with this ${duplicatedField} already exists`,
+            `A user with this ${duplicatedField} already exists`
           );
         }
       }
@@ -76,14 +76,17 @@ export class AuthService {
   async generateToken(user: User, isOAuth = false) {
     // TODO: Make all old loginTokens invalid when a new one is created
     // Check if the user has TOTP enabled
-    if (user.totpVerified && !(isOAuth && this.config.get('oauth.ignoreTotp'))) {
+    if (
+      user.totpVerified &&
+      !(isOAuth && this.config.get("oauth.ignoreTotp"))
+    ) {
       const loginToken = await this.createLoginToken(user.id);
 
       return { loginToken };
     }
 
     const { refreshToken, refreshTokenId } = await this.createRefreshToken(
-      user.id,
+      user.id
     );
     const accessToken = await this.createAccessToken(user, refreshTokenId);
 
@@ -134,9 +137,11 @@ export class AuthService {
     });
   }
 
-  async updatePassword(user: User, oldPassword: string, newPassword: string) {
-    if (!(await argon.verify(user.password, oldPassword)))
-      throw new ForbiddenException("Invalid password");
+  async updatePassword(user: User, newPassword: string, oldPassword?: string) {
+    const isPasswordValid =
+      !user.password || !(await argon.verify(user.password, oldPassword));
+
+    if (!isPasswordValid) throw new ForbiddenException("Invalid password");
 
     const hash = await argon.hash(newPassword);
 
@@ -163,7 +168,7 @@ export class AuthService {
       {
         expiresIn: "15min",
         secret: this.config.get("internal.jwtSecret"),
-      },
+      }
     );
   }
 
@@ -194,7 +199,7 @@ export class AuthService {
 
     return this.createAccessToken(
       refreshTokenMetaData.user,
-      refreshTokenMetaData.id,
+      refreshTokenMetaData.id
     );
   }
 
@@ -219,7 +224,7 @@ export class AuthService {
   addTokensToResponse(
     response: Response,
     refreshToken?: string,
-    accessToken?: string,
+    accessToken?: string
   ) {
     if (accessToken)
       response.cookie("access_token", accessToken, { sameSite: "lax" });
@@ -238,9 +243,12 @@ export class AuthService {
   async getIdIfLogin(request: Request): Promise<string | false> {
     if (!request.cookies.access_token) return false;
     try {
-      const payload = await this.jwtService.verifyAsync(request.cookies.access_token, {
-        secret: this.config.get("internal.jwtSecret"),
-      });
+      const payload = await this.jwtService.verifyAsync(
+        request.cookies.access_token,
+        {
+          secret: this.config.get("internal.jwtSecret"),
+        }
+      );
       return payload.sub;
     } catch (e) {
       return false;
