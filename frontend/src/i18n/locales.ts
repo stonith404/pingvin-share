@@ -11,6 +11,7 @@ import russian from "./translations/ru-RU";
 import serbian from "./translations/sr-SP";
 import thai from "./translations/th-TH";
 import chineseSimplified from "./translations/zh-CN";
+import polish from "./translations/pl-PL";
 
 export const LOCALES = {
   ENGLISH: {
@@ -77,5 +78,10 @@ export const LOCALES = {
     name: "日本語",
     code: "ja-JP",
     messages: japanese,
+  },
+  POLISH: {
+    name: "Polski",
+    code: "pl-PL",
+    messages: polish,
   },
 };
