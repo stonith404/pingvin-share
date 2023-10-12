@@ -24,6 +24,12 @@ Redirect URL: `https://<your-domain>/api/oauth/callback/google`
 
 ### Microsoft
 
+Please follow
+the [official guide](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app)
+to register an application.
+
+Redirect URL: `https://<your-domain>/api/oauth/callback/microsoft`
+
 ### Discord
 
 Create an application on [Discord Developer Portal](https://discord.com/developers/applications).
@@ -70,12 +76,12 @@ const configVariables: ConfigVariables = {
 
 #### OpenID Connect
 
-If your provider support OpenID connect, it's extremely easy to
+If your provider supports OpenID connect, it's extremely easy to
 extend [`GenericOidcProvider`](../backend/src/oauth/provider/genericOidc.provider.ts) to add a new OpenID Connect
 provider.
 
 The [Google provider](../backend/src/oauth/provider/google.provider.ts)
-and [Microsoft provider](../backend/src/oauth/provider/microsoft.provider.ts) are good examples:
+and [Microsoft provider](../backend/src/oauth/provider/microsoft.provider.ts) are good examples.
 
 Here are some discovery URIs for popular providers:
 
@@ -89,16 +95,17 @@ Here are some discovery URIs for popular providers:
 
 #### OAuth 2
 
-If your provider only support arbitrary OAuth 2, you can
+If your provider only supports OAuth 2, you can
 implement [`OAuthProvider`](../backend/src/oauth/provider/oauthProvider.interface.ts) interface to add a new OAuth 2
 provider.
 
 The [GitHub provider](../backend/src/oauth/provider/github.provider.ts)
-and [Discord provider](../backend/src/oauth/provider/discord.provider.ts) are good examples:
+and [Discord provider](../backend/src/oauth/provider/discord.provider.ts) are good examples.
 
 ### 3. Register provider
 
-Register your provider in [`OAuthModule`](../backend/src/oauth/oauth.module.ts) and [`OAuthSignInDto`](../backend/src/oauth/dto/oauthSignIn.dto.ts):
+Register your provider in [`OAuthModule`](../backend/src/oauth/oauth.module.ts)
+and [`OAuthSignInDto`](../backend/src/oauth/dto/oauthSignIn.dto.ts):
 
 ```ts
 @Module({
@@ -124,7 +131,8 @@ export class OAuthModule {
 
 ```ts
 export interface OAuthSignInDto {
-  provider: 'github' | 'google' | 'oidc' | 'discord';
+  provider: 'github' | 'google' | 'microsoft' | 'discord' | 'oidc' /* your provider*/
+  ;
   providerId: string;
   providerUsername: string;
   email: string;
@@ -144,7 +152,7 @@ const getOAuthIcon = (provider: string) => {
 }
 ```
 
-### 5. (Optional) Add i18n text
+### 5. Add i18n text
 
 Add keys below to your i18n text in [locale file](../frontend/src/i18n/translations/en-US.ts).
 
