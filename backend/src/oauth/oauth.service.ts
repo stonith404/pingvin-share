@@ -3,8 +3,8 @@ import { PrismaService } from "../prisma/prisma.service";
 import { ConfigService } from "../config/config.service";
 import { AuthService } from "../auth/auth.service";
 import { User } from "@prisma/client";
-import { nanoid } from "nanoid";
 import { OAuthSignInDto } from "./dto/oauthSignIn.dto";
+import { nanoid } from "nanoid";
 
 
 @Injectable()
@@ -93,6 +93,23 @@ export class OAuthService {
     }
   }
 
+  private async getAvailableUsername(email: string) {
+    // only remove + and - from email for now (maybe not enough)
+    let username = email.split("@")[0].replace(/[+-]/g, "").substring(0, 20);
+    while (true) {
+      const user = await this.prisma.user.findFirst({
+        where: {
+          username: username,
+        },
+      });
+      if (user) {
+        username = username + "_" + nanoid(10).replaceAll("-", "");
+      } else {
+        return username;
+      }
+    }
+  }
+
   private async signUp(user: OAuthSignInDto) {
     // register
     if (!this.config.get("oauth.allowRegistration")) {
@@ -121,10 +138,9 @@ export class OAuthService {
       return this.auth.generateToken(existingUser, true);
     }
 
-    // TODO user registered by oauth will hava a random password and username
     const result = await this.auth.signUp({
       email: user.email,
-      username: nanoid().replaceAll("-", ''),
+      username: await this.getAvailableUsername(user.email),
       password: null,
     });
 

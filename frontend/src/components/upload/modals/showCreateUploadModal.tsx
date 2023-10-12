@@ -40,7 +40,7 @@ const showCreateUploadModal = (
     enableEmailRecepients: boolean;
   },
   files: FileUpload[],
-  uploadCallback: (createShare: CreateShare, files: FileUpload[]) => void
+  uploadCallback: (createShare: CreateShare, files: FileUpload[]) => void,
 ) => {
   const t = translateOutsideContext();
 
@@ -137,7 +137,7 @@ const CreateUploadModalBody = ({
                   maxViews: values.maxViews,
                 },
               },
-              files
+              files,
             );
             modals.closeAll();
           }
@@ -160,7 +160,7 @@ const CreateUploadModalBody = ({
                   "link",
                   Buffer.from(Math.random().toString(), "utf8")
                     .toString("base64")
-                    .substr(10, 7)
+                    .substr(10, 7),
                 )
               }
             >
@@ -259,7 +259,7 @@ const CreateUploadModalBody = ({
                     neverExpires: t("upload.modal.completed.never-expires"),
                     expiresOn: t("upload.modal.completed.expires-on"),
                   },
-                  form
+                  form,
                 )}
               </Text>
             </>
@@ -274,7 +274,7 @@ const CreateUploadModalBody = ({
                   <Textarea
                     variant="filled"
                     placeholder={t(
-                      "upload.modal.accordion.description.placeholder"
+                      "upload.modal.accordion.description.placeholder",
                     )}
                     {...form.getInputProps("description")}
                   />
@@ -298,7 +298,7 @@ const CreateUploadModalBody = ({
                       if (!query.match(/^\S+@\S+\.\S+$/)) {
                         form.setFieldError(
                           "recipients",
-                          t("upload.modal.accordion.email.invalid-email")
+                          t("upload.modal.accordion.email.invalid-email"),
                         );
                       } else {
                         form.setFieldError("recipients", null);
@@ -324,7 +324,7 @@ const CreateUploadModalBody = ({
                   <PasswordInput
                     variant="filled"
                     placeholder={t(
-                      "upload.modal.accordion.security.password.placeholder"
+                      "upload.modal.accordion.security.password.placeholder",
                     )}
                     label={t("upload.modal.accordion.security.password.label")}
                     autoComplete="off"
@@ -335,7 +335,7 @@ const CreateUploadModalBody = ({
                     type="number"
                     variant="filled"
                     placeholder={t(
-                      "upload.modal.accordion.security.max-views.placeholder"
+                      "upload.modal.accordion.security.max-views.placeholder",
                     )}
                     label={t("upload.modal.accordion.security.max-views.label")}
                     {...form.getInputProps("maxViews")}

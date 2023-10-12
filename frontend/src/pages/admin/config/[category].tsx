@@ -24,7 +24,7 @@ import CenterLoader from "../../../components/core/CenterLoader";
 import useConfig from "../../../hooks/config.hook";
 import configService from "../../../services/config.service";
 import { AdminConfig, UpdateConfig } from "../../../types/config.type";
-import { camelToKebab, } from "../../../utils/string.util";
+import { camelToKebab } from "../../../utils/string.util";
 import toast from "../../../utils/toast.util";
 import useTranslate from "../../../hooks/useTranslate.hook";
 
