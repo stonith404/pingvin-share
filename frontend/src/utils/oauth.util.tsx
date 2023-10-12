@@ -1,6 +1,5 @@
-import { SiGithub, SiGoogle, SiOpenid } from "react-icons/si";
+import { SiDiscord, SiGithub, SiGoogle, SiMicrosoft, SiOpenid } from "react-icons/si";
 import React from "react";
-import toast from "./toast.util";
 import api from "../services/api.service";
 
 const getOAuthUrl = (appUrl: string, provider: string) => {
@@ -10,7 +9,9 @@ const getOAuthUrl = (appUrl: string, provider: string) => {
 const getOAuthIcon = (provider: string) => {
   return {
     'google': <SiGoogle />,
+    'microsoft': <SiMicrosoft />,
     'github': <SiGithub />,
+    'discord': <SiDiscord />,
     'oidc': <SiOpenid />,
   }[provider];
 }

@@ -6,6 +6,8 @@ import { GitHubProvider } from "./provider/github.provider";
 import { GoogleProvider } from "./provider/google.provider";
 import { OAuthProvider } from "./provider/oauthProvider.interface";
 import { OidcProvider } from "./provider/oidc.provider";
+import { DiscordProvider } from "./provider/discord.provider";
+import { MicrosoftProvider } from "./provider/microsoft.provider";
 
 @Module({
   controllers: [OAuthController],
@@ -13,17 +15,27 @@ import { OidcProvider } from "./provider/oidc.provider";
     OAuthService,
     GitHubProvider,
     GoogleProvider,
+    MicrosoftProvider,
+    DiscordProvider,
     OidcProvider,
     {
       provide: "OAUTH_PROVIDERS",
-      useFactory(github: GitHubProvider, google: GoogleProvider, oidc: OidcProvider): Record<string, OAuthProvider<unknown>> {
+      useFactory(
+        github: GitHubProvider,
+        google: GoogleProvider,
+        microsoft: MicrosoftProvider,
+        discord: DiscordProvider,
+        oidc: OidcProvider,
+      ): Record<string, OAuthProvider<unknown>> {
         return {
           github,
           google,
+          microsoft,
+          discord,
           oidc,
         };
       },
-      inject: [GitHubProvider, GoogleProvider, OidcProvider],
+      inject: [GitHubProvider, GoogleProvider, MicrosoftProvider, DiscordProvider, OidcProvider],
     },
     {
       provide: "OAUTH_PLATFORMS",
