@@ -60,7 +60,7 @@ const Dropzone = ({
             toast.error(
               t("upload.dropzone.notify.file-too-big", {
                 maxSize: byteToHumanSizeString(maxShareSize),
-              })
+              }),
             );
           } else {
             files = files.map((newFile) => {
