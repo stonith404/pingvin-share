@@ -90,7 +90,7 @@ export default {
   // /account/shares
   "account.shares.title": "Meine Freigaben",
   "account.shares.title.empty": "Es ist so leer hier 👀",
-  "account.shares.description.empty": "Du hast keine Freigaben eingerichtet.",
+  "account.shares.description.empty": "Du hast keine Freigaben erstellt.",
   "account.shares.button.create": "Erstelle eine",
   "account.shares.info.title": "Teile deine Information",
   "account.shares.table.id": "ID",
