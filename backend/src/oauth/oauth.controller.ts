@@ -55,10 +55,17 @@ export class OAuthController {
       await this.oauthService.link(id, provider, user.providerId, user.providerUsername);
       response.redirect(this.config.get("general.appUrl") + '/account');
     } else {
-      const token = await this.oauthService.signIn(user);
-      // TODO totp
-      this.authService.addTokensToResponse(response, token.refreshToken, token.accessToken);
-      response.redirect(this.config.get("general.appUrl"));
+      const token: {
+        accessToken?: string,
+        refreshToken?: string,
+        loginToken?: string
+      } = await this.oauthService.signIn(user);
+      if (token.accessToken) {
+        this.authService.addTokensToResponse(response, token.refreshToken, token.accessToken);
+        response.redirect(this.config.get("general.appUrl"));
+      } else {
+        response.redirect(this.config.get("general.appUrl") + `/auth/totp/${token.loginToken}`);
+      }
     }
   }
 

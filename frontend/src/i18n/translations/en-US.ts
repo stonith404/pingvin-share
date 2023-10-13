@@ -64,6 +64,11 @@ export default {
 
   // END /auth/signup
 
+  // /auth/totp
+  "totp.title": "TOTP Authentication",
+
+  // END /auth/totp
+
   // /auth/reset-password
   "resetPassword.title": "Forgot your password?",
   "resetPassword.description": "Enter your email to reset your password.",
