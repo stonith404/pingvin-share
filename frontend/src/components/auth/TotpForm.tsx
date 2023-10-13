@@ -1,4 +1,11 @@
-import { Button, Container, Group, Paper, PinInput, Title } from "@mantine/core";
+import {
+  Button,
+  Container,
+  Group,
+  Paper,
+  PinInput,
+  Title,
+} from "@mantine/core";
 import { FormattedMessage } from "react-intl";
 import * as yup from "yup";
 import useTranslate from "../../hooks/useTranslate.hook";
@@ -34,16 +41,19 @@ function TotpForm({ redirectPath }: { redirectPath: string }) {
     if (loading) return;
     setLoading(true);
     try {
-      await authService.signInTotp(form.values.code, router.query.loginToken as string);
+      await authService.signInTotp(
+        form.values.code,
+        router.query.loginToken as string,
+      );
       await refreshUser();
       await router.replace(redirectPath);
     } catch (e) {
       toast.axiosError(e);
-      form.setFieldError('code', "error");
+      form.setFieldError("code", "error");
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
     <Container size={420} my={40}>
@@ -53,10 +63,17 @@ function TotpForm({ redirectPath }: { redirectPath: string }) {
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
         <form onSubmit={form.onSubmit(onSubmit)}>
           <Group position="center">
-            <PinInput length={6} oneTimeCode aria-label="One time code" autoFocus={true}
-                      onComplete={onSubmit}
-                      {...form.getInputProps("code")} />
-            <Button mt="md" type="submit" loading={loading}>Login</Button>
+            <PinInput
+              length={6}
+              oneTimeCode
+              aria-label="One time code"
+              autoFocus={true}
+              onComplete={onSubmit}
+              {...form.getInputProps("code")}
+            />
+            <Button mt="md" type="submit" loading={loading}>
+              Login
+            </Button>
           </Group>
         </form>
       </Paper>

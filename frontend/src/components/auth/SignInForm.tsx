@@ -91,7 +91,9 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
             title: t("signIn.notify.totp-required.title"),
             message: t("signIn.notify.totp-required.description"),
           });
-          router.push(`/auth/totp/${response.data["loginToken"]}?redirect=${redirectPath}`);
+          router.push(
+            `/auth/totp/${response.data["loginToken"]}?redirect=${redirectPath}`,
+          );
         } else {
           await refreshUser();
           router.replace(redirectPath);

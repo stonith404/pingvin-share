@@ -5,12 +5,12 @@ import { useRouter } from "next/router";
 
 const Totp = () => {
   const t = useTranslate();
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <>
       <Meta title={t("totp.title")} />
-      <TotpForm redirectPath={router.query.redirect as string || "/upload"} />
+      <TotpForm redirectPath={(router.query.redirect as string) || "/upload"} />
     </>
   );
 };
