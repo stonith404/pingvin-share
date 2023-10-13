@@ -15,24 +15,14 @@ const signIn = async (emailOrUsername: string, password: string) => {
   return response;
 };
 
-const signInTotp = async (
-  emailOrUsername: string,
-  password: string,
+const signInTotp = (
   totp: string,
   loginToken: string,
 ) => {
-  const emailOrUsernameBody = emailOrUsername.includes("@")
-    ? { email: emailOrUsername }
-    : { username: emailOrUsername };
-
-  const response = await api.post("auth/signIn/totp", {
-    ...emailOrUsernameBody,
-    password,
+  return api.post("auth/signIn/totp", {
     totp,
     loginToken,
   });
-
-  return response;
 };
 
 const signUp = async (email: string, username: string, password: string) => {

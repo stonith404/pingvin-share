@@ -60,8 +60,6 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
   const { refreshUser } = useUser();
   const { classes } = useStyles();
 
-  const [showTotp, setShowTotp] = React.useState(false);
-  const [loginToken, setLoginToken] = React.useState("");
   const [oauth, setOAuth] = React.useState<string[]>([]);
 
   const validationSchema = yup.object().shape({
@@ -76,7 +74,6 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
     initialValues: {
       emailOrUsername: "",
       password: "",
-      totp: "",
     },
     validate: yupResolver(validationSchema),
   });
@@ -87,7 +84,6 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
       .then(async (response) => {
         if (response.data["loginToken"]) {
           // Prompt the user to enter their totp code
-          setShowTotp(true);
           showNotification({
             icon: <TbInfoCircle />,
             color: "blue",
@@ -95,7 +91,7 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
             title: t("signIn.notify.totp-required.title"),
             message: t("signIn.notify.totp-required.description"),
           });
-          setLoginToken(response.data["loginToken"]);
+          router.push(`/auth/totp/${response.data["loginToken"]}?redirect=${redirectPath}`);
         } else {
           await refreshUser();
           router.replace(redirectPath);
@@ -104,24 +100,24 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
       .catch(toast.axiosError);
   };
 
-  const signInTotp = (email: string, password: string, totp: string) => {
-    authService
-      .signInTotp(email, password, totp, loginToken)
-      .then(async () => {
-        await refreshUser();
-        router.replace(redirectPath);
-      })
-      .catch((error) => {
-        if (error?.response?.data?.error == "share_password_required") {
-          toast.axiosError(error);
-          // Refresh the page to start over
-          window.location.reload();
-        }
-
-        toast.axiosError(error);
-        form.setValues({ totp: "" });
-      });
-  };
+  // const signInTotp = (email: string, password: string, totp: string) => {
+  //   authService
+  //     .signInTotp(email, password, totp, loginToken)
+  //     .then(async () => {
+  //       await refreshUser();
+  //       router.replace(redirectPath);
+  //     })
+  //     .catch((error) => {
+  //       if (error?.response?.data?.error == "share_password_required") {
+  //         toast.axiosError(error);
+  //         // Refresh the page to start over
+  //         window.location.reload();
+  //       }
+  //
+  //       toast.axiosError(error);
+  //       form.setValues({ totp: "" });
+  //     });
+  // };
 
   const getAvailableOAuth = async () => {
     const oauth = await authService.getAvailableOAuth();
@@ -148,9 +144,7 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
         <form
           onSubmit={form.onSubmit((values) => {
-            if (showTotp)
-              signInTotp(values.emailOrUsername, values.password, values.totp);
-            else signIn(values.emailOrUsername, values.password);
+            signIn(values.emailOrUsername, values.password);
           })}
         >
           <TextInput
@@ -164,15 +158,6 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
             mt="md"
             {...form.getInputProps("password")}
           />
-          {showTotp && (
-            <TextInput
-              variant="filled"
-              label={t("account.modal.totp.code")}
-              placeholder="******"
-              mt="md"
-              {...form.getInputProps("totp")}
-            />
-          )}
           {config.get("smtp.enabled") && (
             <Group position="right" mt="xs">
               <Anchor component={Link} href="/auth/resetPassword" size="xs">
