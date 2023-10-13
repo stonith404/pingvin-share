@@ -15,10 +15,7 @@ const signIn = async (emailOrUsername: string, password: string) => {
   return response;
 };
 
-const signInTotp = (
-  totp: string,
-  loginToken: string,
-) => {
+const signInTotp = (totp: string, loginToken: string) => {
   return api.post("auth/signIn/totp", {
     totp,
     loginToken,

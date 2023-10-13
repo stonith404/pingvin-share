@@ -77,7 +77,7 @@ export class AuthController {
   }
 
   @Post("signIn/totp")
-  // @Throttle(10, 5 * 60)
+  @Throttle(10, 5 * 60)
   @HttpCode(200)
   async signInTotp(
     @Body() dto: AuthSignInTotpDTO,
