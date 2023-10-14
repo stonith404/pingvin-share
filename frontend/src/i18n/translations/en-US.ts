@@ -66,6 +66,7 @@ export default {
 
   // /auth/totp
   "totp.title": "TOTP Authentication",
+  "totp.button.signIn": "Sign in",
 
   // END /auth/totp
 

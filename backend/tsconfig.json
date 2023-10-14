@@ -8,7 +8,7 @@
     "allowSyntheticDefaultImports": true,
     "target": "es2021",
     "lib": [
-      "ES2021",
+      "ES2021"
     ],
     "sourceMap": true,
     "outDir": "./dist",

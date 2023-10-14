@@ -2,11 +2,11 @@ import { BadRequestException, ForbiddenException, Injectable, UnauthorizedExcept
 import { User } from "@prisma/client";
 import * as argon from "argon2";
 import { authenticator, totp } from "otplib";
+import * as qrcode from "qrcode-svg";
 import { ConfigService } from "src/config/config.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { AuthService } from "./auth.service";
 import { AuthSignInTotpDTO } from "./dto/authSignInTotp.dto";
-import QRCode from "qrcode-svg";
 
 @Injectable()
 export class AuthTotpService {
@@ -18,18 +18,6 @@ export class AuthTotpService {
   }
 
   async signInTotp(dto: AuthSignInTotpDTO) {
-    // if (!dto.email && !dto.username)
-    //   throw new BadRequestException("Email or username is required");
-    //
-    // const user = await this.prisma.user.findFirst({
-    //   where: {
-    //     OR: [{ email: dto.email }, { username: dto.username }],
-    //   },
-    // });
-    //
-    // if (!user || !(await argon.verify(user.password, dto.password)))
-    //   throw new UnauthorizedException("Wrong email or password");
-
     const token = await this.prisma.loginToken.findFirst({
       where: {
         token: dto.loginToken,
@@ -39,7 +27,6 @@ export class AuthTotpService {
       },
     });
 
-    // if (!token || token.userId != user.id || token.used)
     if (!token || token.used)
       throw new UnauthorizedException("Invalid login token");
 
@@ -52,8 +39,6 @@ export class AuthTotpService {
     if (!totpSecret) {
       throw new BadRequestException("TOTP is not enabled");
     }
-
-    // const expected = authenticator.generate(totpSecret);
 
     if (!authenticator.check(dto.totp, totpSecret)) {
       throw new BadRequestException("Invalid code");
@@ -107,7 +92,7 @@ export class AuthTotpService {
     });
 
     // TODO: Maybe we should generate the QR code on the client rather than the server?
-    const qrCode = new QRCode({
+    const qrCode = new qrcode({
       content: otpURL,
       container: "svg-viewbox",
       join: true,

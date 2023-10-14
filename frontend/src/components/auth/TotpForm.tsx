@@ -72,7 +72,7 @@ function TotpForm({ redirectPath }: { redirectPath: string }) {
               {...form.getInputProps("code")}
             />
             <Button mt="md" type="submit" loading={loading}>
-              Login
+              {t("totp.button.signIn")}
             </Button>
           </Group>
         </form>
