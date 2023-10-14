@@ -92,7 +92,9 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
             message: t("signIn.notify.totp-required.description"),
           });
           router.push(
-            `/auth/totp/${response.data["loginToken"]}?redirect=${redirectPath}`,
+            `/auth/totp/${
+              response.data["loginToken"]
+            }?redirect=${encodeURIComponent(redirectPath)}`,
           );
         } else {
           await refreshUser();
@@ -101,25 +103,6 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
       })
       .catch(toast.axiosError);
   };
-
-  // const signInTotp = (email: string, password: string, totp: string) => {
-  //   authService
-  //     .signInTotp(email, password, totp, loginToken)
-  //     .then(async () => {
-  //       await refreshUser();
-  //       router.replace(redirectPath);
-  //     })
-  //     .catch((error) => {
-  //       if (error?.response?.data?.error == "share_password_required") {
-  //         toast.axiosError(error);
-  //         // Refresh the page to start over
-  //         window.location.reload();
-  //       }
-  //
-  //       toast.axiosError(error);
-  //       form.setValues({ totp: "" });
-  //     });
-  // };
 
   const getAvailableOAuth = async () => {
     const oauth = await authService.getAvailableOAuth();
