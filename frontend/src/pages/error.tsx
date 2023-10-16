@@ -22,7 +22,7 @@ export default function Error() {
           {t("error.description")}
         </Title>
         <Text mt="xl" size="lg">
-          {t(`error.msg.${router.query.msg || "default"}`)}
+          {t(`${router.query.msg || "default"}`)}
         </Text>
         <Button
           mt="xl"
