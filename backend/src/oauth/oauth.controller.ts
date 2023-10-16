@@ -1,4 +1,4 @@
-import { Controller, Get, Inject, Param, Post, Query, Req, Res, UseGuards } from '@nestjs/common';
+import { Controller, Get, Inject, Param, Post, Query, Req, Res, UseFilters, UseGuards } from '@nestjs/common';
 import { OAuthService } from "./oauth.service";
 import { Request, Response } from "express";
 import { JwtGuard } from "../auth/guard/jwt.guard";
@@ -11,6 +11,7 @@ import { OAuthGuard } from "./guard/oauth.guard";
 import { AuthService } from "../auth/auth.service";
 import { ProviderGuard } from "./guard/provider.guard";
 import { OAuthProvider } from "./provider/oauthProvider.interface";
+import { OAuthExceptionFilter } from "./filter/oauth-exception.filter";
 
 @Controller('oauth')
 export class OAuthController {
@@ -44,6 +45,7 @@ export class OAuthController {
 
   @Get("callback/:provider")
   @UseGuards(ProviderGuard, OAuthGuard)
+  @UseFilters(OAuthExceptionFilter)
   async callback(@Param("provider") provider: string,
                  @Query() query: OAuthCallbackDto,
                  @Req() request: Request,
