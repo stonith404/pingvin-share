@@ -16,7 +16,7 @@ export default function Error() {
   const router = useRouter();
   return (
     <>
-      <Meta title="Error" />
+      <Meta title={t("error.title")} />
       <Stack align="center">
         <Title order={3} className={classes.title}>
           {t("error.description")}
