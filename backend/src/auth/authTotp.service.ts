@@ -1,4 +1,9 @@
-import { BadRequestException, ForbiddenException, Injectable, UnauthorizedException, } from "@nestjs/common";
+import {
+  BadRequestException,
+  ForbiddenException,
+  Injectable,
+  UnauthorizedException,
+} from "@nestjs/common";
 import { User } from "@prisma/client";
 import * as argon from "argon2";
 import { authenticator, totp } from "otplib";
@@ -14,8 +19,7 @@ export class AuthTotpService {
     private prisma: PrismaService,
     private authService: AuthService,
     private config: ConfigService,
-  ) {
-  }
+  ) {}
 
   async signInTotp(dto: AuthSignInTotpDTO) {
     const token = await this.prisma.loginToken.findFirst({

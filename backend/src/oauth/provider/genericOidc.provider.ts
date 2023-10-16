@@ -22,7 +22,9 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
     protected cache: Cache,
   ) {
     this.discoveryUri = this.getDiscoveryUri();
-    this.redirectUri = `${this.config.get("general.appUrl")}/api/oauth/callback/${this.name}`;
+    this.redirectUri = `${this.config.get(
+      "general.appUrl",
+    )}/api/oauth/callback/${this.name}`;
     this.config.addListener("update", (key: string, _: unknown) => {
       if (this.keyOfConfigUpdateEvents.includes(key)) {
         this.deinit();
@@ -50,16 +52,24 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
     const endpoint = configuration.authorization_endpoint;
 
     const nonce = nanoid();
-    await this.cache.set(`oauth-${this.name}-nonce-${state}`, nonce, 1000 * 60 * 5);
-
-    return endpoint + "?" + new URLSearchParams({
-      client_id: this.config.get(`oauth.${this.name}-clientId`),
-      response_type: "code",
-      scope: "openid profile email",
-      redirect_uri: this.redirectUri,
-      state,
+    await this.cache.set(
+      `oauth-${this.name}-nonce-${state}`,
       nonce,
-    }).toString();
+      1000 * 60 * 5,
+    );
+
+    return (
+      endpoint +
+      "?" +
+      new URLSearchParams({
+        client_id: this.config.get(`oauth.${this.name}-clientId`),
+        response_type: "code",
+        scope: "openid profile email",
+        redirect_uri: this.redirectUri,
+        state,
+        nonce,
+      }).toString()
+    );
   }
 
   async getToken(code: string): Promise<OidcToken> {
@@ -98,14 +108,16 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
       email: idTokenData.email,
       providerId: idTokenData.sub,
       providerUsername: idTokenData.name,
-    }
+    };
   }
 
   protected abstract getDiscoveryUri(): string;
 
   private async fetchConfiguration(): Promise<void> {
     const res = await fetch(this.discoveryUri);
-    const expires = res.headers.has("expires") ? new Date(res.headers.get("expires")).getTime() : Date.now() + 1000 * 60 * 60 * 24;
+    const expires = res.headers.has("expires")
+      ? new Date(res.headers.get("expires")).getTime()
+      : Date.now() + 1000 * 60 * 60 * 24;
     this.configuration = {
       expires,
       data: await res.json(),
@@ -115,10 +127,12 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
   private async fetchJwk(): Promise<void> {
     const configuration = await this.getConfiguration();
     const res = await fetch(configuration.jwks_uri);
-    const expires = res.headers.has("expires") ? new Date(res.headers.get("expires")).getTime() : Date.now() + 1000 * 60 * 60 * 24;
+    const expires = res.headers.has("expires")
+      ? new Date(res.headers.get("expires")).getTime()
+      : Date.now() + 1000 * 60 * 60 * 24;
     this.jwk = {
       expires,
-      data: (await res.json())['keys'],
+      data: (await res.json())["keys"],
     };
   }
 
@@ -131,12 +145,11 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
   private decodeIdToken(idToken: string): OidcIdToken {
     return this.jwtService.decode(idToken) as OidcIdToken;
   }
-
 }
 
 export interface OidcCache<T> {
-  expires: number,
-  data: T,
+  expires: number;
+  data: T;
 }
 
 export interface OidcConfiguration {

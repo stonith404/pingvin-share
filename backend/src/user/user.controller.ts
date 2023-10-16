@@ -37,7 +37,7 @@ export class UserController {
   @UseGuards(JwtGuard)
   async updateCurrentUser(
     @GetUser() user: User,
-    @Body() data: UpdateOwnUserDTO
+    @Body() data: UpdateOwnUserDTO,
   ) {
     return new UserDTO().from(await this.userService.update(user.id, data));
   }
@@ -46,7 +46,7 @@ export class UserController {
   @UseGuards(JwtGuard)
   async deleteCurrentUser(
     @GetUser() user: User,
-    @Res({ passthrough: true }) response: Response
+    @Res({ passthrough: true }) response: Response,
   ) {
     response.cookie("access_token", "accessToken", { maxAge: -1 });
     response.cookie("refresh_token", "", {

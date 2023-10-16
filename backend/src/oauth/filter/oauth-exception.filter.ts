@@ -24,7 +24,7 @@ export class OAuthExceptionFilter implements ExceptionFilter {
 
     const url = new URL(`${this.config.get("general.appUrl")}/error`);
     url.searchParams.set("redirect", "/auth/signIn");
-    
+
     if (unknownError || knownError) {
       const msg = knownError ? `error.msg.${knownError}` : unknownError;
       url.searchParams.set("msg", msg);

@@ -7,29 +7,36 @@ import { BadRequestException, Injectable } from "@nestjs/common";
 
 @Injectable()
 export class GitHubProvider implements OAuthProvider<GitHubToken> {
-  constructor(private config: ConfigService) {
-  }
+  constructor(private config: ConfigService) {}
 
   getAuthEndpoint(state: string): Promise<string> {
-    return Promise.resolve("https://github.com/login/oauth/authorize?" + new URLSearchParams({
-      client_id: this.config.get("oauth.github-clientId"),
-      redirect_uri: this.config.get("general.appUrl") + "/api/oauth/callback/github",
-      state: state,
-      scope: "user:email",
-    }).toString());
+    return Promise.resolve(
+      "https://github.com/login/oauth/authorize?" +
+        new URLSearchParams({
+          client_id: this.config.get("oauth.github-clientId"),
+          redirect_uri:
+            this.config.get("general.appUrl") + "/api/oauth/callback/github",
+          state: state,
+          scope: "user:email",
+        }).toString(),
+    );
   }
 
   async getToken(code: string): Promise<GitHubToken> {
-    const res = await fetch("https://github.com/login/oauth/access_token?" + new URLSearchParams({
-      client_id: this.config.get("oauth.github-clientId"),
-      client_secret: this.config.get("oauth.github-clientSecret"),
-      code,
-    }).toString(), {
-      method: "post",
-      headers: {
-        "Accept": "application/json",
-      }
-    });
+    const res = await fetch(
+      "https://github.com/login/oauth/access_token?" +
+        new URLSearchParams({
+          client_id: this.config.get("oauth.github-clientId"),
+          client_secret: this.config.get("oauth.github-clientSecret"),
+          code,
+        }).toString(),
+      {
+        method: "post",
+        headers: {
+          Accept: "application/json",
+        },
+      },
+    );
     return await res.json();
   }
 
@@ -55,25 +62,26 @@ export class GitHubProvider implements OAuthProvider<GitHubToken> {
   private async getGitHubUser(token: GitHubToken): Promise<GitHubUser> {
     const res = await fetch("https://api.github.com/user", {
       headers: {
-        "Accept": "application/vnd.github+json",
-        "Authorization": `${token.token_type} ${token.access_token}`,
-      }
+        Accept: "application/vnd.github+json",
+        Authorization: `${token.token_type} ${token.access_token}`,
+      },
     });
-    return await res.json() as GitHubUser;
+    return (await res.json()) as GitHubUser;
   }
 
-  private async getGitHubEmail(token: GitHubToken): Promise<string | undefined> {
+  private async getGitHubEmail(
+    token: GitHubToken,
+  ): Promise<string | undefined> {
     const res = await fetch("https://api.github.com/user/public_emails", {
       headers: {
-        "Accept": "application/vnd.github+json",
-        "Authorization": `${token.token_type} ${token.access_token}`,
-      }
+        Accept: "application/vnd.github+json",
+        Authorization: `${token.token_type} ${token.access_token}`,
+      },
     });
-    const emails = await res.json() as GitHubEmail[];
-    return emails.find(e => e.primary && e.verified)?.email;
+    const emails = (await res.json()) as GitHubEmail[];
+    return emails.find((e) => e.primary && e.verified)?.email;
   }
 }
-
 
 interface GitHubToken {
   access_token: string;
@@ -90,7 +98,7 @@ interface GitHubUser {
 
 interface GitHubEmail {
   email: string;
-  primary: boolean,
-  verified: boolean,
-  visibility: string | null
+  primary: boolean;
+  verified: boolean;
+  visibility: string | null;
 }

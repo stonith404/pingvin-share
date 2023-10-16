@@ -1,6 +1,6 @@
-import { Module } from '@nestjs/common';
-import { OAuthController } from './oauth.controller';
-import { OAuthService } from './oauth.service';
+import { Module } from "@nestjs/common";
+import { OAuthController } from "./oauth.controller";
+import { OAuthService } from "./oauth.service";
 import { AuthModule } from "../auth/auth.module";
 import { GitHubProvider } from "./provider/github.provider";
 import { GoogleProvider } from "./provider/google.provider";
@@ -35,7 +35,13 @@ import { MicrosoftProvider } from "./provider/microsoft.provider";
           oidc,
         };
       },
-      inject: [GitHubProvider, GoogleProvider, MicrosoftProvider, DiscordProvider, OidcProvider],
+      inject: [
+        GitHubProvider,
+        GoogleProvider,
+        MicrosoftProvider,
+        DiscordProvider,
+        OidcProvider,
+      ],
     },
     {
       provide: "OAUTH_PLATFORMS",
@@ -47,5 +53,4 @@ import { MicrosoftProvider } from "./provider/microsoft.provider";
   ],
   imports: [AuthModule],
 })
-export class OAuthModule {
-}
+export class OAuthModule {}

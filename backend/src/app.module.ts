@@ -15,7 +15,7 @@ import { UserModule } from "./user/user.module";
 import { ClamScanModule } from "./clamscan/clamscan.module";
 import { ReverseShareModule } from "./reverseShare/reverseShare.module";
 import { AppController } from "./app.controller";
-import { OAuthModule } from './oauth/oauth.module';
+import { OAuthModule } from "./oauth/oauth.module";
 import { CacheModule } from "@nestjs/cache-manager";
 
 @Module({
@@ -40,9 +40,7 @@ import { CacheModule } from "@nestjs/cache-manager";
       isGlobal: true,
     }),
   ],
-  controllers: [
-    AppController,
-  ],
+  controllers: [AppController],
   providers: [
     {
       provide: APP_GUARD,

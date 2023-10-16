@@ -7,14 +7,12 @@ import { Cache } from "cache-manager";
 
 @Injectable()
 export class GoogleProvider extends GenericOidcProvider {
-  constructor(config: ConfigService, jwtService: JwtService, @Inject(CACHE_MANAGER) cache: Cache) {
-    super(
-      "google",
-      ["oauth.google-enabled"],
-      config,
-      jwtService,
-      cache,
-    );
+  constructor(
+    config: ConfigService,
+    jwtService: JwtService,
+    @Inject(CACHE_MANAGER) cache: Cache,
+  ) {
+    super("google", ["oauth.google-enabled"], config, jwtService, cache);
   }
 
   protected getDiscoveryUri(): string {

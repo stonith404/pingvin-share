@@ -7,9 +7,11 @@ import { Cache } from "cache-manager";
 
 @Injectable()
 export class OidcProvider extends GenericOidcProvider {
-  constructor(config: ConfigService,
-              jwtService: JwtService,
-              @Inject(CACHE_MANAGER) protected cache: Cache) {
+  constructor(
+    config: ConfigService,
+    jwtService: JwtService,
+    @Inject(CACHE_MANAGER) protected cache: Cache,
+  ) {
     super(
       "oidc",
       ["oauth.oidc-enabled", "oauth.oidc-discoveryUri"],
@@ -22,5 +24,4 @@ export class OidcProvider extends GenericOidcProvider {
   protected getDiscoveryUri(): string {
     return this.config.get("oauth.oidc-discoveryUri");
   }
-
 }

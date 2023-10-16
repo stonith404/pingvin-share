@@ -22,7 +22,7 @@ export class AuthService {
     private prisma: PrismaService,
     private jwtService: JwtService,
     private config: ConfigService,
-    private emailService: EmailService
+    private emailService: EmailService,
   ) {}
 
   async signUp(dto: AuthRegisterDTO) {
@@ -40,7 +40,7 @@ export class AuthService {
       });
 
       const { refreshToken, refreshTokenId } = await this.createRefreshToken(
-        user.id
+        user.id,
       );
       const accessToken = await this.createAccessToken(user, refreshTokenId);
 
@@ -50,7 +50,7 @@ export class AuthService {
         if (e.code == "P2002") {
           const duplicatedField: string = e.meta.target[0];
           throw new BadRequestException(
-            `A user with this ${duplicatedField} already exists`
+            `A user with this ${duplicatedField} already exists`,
           );
         }
       }
@@ -86,7 +86,7 @@ export class AuthService {
     }
 
     const { refreshToken, refreshTokenId } = await this.createRefreshToken(
-      user.id
+      user.id,
     );
     const accessToken = await this.createAccessToken(user, refreshTokenId);
 
@@ -168,7 +168,7 @@ export class AuthService {
       {
         expiresIn: "15min",
         secret: this.config.get("internal.jwtSecret"),
-      }
+      },
     );
   }
 
@@ -199,7 +199,7 @@ export class AuthService {
 
     return this.createAccessToken(
       refreshTokenMetaData.user,
-      refreshTokenMetaData.id
+      refreshTokenMetaData.id,
     );
   }
 
@@ -224,7 +224,7 @@ export class AuthService {
   addTokensToResponse(
     response: Response,
     refreshToken?: string,
-    accessToken?: string
+    accessToken?: string,
   ) {
     if (accessToken)
       response.cookie("access_token", accessToken, { sameSite: "lax" });
@@ -247,7 +247,7 @@ export class AuthService {
         request.cookies.access_token,
         {
           secret: this.config.get("internal.jwtSecret"),
-        }
+        },
       );
       return payload.sub;
     } catch {

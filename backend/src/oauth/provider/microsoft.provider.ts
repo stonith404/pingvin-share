@@ -7,7 +7,6 @@ import { Cache } from "cache-manager";
 
 @Injectable()
 export class MicrosoftProvider extends GenericOidcProvider {
-
   constructor(
     config: ConfigService,
     jwtService: JwtService,
@@ -23,6 +22,8 @@ export class MicrosoftProvider extends GenericOidcProvider {
   }
 
   protected getDiscoveryUri(): string {
-    return `https://login.microsoftonline.com/${this.config.get("oauth.microsoft-tenant")}/v2.0/.well-known/openid-configuration`;
+    return `https://login.microsoftonline.com/${this.config.get(
+      "oauth.microsoft-tenant",
+    )}/v2.0/.well-known/openid-configuration`;
   }
 }

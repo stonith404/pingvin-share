@@ -11,7 +11,7 @@ import { JwtStrategy } from "./strategy/jwt.strategy";
     JwtModule.register({
       global: true,
     }),
-    EmailModule
+    EmailModule,
   ],
   controllers: [AuthController],
   providers: [AuthService, AuthTotpService, JwtStrategy],

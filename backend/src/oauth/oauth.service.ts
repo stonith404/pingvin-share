@@ -1,11 +1,15 @@
-import { BadRequestException, Inject, Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Inject,
+  Injectable,
+  UnauthorizedException,
+} from "@nestjs/common";
 import { PrismaService } from "../prisma/prisma.service";
 import { ConfigService } from "../config/config.service";
 import { AuthService } from "../auth/auth.service";
 import { User } from "@prisma/client";
 import { OAuthSignInDto } from "./dto/oauthSignIn.dto";
 import { nanoid } from "nanoid";
-
 
 @Injectable()
 export class OAuthService {
@@ -14,12 +18,14 @@ export class OAuthService {
     private config: ConfigService,
     private auth: AuthService,
     @Inject("OAUTH_PLATFORMS") private platforms: string[],
-  ) {
-  }
+  ) {}
 
   available(): string[] {
     return this.platforms
-      .map(platform => [platform, this.config.get(`oauth.${platform}-enabled`)])
+      .map((platform) => [
+        platform,
+        this.config.get(`oauth.${platform}-enabled`),
+      ])
       .filter(([_, enabled]) => enabled)
       .map(([platform, _]) => platform);
   }
@@ -34,7 +40,7 @@ export class OAuthService {
         userId: user.id,
       },
     });
-    return Object.fromEntries(oauthUsers.map(u => [u.provider, u]));
+    return Object.fromEntries(oauthUsers.map((u) => [u.provider, u]));
   }
 
   async signIn(user: OAuthSignInDto) {
@@ -44,7 +50,7 @@ export class OAuthService {
         providerUserId: user.providerId,
       },
       include: {
-        user: true
+        user: true,
       },
     });
     if (oauthUser) {
@@ -54,15 +60,22 @@ export class OAuthService {
     return this.signUp(user);
   }
 
-  async link(userId: string, provider: string, providerUserId: string, providerUsername: string) {
+  async link(
+    userId: string,
+    provider: string,
+    providerUserId: string,
+    providerUsername: string,
+  ) {
     const oauthUser = await this.prisma.oAuthUser.findFirst({
       where: {
         provider,
         providerUserId,
-      }
+      },
     });
     if (oauthUser) {
-      throw new BadRequestException(`This ${provider} account has been linked to another account`);
+      throw new BadRequestException(
+        `This ${provider} account has been linked to another account`,
+      );
     }
 
     await this.prisma.oAuthUser.create({
@@ -71,7 +84,7 @@ export class OAuthService {
         provider,
         providerUsername,
         providerUserId,
-      }
+      },
     });
   }
 
@@ -89,7 +102,9 @@ export class OAuthService {
         },
       });
     } else {
-      throw new BadRequestException(`You have not linked your account to ${provider} yet.`);
+      throw new BadRequestException(
+        `You have not linked your account to ${provider} yet.`,
+      );
     }
   }
 
@@ -123,7 +138,7 @@ export class OAuthService {
     const existingUser: User = await this.prisma.user.findFirst({
       where: {
         email: user.email,
-      }
+      },
     });
 
     if (existingUser) {

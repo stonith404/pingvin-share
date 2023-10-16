@@ -7,22 +7,31 @@ import fetch from "node-fetch";
 
 @Injectable()
 export class DiscordProvider implements OAuthProvider<DiscordToken> {
-
-  constructor(private config: ConfigService) {
-  }
+  constructor(private config: ConfigService) {}
 
   getAuthEndpoint(state: string): Promise<string> {
-    return Promise.resolve("https://discord.com/api/oauth2/authorize?" + new URLSearchParams({
-      client_id: this.config.get("oauth.discord-clientId"),
-      redirect_uri: this.config.get("general.appUrl") + "/api/oauth/callback/discord",
-      response_type: "code",
-      state: state,
-      scope: "identify email",
-    }).toString());
+    return Promise.resolve(
+      "https://discord.com/api/oauth2/authorize?" +
+        new URLSearchParams({
+          client_id: this.config.get("oauth.discord-clientId"),
+          redirect_uri:
+            this.config.get("general.appUrl") + "/api/oauth/callback/discord",
+          response_type: "code",
+          state: state,
+          scope: "identify email",
+        }).toString(),
+    );
   }
 
   private getAuthorizationHeader() {
-    return "Basic " + Buffer.from(this.config.get("oauth.discord-clientId") + ":" + this.config.get("oauth.discord-clientSecret")).toString("base64");
+    return (
+      "Basic " +
+      Buffer.from(
+        this.config.get("oauth.discord-clientId") +
+          ":" +
+          this.config.get("oauth.discord-clientSecret"),
+      ).toString("base64")
+    );
   }
 
   async getToken(code: string): Promise<DiscordToken> {
@@ -30,12 +39,13 @@ export class DiscordProvider implements OAuthProvider<DiscordToken> {
       method: "post",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": this.getAuthorizationHeader(),
+        Authorization: this.getAuthorizationHeader(),
       },
       body: new URLSearchParams({
         code,
         grant_type: "authorization_code",
-        redirect_uri: this.config.get("general.appUrl") + "/api/oauth/callback/discord",
+        redirect_uri:
+          this.config.get("general.appUrl") + "/api/oauth/callback/discord",
       }),
     });
     return await res.json();
@@ -46,11 +56,11 @@ export class DiscordProvider implements OAuthProvider<DiscordToken> {
     const res = await fetch("https://discord.com/api/v10/user/@me", {
       method: "post",
       headers: {
-        "Accept": "application/json",
-        "Authorization": `${token.token_type} ${token.access_token}`,
+        Accept: "application/json",
+        Authorization: `${token.token_type} ${token.access_token}`,
       },
     });
-    const user = await res.json() as DiscordUser;
+    const user = (await res.json()) as DiscordUser;
     if (user.verified === false) {
       throw new BadRequestException("Unverified account.");
     }
@@ -62,7 +72,6 @@ export class DiscordProvider implements OAuthProvider<DiscordToken> {
       email: user.email,
     };
   }
-
 }
 
 interface DiscordToken {
