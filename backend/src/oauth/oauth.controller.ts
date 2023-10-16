@@ -1,17 +1,17 @@
 import { Controller, Get, Inject, Param, Post, Query, Req, Res, UseFilters, UseGuards } from '@nestjs/common';
-import { OAuthService } from "./oauth.service";
+import { User } from "@prisma/client";
 import { Request, Response } from "express";
+import { nanoid } from "nanoid";
+import { AuthService } from "../auth/auth.service";
+import { GetUser } from "../auth/decorator/getUser.decorator";
 import { JwtGuard } from "../auth/guard/jwt.guard";
 import { ConfigService } from "../config/config.service";
-import { nanoid } from "nanoid";
-import { GetUser } from "../auth/decorator/getUser.decorator";
-import { User } from "@prisma/client";
 import { OAuthCallbackDto } from "./dto/oauthCallback.dto";
-import { OAuthGuard } from "./guard/oauth.guard";
-import { AuthService } from "../auth/auth.service";
-import { ProviderGuard } from "./guard/provider.guard";
-import { OAuthProvider } from "./provider/oauthProvider.interface";
 import { OAuthExceptionFilter } from "./filter/oauth-exception.filter";
+import { OAuthGuard } from "./guard/oauth.guard";
+import { ProviderGuard } from "./guard/provider.guard";
+import { OAuthService } from "./oauth.service";
+import { OAuthProvider } from "./provider/oauthProvider.interface";
 
 @Controller('oauth')
 export class OAuthController {
@@ -51,7 +51,7 @@ export class OAuthController {
                  @Req() request: Request,
                  @Res({ passthrough: true }) response: Response) {
     const user = await this.providers[provider].getUserInfo(query);
-    const id = await this.authService.getIdIfLogin(request);
+    const id = await this.authService.getIdOfCurrentUser(request);
 
     if (id) {
       await this.oauthService.link(id, provider, user.providerId, user.providerUsername);

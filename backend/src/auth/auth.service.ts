@@ -1,4 +1,9 @@
-import { BadRequestException, ForbiddenException, Injectable, UnauthorizedException, } from "@nestjs/common";
+import {
+  BadRequestException,
+  ForbiddenException,
+  Injectable,
+  UnauthorizedException,
+} from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { User } from "@prisma/client";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
@@ -233,10 +238,10 @@ export class AuthService {
   }
 
   /**
-   * Returns the user id if the user is logged in, false otherwise
+   * Returns the user id if the user is logged in, null otherwise
    */
-  async getIdIfLogin(request: Request): Promise<string | false> {
-    if (!request.cookies.access_token) return false;
+  async getIdOfCurrentUser(request: Request): Promise<string | null> {
+    if (!request.cookies.access_token) return null;
     try {
       const payload = await this.jwtService.verifyAsync(
         request.cookies.access_token,
@@ -245,8 +250,8 @@ export class AuthService {
         }
       );
       return payload.sub;
-    } catch (e) {
-      return false;
+    } catch {
+      return null;
     }
   }
 }
