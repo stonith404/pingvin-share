@@ -478,6 +478,13 @@ export default {
   "404.description": "Oops this page doesn't exist.",
   "404.button.home": "Bring me back home",
 
+  // error
+  "error.title": "Error",
+  "error.description": "Oops!",
+  "error.button.back": "Go back",
+  "error.msg.default": "Something went wrong.",
+  "error.msg.access_denied": "Access denied, please try again.",
+
   // Common translations
   "common.button.save": "Save",
   "common.button.create": "Create",

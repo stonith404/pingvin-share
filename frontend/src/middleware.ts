@@ -14,7 +14,7 @@ export const config = {
 export async function middleware(request: NextRequest) {
   const routes = {
     unauthenticated: new Routes(["/auth/*", "/"]),
-    public: new Routes(["/share/*", "/s/*", "/upload/*"]),
+    public: new Routes(["/share/*", "/s/*", "/upload/*", "/error"]),
     admin: new Routes(["/admin/*"]),
     account: new Routes(["/account*"]),
     disabled: new Routes([]),
