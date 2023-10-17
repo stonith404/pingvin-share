@@ -18,11 +18,12 @@ import { GetUser } from "../auth/decorator/getUser.decorator";
 import { JwtGuard } from "../auth/guard/jwt.guard";
 import { ConfigService } from "../config/config.service";
 import { OAuthCallbackDto } from "./dto/oauthCallback.dto";
-import { OAuthExceptionFilter } from "./filter/oauth-exception.filter";
+import { ErrorPageExceptionFilter } from "./filter/errorPageException.filter";
 import { OAuthGuard } from "./guard/oauth.guard";
 import { ProviderGuard } from "./guard/provider.guard";
 import { OAuthService } from "./oauth.service";
 import { OAuthProvider } from "./provider/oauthProvider.interface";
+import { OAuthExceptionFilter } from "./filter/oauthException.filter";
 
 @Controller("oauth")
 export class OAuthController {
@@ -35,10 +36,7 @@ export class OAuthController {
   ) {}
 
   @Get("available")
-  available(
-    @Res({ passthrough: true }) response: Response,
-    @Req() request: Request,
-  ) {
+  available() {
     return this.oauthService.available();
   }
 
@@ -50,6 +48,7 @@ export class OAuthController {
 
   @Get("auth/:provider")
   @UseGuards(ProviderGuard)
+  @UseFilters(ErrorPageExceptionFilter)
   async auth(
     @Param("provider") provider: string,
     @Res({ passthrough: true }) response: Response,
@@ -62,7 +61,7 @@ export class OAuthController {
 
   @Get("callback/:provider")
   @UseGuards(ProviderGuard, OAuthGuard)
-  @UseFilters(OAuthExceptionFilter)
+  @UseFilters(ErrorPageExceptionFilter, OAuthExceptionFilter)
   async callback(
     @Param("provider") provider: string,
     @Query() query: OAuthCallbackDto,
@@ -103,6 +102,7 @@ export class OAuthController {
 
   @Post("unlink/:provider")
   @UseGuards(JwtGuard, ProviderGuard)
+  @UseFilters(ErrorPageExceptionFilter)
   unlink(@GetUser() user: User, @Param("provider") provider: string) {
     return this.oauthService.unlink(user, provider);
   }

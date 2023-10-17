@@ -1,15 +1,11 @@
-import {
-  BadRequestException,
-  Inject,
-  Injectable,
-  UnauthorizedException,
-} from "@nestjs/common";
-import { PrismaService } from "../prisma/prisma.service";
-import { ConfigService } from "../config/config.service";
-import { AuthService } from "../auth/auth.service";
+import { Inject, Injectable } from "@nestjs/common";
 import { User } from "@prisma/client";
-import { OAuthSignInDto } from "./dto/oauthSignIn.dto";
 import { nanoid } from "nanoid";
+import { AuthService } from "../auth/auth.service";
+import { ConfigService } from "../config/config.service";
+import { PrismaService } from "../prisma/prisma.service";
+import { OAuthSignInDto } from "./dto/oauthSignIn.dto";
+import { ErrorPageException } from "./exceptions/errorPage.exception";
 
 @Injectable()
 export class OAuthService {
@@ -73,9 +69,9 @@ export class OAuthService {
       },
     });
     if (oauthUser) {
-      throw new BadRequestException(
-        `This ${provider} account has been linked to another account`,
-      );
+      throw new ErrorPageException("already_linked", "/account", [
+        `provider_${provider}`,
+      ]);
     }
 
     await this.prisma.oAuthUser.create({
@@ -102,9 +98,7 @@ export class OAuthService {
         },
       });
     } else {
-      throw new BadRequestException(
-        `You have not linked your account to ${provider} yet.`,
-      );
+      throw new ErrorPageException("not_linked", "/account", [provider]);
     }
   }
 
@@ -128,11 +122,13 @@ export class OAuthService {
   private async signUp(user: OAuthSignInDto) {
     // register
     if (!this.config.get("oauth.allowRegistration")) {
-      throw new UnauthorizedException("No such user");
+      throw new ErrorPageException("no_user", "/auth/signIn");
     }
 
     if (!user.email) {
-      throw new BadRequestException("No email found");
+      throw new ErrorPageException("no_email", "/auth/signIn", [
+        `provider_${user.provider}`,
+      ]);
     }
 
     const existingUser: User = await this.prisma.user.findFirst({

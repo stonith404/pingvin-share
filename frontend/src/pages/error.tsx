@@ -3,6 +3,7 @@ import { Button, createStyles, Stack, Text, Title } from "@mantine/core";
 import Meta from "../components/Meta";
 import useTranslate from "../hooks/useTranslate.hook";
 import { useRouter } from "next/router";
+import { FormattedMessage } from "react-intl";
 
 const useStyle = createStyles({
   title: {
@@ -14,6 +15,13 @@ export default function Error() {
   const { classes } = useStyle();
   const t = useTranslate();
   const router = useRouter();
+
+  const params = router.query.params
+    ? (router.query.params as string).split(",").map((param) => {
+        return t(`error.param.${param}`);
+      })
+    : [];
+
   return (
     <>
       <Meta title={t("error.title")} />
@@ -22,7 +30,12 @@ export default function Error() {
           {t("error.description")}
         </Title>
         <Text mt="xl" size="lg">
-          {t(`${router.query.msg || "default"}`)}
+          <FormattedMessage
+            id={`error.msg.${router.query.error || "default"}`}
+            values={Object.fromEntries(
+              [params].map((value, key) => [key.toString(), value]),
+            )}
+          />
         </Text>
         <Button
           mt="xl"

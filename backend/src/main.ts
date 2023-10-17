@@ -7,6 +7,7 @@ import * as cookieParser from "cookie-parser";
 import * as fs from "fs";
 import { AppModule } from "./app.module";
 import { DATA_DIRECTORY } from "./constants";
+import { ErrorPageExceptionFilter } from "./oauth/filter/errorPageException.filter";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);

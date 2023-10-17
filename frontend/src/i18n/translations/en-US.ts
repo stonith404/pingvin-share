@@ -484,6 +484,15 @@ export default {
   "error.button.back": "Go back",
   "error.msg.default": "Something went wrong.",
   "error.msg.access_denied": "Access denied, please try again.",
+  "error.msg.no_user": "User not found.",
+  "error.msg.no_email": "Can't get email address from {0} account.",
+  "error.msg.already_linked": "This {0} account is already linked to another account.",
+  "error.msg.not_linked": "This {0} account haven't linked to any account yet.",
+  "error.param.provider_github": "GitHub",
+  "error.param.provider_google": "Google",
+  "error.param.provider_microsoft": "Microsoft",
+  "error.param.provider_discord": "Discord",
+  "error.param.provider_oidc": "OpenID",
 
   // Common translations
   "common.button.save": "Save",
