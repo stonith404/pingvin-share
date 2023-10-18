@@ -8,7 +8,17 @@ import { OAuthSignInDto } from "../dto/oauthSignIn.dto";
 export interface OAuthProvider<T, C = OAuthCallbackDto> {
   getAuthEndpoint(state: string): Promise<string>;
 
-  getToken(code: string): Promise<T>;
+  getToken(query: C): Promise<OAuthToken<T>>;
 
-  getUserInfo(query: C): Promise<OAuthSignInDto>;
+  getUserInfo(token: OAuthToken<T>, query: C): Promise<OAuthSignInDto>;
+}
+
+export interface OAuthToken<T> {
+  accessToken: string;
+  expiresIn?: number;
+  refreshToken?: string;
+  tokenType?: string;
+  scope?: string;
+  idToken?: string;
+  rawToken: T;
 }

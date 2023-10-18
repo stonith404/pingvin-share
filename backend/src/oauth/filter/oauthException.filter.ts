@@ -23,7 +23,7 @@ export class OAuthExceptionFilter implements ExceptionFilter {
     const key = this.errorKeys[request.query.error] || "default";
 
     const url = new URL(`${this.config.get("general.appUrl")}/error`);
-    url.searchParams.set("redirect", "/auth/signIn");
+    url.searchParams.set("redirect", "/account");
     url.searchParams.set("error", key);
 
     response.redirect(url.toString());

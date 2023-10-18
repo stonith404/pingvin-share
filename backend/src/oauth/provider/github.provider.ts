@@ -1,4 +1,4 @@
-import { OAuthProvider } from "./oauthProvider.interface";
+import { OAuthProvider, OAuthToken } from "./oauthProvider.interface";
 import { OAuthCallbackDto } from "../dto/oauthCallback.dto";
 import { OAuthSignInDto } from "../dto/oauthSignIn.dto";
 import { ConfigService } from "../../config/config.service";
@@ -22,13 +22,13 @@ export class GitHubProvider implements OAuthProvider<GitHubToken> {
     );
   }
 
-  async getToken(code: string): Promise<GitHubToken> {
+  async getToken(query: OAuthCallbackDto): Promise<OAuthToken<GitHubToken>> {
     const res = await fetch(
       "https://github.com/login/oauth/access_token?" +
         new URLSearchParams({
           client_id: this.config.get("oauth.github-clientId"),
           client_secret: this.config.get("oauth.github-clientSecret"),
-          code,
+          code: query.code,
         }).toString(),
       {
         method: "post",
@@ -37,11 +37,15 @@ export class GitHubProvider implements OAuthProvider<GitHubToken> {
         },
       },
     );
-    return await res.json();
+    const token: GitHubToken = await res.json();
+    return {
+      accessToken: token.access_token,
+      tokenType: token.token_type,
+      rawToken: token,
+    };
   }
 
-  async getUserInfo(query: OAuthCallbackDto): Promise<OAuthSignInDto> {
-    const token = await this.getToken(query.code);
+  async getUserInfo(token: OAuthToken<GitHubToken>): Promise<OAuthSignInDto> {
     const user = await this.getGitHubUser(token);
     if (!token.scope.includes("user:email")) {
       throw new BadRequestException("No email permission granted");
@@ -59,23 +63,25 @@ export class GitHubProvider implements OAuthProvider<GitHubToken> {
     };
   }
 
-  private async getGitHubUser(token: GitHubToken): Promise<GitHubUser> {
+  private async getGitHubUser(
+    token: OAuthToken<GitHubToken>,
+  ): Promise<GitHubUser> {
     const res = await fetch("https://api.github.com/user", {
       headers: {
         Accept: "application/vnd.github+json",
-        Authorization: `${token.token_type} ${token.access_token}`,
+        Authorization: `${token.tokenType ?? "Bearer"} ${token.accessToken}`,
       },
     });
     return (await res.json()) as GitHubUser;
   }
 
   private async getGitHubEmail(
-    token: GitHubToken,
+    token: OAuthToken<GitHubToken>,
   ): Promise<string | undefined> {
     const res = await fetch("https://api.github.com/user/public_emails", {
       headers: {
         Accept: "application/vnd.github+json",
-        Authorization: `${token.token_type} ${token.access_token}`,
+        Authorization: `${token.tokenType ?? "Bearer"} ${token.accessToken}`,
       },
     });
     const emails = (await res.json()) as GitHubEmail[];
@@ -83,20 +89,20 @@ export class GitHubProvider implements OAuthProvider<GitHubToken> {
   }
 }
 
-interface GitHubToken {
+export interface GitHubToken {
   access_token: string;
   token_type: string;
   scope: string;
 }
 
-interface GitHubUser {
+export interface GitHubUser {
   login: string;
   id: number;
   name?: string;
   email?: string; // this filed seems only return null
 }
 
-interface GitHubEmail {
+export interface GitHubEmail {
   email: string;
   primary: boolean;
   verified: boolean;

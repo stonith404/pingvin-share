@@ -68,7 +68,8 @@ export class OAuthController {
     @Req() request: Request,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const user = await this.providers[provider].getUserInfo(query);
+    const oauthToken = await this.providers[provider].getToken(query);
+    const user = await this.providers[provider].getUserInfo(oauthToken, query);
     const id = await this.authService.getIdOfCurrentUser(request);
 
     if (id) {

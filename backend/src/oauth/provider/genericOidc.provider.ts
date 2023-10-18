@@ -5,7 +5,7 @@ import { JwtService } from "@nestjs/jwt";
 import { Cache } from "cache-manager";
 import { nanoid } from "nanoid";
 import { OAuthCallbackDto } from "../dto/oauthCallback.dto";
-import { OAuthProvider } from "./oauthProvider.interface";
+import { OAuthProvider, OAuthToken } from "./oauthProvider.interface";
 import { OAuthSignInDto } from "../dto/oauthSignIn.dto";
 
 export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
@@ -72,7 +72,7 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
     );
   }
 
-  async getToken(code: string): Promise<OidcToken> {
+  async getToken(query: OAuthCallbackDto): Promise<OAuthToken<OidcToken>> {
     const configuration = await this.getConfiguration();
     const endpoint = configuration.token_endpoint;
     const res = await fetch(endpoint, {
@@ -84,16 +84,26 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
         client_id: this.config.get(`oauth.${this.name}-clientId`),
         client_secret: this.config.get(`oauth.${this.name}-clientSecret`),
         grant_type: "authorization_code",
-        code,
+        code: query.code,
         redirect_uri: this.redirectUri,
       }).toString(),
     });
-    return await res.json();
+    const token: OidcToken = await res.json();
+    return {
+      accessToken: token.access_token,
+      expiresIn: token.expires_in,
+      idToken: token.id_token,
+      refreshToken: token.refresh_token,
+      tokenType: token.token_type,
+      rawToken: token,
+    };
   }
 
-  async getUserInfo(query: OAuthCallbackDto): Promise<OAuthSignInDto> {
-    const token = await this.getToken(query.code);
-    const idTokenData = this.decodeIdToken(token.id_token);
+  async getUserInfo(
+    token: OAuthToken<OidcToken>,
+    query: OAuthCallbackDto,
+  ): Promise<OAuthSignInDto> {
+    const idTokenData = this.decodeIdToken(token.idToken);
     // maybe it's not necessary to verify the id token since it's directly obtained from the provider
 
     const key = `oauth-${this.name}-nonce-${query.state}`;

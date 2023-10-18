@@ -122,7 +122,9 @@ export class OAuthService {
   private async signUp(user: OAuthSignInDto) {
     // register
     if (!this.config.get("oauth.allowRegistration")) {
-      throw new ErrorPageException("no_user", "/auth/signIn");
+      throw new ErrorPageException("no_user", "/auth/signIn", [
+        `provider_${user.provider}`,
+      ]);
     }
 
     if (!user.email) {

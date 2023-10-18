@@ -1,4 +1,4 @@
-import { OAuthProvider } from "./oauthProvider.interface";
+import { OAuthProvider, OAuthToken } from "./oauthProvider.interface";
 import { OAuthCallbackDto } from "../dto/oauthCallback.dto";
 import { OAuthSignInDto } from "../dto/oauthSignIn.dto";
 import { ConfigService } from "../../config/config.service";
@@ -34,7 +34,7 @@ export class DiscordProvider implements OAuthProvider<DiscordToken> {
     );
   }
 
-  async getToken(code: string): Promise<DiscordToken> {
+  async getToken(query: OAuthCallbackDto): Promise<OAuthToken<DiscordToken>> {
     const res = await fetch("https://discord.com/api/v10/oauth2/token", {
       method: "post",
       headers: {
@@ -42,22 +42,29 @@ export class DiscordProvider implements OAuthProvider<DiscordToken> {
         Authorization: this.getAuthorizationHeader(),
       },
       body: new URLSearchParams({
-        code,
+        code: query.code,
         grant_type: "authorization_code",
         redirect_uri:
           this.config.get("general.appUrl") + "/api/oauth/callback/discord",
       }),
     });
-    return await res.json();
+    const token: DiscordToken = await res.json();
+    return {
+      accessToken: token.access_token,
+      refreshToken: token.refresh_token,
+      expiresIn: token.expires_in,
+      scope: token.scope,
+      tokenType: token.token_type,
+      rawToken: token,
+    };
   }
 
-  async getUserInfo(query: OAuthCallbackDto): Promise<OAuthSignInDto> {
-    const token = await this.getToken(query.code);
+  async getUserInfo(token: OAuthToken<DiscordToken>): Promise<OAuthSignInDto> {
     const res = await fetch("https://discord.com/api/v10/user/@me", {
       method: "post",
       headers: {
         Accept: "application/json",
-        Authorization: `${token.token_type} ${token.access_token}`,
+        Authorization: `${token.tokenType || "Bearer"} ${token.accessToken}`,
       },
     });
     const user = (await res.json()) as DiscordUser;
@@ -74,7 +81,7 @@ export class DiscordProvider implements OAuthProvider<DiscordToken> {
   }
 }
 
-interface DiscordToken {
+export interface DiscordToken {
   access_token: string;
   token_type: string;
   expires_in: number;
@@ -82,7 +89,7 @@ interface DiscordToken {
   scope: string;
 }
 
-interface DiscordUser {
+export interface DiscordUser {
   id: string;
   username: string;
   global_name: string;
