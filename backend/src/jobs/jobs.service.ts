@@ -61,6 +61,28 @@ export class JobsService {
     }
   }
 
+  @Cron("0 */6 * * *")
+  async deleteUnfinishedShares() {
+    const unfinishedShares = await this.prisma.share.findMany({
+      where: {
+        createdAt: { lt: moment().subtract(1, "day").toDate() },
+        uploadLocked: false,
+      },
+    });
+
+    for (const unfinishedShare of unfinishedShares) {
+      await this.prisma.share.delete({
+        where: { id: unfinishedShare.id },
+      });
+
+      await this.fileService.deleteAllFiles(unfinishedShare.id);
+    }
+
+    if (unfinishedShares.length > 0) {
+      this.logger.log(`Deleted ${unfinishedShares.length} unfinished shares`);
+    }
+  }
+
   @Cron("0 0 * * *")
   deleteTemporaryFiles() {
     let filesDeleted = 0;
@@ -93,7 +115,7 @@ export class JobsService {
     this.logger.log(`Deleted ${filesDeleted} temporary files`);
   }
 
-  @Cron("0 * * * *")
+  @Cron("1 * * * *")
   async deleteExpiredTokens() {
     const { count: refreshTokenCount } =
       await this.prisma.refreshToken.deleteMany({
