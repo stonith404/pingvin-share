@@ -1,3 +1,15 @@
+## [0.19.0](https://github.com/stonith404/pingvin-share/compare/v0.18.2...v0.19.0) (2023-10-22)
+
+
+### Features
+
+* **auth:** add OAuth2 login ([#276](https://github.com/stonith404/pingvin-share/issues/276)) ([02cd98f](https://github.com/stonith404/pingvin-share/commit/02cd98fa9cf9865d91494848aabaf42b19e4957b)), closes [#278](https://github.com/stonith404/pingvin-share/issues/278) [#279](https://github.com/stonith404/pingvin-share/issues/279) [#281](https://github.com/stonith404/pingvin-share/issues/281)
+
+
+### Bug Fixes
+
+* delete unfinished shares after a day ([d327bc3](https://github.com/stonith404/pingvin-share/commit/d327bc355c8583231e058731934cf51ab25d9ce5))
+
 ## [0.18.2](https://github.com/stonith404/pingvin-share/compare/v0.18.1...v0.18.2) (2023-10-09)
 
 
