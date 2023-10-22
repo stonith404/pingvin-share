@@ -1,3 +1,10 @@
+## [0.19.1](https://github.com/stonith404/pingvin-share/compare/v0.19.0...v0.19.1) (2023-10-22)
+
+
+### Bug Fixes
+
+* **oauth:** fix wrong redirectUri in oidc after change appUrl ([#296](https://github.com/stonith404/pingvin-share/issues/296)) ([119b1ec](https://github.com/stonith404/pingvin-share/commit/119b1ec840ad7f4e1c7c4bb476bf1eeed91d9a1a))
+
 ## [0.19.0](https://github.com/stonith404/pingvin-share/compare/v0.18.2...v0.19.0) (2023-10-22)
 
 
