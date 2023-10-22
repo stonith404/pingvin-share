@@ -9,7 +9,6 @@ import { OAuthProvider, OAuthToken } from "./oauthProvider.interface";
 import { OAuthSignInDto } from "../dto/oauthSignIn.dto";
 
 export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
-  protected redirectUri: string;
   protected discoveryUri: string;
   private configuration: OidcConfigurationCache;
   private jwk: OidcJwkCache;
@@ -22,15 +21,18 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
     protected cache: Cache,
   ) {
     this.discoveryUri = this.getDiscoveryUri();
-    this.redirectUri = `${this.config.get(
-      "general.appUrl",
-    )}/api/oauth/callback/${this.name}`;
     this.config.addListener("update", (key: string, _: unknown) => {
       if (this.keyOfConfigUpdateEvents.includes(key)) {
         this.deinit();
         this.discoveryUri = this.getDiscoveryUri();
       }
     });
+  }
+
+  protected getRedirectUri(): string {
+    return `${this.config.get("general.appUrl")}/api/oauth/callback/${
+      this.name
+    }`;
   }
 
   async getConfiguration(): Promise<OidcConfiguration> {
@@ -65,7 +67,7 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
         client_id: this.config.get(`oauth.${this.name}-clientId`),
         response_type: "code",
         scope: "openid profile email",
-        redirect_uri: this.redirectUri,
+        redirect_uri: this.getRedirectUri(),
         state,
         nonce,
       }).toString()
@@ -85,7 +87,7 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
         client_secret: this.config.get(`oauth.${this.name}-clientSecret`),
         grant_type: "authorization_code",
         code: query.code,
-        redirect_uri: this.redirectUri,
+        redirect_uri: this.getRedirectUri(),
       }).toString(),
     });
     const token: OidcToken = await res.json();
