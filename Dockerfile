@@ -13,6 +13,7 @@ RUN npm run build
 
 # Stage 3: Backend dependencies
 FROM node:20-alpine AS backend-dependencies
+RUN apk add --no-cache python3
 WORKDIR /opt/app
 COPY backend/package.json backend/package-lock.json ./
 RUN npm ci

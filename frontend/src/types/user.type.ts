@@ -4,6 +4,7 @@ type User = {
   email: string;
   isAdmin: boolean;
   totpVerified: boolean;
+  hasPassword: boolean;
 };
 
 export type CreateUser = {

@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
-import { TbAt, TbMail, TbShare, TbSquare } from "react-icons/tb";
+import { TbAt, TbMail, TbShare, TbSocial, TbSquare } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 
 const categories = [
@@ -19,6 +19,7 @@ const categories = [
   { name: "Email", icon: <TbMail /> },
   { name: "Share", icon: <TbShare /> },
   { name: "SMTP", icon: <TbAt /> },
+  { name: "OAuth", icon: <TbSocial /> },
 ];
 
 const useStyles = createStyles((theme) => ({

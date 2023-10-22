@@ -79,6 +79,10 @@ ClamAV is used to scan shares for malicious files and remove them if found.
 
 Please note that ClamAV needs a lot of [ressources](https://docs.clamav.net/manual/Installing/Docker.html#memory-ram-requirements).
 
+#### OAuth 2 Login
+
+View the [OAuth 2 guide](/docs/oauth2-guide.md) for more information.
+
 ### Additional resources
 
 - [Synology NAS installation](https://mariushosting.com/how-to-install-pingvin-share-on-your-synology-nas/)

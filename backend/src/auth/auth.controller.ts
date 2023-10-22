@@ -47,7 +47,7 @@ export class AuthController {
 
     const result = await this.authService.signUp(dto);
 
-    response = this.addTokensToResponse(
+    this.authService.addTokensToResponse(
       response,
       result.refreshToken,
       result.accessToken,
@@ -66,7 +66,7 @@ export class AuthController {
     const result = await this.authService.signIn(dto);
 
     if (result.accessToken && result.refreshToken) {
-      response = this.addTokensToResponse(
+      this.authService.addTokensToResponse(
         response,
         result.refreshToken,
         result.accessToken,
@@ -85,7 +85,7 @@ export class AuthController {
   ) {
     const result = await this.authTotpService.signInTotp(dto);
 
-    response = this.addTokensToResponse(
+    this.authService.addTokensToResponse(
       response,
       result.refreshToken,
       result.accessToken,
@@ -117,11 +117,11 @@ export class AuthController {
   ) {
     const result = await this.authService.updatePassword(
       user,
-      dto.oldPassword,
       dto.password,
+      dto.oldPassword,
     );
 
-    response = this.addTokensToResponse(response, result.refreshToken);
+    this.authService.addTokensToResponse(response, result.refreshToken);
     return new TokenDTO().from(result);
   }
 
@@ -136,7 +136,7 @@ export class AuthController {
     const accessToken = await this.authService.refreshAccessToken(
       request.cookies.refresh_token,
     );
-    response = this.addTokensToResponse(response, undefined, accessToken);
+    this.authService.addTokensToResponse(response, undefined, accessToken);
     return new TokenDTO().from({ accessToken });
   }
 
@@ -171,23 +171,5 @@ export class AuthController {
   async disableTotp(@GetUser() user: User, @Body() body: VerifyTotpDTO) {
     // Note: We use VerifyTotpDTO here because it has both fields we need: password and totp code
     return this.authTotpService.disableTotp(user, body.password, body.code);
-  }
-
-  private addTokensToResponse(
-    response: Response,
-    refreshToken?: string,
-    accessToken?: string,
-  ) {
-    if (accessToken)
-      response.cookie("access_token", accessToken, { sameSite: "lax" });
-    if (refreshToken)
-      response.cookie("refresh_token", refreshToken, {
-        path: "/api/auth/token",
-        httpOnly: true,
-        sameSite: "strict",
-        maxAge: 1000 * 60 * 60 * 24 * 30 * 3,
-      });
-
-    return response;
   }
 }

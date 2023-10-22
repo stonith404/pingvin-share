@@ -22,43 +22,29 @@ export class AuthTotpService {
   ) {}
 
   async signInTotp(dto: AuthSignInTotpDTO) {
-    if (!dto.email && !dto.username)
-      throw new BadRequestException("Email or username is required");
-
-    const user = await this.prisma.user.findFirst({
-      where: {
-        OR: [{ email: dto.email }, { username: dto.username }],
-      },
-    });
-
-    if (!user || !(await argon.verify(user.password, dto.password)))
-      throw new UnauthorizedException("Wrong email or password");
-
     const token = await this.prisma.loginToken.findFirst({
       where: {
         token: dto.loginToken,
       },
+      include: {
+        user: true,
+      },
     });
 
-    if (!token || token.userId != user.id || token.used)
+    if (!token || token.used)
       throw new UnauthorizedException("Invalid login token");
 
     if (token.expiresAt < new Date())
       throw new UnauthorizedException("Login token expired", "token_expired");
 
     // Check the TOTP code
-    const { totpSecret } = await this.prisma.user.findUnique({
-      where: { id: user.id },
-      select: { totpSecret: true },
-    });
+    const { totpSecret } = token.user;
 
     if (!totpSecret) {
       throw new BadRequestException("TOTP is not enabled");
     }
 
-    const expected = authenticator.generate(totpSecret);
-
-    if (dto.totp !== expected) {
+    if (!authenticator.check(dto.totp, totpSecret)) {
       throw new BadRequestException("Invalid code");
     }
 
@@ -69,9 +55,9 @@ export class AuthTotpService {
     });
 
     const { refreshToken, refreshTokenId } =
-      await this.authService.createRefreshToken(user.id);
+      await this.authService.createRefreshToken(token.user.id);
     const accessToken = await this.authService.createAccessToken(
-      user,
+      token.user,
       refreshTokenId,
     );
 

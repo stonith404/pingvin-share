@@ -15,24 +15,11 @@ const signIn = async (emailOrUsername: string, password: string) => {
   return response;
 };
 
-const signInTotp = async (
-  emailOrUsername: string,
-  password: string,
-  totp: string,
-  loginToken: string,
-) => {
-  const emailOrUsernameBody = emailOrUsername.includes("@")
-    ? { email: emailOrUsername }
-    : { username: emailOrUsername };
-
-  const response = await api.post("auth/signIn/totp", {
-    ...emailOrUsernameBody,
-    password,
+const signInTotp = (totp: string, loginToken: string) => {
+  return api.post("auth/signIn/totp", {
     totp,
     loginToken,
   });
-
-  return response;
 };
 
 const signUp = async (email: string, username: string, password: string) => {
@@ -96,6 +83,14 @@ const disableTOTP = async (totpCode: string, password: string) => {
   });
 };
 
+const getAvailableOAuth = async () => {
+  return api.get("/oauth/available");
+};
+
+const getOAuthStatus = () => {
+  return api.get("/oauth/status");
+};
+
 export default {
   signIn,
   signInTotp,
@@ -108,4 +103,6 @@ export default {
   enableTOTP,
   verifyTOTP,
   disableTOTP,
+  getAvailableOAuth,
+  getOAuthStatus,
 };

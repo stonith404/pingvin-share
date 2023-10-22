@@ -119,6 +119,89 @@ const configVariables: ConfigVariables = {
       obscured: true,
     },
   },
+  oauth: {
+    "allowRegistration": {
+      type: "boolean",
+      defaultValue: "true",
+    },
+    "ignoreTotp": {
+      type: "boolean",
+      defaultValue: "true",
+    },
+    "github-enabled": {
+      type: "boolean",
+      defaultValue: "false",
+    },
+    "github-clientId": {
+      type: "string",
+      defaultValue: "",
+    },
+    "github-clientSecret": {
+      type: "string",
+      defaultValue: "",
+      obscured: true,
+    },
+    "google-enabled": {
+      type: "boolean",
+      defaultValue: "false",
+    },
+    "google-clientId": {
+      type: "string",
+      defaultValue: "",
+    },
+    "google-clientSecret": {
+      type: "string",
+      defaultValue: "",
+      obscured: true,
+    },
+    "microsoft-enabled": {
+      type: "boolean",
+      defaultValue: "false",
+    },
+    "microsoft-tenant": {
+      type: "string",
+      defaultValue: "common",
+    },
+    "microsoft-clientId": {
+      type: "string",
+      defaultValue: "",
+    },
+    "microsoft-clientSecret": {
+      type: "string",
+      defaultValue: "",
+      obscured: true,
+    },
+    "discord-enabled": {
+      type: "boolean",
+      defaultValue: "false",
+    },
+    "discord-clientId": {
+      type: "string",
+      defaultValue: "",
+    },
+    "discord-clientSecret": {
+      type: "string",
+      defaultValue: "",
+      obscured: true,
+    },
+    "oidc-enabled": {
+      type: "boolean",
+      defaultValue: "false",
+    },
+    "oidc-discoveryUri": {
+      type: "string",
+      defaultValue: "",
+    },
+    "oidc-clientId": {
+      type: "string",
+      defaultValue: "",
+    },
+    "oidc-clientSecret": {
+      type: "string",
+      defaultValue: "",
+      obscured: true,
+    },
+  }
 };
 
 type ConfigVariables = {
@@ -175,7 +258,7 @@ async function migrateConfigVariables() {
     const configVariable =
       configVariables[existingConfigVariable.category]?.[
         existingConfigVariable.name
-      ];
+        ];
     if (!configVariable) {
       await prisma.config.delete({
         where: {

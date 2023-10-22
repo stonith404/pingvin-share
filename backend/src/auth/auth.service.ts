@@ -8,6 +8,7 @@ import { JwtService } from "@nestjs/jwt";
 import { User } from "@prisma/client";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import * as argon from "argon2";
+import { Request, Response } from "express";
 import * as moment from "moment";
 import { ConfigService } from "src/config/config.service";
 import { EmailService } from "src/email/email.service";
@@ -27,7 +28,7 @@ export class AuthService {
   async signUp(dto: AuthRegisterDTO) {
     const isFirstUser = (await this.prisma.user.count()) == 0;
 
-    const hash = await argon.hash(dto.password);
+    const hash = dto.password ? await argon.hash(dto.password) : null;
     try {
       const user = await this.prisma.user.create({
         data: {
@@ -43,7 +44,7 @@ export class AuthService {
       );
       const accessToken = await this.createAccessToken(user, refreshTokenId);
 
-      return { accessToken, refreshToken };
+      return { accessToken, refreshToken, user };
     } catch (e) {
       if (e instanceof PrismaClientKnownRequestError) {
         if (e.code == "P2002") {
@@ -69,9 +70,16 @@ export class AuthService {
     if (!user || !(await argon.verify(user.password, dto.password)))
       throw new UnauthorizedException("Wrong email or password");
 
+    return this.generateToken(user);
+  }
+
+  async generateToken(user: User, isOAuth = false) {
     // TODO: Make all old loginTokens invalid when a new one is created
     // Check if the user has TOTP enabled
-    if (user.totpVerified) {
+    if (
+      user.totpVerified &&
+      !(isOAuth && this.config.get("oauth.ignoreTotp"))
+    ) {
       const loginToken = await this.createLoginToken(user.id);
 
       return { loginToken };
@@ -129,9 +137,11 @@ export class AuthService {
     });
   }
 
-  async updatePassword(user: User, oldPassword: string, newPassword: string) {
-    if (!(await argon.verify(user.password, oldPassword)))
-      throw new ForbiddenException("Invalid password");
+  async updatePassword(user: User, newPassword: string, oldPassword?: string) {
+    const isPasswordValid =
+      !user.password || !(await argon.verify(user.password, oldPassword));
+
+    if (!isPasswordValid) throw new ForbiddenException("Invalid password");
 
     const hash = await argon.hash(newPassword);
 
@@ -209,5 +219,39 @@ export class AuthService {
     ).token;
 
     return loginToken;
+  }
+
+  addTokensToResponse(
+    response: Response,
+    refreshToken?: string,
+    accessToken?: string,
+  ) {
+    if (accessToken)
+      response.cookie("access_token", accessToken, { sameSite: "lax" });
+    if (refreshToken)
+      response.cookie("refresh_token", refreshToken, {
+        path: "/api/auth/token",
+        httpOnly: true,
+        sameSite: "strict",
+        maxAge: 1000 * 60 * 60 * 24 * 30 * 3,
+      });
+  }
+
+  /**
+   * Returns the user id if the user is logged in, null otherwise
+   */
+  async getIdOfCurrentUser(request: Request): Promise<string | null> {
+    if (!request.cookies.access_token) return null;
+    try {
+      const payload = await this.jwtService.verifyAsync(
+        request.cookies.access_token,
+        {
+          secret: this.config.get("internal.jwtSecret"),
+        },
+      );
+      return payload.sub;
+    } catch {
+      return null;
+    }
   }
 }

@@ -28,7 +28,9 @@ export class UserController {
   @Get("me")
   @UseGuards(JwtGuard)
   async getCurrentUser(@GetUser() user: User) {
-    return new UserDTO().from(user);
+    const userDTO = new UserDTO().from(user);
+    userDTO.hasPassword = !!user.password;
+    return userDTO;
   }
 
   @Patch("me")
