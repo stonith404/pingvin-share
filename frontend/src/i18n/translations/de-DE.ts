@@ -33,7 +33,7 @@ export default {
   "signin.button.submit": "Anmelden",
   "signIn.notify.totp-required.title": "Zwei-Faktor-Authentifizierung benötigt",
   "signIn.notify.totp-required.description": "Bitte füge deinen Zwei-Faktor-Authentifizierungscode ein",
-  "signIn.oauth.or": "OR",
+  "signIn.oauth.or": "ODER",
   "signIn.oauth.github": "GitHub",
   "signIn.oauth.google": "Google",
   "signIn.oauth.microsoft": "Microsoft",
@@ -51,8 +51,8 @@ export default {
   "signup.button.submit": "Lass uns loslegen",
   // END /auth/signup
   // /auth/totp
-  "totp.title": "TOTP Authentication",
-  "totp.button.signIn": "Sign in",
+  "totp.title": "TOTP Authentifizierung",
+  "totp.button.signIn": "Anmelden",
   // END /auth/totp
   // /auth/reset-password
   "resetPassword.title": "Passwort vergessen?",
@@ -361,9 +361,9 @@ export default {
   "404.button.home": "Zurück zur Startseite",
   // error
   "error.title": "Error",
-  "error.description": "Oops!",
-  "error.button.back": "Go back",
-  "error.msg.default": "Something went wrong.",
+  "error.description": "Ups!",
+  "error.button.back": "Zurück",
+  "error.msg.default": "Etwas ist schief gelaufen.",
   "error.msg.access_denied": "You canceled the authentication process, please try again.",
   "error.msg.expired_token": "The authentication process took too long, please try again.",
   "error.msg.no_user": "User linked to this {0} account doesn't exist.",
