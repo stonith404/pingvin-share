@@ -2,18 +2,18 @@ export default {
   // Navbar
   "navbar.upload": "Prześlij",
   "navbar.signin": "Zaloguj się",
-  "navbar.home": "Home",
+  "navbar.home": "Strona główna",
   "navbar.signup": "Zarejestruj się",
   "navbar.links.shares": "Moje udziały",
-  "navbar.links.reverse": "Odwrócone udziały",
+  "navbar.links.reverse": "Udziały odwrotne",
   "navbar.avatar.account": "Moje konto",
   "navbar.avatar.admin": "Administracja",
   "navbar.avatar.signout": "Wyloguj się",
   // END navbar
   // /
-  "home.title": "Platforma udostępniania plików <h>na własnym serwerze</h>.",
+  "home.title": "<h>Samodzielnie utrzymywana</h> platforma udostępniania plików.",
   "home.description": "Czy na pewno chcesz przekazać swoje prywatne pliki w ręce osób trzecich, takich jak WeTransfer?",
-  "home.bullet.a.name": "Własny hosting",
+  "home.bullet.a.name": "Samodzielnie Utrzymywana",
   "home.bullet.a.description": "Utrzymuj Pingvin Share na własnym serwerze.",
   "home.bullet.b.name": "Prywatność",
   "home.bullet.b.description": "To są twoje pliki i nigdy nie powinny trafiać w ręce osób trzecich.",
