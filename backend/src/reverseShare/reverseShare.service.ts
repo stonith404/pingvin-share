@@ -3,6 +3,7 @@ import * as moment from "moment";
 import { ConfigService } from "src/config/config.service";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
+import { parseRelativeDateToAbsolute } from "src/utils/date.util";
 import { CreateReverseShareDTO } from "./dto/createReverseShare.dto";
 
 @Injectable()
@@ -23,6 +24,17 @@ export class ReverseShareService {
         )[1] as moment.unitOfTime.DurationConstructor,
       )
       .toDate();
+
+    const parsedExpiration = parseRelativeDateToAbsolute(data.shareExpiration);
+    if (
+      this.config.get("share.maxExpiration") !== 0 &&
+      parsedExpiration >
+        moment().add(this.config.get("share.maxExpiration"), "hours").toDate()
+    ) {
+      throw new BadRequestException(
+        "Expiration date exceeds maximum expiration date",
+      );
+    }
 
     const globalMaxShareSize = this.config.get("share.maxSize");
 

@@ -288,6 +288,7 @@ export default {
 
   "upload.modal.expires.never": "never",
   "upload.modal.expires.never-long": "Never Expires",
+  "upload.modal.expires.error.too-long": "Expiration exceeds maximum expiration date of {max}.",
 
   "upload.modal.link.label": "Link",
   "upload.modal.expires.label": "Expiration",
@@ -413,6 +414,9 @@ export default {
     "Allow unauthenticated shares",
   "admin.config.share.allow-unauthenticated-shares.description":
     "Whether unauthenticated users can create shares",
+  "admin.config.share.max-expiration": "Max expiration",
+  "admin.config.share.max-expiration.description":
+    "Maximum share expiration in hours. Set to 0 to allow unlimited expiration.",
   "admin.config.share.max-size": "Max size",
   "admin.config.share.max-size.description": "Maximum share size in bytes",
   "admin.config.share.zip-compression-level": "Zip compression level",

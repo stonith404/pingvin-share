@@ -18,6 +18,7 @@ import {
 import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
+import moment from "moment";
 import { useState } from "react";
 import { TbAlertCircle } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
@@ -38,6 +39,7 @@ const showCreateUploadModal = (
     appUrl: string;
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
+    maxExpirationInHours: number;
   },
   files: FileUpload[],
   uploadCallback: (createShare: CreateShare, files: FileUpload[]) => void,
@@ -69,6 +71,7 @@ const CreateUploadModalBody = ({
     appUrl: string;
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
+    maxExpirationInHours: number;
   };
 }) => {
   const modals = useModals();
@@ -92,6 +95,7 @@ const CreateUploadModalBody = ({
     password: yup.string().min(3).max(30),
     maxViews: yup.number().min(1),
   });
+
   const form = useForm({
     initialValues: {
       link: generatedLink,
@@ -105,6 +109,55 @@ const CreateUploadModalBody = ({
     },
     validate: yupResolver(validationSchema),
   });
+
+  const onSubmit = form.onSubmit(async (values) => {
+    if (!(await shareService.isShareIdAvailable(values.link))) {
+      form.setFieldError("link", t("upload.modal.link.error.taken"));
+    } else {
+      const expirationString = form.values.never_expires
+        ? "never"
+        : form.values.expiration_num + form.values.expiration_unit;
+
+      const expirationDate = moment().add(
+        form.values.expiration_num,
+        form.values.expiration_unit.replace(
+          "-",
+          "",
+        ) as moment.unitOfTime.DurationConstructor,
+      );
+      if (
+        expirationDate.isAfter(
+          moment().add(options.maxExpirationInHours, "hours"),
+        )
+      ) {
+        form.setFieldError(
+          "expiration_num",
+          t("upload.modal.expires.error.too-long", {
+            max: moment
+              .duration(options.maxExpirationInHours, "hours")
+              .humanize(),
+          }),
+        );
+        return;
+      }
+
+      uploadCallback(
+        {
+          id: values.link,
+          expiration: expirationString,
+          recipients: values.recipients,
+          description: values.description,
+          security: {
+            password: values.password,
+            maxViews: values.maxViews,
+          },
+        },
+        files,
+      );
+      modals.closeAll();
+    }
+  });
+
   return (
     <>
       {showNotSignedInAlert && !options.isUserSignedIn && (
@@ -118,33 +171,9 @@ const CreateUploadModalBody = ({
           <FormattedMessage id="upload.modal.not-signed-in-description" />
         </Alert>
       )}
-      <form
-        onSubmit={form.onSubmit(async (values) => {
-          if (!(await shareService.isShareIdAvailable(values.link))) {
-            form.setFieldError("link", t("upload.modal.link.error.taken"));
-          } else {
-            const expiration = form.values.never_expires
-              ? "never"
-              : form.values.expiration_num + form.values.expiration_unit;
-            uploadCallback(
-              {
-                id: values.link,
-                expiration: expiration,
-                recipients: values.recipients,
-                description: values.description,
-                security: {
-                  password: values.password,
-                  maxViews: values.maxViews,
-                },
-              },
-              files,
-            );
-            modals.closeAll();
-          }
-        })}
-      >
+      <form onSubmit={onSubmit}>
         <Stack align="stretch">
-          <Group align="end">
+          <Group align={form.errors.link ? "center" : "flex-end"}>
             <TextInput
               style={{ flex: "1" }}
               variant="filled"
@@ -179,7 +208,7 @@ const CreateUploadModalBody = ({
           </Text>
           {!options.isReverseShare && (
             <>
-              <Grid align={form.errors.link ? "center" : "flex-end"}>
+              <Grid align={form.errors.expiration_num ? "center" : "flex-end"}>
                 <Col xs={6}>
                   <NumberInput
                     min={1}

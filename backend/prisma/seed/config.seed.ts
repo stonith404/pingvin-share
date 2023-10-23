@@ -37,6 +37,11 @@ const configVariables: ConfigVariables = {
       defaultValue: "false",
       secret: false,
     },
+    maxExpiration: {
+      type: "number",
+      defaultValue: "0",
+      secret: false,
+    },
     maxSize: {
       type: "number",
       defaultValue: "1000000000",

@@ -12,6 +12,7 @@ import {
 import { useForm } from "@mantine/form";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
+import moment from "moment";
 import { FormattedMessage } from "react-intl";
 import useTranslate, {
   translateOutsideContext,
@@ -25,6 +26,7 @@ import showCompletedReverseShareModal from "./showCompletedReverseShareModal";
 const showCreateReverseShareModal = (
   modals: ModalsContextProps,
   showSendEmailNotificationOption: boolean,
+  maxExpirationInHours: number,
   getReverseShares: () => void,
 ) => {
   const t = translateOutsideContext();
@@ -34,6 +36,7 @@ const showCreateReverseShareModal = (
       <Body
         showSendEmailNotificationOption={showSendEmailNotificationOption}
         getReverseShares={getReverseShares}
+        maxExpirationInHours={maxExpirationInHours}
       />
     ),
   });
@@ -42,9 +45,11 @@ const showCreateReverseShareModal = (
 const Body = ({
   getReverseShares,
   showSendEmailNotificationOption,
+  maxExpirationInHours,
 }: {
   getReverseShares: () => void;
   showSendEmailNotificationOption: boolean;
+  maxExpirationInHours: number;
 }) => {
   const modals = useModals();
   const t = useTranslate();
@@ -58,27 +63,45 @@ const Body = ({
       expiration_unit: "-days",
     },
   });
+
+  const onSubmit = form.onSubmit(async (values) => {
+    const expirationDate = moment().add(
+      form.values.expiration_num,
+      form.values.expiration_unit.replace(
+        "-",
+        "",
+      ) as moment.unitOfTime.DurationConstructor,
+    );
+    if (expirationDate.isAfter(moment().add(maxExpirationInHours, "hours"))) {
+      form.setFieldError(
+        "expiration_num",
+        t("upload.modal.expires.error.too-long", {
+          max: moment.duration(maxExpirationInHours, "hours").humanize(),
+        }),
+      );
+      return;
+    }
+
+    shareService
+      .createReverseShare(
+        values.expiration_num + values.expiration_unit,
+        values.maxShareSize,
+        values.maxUseCount,
+        values.sendEmailNotification,
+      )
+      .then(({ link }) => {
+        modals.closeAll();
+        showCompletedReverseShareModal(modals, link, getReverseShares);
+      })
+      .catch(toast.axiosError);
+  });
+
   return (
     <Group>
-      <form
-        onSubmit={form.onSubmit(async (values) => {
-          shareService
-            .createReverseShare(
-              values.expiration_num + values.expiration_unit,
-              values.maxShareSize,
-              values.maxUseCount,
-              values.sendEmailNotification,
-            )
-            .then(({ link }) => {
-              modals.closeAll();
-              showCompletedReverseShareModal(modals, link, getReverseShares);
-            })
-            .catch(toast.axiosError);
-        })}
-      >
+      <form onSubmit={onSubmit}>
         <Stack align="stretch">
           <div>
-            <Grid align={form.errors.link ? "center" : "flex-end"}>
+            <Grid align={form.errors.expiration_num ? "center" : "flex-end"}>
               <Col xs={6}>
                 <NumberInput
                   min={1}

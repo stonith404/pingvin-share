@@ -42,7 +42,14 @@ const Upload = ({
 
   const uploadFiles = async (share: CreateShare, files: FileUpload[]) => {
     setisUploading(true);
-    createdShare = await shareService.create(share);
+
+    try {
+      createdShare = await shareService.create(share);
+    } catch (e) {
+      toast.axiosError(e);
+      setisUploading(false);
+      return;
+    }
 
     const fileUploadPromises = files.map(async (file, fileIndex) =>
       // Limit the number of concurrent uploads to 3
@@ -132,6 +139,7 @@ const Upload = ({
           "share.allowUnauthenticatedShares",
         ),
         enableEmailRecepients: config.get("email.enableShareEmailRecipients"),
+        maxExpirationInHours: config.get("share.maxExpiration"),
       },
       files,
       uploadFiles,

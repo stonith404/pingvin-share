@@ -16,6 +16,7 @@ import { EmailService } from "src/email/email.service";
 import { FileService } from "src/file/file.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { ReverseShareService } from "src/reverseShare/reverseShare.service";
+import { parseRelativeDateToAbsolute } from "src/utils/date.util";
 import { SHARE_DIRECTORY } from "../constants";
 import { CreateShareDTO } from "./dto/createShare.dto";
 
@@ -51,19 +52,19 @@ export class ShareService {
     if (reverseShare) {
       expirationDate = reverseShare.shareExpiration;
     } else {
-      // We have to add an exception for "never" (since moment won't like that)
-      if (share.expiration !== "never") {
-        expirationDate = moment()
-          .add(
-            share.expiration.split("-")[0],
-            share.expiration.split(
-              "-",
-            )[1] as moment.unitOfTime.DurationConstructor,
-          )
-          .toDate();
-      } else {
-        expirationDate = moment(0).toDate();
+      const parsedExpiration = parseRelativeDateToAbsolute(share.expiration);
+
+      if (
+        this.config.get("share.maxExpiration") !== 0 &&
+        parsedExpiration >
+          moment().add(this.config.get("share.maxExpiration"), "hours").toDate()
+      ) {
+        throw new BadRequestException(
+          "Expiration date exceeds maximum expiration date",
+        );
       }
+
+      expirationDate = parsedExpiration;
     }
 
     fs.mkdirSync(`${SHARE_DIRECTORY}/${share.id}`, {
