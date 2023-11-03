@@ -1,3 +1,17 @@
+## [0.19.2](https://github.com/stonith404/pingvin-share/compare/v0.19.1...v0.19.2) (2023-11-03)
+
+
+### Features
+
+* ability to limit the max expiration of a share ([bbfc9d6](https://github.com/stonith404/pingvin-share/commit/bbfc9d6f147eea404f011c3af9d7dc7655c3d21d))
+* change totp issuer to display logo in 2FAS app ([e0fbbec](https://github.com/stonith404/pingvin-share/commit/e0fbbeca3c1a858838b20aeead52694772b7d871))
+
+
+### Bug Fixes
+
+* jwt secret changes on application restart ([33742a0](https://github.com/stonith404/pingvin-share/commit/33742a043d6549783984ae7e8a3c30f0fe3917de))
+* wrong validation of setting max share expiration to `0` ([acc35f4](https://github.com/stonith404/pingvin-share/commit/acc35f47178e230f50ce54d6f1ad5370caa3382d))
+
 ## [0.19.1](https://github.com/stonith404/pingvin-share/compare/v0.19.0...v0.19.1) (2023-10-22)
 
 
