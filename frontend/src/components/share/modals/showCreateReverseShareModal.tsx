@@ -72,7 +72,10 @@ const Body = ({
         "",
       ) as moment.unitOfTime.DurationConstructor,
     );
-    if (expirationDate.isAfter(moment().add(maxExpirationInHours, "hours"))) {
+    if (
+      maxExpirationInHours != 0 &&
+      expirationDate.isAfter(moment().add(maxExpirationInHours, "hours"))
+    ) {
       form.setFieldError(
         "expiration_num",
         t("upload.modal.expires.error.too-long", {

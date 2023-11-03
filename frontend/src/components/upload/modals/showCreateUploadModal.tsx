@@ -126,6 +126,7 @@ const CreateUploadModalBody = ({
         ) as moment.unitOfTime.DurationConstructor,
       );
       if (
+        options.maxExpirationInHours != 0 &&
         expirationDate.isAfter(
           moment().add(options.maxExpirationInHours, "hours"),
         )
