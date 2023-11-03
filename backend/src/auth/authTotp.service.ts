@@ -8,7 +8,6 @@ import { User } from "@prisma/client";
 import * as argon from "argon2";
 import { authenticator, totp } from "otplib";
 import * as qrcode from "qrcode-svg";
-import { ConfigService } from "src/config/config.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { AuthService } from "./auth.service";
 import { AuthSignInTotpDTO } from "./dto/authSignInTotp.dto";
@@ -18,7 +17,6 @@ export class AuthTotpService {
   constructor(
     private prisma: PrismaService,
     private authService: AuthService,
-    private config: ConfigService,
   ) {}
 
   async signInTotp(dto: AuthSignInTotpDTO) {
@@ -78,12 +76,11 @@ export class AuthTotpService {
       throw new BadRequestException("TOTP is already enabled");
     }
 
-    // TODO: Maybe make the issuer configurable with env vars?
     const secret = authenticator.generateSecret();
 
     const otpURL = totp.keyuri(
       user.username || user.email,
-      this.config.get("general.appName"),
+      "pingvin-share",
       secret,
     );
 
