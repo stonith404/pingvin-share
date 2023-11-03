@@ -52,7 +52,7 @@ export default {
   // END /auth/signup
   // /auth/totp
   "totp.title": "TOTP Authentication",
-  "totp.button.signIn": "Sign in",
+  "totp.button.signIn": "Log ind",
   // END /auth/totp
   // /auth/reset-password
   "resetPassword.title": "Glemt din adgangskode?",
@@ -214,6 +214,7 @@ export default {
   "upload.modal.not-signed-in-description": "Du vil ikke være i stand til at slette din deling manuelt og se antallet af besøgende.",
   "upload.modal.expires.never": "aldrig",
   "upload.modal.expires.never-long": "Udløber aldrig",
+  "upload.modal.expires.error.too-long": "Udløbsdatoen overskrider den maksimalt tilladte udløbsdato på {max}.",
   "upload.modal.link.label": "Link",
   "upload.modal.expires.label": "Udløb",
   "upload.modal.expires.minute-singular": "Minut",
@@ -301,6 +302,8 @@ export default {
   "admin.config.share.allow-registration.description": "Om alle skal kunne oprette en bruger",
   "admin.config.share.allow-unauthenticated-shares": "Tillad uautoriserede delinger",
   "admin.config.share.allow-unauthenticated-shares.description": "Whether unauthenticated users can create shares",
+  "admin.config.share.max-expiration": "Maks. udløb",
+  "admin.config.share.max-expiration.description": "Maximum share expiration in hours. Set to 0 to allow unlimited expiration.",
   "admin.config.share.max-size": "Maks. størrelse",
   "admin.config.share.max-size.description": "Maksimal filstørrelse i bytes",
   "admin.config.share.zip-compression-level": "Zip compression level",
