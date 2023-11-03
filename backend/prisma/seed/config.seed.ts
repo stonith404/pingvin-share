@@ -5,7 +5,7 @@ const configVariables: ConfigVariables = {
   internal: {
     jwtSecret: {
       type: "string",
-      defaultValue: crypto.randomBytes(256).toString("base64"),
+      value: crypto.randomBytes(256).toString("base64"),
       locked: true,
     },
   },
