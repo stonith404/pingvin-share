@@ -16,7 +16,7 @@ const FileListRow = ({
   onRestore?: () => void,
 }) => {
   {
-    const uploadable = 'uploadingProgress' in file
+    const uploadable = "uploadingProgress" in file
     const uploading = uploadable && file.uploadingProgress !== 0
     const removable = uploadable ? file.uploadingProgress === 0 : onRemove && !file.deleted;
     const restorable = onRestore && !uploadable && !!file.deleted; // maybe undefined, force boolean
@@ -71,7 +71,7 @@ const FileList = <T extends FileListItem = FileListItem,> ({
   const remove = (index: number) => {
     const file = files[index];
 
-    if ('uploadingProgress' in file) {
+    if ("uploadingProgress" in file) {
       files.splice(index, 1);
     } else {
       files[index] = { ...file, deleted: true };
@@ -83,7 +83,7 @@ const FileList = <T extends FileListItem = FileListItem,> ({
   const restore = (index: number) => {
     const file = files[index];
 
-    if ('uploadingProgress' in file) {
+    if ("uploadingProgress" in file) {
       return;
     } else {
       files[index] = { ...file, deleted: false };
