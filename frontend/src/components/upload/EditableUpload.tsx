@@ -224,6 +224,7 @@ const EditableUpload = ({
         </Button>
       </Group>
       <Dropzone
+        title={t('share.edit.append-upload')}
         maxShareSize={maxShareSize}
         showCreateUploadModalCallback={appendFiles}
         isUploading={isUploading}

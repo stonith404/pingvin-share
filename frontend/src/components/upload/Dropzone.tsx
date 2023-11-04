@@ -33,10 +33,12 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Dropzone = ({
+  title,
   isUploading,
   maxShareSize,
   showCreateUploadModalCallback,
 }: {
+  title?: string;
   isUploading: boolean;
   maxShareSize: number;
   showCreateUploadModalCallback: (files: FileUpload[]) => void;
@@ -78,7 +80,7 @@ const Dropzone = ({
             <TbCloudUpload size={50} />
           </Group>
           <Text align="center" weight={700} size="lg" mt="xl">
-            <FormattedMessage id="upload.dropzone.title" />
+            {title || <FormattedMessage id="upload.dropzone.title" />}
           </Text>
           <Text align="center" size="sm" mt="xs" color="dimmed">
             <FormattedMessage
