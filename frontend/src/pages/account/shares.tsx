@@ -16,7 +16,7 @@ import { useModals } from "@mantine/modals";
 import moment from "moment";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { TbInfoCircle, TbLink, TbTrash } from "react-icons/tb";
+import { TbEdit, TbInfoCircle, TbLink, TbTrash } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 import Meta from "../../components/Meta";
 import showShareInformationsModal from "../../components/account/showShareInformationsModal";
@@ -125,6 +125,15 @@ const MyShares = () => {
                       >
                         <TbInfoCircle />
                       </ActionIcon>
+                      <Link href={`/share/${share.id}/edit`}>
+                        <ActionIcon
+                        color="orange"
+                        variant="light"
+                        size={25}
+                      >
+                        <TbEdit />
+                      </ActionIcon>
+                      </Link>
                       <ActionIcon
                         color="victoria"
                         variant="light"
