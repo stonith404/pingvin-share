@@ -265,10 +265,10 @@ export default {
   "share.modal.file-preview.error.not-supported.description": "Uma visualização para este tipo de arquivo não é suportada. Faça o download do arquivo para visualizá-lo.",
   // END /share/[id]
   // /share/[id]/edit
-  "share.edit.title": "Edit {shareId}",
-  "share.edit.append-upload": "Append file",
-  "share.edit.notify.generic-error": "An error occurred while finishing your share.",
-  "share.edit.notify.save-success": "Share updated successfully",
+  "share.edit.title": "Editar {shareId}",
+  "share.edit.append-upload": "Anexar arquivo",
+  "share.edit.notify.generic-error": "Ocorreu um erro ao terminar seu compartilhamento.",
+  "share.edit.notify.save-success": "Compartilhamento atualizado com sucesso",
   // END /share/[id]/edit
   // /admin/config
   "admin.config.title": "Configuração",
