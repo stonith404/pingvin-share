@@ -124,6 +124,18 @@ export class FileService {
     };
   }
 
+  async remove(shareId: string, fileId: string) {
+    const fileMetaData = await this.prisma.file.findUnique({
+      where: { id: fileId },
+    });
+
+    if (!fileMetaData) throw new NotFoundException("File not found");
+
+    fs.unlinkSync(`${SHARE_DIRECTORY}/${shareId}/${fileId}`);
+
+    await this.prisma.file.delete({ where: { id: fileId } });
+  }
+
   async deleteAllFiles(shareId: string) {
     await fs.promises.rm(`${SHARE_DIRECTORY}/${shareId}`, {
       recursive: true,

@@ -182,6 +182,13 @@ export class ShareService {
     });
   }
 
+  async revertComplete(id: string) {
+    return this.prisma.share.update({
+      where: { id },
+      data: { uploadLocked: false, isZipReady: false },
+    });
+  }
+
   async getSharesByUser(userId: string) {
     const shares = await this.prisma.share.findMany({
       where: {
