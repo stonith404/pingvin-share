@@ -1,3 +1,10 @@
+## [0.20.0](https://github.com/stonith404/pingvin-share/compare/v0.19.2...v0.20.0) (2023-11-04)
+
+
+### Features
+
+* ability to add and delete files of existing share ([#306](https://github.com/stonith404/pingvin-share/issues/306)) ([98380e2](https://github.com/stonith404/pingvin-share/commit/98380e2d48cc8ffa831d9b69cf5c0e8a40e28862))
+
 ## [0.19.2](https://github.com/stonith404/pingvin-share/compare/v0.19.1...v0.19.2) (2023-11-03)
 
 
