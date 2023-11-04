@@ -264,6 +264,12 @@ export default {
   "share.modal.file-preview.error.not-supported.title": "Esikatselua ei tuettu",
   "share.modal.file-preview.error.not-supported.description": "Esikatselua thise tiedostotyypille ei tueta. Ole hyvä ja lataa tiedosto nähdäksesi sen.",
   // END /share/[id]
+  // /share/[id]/edit
+  "share.edit.title": "Edit {shareId}",
+  "share.edit.append-upload": "Append file",
+  "share.edit.notify.generic-error": "An error occurred while finishing your share.",
+  "share.edit.notify.save-success": "Share updated successfully",
+  // END /share/[id]/edit
   // /admin/config
   "admin.config.title": "Asetukset",
   "admin.config.category.general": "Yleiset",
