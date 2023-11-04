@@ -264,6 +264,11 @@ export default {
   "share.modal.file-preview.error.not-supported.title": "该文件类型不支持预览",
   "share.modal.file-preview.error.not-supported.description": "该文件类型不支持预览，请下载后打开查看",
   // END /share/[id]
+  // /share/[id]/edit
+  "share.edit.title": "编辑 {shareId}",
+  "share.edit.append-upload": "追加文件",
+  "share.edit.notify.generic-error": "保存共享的过程中发生了错误",
+  // END /share/[id]/edit
   // /admin/config
   "admin.config.title": "配置管理",
   "admin.config.category.general": "通用",

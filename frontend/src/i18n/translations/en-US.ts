@@ -358,6 +358,12 @@ export default {
 
   // END /share/[id]
 
+  // /share/[id]/edit
+  "share.edit.title": "Edit {shareId}",
+  "share.edit.append-upload": "Append file",
+  "share.edit.notify.generic-error": "An error occurred while finishing your share.",
+  // END /share/[id]/edit
+
   // /admin/config
   "admin.config.title": "Configuration",
   "admin.config.category.general": "General",
