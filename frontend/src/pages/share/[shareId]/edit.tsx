@@ -24,7 +24,7 @@ const Share = ({ shareId }: { shareId: string }) => {
 
   useEffect(() => {
     shareService
-      .get(shareId)
+      .getFromOwner(shareId)
       .then(share => {
         setShare(share);
       })

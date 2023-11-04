@@ -27,6 +27,10 @@ const get = async (id: string): Promise<Share> => {
   return (await api.get(`shares/${id}`)).data;
 };
 
+const getFromOwner = async (id: string): Promise<Share> => {
+  return (await api.get(`shares/${id}/from-owner`)).data;
+};
+
 const getMetaData = async (id: string): Promise<ShareMetaData> => {
   return (await api.get(`shares/${id}/metaData`)).data;
 };
@@ -132,6 +136,7 @@ export default {
   revertComplete,
   getShareToken,
   get,
+  getFromOwner,
   remove,
   getMetaData,
   doesFileSupportPreview,
