@@ -110,6 +110,15 @@ const MyShares = () => {
                   </td>
                   <td>
                     <Group position="right">
+                      <Link href={`/share/${share.id}/edit`}>
+                        <ActionIcon
+                        color="orange"
+                        variant="light"
+                        size={25}
+                      >
+                        <TbEdit />
+                      </ActionIcon>
+                      </Link>
                       <ActionIcon
                         color="blue"
                         variant="light"
@@ -125,15 +134,6 @@ const MyShares = () => {
                       >
                         <TbInfoCircle />
                       </ActionIcon>
-                      <Link href={`/share/${share.id}/edit`}>
-                        <ActionIcon
-                        color="orange"
-                        variant="light"
-                        size={25}
-                      >
-                        <TbEdit />
-                      </ActionIcon>
-                      </Link>
                       <ActionIcon
                         color="victoria"
                         variant="light"

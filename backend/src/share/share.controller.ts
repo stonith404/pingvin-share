@@ -87,7 +87,7 @@ export class ShareController {
   }
 
   @Delete(":id")
-  @UseGuards(JwtGuard, ShareOwnerGuard)
+  @UseGuards(ShareOwnerGuard)
   async remove(@Param("id") id: string) {
     await this.shareService.remove(id);
   }

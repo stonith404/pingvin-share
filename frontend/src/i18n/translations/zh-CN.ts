@@ -268,6 +268,7 @@ export default {
   "share.edit.title": "编辑 {shareId}",
   "share.edit.append-upload": "追加文件",
   "share.edit.notify.generic-error": "保存共享的过程中发生了错误",
+  "share.edit.notify.save-success": "共享已更新成功",
   // END /share/[id]/edit
   // /admin/config
   "admin.config.title": "配置管理",

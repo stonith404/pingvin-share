@@ -90,7 +90,7 @@ export class FileController {
     @Param("fileId") fileId: string,
     @Param("shareId") shareId: string,
   ) {
-    return await this.fileService.removeAndDeleteOne(
+    return await this.fileService.remove(
       shareId,
       fileId,
     );

@@ -13,6 +13,7 @@ import useTranslate from "../../hooks/useTranslate.hook";
 import shareService from "../../services/share.service";
 import { FileListItem, FileMetaData, FileUpload } from "../../types/File.type";
 import toast from "../../utils/toast.util";
+import { useRouter } from 'next/router';
 
 const promiseLimit = pLimit(3);
 const chunkSize = 10 * 1024 * 1024; // 10MB
@@ -28,9 +29,8 @@ const EditableUpload = ({
   shareId: string;
   files?: FileMetaData[];
 }) => {
-  const modals = useModals();
   const t = useTranslate();
-
+  const router = useRouter();
   const config = useConfig();
 
   const [existingFiles, setExistingFiles] = useState<Array<FileMetaData & { deleted?: boolean }>>(savedFiles);
@@ -173,10 +173,11 @@ const EditableUpload = ({
         await removeFiles();;
       }
 
-      const share = await completeShare();
+      await completeShare();
 
       if (!hasFailed) {
-        showCompletedUploadModal(modals, share, config.get("general.appUrl"));
+       toast.success(t("share.edit.notify.save-success"))
+       router.back();
       }
     } catch {
       toast.error(t("share.edit.notify.generic-error"))

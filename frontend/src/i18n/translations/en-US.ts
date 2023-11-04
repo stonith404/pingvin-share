@@ -362,6 +362,7 @@ export default {
   "share.edit.title": "Edit {shareId}",
   "share.edit.append-upload": "Append file",
   "share.edit.notify.generic-error": "An error occurred while finishing your share.",
+  "share.edit.notify.save-success": "Share updated successfully",
   // END /share/[id]/edit
 
   // /admin/config

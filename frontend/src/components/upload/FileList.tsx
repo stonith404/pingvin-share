@@ -47,7 +47,7 @@ const FileListRow = ({
         {
           restorable && (
             <ActionIcon
-              color="blue"
+              color="primary"
               variant="light"
               size={25}
               onClick={onRestore}
