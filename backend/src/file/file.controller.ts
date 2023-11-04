@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
@@ -80,5 +81,18 @@ export class FileController {
     res.set(headers);
 
     return new StreamableFile(file.file);
+  }
+
+  @Delete(":fileId")
+  @SkipThrottle()
+  @UseGuards(ShareOwnerGuard)
+  async remove(
+    @Param("fileId") fileId: string,
+    @Param("shareId") shareId: string,
+  ) {
+    return await this.fileService.removeAndDeleteOne(
+      shareId,
+      fileId,
+    );
   }
 }

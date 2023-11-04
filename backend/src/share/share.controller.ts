@@ -62,12 +62,6 @@ export class ShareController {
     );
   }
 
-  @Delete(":id")
-  @UseGuards(JwtGuard, ShareOwnerGuard)
-  async remove(@Param("id") id: string) {
-    await this.shareService.remove(id);
-  }
-
   @Post(":id/complete")
   @HttpCode(202)
   @UseGuards(CreateShareGuard, ShareOwnerGuard)
@@ -76,6 +70,20 @@ export class ShareController {
     return new ShareDTO().from(
       await this.shareService.complete(id, reverse_share_token),
     );
+  }
+
+  @Delete(":id/complete")
+  @UseGuards(ShareOwnerGuard)
+  async revertComplete(@Param("id") id: string) {
+    return new ShareDTO().from(
+      await this.shareService.revertComplete(id),
+    );
+  }
+
+  @Delete(":id")
+  @UseGuards(JwtGuard, ShareOwnerGuard)
+  async remove(@Param("id") id: string) {
+    await this.shareService.remove(id);
   }
 
   @Throttle(10, 60)

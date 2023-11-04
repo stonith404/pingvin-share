@@ -124,6 +124,26 @@ export class FileService {
     };
   }
 
+  async removeAndDeleteOne(shareId: string, fileId: string) {
+    const fileMetaData = await this.prisma.file.findUnique({
+      where: { id: fileId },
+    });
+
+    if (!fileMetaData) throw new NotFoundException("File not found");
+
+    fs.unlinkSync(`${SHARE_DIRECTORY}/${shareId}/${fileId}`);
+
+    await this.prisma.file.delete({ where: { id: fileId } });
+
+    return {
+      metaData: {
+        mimeType: mime.contentType(fileMetaData.name.split(".").pop()),
+        ...fileMetaData,
+        size: fileMetaData.size,
+      },
+    };
+  }
+
   async deleteAllFiles(shareId: string) {
     await fs.promises.rm(`${SHARE_DIRECTORY}/${shareId}`, {
       recursive: true,

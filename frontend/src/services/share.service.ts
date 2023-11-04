@@ -19,6 +19,10 @@ const completeShare = async (id: string) => {
   return (await api.post(`shares/${id}/complete`)).data;
 };
 
+const revertComplete = async (id: string) => {
+  return (await api.delete(`shares/${id}/complete`)).data;
+}
+
 const get = async (id: string): Promise<Share> => {
   return (await api.get(`shares/${id}`)).data;
 };
@@ -62,6 +66,10 @@ const doesFileSupportPreview = (fileName: string) => {
 const downloadFile = async (shareId: string, fileId: string) => {
   window.location.href = `${window.location.origin}/api/shares/${shareId}/files/${fileId}`;
 };
+
+const removeFile = async (shareId: string, fileId: string) => {
+  await api.delete(`shares/${shareId}/files/${fileId}`);
+}
 
 const uploadFile = async (
   shareId: string,
@@ -121,6 +129,7 @@ const removeReverseShare = async (id: string) => {
 export default {
   create,
   completeShare,
+  revertComplete,
   getShareToken,
   get,
   remove,
@@ -129,6 +138,7 @@ export default {
   getMyShares,
   isShareIdAvailable,
   downloadFile,
+  removeFile,
   uploadFile,
   setReverseShare,
   createReverseShare,
