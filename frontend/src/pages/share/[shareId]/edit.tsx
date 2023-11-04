@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import showErrorModal from "../../../components/share/showErrorModal";
 import shareService from "../../../services/share.service";
 import { Share as ShareType } from "../../../types/share.type";
-import useTranslate from '../../../hooks/useTranslate.hook';
-import EditableUpload from '../../../components/upload/EditableUpload';
-import Meta from '../../../components/Meta';
+import useTranslate from "../../../hooks/useTranslate.hook";
+import EditableUpload from "../../../components/upload/EditableUpload";
+import Meta from "../../../components/Meta";
 
 export function getServerSideProps(context: GetServerSidePropsContext) {
   return {
@@ -21,11 +21,10 @@ const Share = ({ shareId }: { shareId: string }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [share, setShare] = useState<ShareType>();
 
-
   useEffect(() => {
     shareService
       .getFromOwner(shareId)
-      .then(share => {
+      .then((share) => {
         setShare(share);
       })
       .catch((e) => {
@@ -47,17 +46,20 @@ const Share = ({ shareId }: { shareId: string }) => {
         } else {
           showErrorModal(modals, t("common.error"), t("common.error.unknown"));
         }
-      }).finally(() => {
-        setIsLoading(false);
       })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   if (isLoading) return <LoadingOverlay visible />;
 
-  return <>
-    <Meta title={t("share.edit.title", { shareId })} />
-    <EditableUpload shareId={shareId} files={share?.files || []} />
-  </>
+  return (
+    <>
+      <Meta title={t("share.edit.title", { shareId })} />
+      <EditableUpload shareId={shareId} files={share?.files || []} />
+    </>
+  );
 };
 
 export default Share;

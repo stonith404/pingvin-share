@@ -21,7 +21,7 @@ const completeShare = async (id: string) => {
 
 const revertComplete = async (id: string) => {
   return (await api.delete(`shares/${id}/complete`)).data;
-}
+};
 
 const get = async (id: string): Promise<Share> => {
   return (await api.get(`shares/${id}`)).data;
@@ -73,7 +73,7 @@ const downloadFile = async (shareId: string, fileId: string) => {
 
 const removeFile = async (shareId: string, fileId: string) => {
   await api.delete(`shares/${shareId}/files/${fileId}`);
-}
+};
 
 const uploadFile = async (
   shareId: string,

@@ -13,7 +13,7 @@ import useTranslate from "../../hooks/useTranslate.hook";
 import shareService from "../../services/share.service";
 import { FileListItem, FileMetaData, FileUpload } from "../../types/File.type";
 import toast from "../../utils/toast.util";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 const promiseLimit = pLimit(3);
 const chunkSize = 10 * 1024 * 1024; // 10MB
@@ -33,28 +33,32 @@ const EditableUpload = ({
   const router = useRouter();
   const config = useConfig();
 
-  const [existingFiles, setExistingFiles] = useState<Array<FileMetaData & { deleted?: boolean }>>(savedFiles);
+  const [existingFiles, setExistingFiles] =
+    useState<Array<FileMetaData & { deleted?: boolean }>>(savedFiles);
   const [uploadingFiles, setUploadingFiles] = useState<FileUpload[]>([]);
   const [isUploading, setIsUploading] = useState(false);
 
   const existingAndUploadedFiles: FileListItem[] = useMemo(
     () => [...uploadingFiles, ...existingFiles],
-    [existingFiles, uploadingFiles]);
+    [existingFiles, uploadingFiles],
+  );
   const dirty = useMemo(() => {
-    return existingFiles.some(file => !!file.deleted) || !!uploadingFiles.length;
+    return (
+      existingFiles.some((file) => !!file.deleted) || !!uploadingFiles.length
+    );
   }, [existingFiles, uploadingFiles]);
 
   const setFiles = (files: FileListItem[]) => {
     const _uploadFiles = files.filter(
-      file => 'uploadingProgress' in file
+      (file) => "uploadingProgress" in file,
     ) as FileUpload[];
     const _existingFiles = files.filter(
-      file => !('uploadingProgress' in file)
+      (file) => !("uploadingProgress" in file),
     ) as FileMetaData[];
 
     setUploadingFiles(_uploadFiles);
     setExistingFiles(_existingFiles);
-  }
+  };
 
   maxShareSize ??= parseInt(config.get("share.maxSize"));
 
@@ -136,27 +140,26 @@ const EditableUpload = ({
   };
 
   const removeFiles = async () => {
-    const removedFiles = existingFiles.filter(file => !!file.deleted);
+    const removedFiles = existingFiles.filter((file) => !!file.deleted);
 
     if (removedFiles.length > 0) {
       await Promise.all(
-        removedFiles.map(async file => {
+        removedFiles.map(async (file) => {
           await shareService.removeFile(shareId, file.id);
-        })
-      )
+        }),
+      );
 
-      setExistingFiles(existingFiles.filter(file => !file.deleted));
+      setExistingFiles(existingFiles.filter((file) => !file.deleted));
     }
-  }
+  };
 
   const revertComplete = async () => {
     await shareService.revertComplete(shareId).then();
-  }
+  };
 
   const completeShare = async () => {
-    return await shareService
-      .completeShare(shareId);
-  }
+    return await shareService.completeShare(shareId);
+  };
 
   const save = async () => {
     setIsUploading(true);
@@ -167,24 +170,24 @@ const EditableUpload = ({
 
       const hasFailed = uploadingFiles.some(
         (file) => file.uploadingProgress == -1,
-      )
+      );
 
       if (!hasFailed) {
-        await removeFiles();;
+        await removeFiles();
       }
 
       await completeShare();
 
       if (!hasFailed) {
-       toast.success(t("share.edit.notify.save-success"))
-       router.back();
+        toast.success(t("share.edit.notify.save-success"));
+        router.back();
       }
     } catch {
-      toast.error(t("share.edit.notify.generic-error"))
+      toast.error(t("share.edit.notify.generic-error"));
     } finally {
       setIsUploading(false);
     }
-  }
+  };
 
   const appendFiles = (appendingFiles: FileUpload[]) => {
     setUploadingFiles([...appendingFiles, ...uploadingFiles]);
@@ -216,21 +219,19 @@ const EditableUpload = ({
   return (
     <>
       <Group position="right" mb={20}>
-        <Button
-          loading={isUploading}
-          disabled={!dirty}
-          onClick={() => save()}
-        >
+        <Button loading={isUploading} disabled={!dirty} onClick={() => save()}>
           <FormattedMessage id="common.button.save" />
         </Button>
       </Group>
       <Dropzone
-        title={t('share.edit.append-upload')}
+        title={t("share.edit.append-upload")}
         maxShareSize={maxShareSize}
         showCreateUploadModalCallback={appendFiles}
         isUploading={isUploading}
       />
-      {existingAndUploadedFiles.length > 0 && <FileList files={existingAndUploadedFiles} setFiles={setFiles} />}
+      {existingAndUploadedFiles.length > 0 && (
+        <FileList files={existingAndUploadedFiles} setFiles={setFiles} />
+      )}
     </>
   );
 };

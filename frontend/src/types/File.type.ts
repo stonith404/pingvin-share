@@ -8,4 +8,4 @@ export type FileMetaData = {
   size: string;
 };
 
-export type FileListItem = FileUpload | (FileMetaData & { deleted?: boolean } );
+export type FileListItem = FileUpload | (FileMetaData & { deleted?: boolean });

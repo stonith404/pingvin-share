@@ -202,7 +202,9 @@ const Upload = ({
         showCreateUploadModalCallback={showCreateUploadModalCallback}
         isUploading={isUploading}
       />
-      {files.length > 0 && <FileList<FileUpload> files={files} setFiles={setFiles} />}
+      {files.length > 0 && (
+        <FileList<FileUpload> files={files} setFiles={setFiles} />
+      )}
     </>
   );
 };

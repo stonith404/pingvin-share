@@ -81,9 +81,7 @@ export class ShareController {
   @Delete(":id/complete")
   @UseGuards(ShareOwnerGuard)
   async revertComplete(@Param("id") id: string) {
-    return new ShareDTO().from(
-      await this.shareService.revertComplete(id),
-    );
+    return new ShareDTO().from(await this.shareService.revertComplete(id));
   }
 
   @Delete(":id")

@@ -7,7 +7,7 @@ import {
 import { User } from "@prisma/client";
 import { Request } from "express";
 import { PrismaService } from "src/prisma/prisma.service";
-import { JwtGuard } from '../../auth/guard/jwt.guard';
+import { JwtGuard } from "../../auth/guard/jwt.guard";
 import { ConfigService } from "src/config/config.service";
 
 @Injectable()
@@ -20,7 +20,7 @@ export class ShareOwnerGuard extends JwtGuard {
   }
 
   async canActivate(context: ExecutionContext) {
-    if (!await super.canActivate(context)) return false;
+    if (!(await super.canActivate(context))) return false;
 
     const request: Request = context.switchToHttp().getRequest();
     const shareId = Object.prototype.hasOwnProperty.call(

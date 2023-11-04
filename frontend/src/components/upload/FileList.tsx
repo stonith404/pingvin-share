@@ -11,26 +11,30 @@ const FileListRow = ({
   onRemove,
   onRestore,
 }: {
-  file: FileListItem,
-  onRemove?: () => void,
-  onRestore?: () => void,
+  file: FileListItem;
+  onRemove?: () => void;
+  onRestore?: () => void;
 }) => {
   {
-    const uploadable = "uploadingProgress" in file
-    const uploading = uploadable && file.uploadingProgress !== 0
-    const removable = uploadable ? file.uploadingProgress === 0 : onRemove && !file.deleted;
+    const uploadable = "uploadingProgress" in file;
+    const uploading = uploadable && file.uploadingProgress !== 0;
+    const removable = uploadable
+      ? file.uploadingProgress === 0
+      : onRemove && !file.deleted;
     const restorable = onRestore && !uploadable && !!file.deleted; // maybe undefined, force boolean
     const deleted = !uploadable && !!file.deleted;
 
-    return  <tr style={{
-      color: deleted ? "rgba(120, 120, 120, 0.5)" : "inherit",
-      textDecoration: deleted ? "line-through" : "none",
-    }}>
-      <td>{file.name}</td>
-      <td>{byteToHumanSizeString(+file.size)}</td>
-      <td>
-        {
-          removable && (
+    return (
+      <tr
+        style={{
+          color: deleted ? "rgba(120, 120, 120, 0.5)" : "inherit",
+          textDecoration: deleted ? "line-through" : "none",
+        }}
+      >
+        <td>{file.name}</td>
+        <td>{byteToHumanSizeString(+file.size)}</td>
+        <td>
+          {removable && (
             <ActionIcon
               color="red"
               variant="light"
@@ -39,13 +43,11 @@ const FileListRow = ({
             >
               <TbTrash />
             </ActionIcon>
-          )
-        }
-        {
-          uploading && <UploadProgressIndicator progress={file.uploadingProgress} />
-        }
-        {
-          restorable && (
+          )}
+          {uploading && (
+            <UploadProgressIndicator progress={file.uploadingProgress} />
+          )}
+          {restorable && (
             <ActionIcon
               color="primary"
               variant="light"
@@ -54,19 +56,19 @@ const FileListRow = ({
             >
               <GrUndo />
             </ActionIcon>
-          )
-        }
-      </td>
-    </tr>
+          )}
+        </td>
+      </tr>
+    );
   }
 };
 
-const FileList = <T extends FileListItem = FileListItem,> ({
+const FileList = <T extends FileListItem = FileListItem>({
   files,
   setFiles,
 }: {
-  files: T[],
-  setFiles: (files: T[]) => void
+  files: T[];
+  setFiles: (files: T[]) => void;
 }) => {
   const remove = (index: number) => {
     const file = files[index];
@@ -90,10 +92,15 @@ const FileList = <T extends FileListItem = FileListItem,> ({
     }
 
     setFiles([...files]);
-  }
+  };
 
   const rows = files.map((file, i) => (
-    <FileListRow key={i} file={file} onRemove={() => remove(i)} onRestore={() => restore(i)} />
+    <FileListRow
+      key={i}
+      file={file}
+      onRemove={() => remove(i)}
+      onRestore={() => restore(i)}
+    />
   ));
 
   return (
