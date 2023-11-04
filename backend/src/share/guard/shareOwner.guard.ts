@@ -1,5 +1,4 @@
 import {
-  CanActivate,
   ExecutionContext,
   Injectable,
   NotFoundException,
