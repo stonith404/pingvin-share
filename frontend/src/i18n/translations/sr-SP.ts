@@ -264,6 +264,12 @@ export default {
   "share.modal.file-preview.error.not-supported.title": "Преглед није подржан",
   "share.modal.file-preview.error.not-supported.description": "Преглед за овај тип датотеке није подржан. Преузмите датотеку да бисте је видели.",
   // END /share/[id]
+  // /share/[id]/edit
+  "share.edit.title": "Edit {shareId}",
+  "share.edit.append-upload": "Append file",
+  "share.edit.notify.generic-error": "An error occurred while finishing your share.",
+  "share.edit.notify.save-success": "Share updated successfully",
+  // END /share/[id]/edit
   // /admin/config
   "admin.config.title": "Конфигурација",
   "admin.config.category.general": "Опште",
