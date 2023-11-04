@@ -264,6 +264,12 @@ export default {
   "share.modal.file-preview.error.not-supported.title": "Visualização não suportada",
   "share.modal.file-preview.error.not-supported.description": "Uma visualização para este tipo de arquivo não é suportada. Faça o download do arquivo para visualizá-lo.",
   // END /share/[id]
+  // /share/[id]/edit
+  "share.edit.title": "Edit {shareId}",
+  "share.edit.append-upload": "Append file",
+  "share.edit.notify.generic-error": "An error occurred while finishing your share.",
+  "share.edit.notify.save-success": "Share updated successfully",
+  // END /share/[id]/edit
   // /admin/config
   "admin.config.title": "Configuração",
   "admin.config.category.general": "Geral",
