@@ -115,7 +115,7 @@ export default {
   "account.shares.title.empty": "Es ist so leer hier 👀",
   "account.shares.description.empty": "Du hast keine Freigaben erstellt.",
   "account.shares.button.create": "Erstelle eine",
-  "account.shares.info.title": "Teile deine Information",
+  "account.shares.info.title": "Freigabe Informationen",
   "account.shares.table.id": "ID",
   "account.shares.table.name": "Name",
   "account.shares.table.description": "Beschreibung",
@@ -264,6 +264,12 @@ export default {
   "share.modal.file-preview.error.not-supported.title": "Vorschau wird nicht unterstützt",
   "share.modal.file-preview.error.not-supported.description": "Eine Vorschau für diesen Dateityp wird nicht unterstützt. Bitte lade die Datei herunter, um sie anzuzeigen.",
   // END /share/[id]
+  // /share/[id]/edit
+  "share.edit.title": "Edit {shareId}",
+  "share.edit.append-upload": "Append file",
+  "share.edit.notify.generic-error": "An error occurred while finishing your share.",
+  "share.edit.notify.save-success": "Share updated successfully",
+  // END /share/[id]/edit
   // /admin/config
   "admin.config.title": "Einstellungen",
   "admin.config.category.general": "Allgemein",

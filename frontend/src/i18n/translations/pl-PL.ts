@@ -264,6 +264,12 @@ export default {
   "share.modal.file-preview.error.not-supported.title": "Podgląd nie jest obsługiwany",
   "share.modal.file-preview.error.not-supported.description": "Podgląd dla tego typu pliku nie jest obsługiwany. Pobierz plik, aby go zobaczyć.",
   // END /share/[id]
+  // /share/[id]/edit
+  "share.edit.title": "Edytuj {shareId}",
+  "share.edit.append-upload": "Dołącz plik",
+  "share.edit.notify.generic-error": "W trakcie zakańczania tworzenia udziału wystąpił błąd.",
+  "share.edit.notify.save-success": "Udział zaktualizowany pomyślnie",
+  // END /share/[id]/edit
   // /admin/config
   "admin.config.title": "Konfiguracja",
   "admin.config.category.general": "Ogólne",

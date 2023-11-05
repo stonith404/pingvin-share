@@ -264,6 +264,12 @@ export default {
   "share.modal.file-preview.error.not-supported.title": "Предпросмотр не поддерживается",
   "share.modal.file-preview.error.not-supported.description": "Предварительный просмотр этого типа файла не поддерживается. Пожалуйста, скачайте файл для его просмотра.",
   // END /share/[id]
+  // /share/[id]/edit
+  "share.edit.title": "Edit {shareId}",
+  "share.edit.append-upload": "Append file",
+  "share.edit.notify.generic-error": "An error occurred while finishing your share.",
+  "share.edit.notify.save-success": "Share updated successfully",
+  // END /share/[id]/edit
   // /admin/config
   "admin.config.title": "Конфигурация",
   "admin.config.category.general": "Общее",

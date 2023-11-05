@@ -264,6 +264,12 @@ export default {
   "share.modal.file-preview.error.not-supported.title": "Aperçu non supporté",
   "share.modal.file-preview.error.not-supported.description": "Un aperçu pour ce type de fichier n'est pas pris en charge. Veuillez télécharger le fichier pour le voir.",
   // END /share/[id]
+  // /share/[id]/edit
+  "share.edit.title": "Edit {shareId}",
+  "share.edit.append-upload": "Append file",
+  "share.edit.notify.generic-error": "An error occurred while finishing your share.",
+  "share.edit.notify.save-success": "Share updated successfully",
+  // END /share/[id]/edit
   // /admin/config
   "admin.config.title": "Paramètres",
   "admin.config.category.general": "Général",

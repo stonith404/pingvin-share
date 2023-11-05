@@ -264,6 +264,12 @@ export default {
   "share.modal.file-preview.error.not-supported.title": "ไม่รองรับการแสดงตัวอย่าง",
   "share.modal.file-preview.error.not-supported.description": "ไม่รองรับการแสดงตัวอย่างสำหรับไฟล์ประเภทนี้ โปรดดาวน์โหลดไฟล์เพื่อดู",
   // END /share/[id]
+  // /share/[id]/edit
+  "share.edit.title": "Edit {shareId}",
+  "share.edit.append-upload": "Append file",
+  "share.edit.notify.generic-error": "An error occurred while finishing your share.",
+  "share.edit.notify.save-success": "Share updated successfully",
+  // END /share/[id]/edit
   // /admin/config
   "admin.config.title": "การตั้งค่า",
   "admin.config.category.general": "ทั่วไป",

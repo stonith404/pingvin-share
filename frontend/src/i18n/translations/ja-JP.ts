@@ -264,6 +264,12 @@ export default {
   "share.modal.file-preview.error.not-supported.title": "プレビューに対応していません",
   "share.modal.file-preview.error.not-supported.description": "これらのファイルのプレビューには対応していません。ファイルをダウンロードして、直接確認してください。",
   // END /share/[id]
+  // /share/[id]/edit
+  "share.edit.title": "Edit {shareId}",
+  "share.edit.append-upload": "Append file",
+  "share.edit.notify.generic-error": "An error occurred while finishing your share.",
+  "share.edit.notify.save-success": "Share updated successfully",
+  // END /share/[id]/edit
   // /admin/config
   "admin.config.title": "設定",
   "admin.config.category.general": "一般",
