@@ -1,3 +1,10 @@
+## [0.20.1](https://github.com/stonith404/pingvin-share/compare/v0.20.0...v0.20.1) (2023-11-05)
+
+
+### Bug Fixes
+
+* share information text color in light mode ([1138cd0](https://github.com/stonith404/pingvin-share/commit/1138cd02b0b6ac1d71c4dbc2808110c672237190))
+
 ## [0.20.0](https://github.com/stonith404/pingvin-share/compare/v0.19.2...v0.20.0) (2023-11-04)
 
 
