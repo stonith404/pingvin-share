@@ -265,10 +265,10 @@ export default {
   "share.modal.file-preview.error.not-supported.description": "Un aperçu pour ce type de fichier n'est pas pris en charge. Veuillez télécharger le fichier pour le voir.",
   // END /share/[id]
   // /share/[id]/edit
-  "share.edit.title": "Edit {shareId}",
-  "share.edit.append-upload": "Append file",
-  "share.edit.notify.generic-error": "An error occurred while finishing your share.",
-  "share.edit.notify.save-success": "Share updated successfully",
+  "share.edit.title": "Modifier {shareId}",
+  "share.edit.append-upload": "Ajouter un fichier",
+  "share.edit.notify.generic-error": "Une erreur est survenue durant le traitement de votre partage.",
+  "share.edit.notify.save-success": "Partage mis à jour avec succès",
   // END /share/[id]/edit
   // /admin/config
   "admin.config.title": "Paramètres",
