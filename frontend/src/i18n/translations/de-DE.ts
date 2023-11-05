@@ -115,7 +115,7 @@ export default {
   "account.shares.title.empty": "Es ist so leer hier 👀",
   "account.shares.description.empty": "Du hast keine Freigaben erstellt.",
   "account.shares.button.create": "Erstelle eine",
-  "account.shares.info.title": "Teile deine Information",
+  "account.shares.info.title": "Freigabe Informationen",
   "account.shares.table.id": "ID",
   "account.shares.table.name": "Name",
   "account.shares.table.description": "Beschreibung",
