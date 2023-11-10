@@ -7,6 +7,8 @@ export class ErrorPageExceptionFilter implements ExceptionFilter {
   constructor(private config: ConfigService) {}
 
   catch(exception: ErrorPageException, host: ArgumentsHost) {
+    console.error(exception);
+
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
 
