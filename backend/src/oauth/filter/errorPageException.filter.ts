@@ -1,12 +1,16 @@
-import { ArgumentsHost, Catch, ExceptionFilter } from "@nestjs/common";
+import { ArgumentsHost, Catch, ExceptionFilter, Logger } from "@nestjs/common";
 import { ConfigService } from "../../config/config.service";
 import { ErrorPageException } from "../exceptions/errorPage.exception";
 
 @Catch(ErrorPageException)
 export class ErrorPageExceptionFilter implements ExceptionFilter {
+  private readonly logger = new Logger(ErrorPageExceptionFilter.name);
+
   constructor(private config: ConfigService) {}
 
   catch(exception: ErrorPageException, host: ArgumentsHost) {
+    this.logger.error(exception);
+
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
 

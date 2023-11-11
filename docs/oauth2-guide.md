@@ -10,23 +10,22 @@
 
 ### GitHub
 
-Please follow the [official guide](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app)
-to create an OAuth app.
+Please follow the [official guide](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app) to create an OAuth app.
 
 Redirect URL: `https://<your-domain>/api/oauth/callback/github`
 
 ### Google
 
-Please follow the [official guide](https://developers.google.com/identity/protocols/oauth2/web-server#prerequisites) to
-create an OAuth 2.0 App.
+Please follow the [official guide](https://developers.google.com/identity/protocols/oauth2/web-server#prerequisites) to create an OAuth 2.0 App.
 
 Redirect URL: `https://<your-domain>/api/oauth/callback/google`
 
 ### Microsoft
 
-Please follow
-the [official guide](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app)
-to register an application.
+Please follow the [official guide](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app) to register an application.
+
+> [!IMPORTANT]
+> **Microsoft Tenant** you set in the admin panel must match the **supported account types** you set in the Microsoft Entra admin center, otherwise the OAuth login will not work. Refer to the [official documentation](https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri) for more details.
 
 Redirect URL: `https://<your-domain>/api/oauth/callback/microsoft`
 
@@ -38,7 +37,7 @@ Redirect URL: `https://<your-domain>/api/oauth/callback/discord`
 
 ### OpenID Connect
 
-Generic OpenID Connect provider is also supported, we have tested it on Keycloak and Authentik.
+Generic OpenID Connect provider is also supported, we have tested it on Keycloak, Authentik and Casdoor.
 
 Redirect URL: `https://<your-domain>/api/oauth/callback/oidc`
 
@@ -74,14 +73,11 @@ const configVariables: ConfigVariables = {
 
 ### 2. Create provider class
 
-#### OpenID Connect
+#### Generic OpenID Connect
 
-If your provider supports OpenID connect, it's extremely easy to
-extend [`GenericOidcProvider`](../backend/src/oauth/provider/genericOidc.provider.ts) to add a new OpenID Connect
-provider.
+If your provider supports OpenID connect, it's extremely easy to extend [`GenericOidcProvider`](../backend/src/oauth/provider/genericOidc.provider.ts) to add a new OpenID Connect provider.
 
-The [Google provider](../backend/src/oauth/provider/google.provider.ts)
-and [Microsoft provider](../backend/src/oauth/provider/microsoft.provider.ts) are good examples.
+The [Google provider](../backend/src/oauth/provider/google.provider.ts) and [Microsoft provider](../backend/src/oauth/provider/microsoft.provider.ts) are good examples.
 
 Here are some discovery URIs for popular providers:
 
@@ -95,17 +91,13 @@ Here are some discovery URIs for popular providers:
 
 #### OAuth 2
 
-If your provider only supports OAuth 2, you can
-implement [`OAuthProvider`](../backend/src/oauth/provider/oauthProvider.interface.ts) interface to add a new OAuth 2
-provider.
+If your provider only supports OAuth 2, you can implement [`OAuthProvider`](../backend/src/oauth/provider/oauthProvider.interface.ts) interface to add a new OAuth 2 provider.
 
-The [GitHub provider](../backend/src/oauth/provider/github.provider.ts)
-and [Discord provider](../backend/src/oauth/provider/discord.provider.ts) are good examples.
+The [GitHub provider](../backend/src/oauth/provider/github.provider.ts) and [Discord provider](../backend/src/oauth/provider/discord.provider.ts) are good examples.
 
 ### 3. Register provider
 
-Register your provider in [`OAuthModule`](../backend/src/oauth/oauth.module.ts)
-and [`OAuthSignInDto`](../backend/src/oauth/dto/oauthSignIn.dto.ts):
+Register your provider in [`OAuthModule`](../backend/src/oauth/oauth.module.ts) and [`OAuthSignInDto`](../backend/src/oauth/dto/oauthSignIn.dto.ts):
 
 ```ts
 @Module({
@@ -117,8 +109,7 @@ and [`OAuthSignInDto`](../backend/src/oauth/dto/oauthSignIn.dto.ts):
       useFactory(github: GitHubProvider, /* your provider */): Record<string, OAuthProvider<unknown>> {
         return {
           github,
-          google,
-          oidc,
+          /* your provider */
         };
       },
       inject: [GitHubProvider, /* your provider */],
@@ -131,8 +122,7 @@ export class OAuthModule {
 
 ```ts
 export interface OAuthSignInDto {
-  provider: 'github' | 'google' | 'microsoft' | 'discord' | 'oidc' /* your provider*/
-  ;
+  provider: 'github' | 'google' | 'microsoft' | 'discord' | 'oidc' /* your provider*/;
   providerId: string;
   providerUsername: string;
   email: string;
@@ -161,8 +151,7 @@ Add keys below to your i18n text in [locale file](../frontend/src/i18n/translati
 - `admin.config.oauth.YOUR_PROVIDER_NAME-enabled`
 - `admin.config.oauth.YOUR_PROVIDER_NAME-client-id`
 - `admin.config.oauth.YOUR_PROVIDER_NAME-client-secret`
+- `error.param.provider_YOUR_PROVIDER_NAME`
 - Other config keys you defined in step 1
 
-Congratulations! 🎉 You have successfully added a new OAuth 2 provider! Pull requests are welcome if you want to share
-your provider with others.
-
+Congratulations! 🎉 You have successfully added a new OAuth 2 provider! Pull requests are welcome if you want to share your provider with others.
