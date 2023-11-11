@@ -6,12 +6,13 @@ import finnish from "./translations/fi-FI";
 import french from "./translations/fr-FR";
 import japanese from "./translations/ja-JP";
 import dutch from "./translations/nl-BE";
+import polish from "./translations/pl-PL";
 import portuguese from "./translations/pt-BR";
 import russian from "./translations/ru-RU";
 import serbian from "./translations/sr-SP";
+import swedish from "./translations/sv-SE";
 import thai from "./translations/th-TH";
 import chineseSimplified from "./translations/zh-CN";
-import polish from "./translations/pl-PL";
 
 export const LOCALES = {
   ENGLISH: {
@@ -83,5 +84,10 @@ export const LOCALES = {
     name: "Polski",
     code: "pl-PL",
     messages: polish,
+  },
+  SWEDISH: {
+    name: "Svenska",
+    code: "sv-SE",
+    messages: swedish,
   },
 };

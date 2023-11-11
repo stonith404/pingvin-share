@@ -3,6 +3,7 @@ import {
   Catch,
   ExceptionFilter,
   HttpException,
+  Logger,
 } from "@nestjs/common";
 import { ConfigService } from "../../config/config.service";
 
@@ -12,13 +13,19 @@ export class OAuthExceptionFilter implements ExceptionFilter {
     access_denied: "access_denied",
     expired_token: "expired_token",
   };
+  private readonly logger = new Logger(OAuthExceptionFilter.name);
 
   constructor(private config: ConfigService) {}
 
-  catch(_exception: HttpException, host: ArgumentsHost) {
+  catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
     const request = ctx.getRequest();
+
+    this.logger.error(exception.message);
+    this.logger.error(
+      "Request query: " + JSON.stringify(request.query, null, 2),
+    );
 
     const key = this.errorKeys[request.query.error] || "default";
 

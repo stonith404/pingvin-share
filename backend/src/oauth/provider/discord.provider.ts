@@ -60,8 +60,8 @@ export class DiscordProvider implements OAuthProvider<DiscordToken> {
   }
 
   async getUserInfo(token: OAuthToken<DiscordToken>): Promise<OAuthSignInDto> {
-    const res = await fetch("https://discord.com/api/v10/user/@me", {
-      method: "post",
+    const res = await fetch("https://discord.com/api/v10/users/@me", {
+      method: "get",
       headers: {
         Accept: "application/json",
         Authorization: `${token.tokenType || "Bearer"} ${token.accessToken}`,

@@ -19,7 +19,6 @@ export class ShareOwnerGuard extends JwtGuard {
   }
 
   async canActivate(context: ExecutionContext) {
-    if (!(await super.canActivate(context))) return false;
 
     const request: Request = context.switchToHttp().getRequest();
     const shareId = Object.prototype.hasOwnProperty.call(
@@ -37,6 +36,8 @@ export class ShareOwnerGuard extends JwtGuard {
     if (!share) throw new NotFoundException("Share not found");
 
     if (!share.creatorId) return true;
+
+    if (!(await super.canActivate(context))) return false;
 
     return share.creatorId == (request.user as User).id;
   }

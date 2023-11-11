@@ -41,15 +41,16 @@ export class GitHubProvider implements OAuthProvider<GitHubToken> {
     return {
       accessToken: token.access_token,
       tokenType: token.token_type,
+      scope: token.scope,
       rawToken: token,
     };
   }
 
   async getUserInfo(token: OAuthToken<GitHubToken>): Promise<OAuthSignInDto> {
-    const user = await this.getGitHubUser(token);
     if (!token.scope.includes("user:email")) {
       throw new BadRequestException("No email permission granted");
     }
+    const user = await this.getGitHubUser(token);
     const email = await this.getGitHubEmail(token);
     if (!email) {
       throw new BadRequestException("No email found");
