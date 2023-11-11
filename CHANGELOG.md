@@ -1,3 +1,11 @@
+## [0.20.2](https://github.com/stonith404/pingvin-share/compare/v0.20.1...v0.20.2) (2023-11-11)
+
+
+### Bug Fixes
+
+* **oauth:** github and discord login error ([#323](https://github.com/stonith404/pingvin-share/issues/323)) ([fd44f42](https://github.com/stonith404/pingvin-share/commit/fd44f42f28c0fa2091876b138f170202d9fde04e)), closes [#322](https://github.com/stonith404/pingvin-share/issues/322) [#302](https://github.com/stonith404/pingvin-share/issues/302)
+* reverse shares couldn't be created unauthenticated ([966ce26](https://github.com/stonith404/pingvin-share/commit/966ce261cb4ad99efaadef5c36564fdfaed0d5c4))
+
 ## [0.20.1](https://github.com/stonith404/pingvin-share/compare/v0.20.0...v0.20.1) (2023-11-05)
 
 
