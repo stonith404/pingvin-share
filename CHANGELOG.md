@@ -1,3 +1,10 @@
+## [0.20.3](https://github.com/stonith404/pingvin-share/compare/v0.20.2...v0.20.3) (2023-11-17)
+
+
+### Bug Fixes
+
+* max expiration gets ignored if expiration is set to "never" ([330eef5](https://github.com/stonith404/pingvin-share/commit/330eef51e4f3f3fb29833bc9337e705553340aaa))
+
 ## [0.20.2](https://github.com/stonith404/pingvin-share/compare/v0.20.1...v0.20.2) (2023-11-11)
 
 
