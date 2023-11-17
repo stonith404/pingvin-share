@@ -54,10 +54,15 @@ export class ShareService {
     } else {
       const parsedExpiration = parseRelativeDateToAbsolute(share.expiration);
 
+      const expiresNever = moment(0).toDate() == parsedExpiration;
+
       if (
         this.config.get("share.maxExpiration") !== 0 &&
-        parsedExpiration >
-          moment().add(this.config.get("share.maxExpiration"), "hours").toDate()
+        (expiresNever ||
+          parsedExpiration >
+            moment()
+              .add(this.config.get("share.maxExpiration"), "hours")
+              .toDate())
       ) {
         throw new BadRequestException(
           "Expiration date exceeds maximum expiration date",

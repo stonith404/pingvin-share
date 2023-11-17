@@ -19,7 +19,6 @@ export class ShareOwnerGuard extends JwtGuard {
   }
 
   async canActivate(context: ExecutionContext) {
-
     const request: Request = context.switchToHttp().getRequest();
     const shareId = Object.prototype.hasOwnProperty.call(
       request.params,
