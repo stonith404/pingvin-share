@@ -235,7 +235,7 @@ export default {
   "upload.modal.accordion.email.placeholder": "Insira os destinatários do e-mail",
   "upload.modal.accordion.email.invalid-email": "Endereço de e-mail inválido",
   "upload.modal.accordion.security.title": "Opções de segurança",
-  "upload.modal.accordion.security.password.label": "Protecção por senha",
+  "upload.modal.accordion.security.password.label": "Proteção por senha",
   "upload.modal.accordion.security.password.placeholder": "Sem senha",
   "upload.modal.accordion.security.max-views.label": "Máximo de visualizações",
   "upload.modal.accordion.security.max-views.placeholder": "Sem limite",
