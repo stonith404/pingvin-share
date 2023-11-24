@@ -13,6 +13,7 @@ import serbian from "./translations/sr-SP";
 import swedish from "./translations/sv-SE";
 import thai from "./translations/th-TH";
 import chineseSimplified from "./translations/zh-CN";
+import chineseTraditional from "./translations/zh-TW";
 
 export const LOCALES = {
   ENGLISH: {
@@ -49,6 +50,11 @@ export const LOCALES = {
     name: "简体中文",
     code: "zh-CN",
     messages: chineseSimplified,
+  },
+  CHINESE_TRADITIONAL: {
+    name: "正體中文",
+    code: "zh-TW",
+    messages: chineseTraditional,
   },
   FINNISH: {
     name: "Suomi",
