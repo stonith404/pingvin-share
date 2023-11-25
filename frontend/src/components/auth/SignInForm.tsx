@@ -113,12 +113,14 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
     getAvailableOAuth().catch(toast.axiosError);
   }, []);
 
+  const passwordSignIn = config.get("account.passwordSignIn");
+
   return (
     <Container size={420} my={40}>
       <Title order={2} align="center" weight={900}>
         <FormattedMessage id="signin.title" />
       </Title>
-      {config.get("share.allowRegistration") && (
+      {config.get("share.allowRegistration") && passwordSignIn && (
         <Text color="dimmed" size="sm" align="center" mt={5}>
           <FormattedMessage id="signin.description" />{" "}
           <Anchor component={Link} href={"signUp"} size="sm">
@@ -127,53 +129,77 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
         </Text>
       )}
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-        <form
-          onSubmit={form.onSubmit((values) => {
-            signIn(values.emailOrUsername, values.password);
-          })}
-        >
-          <TextInput
-            label={t("signin.input.email-or-username")}
-            placeholder={t("signin.input.email-or-username.placeholder")}
-            {...form.getInputProps("emailOrUsername")}
-          />
-          <PasswordInput
-            label={t("signin.input.password")}
-            placeholder={t("signin.input.password.placeholder")}
-            mt="md"
-            {...form.getInputProps("password")}
-          />
-          {config.get("smtp.enabled") && (
-            <Group position="right" mt="xs">
-              <Anchor component={Link} href="/auth/resetPassword" size="xs">
-                <FormattedMessage id="resetPassword.title" />
-              </Anchor>
-            </Group>
-          )}
-          <Button fullWidth mt="xl" type="submit">
-            <FormattedMessage id="signin.button.submit" />
-          </Button>
-        </form>
+        {passwordSignIn && (
+          <form
+            onSubmit={form.onSubmit((values) => {
+              signIn(values.emailOrUsername, values.password);
+            })}
+          >
+            <TextInput
+              label={t("signin.input.email-or-username")}
+              placeholder={t("signin.input.email-or-username.placeholder")}
+              {...form.getInputProps("emailOrUsername")}
+            />
+            <PasswordInput
+              label={t("signin.input.password")}
+              placeholder={t("signin.input.password.placeholder")}
+              mt="md"
+              {...form.getInputProps("password")}
+            />
+            {config.get("smtp.enabled") && (
+              <Group position="right" mt="xs">
+                <Anchor component={Link} href="/auth/resetPassword" size="xs">
+                  <FormattedMessage id="resetPassword.title" />
+                </Anchor>
+              </Group>
+            )}
+            <Button fullWidth mt="xl" type="submit">
+              <FormattedMessage id="signin.button.submit" />
+            </Button>
+          </form>
+        )}
+        {passwordSignIn && oauth.length > 0 && (
+          <Group align="center" className={classes.or} my="xl">
+            <Text>{t("signIn.oauth.or")}</Text>
+          </Group>
+        )}
         {oauth.length > 0 && (
-          <Stack mt="xl">
-            <Group align="center" className={classes.or}>
-              <Text>{t("signIn.oauth.or")}</Text>
-            </Group>
+          <Stack>
             <Group position="center">
-              {oauth.map((provider) => (
-                <Button
-                  key={provider}
-                  component="a"
-                  target="_blank"
-                  title={t(`signIn.oauth.${provider}`)}
-                  href={getOAuthUrl(config.get("general.appUrl"), provider)}
-                  variant="light"
-                >
-                  {getOAuthIcon(provider)}
-                </Button>
-              ))}
+              {oauth.map((provider) =>
+                passwordSignIn ? (
+                  <Button
+                    key={provider}
+                    component="a"
+                    target="_blank"
+                    title={t(`signIn.oauth.${provider}`)}
+                    href={getOAuthUrl(config.get("general.appUrl"), provider)}
+                    variant="light"
+                  >
+                    {getOAuthIcon(provider)}
+                  </Button>
+                ) : (
+                  <Button
+                    leftIcon={getOAuthIcon(provider)}
+                    fullWidth
+                    component="a"
+                    target="_blank"
+                    href={getOAuthUrl(config.get("general.appUrl"), provider)}
+                  >
+                    <FormattedMessage
+                      id="signIn.oauth.signInWith"
+                      values={{
+                        provider: t(`signIn.oauth.${provider}`),
+                      }}
+                    />
+                  </Button>
+                ),
+              )}
             </Group>
           </Stack>
+        )}
+        {!passwordSignIn && oauth.length === 0 && (
+          <Text>{t("signIn.text.noSignInMethod")}</Text>
         )}
       </Paper>
     </Container>

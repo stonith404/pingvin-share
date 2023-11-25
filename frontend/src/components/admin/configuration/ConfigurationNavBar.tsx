@@ -11,11 +11,19 @@ import {
 } from "@mantine/core";
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
-import { TbAt, TbMail, TbShare, TbSocial, TbSquare } from "react-icons/tb";
+import {
+  TbAt,
+  TbMail,
+  TbShare,
+  TbSocial,
+  TbSquare,
+  TbUser,
+} from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 
 const categories = [
   { name: "General", icon: <TbSquare /> },
+  { name: "Account", icon: <TbUser /> },
   { name: "Email", icon: <TbMail /> },
   { name: "Share", icon: <TbShare /> },
   { name: "SMTP", icon: <TbAt /> },

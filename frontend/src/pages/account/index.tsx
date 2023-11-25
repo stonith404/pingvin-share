@@ -171,45 +171,47 @@ const Account = () => {
             </Stack>
           </form>
         </Paper>
-        <Paper withBorder p="xl" mt="lg">
-          <Title order={5} mb="xs">
-            <FormattedMessage id="account.card.password.title" />
-          </Title>
-          <form
-            onSubmit={passwordForm.onSubmit((values) =>
-              authService
-                .updatePassword(values.oldPassword, values.password)
-                .then(async () => {
-                  refreshUser();
-                  toast.success(t("account.notify.password.success"));
-                  passwordForm.reset();
-                })
-                .catch(toast.axiosError),
-            )}
-          >
-            <Stack>
-              {user?.hasPassword ? (
-                <PasswordInput
-                  label={t("account.card.password.old")}
-                  {...passwordForm.getInputProps("oldPassword")}
-                />
-              ) : (
-                <Text size="sm" color="dimmed">
-                  <FormattedMessage id="account.card.password.noPasswordSet" />
-                </Text>
+        {config.get("account.passwordSignIn") && (
+          <Paper withBorder p="xl" mt="lg">
+            <Title order={5} mb="xs">
+              <FormattedMessage id="account.card.password.title" />
+            </Title>
+            <form
+              onSubmit={passwordForm.onSubmit((values) =>
+                authService
+                  .updatePassword(values.oldPassword, values.password)
+                  .then(async () => {
+                    refreshUser();
+                    toast.success(t("account.notify.password.success"));
+                    passwordForm.reset();
+                  })
+                  .catch(toast.axiosError),
               )}
-              <PasswordInput
-                label={t("account.card.password.new")}
-                {...passwordForm.getInputProps("password")}
-              />
-              <Group position="right">
-                <Button type="submit">
-                  <FormattedMessage id="common.button.save" />
-                </Button>
-              </Group>
-            </Stack>
-          </form>
-        </Paper>
+            >
+              <Stack>
+                {user?.hasPassword ? (
+                  <PasswordInput
+                    label={t("account.card.password.old")}
+                    {...passwordForm.getInputProps("oldPassword")}
+                  />
+                ) : (
+                  <Text size="sm" color="dimmed">
+                    <FormattedMessage id="account.card.password.noPasswordSet" />
+                  </Text>
+                )}
+                <PasswordInput
+                  label={t("account.card.password.new")}
+                  {...passwordForm.getInputProps("password")}
+                />
+                <Group position="right">
+                  <Button type="submit">
+                    <FormattedMessage id="common.button.save" />
+                  </Button>
+                </Group>
+              </Stack>
+            </form>
+          </Paper>
+        )}
         {oauth.length > 0 && (
           <Paper withBorder p="xl" mt="lg">
             <Title order={5} mb="xs">

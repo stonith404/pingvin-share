@@ -26,6 +26,18 @@ const configVariables: ConfigVariables = {
       secret: false,
     },
   },
+  account: {
+    allowRegistration: {
+      type: "boolean",
+      defaultValue: "true",
+      secret: false,
+    },
+    passwordSignIn: {
+      type: "boolean",
+      defaultValue: "true",
+      secret: false,
+    },
+  },
   share: {
     allowRegistration: {
       type: "boolean",
@@ -132,6 +144,11 @@ const configVariables: ConfigVariables = {
     "ignoreTotp": {
       type: "boolean",
       defaultValue: "true",
+    },
+    "autoRedirect": {
+      type: "string",
+      defaultValue: "",
+      secret: false,
     },
     "github-enabled": {
       type: "boolean",
@@ -262,8 +279,8 @@ async function migrateConfigVariables() {
   for (const existingConfigVariable of existingConfigVariables) {
     const configVariable =
       configVariables[existingConfigVariable.category]?.[
-        existingConfigVariable.name
-        ];
+      existingConfigVariable.name
+      ];
     if (!configVariable) {
       await prisma.config.delete({
         where: {

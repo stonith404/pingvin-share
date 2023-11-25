@@ -42,7 +42,10 @@ export class AuthController {
     @Body() dto: AuthRegisterDTO,
     @Res({ passthrough: true }) response: Response,
   ) {
-    if (!this.config.get("share.allowRegistration"))
+    if (
+      !this.config.get("share.allowRegistration") ||
+      !this.config.get("account.passwordSignIn")
+    )
       throw new ForbiddenException("Registration is not allowed");
 
     const result = await this.authService.signUp(dto);
@@ -63,6 +66,9 @@ export class AuthController {
     @Body() dto: AuthSignInDTO,
     @Res({ passthrough: true }) response: Response,
   ) {
+    if (!this.config.get("account.passwordSignIn"))
+      throw new ForbiddenException("Password sign in is not allowed");
+
     const result = await this.authService.signIn(dto);
 
     if (result.accessToken && result.refreshToken) {
@@ -98,6 +104,9 @@ export class AuthController {
   @Throttle(5, 5 * 60)
   @HttpCode(204)
   async requestResetPassword(@Param("email") email: string) {
+    if (!this.config.get("account.passwordSignIn"))
+      throw new ForbiddenException("Password sign in is not allowed");
+
     return await this.authService.requestResetPassword(email);
   }
 
@@ -105,6 +114,9 @@ export class AuthController {
   @Throttle(5, 5 * 60)
   @HttpCode(204)
   async resetPassword(@Body() dto: ResetPasswordDTO) {
+    if (!this.config.get("account.passwordSignIn"))
+      throw new ForbiddenException("Password sign in is not allowed");
+
     return await this.authService.resetPassword(dto.token, dto.password);
   }
 
@@ -115,6 +127,9 @@ export class AuthController {
     @Res({ passthrough: true }) response: Response,
     @Body() dto: UpdatePasswordDTO,
   ) {
+    if (!this.config.get("account.passwordSignIn"))
+      throw new ForbiddenException("Password sign in is not allowed");
+
     const result = await this.authService.updatePassword(
       user,
       dto.password,

@@ -30,7 +30,8 @@ const signUp = async (email: string, username: string, password: string) => {
 
 const signOut = async () => {
   await api.post("/auth/signOut");
-  window.location.reload();
+  // reload will cause a auto redirection to provider (if oauth.autoRedirect is enabled) and the user can not be singed out forever
+  window.location.href = "/";
 };
 
 const refreshAccessToken = async () => {

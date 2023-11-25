@@ -34,6 +34,8 @@ export default {
   // /auth/signin
   "signin.title": "Welcome back",
   "signin.description": "You don't have an account yet?",
+  "signIn.text.redirecting": "You are being redirected to the sign in page, please click <a>here</a> if you see this message for a long time.",
+  "signIn.text.noSignInMethod": "You have disabled all sign in methods, please enable as least one in admin panel.",
   "signin.button.signup": "Sign up",
   "signin.input.email-or-username": "Email or username",
   "signin.input.email-or-username.placeholder": "Your email or username",
@@ -44,6 +46,7 @@ export default {
   "signIn.notify.totp-required.description":
     "Please enter your two-factor authentication code",
   "signIn.oauth.or": "OR",
+  "signIn.oauth.signInWith": "Sign in with {provider}",
   "signIn.oauth.github": "GitHub",
   "signIn.oauth.google": "Google",
   "signIn.oauth.microsoft": "Microsoft",
@@ -368,6 +371,7 @@ export default {
   // /admin/config
   "admin.config.title": "Configuration",
   "admin.config.category.general": "General",
+  "admin.config.category.account": "Account",
   "admin.config.category.share": "Share",
   "admin.config.category.email": "Email",
   "admin.config.category.smtp": "SMTP",
@@ -385,6 +389,12 @@ export default {
   "admin.config.general.logo.description":
     "Change your logo by uploading a new image. The image must be a PNG and should have the format 1:1.",
   "admin.config.general.logo.placeholder": "Pick image",
+
+  "admin.config.account.allow-registration": "Allow registration",
+  "admin.config.account.allow-registration.description":
+    "Whether registration is allowed",
+  "admin.config.account.password-sign-in": "Password sign in",
+  "admin.config.account.password-sign-in.description": "Whether to allow users to sign in with password",
 
   "admin.config.email.enable-share-email-recipients":
     "Enable share email recipients",
@@ -414,6 +424,7 @@ export default {
   "admin.config.email.invite-message": "Invite message",
   "admin.config.email.invite-message.description":
     "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL and {password} with the password.",
+
   "admin.config.share.allow-registration": "Allow registration",
   "admin.config.share.allow-registration.description":
     "Whether registration is allowed",
@@ -450,6 +461,8 @@ export default {
   "admin.config.oauth.allow-registration.description": "Allow users to register via social login",
   "admin.config.oauth.ignore-totp": "Ignore TOTP",
   "admin.config.oauth.ignore-totp.description": "Whether to ignore TOTP when user using social login",
+  "admin.config.oauth.auto-redirect": "Auto Redirect",
+  "admin.config.oauth.auto-redirect.description": "Whether to automatically redirect user to an OAuth provider, only following values are allowed: github, google, microsoft, discord, oidc. Leave it blank to disable.",
   "admin.config.oauth.github-enabled": "GitHub",
   "admin.config.oauth.github-enabled.description": "Whether GitHub login is enabled",
   "admin.config.oauth.github-client-id": "GitHub Client ID",
