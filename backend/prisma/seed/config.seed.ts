@@ -180,6 +180,10 @@ const configVariables: ConfigVariables = {
       type: "boolean",
       defaultValue: "false",
     },
+    "discord-limitedGuild": {
+      type: "string",
+      defaultValue: "",
+    },
     "discord-clientId": {
       type: "string",
       defaultValue: "",
@@ -262,8 +266,8 @@ async function migrateConfigVariables() {
   for (const existingConfigVariable of existingConfigVariables) {
     const configVariable =
       configVariables[existingConfigVariable.category]?.[
-        existingConfigVariable.name
-        ];
+      existingConfigVariable.name
+      ];
     if (!configVariable) {
       await prisma.config.delete({
         where: {

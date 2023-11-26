@@ -1,9 +1,10 @@
-import { OAuthProvider, OAuthToken } from "./oauthProvider.interface";
+import { Injectable } from "@nestjs/common";
+import fetch from "node-fetch";
+import { ConfigService } from "../../config/config.service";
 import { OAuthCallbackDto } from "../dto/oauthCallback.dto";
 import { OAuthSignInDto } from "../dto/oauthSignIn.dto";
-import { ConfigService } from "../../config/config.service";
-import fetch from "node-fetch";
-import { BadRequestException, Injectable } from "@nestjs/common";
+import { ErrorPageException } from "../exceptions/errorPage.exception";
+import { OAuthProvider, OAuthToken } from "./oauthProvider.interface";
 
 @Injectable()
 export class GitHubProvider implements OAuthProvider<GitHubToken> {
@@ -48,12 +49,12 @@ export class GitHubProvider implements OAuthProvider<GitHubToken> {
 
   async getUserInfo(token: OAuthToken<GitHubToken>): Promise<OAuthSignInDto> {
     if (!token.scope.includes("user:email")) {
-      throw new BadRequestException("No email permission granted");
+      throw new ErrorPageException("no_email", undefined, ["provider_github"]);
     }
     const user = await this.getGitHubUser(token);
     const email = await this.getGitHubEmail(token);
     if (!email) {
-      throw new BadRequestException("No email found");
+      throw new ErrorPageException("no_email", undefined, ["provider_github"]);
     }
 
     return {
