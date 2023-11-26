@@ -200,7 +200,7 @@ export default {
   "upload.notify.generic-error": "Ett fel uppstod när din delning skulle slutföras.",
   "upload.notify.count-failed": "{count} filer kunde inte laddas upp. Försöker igen.",
   // Dropzone.tsx
-  "upload.dropzone.title": "Ladde upp filer",
+  "upload.dropzone.title": "Ladda upp filer",
   "upload.dropzone.description": "Drag och släpp filer här för att starta din delning. Vi kan endast acceptera filer som är mindre än {maxSize} totalt.",
   "upload.dropzone.notify.file-too-big": "Dina filer överskrider den maximala storleken på {maxSize}.",
   // FileList.tsx
