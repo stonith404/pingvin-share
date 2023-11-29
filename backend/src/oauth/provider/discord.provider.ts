@@ -10,6 +10,10 @@ export class DiscordProvider implements OAuthProvider<DiscordToken> {
   constructor(private config: ConfigService) {}
 
   getAuthEndpoint(state: string): Promise<string> {
+    let scope = "identify email";
+    if (this.config.get("oauth.discord-limitedGuild")) {
+      scope += " guilds";
+    }
     return Promise.resolve(
       "https://discord.com/api/oauth2/authorize?" +
         new URLSearchParams({
@@ -17,10 +21,8 @@ export class DiscordProvider implements OAuthProvider<DiscordToken> {
           redirect_uri:
             this.config.get("general.appUrl") + "/api/oauth/callback/discord",
           response_type: "code",
-          state: state,
-          scope:
-            "identify email" +
-            (this.config.get("oauth.discord-limitedGuild") ? " guilds" : ""),
+          state,
+          scope,
         }).toString(),
     );
   }
