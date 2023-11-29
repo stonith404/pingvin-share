@@ -369,7 +369,7 @@ export default {
   "404.description": "Ups, diese Seite existiert nicht.",
   "404.button.home": "Zurück zur Startseite",
   // error
-  "error.title": "Error",
+  "error.title": "Fehler",
   "error.description": "Ups!",
   "error.button.back": "Zurück",
   "error.msg.default": "Etwas ist schief gelaufen.",
