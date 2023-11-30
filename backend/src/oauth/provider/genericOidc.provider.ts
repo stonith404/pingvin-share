@@ -1,4 +1,4 @@
-import { BadRequestException } from "@nestjs/common";
+import { Logger } from "@nestjs/common";
 import fetch from "node-fetch";
 import { ConfigService } from "../../config/config.service";
 import { JwtService } from "@nestjs/jwt";
@@ -7,11 +7,15 @@ import { nanoid } from "nanoid";
 import { OAuthCallbackDto } from "../dto/oauthCallback.dto";
 import { OAuthProvider, OAuthToken } from "./oauthProvider.interface";
 import { OAuthSignInDto } from "../dto/oauthSignIn.dto";
+import { ErrorPageException } from "../exceptions/errorPage.exception";
 
 export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
   protected discoveryUri: string;
   private configuration: OidcConfigurationCache;
   private jwk: OidcJwkCache;
+  private logger: Logger = new Logger(
+    Object.getPrototypeOf(this).constructor.name,
+  );
 
   protected constructor(
     protected name: string,
@@ -112,7 +116,10 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
     const nonce = await this.cache.get(key);
     await this.cache.del(key);
     if (nonce !== idTokenData.nonce) {
-      throw new BadRequestException("Invalid token");
+      this.logger.error(
+        `Invalid nonce. Expected ${nonce}, but got ${idTokenData.nonce}`,
+      );
+      throw new ErrorPageException("invalid_token");
     }
 
     return {
