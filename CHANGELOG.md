@@ -1,3 +1,10 @@
+## [0.21.0](https://github.com/stonith404/pingvin-share/compare/v0.20.3...v0.21.0) (2023-12-01)
+
+
+### Features
+
+* **oauth:** limited discord server sign-in ([#346](https://github.com/stonith404/pingvin-share/issues/346)) ([5f94c72](https://github.com/stonith404/pingvin-share/commit/5f94c7295ab8594ed2ed615628214e869a02da2d))
+
 ## [0.20.3](https://github.com/stonith404/pingvin-share/compare/v0.20.2...v0.20.3) (2023-11-17)
 
 
