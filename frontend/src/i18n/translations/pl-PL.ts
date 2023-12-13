@@ -112,7 +112,7 @@ export default {
   // END /account
   // /account/shares
   "account.shares.title": "Moje udziały",
-  "account.shares.title.empty": "Tu jest pusto :eys:",
+  "account.shares.title.empty": "Tu jest pusto 👀",
   "account.shares.description.empty": "Nie masz żadnych udziałów.",
   "account.shares.button.create": "Utwórz go",
   "account.shares.info.title": "Informacje udziału",
@@ -131,7 +131,7 @@ export default {
   // /account/reverseShares
   "account.reverseShares.title": "Udziały odwrotne",
   "account.reverseShares.description": "Udostępnianie odwrotne pozwala na wygenerowanie unikalnego adresu URL, który umożliwia użytkownikom zewnętrznym na tworzenie udostępniania.",
-  "account.reverseShares.title.empty": "Tu jest pusto :eys:",
+  "account.reverseShares.title.empty": "Tu jest pusto 👀",
   "account.reverseShares.description.empty": "Nie masz żadnych udostępnień odwrotnych.",
   // showCreateReverseShareModal.tsx
   "account.reverseShares.modal.title": "Utwórz udostępnianie odwrotne",
@@ -392,7 +392,7 @@ export default {
   // Common translations
   "common.button.save": "Zapisz",
   "common.button.create": "Utwórz",
-  "common.button.submit": "Zgłoś",
+  "common.button.submit": "Prześlij",
   "common.button.delete": "Usuń",
   "common.button.cancel": "Anuluj",
   "common.button.confirm": "Potwierdź",
