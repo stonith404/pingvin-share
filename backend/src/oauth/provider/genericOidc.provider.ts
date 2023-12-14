@@ -108,6 +108,7 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
   async getUserInfo(
     token: OAuthToken<OidcToken>,
     query: OAuthCallbackDto,
+    claim: string = undefined,
   ): Promise<OAuthSignInDto> {
     const idTokenData = this.decodeIdToken(token.idToken);
     // maybe it's not necessary to verify the id token since it's directly obtained from the provider
@@ -122,11 +123,30 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
       throw new ErrorPageException("invalid_token");
     }
 
+    const username = claim
+      ? idTokenData[claim]
+      : idTokenData.name ||
+        idTokenData.nickname ||
+        idTokenData.preferred_username;
+
+    if (!username) {
+      this.logger.error(
+        `Can not get username from ID Token ${JSON.stringify(
+          idTokenData,
+          undefined,
+          2,
+        )}`,
+      );
+      throw new ErrorPageException("cannot_get_user_info", undefined, [
+        `provider_${this.name}`,
+      ]);
+    }
+
     return {
       provider: this.name as any,
       email: idTokenData.email,
       providerId: idTokenData.sub,
-      providerUsername: idTokenData.name,
+      providerUsername: username,
     };
   }
 
@@ -211,5 +231,7 @@ export interface OidcIdToken {
   iat: number;
   email: string;
   name: string;
+  nickname: string;
+  preferred_username: string;
   nonce: string;
 }

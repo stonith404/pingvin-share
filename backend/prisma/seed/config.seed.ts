@@ -201,6 +201,10 @@ const configVariables: ConfigVariables = {
       type: "string",
       defaultValue: "",
     },
+    "oidc-usernameClaim": {
+      type: "string",
+      defaultValue: "",
+    },
     "oidc-clientId": {
       type: "string",
       defaultValue: "",
