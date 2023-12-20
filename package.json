@@ -1,6 +1,6 @@
 {
   "name": "pingvin-share",
-  "version": "0.21.0",
+  "version": "0.21.1",
   "scripts": {
     "format": "cd frontend && npm run format && cd ../backend && npm run format",
     "lint": "cd frontend && npm run lint && cd ../backend && npm run lint",

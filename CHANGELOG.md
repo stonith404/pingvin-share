@@ -1,3 +1,10 @@
+## [0.21.1](https://github.com/stonith404/pingvin-share/compare/v0.21.0...v0.21.1) (2023-12-20)
+
+
+### Features
+
+* **oauth:** add oidc username claim ([#357](https://github.com/stonith404/pingvin-share/issues/357)) ([3ea52a2](https://github.com/stonith404/pingvin-share/commit/3ea52a24ef7c3b6845bc13382616ea0c8d784585))
+
 ## [0.21.0](https://github.com/stonith404/pingvin-share/compare/v0.20.3...v0.21.0) (2023-12-01)
 
 
