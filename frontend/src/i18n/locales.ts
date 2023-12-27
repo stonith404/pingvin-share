@@ -4,6 +4,7 @@ import english from "./translations/en-US";
 import spanish from "./translations/es-ES";
 import finnish from "./translations/fi-FI";
 import french from "./translations/fr-FR";
+import italian from "./translations/it-IT";
 import japanese from "./translations/ja-JP";
 import dutch from "./translations/nl-BE";
 import polish from "./translations/pl-PL";
@@ -95,5 +96,10 @@ export const LOCALES = {
     name: "Svenska",
     code: "sv-SE",
     messages: swedish,
+  },
+  ITALIAN: {
+    name: "Italiano",
+    code: "it-IT",
+    messages: italian,
   },
 };
