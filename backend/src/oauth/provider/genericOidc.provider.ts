@@ -108,7 +108,7 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
   async getUserInfo(
     token: OAuthToken<OidcToken>,
     query: OAuthCallbackDto,
-    claim?: string
+    claim?: string,
   ): Promise<OAuthSignInDto> {
     const idTokenData = this.decodeIdToken(token.idToken);
     // maybe it's not necessary to verify the id token since it's directly obtained from the provider
