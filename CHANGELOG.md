@@ -1,3 +1,11 @@
+## [0.21.2](https://github.com/stonith404/pingvin-share/compare/v0.21.1...v0.21.2) (2023-12-29)
+
+
+### Bug Fixes
+
+* missing logo images on fresh installation ([6fb31ab](https://github.com/stonith404/pingvin-share/commit/6fb31abd84b22cd464b6b45bf7ca6f83853e8720))
+* missing translations on reset password page ([7a301b4](https://github.com/stonith404/pingvin-share/commit/7a301b455cdea4b1dbc04cc6223e094fee9aca7b))
+
 ## [0.21.1](https://github.com/stonith404/pingvin-share/compare/v0.21.0...v0.21.1) (2023-12-20)
 
 
