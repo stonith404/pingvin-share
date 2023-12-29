@@ -68,13 +68,13 @@ const ResetPassword = () => {
           })}
         >
           <PasswordInput
-            label={t("resetPassword.text.password")}
+            label={t("resetPassword.input.password")}
             placeholder="••••••••••"
             {...form.getInputProps("password")}
           />
           <Group position="right" mt="lg">
             <Button type="submit" className={classes.control}>
-              <FormattedMessage id="resetPassword.button.resetPassword" />
+              <FormattedMessage id="resetPassword.text.resetPassword" />
             </Button>
           </Group>
         </form>
