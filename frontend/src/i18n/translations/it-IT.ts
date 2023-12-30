@@ -1,18 +1,18 @@
 export default {
   // Navbar
   "navbar.upload": "Upload",
-  "navbar.signin": "Sign in",
+  "navbar.signin": "Registrati",
   "navbar.home": "Home",
-  "navbar.signup": "Sign Up",
-  "navbar.links.shares": "My shares",
+  "navbar.signup": "Registrati",
+  "navbar.links.shares": "Le mie condivisioni",
   "navbar.links.reverse": "Reverse shares",
-  "navbar.avatar.account": "My account",
-  "navbar.avatar.admin": "Administration",
-  "navbar.avatar.signout": "Sign out",
+  "navbar.avatar.account": "Il mio account",
+  "navbar.avatar.admin": "Amministrazione",
+  "navbar.avatar.signout": "Disconetti",
   // END navbar
   // /
-  "home.title": "A <h>self-hosted</h> file sharing platform.",
-  "home.description": "Do you really want to give your personal files in the hand of third parties like WeTransfer?",
+  "home.title": "Una piattaforma di condivisione di file <h>autohosted</h>.",
+  "home.description": "Vuoi davvero dare i tuoi file personali in mano a terzi come WeTransfer?",
   "home.bullet.a.name": "Self-Hosted",
   "home.bullet.a.description": "Host Pingvin Share on your own machine.",
   "home.bullet.b.name": "Privacy",
