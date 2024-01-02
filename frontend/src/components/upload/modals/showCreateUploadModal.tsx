@@ -92,8 +92,15 @@ const CreateUploadModalBody = ({
       .matches(new RegExp("^[a-zA-Z0-9_-]*$"), {
         message: t("upload.modal.link.error.invalid"),
       }),
-    password: yup.string().min(3).max(30),
-    maxViews: yup.number().min(1),
+    password: yup
+      .string()
+      .transform((value) => value || undefined)
+      .min(3)
+      .max(30),
+    maxViews: yup
+      .number()
+      .transform((value) => value || undefined)
+      .min(1),
   });
 
   const form = useForm({
@@ -151,8 +158,8 @@ const CreateUploadModalBody = ({
           recipients: values.recipients,
           description: values.description,
           security: {
-            password: values.password,
-            maxViews: values.maxViews,
+            password: values.password || undefined,
+            maxViews: values.maxViews || undefined,
           },
         },
         files,
