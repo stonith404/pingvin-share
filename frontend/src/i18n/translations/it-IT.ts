@@ -1,6 +1,6 @@
 export default {
   // Navbar
-  "navbar.upload": "Upload",
+  "navbar.upload": "Carica",
   "navbar.signin": "Registrati",
   "navbar.home": "Home",
   "navbar.signup": "Registrati",
