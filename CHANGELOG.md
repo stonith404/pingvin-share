@@ -1,3 +1,10 @@
+## [0.21.3](https://github.com/stonith404/pingvin-share/compare/v0.21.2...v0.21.3) (2024-01-02)
+
+
+### Bug Fixes
+
+* don't show validation error on upload modal if password or max views are empty ([fe09d0e](https://github.com/stonith404/pingvin-share/commit/fe09d0e25f6fbfc4e1c9302054d3387fe8b1f0ea))
+
 ## [0.21.2](https://github.com/stonith404/pingvin-share/compare/v0.21.1...v0.21.2) (2023-12-29)
 
 
