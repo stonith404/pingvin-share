@@ -214,7 +214,7 @@ export default {
   "upload.modal.not-signed-in-description": "你将不能删除你的共享或查看访问次数",
   "upload.modal.expires.never": "永不",
   "upload.modal.expires.never-long": "永不过期",
-  "upload.modal.expires.error.too-long": "Expiration exceeds maximum expiration date of {max}.",
+  "upload.modal.expires.error.too-long": "您设置的过期时间超出了系统上限 {max}。",
   "upload.modal.link.label": "共享链接",
   "upload.modal.expires.label": "过期时间",
   "upload.modal.expires.minute-singular": "1 分钟",
