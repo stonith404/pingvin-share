@@ -63,9 +63,11 @@ npm run build
 pm2 start --name="pingvin-share-frontend" npm -- run start
 ```
 
+The website is now listening on `http://localhost:3000`,
+
 **Uploading Large Files**: By default, Pingvin Share uses a built-in reverse proxy to reduce the installation steps. However, this reverse proxy is not optimized for uploading large files. If you wish to upload larger files, you can either use the Docker installation or set up your own reverse proxy. An example configuration for Nginx can be found in `/nginx/nginx.conf`.
 
-The website is now listening on `http://localhost:3000`, have fun with Pingvin Share 🐧!
+The website optimized for uploading large files is now listening on `http://localhost:3001`, have fun with Pingvin Share 🐧!
 
 ### Integrations
 
