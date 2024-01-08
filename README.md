@@ -61,9 +61,12 @@ cd ../frontend
 npm install
 npm run build
 pm2 start --name="pingvin-share-frontend" npm -- run start
+
+# Autostart on System boot
+pm2 startup && pm2 save
 ```
 
-**Uploading Large Files**: By default, Pingvin Share uses a built-in reverse proxy to reduce the installation steps. However, this reverse proxy is not optimized for uploading large files. If you wish to upload larger files, you can either use the Docker installation or set up your own reverse proxy. An example configuration for Nginx can be found in `/nginx/nginx.conf`.
+**Uploading Large Files**: By default, Pingvin Share running like this uses a built-in reverse proxy to reduce the installation steps. However, this reverse proxy is not optimized for uploading large files. If you wish to upload larger files, you need to set up your own reverse proxy to bypass the /api call for the internal proxy too. An example configuration for Nginx can be found in `/nginx/nginx.conf`.
 
 The website is now listening on `http://localhost:3000`, have fun with Pingvin Share 🐧!
 
