@@ -282,11 +282,12 @@ const CreateUploadModalBody = ({
                   />
                 </Col>
               </Grid>
-              { options.maxExpirationInHours == 0 && <Checkbox
-                label={t("upload.modal.expires.never-long")}
-                {...form.getInputProps("never_expires")}
-              />
-              }
+              {options.maxExpirationInHours == 0 && (
+                <Checkbox
+                  label={t("upload.modal.expires.never-long")}
+                  {...form.getInputProps("never_expires")}
+                />
+              )}
               <Text
                 italic
                 size="xs"

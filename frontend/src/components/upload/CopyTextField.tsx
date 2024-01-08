@@ -1,11 +1,12 @@
-import { ActionIcon, TextInput } from "@mantine/core";
+import { ActionIcon, TextInput, Tooltip } from "@mantine/core";
 import { useClipboard } from "@mantine/hooks";
 import { useRef, useState } from "react";
 import { TbCheck, TbCopy } from "react-icons/tb";
+import { IoOpenOutline } from "react-icons/io5";
 import useTranslate from "../../hooks/useTranslate.hook";
 import toast from "../../utils/toast.util";
 
-function CopyTextField(props: { link: string }) {
+function CopyTextField(props: { link: string; openBtn?: boolean }) {
   const clipboard = useClipboard({ timeout: 500 });
   const t = useTranslate();
 
@@ -37,12 +38,29 @@ function CopyTextField(props: { link: string }) {
           setTextClicked(true);
         }
       }}
+      rightSectionWidth={62}
       rightSection={
-        window.isSecureContext && (
-          <ActionIcon onClick={copyLink}>
-            {checkState ? <TbCheck /> : <TbCopy />}
-          </ActionIcon>
-        )
+        <>
+          {props.openBtn !== false && (
+            <Tooltip
+              label={t("common.text.navigate-to-link")}
+              position="top"
+              offset={-2}
+              openDelay={200}
+            >
+              <a href={props.link}>
+                <ActionIcon>
+                  <IoOpenOutline />
+                </ActionIcon>
+              </a>
+            </Tooltip>
+          )}
+          {window.isSecureContext && (
+            <ActionIcon onClick={copyLink}>
+              {checkState ? <TbCheck /> : <TbCopy />}
+            </ActionIcon>
+          )}
+        </>
       }
     />
   );
