@@ -57,7 +57,7 @@ export default {
   // /auth/reset-password
   "resetPassword.title": "Passwort vergessen?",
   "resetPassword.description": "Gib deine Email Adresse ein, um dein Passwort zurückzusetzen.",
-  "resetPassword.notify.success": "Ein Link zum Rücksetzen des Passwortes wurde an deine Emailadresse versandt.",
+  "resetPassword.notify.success": "Ein Link zum Zurücksetzen des Passwortes wurde an deine Emailadresse versandt.",
   "resetPassword.button.back": "Zurück zur Anmeldeseite",
   "resetPassword.text.resetPassword": "Passwort zurücksetzen",
   "resetPassword.text.enterNewPassword": "Gib dein neues Passwort ein",
@@ -366,9 +366,9 @@ export default {
   "admin.config.oauth.oidc-username-claim": "OpenID Connect username claim",
   "admin.config.oauth.oidc-username-claim.description": "Username claim in OpenID Connect ID token. Leave it blank if you don't know what this config is.",
   "admin.config.oauth.oidc-client-id": "OpenID Connect Client-ID",
-  "admin.config.oauth.oidc-client-id.description": "Client ID of the OpenID Connect OAuth app",
-  "admin.config.oauth.oidc-client-secret": "OpenID Connect Client secret",
-  "admin.config.oauth.oidc-client-secret.description": "Client secret of the OpenID Connect OAuth app",
+  "admin.config.oauth.oidc-client-id.description": "Client-ID der OpenID Connect OAuth-App",
+  "admin.config.oauth.oidc-client-secret": "OpenID Connect Client-Secret",
+  "admin.config.oauth.oidc-client-secret.description": "Client-Secret der OpenID Connect OAuth-App",
   // 404
   "404.description": "Ups, diese Seite existiert nicht.",
   "404.button.home": "Zurück zur Startseite",
