@@ -404,6 +404,7 @@ export default {
   "common.button.generate": "生成",
   "common.button.done": "完了",
   "common.text.link": "リンク",
+  "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "または",
   "common.button.go-back": "戻る",
   "common.notify.copied": "リンクをクリップボードにコピーしました",
