@@ -404,6 +404,7 @@ export default {
   "common.button.generate": "สุ่ม",
   "common.button.done": "เสร็จสิ้น",
   "common.text.link": "ลิงค์",
+  "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "หรือ",
   "common.button.go-back": "ย้อนกลับ",
   "common.notify.copied": "คัดลอกไปยังคลิปบอร์ดแล้ว",
