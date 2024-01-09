@@ -1,3 +1,10 @@
+## [0.21.4](https://github.com/stonith404/pingvin-share/compare/v0.21.3...v0.21.4) (2024-01-09)
+
+
+### Features
+
+* **frontend:** add navigateToLink button for CopyTextField. close [#372](https://github.com/stonith404/pingvin-share/issues/372). ([#376](https://github.com/stonith404/pingvin-share/issues/376)) ([d775008](https://github.com/stonith404/pingvin-share/commit/d7750086b5b796cfc70d8dc0c7d0ab4bd1996ca0))
+
 ## [0.21.3](https://github.com/stonith404/pingvin-share/compare/v0.21.2...v0.21.3) (2024-01-02)
 
 
