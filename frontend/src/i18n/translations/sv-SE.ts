@@ -404,6 +404,7 @@ export default {
   "common.button.generate": "Generera",
   "common.button.done": "Klar",
   "common.text.link": "Länk",
+  "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "eller",
   "common.button.go-back": "Gå tillbaka",
   "common.notify.copied": "Din länk har kopierats till urklipp",
