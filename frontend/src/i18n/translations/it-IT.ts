@@ -404,6 +404,7 @@ export default {
   "common.button.generate": "Generate",
   "common.button.done": "Done",
   "common.text.link": "Link",
+  "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "or",
   "common.button.go-back": "Go back",
   "common.notify.copied": "Your link was copied to the clipboard",
