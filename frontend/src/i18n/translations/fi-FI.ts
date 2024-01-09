@@ -404,6 +404,7 @@ export default {
   "common.button.generate": "Luo",
   "common.button.done": "Valmis",
   "common.text.link": "Linkki",
+  "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "tai",
   "common.button.go-back": "Takaisin",
   "common.notify.copied": "Linkki kopioitiin leikepöydälle",
