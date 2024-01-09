@@ -404,6 +404,7 @@ export default {
   "common.button.generate": "Генериши",
   "common.button.done": "Готово",
   "common.text.link": "Линк",
+  "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "или",
   "common.button.go-back": "Иди назад",
   "common.notify.copied": "Ваша веза је копирана у clipboard",
