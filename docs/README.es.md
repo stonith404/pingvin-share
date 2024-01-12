@@ -34,7 +34,7 @@ Pingvin Share es una plataforma de intercambio de archivos autoalojada y una alt
 1. Descarge el archivo `docker-compose.yml`
 2. Ejecute `docker-compose up -d`
 
-El sitio web ahora está esperando conexiones en `http://localhost:3000`, ¡diviértase usando Pingvin Share 🐧!
+El sitio web ahora está esperando conexiones en `http://localhost:3200`, ¡diviértase usando Pingvin Share 🐧!
 
 ### Instalación autónoma
 
@@ -64,7 +64,7 @@ npm run build
 pm2 start --name="pingvin-share-frontend" npm -- run start
 ```
 
-El sitio web ahora está esperando conexiones en `http://localhost:3000`, ¡diviértase usando Pingvin Share 🐧!
+El sitio web ahora está esperando conexiones en `http://localhost:3200`, ¡diviértase usando Pingvin Share 🐧!
 
 ### Integraciones
 

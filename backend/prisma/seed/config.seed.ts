@@ -17,7 +17,7 @@ const configVariables: ConfigVariables = {
     },
     appUrl: {
       type: "string",
-      defaultValue: "http://localhost:3000",
+      defaultValue: "http://localhost:3200",
       secret: false,
     },
     showHomePage: {

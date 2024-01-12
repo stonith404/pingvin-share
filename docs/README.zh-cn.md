@@ -33,7 +33,7 @@ Pingvin Share 是一个可自建的文件分享平台，是 WeTransfer 的一个
 1. 下载 `docker-compose.yml`
 2. 运行命令 `docker-compose up -d`
 
-现在网站运行在 `http://localhost:3000`，尝试一下你本地的 Pingvin Share 🐧!
+现在网站运行在 `http://localhost:3200`，尝试一下你本地的 Pingvin Share 🐧!
 
 ### Stand-alone 部署
 
@@ -63,7 +63,7 @@ npm run build
 pm2 start --name="pingvin-share-frontend" npm -- run start
 ```
 
-现在网站运行在 `http://localhost:3000`，尝试一下你本地的 Pingvin Share 🐧!
+现在网站运行在 `http://localhost:3200`，尝试一下你本地的 Pingvin Share 🐧!
 
 ### 整合组件
 

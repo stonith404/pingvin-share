@@ -33,7 +33,7 @@ Pingvin Share は、セルフホスト型のファイル共有プラットフォ
 1. `docker-compose.yml`ファイルをダウンロード
 2. `docker-compose up -d`を実行
 
-Webサイトは、`http://localhost:3000`でリッスンされます。これでPingvin Shareをお使い頂けます🐧!
+Webサイトは、`http://localhost:3200`でリッスンされます。これでPingvin Shareをお使い頂けます🐧!
 
 ### スタンドアローンインストール
 
@@ -63,7 +63,7 @@ npm run build
 pm2 start --name="pingvin-share-frontend" npm -- run start
 ```
 
-Webサイトは、`http://localhost:3000`でリッスンされます。これでPingvin Shareをお使い頂けます🐧!
+Webサイトは、`http://localhost:3200`でリッスンされます。これでPingvin Shareをお使い頂けます🐧!
 
 ### 連携機能
 
@@ -139,7 +139,7 @@ docker compose up -d
 
 | 変数名     | デフォルト値             | 説明                                          |
 | --------- | ----------------------- | ----------------------------------------      |
-| `PORT`    | `3000`                  | フロントエンドがリッスンするポート番号            |
+| `PORT`    | `3200`                  | フロントエンドがリッスンするポート番号            |
 | `API_URL` | `http://localhost:8080` | フロントエンドからアクセスするバックエンドへのURL |
 
 ## 🖤 コントリビュート
