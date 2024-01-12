@@ -29,6 +29,6 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: stonith404/pingvin-share:latest,stonith404/pingvin-share:${{  github.ref_name }}
+          tags: stevedev/pingvin-share:latest,stevedev/pingvin-share:${{  github.ref_name }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
