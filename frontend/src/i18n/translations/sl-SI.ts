@@ -188,16 +188,16 @@ export default {
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "Create user",
   "admin.users.modal.create.username": "Username",
-  "admin.users.modal.create.email": "Email",
+  "admin.users.modal.create.email": "E-pošta",
   "admin.users.modal.create.password": "Password",
   "admin.users.modal.create.manual-password": "Set password manually",
   "admin.users.modal.create.manual-password.description": "If not checked, the user will receive an email with a link to set their password.",
   "admin.users.modal.create.admin": "Admin privileges",
-  "admin.users.modal.create.admin.description": "If checked, the user will be able to access the admin panel.",
+  "admin.users.modal.create.admin.description": "Če je omogočeno, bo lahko porabnik dostopal do administratorskega vmesnika.",
   // END /admin/users
   // /upload
-  "upload.title": "Upload",
-  "upload.notify.generic-error": "An error occurred while finishing your share.",
+  "upload.title": "Naložite",
+  "upload.notify.generic-error": "Prišlo je do napake pri ustvarjanju vašega deljenja.",
   "upload.notify.count-failed": "{count} files failed to upload. Trying again.",
   // Dropzone.tsx
   "upload.dropzone.title": "Upload files",
