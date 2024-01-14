@@ -404,6 +404,7 @@ export default {
   "common.button.generate": "Genereren",
   "common.button.done": "Voltooid",
   "common.text.link": "Koppeling",
+  "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "of",
   "common.button.go-back": "Ga terug",
   "common.notify.copied": "Uw link is gekopieerd naar het klembord",

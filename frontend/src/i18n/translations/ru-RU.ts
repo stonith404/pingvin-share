@@ -404,6 +404,7 @@ export default {
   "common.button.generate": "Сгенерировать",
   "common.button.done": "Готово",
   "common.text.link": "Ссылка",
+  "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "или",
   "common.button.go-back": "Назад",
   "common.notify.copied": "Ваша ссылка скопирована в буфер обмена",

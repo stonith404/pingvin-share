@@ -404,6 +404,7 @@ export default {
   "common.button.generate": "自動產生",
   "common.button.done": "完成",
   "common.text.link": "聯結",
+  "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "或",
   "common.button.go-back": "返回",
   "common.notify.copied": "已複製到剪貼簿",
