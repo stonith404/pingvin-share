@@ -151,7 +151,7 @@ export default {
   "account.reverseShares.modal.max-size.label": "Max share size",
   "account.reverseShares.modal.send-email": "Send email notification",
   "account.reverseShares.modal.send-email.description": "Send an email notification when a share is created with this reverse share link.",
-  "account.reverseShares.modal.max-use.label": "Max uses",
+  "account.reverseShares.modal.max-use.label": "Največ uporab",
   "account.reverseShares.modal.max-use.description": "The maximum amount of times this URL can be used to create a share.",
   "account.reverseShare.never-expires": "This reverse share will never expire.",
   "account.reverseShare.expires-on": "This reverse share will expire on {expiration}.",
@@ -169,7 +169,7 @@ export default {
   // /admin
   "admin.title": "Administration",
   "admin.button.users": "User management",
-  "admin.button.config": "Configuration",
+  "admin.button.config": "Nastavitve",
   "admin.version": "Version",
   // END /admin
   // /admin/users
