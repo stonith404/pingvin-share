@@ -1,3 +1,10 @@
+## [0.21.5](https://github.com/stonith404/pingvin-share/compare/v0.21.4...v0.21.5) (2024-01-14)
+
+
+### Bug Fixes
+
+* password can be changed with wrong password ([0ccb836](https://github.com/stonith404/pingvin-share/commit/0ccb8364448d27ea07c8b11972ff454d610893c6))
+
 ## [0.21.4](https://github.com/stonith404/pingvin-share/compare/v0.21.3...v0.21.4) (2024-01-09)
 
 
