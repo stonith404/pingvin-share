@@ -11,6 +11,7 @@ import dutch from "./translations/nl-BE";
 import polish from "./translations/pl-PL";
 import portuguese from "./translations/pt-BR";
 import russian from "./translations/ru-RU";
+import slovenian from "./translations/sl-SI";
 import serbian from "./translations/sr-SP";
 import swedish from "./translations/sv-SE";
 import thai from "./translations/th-TH";
@@ -107,5 +108,10 @@ export const LOCALES = {
     name: "Ελληνικά",
     code: "el-GR",
     messages: greek,
+  },
+  SLOVENIAN: {
+    name: "Slovenščina",
+    code: "sl-SI",
+    messages: slovenian,
   },
 };
