@@ -1,5 +1,6 @@
 import danish from "./translations/da-DK";
 import german from "./translations/de-DE";
+import greek from "./translations/el-GR";
 import english from "./translations/en-US";
 import spanish from "./translations/es-ES";
 import finnish from "./translations/fi-FI";
@@ -101,5 +102,10 @@ export const LOCALES = {
     name: "Italiano",
     code: "it-IT",
     messages: italian,
+  },
+  GREEK: {
+    name: "Ελληνικά",
+    code: "el-GR",
+    messages: greek,
   },
 };
