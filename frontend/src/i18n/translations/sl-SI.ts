@@ -1,14 +1,14 @@
 export default {
   // Navbar
-  "navbar.upload": "Upload",
-  "navbar.signin": "Sign in",
-  "navbar.home": "Home",
-  "navbar.signup": "Sign Up",
-  "navbar.links.shares": "My shares",
-  "navbar.links.reverse": "Reverse shares",
-  "navbar.avatar.account": "My account",
-  "navbar.avatar.admin": "Administration",
-  "navbar.avatar.signout": "Sign out",
+  "navbar.upload": "Naloži",
+  "navbar.signin": "Vpis",
+  "navbar.home": "Domov",
+  "navbar.signup": "Registracija",
+  "navbar.links.shares": "Moja deljenja",
+  "navbar.links.reverse": "Deljenja v obratni smeri",
+  "navbar.avatar.account": "Moj račun",
+  "navbar.avatar.admin": "Administracija",
+  "navbar.avatar.signout": "Odjava",
   // END navbar
   // /
   "home.title": "A <h>self-hosted</h> file sharing platform.",
