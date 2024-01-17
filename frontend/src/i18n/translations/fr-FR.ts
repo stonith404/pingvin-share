@@ -404,7 +404,7 @@ export default {
   "common.button.generate": "Générer",
   "common.button.done": "Terminer",
   "common.text.link": "Lien",
-  "common.text.navigate-to-link": "Go to the link",
+  "common.text.navigate-to-link": "Accéder au lien",
   "common.text.or": "ou",
   "common.button.go-back": "Précédent",
   "common.notify.copied": "Votre lien a été copié dans le presse-papiers",
