@@ -11,15 +11,15 @@ export default {
   "navbar.avatar.signout": "Odjava",
   // END navbar
   // /
-  "home.title": "A <h>self-hosted</h> file sharing platform.",
-  "home.description": "Do you really want to give your personal files in the hand of third parties like WeTransfer?",
-  "home.bullet.a.name": "Self-Hosted",
-  "home.bullet.a.description": "Host Pingvin Share on your own machine.",
-  "home.bullet.b.name": "Privacy",
-  "home.bullet.b.description": "Your files are your files and should never get into the hands of third parties.",
-  "home.bullet.c.name": "No annoying file size limit",
-  "home.bullet.c.description": "Upload as big files as you want. Only your hard drive will be your limit.",
-  "home.button.start": "Get started",
+  "home.title": "Platforma za deljenje datotek z <h>lastnim gostovanjem</h>.",
+  "home.description": "Ali res želite predati svoje osebne datoteke v roke tretjih oseb, kot je WeTransfer?",
+  "home.bullet.a.name": "Lastno-Gostovanje",
+  "home.bullet.a.description": "Gostuj Pingvin Share na svoji lastni napravi.",
+  "home.bullet.b.name": "Zasebnost",
+  "home.bullet.b.description": "Vaše datoteke so samo vaše in ne bi nikoli smele pristati v rokah tretjih oseb.",
+  "home.bullet.c.name": "Brez nadležnih omejitev velikosti datoteke",
+  "home.bullet.c.description": "Naložite datoteke, velike kolikor želite. Omejuje vas samo vaš disk.",
+  "home.button.start": "Začnite zdaj",
   "home.button.source": "Source code",
   // END /
   // /auth/signin
