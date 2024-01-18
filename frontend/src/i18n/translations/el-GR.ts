@@ -262,7 +262,7 @@ export default {
   "share.table.name": "Όνομα",
   "share.table.size": "Μέγεθος",
   "share.modal.file-preview.error.not-supported.title": "Η προεπισκόπηση δεν υποστηρίζεται",
-  "share.modal.file-preview.error.not-supported.description": "Η προεπισκόπηση για αυτό τον τύπο αρχείου δεν υποστηρίζεται. Παρακαλώ κατεβάστε το αρχείο για να το δείτε.",
+  "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "Ενημέρωση {shareId}",
