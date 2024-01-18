@@ -262,7 +262,7 @@ export default {
   "share.table.name": "Namn",
   "share.table.size": "Storlek",
   "share.modal.file-preview.error.not-supported.title": "Förhandsgranskning stöds ej",
-  "share.modal.file-preview.error.not-supported.description": "En förhandsvisning för filtypen stöds inte. Ladda ner filen för att se den.",
+  "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "Redigera {shareId}",
