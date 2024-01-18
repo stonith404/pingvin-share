@@ -262,7 +262,7 @@ export default {
   "share.table.name": "Naam",
   "share.table.size": "Grootte",
   "share.modal.file-preview.error.not-supported.title": "Voorbeeld niet ondersteund",
-  "share.modal.file-preview.error.not-supported.description": "Een voorbeeld voor dit bestandstype wordt niet ondersteund. Download het bestand om het te bekijken.",
+  "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "{shareId} bewerken",
