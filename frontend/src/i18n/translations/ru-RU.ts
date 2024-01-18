@@ -262,7 +262,7 @@ export default {
   "share.table.name": "Название",
   "share.table.size": "Размер",
   "share.modal.file-preview.error.not-supported.title": "Предпросмотр не поддерживается",
-  "share.modal.file-preview.error.not-supported.description": "Предварительный просмотр этого типа файла не поддерживается. Пожалуйста, скачайте файл для его просмотра.",
+  "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "Редактировать {shareId}",
