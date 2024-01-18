@@ -262,7 +262,7 @@ export default {
   "share.table.name": "Nome",
   "share.table.size": "Dimensione",
   "share.modal.file-preview.error.not-supported.title": "Anteprima non supportata",
-  "share.modal.file-preview.error.not-supported.description": "Un'anteprima per il tipo di file di questo tipo non è supportata. Per favore scarica il file per visualizzarlo.",
+  "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "Modifica {shareId}",
