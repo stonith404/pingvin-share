@@ -262,7 +262,7 @@ export default {
   "share.table.name": "Назив",
   "share.table.size": "Величина",
   "share.modal.file-preview.error.not-supported.title": "Преглед није подржан",
-  "share.modal.file-preview.error.not-supported.description": "Преглед за овај тип датотеке није подржан. Преузмите датотеку да бисте је видели.",
+  "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "Edit {shareId}",
