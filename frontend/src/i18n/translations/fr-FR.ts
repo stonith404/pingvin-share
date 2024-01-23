@@ -262,7 +262,7 @@ export default {
   "share.table.name": "Nom",
   "share.table.size": "Taille",
   "share.modal.file-preview.error.not-supported.title": "Aperçu non supporté",
-  "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
+  "share.modal.file-preview.error.not-supported.description": "Un aperçu de ce type de fichier n'est pas pris en charge. Veuillez télécharger le fichier pour le visualiser.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "Modifier {shareId}",
