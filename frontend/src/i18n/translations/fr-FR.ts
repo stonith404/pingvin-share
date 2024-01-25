@@ -201,7 +201,7 @@ export default {
   "upload.notify.count-failed": "{count} fichier(s) n’a(ont) pas pu être envoyé(s). Veuillez réessayer.",
   // Dropzone.tsx
   "upload.dropzone.title": "Téléverser des fichiers",
-  "upload.dropzone.description": "Glissez-déposez des fichiers ici pour commencer votre partage. Ils ne peuvent avoir une taille supérieur à {maxSize} au total.",
+  "upload.dropzone.description": "Glissez-déposez des fichiers ici pour commencer votre partage. Ils ne peuvent avoir une taille supérieure à {maxSize} au total.",
   "upload.dropzone.notify.file-too-big": "Vos fichiers dépassent la taille maximale de {maxSize}.",
   // FileList.tsx
   "upload.filelist.name": "Nom",
