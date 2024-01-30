@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import api from "../../services/api.service";
+import Markdown from "markdown-to-jsx";
 
 const FilePreviewContext = React.createContext<{
   shareId: string;
@@ -115,22 +116,37 @@ const ImagePreview = () => {
 
 const TextPreview = () => {
   const { shareId, fileId } = React.useContext(FilePreviewContext);
-  const [text, setText] = useState<string | null>(null);
+  const [ text, setText ] = useState<string>("");
 
   useEffect(() => {
     api
       .get(`/shares/${shareId}/files/${fileId}?download=false`)
-      .then((res) => setText(res.data));
-  }, [shareId, fileId]);
+      .then((res) => setText(res.data ?? "Preview couldn't be fetched."));
+  }, [ shareId, fileId ]);
+
+  const options = {
+    overrides: {
+      pre: {
+        props: {
+          style: {
+            backgroundColor: "rgba(50, 50, 50, 0.5)",
+            padding: "0.75em",
+            whiteSpace: "pre-wrap",
+          }
+        }
+      },
+      table: {
+        props: {
+          className: "md"
+        }
+      }
+    }
+  };
 
   return (
-    <Center style={{ minHeight: 200 }}>
-      <Stack align="center" spacing={10} style={{ width: "100%" }}>
-        <Text sx={{ whiteSpace: "pre-wrap" }} size="sm">
-          {text}
-        </Text>
-      </Stack>
-    </Center>
+    <Markdown options={options}>
+      {text}
+    </Markdown>
   );
 };
 
