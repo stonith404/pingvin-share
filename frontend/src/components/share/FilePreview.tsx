@@ -1,4 +1,4 @@
-import { Button, Center, Stack, Text, Title } from "@mantine/core";
+import { Button, Center, Stack, Text, Title, useMantineTheme } from "@mantine/core";
 import { modals } from "@mantine/modals";
 import Link from "next/link";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
@@ -117,6 +117,7 @@ const ImagePreview = () => {
 const TextPreview = () => {
   const { shareId, fileId } = React.useContext(FilePreviewContext);
   const [ text, setText ] = useState<string>("");
+  const { colorScheme } = useMantineTheme();
 
   useEffect(() => {
     api
@@ -129,7 +130,9 @@ const TextPreview = () => {
       pre: {
         props: {
           style: {
-            backgroundColor: "rgba(50, 50, 50, 0.5)",
+            backgroundColor: colorScheme == "dark"
+              ? "rgba(50, 50, 50, 0.5)"
+              : "rgba(220, 220, 220, 0.5)",
             padding: "0.75em",
             whiteSpace: "pre-wrap",
           }
