@@ -262,7 +262,7 @@ export default {
   "share.table.name": "文件名",
   "share.table.size": "文件大小",
   "share.modal.file-preview.error.not-supported.title": "该文件类型不支持预览",
-  "share.modal.file-preview.error.not-supported.description": "该文件类型不支持预览，请下载后打开查看",
+  "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "编辑 {shareId}",

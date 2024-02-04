@@ -201,7 +201,7 @@ export default {
   "upload.notify.count-failed": "{count} fichier(s) n’a(ont) pas pu être envoyé(s). Veuillez réessayer.",
   // Dropzone.tsx
   "upload.dropzone.title": "Téléverser des fichiers",
-  "upload.dropzone.description": "Glissez-déposez des fichiers ici pour commencer votre partage. Ils ne peuvent avoir une taille supérieur à {maxSize} au total.",
+  "upload.dropzone.description": "Glissez-déposez des fichiers ici pour commencer votre partage. Ils ne peuvent avoir une taille supérieure à {maxSize} au total.",
   "upload.dropzone.notify.file-too-big": "Vos fichiers dépassent la taille maximale de {maxSize}.",
   // FileList.tsx
   "upload.filelist.name": "Nom",
@@ -262,7 +262,7 @@ export default {
   "share.table.name": "Nom",
   "share.table.size": "Taille",
   "share.modal.file-preview.error.not-supported.title": "Aperçu non supporté",
-  "share.modal.file-preview.error.not-supported.description": "Un aperçu pour ce type de fichier n'est pas pris en charge. Veuillez télécharger le fichier pour le voir.",
+  "share.modal.file-preview.error.not-supported.description": "Un aperçu de ce type de fichier n'est pas pris en charge. Veuillez télécharger le fichier pour le visualiser.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "Modifier {shareId}",
@@ -404,7 +404,7 @@ export default {
   "common.button.generate": "Générer",
   "common.button.done": "Terminer",
   "common.text.link": "Lien",
-  "common.text.navigate-to-link": "Go to the link",
+  "common.text.navigate-to-link": "Accéder au lien",
   "common.text.or": "ou",
   "common.button.go-back": "Précédent",
   "common.notify.copied": "Votre lien a été copié dans le presse-papiers",

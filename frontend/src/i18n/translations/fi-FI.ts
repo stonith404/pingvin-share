@@ -262,7 +262,7 @@ export default {
   "share.table.name": "Nimi",
   "share.table.size": "Koko",
   "share.modal.file-preview.error.not-supported.title": "Esikatselua ei tuettu",
-  "share.modal.file-preview.error.not-supported.description": "Esikatselua thise tiedostotyypille ei tueta. Ole hyvä ja lataa tiedosto nähdäksesi sen.",
+  "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "Edit {shareId}",

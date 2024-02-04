@@ -262,7 +262,7 @@ export default {
   "share.table.name": "ชื่อ",
   "share.table.size": "ขนาด",
   "share.modal.file-preview.error.not-supported.title": "ไม่รองรับการแสดงตัวอย่าง",
-  "share.modal.file-preview.error.not-supported.description": "ไม่รองรับการแสดงตัวอย่างสำหรับไฟล์ประเภทนี้ โปรดดาวน์โหลดไฟล์เพื่อดู",
+  "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "Edit {shareId}",

@@ -262,7 +262,7 @@ export default {
   "share.table.name": "ファイル名",
   "share.table.size": "サイズ",
   "share.modal.file-preview.error.not-supported.title": "プレビューに対応していません",
-  "share.modal.file-preview.error.not-supported.description": "これらのファイルのプレビューには対応していません。ファイルをダウンロードして、直接確認してください。",
+  "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "編集 {shareId}",
