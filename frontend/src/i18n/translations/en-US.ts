@@ -354,7 +354,7 @@ export default {
 
   "share.modal.file-preview.error.not-supported.title": "Preview not supported",
   "share.modal.file-preview.error.not-supported.description":
-    "A preview for thise file type is unsupported. Please download the file to view it.",
+    "A preview for this file type is unsupported. Please download the file to view it.",
 
   // END /share/[id]
 
