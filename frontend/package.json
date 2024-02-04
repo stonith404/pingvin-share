@@ -23,6 +23,7 @@
     "file-saver": "^2.0.5",
     "jose": "^4.14.4",
     "jwt-decode": "^3.1.2",
+    "markdown-to-jsx": "^7.4.1",
     "mime-types": "^2.1.35",
     "moment": "^2.29.4",
     "next": "^13.4.12",
