@@ -1,3 +1,10 @@
+## [0.22.0](https://github.com/stonith404/pingvin-share/compare/v0.21.5...v0.22.0) (2024-02-04)
+
+
+### Bug Fixes
+
+* **translations:** typo in string ([c189cd9](https://github.com/stonith404/pingvin-share/commit/c189cd97a502cee8ea79e5187d9288d636d4983c))
+
 ## [0.21.5](https://github.com/stonith404/pingvin-share/compare/v0.21.4...v0.21.5) (2024-01-14)
 
 
