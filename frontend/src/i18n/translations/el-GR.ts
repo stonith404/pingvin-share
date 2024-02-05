@@ -407,6 +407,7 @@ export default {
   "common.text.navigate-to-link": "Μεταβείτε στο σύνδεσμο",
   "common.text.or": "ή",
   "common.button.go-back": "Επιστροφή",
+  "common.button.go-home": "Go home",
   "common.notify.copied": "Ο σύνδεσμος σας αντιγράφηκε στο πρόχειρο",
   "common.success": "Επιτυχία",
   "common.error": "Σφάλμα",
