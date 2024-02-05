@@ -1,4 +1,11 @@
-import { Button, Center, Stack, Text, Title, useMantineTheme } from "@mantine/core";
+import {
+  Button,
+  Center,
+  Stack,
+  Text,
+  Title,
+  useMantineTheme,
+} from "@mantine/core";
 import { modals } from "@mantine/modals";
 import Link from "next/link";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
@@ -116,41 +123,38 @@ const ImagePreview = () => {
 
 const TextPreview = () => {
   const { shareId, fileId } = React.useContext(FilePreviewContext);
-  const [ text, setText ] = useState<string>("");
+  const [text, setText] = useState<string>("");
   const { colorScheme } = useMantineTheme();
 
   useEffect(() => {
     api
       .get(`/shares/${shareId}/files/${fileId}?download=false`)
       .then((res) => setText(res.data ?? "Preview couldn't be fetched."));
-  }, [ shareId, fileId ]);
+  }, [shareId, fileId]);
 
   const options = {
     overrides: {
       pre: {
         props: {
           style: {
-            backgroundColor: colorScheme == "dark"
-              ? "rgba(50, 50, 50, 0.5)"
-              : "rgba(220, 220, 220, 0.5)",
+            backgroundColor:
+              colorScheme == "dark"
+                ? "rgba(50, 50, 50, 0.5)"
+                : "rgba(220, 220, 220, 0.5)",
             padding: "0.75em",
             whiteSpace: "pre-wrap",
-          }
-        }
+          },
+        },
       },
       table: {
         props: {
-          className: "md"
-        }
-      }
-    }
+          className: "md",
+        },
+      },
+    },
   };
 
-  return (
-    <Markdown options={options}>
-      {text}
-    </Markdown>
-  );
+  return <Markdown options={options}>{text}</Markdown>;
 };
 
 const PdfPreview = () => {
