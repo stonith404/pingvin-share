@@ -407,6 +407,7 @@ export default {
   "common.text.navigate-to-link": "Pojdi na povezavo",
   "common.text.or": "ali",
   "common.button.go-back": "Nazaj",
+  "common.button.go-home": "Go home",
   "common.notify.copied": "Povezava je bila kopirana v odložišče",
   "common.success": "Uspešno",
   "common.error": "Napaka",
