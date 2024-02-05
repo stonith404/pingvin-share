@@ -3,7 +3,7 @@ export default {
   "navbar.upload": "Carica",
   "navbar.signin": "Registrati",
   "navbar.home": "Home",
-  "navbar.signup": "Registrati",
+  "navbar.signup": "Accedi",
   "navbar.links.shares": "Le mie condivisioni",
   "navbar.links.reverse": "Condivisioni Inverse",
   "navbar.avatar.account": "Il mio account",
