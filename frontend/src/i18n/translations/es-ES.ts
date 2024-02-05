@@ -407,6 +407,7 @@ export default {
   "common.text.navigate-to-link": "Ir al enlace",
   "common.text.or": "o",
   "common.button.go-back": "Volver",
+  "common.button.go-home": "Go home",
   "common.notify.copied": "Tu enlace se ha copiado al portapapeles",
   "common.success": "Éxito",
   "common.error": "Error",
