@@ -30,6 +30,7 @@ const Share = ({ reverseShareToken }: { reverseShareToken: string }) => {
           modals,
           "Invalid Link",
           "This link is invalid. Please check your link.",
+          "go-home",
         );
         setIsLoading(false);
       });

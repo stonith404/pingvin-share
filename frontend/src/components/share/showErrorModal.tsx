@@ -8,6 +8,7 @@ const showErrorModal = (
   modals: ModalsContextProps,
   title: string,
   text: string,
+  action: "go-back" | "go-home" = "go-back",
 ) => {
   return modals.openModal({
     closeOnClickOutside: false,
@@ -15,11 +16,17 @@ const showErrorModal = (
     closeOnEscape: false,
     title: title,
 
-    children: <Body text={text} />,
+    children: <Body text={text} action={action} />,
   });
 };
 
-const Body = ({ text }: { text: string }) => {
+const Body = ({
+  text,
+  action,
+}: {
+  text: string;
+  action: "go-back" | "go-home";
+}) => {
   const modals = useModals();
   const router = useRouter();
   return (
@@ -29,10 +36,14 @@ const Body = ({ text }: { text: string }) => {
         <Button
           onClick={() => {
             modals.closeAll();
-            router.back();
+            if (action === "go-back") {
+              router.back();
+            } else if (action === "go-home") {
+              router.push("/");
+            }
           }}
         >
-          <FormattedMessage id="common.button.go-back" />
+          <FormattedMessage id={`common.button.${action}`} />
         </Button>
       </Stack>
     </>
