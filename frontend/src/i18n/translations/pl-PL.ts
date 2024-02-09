@@ -262,7 +262,7 @@ export default {
   "share.table.name": "Nazwa",
   "share.table.size": "Rozmiar",
   "share.modal.file-preview.error.not-supported.title": "Podgląd nie jest obsługiwany",
-  "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
+  "share.modal.file-preview.error.not-supported.description": "Podgląd dla tego typu pliku nie jest obsługiwany. Pobierz plik, aby go zobaczyć.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "Edytuj {shareId}",
@@ -404,10 +404,10 @@ export default {
   "common.button.generate": "Wygeneruj",
   "common.button.done": "Gotowe",
   "common.text.link": "Link",
-  "common.text.navigate-to-link": "Go to the link",
+  "common.text.navigate-to-link": "Przejdź do linku",
   "common.text.or": "lub",
   "common.button.go-back": "Wróć",
-  "common.button.go-home": "Go home",
+  "common.button.go-home": "Wróć do ekranu głównego",
   "common.notify.copied": "Link został skopiowany do schowka",
   "common.success": "Zakończono pomyślnie",
   "common.error": "Błąd",
