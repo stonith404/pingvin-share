@@ -262,7 +262,7 @@ export default {
   "share.table.name": "Namn",
   "share.table.size": "Storlek",
   "share.modal.file-preview.error.not-supported.title": "Förhandsgranskning stöds ej",
-  "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
+  "share.modal.file-preview.error.not-supported.description": "En förhandsvisning för filtypen stöds inte. Ladda ner filen för att se den.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "Redigera {shareId}",
@@ -407,7 +407,7 @@ export default {
   "common.text.navigate-to-link": "Gå till länken",
   "common.text.or": "eller",
   "common.button.go-back": "Gå tillbaka",
-  "common.button.go-home": "Go home",
+  "common.button.go-home": "Gå hem",
   "common.notify.copied": "Din länk har kopierats till urklipp",
   "common.success": "Slutförd",
   "common.error": "Fel",
