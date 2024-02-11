@@ -12,6 +12,7 @@ import { getCookie, setCookie } from "cookies-next";
 import { GetServerSidePropsContext } from "next";
 import type { AppProps } from "next/app";
 import getConfig from "next/config";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { IntlProvider } from "react-intl";
@@ -41,7 +42,7 @@ function App({ Component, pageProps }: AppProps) {
   const [route, setRoute] = useState<string>(pageProps.route);
 
   const [configVariables, setConfigVariables] = useState<Config[]>(
-    pageProps.configVariables,
+    pageProps.configVariables
   );
 
   useEffect(() => {
@@ -80,57 +81,65 @@ function App({ Component, pageProps }: AppProps) {
   const language = useRef(pageProps.language);
 
   return (
-    <IntlProvider
-      messages={i18nUtil.getLocaleByCode(language.current)?.messages}
-      locale={language.current}
-      defaultLocale={LOCALES.ENGLISH.code}
-    >
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-        theme={{ colorScheme, ...globalStyle }}
+    <>
+      <Head>
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
+        />
+      </Head>
+      <IntlProvider
+        messages={i18nUtil.getLocaleByCode(language.current)?.messages}
+        locale={language.current}
+        defaultLocale={LOCALES.ENGLISH.code}
       >
-        <ColorSchemeProvider
-          colorScheme={colorScheme}
-          toggleColorScheme={toggleColorScheme}
+        <MantineProvider
+          withGlobalStyles
+          withNormalizeCSS
+          theme={{ colorScheme, ...globalStyle }}
         >
-          <GlobalStyle />
-          <Notifications />
-          <ModalsProvider>
-            <ConfigContext.Provider
-              value={{
-                configVariables,
-                refresh: async () => {
-                  setConfigVariables(await configService.list());
-                },
-              }}
-            >
-              <UserContext.Provider
+          <ColorSchemeProvider
+            colorScheme={colorScheme}
+            toggleColorScheme={toggleColorScheme}
+          >
+            <GlobalStyle />
+            <Notifications />
+            <ModalsProvider>
+              <ConfigContext.Provider
                 value={{
-                  user,
-                  refreshUser: async () => {
-                    const user = await userService.getCurrentUser();
-                    setUser(user);
-                    return user;
+                  configVariables,
+                  refresh: async () => {
+                    setConfigVariables(await configService.list());
                   },
                 }}
               >
-                {excludeDefaultLayoutRoutes.includes(route) ? (
-                  <Component {...pageProps} />
-                ) : (
-                  <>
-                    <Header />
-                    <Container>
-                      <Component {...pageProps} />
-                    </Container>
-                  </>
-                )}
-              </UserContext.Provider>
-            </ConfigContext.Provider>
-          </ModalsProvider>
-        </ColorSchemeProvider>
-      </MantineProvider>
-    </IntlProvider>
+                <UserContext.Provider
+                  value={{
+                    user,
+                    refreshUser: async () => {
+                      const user = await userService.getCurrentUser();
+                      setUser(user);
+                      return user;
+                    },
+                  }}
+                >
+                  {excludeDefaultLayoutRoutes.includes(route) ? (
+                    <Component {...pageProps} />
+                  ) : (
+                    <>
+                      <Header />
+                      <Container>
+                        <Component {...pageProps} />
+                      </Container>
+                    </>
+                  )}
+                </UserContext.Provider>
+              </ConfigContext.Provider>
+            </ModalsProvider>
+          </ColorSchemeProvider>
+        </MantineProvider>
+      </IntlProvider>
+    </>
   );
 }
 
@@ -165,7 +174,7 @@ App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
     pageProps.route = ctx.req.url;
 
     const requestLanguage = i18nUtil.getLanguageFromAcceptHeader(
-      ctx.req.headers["accept-language"],
+      ctx.req.headers["accept-language"]
     );
 
     pageProps.language = ctx.req.cookies["language"] ?? requestLanguage;
