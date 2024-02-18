@@ -34,7 +34,7 @@ export async function middleware(request: NextRequest) {
 
   try {
     const claims = jwtDecode<{ exp: number; isAdmin: boolean }>(
-      accessToken as string
+      accessToken as string,
     );
     if (claims.exp * 1000 > Date.now()) {
       user = claims;

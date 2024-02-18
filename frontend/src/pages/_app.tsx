@@ -42,7 +42,7 @@ function App({ Component, pageProps }: AppProps) {
   const [route, setRoute] = useState<string>(pageProps.route);
 
   const [configVariables, setConfigVariables] = useState<Config[]>(
-    pageProps.configVariables
+    pageProps.configVariables,
   );
 
   useEffect(() => {
@@ -174,7 +174,7 @@ App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
     pageProps.route = ctx.req.url;
 
     const requestLanguage = i18nUtil.getLanguageFromAcceptHeader(
-      ctx.req.headers["accept-language"]
+      ctx.req.headers["accept-language"],
     );
 
     pageProps.language = ctx.req.cookies["language"] ?? requestLanguage;

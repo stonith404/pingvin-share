@@ -74,7 +74,7 @@ export default {
   "resetPassword.title": "Forgot your password?",
   "resetPassword.description": "Enter your email to reset your password.",
   "resetPassword.notify.success":
-    "An email has been sent with a link to reset your password.",
+    "A message with a link to reset your password has been sent if the email exists.",
   "resetPassword.button.back": "Back to sign in page",
   "resetPassword.text.resetPassword": "Reset password",
   "resetPassword.text.enterNewPassword": "Enter your new password",
@@ -93,7 +93,8 @@ export default {
   "account.card.password.title": "Password",
   "account.card.password.old": "Old password",
   "account.card.password.new": "New password",
-  "account.card.password.noPasswordSet": "You don't have a password set. If you want to sign in with email and password you need to set a password.",
+  "account.card.password.noPasswordSet":
+    "You don't have a password set. If you want to sign in with email and password you need to set a password.",
   "account.notify.password.success": "Password changed successfully",
 
   "account.card.oauth.title": "Social login",
@@ -106,9 +107,9 @@ export default {
   "account.card.oauth.unlink": "Unlink",
   "account.card.oauth.unlinked": "Unlinked",
   "account.modal.unlink.title": "Unlink account",
-  "account.modal.unlink.description": "Unlinking your social accounts may cause you to lose your account if you don't remember your username and password.",
+  "account.modal.unlink.description":
+    "Unlinking your social accounts may cause you to lose your account if you don't remember your username and password.",
   "account.notify.oauth.unlinked.success": "Unlinked successfully",
-
 
   "account.card.security.title": "Security",
   "account.card.security.totp.enable.description":
@@ -288,7 +289,8 @@ export default {
 
   "upload.modal.expires.never": "never",
   "upload.modal.expires.never-long": "Never Expires",
-  "upload.modal.expires.error.too-long": "Expiration exceeds maximum expiration date of {max}.",
+  "upload.modal.expires.error.too-long":
+    "Expiration exceeds maximum expiration date of {max}.",
 
   "upload.modal.link.label": "Link",
   "upload.modal.expires.label": "Expiration",
@@ -361,7 +363,8 @@ export default {
   // /share/[id]/edit
   "share.edit.title": "Edit {shareId}",
   "share.edit.append-upload": "Append file",
-  "share.edit.notify.generic-error": "An error occurred while finishing your share.",
+  "share.edit.notify.generic-error":
+    "An error occurred while finishing your share.",
   "share.edit.notify.save-success": "Share updated successfully",
   // END /share/[id]/edit
 
@@ -447,47 +450,68 @@ export default {
   "admin.config.smtp.button.test": "Send test email",
 
   "admin.config.oauth.allow-registration": "Allow registration",
-  "admin.config.oauth.allow-registration.description": "Allow users to register via social login",
+  "admin.config.oauth.allow-registration.description":
+    "Allow users to register via social login",
   "admin.config.oauth.ignore-totp": "Ignore TOTP",
-  "admin.config.oauth.ignore-totp.description": "Whether to ignore TOTP when user using social login",
+  "admin.config.oauth.ignore-totp.description":
+    "Whether to ignore TOTP when user using social login",
   "admin.config.oauth.github-enabled": "GitHub",
-  "admin.config.oauth.github-enabled.description": "Whether GitHub login is enabled",
+  "admin.config.oauth.github-enabled.description":
+    "Whether GitHub login is enabled",
   "admin.config.oauth.github-client-id": "GitHub Client ID",
-  "admin.config.oauth.github-client-id.description": "Client ID of the GitHub OAuth app",
+  "admin.config.oauth.github-client-id.description":
+    "Client ID of the GitHub OAuth app",
   "admin.config.oauth.github-client-secret": "GitHub Client secret",
-  "admin.config.oauth.github-client-secret.description": "Client secret of the GitHub OAuth app",
+  "admin.config.oauth.github-client-secret.description":
+    "Client secret of the GitHub OAuth app",
   "admin.config.oauth.google-enabled": "Google",
-  "admin.config.oauth.google-enabled.description": "Whether Google login is enabled",
+  "admin.config.oauth.google-enabled.description":
+    "Whether Google login is enabled",
   "admin.config.oauth.google-client-id": "Google Client ID",
-  "admin.config.oauth.google-client-id.description": "Client ID of the Google OAuth app",
+  "admin.config.oauth.google-client-id.description":
+    "Client ID of the Google OAuth app",
   "admin.config.oauth.google-client-secret": "Google Client secret",
-  "admin.config.oauth.google-client-secret.description": "Client secret of the Google OAuth app",
+  "admin.config.oauth.google-client-secret.description":
+    "Client secret of the Google OAuth app",
   "admin.config.oauth.microsoft-enabled": "Microsoft",
-  "admin.config.oauth.microsoft-enabled.description": "Whether Microsoft login is enabled",
+  "admin.config.oauth.microsoft-enabled.description":
+    "Whether Microsoft login is enabled",
   "admin.config.oauth.microsoft-tenant": "Microsoft Tenant",
-  "admin.config.oauth.microsoft-tenant.description": "Tenant ID of the Microsoft OAuth app\ncommon: Users with both a personal Microsoft account and a work or school account from Microsoft Entra ID can sign in to the application. organizations: Only users with work or school accounts from Microsoft Entra ID can sign in to the application.\nconsumers: Only users with a personal Microsoft account can sign in to the application.\ndomain name of the Microsoft Entra tenant or the tenant ID in GUID format: Only users from a specific Microsoft Entra tenant (directory members with a work or school account or directory guests with a personal Microsoft account) can sign in to the application.",
+  "admin.config.oauth.microsoft-tenant.description":
+    "Tenant ID of the Microsoft OAuth app\ncommon: Users with both a personal Microsoft account and a work or school account from Microsoft Entra ID can sign in to the application. organizations: Only users with work or school accounts from Microsoft Entra ID can sign in to the application.\nconsumers: Only users with a personal Microsoft account can sign in to the application.\ndomain name of the Microsoft Entra tenant or the tenant ID in GUID format: Only users from a specific Microsoft Entra tenant (directory members with a work or school account or directory guests with a personal Microsoft account) can sign in to the application.",
   "admin.config.oauth.microsoft-client-id": "Microsoft Client ID",
-  "admin.config.oauth.microsoft-client-id.description": "Client ID of the Microsoft OAuth app",
+  "admin.config.oauth.microsoft-client-id.description":
+    "Client ID of the Microsoft OAuth app",
   "admin.config.oauth.microsoft-client-secret": "Microsoft Client secret",
-  "admin.config.oauth.microsoft-client-secret.description": "Client secret of the Microsoft OAuth app",
+  "admin.config.oauth.microsoft-client-secret.description":
+    "Client secret of the Microsoft OAuth app",
   "admin.config.oauth.discord-enabled": "Discord",
-  "admin.config.oauth.discord-enabled.description": "Whether Discord login is enabled",
+  "admin.config.oauth.discord-enabled.description":
+    "Whether Discord login is enabled",
   "admin.config.oauth.discord-limited-guild": "Discord limited server ID",
-  "admin.config.oauth.discord-limited-guild.description": "Limit signing in to users in a specific server. Leave it blank to disable.",
+  "admin.config.oauth.discord-limited-guild.description":
+    "Limit signing in to users in a specific server. Leave it blank to disable.",
   "admin.config.oauth.discord-client-id": "Discord Client ID",
-  "admin.config.oauth.discord-client-id.description": "Client ID of the Discord OAuth app",
+  "admin.config.oauth.discord-client-id.description":
+    "Client ID of the Discord OAuth app",
   "admin.config.oauth.discord-client-secret": "Discord Client secret",
-  "admin.config.oauth.discord-client-secret.description": "Client secret of the Discord OAuth app",
+  "admin.config.oauth.discord-client-secret.description":
+    "Client secret of the Discord OAuth app",
   "admin.config.oauth.oidc-enabled": "OpenID Connect",
-  "admin.config.oauth.oidc-enabled.description": "Whether OpenID Connect login is enabled",
+  "admin.config.oauth.oidc-enabled.description":
+    "Whether OpenID Connect login is enabled",
   "admin.config.oauth.oidc-discovery-uri": "OpenID Connect Discovery URI",
-  "admin.config.oauth.oidc-discovery-uri.description": "Discovery URI of the OpenID Connect OAuth app",
+  "admin.config.oauth.oidc-discovery-uri.description":
+    "Discovery URI of the OpenID Connect OAuth app",
   "admin.config.oauth.oidc-username-claim": "OpenID Connect username claim",
-  "admin.config.oauth.oidc-username-claim.description": "Username claim in OpenID Connect ID token. Leave it blank if you don't know what this config is.",
+  "admin.config.oauth.oidc-username-claim.description":
+    "Username claim in OpenID Connect ID token. Leave it blank if you don't know what this config is.",
   "admin.config.oauth.oidc-client-id": "OpenID Connect Client ID",
-  "admin.config.oauth.oidc-client-id.description": "Client ID of the OpenID Connect OAuth app",
+  "admin.config.oauth.oidc-client-id.description":
+    "Client ID of the OpenID Connect OAuth app",
   "admin.config.oauth.oidc-client-secret": "OpenID Connect Client secret",
-  "admin.config.oauth.oidc-client-secret.description": "Client secret of the OpenID Connect OAuth app",
+  "admin.config.oauth.oidc-client-secret.description":
+    "Client secret of the OpenID Connect OAuth app",
 
   // 404
   "404.description": "Oops this page doesn't exist.",
@@ -498,16 +522,22 @@ export default {
   "error.description": "Oops!",
   "error.button.back": "Go back",
   "error.msg.default": "Something went wrong.",
-  "error.msg.access_denied": "You canceled the authentication process, please try again.",
-  "error.msg.expired_token": "The authentication process took too long, please try again.",
+  "error.msg.access_denied":
+    "You canceled the authentication process, please try again.",
+  "error.msg.expired_token":
+    "The authentication process took too long, please try again.",
   "error.msg.invalid_token": "Internal Error",
   "error.msg.no_user": "User linked to this {0} account doesn't exist.",
   "error.msg.no_email": "Can't get email address from this {0} account.",
-  "error.msg.already_linked": "This {0} account is already linked to another account.",
+  "error.msg.already_linked":
+    "This {0} account is already linked to another account.",
   "error.msg.not_linked": "This {0} account haven't linked to any account yet.",
-  "error.msg.unverified_account": "This {0} account is unverified, please try again after verification.",
-  "error.msg.discord_guild_permission_denied": "You are not allowed to sign in.",
-  "error.msg.cannot_get_user_info": "Can not get your user info from this {0} account.",
+  "error.msg.unverified_account":
+    "This {0} account is unverified, please try again after verification.",
+  "error.msg.discord_guild_permission_denied":
+    "You are not allowed to sign in.",
+  "error.msg.cannot_get_user_info":
+    "Can not get your user info from this {0} account.",
   "error.param.provider_github": "GitHub",
   "error.param.provider_google": "Google",
   "error.param.provider_microsoft": "Microsoft",

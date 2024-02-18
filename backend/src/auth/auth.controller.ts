@@ -96,9 +96,9 @@ export class AuthController {
 
   @Post("resetPassword/:email")
   @Throttle(5, 5 * 60)
-  @HttpCode(204)
+  @HttpCode(202)
   async requestResetPassword(@Param("email") email: string) {
-    return await this.authService.requestResetPassword(email);
+    this.authService.requestResetPassword(email);
   }
 
   @Post("resetPassword")

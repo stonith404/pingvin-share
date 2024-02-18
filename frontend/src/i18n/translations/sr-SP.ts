@@ -12,13 +12,16 @@ export default {
   // END navbar
   // /
   "home.title": "<h>self-hosted</h> платформа за дељење фајлова.",
-  "home.description": "Да ли заиста желите да дате своје личне датотеке у руке трећих страна као што је WeTransfer?",
+  "home.description":
+    "Да ли заиста желите да дате своје личне датотеке у руке трећих страна као што је WeTransfer?",
   "home.bullet.a.name": "Личан хостинг",
   "home.bullet.a.description": "Хостујте Pingvin Share на својој машини.",
   "home.bullet.b.name": "Privatnost",
-  "home.bullet.b.description": "Ваше датотеке су ваше датотеке и никада не би требало да дођу у руке трећих лица.",
+  "home.bullet.b.description":
+    "Ваше датотеке су ваше датотеке и никада не би требало да дођу у руке трећих лица.",
   "home.bullet.c.name": "Нема досадног ограничења величине датотеке",
-  "home.bullet.c.description": "Отпремите онолико великих датотека колико желите. Само ваш чврсти диск ће бити ваше ограничење.",
+  "home.bullet.c.description":
+    "Отпремите онолико великих датотека колико желите. Само ваш чврсти диск ће бити ваше ограничење.",
   "home.button.start": "Почети",
   "home.button.source": "Изворни код",
   // END /
@@ -27,12 +30,15 @@ export default {
   "signin.description": "Још увек немате налог?",
   "signin.button.signup": "Региструј се",
   "signin.input.email-or-username": "Е-пошта или корисничко име",
-  "signin.input.email-or-username.placeholder": "Ваша Е-пошта или корисничко име",
+  "signin.input.email-or-username.placeholder":
+    "Ваша Е-пошта или корисничко име",
   "signin.input.password": "Лозинка",
   "signin.input.password.placeholder": "Ваша лозинка",
   "signin.button.submit": "Пријавите се",
-  "signIn.notify.totp-required.title": "Потребна је двофакторска аутентификација",
-  "signIn.notify.totp-required.description": "Унесите свој двофакторски код за аутентификацију",
+  "signIn.notify.totp-required.title":
+    "Потребна је двофакторска аутентификација",
+  "signIn.notify.totp-required.description":
+    "Унесите свој двофакторски код за аутентификацију",
   "signIn.oauth.or": "Или",
   "signIn.oauth.github": "GitHub",
   "signIn.oauth.google": "Google",
@@ -56,8 +62,10 @@ export default {
   // END /auth/totp
   // /auth/reset-password
   "resetPassword.title": "Заборавили сте лозинку?",
-  "resetPassword.description": "Унесите своју е-пошту да бисте ресетовали лозинку.",
-  "resetPassword.notify.success": "Послат је емаил са везом за ресетовање ваше лозинке.",
+  "resetPassword.description":
+    "Унесите своју е-пошту да бисте ресетовали лозинку.",
+  "resetPassword.notify.success":
+    "A message with a link to reset your password has been sent if the email exists.",
   "resetPassword.button.back": "Назад на страницу за пријаву",
   "resetPassword.text.resetPassword": "Обнови лозинку",
   "resetPassword.text.enterNewPassword": "Унесите вашу нову лозинку",
@@ -72,7 +80,8 @@ export default {
   "account.card.password.title": "Лозинка",
   "account.card.password.old": "Стара лозинка",
   "account.card.password.new": "Нова лозинка",
-  "account.card.password.noPasswordSet": "Немате постављену лозинку. Ако желите да се пријавите помоћу е-поште и лозинке, потребно је да поставите лозинку.",
+  "account.card.password.noPasswordSet":
+    "Немате постављену лозинку. Ако желите да се пријавите помоћу е-поште и лозинке, потребно је да поставите лозинку.",
   "account.notify.password.success": "Лозинка је успешно промењена",
   "account.card.oauth.title": "Социал логин",
   "account.card.oauth.github": "GitHub",
@@ -84,11 +93,14 @@ export default {
   "account.card.oauth.unlink": "Прекини везу",
   "account.card.oauth.unlinked": "Веза је прекинута",
   "account.modal.unlink.title": "Прекини везу са налогом",
-  "account.modal.unlink.description": "Прекидање везе са вашим друштвеним налозима може довести до губитка налога ако се не сећате корисничког имена и лозинке.",
+  "account.modal.unlink.description":
+    "Прекидање везе са вашим друштвеним налозима може довести до губитка налога ако се не сећате корисничког имена и лозинке.",
   "account.notify.oauth.unlinked.success": "Веза је прекинута",
   "account.card.security.title": "Безбедност",
-  "account.card.security.totp.enable.description": "Унесите своју тренутну лозинку да бисте почели да омогућавате ТОТП",
-  "account.card.security.totp.disable.description": "Унесите своју тренутну лозинку да бисте онемогућили ТОТП",
+  "account.card.security.totp.enable.description":
+    "Унесите своју тренутну лозинку да бисте почели да омогућавате ТОТП",
+  "account.card.security.totp.disable.description":
+    "Унесите своју тренутну лозинку да бисте онемогућили ТОТП",
   "account.card.security.totp.button.start": "Започни",
   "account.modal.totp.title": "Омогући ТОТП",
   "account.modal.totp.step1": "Корак 1: Додајте свој аутентификатор",
@@ -100,7 +112,8 @@ export default {
   "account.notify.totp.disable": "ТОТП је успешно онемогућен",
   "account.notify.totp.enable": "ТОТП је успешно омогућен",
   "account.card.language.title": "Језик",
-  "account.card.language.description": "Пројекат је преведен од стране заједнице. Неки језици могу бити непотпуни.",
+  "account.card.language.description":
+    "Пројекат је преведен од стране заједнице. Неки језици могу бити непотпуни.",
   "account.card.color.title": "Шема боја",
   // ThemeSwitcher.tsx
   "account.theme.dark": "Тамно",
@@ -108,7 +121,8 @@ export default {
   "account.theme.system": "Систем",
   "account.button.delete": "Избриши Налог",
   "account.modal.delete.title": "Избриши Налог",
-  "account.modal.delete.description": "Да ли заиста желите да избришете свој налог укључујући све ваше активне дељења?",
+  "account.modal.delete.description":
+    "Да ли заиста желите да избришете свој налог укључујући све ваше активне дељења?",
   // END /account
   // /account/shares
   "account.shares.title": "Moja дељења",
@@ -126,11 +140,13 @@ export default {
   "account.shares.modal.share-informations": "Делите информације",
   "account.shares.modal.share-link": "Дели везу",
   "account.shares.modal.delete.title": "Избриши дељење {share}",
-  "account.shares.modal.delete.description": "Да ли заиста желите да избришете ово дељење?",
+  "account.shares.modal.delete.description":
+    "Да ли заиста желите да избришете ово дељење?",
   // END /account/shares
   // /account/reverseShares
   "account.reverseShares.title": "Обрнуто дељење",
-  "account.reverseShares.description": "Обрнуто дељење вам омогућава да генеришете јединствени URL који омогућава спољним корисницима да креирају дељење.",
+  "account.reverseShares.description":
+    "Обрнуто дељење вам омогућава да генеришете јединствени URL који омогућава спољним корисницима да креирају дељење.",
   "account.reverseShares.title.empty": "Овде је празно 👀",
   "account.reverseShares.description.empty": "Немате обрнутих дељења.",
   // showCreateReverseShareModal.tsx
@@ -150,11 +166,15 @@ export default {
   "account.reverseShares.modal.expiration.year-plural": "Године",
   "account.reverseShares.modal.max-size.label": "Максимална величина дељења",
   "account.reverseShares.modal.send-email": "Пошаљите обавештење путем е-поште",
-  "account.reverseShares.modal.send-email.description": "Пошаљите обавештење е-поштом када се креира дељење помоћу ове обрнуте везе за дељење.",
+  "account.reverseShares.modal.send-email.description":
+    "Пошаљите обавештење е-поштом када се креира дељење помоћу ове обрнуте везе за дељење.",
   "account.reverseShares.modal.max-use.label": "Максималан број коришћења",
-  "account.reverseShares.modal.max-use.description": "Максималан број пута који овај URL може да се користи за прављење дељења.",
-  "account.reverseShare.never-expires": "Ово обрнуто дељење никада неће истећи.",
-  "account.reverseShare.expires-on": "Ово обрнуто дељење ће истећи {expiration}.",
+  "account.reverseShares.modal.max-use.description":
+    "Максималан број пута који овај URL може да се користи за прављење дељења.",
+  "account.reverseShare.never-expires":
+    "Ово обрнуто дељење никада неће истећи.",
+  "account.reverseShare.expires-on":
+    "Ово обрнуто дељење ће истећи {expiration}.",
   "account.reverseShares.table.no-shares": "Још нема креираних дељења",
   "account.reverseShares.table.count.singular": "дељење",
   "account.reverseShares.table.count.plural": "дељења",
@@ -164,7 +184,8 @@ export default {
   "account.reverseShares.table.expires": "Истиче у",
   "account.reverseShares.modal.reverse-share-link": "Линк за обрнуто дељење",
   "account.reverseShares.modal.delete.title": "Обришите обрнуто дељење",
-  "account.reverseShares.modal.delete.description": "Да ли заиста желите да избришете ово обрнуто дељење? Ако то учините, придружена дељења ће такође бити избрисана.",
+  "account.reverseShares.modal.delete.description":
+    "Да ли заиста желите да избришете ово обрнуто дељење? Ако то учините, придружена дељења ће такође бити избрисана.",
   // END /account/reverseShares
   // /admin
   "admin.title": "Администрација",
@@ -182,39 +203,49 @@ export default {
   "admin.users.edit.update.change-password.title": "Промените лозинку",
   "admin.users.edit.update.change-password.field": "Нова лозинка",
   "admin.users.edit.update.change-password.button": "Снимите нову лозинку",
-  "admin.users.edit.update.notify.password.success": "Лозинка је успешно промењена",
+  "admin.users.edit.update.notify.password.success":
+    "Лозинка је успешно промењена",
   "admin.users.edit.delete.title": "Обришите корисника {username}",
-  "admin.users.edit.delete.description": "Да ли заиста желите да избришете овог корисника и сва његова дељења?",
+  "admin.users.edit.delete.description":
+    "Да ли заиста желите да избришете овог корисника и сва његова дељења?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "Креирај корисника",
   "admin.users.modal.create.username": "Корисничко име",
   "admin.users.modal.create.email": "E-пошта",
   "admin.users.modal.create.password": "Лозинка",
   "admin.users.modal.create.manual-password": "Поставите лозинку ручно",
-  "admin.users.modal.create.manual-password.description": "Ако није означено, корисник ће добити е-пошту са везом за постављање лозинке.",
+  "admin.users.modal.create.manual-password.description":
+    "Ако није означено, корисник ће добити е-пошту са везом за постављање лозинке.",
   "admin.users.modal.create.admin": "Администраторске привилегије",
-  "admin.users.modal.create.admin.description": "Ако је означено, корисник ће моћи да приступи административном панелу.",
+  "admin.users.modal.create.admin.description":
+    "Ако је означено, корисник ће моћи да приступи административном панелу.",
   // END /admin/users
   // /upload
   "upload.title": "Пошаљи",
   "upload.notify.generic-error": "Дошло је до грешке при довршавању дељења.",
-  "upload.notify.count-failed": "Отпремање {count} датотека није успело. Покушавам поново.",
+  "upload.notify.count-failed":
+    "Отпремање {count} датотека није успело. Покушавам поново.",
   // Dropzone.tsx
   "upload.dropzone.title": "Пошаљи датотеке",
-  "upload.dropzone.description": "Превуците и отпустите датотеке овде да бисте започели дељење. Можемо да прихватимо само датотеке које су укупно мање од {maxSize}.",
-  "upload.dropzone.notify.file-too-big": "Ваше датотеке премашују максималну величину дељења од {maxSize}.",
+  "upload.dropzone.description":
+    "Превуците и отпустите датотеке овде да бисте започели дељење. Можемо да прихватимо само датотеке које су укупно мање од {maxSize}.",
+  "upload.dropzone.notify.file-too-big":
+    "Ваше датотеке премашују максималну величину дељења од {maxSize}.",
   // FileList.tsx
   "upload.filelist.name": "Назив",
   "upload.filelist.size": "Величина",
   // showCreateUploadModal.tsx
   "upload.modal.title": "Направи дељење",
-  "upload.modal.link.error.invalid": "Може да садржи само слова, бројеве, доње црте и цртице",
+  "upload.modal.link.error.invalid":
+    "Може да садржи само слова, бројеве, доње црте и цртице",
   "upload.modal.link.error.taken": "Овај линк је већ у употреби",
   "upload.modal.not-signed-in": "Нисте пријављени",
-  "upload.modal.not-signed-in-description": "Нећете моћи ручно да избришете своје дељење и видите број посетилаца.",
+  "upload.modal.not-signed-in-description":
+    "Нећете моћи ручно да избришете своје дељење и видите број посетилаца.",
   "upload.modal.expires.never": "никад",
   "upload.modal.expires.never-long": "Никада не истиче",
-  "upload.modal.expires.error.too-long": "Истек премашује максимални датум истека од {max}.",
+  "upload.modal.expires.error.too-long":
+    "Истек премашује максимални датум истека од {max}.",
   "upload.modal.link.label": "Линк",
   "upload.modal.expires.label": "Истиче",
   "upload.modal.expires.minute-singular": "Минут",
@@ -230,7 +261,8 @@ export default {
   "upload.modal.expires.year-singular": "Година",
   "upload.modal.expires.year-plural": "Године",
   "upload.modal.accordion.description.title": "Опис",
-  "upload.modal.accordion.description.placeholder": "Напомена за примаоце овог дељења",
+  "upload.modal.accordion.description.placeholder":
+    "Напомена за примаоце овог дељења",
   "upload.modal.accordion.email.title": "Примаоци е-поште",
   "upload.modal.accordion.email.placeholder": "Унесите примаоце е-поште",
   "upload.modal.accordion.email.invalid-email": "Неисправна адреса е-поште",
@@ -247,27 +279,33 @@ export default {
   // /share/[id]
   "share.title": "Дељење {shareId}",
   "share.description": "Погледајте шта сам поделио са вама!",
-  "share.error.visitor-limit-exceeded.title": "Прекорачено је ограничење посетилаца",
-  "share.error.visitor-limit-exceeded.description": "Ограничење посетилаца из овог дељења је премашено.",
+  "share.error.visitor-limit-exceeded.title":
+    "Прекорачено је ограничење посетилаца",
+  "share.error.visitor-limit-exceeded.description":
+    "Ограничење посетилаца из овог дељења је премашено.",
   "share.error.removed.title": "Дељење је уклоњено",
   "share.error.not-found.title": "Дељење није пронађено",
   "share.error.not-found.description": "Удео који тражите не постоји.",
   "share.modal.password.title": "Обавезна лозинка",
-  "share.modal.password.description": "Да бисте приступили овом дељењу, унесите лозинку за дељење.",
+  "share.modal.password.description":
+    "Да бисте приступили овом дељењу, унесите лозинку за дељење.",
   "share.modal.password": "Лозинка",
   "share.modal.error.invalid-password": "Неисправна лозинка",
   "share.button.download-all": "Преузми све",
-  "share.notify.download-all-preparing": "Дељење се спрема. Покушајте поново за неколико минута.",
+  "share.notify.download-all-preparing":
+    "Дељење се спрема. Покушајте поново за неколико минута.",
   "share.modal.file-link": "Веза датотеке",
   "share.table.name": "Назив",
   "share.table.size": "Величина",
   "share.modal.file-preview.error.not-supported.title": "Преглед није подржан",
-  "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
+  "share.modal.file-preview.error.not-supported.description":
+    "A preview for this file type is unsupported. Please download the file to view it.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "Edit {shareId}",
   "share.edit.append-upload": "Append file",
-  "share.edit.notify.generic-error": "An error occurred while finishing your share.",
+  "share.edit.notify.generic-error":
+    "An error occurred while finishing your share.",
   "share.edit.notify.save-success": "Share updated successfully",
   // END /share/[id]/edit
   // /admin/config
@@ -280,95 +318,137 @@ export default {
   "admin.config.general.app-name": "Назив апликације",
   "admin.config.general.app-name.description": "Назив апликације",
   "admin.config.general.app-url": "URL апликације",
-  "admin.config.general.app-url.description": "На којој URL адреси је доступан Pingvin Share",
+  "admin.config.general.app-url.description":
+    "На којој URL адреси је доступан Pingvin Share",
   "admin.config.general.show-home-page": "Прикажи почетну страницу",
-  "admin.config.general.show-home-page.description": "Да ли да се прикаже почетна страница",
+  "admin.config.general.show-home-page.description":
+    "Да ли да се прикаже почетна страница",
   "admin.config.general.logo": "Лого",
-  "admin.config.general.logo.description": "Промените свој логотип тако што ћете отпремити нову слику. Слика мора да буде PNG и треба да има формат 1:1.",
+  "admin.config.general.logo.description":
+    "Промените свој логотип тако што ћете отпремити нову слику. Слика мора да буде PNG и треба да има формат 1:1.",
   "admin.config.general.logo.placeholder": "Изабери слику",
-  "admin.config.email.enable-share-email-recipients": "Омогућите дељење прималаца е-поште",
-  "admin.config.email.enable-share-email-recipients.description": "Да ли да дозволите да имејлови деле примаоце. Омогућите ово само ако сте омогућили SMTP.",
+  "admin.config.email.enable-share-email-recipients":
+    "Омогућите дељење прималаца е-поште",
+  "admin.config.email.enable-share-email-recipients.description":
+    "Да ли да дозволите да имејлови деле примаоце. Омогућите ово само ако сте омогућили SMTP.",
   "admin.config.email.share-recipients-subject": "Поделите наслов примаоца",
-  "admin.config.email.share-recipients-subject.description": "Тема е-поруке која се шаље примаоцима дељења.",
+  "admin.config.email.share-recipients-subject.description":
+    "Тема е-поруке која се шаље примаоцима дељења.",
   "admin.config.email.share-recipients-message": "Делите поруку примаоца",
-  "admin.config.email.share-recipients-message.description": "Порука која се шаље примаоцима дељења. Доступне променљиве:\n {creator} – корисничко име креатора дељења\n {shareUrl} – URL дељења\n {desc} – Опис дељења\n {expires} - Датум истека акције\n Променљиве ће бити замењене стварном вредношћу.",
+  "admin.config.email.share-recipients-message.description":
+    "Порука која се шаље примаоцима дељења. Доступне променљиве:\n {creator} – корисничко име креатора дељења\n {shareUrl} – URL дељења\n {desc} – Опис дељења\n {expires} - Датум истека акције\n Променљиве ће бити замењене стварном вредношћу.",
   "admin.config.email.reverse-share-subject": "Тема обрнутог дељења",
-  "admin.config.email.reverse-share-subject.description": "Тема е-поруке која се шаље када је неко направио дељење са вашом обрнутим линком за дељење.",
+  "admin.config.email.reverse-share-subject.description":
+    "Тема е-поруке која се шаље када је неко направио дељење са вашом обрнутим линком за дељење.",
   "admin.config.email.reverse-share-message": "Обрнуто дељење порука",
-  "admin.config.email.reverse-share-message.description": "Порука која се шаље када је неко направио дељење са вашом обрнутом везом за дељење. {shareUrl} ће бити замењен именом креатора и УРЛ-ом за дељење.",
+  "admin.config.email.reverse-share-message.description":
+    "Порука која се шаље када је неко направио дељење са вашом обрнутом везом за дељење. {shareUrl} ће бити замењен именом креатора и УРЛ-ом за дељење.",
   "admin.config.email.reset-password-subject": "Ресетујте тему лозинке",
-  "admin.config.email.reset-password-subject.description": "Предмет е-поште која се шаље када корисник затражи ресетовање лозинке.",
+  "admin.config.email.reset-password-subject.description":
+    "Предмет е-поште која се шаље када корисник затражи ресетовање лозинке.",
   "admin.config.email.reset-password-message": "Порука за ресетовање лозинке",
-  "admin.config.email.reset-password-message.description": "Порука која се шаље када корисник затражи ресетовање лозинке. {url} ће бити замењен УРЛ-ом за ресетовање лозинке.",
+  "admin.config.email.reset-password-message.description":
+    "Порука која се шаље када корисник затражи ресетовање лозинке. {url} ће бити замењен УРЛ-ом за ресетовање лозинке.",
   "admin.config.email.invite-subject": "Позивна тема",
-  "admin.config.email.invite-subject.description": "Тема е-поруке која се шаље када администратор позове корисника.",
+  "admin.config.email.invite-subject.description":
+    "Тема е-поруке која се шаље када администратор позове корисника.",
   "admin.config.email.invite-message": "Позивна порука",
-  "admin.config.email.invite-message.description": "Порука која се шаље када администратор позове корисника. {url} ће бити замењен УРЛ-ом позива, а {password} лозинком.",
+  "admin.config.email.invite-message.description":
+    "Порука која се шаље када администратор позове корисника. {url} ће бити замењен УРЛ-ом позива, а {password} лозинком.",
   "admin.config.share.allow-registration": "Дозволи регистрацију",
-  "admin.config.share.allow-registration.description": "Да ли је регистрација дозвољена",
-  "admin.config.share.allow-unauthenticated-shares": "Дозволи дељење без аутентификације",
-  "admin.config.share.allow-unauthenticated-shares.description": "Да ли корисници без аутентификације могу да креирају дељења",
+  "admin.config.share.allow-registration.description":
+    "Да ли је регистрација дозвољена",
+  "admin.config.share.allow-unauthenticated-shares":
+    "Дозволи дељење без аутентификације",
+  "admin.config.share.allow-unauthenticated-shares.description":
+    "Да ли корисници без аутентификације могу да креирају дељења",
   "admin.config.share.max-expiration": "Максимални рок трајања",
-  "admin.config.share.max-expiration.description": "Максимални рок трајања дељења у сатима. Поставите на 0 да бисте омогућили неограничено трајање.",
+  "admin.config.share.max-expiration.description":
+    "Максимални рок трајања дељења у сатима. Поставите на 0 да бисте омогућили неограничено трајање.",
   "admin.config.share.max-size": "Максимална величина",
-  "admin.config.share.max-size.description": "Максимална величина дељења у бајтовима",
+  "admin.config.share.max-size.description":
+    "Максимална величина дељења у бајтовима",
   "admin.config.share.zip-compression-level": "Ниво zip компресије",
-  "admin.config.share.zip-compression-level.description": "Подесите ниво да бисте балансирали између величине датотеке и брзине компресије. Важеће вредности се крећу од 0 до 9, при чему је 0 без компресије, а 9 је максимална компресија. ",
+  "admin.config.share.zip-compression-level.description":
+    "Подесите ниво да бисте балансирали између величине датотеке и брзине компресије. Важеће вредности се крећу од 0 до 9, при чему је 0 без компресије, а 9 је максимална компресија. ",
   "admin.config.smtp.enabled": "Омогућено",
-  "admin.config.smtp.enabled.description": "Да ли је SMTP омогућен. Поставите ово на тачно само ако сте унели хост, порт, е-пошту, корисника и лозинку вашег SMTP сервера.",
+  "admin.config.smtp.enabled.description":
+    "Да ли је SMTP омогућен. Поставите ово на тачно само ако сте унели хост, порт, е-пошту, корисника и лозинку вашег SMTP сервера.",
   "admin.config.smtp.host": "Домаћин",
   "admin.config.smtp.host.description": "Домаћин SMTP сервера",
   "admin.config.smtp.port": "Порт",
   "admin.config.smtp.port.description": "Порт домаћина SMTP сервера",
   "admin.config.smtp.email": "E-пошта",
-  "admin.config.smtp.email.description": "Адреса е-поште са које се е-поруке шаљу",
+  "admin.config.smtp.email.description":
+    "Адреса е-поште са које се е-поруке шаљу",
   "admin.config.smtp.username": "Корисничко име",
   "admin.config.smtp.username.description": "Корисничко име SMTP сервера",
   "admin.config.smtp.password": "Лозинка",
   "admin.config.smtp.password.description": "Лозинка SMTP сервера",
   "admin.config.smtp.button.test": "Пошаљи тестну е-пошту",
   "admin.config.oauth.allow-registration": "Дозволи регистрацију",
-  "admin.config.oauth.allow-registration.description": "Дозволите корисницима да се региструју путем друштвене пријаве",
+  "admin.config.oauth.allow-registration.description":
+    "Дозволите корисницима да се региструју путем друштвене пријаве",
   "admin.config.oauth.ignore-totp": "Занемари ТОТП",
-  "admin.config.oauth.ignore-totp.description": "Да ли да игноришете ТОТП када корисник користи пријаву на друштвеним мрежама",
+  "admin.config.oauth.ignore-totp.description":
+    "Да ли да игноришете ТОТП када корисник користи пријаву на друштвеним мрежама",
   "admin.config.oauth.github-enabled": "GitHub",
-  "admin.config.oauth.github-enabled.description": "Да ли је пријављивање на GitHub омогућено",
+  "admin.config.oauth.github-enabled.description":
+    "Да ли је пријављивање на GitHub омогућено",
   "admin.config.oauth.github-client-id": "GitHub ИД клијента",
-  "admin.config.oauth.github-client-id.description": "ИД клијента GitHub OAuth апликације",
+  "admin.config.oauth.github-client-id.description":
+    "ИД клијента GitHub OAuth апликације",
   "admin.config.oauth.github-client-secret": "Тајна GitHub клијента",
-  "admin.config.oauth.github-client-secret.description": "Тајна клијента GitHub OAuth апликације",
+  "admin.config.oauth.github-client-secret.description":
+    "Тајна клијента GitHub OAuth апликације",
   "admin.config.oauth.google-enabled": "Google",
-  "admin.config.oauth.google-enabled.description": "Да ли је пријављивање на Google омогућено",
+  "admin.config.oauth.google-enabled.description":
+    "Да ли је пријављивање на Google омогућено",
   "admin.config.oauth.google-client-id": "ИД Google клијента",
-  "admin.config.oauth.google-client-id.description": "ИД клијента Google OAuth апликације",
+  "admin.config.oauth.google-client-id.description":
+    "ИД клијента Google OAuth апликације",
   "admin.config.oauth.google-client-secret": "Тајна Google клијента",
-  "admin.config.oauth.google-client-secret.description": "Тајна клијента Google OAuth апликације",
+  "admin.config.oauth.google-client-secret.description":
+    "Тајна клијента Google OAuth апликације",
   "admin.config.oauth.microsoft-enabled": "Microsoft",
-  "admin.config.oauth.microsoft-enabled.description": "Да ли је пријављивање на Microsoft омогућено",
+  "admin.config.oauth.microsoft-enabled.description":
+    "Да ли је пријављивање на Microsoft омогућено",
   "admin.config.oauth.microsoft-tenant": "Microsoft Tenant",
-  "admin.config.oauth.microsoft-tenant.description": "ИД закупца за Microsoft OAuth апликацију\nуобичајено: Корисници са личним Microsoft налогом и пословним или школским налогом са Microsoft Entra ID-а могу да се пријаве у апликацију. организације: Само корисници са пословним или школским налозима са Microsoft Entra ID-а могу да се пријаве у апликацију.\nпотрошачи: Само корисници са личним Microsoft налогом могу да се пријаве у апликацију.\nиме домена закупца Microsoft Entra ID или ИД закупца у ГУИД формату: Само корисници из одређеног Microsoft Entra ID станара (чланови директоријума са пословним или школским налогом или гости директоријума са личним Microsoft налогом) могу да се пријаве у апликацију.",
+  "admin.config.oauth.microsoft-tenant.description":
+    "ИД закупца за Microsoft OAuth апликацију\nуобичајено: Корисници са личним Microsoft налогом и пословним или школским налогом са Microsoft Entra ID-а могу да се пријаве у апликацију. организације: Само корисници са пословним или школским налозима са Microsoft Entra ID-а могу да се пријаве у апликацију.\nпотрошачи: Само корисници са личним Microsoft налогом могу да се пријаве у апликацију.\nиме домена закупца Microsoft Entra ID или ИД закупца у ГУИД формату: Само корисници из одређеног Microsoft Entra ID станара (чланови директоријума са пословним или школским налогом или гости директоријума са личним Microsoft налогом) могу да се пријаве у апликацију.",
   "admin.config.oauth.microsoft-client-id": "Microsotf Цлиент ИД",
-  "admin.config.oauth.microsoft-client-id.description": "ИД клијента Microsoft OAuth апликације",
+  "admin.config.oauth.microsoft-client-id.description":
+    "ИД клијента Microsoft OAuth апликације",
   "admin.config.oauth.microsoft-client-secret": "Тајна Microsoft клијента",
-  "admin.config.oauth.microsoft-client-secret.description": "Тајна клијента за Microsot OAuth апликацију",
+  "admin.config.oauth.microsoft-client-secret.description":
+    "Тајна клијента за Microsot OAuth апликацију",
   "admin.config.oauth.discord-enabled": "Discord",
-  "admin.config.oauth.discord-enabled.description": "Да ли је пријављивање на Discord омогућено",
+  "admin.config.oauth.discord-enabled.description":
+    "Да ли је пријављивање на Discord омогућено",
   "admin.config.oauth.discord-limited-guild": "Discord limited server ID",
-  "admin.config.oauth.discord-limited-guild.description": "Limit signing in to users in a specific server. Leave it blank to disable.",
+  "admin.config.oauth.discord-limited-guild.description":
+    "Limit signing in to users in a specific server. Leave it blank to disable.",
   "admin.config.oauth.discord-client-id": "Discord ИД клијента",
-  "admin.config.oauth.discord-client-id.description": "ИД клијента Discord OAuth апликације",
+  "admin.config.oauth.discord-client-id.description":
+    "ИД клијента Discord OAuth апликације",
   "admin.config.oauth.discord-client-secret": "Discord клијент тајна",
-  "admin.config.oauth.discord-client-secret.description": "Тајна клијента Discord OAuth апликације",
+  "admin.config.oauth.discord-client-secret.description":
+    "Тајна клијента Discord OAuth апликације",
   "admin.config.oauth.oidc-enabled": "OpenID Connect",
-  "admin.config.oauth.oidc-enabled.description": "Whether OpenID Connect login is enabled",
+  "admin.config.oauth.oidc-enabled.description":
+    "Whether OpenID Connect login is enabled",
   "admin.config.oauth.oidc-discovery-uri": "OpenID Connect Discovery URI",
-  "admin.config.oauth.oidc-discovery-uri.description": "Discovery URI of the OpenID Connect OAuth app",
+  "admin.config.oauth.oidc-discovery-uri.description":
+    "Discovery URI of the OpenID Connect OAuth app",
   "admin.config.oauth.oidc-username-claim": "OpenID Connect username claim",
-  "admin.config.oauth.oidc-username-claim.description": "Username claim in OpenID Connect ID token. Leave it blank if you don't know what this config is.",
+  "admin.config.oauth.oidc-username-claim.description":
+    "Username claim in OpenID Connect ID token. Leave it blank if you don't know what this config is.",
   "admin.config.oauth.oidc-client-id": "OpenID Connect Client ID",
-  "admin.config.oauth.oidc-client-id.description": "Client ID of the OpenID Connect OAuth app",
+  "admin.config.oauth.oidc-client-id.description":
+    "Client ID of the OpenID Connect OAuth app",
   "admin.config.oauth.oidc-client-secret": "OpenID Connect Client secret",
-  "admin.config.oauth.oidc-client-secret.description": "Client secret of the OpenID Connect OAuth app",
+  "admin.config.oauth.oidc-client-secret.description":
+    "Client secret of the OpenID Connect OAuth app",
   // 404
   "404.description": "Опа - Ова страна не постоји.",
   "404.button.home": "Врати ме на почетак",
@@ -377,16 +457,23 @@ export default {
   "error.description": "Ooпс!",
   "error.button.back": "Иди назад",
   "error.msg.default": "Нешто је пошло наопако.",
-  "error.msg.access_denied": "Отказали сте процес аутентификације, покушајте поново.",
-  "error.msg.expired_token": "Процес аутентификације је трајао предуго, покушајте поново.",
+  "error.msg.access_denied":
+    "Отказали сте процес аутентификације, покушајте поново.",
+  "error.msg.expired_token":
+    "Процес аутентификације је трајао предуго, покушајте поново.",
   "error.msg.invalid_token": "Internal Error",
   "error.msg.no_user": "Корисник повезан са овим {0} налогом не постоји.",
   "error.msg.no_email": "Не могу да добијем адресу е-поште са овог {0} налога.",
-  "error.msg.already_linked": "Овај {0} налог је већ повезан са другим налогом.",
-  "error.msg.not_linked": "Овај {0} налог још увек није повезан ни са једним налогом.",
-  "error.msg.unverified_account": "This {0} account is unverified, please try again after verification.",
-  "error.msg.discord_guild_permission_denied": "You are not allowed to sign in.",
-  "error.msg.cannot_get_user_info": "Can not get your user info from this {0} account.",
+  "error.msg.already_linked":
+    "Овај {0} налог је већ повезан са другим налогом.",
+  "error.msg.not_linked":
+    "Овај {0} налог још увек није повезан ни са једним налогом.",
+  "error.msg.unverified_account":
+    "This {0} account is unverified, please try again after verification.",
+  "error.msg.discord_guild_permission_denied":
+    "You are not allowed to sign in.",
+  "error.msg.cannot_get_user_info":
+    "Can not get your user info from this {0} account.",
   "error.param.provider_github": "GitHub",
   "error.param.provider_google": "Google",
   "error.param.provider_microsoft": "Microsoft",
@@ -417,5 +504,5 @@ export default {
   "common.error.too-long": "Мора да има највише {length} знакова",
   "common.error.exact-length": "Мора да има тачно {length} знакова",
   "common.error.invalid-number": "Мора бити број",
-  "common.error.field-required": "Поље је обавезно"
+  "common.error.field-required": "Поље је обавезно",
 };
