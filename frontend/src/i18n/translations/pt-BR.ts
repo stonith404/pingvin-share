@@ -57,7 +57,7 @@ export default {
   // /auth/reset-password
   "resetPassword.title": "Esqueceu a sua senha?",
   "resetPassword.description": "Insira o seu e-mail para redefinir a sua senha.",
-  "resetPassword.notify.success": "A message with a link to reset your password has been sent if the email exists.",
+  "resetPassword.notify.success": "Uma mensagem com um link para redefinir sua senha foi enviada se o e-mail existir.",
   "resetPassword.button.back": "Voltar para a página inicial",
   "resetPassword.text.resetPassword": "Redefinir senha",
   "resetPassword.text.enterNewPassword": "Digite uma nova senha",
