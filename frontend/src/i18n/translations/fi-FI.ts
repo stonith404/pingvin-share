@@ -407,6 +407,7 @@ export default {
   "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "tai",
   "common.button.go-back": "Takaisin",
+  "common.button.go-home": "Go home",
   "common.notify.copied": "Linkki kopioitiin leikepöydälle",
   "common.success": "Suoritettu",
   "common.error": "Virhe",

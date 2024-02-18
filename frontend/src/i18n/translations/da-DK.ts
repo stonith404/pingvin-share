@@ -407,6 +407,7 @@ export default {
   "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "eller",
   "common.button.go-back": "Gå tilbage",
+  "common.button.go-home": "Go home",
   "common.notify.copied": "Linket blev kopieret til udklipsholderen",
   "common.success": "Success",
   "common.error": "Fejl",

@@ -407,6 +407,7 @@ export default {
   "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "または",
   "common.button.go-back": "戻る",
+  "common.button.go-home": "Go home",
   "common.notify.copied": "リンクをクリップボードにコピーしました",
   "common.success": "成功",
   "common.error": "エラー",

@@ -407,6 +407,7 @@ export default {
   "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "или",
   "common.button.go-back": "Иди назад",
+  "common.button.go-home": "Go home",
   "common.notify.copied": "Ваша веза је копирана у clipboard",
   "common.success": "Успешно",
   "common.error": "Грешка",

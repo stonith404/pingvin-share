@@ -407,6 +407,7 @@ export default {
   "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "или",
   "common.button.go-back": "Назад",
+  "common.button.go-home": "Go home",
   "common.notify.copied": "Ваша ссылка скопирована в буфер обмена",
   "common.success": "Успешно",
   "common.error": "Ошибочка",
