@@ -1,3 +1,14 @@
+## [0.22.1](https://github.com/stonith404/pingvin-share/compare/v0.22.0...v0.22.1) (2024-02-18)
+
+
+### Bug Fixes
+
+* back links on error modals ([f52dffd](https://github.com/stonith404/pingvin-share/commit/f52dffdaac5a893804525913943f3f4f99b7c55a))
+* prevent zoom on input field click on mobile ([9c734ec](https://github.com/stonith404/pingvin-share/commit/9c734ec439aeaeebe172caa41bf531e6d8b3fac3))
+* replace middleware backend url with local backend url ([76df6f6](https://github.com/stonith404/pingvin-share/commit/76df6f66d965dd751146468abfafb0c6acd46310))
+* user `id` and `totpVerified` can't be changed by user ([e663da4](https://github.com/stonith404/pingvin-share/commit/e663da45b1d15f5e6e33118e6a28e1504688034c))
+* user enumaration on forgot password page ([64515d7](https://github.com/stonith404/pingvin-share/commit/64515d77cfc116a243d78610395ccc383ba62940))
+
 ## [0.22.0](https://github.com/stonith404/pingvin-share/compare/v0.21.5...v0.22.0) (2024-02-04)
 
 
