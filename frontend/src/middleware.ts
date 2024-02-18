@@ -21,9 +21,8 @@ export async function middleware(request: NextRequest) {
   };
 
   // Get config from backend
-  const config = await (
-    await fetch(`${request.nextUrl.origin}/api/configs`)
-  ).json();
+  const apiUrl = process.env.API_URL || "http://localhost:8080";
+  const config = await (await fetch(`${apiUrl}/api/configs`)).json();
 
   const getConfig = (key: string) => {
     return configService.get(key, config);
@@ -35,7 +34,7 @@ export async function middleware(request: NextRequest) {
 
   try {
     const claims = jwtDecode<{ exp: number; isAdmin: boolean }>(
-      accessToken as string,
+      accessToken as string
     );
     if (claims.exp * 1000 > Date.now()) {
       user = claims;
