@@ -3,7 +3,7 @@ export default {
   "navbar.upload": "Carica",
   "navbar.signin": "Registrati",
   "navbar.home": "Home",
-  "navbar.signup": "Registrati",
+  "navbar.signup": "Accedi",
   "navbar.links.shares": "Le mie condivisioni",
   "navbar.links.reverse": "Condivisioni Inverse",
   "navbar.avatar.account": "Il mio account",
@@ -262,7 +262,7 @@ export default {
   "share.table.name": "Nome",
   "share.table.size": "Dimensione",
   "share.modal.file-preview.error.not-supported.title": "Anteprima non supportata",
-  "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
+  "share.modal.file-preview.error.not-supported.description": "Un'anteprima per questo tipo di file non è supportata. Per favore scarica il file per visualizzarlo.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "Modifica {shareId}",
@@ -407,6 +407,7 @@ export default {
   "common.text.navigate-to-link": "Vai al collegamento",
   "common.text.or": "o",
   "common.button.go-back": "Torna indietro",
+  "common.button.go-home": "Vai alla Home Page",
   "common.notify.copied": "Il tuo collegamento e' stato copiato negli appunti",
   "common.success": "Successo",
   "common.error": "Errore",

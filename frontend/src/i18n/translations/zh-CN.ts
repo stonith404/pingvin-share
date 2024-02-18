@@ -407,6 +407,7 @@ export default {
   "common.text.navigate-to-link": "访问链接",
   "common.text.or": "或",
   "common.button.go-back": "返回",
+  "common.button.go-home": "Go home",
   "common.notify.copied": "已复制到剪贴板",
   "common.success": "成功",
   "common.error": "错误",

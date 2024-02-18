@@ -407,6 +407,7 @@ export default {
   "common.text.navigate-to-link": "Ga naar de koppeling",
   "common.text.or": "of",
   "common.button.go-back": "Ga terug",
+  "common.button.go-home": "Go home",
   "common.notify.copied": "Uw link is gekopieerd naar het klembord",
   "common.success": "Succes",
   "common.error": "Fout",
