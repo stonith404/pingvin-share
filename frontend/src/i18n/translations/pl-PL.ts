@@ -57,7 +57,7 @@ export default {
   // /auth/reset-password
   "resetPassword.title": "Nie pamiętasz hasła?",
   "resetPassword.description": "Wprowadź swój e-mail, aby zresetować swoje hasło.",
-  "resetPassword.notify.success": "A message with a link to reset your password has been sent if the email exists.",
+  "resetPassword.notify.success": "Jeśli e-mail istnieje, to została wysłana wiadomość z linkiem do zresetowania hasła.",
   "resetPassword.button.back": "Powrót do strony logowania",
   "resetPassword.text.resetPassword": "Resetuj hasło",
   "resetPassword.text.enterNewPassword": "Wprowadź nowe hasło",
