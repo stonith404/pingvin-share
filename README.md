@@ -60,7 +60,7 @@ pm2 start --name="pingvin-share-backend" npm -- run prod
 cd ../frontend
 npm install
 npm run build
-API_URL=http://localhost:8080 # Set the URL of the backend, default: http://localhost:8080 
+API_URL=http://localhost:8080 # Set the URL of the backend, default: http://localhost:8080
 pm2 start --name="pingvin-share-frontend" npm -- run start
 ```
 
@@ -127,7 +127,7 @@ docker compose up -d
 
 ### Configuration
 
-You can customize Pingvin Share by going to the configuration page in your admin dashboard.
+You can customize Pingvin Share like changing your domain by going to the configuration page in your admin dashboard `/admin/config`.
 
 #### Environment variables
 
