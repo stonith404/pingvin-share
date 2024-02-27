@@ -114,4 +114,9 @@ export const LOCALES = {
     code: "sl-SI",
     messages: slovenian,
   },
+  ARABIC: {
+    name: "العربية",
+    code: "ar-EG",
+    messages: {},
+  },
 };
