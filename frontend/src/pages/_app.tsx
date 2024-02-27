@@ -50,7 +50,12 @@ function App({ Component, pageProps }: AppProps) {
   }, [router.pathname]);
 
   useEffect(() => {
-    setInterval(async () => await authService.refreshAccessToken(), 30 * 1000);
+    const interval = setInterval(
+      async () => await authService.refreshAccessToken(),
+      2 * 60 * 1000, // 2 minutes
+    );
+
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {

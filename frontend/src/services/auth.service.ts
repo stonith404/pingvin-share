@@ -36,8 +36,10 @@ const signOut = async () => {
 const refreshAccessToken = async () => {
   try {
     const accessToken = getCookie("access_token") as string;
+
+    // If the access token expires in less than 2 minutes refresh it
     if (
-      !accessToken ||
+      accessToken &&
       (jose.decodeJwt(accessToken).exp ?? 0) * 1000 < Date.now() + 2 * 60 * 1000
     ) {
       await api.post("/auth/token");
