@@ -30,12 +30,12 @@ RUN npm run build && npm prune --production
 FROM node:20-alpine AS runner
 ENV NODE_ENV=docker
 
-# Alpine specific dependencies
-RUN apk update --no-cache
-RUN apk upgrade --no-cache
-RUN apk add --no-cache curl nginx
+# Install Caddy
+RUN apk update --no-cache \
+    && apk upgrade --no-cache \
+    && apk add --no-cache curl caddy
 
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./Caddyfile /etc/caddy/Caddyfile
 
 WORKDIR /opt/app/frontend
 COPY --from=frontend-builder /opt/app/public ./public
@@ -53,9 +53,8 @@ WORKDIR /opt/app
 
 EXPOSE 3000
 
-# Add a health check to ensure the container is healthy
+# Health check remains unchanged
 HEALTHCHECK --interval=10s --timeout=3s CMD curl -f http://localhost:3000/api/health || exit 1
 
-# Application startup
-# HOSTNAME=0.0.0.0 fixes https://github.com/vercel/next.js/issues/51684. It can be removed as soon as the issue is fixed
-CMD cp -rn /tmp/img/* /opt/app/frontend/public/img && nginx && PORT=3333 HOSTNAME=0.0.0.0 node frontend/server.js & cd backend && npm run prod
+# Application startup updated for Caddy
+CMD cp -rn /tmp/img/* /opt/app/frontend/public/img && caddy run --config /etc/caddy/Caddyfile & PORT=3333 HOSTNAME=0.0.0.0 node frontend/server.js & cd backend && npm run prod
