@@ -1,3 +1,12 @@
+## [0.22.2](https://github.com/stonith404/pingvin-share/compare/v0.22.1...v0.22.2) (2024-02-29)
+
+
+### Bug Fixes
+
+* extend access token cookie expiration ([013b988](https://github.com/stonith404/pingvin-share/commit/013b9886af5629b2ead6000b962267afc761c612))
+* reduce refresh access token calls ([1aa3d8e](https://github.com/stonith404/pingvin-share/commit/1aa3d8e5e89b3696cc9554f41e9ce13806dde406))
+* replace Nginx with Caddy to fix "premature close" error while downloading larger files ([43bff91](https://github.com/stonith404/pingvin-share/commit/43bff91db2ba4ec68d76e601f7bc42cb7a506bc5))
+
 ## [0.22.1](https://github.com/stonith404/pingvin-share/compare/v0.22.0...v0.22.1) (2024-02-18)
 
 
