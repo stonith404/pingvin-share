@@ -227,13 +227,16 @@ export class AuthService {
     accessToken?: string,
   ) {
     if (accessToken)
-      response.cookie("access_token", accessToken, { sameSite: "lax" });
+      response.cookie("access_token", accessToken, {
+        sameSite: "lax",
+        maxAge: 1000 * 60 * 60 * 24 * 30 * 3, // 3 months
+      });
     if (refreshToken)
       response.cookie("refresh_token", refreshToken, {
         path: "/api/auth/token",
         httpOnly: true,
         sameSite: "strict",
-        maxAge: 1000 * 60 * 60 * 24 * 30 * 3,
+        maxAge: 1000 * 60 * 60 * 24 * 30 * 3, // 3 months
       });
   }
 
