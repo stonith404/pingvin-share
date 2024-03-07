@@ -115,11 +115,13 @@ docker compose up -d
 
    # Start the backend
    cd backend
+   npm install
    npm run build
    pm2 restart pingvin-share-backend
 
    # Start the frontend
    cd ../frontend
+   npm install
    npm run build
    API_URL=http://localhost:8080 # Set the URL of the backend, default: http://localhost:8080
    pm2 restart pingvin-share-frontend
