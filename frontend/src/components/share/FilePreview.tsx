@@ -14,6 +14,8 @@ import api from "../../services/api.service";
 import Markdown from "markdown-to-jsx";
 import useConfig from "../../hooks/config.hook";
 
+const config = useConfig();
+
 const FilePreviewContext = React.createContext<{
   shareId: string;
   fileId: string;
@@ -37,7 +39,6 @@ const FilePreview = ({
 }) => {
   const [isNotSupported, setIsNotSupported] = useState(false);
   if (isNotSupported) return <UnSupportedFile />;
-  const config = useConfig();
   return (
     <Stack>
       <FilePreviewContext.Provider
