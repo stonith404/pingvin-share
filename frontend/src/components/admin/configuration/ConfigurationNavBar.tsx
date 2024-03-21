@@ -94,7 +94,7 @@ const ConfigurationNavBar = ({
         </Stack>
       </Navbar.Section>
       <MediaQuery largerThan="sm" styles={{ display: "none" }}>
-        <Button mt="xl" variant="light" component={Link} href={webroot + "/admin"}>
+        <Button mt="xl" variant="light" component={Link} href={config.get("general.appUrl") + "/admin"}>
           <FormattedMessage id="common.button.go-back" />
         </Button>
       </MediaQuery>
