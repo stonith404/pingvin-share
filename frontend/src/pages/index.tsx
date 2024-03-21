@@ -16,6 +16,7 @@ import { FormattedMessage } from "react-intl";
 import Logo from "../components/Logo";
 import Meta from "../components/Meta";
 import useUser from "../hooks/user.hook";
+import useConfig from "../hooks/config.hook";
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -73,12 +74,13 @@ export default function Home() {
   const { classes } = useStyles();
   const { refreshUser } = useUser();
   const router = useRouter();
+  const config = useConfig();
 
   // If the user is already logged in, redirect to the upload page
   useEffect(() => {
     refreshUser().then((user) => {
       if (user) {
-        router.replace("/upload");
+        router.replace(config.get("general.appUrl") + "/upload");
       }
     });
   }, []);
@@ -142,7 +144,7 @@ export default function Home() {
             <Group mt={30}>
               <Button
                 component={Link}
-                href="/auth/signUp"
+                href={config.get("general.appUrl") + "/auth/signUp"}
                 radius="xl"
                 size="md"
                 className={classes.control}

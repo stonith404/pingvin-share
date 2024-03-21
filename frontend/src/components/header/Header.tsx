@@ -125,7 +125,7 @@ const Header = () => {
 
   const authenticatedLinks: NavLink[] = [
     {
-      link: "/upload",
+      link: config.get("general.appUrl") + "/upload",
       label: t("navbar.upload"),
     },
     {
@@ -138,27 +138,27 @@ const Header = () => {
 
   let unauthenticatedLinks: NavLink[] = [
     {
-      link: "/auth/signIn",
+      link: config.get("general.appUrl") + "/auth/signIn",
       label: t("navbar.signin"),
     },
   ];
 
   if (config.get("share.allowUnauthenticatedShares")) {
     unauthenticatedLinks.unshift({
-      link: "/upload",
+      link: config.get("general.appUrl") + "/upload",
       label: t("navbar.upload"),
     });
   }
 
   if (config.get("general.showHomePage"))
     unauthenticatedLinks.unshift({
-      link: "/",
+      link: config.get("general.appUrl") + "/",
       label: t("navbar.home"),
     });
 
   if (config.get("share.allowRegistration"))
     unauthenticatedLinks.push({
-      link: "/auth/signUp",
+      link: config.get("general.appUrl") + "/auth/signUp",
       label: t("navbar.signup"),
     });
 
@@ -191,7 +191,7 @@ const Header = () => {
   return (
     <MantineHeader height={HEADER_HEIGHT} mb={40} className={classes.root}>
       <Container className={classes.header}>
-        <Link href="/" passHref>
+        <Link href={config.get("general.appUrl")+"/"} passHref>
           <Group>
             <Logo height={35} width={35} />
             <Text weight={600}>{config.get("general.appName")}</Text>

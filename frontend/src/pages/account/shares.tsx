@@ -58,7 +58,7 @@ const MyShares = () => {
               <FormattedMessage id="account.shares.description.empty" />
             </Text>
             <Space h={5} />
-            <Button component={Link} href="/upload" variant="light">
+            <Button component={Link} href={config.get("general.appUrl") + "/upload"} variant="light">
               <FormattedMessage id="account.shares.button.create" />
             </Button>
           </Stack>

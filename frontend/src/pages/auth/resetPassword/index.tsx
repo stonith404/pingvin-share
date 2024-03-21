@@ -20,6 +20,7 @@ import * as yup from "yup";
 import useTranslate from "../../../hooks/useTranslate.hook";
 import authService from "../../../services/auth.service";
 import toast from "../../../utils/toast.util";
+import useConfig from "../../../hooks/config.hook";
 
 const useStyles = createStyles((theme) => ({
   title: {
@@ -61,6 +62,7 @@ const ResetPassword = () => {
     ),
   });
 
+  const config = useConfig();
   return (
     <Container size={460} my={30}>
       <Title order={2} weight={900} align="center">
@@ -93,7 +95,7 @@ const ResetPassword = () => {
               color="dimmed"
               size="sm"
               className={classes.control}
-              href={"/auth/signIn"}
+              href={config.get("general.appUrl")  + "/auth/signIn"}
             >
               <Center inline>
                 <TbArrowLeft size={12} />

@@ -9,6 +9,7 @@ import {
 import Link from "next/link";
 import Meta from "../components/Meta";
 import { FormattedMessage } from "react-intl";
+import useConfig from "../hooks/config.hook";
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -38,7 +39,7 @@ const useStyles = createStyles((theme) => ({
 
 const ErrorNotFound = () => {
   const { classes } = useStyles();
-
+  const config = useConfig();
   return (
     <>
       <Meta title="Not found" />
@@ -53,7 +54,7 @@ const ErrorNotFound = () => {
           className={classes.description}
         ></Text>
         <Group position="center">
-          <Button component={Link} href="/" variant="light">
+          <Button component={Link} href={config.get("general.appUrl") + "/"} variant="light">
             <FormattedMessage id="404.button.home" />
           </Button>
         </Group>

@@ -13,6 +13,7 @@ import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 import { TbAt, TbMail, TbShare, TbSocial, TbSquare } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
+import useConfig from "../../../hooks/config.hook";
 
 const categories = [
   { name: "General", icon: <TbSquare /> },
@@ -46,6 +47,7 @@ const ConfigurationNavBar = ({
   setIsMobileNavBarOpened: Dispatch<SetStateAction<boolean>>;
 }) => {
   const { classes } = useStyles();
+  const config = useConfig();
   return (
     <Navbar
       p="md"
@@ -69,7 +71,7 @@ const ConfigurationNavBar = ({
                   : undefined
               }
               key={category.name}
-              href={`/admin/config/${category.name.toLowerCase()}`}
+              href={`${config.get("general.appUrl")}/admin/config/${category.name.toLowerCase()}`}
             >
               <Group>
                 <ThemeIcon
@@ -92,7 +94,7 @@ const ConfigurationNavBar = ({
         </Stack>
       </Navbar.Section>
       <MediaQuery largerThan="sm" styles={{ display: "none" }}>
-        <Button mt="xl" variant="light" component={Link} href="/admin">
+        <Button mt="xl" variant="light" component={Link} href={webroot + "/admin"}>
           <FormattedMessage id="common.button.go-back" />
         </Button>
       </MediaQuery>

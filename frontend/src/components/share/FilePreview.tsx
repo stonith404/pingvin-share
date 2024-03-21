@@ -12,6 +12,7 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import api from "../../services/api.service";
 import Markdown from "markdown-to-jsx";
+import useConfig from "../../hooks/config.hook";
 
 const FilePreviewContext = React.createContext<{
   shareId: string;
@@ -36,7 +37,7 @@ const FilePreview = ({
 }) => {
   const [isNotSupported, setIsNotSupported] = useState(false);
   if (isNotSupported) return <UnSupportedFile />;
-
+  const config = useConfig();
   return (
     <Stack>
       <FilePreviewContext.Provider
@@ -49,7 +50,7 @@ const FilePreview = ({
         component={Link}
         onClick={() => modals.closeAll()}
         target="_blank"
-        href={`/api/shares/${shareId}/files/${fileId}?download=false`}
+        href={`${config.get("general.appUrl")}/api/shares/${shareId}/files/${fileId}?download=false`}
       >
         View original file
         {/* Add translation? */}

@@ -10,8 +10,10 @@ import {
 import Link from "next/link";
 import Logo from "../../components/Logo";
 import Meta from "../../components/Meta";
+import useConfig from "../../hooks/config.hook";
 
 const Intro = () => {
+  const config = useConfig();
   return (
     <>
       <Meta title="Intro" />
@@ -43,10 +45,10 @@ const Intro = () => {
           <Text>Enough talked, have fun with Pingvin Share!</Text>
           <Text mt="lg">How to you want to continue?</Text>
           <Stack>
-            <Button href="/admin/config/general" component={Link}>
+            <Button href={config.get("general.appUrl") + "/admin/config/general"} component={Link}>
               Customize configuration
             </Button>
-            <Button href="/" component={Link} variant="light">
+            <Button href={config.get("general.appUrl") + "/"} component={Link} variant="light">
               Explore Pingvin Share
             </Button>
           </Stack>
