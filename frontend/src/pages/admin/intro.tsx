@@ -45,10 +45,10 @@ const Intro = () => {
           <Text>Enough talked, have fun with Pingvin Share!</Text>
           <Text mt="lg">How to you want to continue?</Text>
           <Stack>
-            <Button href={config.get("general.appUrl") + "/admin/config/general"} component={Link}>
+            <Button href={config.get("general.webroot") + "/admin/config/general"} component={Link}>
               Customize configuration
             </Button>
-            <Button href={config.get("general.appUrl") + "/"} component={Link} variant="light">
+            <Button href={config.get("general.webroot") + "/"} component={Link} variant="light">
               Explore Pingvin Share
             </Button>
           </Stack>

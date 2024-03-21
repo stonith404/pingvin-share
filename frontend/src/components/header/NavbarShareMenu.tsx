@@ -14,12 +14,12 @@ const NavbarShareMneu = () => {
         </ActionIcon>
       </Menu.Target>
       <Menu.Dropdown>
-        <Menu.Item component={Link} href={config.get("general.appUrl") + "/account/shares"} icon={<TbLink />}>
+        <Menu.Item component={Link} href={config.get("general.webroot") + "/account/shares"} icon={<TbLink />}>
           <FormattedMessage id="navbar.links.shares" />
         </Menu.Item>
         <Menu.Item
           component={Link}
-          href={config.get("general.appUrl") + "/account/reverseShares"}
+          href={config.get("general.webroot") + "/account/reverseShares"}
           icon={<TbArrowLoopLeft />}
         >
           <FormattedMessage id="navbar.links.reverse" />

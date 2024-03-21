@@ -95,7 +95,7 @@ const ResetPassword = () => {
               color="dimmed"
               size="sm"
               className={classes.control}
-              href={config.get("general.appUrl")  + "/auth/signIn"}
+              href={config.get("general.webroot")  + "/auth/signIn"}
             >
               <Center inline>
                 <TbArrowLeft size={12} />

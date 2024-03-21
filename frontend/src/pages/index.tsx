@@ -80,7 +80,7 @@ export default function Home() {
   useEffect(() => {
     refreshUser().then((user) => {
       if (user) {
-        router.replace(config.get("general.appUrl") + "/upload");
+        router.replace(config.get("general.webroot") + "/upload");
       }
     });
   }, []);
@@ -144,7 +144,7 @@ export default function Home() {
             <Group mt={30}>
               <Button
                 component={Link}
-                href={config.get("general.appUrl") + "/auth/signUp"}
+                href={config.get("general.webroot") + "/auth/signUp"}
                 radius="xl"
                 size="md"
                 className={classes.control}

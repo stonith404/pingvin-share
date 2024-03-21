@@ -18,13 +18,13 @@ const ActionAvatar = () => {
         </ActionIcon>
       </Menu.Target>
       <Menu.Dropdown>
-        <Menu.Item component={Link} href={config.get("general.appUrl") + "/account"} icon={<TbUser size={14} />}>
+        <Menu.Item component={Link} href={config.get("general.webroot") + "/account"} icon={<TbUser size={14} />}>
           <FormattedMessage id="navbar.avatar.account" />
         </Menu.Item>
         {user!.isAdmin && (
           <Menu.Item
             component={Link}
-            href={config.get("general.appUrl") + "/admin"}
+            href={config.get("general.webroot") + "/admin"}
             icon={<TbSettings size={14} />}
           >
             <FormattedMessage id="navbar.avatar.admin" />

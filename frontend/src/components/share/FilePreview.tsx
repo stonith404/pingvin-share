@@ -51,7 +51,7 @@ const FilePreview = ({
         component={Link}
         onClick={() => modals.closeAll()}
         target="_blank"
-        href={`${config.get("general.appUrl")}/api/shares/${shareId}/files/${fileId}?download=false`}
+        href={`${config.get("general.webroot")}/api/shares/${shareId}/files/${fileId}?download=false`}
       >
         View original file
         {/* Add translation? */}

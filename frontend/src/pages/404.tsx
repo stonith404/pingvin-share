@@ -54,7 +54,7 @@ const ErrorNotFound = () => {
           className={classes.description}
         ></Text>
         <Group position="center">
-          <Button component={Link} href={config.get("general.appUrl") + "/"} variant="light">
+          <Button component={Link} href={config.get("general.webroot") + "/"} variant="light">
             <FormattedMessage id="404.button.home" />
           </Button>
         </Group>

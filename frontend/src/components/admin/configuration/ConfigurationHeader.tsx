@@ -42,7 +42,7 @@ const ConfigurationHeader = ({
             </Group>
           </Link>
           <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
-            <Button variant="light" component={Link} href={config.get("general.appUrl") + "/admin"}>
+            <Button variant="light" component={Link} href={config.get("general.webroot") + "/admin"}>
               <FormattedMessage id="common.button.go-back" />
             </Button>
           </MediaQuery>

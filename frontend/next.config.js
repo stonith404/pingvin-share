@@ -20,5 +20,6 @@ module.exports = withPWA({
   },
   serverRuntimeConfig: {
     apiURL: process.env.API_URL ?? 'http://localhost:8080',
+    webroot: process.env.WEBROOT ?? '',
   },
 });
