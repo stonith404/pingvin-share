@@ -7,6 +7,8 @@ import Meta from "../../components/Meta";
 import useUser from "../../hooks/user.hook";
 import useTranslate from "../../hooks/useTranslate.hook";
 
+const webroot = process.env.WEBROOT || "";
+
 export function getServerSideProps(context: GetServerSidePropsContext) {
   return {
     props: { redirectPath: context.query.redirect ?? null },
@@ -25,7 +27,7 @@ const SignIn = ({ redirectPath }: { redirectPath?: string }) => {
   useEffect(() => {
     refreshUser().then((user) => {
       if (user) {
-        router.replace(redirectPath ?? "/upload");
+        router.replace(redirectPath ?? webroot + "/upload");
       } else {
         setIsLoading(false);
       }
