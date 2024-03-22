@@ -12,7 +12,6 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import api from "../../services/api.service";
 import Markdown from "markdown-to-jsx";
-import useConfig from "../../hooks/config.hook";
 
 const webroot = process.env.WEBROOT || "";
 
@@ -38,7 +37,6 @@ const FilePreview = ({
   mimeType: string;
 }) => {
   const [isNotSupported, setIsNotSupported] = useState(false);
-  const config = useConfig();
   if (isNotSupported) return <UnSupportedFile />;
   return (
     <Stack>

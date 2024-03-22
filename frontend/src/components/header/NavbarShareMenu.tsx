@@ -2,12 +2,10 @@ import { ActionIcon, Menu } from "@mantine/core";
 import Link from "next/link";
 import { TbArrowLoopLeft, TbLink } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
-import useConfig from "../../hooks/config.hook";
 
 const webroot = process.env.WEBROOT || "";
 
 const NavbarShareMneu = () => {
-  const config = useConfig();
   return (
     <Menu position="bottom-start" withinPortal>
       <Menu.Target>

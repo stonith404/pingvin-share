@@ -4,13 +4,11 @@ import { TbDoorExit, TbSettings, TbUser } from "react-icons/tb";
 import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
 import { FormattedMessage, useIntl } from "react-intl";
-import useConfig from "../../hooks/config.hook";
 
 const webroot = process.env.WEBROOT || "";
 
 const ActionAvatar = () => {
   const { user } = useUser();
-  const config = useConfig();
 
   return (
     <Menu position="bottom-start" withinPortal>

@@ -16,7 +16,6 @@ import { FormattedMessage } from "react-intl";
 import Logo from "../components/Logo";
 import Meta from "../components/Meta";
 import useUser from "../hooks/user.hook";
-import useConfig from "../hooks/config.hook";
 
 const webroot = process.env.WEBROOT || "";
 

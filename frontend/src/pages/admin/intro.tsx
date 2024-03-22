@@ -10,7 +10,6 @@ import {
 import Link from "next/link";
 import Logo from "../../components/Logo";
 import Meta from "../../components/Meta";
-import useConfig from "../../hooks/config.hook";
 
 const webroot = process.env.WEBROOT || "";
 

@@ -13,7 +13,6 @@ import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 import { TbAt, TbMail, TbShare, TbSocial, TbSquare } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
-import useConfig from "../../../hooks/config.hook";
 
 const webroot = process.env.WEBROOT || "";
 
@@ -49,7 +48,6 @@ const ConfigurationNavBar = ({
   setIsMobileNavBarOpened: Dispatch<SetStateAction<boolean>>;
 }) => {
   const { classes } = useStyles();
-  const config = useConfig();
   return (
     <Navbar
       p="md"
