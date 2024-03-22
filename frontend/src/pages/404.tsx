@@ -40,6 +40,7 @@ const useStyles = createStyles((theme) => ({
 
 const ErrorNotFound = () => {
   const { classes } = useStyles();
+
   return (
     <>
       <Meta title="Not found" />
