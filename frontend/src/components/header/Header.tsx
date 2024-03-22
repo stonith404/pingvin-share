@@ -22,6 +22,7 @@ import ActionAvatar from "./ActionAvatar";
 import NavbarShareMenu from "./NavbarShareMenu";
 
 const HEADER_HEIGHT = 60;
+const webroot = process.env.WEBROOT || "";
 
 type NavLink = {
   link?: string;
@@ -125,7 +126,7 @@ const Header = () => {
 
   const authenticatedLinks: NavLink[] = [
     {
-      link: config.get("general.webroot") + "/upload",
+      link: webroot + "/upload",
       label: t("navbar.upload"),
     },
     {
@@ -138,27 +139,27 @@ const Header = () => {
 
   let unauthenticatedLinks: NavLink[] = [
     {
-      link: config.get("general.webroot") + "/auth/signIn",
+      link: webroot + "/auth/signIn",
       label: t("navbar.signin"),
     },
   ];
 
   if (config.get("share.allowUnauthenticatedShares")) {
     unauthenticatedLinks.unshift({
-      link: config.get("general.webroot") + "/upload",
+      link: webroot + "/upload",
       label: t("navbar.upload"),
     });
   }
 
   if (config.get("general.showHomePage"))
     unauthenticatedLinks.unshift({
-      link: config.get("general.webroot") + "/",
+      link: webroot + "/",
       label: t("navbar.home"),
     });
 
   if (config.get("share.allowRegistration"))
     unauthenticatedLinks.push({
-      link: config.get("general.webroot") + "/auth/signUp",
+      link: webroot + "/auth/signUp",
       label: t("navbar.signup"),
     });
 
@@ -191,7 +192,7 @@ const Header = () => {
   return (
     <MantineHeader height={HEADER_HEIGHT} mb={40} className={classes.root}>
       <Container className={classes.header}>
-        <Link href={config.get("general.webroot")+"/"} passHref>
+        <Link href={webroot + "/"} passHref>
           <Group>
             <Logo height={35} width={35} />
             <Text weight={600}>{config.get("general.appName")}</Text>

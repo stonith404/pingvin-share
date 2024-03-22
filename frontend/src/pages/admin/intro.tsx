@@ -12,6 +12,8 @@ import Logo from "../../components/Logo";
 import Meta from "../../components/Meta";
 import useConfig from "../../hooks/config.hook";
 
+const webroot = process.env.WEBROOT || "";
+
 const Intro = () => {
   const config = useConfig();
   return (
@@ -45,10 +47,10 @@ const Intro = () => {
           <Text>Enough talked, have fun with Pingvin Share!</Text>
           <Text mt="lg">How to you want to continue?</Text>
           <Stack>
-            <Button href={config.get("general.webroot") + "/admin/config/general"} component={Link}>
+            <Button href={webroot + "/admin/config/general"} component={Link}>
               Customize configuration
             </Button>
-            <Button href={config.get("general.webroot") + "/"} component={Link} variant="light">
+            <Button href={webroot + "/"} component={Link} variant="light">
               Explore Pingvin Share
             </Button>
           </Stack>

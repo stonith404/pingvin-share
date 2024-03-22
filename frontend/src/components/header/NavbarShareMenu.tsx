@@ -4,6 +4,8 @@ import { TbArrowLoopLeft, TbLink } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 import useConfig from "../../hooks/config.hook";
 
+const webroot = process.env.WEBROOT || "";
+
 const NavbarShareMneu = () => {
   const config = useConfig();
   return (
@@ -14,12 +16,12 @@ const NavbarShareMneu = () => {
         </ActionIcon>
       </Menu.Target>
       <Menu.Dropdown>
-        <Menu.Item component={Link} href={config.get("general.webroot") + "/account/shares"} icon={<TbLink />}>
+        <Menu.Item component={Link} href={webroot + "/account/shares"} icon={<TbLink />}>
           <FormattedMessage id="navbar.links.shares" />
         </Menu.Item>
         <Menu.Item
           component={Link}
-          href={config.get("general.webroot") + "/account/reverseShares"}
+          href={webroot + "/account/reverseShares"}
           icon={<TbArrowLoopLeft />}
         >
           <FormattedMessage id="navbar.links.reverse" />

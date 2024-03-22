@@ -20,11 +20,6 @@ const configVariables: ConfigVariables = {
       defaultValue: "http://localhost:3000",
       secret: false,
     },
-    webroot: {
-      type: "string",
-      defaultValue: "",
-      secret: false,
-    },
     showHomePage: {
       type: "boolean",
       defaultValue: "true",

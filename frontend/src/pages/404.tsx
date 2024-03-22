@@ -11,6 +11,8 @@ import Meta from "../components/Meta";
 import { FormattedMessage } from "react-intl";
 import useConfig from "../hooks/config.hook";
 
+const webroot = process.env.WEBROOT || "";
+
 const useStyles = createStyles((theme) => ({
   root: {
     paddingTop: 80,
@@ -54,7 +56,7 @@ const ErrorNotFound = () => {
           className={classes.description}
         ></Text>
         <Group position="center">
-          <Button component={Link} href={config.get("general.webroot") + "/"} variant="light">
+          <Button component={Link} href={webroot + "/"} variant="light">
             <FormattedMessage id="404.button.home" />
           </Button>
         </Group>

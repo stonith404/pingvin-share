@@ -15,6 +15,8 @@ import { TbAt, TbMail, TbShare, TbSocial, TbSquare } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 import useConfig from "../../../hooks/config.hook";
 
+const webroot = process.env.WEBROOT || "";
+
 const categories = [
   { name: "General", icon: <TbSquare /> },
   { name: "Email", icon: <TbMail /> },
@@ -71,7 +73,7 @@ const ConfigurationNavBar = ({
                   : undefined
               }
               key={category.name}
-              href={`${config.get("general.webroot")}/admin/config/${category.name.toLowerCase()}`}
+              href={`${webroot}/admin/config/${category.name.toLowerCase()}`}
             >
               <Group>
                 <ThemeIcon
@@ -94,7 +96,7 @@ const ConfigurationNavBar = ({
         </Stack>
       </Navbar.Section>
       <MediaQuery largerThan="sm" styles={{ display: "none" }}>
-        <Button mt="xl" variant="light" component={Link} href={config.get("general.webroot") + "/admin"}>
+        <Button mt="xl" variant="light" component={Link} href={webroot + "/admin"}>
           <FormattedMessage id="common.button.go-back" />
         </Button>
       </MediaQuery>

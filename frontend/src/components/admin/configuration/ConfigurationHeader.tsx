@@ -13,6 +13,8 @@ import { FormattedMessage } from "react-intl";
 import useConfig from "../../../hooks/config.hook";
 import Logo from "../../Logo";
 
+const webroot = process.env.WEBROOT || "";
+
 const ConfigurationHeader = ({
   isMobileNavBarOpened,
   setIsMobileNavBarOpened,
@@ -42,7 +44,7 @@ const ConfigurationHeader = ({
             </Group>
           </Link>
           <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
-            <Button variant="light" component={Link} href={config.get("general.webroot") + "/admin"}>
+            <Button variant="light" component={Link} href={webroot + "/admin"}>
               <FormattedMessage id="common.button.go-back" />
             </Button>
           </MediaQuery>

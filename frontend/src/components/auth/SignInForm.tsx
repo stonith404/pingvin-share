@@ -26,6 +26,8 @@ import authService from "../../services/auth.service";
 import { getOAuthIcon, getOAuthUrl } from "../../utils/oauth.util";
 import toast from "../../utils/toast.util";
 
+const webroot = process.env.WEBROOT || "";
+
 const useStyles = createStyles((theme) => ({
   or: {
     "&:before": {
@@ -145,7 +147,7 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
           />
           {config.get("smtp.enabled") && (
             <Group position="right" mt="xs">
-              <Anchor component={Link} href={config.get("general.webroot") + "/auth/resetPassword"} size="xs">
+              <Anchor component={Link} href={webroot + "/auth/resetPassword"} size="xs">
                 <FormattedMessage id="resetPassword.title" />
               </Anchor>
             </Group>

@@ -28,6 +28,8 @@ import shareService from "../../services/share.service";
 import { MyShare } from "../../types/share.type";
 import toast from "../../utils/toast.util";
 
+const webroot = process.env.WEBROOT || "";
+
 const MyShares = () => {
   const modals = useModals();
   const clipboard = useClipboard();
@@ -58,7 +60,7 @@ const MyShares = () => {
               <FormattedMessage id="account.shares.description.empty" />
             </Text>
             <Space h={5} />
-            <Button component={Link} href={config.get("general.webroot") + "/upload"} variant="light">
+            <Button component={Link} href={webroot + "/upload"} variant="light">
               <FormattedMessage id="account.shares.button.create" />
             </Button>
           </Stack>

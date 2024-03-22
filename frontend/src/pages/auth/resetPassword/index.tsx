@@ -22,6 +22,8 @@ import authService from "../../../services/auth.service";
 import toast from "../../../utils/toast.util";
 import useConfig from "../../../hooks/config.hook";
 
+const webroot = process.env.WEBROOT || "";
+
 const useStyles = createStyles((theme) => ({
   title: {
     fontSize: 26,
@@ -95,7 +97,7 @@ const ResetPassword = () => {
               color="dimmed"
               size="sm"
               className={classes.control}
-              href={config.get("general.webroot")  + "/auth/signIn"}
+              href={webroot  + "/auth/signIn"}
             >
               <Center inline>
                 <TbArrowLeft size={12} />
