@@ -15,7 +15,6 @@ import useConfig from "../../hooks/config.hook";
 const webroot = process.env.WEBROOT || "";
 
 const Intro = () => {
-  const config = useConfig();
   return (
     <>
       <Meta title="Intro" />

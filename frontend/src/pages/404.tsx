@@ -41,7 +41,6 @@ const useStyles = createStyles((theme) => ({
 
 const ErrorNotFound = () => {
   const { classes } = useStyles();
-  const config = useConfig();
   return (
     <>
       <Meta title="Not found" />

@@ -64,7 +64,6 @@ const ResetPassword = () => {
     ),
   });
 
-  const config = useConfig();
   return (
     <Container size={460} my={30}>
       <Title order={2} weight={900} align="center">
