@@ -12,6 +12,7 @@ const withPWA = require("next-pwa")({
     },
   ],
   reloadOnOnline: false,
+  pathPrefix: '/pengvin-share',
 });
 
 module.exports = withPWA({
@@ -21,5 +22,4 @@ module.exports = withPWA({
   serverRuntimeConfig: {
     apiURL: process.env.API_URL ?? 'http://localhost:8080',
   },
-  basePath: process.env.WEBROOT ?? '',
 });
