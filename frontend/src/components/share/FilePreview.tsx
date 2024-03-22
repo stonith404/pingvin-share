@@ -38,6 +38,7 @@ const FilePreview = ({
 }) => {
   const [isNotSupported, setIsNotSupported] = useState(false);
   if (isNotSupported) return <UnSupportedFile />;
+
   return (
     <Stack>
       <FilePreviewContext.Provider
