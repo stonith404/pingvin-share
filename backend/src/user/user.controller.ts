@@ -27,7 +27,8 @@ export class UserController {
   // Own user operations
   @Get("me")
   @UseGuards(JwtGuard)
-  async getCurrentUser(@GetUser() user: User) {
+  async getCurrentUser(@GetUser() user?: User) {
+    if (!user) return null;
     const userDTO = new UserDTO().from(user);
     userDTO.hasPassword = !!user.password;
     return userDTO;
