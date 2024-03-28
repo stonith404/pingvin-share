@@ -57,7 +57,7 @@ export default {
   // /auth/reset-password
   "resetPassword.title": "Mot de passe oublié ?",
   "resetPassword.description": "Saisissez votre courriel pour réinitialiser votre mot de passe.",
-  "resetPassword.notify.success": "A message with a link to reset your password has been sent if the email exists.",
+  "resetPassword.notify.success": "Un message avec un lien pour réinitialiser votre mot de passe a été envoyé si le courriel existe.",
   "resetPassword.button.back": "Retour à la page de connexion",
   "resetPassword.text.resetPassword": "Réinitialiser le mot de passe",
   "resetPassword.text.enterNewPassword": "Saisissez votre nouveau mot de passe",
