@@ -13,6 +13,8 @@ import { FormattedMessage } from "react-intl";
 import api from "../../services/api.service";
 import Markdown from "markdown-to-jsx";
 
+const webroot = process.env.WEBROOT || "";
+
 const FilePreviewContext = React.createContext<{
   shareId: string;
   fileId: string;
@@ -49,7 +51,7 @@ const FilePreview = ({
         component={Link}
         onClick={() => modals.closeAll()}
         target="_blank"
-        href={`/api/shares/${shareId}/files/${fileId}?download=false`}
+        href={`${webroot}/api/shares/${shareId}/files/${fileId}?download=false`}
       >
         View original file
         {/* Add translation? */}

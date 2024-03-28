@@ -19,6 +19,8 @@ import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
 import toast from "../../utils/toast.util";
 
+const webroot = process.env.WEBROOT || "";
+
 const SignUpForm = () => {
   const config = useConfig();
   const router = useRouter();
@@ -52,9 +54,9 @@ const SignUpForm = () => {
       .then(async () => {
         const user = await refreshUser();
         if (user?.isAdmin) {
-          router.replace("/admin/intro");
+          router.replace(webroot + "/admin/intro");
         } else {
-          router.replace("/upload");
+          router.replace(webroot + "/upload");
         }
       })
       .catch(toast.axiosError);

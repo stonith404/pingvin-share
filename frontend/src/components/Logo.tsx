@@ -1,4 +1,5 @@
 const Logo = ({ height, width }: { height: number; width: number }) => {
-  return <img src="/img/logo.png" alt="logo" height={height} width={width} />;
+  const webroot = process.env.WEBROOT || "";
+  return <img src={webroot + "/img/logo.png"} alt="logo" height={height} width={width} />;
 };
 export default Logo;

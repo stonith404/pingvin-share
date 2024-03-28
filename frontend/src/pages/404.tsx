@@ -10,6 +10,8 @@ import Link from "next/link";
 import Meta from "../components/Meta";
 import { FormattedMessage } from "react-intl";
 
+const webroot = process.env.WEBROOT || "";
+
 const useStyles = createStyles((theme) => ({
   root: {
     paddingTop: 80,
@@ -53,7 +55,7 @@ const ErrorNotFound = () => {
           className={classes.description}
         ></Text>
         <Group position="center">
-          <Button component={Link} href="/" variant="light">
+          <Button component={Link} href={webroot + "/"} variant="light">
             <FormattedMessage id="404.button.home" />
           </Button>
         </Group>

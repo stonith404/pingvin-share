@@ -12,6 +12,7 @@ const withPWA = require("next-pwa")({
     },
   ],
   reloadOnOnline: false,
+  pathPrefix: '/pengvin-share',
 });
 
 module.exports = withPWA({

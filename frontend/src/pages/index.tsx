@@ -17,6 +17,8 @@ import Logo from "../components/Logo";
 import Meta from "../components/Meta";
 import useUser from "../hooks/user.hook";
 
+const webroot = process.env.WEBROOT || "";
+
 const useStyles = createStyles((theme) => ({
   inner: {
     display: "flex",
@@ -78,7 +80,7 @@ export default function Home() {
   useEffect(() => {
     refreshUser().then((user) => {
       if (user) {
-        router.replace("/upload");
+        router.replace(webroot + "/upload");
       }
     });
   }, []);
@@ -142,7 +144,7 @@ export default function Home() {
             <Group mt={30}>
               <Button
                 component={Link}
-                href="/auth/signUp"
+                href={webroot + "/auth/signUp"}
                 radius="xl"
                 size="md"
                 className={classes.control}

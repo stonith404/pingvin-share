@@ -3,6 +3,8 @@ import Link from "next/link";
 import { TbArrowLoopLeft, TbLink } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 
+const webroot = process.env.WEBROOT || "";
+
 const NavbarShareMneu = () => {
   return (
     <Menu position="bottom-start" withinPortal>
@@ -12,12 +14,12 @@ const NavbarShareMneu = () => {
         </ActionIcon>
       </Menu.Target>
       <Menu.Dropdown>
-        <Menu.Item component={Link} href="/account/shares" icon={<TbLink />}>
+        <Menu.Item component={Link} href={webroot + "/account/shares"} icon={<TbLink />}>
           <FormattedMessage id="navbar.links.shares" />
         </Menu.Item>
         <Menu.Item
           component={Link}
-          href="/account/reverseShares"
+          href={webroot + "/account/reverseShares"}
           icon={<TbArrowLoopLeft />}
         >
           <FormattedMessage id="navbar.links.reverse" />

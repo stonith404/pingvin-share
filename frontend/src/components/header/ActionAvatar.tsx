@@ -5,6 +5,8 @@ import useUser from "../../hooks/user.hook";
 import authService from "../../services/auth.service";
 import { FormattedMessage, useIntl } from "react-intl";
 
+const webroot = process.env.WEBROOT || "";
+
 const ActionAvatar = () => {
   const { user } = useUser();
 
@@ -16,13 +18,13 @@ const ActionAvatar = () => {
         </ActionIcon>
       </Menu.Target>
       <Menu.Dropdown>
-        <Menu.Item component={Link} href="/account" icon={<TbUser size={14} />}>
+        <Menu.Item component={Link} href={webroot + "/account"} icon={<TbUser size={14} />}>
           <FormattedMessage id="navbar.avatar.account" />
         </Menu.Item>
         {user!.isAdmin && (
           <Menu.Item
             component={Link}
-            href="/admin"
+            href={webroot + "/admin"}
             icon={<TbSettings size={14} />}
           >
             <FormattedMessage id="navbar.avatar.admin" />
