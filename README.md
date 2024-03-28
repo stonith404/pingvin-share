@@ -61,7 +61,7 @@ cd ../frontend
 npm install
 npm run build
 API_URL=http://localhost:8080 # Set the URL of the backend, default: http://localhost:8080
-pm2 start --name="pingvin-share-frontend" npm -- run start
+pm2 start --name="pingvin-share-frontend" .next/standalone/server.js
 ```
 
 **Uploading Large Files**: By default, Pingvin Share uses a built-in reverse proxy to reduce the installation steps. However, this reverse proxy is not optimized for uploading large files. If you wish to upload larger files, you can either use the Docker installation or set up your own reverse proxy. An example configuration for Caddy can be found in `./Caddyfile`.
