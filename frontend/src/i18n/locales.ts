@@ -119,4 +119,9 @@ export const LOCALES = {
     code: "ar-EG",
     messages: {},
   },
+  HUNGARIAN: {
+    name: "Hungarian",
+    code: "hu-HU",
+    messages: {},
+  },
 };
