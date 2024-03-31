@@ -11,6 +11,7 @@ import dutch from "./translations/nl-BE";
 import polish from "./translations/pl-PL";
 import portuguese from "./translations/pt-BR";
 import russian from "./translations/ru-RU";
+import ukrainian from "./translations/ua-UA";
 import slovenian from "./translations/sl-SI";
 import serbian from "./translations/sr-SP";
 import swedish from "./translations/sv-SE";
@@ -68,6 +69,11 @@ export const LOCALES = {
     name: "Русский",
     code: "ru-RU",
     messages: russian,
+  },
+  RUSSIAN: {
+    name: "Українська",
+    code: "ua-UA",
+    messages: ukrainian,
   },
   THAI: {
     name: "ไทย",
