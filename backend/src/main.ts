@@ -1,4 +1,8 @@
-import { ClassSerializerInterceptor, ValidationPipe } from "@nestjs/common";
+import {
+  ClassSerializerInterceptor,
+  Logger,
+  ValidationPipe,
+} from "@nestjs/common";
 import { NestFactory, Reflector } from "@nestjs/core";
 import { NestExpressApplication } from "@nestjs/platform-express";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
@@ -6,8 +10,8 @@ import * as bodyParser from "body-parser";
 import * as cookieParser from "cookie-parser";
 import * as fs from "fs";
 import { AppModule } from "./app.module";
-import { DATA_DIRECTORY } from "./constants";
 import { ConfigService } from "./config/config.service";
+import { DATA_DIRECTORY } from "./constants";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -15,6 +19,7 @@ async function bootstrap() {
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
   const config = app.get<ConfigService>(ConfigService);
+
   app.use(
     bodyParser.raw({
       type: "application/octet-stream",
@@ -42,5 +47,8 @@ async function bootstrap() {
   }
 
   await app.listen(parseInt(process.env.PORT) || 8080);
+
+  const logger = new Logger("UnhandledAsyncError");
+  process.on("unhandledRejection", (e) => logger.error(e));
 }
 bootstrap();
