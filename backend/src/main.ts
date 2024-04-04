@@ -7,13 +7,21 @@ import * as cookieParser from "cookie-parser";
 import * as fs from "fs";
 import { AppModule } from "./app.module";
 import { DATA_DIRECTORY } from "./constants";
+import { ConfigService } from "./config/config.service";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
-  app.use(bodyParser.raw({ type: "application/octet-stream", limit: "20mb" }));
+  const config = app.get<ConfigService>(ConfigService);
+  app.use(
+    bodyParser.raw({
+      type: "application/octet-stream",
+      limit: `${config.get("share.chunkSize")}B`,
+    }),
+  );
+
   app.use(cookieParser());
   app.set("trust proxy", true);
 

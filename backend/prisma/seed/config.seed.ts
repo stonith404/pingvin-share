@@ -51,6 +51,11 @@ const configVariables: ConfigVariables = {
       type: "number",
       defaultValue: "9",
     },
+    chunkSize: {
+      type: "number",
+      defaultValue: "10000000",
+      secret: false,
+    },
   },
   email: {
     enableShareEmailRecipients: {
