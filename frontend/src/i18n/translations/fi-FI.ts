@@ -314,6 +314,8 @@ export default {
   "admin.config.share.max-size.description": "Jaon enimmäiskoko tavuissa (bytes)",
   "admin.config.share.zip-compression-level": "Zip puristustaso",
   "admin.config.share.zip-compression-level.description": "Säädä tasoa tiedoston koon ja pakkausnopeuden välillä. Kelvolliset arvot vaihtelevat 0–9, 0 ei puristusta ja 9 on suurin puristusvoima. ",
+  "admin.config.share.chunk-size": "Chunk size",
+  "admin.config.share.chunk-size.description": "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
   "admin.config.smtp.enabled": "Käytössä",
   "admin.config.smtp.enabled.description": "Onko SMTP käytössä. Aseta tämä todeksi vain, jos olet syöttänyt SMTP-palvelimen isäntän, portin, sähköpostin, käyttäjän ja salasanan.",
   "admin.config.smtp.host": "Isäntä",
