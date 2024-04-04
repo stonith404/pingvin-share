@@ -314,6 +314,8 @@ export default {
   "admin.config.share.max-size.description": "Максимална величина дељења у бајтовима",
   "admin.config.share.zip-compression-level": "Ниво zip компресије",
   "admin.config.share.zip-compression-level.description": "Подесите ниво да бисте балансирали између величине датотеке и брзине компресије. Важеће вредности се крећу од 0 до 9, при чему је 0 без компресије, а 9 је максимална компресија. ",
+  "admin.config.share.chunk-size": "Chunk size",
+  "admin.config.share.chunk-size.description": "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
   "admin.config.smtp.enabled": "Омогућено",
   "admin.config.smtp.enabled.description": "Да ли је SMTP омогућен. Поставите ово на тачно само ако сте унели хост, порт, е-пошту, корисника и лозинку вашег SMTP сервера.",
   "admin.config.smtp.host": "Домаћин",
