@@ -314,6 +314,8 @@ export default {
   "admin.config.share.max-size.description": "最大檔案上限，單位 bytes (1GB=1024MB=1048576KB=1073741824bytes)",
   "admin.config.share.zip-compression-level": "Zip 壓縮等級",
   "admin.config.share.zip-compression-level.description": "調整壓縮等級以平衡檔案大小和壓縮速度。 有效值範圍從 0 到 9，其中 0 表示無壓縮，9 表示最大壓縮",
+  "admin.config.share.chunk-size": "Chunk size",
+  "admin.config.share.chunk-size.description": "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
   "admin.config.smtp.enabled": "啟用",
   "admin.config.smtp.enabled.description": "是否開啟 SMTP，需輸入Host、Port、發送郵箱、使用者名稱和密碼後才有作用",
   "admin.config.smtp.host": "Host",
