@@ -4,6 +4,7 @@ import * as argon from "argon2";
 import * as crypto from "crypto";
 import { EmailService } from "src/email/email.service";
 import { PrismaService } from "src/prisma/prisma.service";
+import { FileService } from "../file/file.service";
 import { CreateUserDTO } from "./dto/createUser.dto";
 import { UpdateUserDto } from "./dto/updateUser.dto";
 
@@ -12,6 +13,7 @@ export class UserSevice {
   constructor(
     private prisma: PrismaService,
     private emailService: EmailService,
+    private fileService: FileService,
   ) {}
 
   async list() {
@@ -74,6 +76,16 @@ export class UserSevice {
   }
 
   async delete(id: string) {
+    const user = await this.prisma.user.findUnique({
+      where: { id },
+      include: { shares: true },
+    });
+    if (!user) throw new BadRequestException("User not found");
+
+    await Promise.all(
+      user.shares.map((share) => this.fileService.deleteAllFiles(share.id)),
+    );
+
     return await this.prisma.user.delete({ where: { id } });
   }
 }
