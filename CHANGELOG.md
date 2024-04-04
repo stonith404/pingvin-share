@@ -1,3 +1,17 @@
+## [0.23.0](https://github.com/stonith404/pingvin-share/compare/v0.22.2...v0.23.0) (2024-04-04)
+
+
+### Features
+
+* add config variable to adjust chunk size ([0bfbaea](https://github.com/stonith404/pingvin-share/commit/0bfbaea49aad0c695fee6558c89c661687912e4f))
+
+
+### Bug Fixes
+
+* delete share files if user gets deleted ([e71f6cd](https://github.com/stonith404/pingvin-share/commit/e71f6cd1598ed87366074398042a6b88675587ca))
+* error in logs if "allow unauthenticated shares" is enabled ([c6d8188](https://github.com/stonith404/pingvin-share/commit/c6d8188e4e33ba682551a3ca79205ff5a6d7ead5))
+* memory leak while uploading files by disabling base64 encoding of chunks ([7a15fbb](https://github.com/stonith404/pingvin-share/commit/7a15fbb4651c2fee32fb4c1ee2c9d7f12323feb0))
+
 ## [0.22.2](https://github.com/stonith404/pingvin-share/compare/v0.22.1...v0.22.2) (2024-02-29)
 
 
