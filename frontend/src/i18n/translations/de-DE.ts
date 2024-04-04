@@ -314,6 +314,8 @@ export default {
   "admin.config.share.max-size.description": "Maximale Größe einer Freigabe in Bytes",
   "admin.config.share.zip-compression-level": "Zip Komprimierungsstufe",
   "admin.config.share.zip-compression-level.description": "Passe den Wert an, um ein Gleichgewicht zwischen Dateigröße und Komprimierungsgeschwindigkeit herzustellen. Gültige Werte liegen zwischen 0 und 9, wobei 0 für keine Komprimierung und 9 für maximale Komprimierung steht.",
+  "admin.config.share.chunk-size": "Chunk size",
+  "admin.config.share.chunk-size.description": "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
   "admin.config.smtp.enabled": "Aktiviert",
   "admin.config.smtp.enabled.description": "Gibt an, ob SMTP aktiviert ist. Aktiviere dies nur, wenn Du den Host, den Port, die Email, den Benutzernamen und das Passwort deines SMTP-Servers eingegeben hast.",
   "admin.config.smtp.host": "Host",
