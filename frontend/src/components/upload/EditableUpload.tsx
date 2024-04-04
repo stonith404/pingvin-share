@@ -1,22 +1,19 @@
 import { Button, Group } from "@mantine/core";
-import { useModals } from "@mantine/modals";
 import { cleanNotifications } from "@mantine/notifications";
 import { AxiosError } from "axios";
+import { useRouter } from "next/router";
 import pLimit from "p-limit";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import Dropzone from "../../components/upload/Dropzone";
 import FileList from "../../components/upload/FileList";
-import showCompletedUploadModal from "../../components/upload/modals/showCompletedUploadModal";
 import useConfig from "../../hooks/config.hook";
 import useTranslate from "../../hooks/useTranslate.hook";
 import shareService from "../../services/share.service";
 import { FileListItem, FileMetaData, FileUpload } from "../../types/File.type";
 import toast from "../../utils/toast.util";
-import { useRouter } from "next/router";
 
 const promiseLimit = pLimit(3);
-const chunkSize = 10 * 1024 * 1024; // 10MB
 let errorToastShown = false;
 
 const EditableUpload = ({
@@ -32,6 +29,8 @@ const EditableUpload = ({
   const t = useTranslate();
   const router = useRouter();
   const config = useConfig();
+
+  const chunkSize = useRef(parseInt(config.get("share.chunkSize")));
 
   const [existingFiles, setExistingFiles] =
     useState<Array<FileMetaData & { deleted?: boolean }>>(savedFiles);
@@ -66,7 +65,7 @@ const EditableUpload = ({
     const fileUploadPromises = files.map(async (file, fileIndex) =>
       // Limit the number of concurrent uploads to 3
       promiseLimit(async () => {
-        let fileId: string;
+        let fileId: string | undefined;
 
         const setFileProgress = (progress: number) => {
           setUploadingFiles((files) =>
@@ -81,38 +80,30 @@ const EditableUpload = ({
 
         setFileProgress(1);
 
-        let chunks = Math.ceil(file.size / chunkSize);
+        let chunks = Math.ceil(file.size / chunkSize.current);
 
         // If the file is 0 bytes, we still need to upload 1 chunk
         if (chunks == 0) chunks++;
 
         for (let chunkIndex = 0; chunkIndex < chunks; chunkIndex++) {
-          const from = chunkIndex * chunkSize;
-          const to = from + chunkSize;
+          const from = chunkIndex * chunkSize.current;
+          const to = from + chunkSize.current;
           const blob = file.slice(from, to);
           try {
-            await new Promise((resolve, reject) => {
-              const reader = new FileReader();
-              reader.onload = async (event) =>
-                await shareService
-                  .uploadFile(
-                    shareId,
-                    event,
-                    {
-                      id: fileId,
-                      name: file.name,
-                    },
-                    chunkIndex,
-                    chunks,
-                  )
-                  .then((response) => {
-                    fileId = response.id;
-                    resolve(response);
-                  })
-                  .catch(reject);
-
-              reader.readAsDataURL(blob);
-            });
+            await shareService
+              .uploadFile(
+                shareId,
+                blob,
+                {
+                  id: fileId,
+                  name: file.name,
+                },
+                chunkIndex,
+                chunks,
+              )
+              .then((response) => {
+                fileId = response.id;
+              });
 
             setFileProgress(((chunkIndex + 1) / chunks) * 100);
           } catch (e) {

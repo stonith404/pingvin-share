@@ -77,7 +77,7 @@ const removeFile = async (shareId: string, fileId: string) => {
 
 const uploadFile = async (
   shareId: string,
-  readerEvent: ProgressEvent<FileReader>,
+  chunk: Blob,
   file: {
     id?: string;
     name: string;
@@ -85,10 +85,8 @@ const uploadFile = async (
   chunkIndex: number,
   totalChunks: number,
 ): Promise<FileUploadResponse> => {
-  const data = readerEvent.target!.result;
-
   return (
-    await api.post(`shares/${shareId}/files`, data, {
+    await api.post(`shares/${shareId}/files`, chunk, {
       headers: { "Content-Type": "application/octet-stream" },
       params: {
         id: file.id,

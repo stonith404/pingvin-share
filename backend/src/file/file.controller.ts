@@ -27,17 +27,14 @@ export class FileController {
   @UseGuards(CreateShareGuard, ShareOwnerGuard)
   async create(
     @Query() query: any,
-
     @Body() body: string,
     @Param("shareId") shareId: string,
   ) {
     const { id, name, chunkIndex, totalChunks } = query;
 
     // Data can be empty if the file is empty
-    const data = body.toString().split(",")[1] ?? "";
-
     return await this.fileService.create(
-      data,
+      body,
       { index: parseInt(chunkIndex), total: parseInt(totalChunks) },
       { id, name },
       shareId,
