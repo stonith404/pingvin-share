@@ -314,6 +314,8 @@ export default {
   "admin.config.share.max-size.description": "Maximal storlek för delning i bytes",
   "admin.config.share.zip-compression-level": "Komprimeringsnivå för zip",
   "admin.config.share.zip-compression-level.description": "Justera nivån för att balansera mellan filstorlek och komprimeringshastighet. Giltiga värden varierar från 0 till 9, med 0 som ingen komprimering och 9 som maximal komprimering. ",
+  "admin.config.share.chunk-size": "Chunk size",
+  "admin.config.share.chunk-size.description": "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
   "admin.config.smtp.enabled": "Aktiverad",
   "admin.config.smtp.enabled.description": "Om SMTP skall vara aktiverat. Ange endast detta som sant om du angav adress, port, e-post, användare och lösenord för din SMTP-server.",
   "admin.config.smtp.host": "Adress",
