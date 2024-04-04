@@ -11,7 +11,7 @@ import dutch from "./translations/nl-BE";
 import polish from "./translations/pl-PL";
 import portuguese from "./translations/pt-BR";
 import russian from "./translations/ru-RU";
-import ukrainian from "./translations/ua-UA";
+import ukrainian from "./translations/uk-UA";
 import slovenian from "./translations/sl-SI";
 import serbian from "./translations/sr-SP";
 import swedish from "./translations/sv-SE";
@@ -72,7 +72,7 @@ export const LOCALES = {
   },
   UKRAINIAN: {
     name: "Українська",
-    code: "ua-UA",
+    code: "uk-UA",
     messages: ukrainian,
   },
   THAI: {
