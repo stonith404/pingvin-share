@@ -314,6 +314,8 @@ export default {
   "admin.config.share.max-size.description": "Μέγιστο μέγεθος κοινοποίησης σε bytes",
   "admin.config.share.zip-compression-level": "Βαθμός συμπίεσης ZIP",
   "admin.config.share.zip-compression-level.description": "Προσαρμόστε το βαθμό συμπίεσης για να εξισορροπηθεί το μέγεθος του αρχείου και η ταχύτητα επεξεργασίας. Έγκυρες τιμές κυμαίνονται από 0 έως 9, με 0 χωρίς συμπίεση και 9 μέγιστη συμπίεση.",
+  "admin.config.share.chunk-size": "Chunk size",
+  "admin.config.share.chunk-size.description": "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
   "admin.config.smtp.enabled": "Ενεργοποιημένο",
   "admin.config.smtp.enabled.description": "Εάν η λειτουργία SMTP είναι ενεργοποιημένη. Ενεργοποιήστε τη μόνον όταν ορίσετε σωστά τις παραμέτρους που ακολουθούν.",
   "admin.config.smtp.host": "Εξυπηρετητής",
