@@ -8,6 +8,7 @@ import { NestExpressApplication } from "@nestjs/platform-express";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import * as bodyParser from "body-parser";
 import * as cookieParser from "cookie-parser";
+import { NextFunction, Request, Response } from "express";
 import * as fs from "fs";
 import { AppModule } from "./app.module";
 import { ConfigService } from "./config/config.service";
@@ -20,12 +21,13 @@ async function bootstrap() {
 
   const config = app.get<ConfigService>(ConfigService);
 
-  app.use(
+  app.use((req: Request, res: Response, next: NextFunction) => {
+    const chunkSize = config.get("share.chunkSize");
     bodyParser.raw({
       type: "application/octet-stream",
-      limit: `${config.get("share.chunkSize")}B`,
-    }),
-  );
+      limit: `${chunkSize}B`,
+    })(req, res, next);
+  });
 
   app.use(cookieParser());
   app.set("trust proxy", true);
