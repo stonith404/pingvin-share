@@ -26,7 +26,13 @@ export class FileController {
   @SkipThrottle()
   @UseGuards(CreateShareGuard, ShareOwnerGuard)
   async create(
-    @Query() query: any,
+    @Query()
+    query: {
+      id: string;
+      name: string;
+      chunkIndex: string;
+      totalChunks: string;
+    },
     @Body() body: string,
     @Param("shareId") shareId: string,
   ) {
@@ -69,6 +75,7 @@ export class FileController {
     const headers = {
       "Content-Type": file.metaData.mimeType,
       "Content-Length": file.metaData.size,
+      "Content-Security-Policy": "script-src 'none'",
     };
 
     if (download === "true") {
