@@ -1,4 +1,4 @@
-import { setCookie } from "cookies-next";
+import { deleteCookie, setCookie } from "cookies-next";
 import mime from "mime-types";
 import { FileUploadResponse } from "../types/File.type";
 
@@ -16,7 +16,9 @@ const create = async (share: CreateShare) => {
 };
 
 const completeShare = async (id: string) => {
-  return (await api.post(`shares/${id}/complete`)).data;
+  const response = (await api.post(`shares/${id}/complete`)).data;
+  deleteCookie("reverse_share_token");
+  return response;
 };
 
 const revertComplete = async (id: string) => {
