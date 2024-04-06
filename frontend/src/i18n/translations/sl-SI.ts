@@ -57,7 +57,7 @@ export default {
   // /auth/reset-password
   "resetPassword.title": "Ste pozabili svoje geslo?",
   "resetPassword.description": "Vnesite svoj e-poštni naslov za ponastavitev gesla.",
-  "resetPassword.notify.success": "A message with a link to reset your password has been sent if the email exists.",
+  "resetPassword.notify.success": "Sporočilo s povezavo za ponastavitev vašega gesla je bilo poslano, če vaš e-poštni naslov obstaja.",
   "resetPassword.button.back": "Nazaj na stran za prijavo",
   "resetPassword.text.resetPassword": "Ponastavi geslo",
   "resetPassword.text.enterNewPassword": "Vnesite novo geslo",
