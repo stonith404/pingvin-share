@@ -262,7 +262,7 @@ export default {
   "share.table.name": "Όνομα",
   "share.table.size": "Μέγεθος",
   "share.modal.file-preview.error.not-supported.title": "Η προεπισκόπηση δεν υποστηρίζεται",
-  "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
+  "share.modal.file-preview.error.not-supported.description": "Η προεπισκόπηση για αυτό τον τύπο αρχείου δεν υποστηρίζεται. Παρακαλώ κατεβάστε το αρχείο για να το δείτε.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "Ενημέρωση {shareId}",
@@ -314,8 +314,8 @@ export default {
   "admin.config.share.max-size.description": "Μέγιστο μέγεθος κοινοποίησης σε bytes",
   "admin.config.share.zip-compression-level": "Βαθμός συμπίεσης ZIP",
   "admin.config.share.zip-compression-level.description": "Προσαρμόστε το βαθμό συμπίεσης για να εξισορροπηθεί το μέγεθος του αρχείου και η ταχύτητα επεξεργασίας. Έγκυρες τιμές κυμαίνονται από 0 έως 9, με 0 χωρίς συμπίεση και 9 μέγιστη συμπίεση.",
-  "admin.config.share.chunk-size": "Chunk size",
-  "admin.config.share.chunk-size.description": "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
+  "admin.config.share.chunk-size": "Μέγεθος κομματιών",
+  "admin.config.share.chunk-size.description": "Προσαρμόστε το μέγεθος κομματιών (σε bytes) για να εξισορροπήσετε την αποδοτικότητα και την αξιοπιστία του συστήματος σύμφωνα με τη σύνδεσή σας στο διαδίκτυο. Μικρότερα κομμάτια μπορούν να βελτιώσουν τα ποσοστά επιτυχίας σε ασταθείς συνδέσεις, ενώ μεγαλύτερα κομμάτια επιταχύνουν τις μεταφορτώσεις σε σταθερές συνδέσεις.",
   "admin.config.smtp.enabled": "Ενεργοποιημένο",
   "admin.config.smtp.enabled.description": "Εάν η λειτουργία SMTP είναι ενεργοποιημένη. Ενεργοποιήστε τη μόνον όταν ορίσετε σωστά τις παραμέτρους που ακολουθούν.",
   "admin.config.smtp.host": "Εξυπηρετητής",
@@ -409,7 +409,7 @@ export default {
   "common.text.navigate-to-link": "Μεταβείτε στο σύνδεσμο",
   "common.text.or": "ή",
   "common.button.go-back": "Επιστροφή",
-  "common.button.go-home": "Go home",
+  "common.button.go-home": "Μετάβαση στην αρχική",
   "common.notify.copied": "Ο σύνδεσμος σας αντιγράφηκε στο πρόχειρο",
   "common.success": "Επιτυχία",
   "common.error": "Σφάλμα",
