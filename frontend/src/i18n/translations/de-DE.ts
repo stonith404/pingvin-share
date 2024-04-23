@@ -57,7 +57,7 @@ export default {
   // /auth/reset-password
   "resetPassword.title": "Passwort vergessen?",
   "resetPassword.description": "Gib deine Email Adresse ein, um dein Passwort zurückzusetzen.",
-  "resetPassword.notify.success": "A message with a link to reset your password has been sent if the email exists.",
+  "resetPassword.notify.success": "Wir haben dir einen Link gesendet, unter dem du dein Passwort zurücksetzen kannst.",
   "resetPassword.button.back": "Zurück zur Anmeldeseite",
   "resetPassword.text.resetPassword": "Passwort zurücksetzen",
   "resetPassword.text.enterNewPassword": "Gib dein neues Passwort ein",
@@ -262,7 +262,7 @@ export default {
   "share.table.name": "Name",
   "share.table.size": "Größe",
   "share.modal.file-preview.error.not-supported.title": "Vorschau wird nicht unterstützt",
-  "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
+  "share.modal.file-preview.error.not-supported.description": "Eine Vorschau für diesen Dateityp wird nicht unterstützt. Bitte lade die Datei herunter, um sie anzusehen.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "{shareId} bearbeiten",
@@ -314,8 +314,8 @@ export default {
   "admin.config.share.max-size.description": "Maximale Größe einer Freigabe in Bytes",
   "admin.config.share.zip-compression-level": "Zip Komprimierungsstufe",
   "admin.config.share.zip-compression-level.description": "Passe den Wert an, um ein Gleichgewicht zwischen Dateigröße und Komprimierungsgeschwindigkeit herzustellen. Gültige Werte liegen zwischen 0 und 9, wobei 0 für keine Komprimierung und 9 für maximale Komprimierung steht.",
-  "admin.config.share.chunk-size": "Chunk size",
-  "admin.config.share.chunk-size.description": "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
+  "admin.config.share.chunk-size": "Chunkgröße",
+  "admin.config.share.chunk-size.description": "Passe die Chunkgröße (in Bytes) für deine Uploads an, um die Zuverlässigkeit deiner Internetverbindung auszugleichen. Kleinere Chunks können die Erfolgsraten für instabile Verbindungen verbessern, während größere Chunks Uploads für stabile Verbindungen beschleunigen können.",
   "admin.config.smtp.enabled": "Aktiviert",
   "admin.config.smtp.enabled.description": "Gibt an, ob SMTP aktiviert ist. Aktiviere dies nur, wenn Du den Host, den Port, die Email, den Benutzernamen und das Passwort deines SMTP-Servers eingegeben hast.",
   "admin.config.smtp.host": "Host",
