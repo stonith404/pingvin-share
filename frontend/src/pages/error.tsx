@@ -4,6 +4,7 @@ import Meta from "../components/Meta";
 import useTranslate from "../hooks/useTranslate.hook";
 import { useRouter } from "next/router";
 import { FormattedMessage } from "react-intl";
+import { safeRedirectPath } from "../utils/router.util";
 
 const useStyle = createStyles({
   title: {
@@ -39,7 +40,9 @@ export default function Error() {
         </Text>
         <Button
           mt="xl"
-          onClick={() => router.push((router.query.redirect as string) || "/")}
+          onClick={() =>
+            router.push(safeRedirectPath(router.query.redirect as string))
+          }
         >
           {t("error.button.back")}
         </Button>

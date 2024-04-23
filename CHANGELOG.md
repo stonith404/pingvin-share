@@ -1,3 +1,29 @@
+## [0.23.1](https://github.com/stonith404/pingvin-share/compare/v0.23.0...v0.23.1) (2024-04-05)
+
+
+### Bug Fixes
+
+* **backend:** crash on unhandled promise rejections ([1da4fee](https://github.com/stonith404/pingvin-share/commit/1da4feeb895a13d0a0ae754bd716a84e8186d081))
+* changing the chunk size needed an app restart ([24e100b](https://github.com/stonith404/pingvin-share/commit/24e100bd7be8bf20778bdf2767aa35cae8d7e502))
+* disable js execution on raw file view ([9d1a12b](https://github.com/stonith404/pingvin-share/commit/9d1a12b0d1812214f1fe6fa56e3848091ce4945c))
+* incorrect layout on 404 page ([3c5e0ad](https://github.com/stonith404/pingvin-share/commit/3c5e0ad5134ee2d405ac420152b5825102f65bfc))
+* normal shares were added to the previous reverse share ([3972589](https://github.com/stonith404/pingvin-share/commit/3972589f76519b03074d916fb2460c795b1f0737))
+* redirect vulnerability on error, sign in and totp page ([384fd19](https://github.com/stonith404/pingvin-share/commit/384fd19203b63eeb4b952f83a9e1eaab1b19b90d))
+
+## [0.23.0](https://github.com/stonith404/pingvin-share/compare/v0.22.2...v0.23.0) (2024-04-04)
+
+
+### Features
+
+* add config variable to adjust chunk size ([0bfbaea](https://github.com/stonith404/pingvin-share/commit/0bfbaea49aad0c695fee6558c89c661687912e4f))
+
+
+### Bug Fixes
+
+* delete share files if user gets deleted ([e71f6cd](https://github.com/stonith404/pingvin-share/commit/e71f6cd1598ed87366074398042a6b88675587ca))
+* error in logs if "allow unauthenticated shares" is enabled ([c6d8188](https://github.com/stonith404/pingvin-share/commit/c6d8188e4e33ba682551a3ca79205ff5a6d7ead5))
+* memory leak while uploading files by disabling base64 encoding of chunks ([7a15fbb](https://github.com/stonith404/pingvin-share/commit/7a15fbb4651c2fee32fb4c1ee2c9d7f12323feb0))
+
 ## [0.22.2](https://github.com/stonith404/pingvin-share/compare/v0.22.1...v0.22.2) (2024-02-29)
 
 

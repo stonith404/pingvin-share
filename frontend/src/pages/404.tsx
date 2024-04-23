@@ -1,14 +1,7 @@
-import {
-  Button,
-  Container,
-  createStyles,
-  Group,
-  Text,
-  Title,
-} from "@mantine/core";
+import { Button, Container, createStyles, Group, Title } from "@mantine/core";
 import Link from "next/link";
-import Meta from "../components/Meta";
 import { FormattedMessage } from "react-intl";
+import Meta from "../components/Meta";
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -21,18 +14,12 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 900,
     fontSize: 220,
     lineHeight: 1,
-    marginBottom: `calc(${theme.spacing.xl} * 100)`,
+    marginBottom: 20,
     color: theme.colors.gray[2],
 
     [theme.fn.smallerThan("sm")]: {
       fontSize: 120,
     },
-  },
-
-  description: {
-    maxWidth: 500,
-    margin: "auto",
-    marginBottom: `calc(${theme.spacing.xl} * 100)`,
   },
 }));
 
@@ -47,12 +34,7 @@ const ErrorNotFound = () => {
         <Title align="center" order={3}>
           <FormattedMessage id="404.description" />
         </Title>
-        <Text
-          color="dimmed"
-          align="center"
-          className={classes.description}
-        ></Text>
-        <Group position="center">
+        <Group position="center" mt={50}>
           <Button component={Link} href="/" variant="light">
             <FormattedMessage id="404.button.home" />
           </Button>

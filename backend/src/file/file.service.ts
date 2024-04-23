@@ -47,7 +47,7 @@ export class FileService {
     }
 
     // If the sent chunk index and the expected chunk index doesn't match throw an error
-    const chunkSize = 10 * 1024 * 1024; // 10MB
+    const chunkSize = this.config.get("share.chunkSize");
     const expectedChunkIndex = Math.ceil(diskFileSize / chunkSize);
 
     if (expectedChunkIndex != chunk.index)

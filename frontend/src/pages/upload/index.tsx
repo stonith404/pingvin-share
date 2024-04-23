@@ -3,7 +3,7 @@ import { useModals } from "@mantine/modals";
 import { cleanNotifications } from "@mantine/notifications";
 import { AxiosError } from "axios";
 import pLimit from "p-limit";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import Meta from "../../components/Meta";
 import Dropzone from "../../components/upload/Dropzone";
@@ -19,7 +19,6 @@ import { CreateShare, Share } from "../../types/share.type";
 import toast from "../../utils/toast.util";
 
 const promiseLimit = pLimit(3);
-const chunkSize = 10 * 1024 * 1024; // 10MB
 let errorToastShown = false;
 let createdShare: Share;
 
@@ -38,6 +37,8 @@ const Upload = ({
   const [files, setFiles] = useState<FileUpload[]>([]);
   const [isUploading, setisUploading] = useState(false);
 
+  const chunkSize = useRef(parseInt(config.get("share.chunkSize")));
+
   maxShareSize ??= parseInt(config.get("share.maxSize"));
 
   const uploadFiles = async (share: CreateShare, files: FileUpload[]) => {
@@ -54,7 +55,7 @@ const Upload = ({
     const fileUploadPromises = files.map(async (file, fileIndex) =>
       // Limit the number of concurrent uploads to 3
       promiseLimit(async () => {
-        let fileId: string;
+        let fileId;
 
         const setFileProgress = (progress: number) => {
           setFiles((files) =>
@@ -69,38 +70,30 @@ const Upload = ({
 
         setFileProgress(1);
 
-        let chunks = Math.ceil(file.size / chunkSize);
+        let chunks = Math.ceil(file.size / chunkSize.current);
 
         // If the file is 0 bytes, we still need to upload 1 chunk
         if (chunks == 0) chunks++;
 
         for (let chunkIndex = 0; chunkIndex < chunks; chunkIndex++) {
-          const from = chunkIndex * chunkSize;
-          const to = from + chunkSize;
+          const from = chunkIndex * chunkSize.current;
+          const to = from + chunkSize.current;
           const blob = file.slice(from, to);
           try {
-            await new Promise((resolve, reject) => {
-              const reader = new FileReader();
-              reader.onload = async (event) =>
-                await shareService
-                  .uploadFile(
-                    createdShare.id,
-                    event,
-                    {
-                      id: fileId,
-                      name: file.name,
-                    },
-                    chunkIndex,
-                    chunks,
-                  )
-                  .then((response) => {
-                    fileId = response.id;
-                    resolve(response);
-                  })
-                  .catch(reject);
-
-              reader.readAsDataURL(blob);
-            });
+            await shareService
+              .uploadFile(
+                createdShare.id,
+                blob,
+                {
+                  id: fileId,
+                  name: file.name,
+                },
+                chunkIndex,
+                chunks,
+              )
+              .then((response) => {
+                fileId = response.id;
+              });
 
             setFileProgress(((chunkIndex + 1) / chunks) * 100);
           } catch (e) {

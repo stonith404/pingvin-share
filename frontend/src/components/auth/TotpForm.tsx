@@ -6,15 +6,16 @@ import {
   PinInput,
   Title,
 } from "@mantine/core";
+import { useForm, yupResolver } from "@mantine/form";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import * as yup from "yup";
 import useTranslate from "../../hooks/useTranslate.hook";
-import { useForm, yupResolver } from "@mantine/form";
-import { useState } from "react";
-import authService from "../../services/auth.service";
-import toast from "../../utils/toast.util";
-import { useRouter } from "next/router";
 import useUser from "../../hooks/user.hook";
+import authService from "../../services/auth.service";
+import { safeRedirectPath } from "../../utils/router.util";
+import toast from "../../utils/toast.util";
 
 function TotpForm({ redirectPath }: { redirectPath: string }) {
   const t = useTranslate();
@@ -46,7 +47,7 @@ function TotpForm({ redirectPath }: { redirectPath: string }) {
         router.query.loginToken as string,
       );
       await refreshUser();
-      await router.replace(redirectPath);
+      await router.replace(safeRedirectPath(redirectPath));
     } catch (e) {
       toast.axiosError(e);
       form.setFieldError("code", "error");

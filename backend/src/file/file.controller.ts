@@ -26,18 +26,21 @@ export class FileController {
   @SkipThrottle()
   @UseGuards(CreateShareGuard, ShareOwnerGuard)
   async create(
-    @Query() query: any,
-
+    @Query()
+    query: {
+      id: string;
+      name: string;
+      chunkIndex: string;
+      totalChunks: string;
+    },
     @Body() body: string,
     @Param("shareId") shareId: string,
   ) {
     const { id, name, chunkIndex, totalChunks } = query;
 
     // Data can be empty if the file is empty
-    const data = body.toString().split(",")[1] ?? "";
-
     return await this.fileService.create(
-      data,
+      body,
       { index: parseInt(chunkIndex), total: parseInt(totalChunks) },
       { id, name },
       shareId,
@@ -72,6 +75,7 @@ export class FileController {
     const headers = {
       "Content-Type": file.metaData.mimeType,
       "Content-Length": file.metaData.size,
+      "Content-Security-Policy": "script-src 'none'",
     };
 
     if (download === "true") {

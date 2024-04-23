@@ -99,7 +99,7 @@ export class AuthService {
       include: { resetPasswordToken: true },
     });
 
-    if (!user) throw new BadRequestException("User not found");
+    if (!user) return;
 
     // Delete old reset password token
     if (user.resetPasswordToken) {

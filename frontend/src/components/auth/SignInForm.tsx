@@ -25,6 +25,7 @@ import useTranslate from "../../hooks/useTranslate.hook";
 import authService from "../../services/auth.service";
 import { getOAuthIcon, getOAuthUrl } from "../../utils/oauth.util";
 import toast from "../../utils/toast.util";
+import { safeRedirectPath } from "../../utils/router.util";
 
 const useStyles = createStyles((theme) => ({
   or: {
@@ -98,7 +99,7 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
           );
         } else {
           await refreshUser();
-          router.replace(redirectPath);
+          router.replace(safeRedirectPath(redirectPath));
         }
       })
       .catch(toast.axiosError);
