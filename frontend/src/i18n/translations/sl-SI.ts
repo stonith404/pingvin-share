@@ -57,7 +57,7 @@ export default {
   // /auth/reset-password
   "resetPassword.title": "Ste pozabili svoje geslo?",
   "resetPassword.description": "Vnesite svoj e-poštni naslov za ponastavitev gesla.",
-  "resetPassword.notify.success": "A message with a link to reset your password has been sent if the email exists.",
+  "resetPassword.notify.success": "Sporočilo s povezavo za ponastavitev vašega gesla je bilo poslano, če vaš e-poštni naslov obstaja.",
   "resetPassword.button.back": "Nazaj na stran za prijavo",
   "resetPassword.text.resetPassword": "Ponastavi geslo",
   "resetPassword.text.enterNewPassword": "Vnesite novo geslo",
@@ -314,6 +314,8 @@ export default {
   "admin.config.share.max-size.description": "Največja velikost delitve v bytih",
   "admin.config.share.zip-compression-level": "Nivo Zip stiskanja",
   "admin.config.share.zip-compression-level.description": "Nivo stiskanja, ki uravnoveša med velikostjo datoteke in hitrostjo stiskanja. Veljavne vrednosti so med 0 in 9, kjer 0 pomeni brez kompresije in 9 pomeni največjo kompresijo. ",
+  "admin.config.share.chunk-size": "Velikost delcev",
+  "admin.config.share.chunk-size.description": "Prilagodite velikost delcev (v bajtih) vaših nalaganj, da uravnovesite med učinkovitostjo in zanesljivostjo glede na vašo internetno povezavo. Manjša velikost delcev lahko zviša uspešnost nalaganj pri nestabilni povezavi, medtem ko večja velikost delcev poviša hitrost nalaganja pri stabilni povezavi.",
   "admin.config.smtp.enabled": "Omogočeno",
   "admin.config.smtp.enabled.description": "Če je SMTP omogočen. Omogočite samo, če ste vnesli strežnik, vrata, e-pošto, uporabniško ime in geslo vašega SMTP strežnika.",
   "admin.config.smtp.host": "Gostitelj",

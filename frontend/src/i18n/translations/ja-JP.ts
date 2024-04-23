@@ -314,6 +314,8 @@ export default {
   "admin.config.share.max-size.description": "最大ファイルサイズ（byte単位）",
   "admin.config.share.zip-compression-level": "Zip圧縮レベル",
   "admin.config.share.zip-compression-level.description": "ファイルサイズと圧縮速度のバランスを取るように、レベルを調整できます。有効な値は0～9の間で、0が無圧縮、9で最大限の圧縮となります。 ",
+  "admin.config.share.chunk-size": "Chunk size",
+  "admin.config.share.chunk-size.description": "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
   "admin.config.smtp.enabled": "有効",
   "admin.config.smtp.enabled.description": "SMTPを有効にするかどうかを選択してください。SMTPサーバーのホスト名、ポート番号、電子メールアドレス、ユーザー名、パスワードが入力されている場合にのみ、有効にしてください。",
   "admin.config.smtp.host": "ホスト名",

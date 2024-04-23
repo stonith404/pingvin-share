@@ -314,6 +314,8 @@ export default {
   "admin.config.share.max-size.description": "Максимальний розмір файлу в байтах",
   "admin.config.share.zip-compression-level": "Рівень стиснення Zip",
   "admin.config.share.zip-compression-level.description": "Регулювання рівня балансу між розміром файлу і швидкістю стиснення. Допустимі значення від 0 до 9, з 0 без стиснення, а 9 - максимальне стиснення. ",
+  "admin.config.share.chunk-size": "Chunk size",
+  "admin.config.share.chunk-size.description": "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
   "admin.config.smtp.enabled": "Увімкнено",
   "admin.config.smtp.enabled.description": "Чи увімкнено SMTP. Встановіть значення true тільки якщо ви ввели хост, порт, email, користувач і пароль вашого SMTP-сервера.",
   "admin.config.smtp.host": "Хост",

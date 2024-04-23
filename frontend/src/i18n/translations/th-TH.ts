@@ -314,6 +314,8 @@ export default {
   "admin.config.share.max-size.description": "ขนาดสูงสุดของแชร์",
   "admin.config.share.zip-compression-level": "ระดับการบีบอัดไฟล์ Zip",
   "admin.config.share.zip-compression-level.description": "ปรับระดับเพื่อปรับความสมดุลระหว่างขนาดไฟล์และความเร็วในการบีบอัด ค่าอยู่ระหว่าง 0-9 โดย 0 คือไม่มีการบีบอัดและ 9 คือการบีบอัดสูงสุด",
+  "admin.config.share.chunk-size": "Chunk size",
+  "admin.config.share.chunk-size.description": "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
   "admin.config.smtp.enabled": "เปิด",
   "admin.config.smtp.enabled.description": "เปิดใช้งาน SMTP สำหรับการส่งอีเมล์์์์์์  เปิดได้เท่านั้นต่อเมื่อคุณใส่ข้อมูลโฮสต์ พอร์ต อีเมล์ ผู้ใช้ และรหัสผ่านของเซิร์ฟเวอร์ SMTP ของคุณ",
   "admin.config.smtp.host": "โฮสต์",
