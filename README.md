@@ -88,7 +88,6 @@ View the [OAuth 2 guide](/docs/oauth2-guide.md) for more information.
 
 - [Synology NAS installation](https://mariushosting.com/how-to-install-pingvin-share-on-your-synology-nas/)
 - [Zeabur installation](https://zeabur.com/templates/19G6OK)
-   [![Deploy on Zeabur](https://zeabur.com/button.svg)](https://zeabur.com/templates/19G6OK) 
 
 ### Upgrade to a new version
 
