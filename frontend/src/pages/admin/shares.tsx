@@ -8,11 +8,11 @@ import ManageShareTable from "../../components/admin/shares/ManageShareTable";
 import useConfig from "../../hooks/config.hook";
 import useTranslate from "../../hooks/useTranslate.hook";
 import shareService from "../../services/share.service";
-import { Share } from "../../types/share.type";
+import { MyShare } from "../../types/share.type";
 import toast from "../../utils/toast.util";
 
 const Shares = () => {
-  const [shares, setShares] = useState<Share[]>([]);
+  const [shares, setShares] = useState<MyShare[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const config = useConfig();
@@ -27,7 +27,7 @@ const Shares = () => {
     });
   };
 
-  const deleteShare = (share: Share) => {
+  const deleteShare = (share: MyShare) => {
     modals.openConfirmModal({
       title: t("admin.shares.edit.delete.title", {
         id: share.id,

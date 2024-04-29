@@ -264,7 +264,9 @@ export default {
   // /admin/shares
   "admin.shares.title": "Share management",
   "admin.shares.table.id": "Share ID",
-  "admin.shares.table.username": "Username",
+  "admin.shares.table.username": "Creator",
+  "admin.shares.table.visitors": "Visitors",
+  "admin.shares.table.expires": "Expires At",
 
   "admin.shares.edit.delete.title": "Delete share {id}",
   "admin.shares.edit.delete.description":

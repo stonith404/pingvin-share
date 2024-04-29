@@ -199,7 +199,7 @@ export class ShareService {
       orderBy: {
         expiration: "desc",
       },
-      include: { recipients: true, files: true },
+      include: { recipients: true, files: true, creator: true },
     });
 
     return shares.map((share) => {
