@@ -194,6 +194,22 @@ export class ShareService {
     });
   }
 
+  async getShares() {
+    const shares = await this.prisma.share.findMany({
+      orderBy: {
+        expiration: "desc",
+      },
+      include: { recipients: true, files: true },
+    });
+
+    return shares.map((share) => {
+      return {
+        ...share,
+        recipients: share.recipients.map((recipients) => recipients.email),
+      };
+    });
+  }
+
   async getSharesByUser(userId: string) {
     const shares = await this.prisma.share.findMany({
       where: {

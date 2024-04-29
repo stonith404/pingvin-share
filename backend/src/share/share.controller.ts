@@ -14,6 +14,7 @@ import { Throttle } from "@nestjs/throttler";
 import { User } from "@prisma/client";
 import { Request, Response } from "express";
 import { GetUser } from "src/auth/decorator/getUser.decorator";
+import { AdministratorGuard } from "src/auth/guard/isAdmin.guard";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
 import { CreateShareDTO } from "./dto/createShare.dto";
 import { MyShareDTO } from "./dto/myShare.dto";
@@ -28,6 +29,14 @@ import { ShareService } from "./share.service";
 @Controller("shares")
 export class ShareController {
   constructor(private shareService: ShareService) {}
+
+  @Get("all")
+  @UseGuards(JwtGuard, AdministratorGuard)
+  async getAllShares() {
+    return new MyShareDTO().fromList(
+      await this.shareService.getShares(),
+    );
+  }
 
   @Get()
   @UseGuards(JwtGuard)

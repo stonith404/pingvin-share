@@ -224,6 +224,7 @@ export default {
   // /admin
   "admin.title": "Administration",
   "admin.button.users": "User management",
+  "admin.button.shares": "Share management",
   "admin.button.config": "Configuration",
   "admin.version": "Version",
   // END /admin
@@ -259,6 +260,17 @@ export default {
     "If checked, the user will be able to access the admin panel.",
 
   // END /admin/users
+
+  // /admin/shares
+  "admin.shares.title": "Share management",
+  "admin.shares.table.id": "Share ID",
+  "admin.shares.table.username": "Username",
+
+  "admin.shares.edit.delete.title": "Delete share {id}",
+  "admin.shares.edit.delete.description":
+    "Do you really want to delete this share?",
+
+  // END /admin/shares
 
   // /upload
   "upload.title": "Upload",

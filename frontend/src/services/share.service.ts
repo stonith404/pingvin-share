@@ -11,6 +11,10 @@ import {
 } from "../types/share.type";
 import api from "./api.service";
 
+const list = async (id: string): Promise<Share[]> => {
+  return (await api.get(`shares/all`)).data;
+};
+
 const create = async (share: CreateShare) => {
   return (await api.post("shares", share)).data;
 };
@@ -131,6 +135,7 @@ const removeReverseShare = async (id: string) => {
 };
 
 export default {
+  list,
   create,
   completeShare,
   revertComplete,
