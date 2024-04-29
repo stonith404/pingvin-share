@@ -10,7 +10,7 @@ import {
 } from "@mantine/core";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { TbRefresh, TbSettings, TbShares, TbUsers } from "react-icons/tb";
+import { TbRefresh, TbSettings, TbCameraShare, TbUsers } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 import Meta from "../../components/Meta";
 import useTranslate from "../../hooks/useTranslate.hook";
@@ -43,7 +43,7 @@ const Admin = () => {
     },
     {
       title: t("admin.button.shares"),
-      icon: TbShares,
+      icon: TbCameraShare,
       route: "/admin/shares",
     },
     {

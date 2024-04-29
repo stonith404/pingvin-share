@@ -11,7 +11,7 @@ import {
 } from "../types/share.type";
 import api from "./api.service";
 
-const list = async (id: string): Promise<Share[]> => {
+const list = async (): Promise<Share[]> => {
   return (await api.get(`shares/all`)).data;
 };
 
