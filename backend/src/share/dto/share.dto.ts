@@ -7,6 +7,9 @@ export class ShareDTO {
   id: string;
 
   @Expose()
+  name?: string;
+
+  @Expose()
   expiration: Date;
 
   @Expose()
@@ -22,6 +25,9 @@ export class ShareDTO {
 
   @Expose()
   hasPassword: boolean;
+
+  @Expose()
+  size: number;
 
   from(partial: Partial<ShareDTO>) {
     return plainToClass(ShareDTO, partial, { excludeExtraneousValues: true });

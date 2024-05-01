@@ -12,18 +12,15 @@ const showShareInformationsModal = (
   modals: ModalsContextProps,
   share: MyShare,
   appUrl: string,
-  maxShareSize: number,
+  maxShareSize: number
 ) => {
   const t = translateOutsideContext();
   const link = `${appUrl}/s/${share.id}`;
 
-  let shareSize: number = 0;
-  for (let file of share.files as FileMetaData[])
-    shareSize += parseInt(file.size);
 
-  const formattedShareSize = byteToHumanSizeString(shareSize);
+  const formattedShareSize = byteToHumanSizeString(share.size);
   const formattedMaxShareSize = byteToHumanSizeString(maxShareSize);
-  const shareSizeProgress = (shareSize / maxShareSize) * 100;
+  const shareSizeProgress = (share.size / maxShareSize) * 100;
 
   const formattedCreatedAt = moment(share.createdAt).format("LLL");
   const formattedExpiration =
@@ -42,12 +39,18 @@ const showShareInformationsModal = (
           </b>
           {share.id}
         </Text>
+        <Text size="sm">
+          <b>
+            <FormattedMessage id="account.shares.table.name" />:{" "}
+          </b>
+          {share.name || "-"}
+        </Text>
 
         <Text size="sm">
           <b>
             <FormattedMessage id="account.shares.table.description" />:{" "}
           </b>
-          {share.description || "No description"}
+          {share.description || "-"}
         </Text>
 
         <Text size="sm">
@@ -75,15 +78,15 @@ const showShareInformationsModal = (
         </Text>
 
         <Flex align="center" justify="center">
-          {shareSize / maxShareSize < 0.1 && (
+          {share.size / maxShareSize < 0.1 && (
             <Text size="xs" style={{ marginRight: "4px" }}>
               {formattedShareSize}
             </Text>
           )}
           <Progress
             value={shareSizeProgress}
-            label={shareSize / maxShareSize >= 0.1 ? formattedShareSize : ""}
-            style={{ width: shareSize / maxShareSize < 0.1 ? "70%" : "80%" }}
+            label={share.size / maxShareSize >= 0.1 ? formattedShareSize : ""}
+            style={{ width: share.size / maxShareSize < 0.1 ? "70%" : "80%" }}
             size="xl"
             radius="xl"
           />

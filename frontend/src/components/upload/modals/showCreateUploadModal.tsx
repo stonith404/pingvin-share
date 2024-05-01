@@ -42,7 +42,7 @@ const showCreateUploadModal = (
     maxExpirationInHours: number;
   },
   files: FileUpload[],
-  uploadCallback: (createShare: CreateShare, files: FileUpload[]) => void,
+  uploadCallback: (createShare: CreateShare, files: FileUpload[]) => void
 ) => {
   const t = translateOutsideContext();
 
@@ -92,11 +92,16 @@ const CreateUploadModalBody = ({
       .matches(new RegExp("^[a-zA-Z0-9_-]*$"), {
         message: t("upload.modal.link.error.invalid"),
       }),
+    name: yup
+      .string()
+      .transform((value) => value || undefined)
+      .min(3, t("common.error.too-short", { length: 3 }))
+      .max(30, t("common.error.too-long", { length: 30 })),
     password: yup
       .string()
       .transform((value) => value || undefined)
-      .min(3)
-      .max(30),
+      .min(3, t("common.error.too-short", { length: 3 }))
+      .max(30, t("common.error.too-long", { length: 30 })),
     maxViews: yup
       .number()
       .transform((value) => value || undefined)
@@ -105,6 +110,7 @@ const CreateUploadModalBody = ({
 
   const form = useForm({
     initialValues: {
+      name: undefined,
       link: generatedLink,
       recipients: [] as string[],
       password: undefined,
@@ -129,15 +135,15 @@ const CreateUploadModalBody = ({
         form.values.expiration_num,
         form.values.expiration_unit.replace(
           "-",
-          "",
-        ) as moment.unitOfTime.DurationConstructor,
+          ""
+        ) as moment.unitOfTime.DurationConstructor
       );
 
       if (
         options.maxExpirationInHours != 0 &&
         (form.values.never_expires ||
           expirationDate.isAfter(
-            moment().add(options.maxExpirationInHours, "hours"),
+            moment().add(options.maxExpirationInHours, "hours")
           ))
       ) {
         form.setFieldError(
@@ -146,7 +152,7 @@ const CreateUploadModalBody = ({
             max: moment
               .duration(options.maxExpirationInHours, "hours")
               .humanize(),
-          }),
+          })
         );
         return;
       }
@@ -154,6 +160,7 @@ const CreateUploadModalBody = ({
       uploadCallback(
         {
           id: values.link,
+          name: values.name,
           expiration: expirationString,
           recipients: values.recipients,
           description: values.description,
@@ -162,7 +169,7 @@ const CreateUploadModalBody = ({
             maxViews: values.maxViews || undefined,
           },
         },
-        files,
+        files
       );
       modals.closeAll();
     }
@@ -199,7 +206,7 @@ const CreateUploadModalBody = ({
                   "link",
                   Buffer.from(Math.random().toString(), "utf8")
                     .toString("base64")
-                    .substr(10, 7),
+                    .substr(10, 7)
                 )
               }
             >
@@ -300,7 +307,7 @@ const CreateUploadModalBody = ({
                     neverExpires: t("upload.modal.completed.never-expires"),
                     expiresOn: t("upload.modal.completed.expires-on"),
                   },
-                  form,
+                  form
                 )}
               </Text>
             </>
@@ -308,14 +315,21 @@ const CreateUploadModalBody = ({
           <Accordion>
             <Accordion.Item value="description" sx={{ borderBottom: "none" }}>
               <Accordion.Control>
-                <FormattedMessage id="upload.modal.accordion.description.title" />
+                <FormattedMessage id="upload.modal.accordion.name-and-description.title" />
               </Accordion.Control>
               <Accordion.Panel>
                 <Stack align="stretch">
+                  <TextInput
+                    variant="filled"
+                    placeholder={t(
+                      "upload.modal.accordion.name-and-description.name.placeholder"
+                    )}
+                    {...form.getInputProps("name")}
+                  />
                   <Textarea
                     variant="filled"
                     placeholder={t(
-                      "upload.modal.accordion.description.placeholder",
+                      "upload.modal.accordion.name-and-description.description.placeholder"
                     )}
                     {...form.getInputProps("description")}
                   />
@@ -339,7 +353,7 @@ const CreateUploadModalBody = ({
                       if (!query.match(/^\S+@\S+\.\S+$/)) {
                         form.setFieldError(
                           "recipients",
-                          t("upload.modal.accordion.email.invalid-email"),
+                          t("upload.modal.accordion.email.invalid-email")
                         );
                       } else {
                         form.setFieldError("recipients", null);
@@ -365,7 +379,7 @@ const CreateUploadModalBody = ({
                   <PasswordInput
                     variant="filled"
                     placeholder={t(
-                      "upload.modal.accordion.security.password.placeholder",
+                      "upload.modal.accordion.security.password.placeholder"
                     )}
                     label={t("upload.modal.accordion.security.password.label")}
                     autoComplete="off"
@@ -376,7 +390,7 @@ const CreateUploadModalBody = ({
                     type="number"
                     variant="filled"
                     placeholder={t(
-                      "upload.modal.accordion.security.max-views.placeholder",
+                      "upload.modal.accordion.security.max-views.placeholder"
                     )}
                     label={t("upload.modal.accordion.security.max-views.label")}
                     {...form.getInputProps("maxViews")}

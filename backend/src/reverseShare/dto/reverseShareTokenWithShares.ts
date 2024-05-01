@@ -13,7 +13,7 @@ export class ReverseShareTokenWithShares extends OmitType(ReverseShareDTO, [
   @Type(() => OmitType(MyShareDTO, ["recipients", "hasPassword"] as const))
   shares: Omit<
     MyShareDTO,
-    "recipients" | "files" | "from" | "fromList" | "hasPassword"
+    "recipients" | "files" | "from" | "fromList" | "hasPassword" | "size"
   >[];
 
   @Expose()
