@@ -91,7 +91,7 @@ const Share = ({ shareId }: { shareId: string }) => {
   return (
     <>
       <Meta
-        title={t("share.title", { shareId: share?.name || shareId})}
+        title={t("share.title", { shareId: share?.name || shareId })}
         description={t("share.description")}
       />
 

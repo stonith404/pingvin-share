@@ -68,7 +68,7 @@ const MyShares = () => {
           <Table>
             <thead>
               <tr>
-              <th>
+                <th>
                   <FormattedMessage id="account.shares.table.id" />
                 </th>
                 <th>
