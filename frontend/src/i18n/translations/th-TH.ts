@@ -169,6 +169,7 @@ export default {
   // /admin
   "admin.title": "แผงควบคุมระบบ",
   "admin.button.users": "การจัดการผู้ใช้",
+  "admin.button.shares": "Share management",
   "admin.button.config": "การตั้งค่า",
   "admin.version": "เวอร์ชัน",
   // END /admin
@@ -195,6 +196,15 @@ export default {
   "admin.users.modal.create.admin": "สิทธิ์ของผู้ดูแลระบบ",
   "admin.users.modal.create.admin.description": "หากติ๊กเลือก ผู้ใช้จะสามารถเข้าถึงแผงควบคุมระบบได้",
   // END /admin/users
+  // /admin/shares
+  "admin.shares.title": "Share management",
+  "admin.shares.table.id": "Share ID",
+  "admin.shares.table.username": "Creator",
+  "admin.shares.table.visitors": "Visitors",
+  "admin.shares.table.expires": "Expires At",
+  "admin.shares.edit.delete.title": "Delete share {id}",
+  "admin.shares.edit.delete.description": "Do you really want to delete this share?",
+  // END /admin/shares
   // /upload
   "upload.title": "อัปโหลด",
   "upload.notify.generic-error": "เกิดข้อผิดพลาดขณะที่กำลังจัดการการแชร์ของคุณ",
