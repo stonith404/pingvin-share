@@ -169,6 +169,7 @@ export default {
   // /admin
   "admin.title": "Администрирование",
   "admin.button.users": "Управление пользователями",
+  "admin.button.shares": "Share management",
   "admin.button.config": "Конфигурация",
   "admin.version": "Версия",
   // END /admin
@@ -195,6 +196,15 @@ export default {
   "admin.users.modal.create.admin": "Права администратора",
   "admin.users.modal.create.admin.description": "Если отмечено, пользователь будет иметь доступ к панели администратора.",
   // END /admin/users
+  // /admin/shares
+  "admin.shares.title": "Share management",
+  "admin.shares.table.id": "Share ID",
+  "admin.shares.table.username": "Creator",
+  "admin.shares.table.visitors": "Visitors",
+  "admin.shares.table.expires": "Expires At",
+  "admin.shares.edit.delete.title": "Delete share {id}",
+  "admin.shares.edit.delete.description": "Do you really want to delete this share?",
+  // END /admin/shares
   // /upload
   "upload.title": "Загрузить",
   "upload.notify.generic-error": "Произошла ошибка при завершении вашей загрузки.",
