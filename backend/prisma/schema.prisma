@@ -75,6 +75,7 @@ model Share {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
 
+  name          String?
   uploadLocked  Boolean  @default(false)
   isZipReady    Boolean  @default(false)
   views         Int      @default(0)

@@ -214,6 +214,7 @@ export class ShareService {
     return shares.map((share) => {
       return {
         ...share,
+        size: share.files.reduce((acc, file) => acc + parseInt(file.size), 0),
         recipients: share.recipients.map((recipients) => recipients.email),
       };
     });

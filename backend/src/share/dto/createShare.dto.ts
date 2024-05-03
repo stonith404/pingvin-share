@@ -18,6 +18,10 @@ export class CreateShareDTO {
   @Length(3, 50)
   id: string;
 
+  @Length(3, 30)
+  @IsOptional()
+  name: string;
+
   @IsString()
   expiration: string;
 

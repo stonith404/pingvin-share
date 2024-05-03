@@ -91,13 +91,13 @@ const Share = ({ shareId }: { shareId: string }) => {
   return (
     <>
       <Meta
-        title={t("share.title", { shareId })}
+        title={t("share.title", { shareId: share?.name || shareId })}
         description={t("share.description")}
       />
 
       <Group position="apart" mb="lg">
         <Box style={{ maxWidth: "70%" }}>
-          <Title order={3}>{share?.id}</Title>
+          <Title order={3}>{share?.name || share?.id}</Title>
           <Text size="sm">{share?.description}</Text>
         </Box>
         {share?.files.length > 1 && <DownloadAllButton shareId={shareId} />}

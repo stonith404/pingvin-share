@@ -92,11 +92,16 @@ const CreateUploadModalBody = ({
       .matches(new RegExp("^[a-zA-Z0-9_-]*$"), {
         message: t("upload.modal.link.error.invalid"),
       }),
+    name: yup
+      .string()
+      .transform((value) => value || undefined)
+      .min(3, t("common.error.too-short", { length: 3 }))
+      .max(30, t("common.error.too-long", { length: 30 })),
     password: yup
       .string()
       .transform((value) => value || undefined)
-      .min(3)
-      .max(30),
+      .min(3, t("common.error.too-short", { length: 3 }))
+      .max(30, t("common.error.too-long", { length: 30 })),
     maxViews: yup
       .number()
       .transform((value) => value || undefined)
@@ -105,6 +110,7 @@ const CreateUploadModalBody = ({
 
   const form = useForm({
     initialValues: {
+      name: undefined,
       link: generatedLink,
       recipients: [] as string[],
       password: undefined,
@@ -154,6 +160,7 @@ const CreateUploadModalBody = ({
       uploadCallback(
         {
           id: values.link,
+          name: values.name,
           expiration: expirationString,
           recipients: values.recipients,
           description: values.description,
@@ -308,14 +315,21 @@ const CreateUploadModalBody = ({
           <Accordion>
             <Accordion.Item value="description" sx={{ borderBottom: "none" }}>
               <Accordion.Control>
-                <FormattedMessage id="upload.modal.accordion.description.title" />
+                <FormattedMessage id="upload.modal.accordion.name-and-description.title" />
               </Accordion.Control>
               <Accordion.Panel>
                 <Stack align="stretch">
+                  <TextInput
+                    variant="filled"
+                    placeholder={t(
+                      "upload.modal.accordion.name-and-description.name.placeholder",
+                    )}
+                    {...form.getInputProps("name")}
+                  />
                   <Textarea
                     variant="filled"
                     placeholder={t(
-                      "upload.modal.accordion.description.placeholder",
+                      "upload.modal.accordion.name-and-description.description.placeholder",
                     )}
                     {...form.getInputProps("description")}
                   />

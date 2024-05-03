@@ -69,14 +69,11 @@ const MyShares = () => {
             <thead>
               <tr>
                 <th>
+                  <FormattedMessage id="account.shares.table.id" />
+                </th>
+                <th>
                   <FormattedMessage id="account.shares.table.name" />
                 </th>
-                <MediaQuery smallerThan="md" styles={{ display: "none" }}>
-                  <th>
-                    <FormattedMessage id="account.shares.table.description" />
-                  </th>
-                </MediaQuery>
-
                 <th>
                   <FormattedMessage id="account.shares.table.visitors" />
                 </th>
@@ -90,18 +87,7 @@ const MyShares = () => {
               {shares.map((share) => (
                 <tr key={share.id}>
                   <td>{share.id}</td>
-                  <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
-                    <td
-                      style={{
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        whiteSpace: "nowrap",
-                        maxWidth: "300px",
-                      }}
-                    >
-                      {share.description || ""}
-                    </td>
-                  </MediaQuery>
+                  <td>{share.name}</td>
                   <td>{share.views}</td>
                   <td>
                     {moment(share.expiration).unix() === 0
