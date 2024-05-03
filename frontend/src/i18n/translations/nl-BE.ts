@@ -169,6 +169,7 @@ export default {
   // /admin
   "admin.title": "Instellingen",
   "admin.button.users": "Gebruikers beheer",
+  "admin.button.shares": "Share management",
   "admin.button.config": "Configuratie",
   "admin.version": "Versie",
   // END /admin
@@ -195,6 +196,15 @@ export default {
   "admin.users.modal.create.admin": "Beheerdersrechten",
   "admin.users.modal.create.admin.description": "Indien aangevinkt, heeft de gebruiker toegang tot de beheeromgeving.",
   // END /admin/users
+  // /admin/shares
+  "admin.shares.title": "Share management",
+  "admin.shares.table.id": "Share ID",
+  "admin.shares.table.username": "Creator",
+  "admin.shares.table.visitors": "Visitors",
+  "admin.shares.table.expires": "Expires At",
+  "admin.shares.edit.delete.title": "Delete share {id}",
+  "admin.shares.edit.delete.description": "Do you really want to delete this share?",
+  // END /admin/shares
   // /upload
   "upload.title": "Uploaden",
   "upload.notify.generic-error": "Er is een fout opgetreden tijdens het voltooien van uw share.",
