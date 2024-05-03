@@ -1,3 +1,4 @@
+import arabic from "./translations/ar-EG";
 import danish from "./translations/da-DK";
 import german from "./translations/de-DE";
 import greek from "./translations/el-GR";
@@ -5,17 +6,19 @@ import english from "./translations/en-US";
 import spanish from "./translations/es-ES";
 import finnish from "./translations/fi-FI";
 import french from "./translations/fr-FR";
+import hungarian from "./translations/hu-HU";
 import italian from "./translations/it-IT";
 import japanese from "./translations/ja-JP";
+import korean from "./translations/ko-KR";
 import dutch from "./translations/nl-BE";
 import polish from "./translations/pl-PL";
 import portuguese from "./translations/pt-BR";
 import russian from "./translations/ru-RU";
-import ukrainian from "./translations/uk-UA";
 import slovenian from "./translations/sl-SI";
 import serbian from "./translations/sr-SP";
 import swedish from "./translations/sv-SE";
 import thai from "./translations/th-TH";
+import ukrainian from "./translations/uk-UA";
 import chineseSimplified from "./translations/zh-CN";
 import chineseTraditional from "./translations/zh-TW";
 
@@ -123,11 +126,16 @@ export const LOCALES = {
   ARABIC: {
     name: "العربية",
     code: "ar-EG",
-    messages: {},
+    messages: arabic,
   },
   HUNGARIAN: {
     name: "Hungarian",
     code: "hu-HU",
-    messages: {},
+    messages: hungarian,
+  },
+  KOREAN: {
+    name: "한국어",
+    code: "ko-KR",
+    messages: korean,
   },
 };
