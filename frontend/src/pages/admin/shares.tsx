@@ -1,11 +1,9 @@
-import { Button, Group, Space, Text, Title } from "@mantine/core";
+import { Group, Space, Text, Title } from "@mantine/core";
 import { useModals } from "@mantine/modals";
 import { useEffect, useState } from "react";
-import { TbPlus } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 import Meta from "../../components/Meta";
 import ManageShareTable from "../../components/admin/shares/ManageShareTable";
-import useConfig from "../../hooks/config.hook";
 import useTranslate from "../../hooks/useTranslate.hook";
 import shareService from "../../services/share.service";
 import { MyShare } from "../../types/share.type";
@@ -15,7 +13,6 @@ const Shares = () => {
   const [shares, setShares] = useState<MyShare[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const config = useConfig();
   const modals = useModals();
   const t = useTranslate();
 
@@ -66,7 +63,6 @@ const Shares = () => {
 
       <ManageShareTable
         shares={shares}
-        getShares={getShares}
         deleteShare={deleteShare}
         isLoading={isLoading}
       />

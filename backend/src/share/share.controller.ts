@@ -26,6 +26,7 @@ import { ShareOwnerGuard } from "./guard/shareOwner.guard";
 import { ShareSecurityGuard } from "./guard/shareSecurity.guard";
 import { ShareTokenSecurity } from "./guard/shareTokenSecurity.guard";
 import { ShareService } from "./share.service";
+import { AdminShareDTO } from "./dto/adminShare.dto";
 @Controller("shares")
 export class ShareController {
   constructor(private shareService: ShareService) {}
@@ -33,9 +34,7 @@ export class ShareController {
   @Get("all")
   @UseGuards(JwtGuard, AdministratorGuard)
   async getAllShares() {
-    return new MyShareDTO().fromList(
-      await this.shareService.getShares(),
-    );
+    return new AdminShareDTO().fromList(await this.shareService.getShares());
   }
 
   @Get()

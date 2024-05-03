@@ -199,13 +199,13 @@ export class ShareService {
       orderBy: {
         expiration: "desc",
       },
-      include: { recipients: true, files: true, creator: true },
+      include: { files: true, creator: true },
     });
 
     return shares.map((share) => {
       return {
         ...share,
-        recipients: share.recipients.map((recipients) => recipients.email),
+        size: share.files.reduce((acc, file) => acc + parseInt(file.size), 0),
       };
     });
   }
@@ -230,7 +230,6 @@ export class ShareService {
     return shares.map((share) => {
       return {
         ...share,
-        size: share.files.reduce((acc, file) => acc + parseInt(file.size), 0),
         recipients: share.recipients.map((recipients) => recipients.email),
       };
     });
