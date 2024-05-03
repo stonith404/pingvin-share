@@ -56,7 +56,7 @@ export default {
   // END /auth/totp
   // /auth/reset-password
   "resetPassword.title": "忘记密码？",
-  "resetPassword.description": "请输入电子邮件接受重置密码邮件",
+  "resetPassword.description": "请输入电子邮箱地址来接收重置密码邮件",
   "resetPassword.notify.success": "A message with a link to reset your password has been sent if the email exists.",
   "resetPassword.button.back": "返回登录页面",
   "resetPassword.text.resetPassword": "重置密码",
