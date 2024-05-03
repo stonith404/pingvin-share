@@ -321,8 +321,9 @@ export default {
   "upload.modal.expires.year-singular": "Year",
   "upload.modal.expires.year-plural": "Years",
 
-  "upload.modal.accordion.description.title": "Description",
-  "upload.modal.accordion.description.placeholder":
+  "upload.modal.accordion.name-and-description.title": "Name and description",
+  "upload.modal.accordion.name-and-description.name.placeholder": "Name",
+  "upload.modal.accordion.name-and-description.description.placeholder":
     "Note for the recipients of this share",
 
   "upload.modal.accordion.email.title": "Email recipients",
