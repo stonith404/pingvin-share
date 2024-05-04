@@ -1,3 +1,11 @@
+## [0.24.0](https://github.com/stonith404/pingvin-share/compare/v0.23.1...v0.24.0) (2024-05-04)
+
+
+### Features
+
+* add admin-exclusive share-management page ([#461](https://github.com/stonith404/pingvin-share/issues/461)) ([3b1c9f1](https://github.com/stonith404/pingvin-share/commit/3b1c9f1efb7d02469e92537a2d1378b6cb412878))
+* add name property to share ([#462](https://github.com/stonith404/pingvin-share/issues/462)) ([b717663](https://github.com/stonith404/pingvin-share/commit/b717663b5c3a4a98e361e7e39b680f4852537c59))
+
 ## [0.23.1](https://github.com/stonith404/pingvin-share/compare/v0.23.0...v0.23.1) (2024-04-05)
 
 
