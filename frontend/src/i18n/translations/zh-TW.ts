@@ -169,6 +169,7 @@ export default {
   // /admin
   "admin.title": "管理",
   "admin.button.users": "使用者管理",
+  "admin.button.shares": "Share management",
   "admin.button.config": "配置管理",
   "admin.version": "版本",
   // END /admin
@@ -195,6 +196,15 @@ export default {
   "admin.users.modal.create.admin": "管理員",
   "admin.users.modal.create.admin.description": "如果勾選，使用者將能查看管理員面板",
   // END /admin/users
+  // /admin/shares
+  "admin.shares.title": "Share management",
+  "admin.shares.table.id": "Share ID",
+  "admin.shares.table.username": "Creator",
+  "admin.shares.table.visitors": "Visitors",
+  "admin.shares.table.expires": "Expires At",
+  "admin.shares.edit.delete.title": "Delete share {id}",
+  "admin.shares.edit.delete.description": "Do you really want to delete this share?",
+  // END /admin/shares
   // /upload
   "upload.title": "上傳",
   "upload.notify.generic-error": "建立分享的過程中發生了錯誤",

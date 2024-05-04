@@ -169,6 +169,7 @@ export default {
   // /admin
   "admin.title": "Администрација",
   "admin.button.users": "Управљање корисницима",
+  "admin.button.shares": "Share management",
   "admin.button.config": "Конфигурација",
   "admin.version": "Верзија",
   // END /admin
@@ -195,6 +196,15 @@ export default {
   "admin.users.modal.create.admin": "Администраторске привилегије",
   "admin.users.modal.create.admin.description": "Ако је означено, корисник ће моћи да приступи административном панелу.",
   // END /admin/users
+  // /admin/shares
+  "admin.shares.title": "Share management",
+  "admin.shares.table.id": "Share ID",
+  "admin.shares.table.username": "Creator",
+  "admin.shares.table.visitors": "Visitors",
+  "admin.shares.table.expires": "Expires At",
+  "admin.shares.edit.delete.title": "Delete share {id}",
+  "admin.shares.edit.delete.description": "Do you really want to delete this share?",
+  // END /admin/shares
   // /upload
   "upload.title": "Пошаљи",
   "upload.notify.generic-error": "Дошло је до грешке при довршавању дељења.",

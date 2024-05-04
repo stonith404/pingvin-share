@@ -169,6 +169,7 @@ export default {
   // /admin
   "admin.title": "Διαχείριση",
   "admin.button.users": "Διαχείριση χρηστών",
+  "admin.button.shares": "Share management",
   "admin.button.config": "Διαμόρφωση",
   "admin.version": "Έκδοση",
   // END /admin
@@ -195,6 +196,15 @@ export default {
   "admin.users.modal.create.admin": "Δικαιώματα διαχειριστή",
   "admin.users.modal.create.admin.description": "Αν ενεργοποιηθεί, ο χρήστης θα μπορεί να έχει πρόσβαση στον πίνακα διαχείρισης.",
   // END /admin/users
+  // /admin/shares
+  "admin.shares.title": "Share management",
+  "admin.shares.table.id": "Share ID",
+  "admin.shares.table.username": "Creator",
+  "admin.shares.table.visitors": "Visitors",
+  "admin.shares.table.expires": "Expires At",
+  "admin.shares.edit.delete.title": "Delete share {id}",
+  "admin.shares.edit.delete.description": "Do you really want to delete this share?",
+  // END /admin/shares
   // /upload
   "upload.title": "Μεταφόρτωση",
   "upload.notify.generic-error": "Παρουσιάστηκε σφάλμα κατά την ολοκλήρωση της κοινής χρήσης σας.",

@@ -169,6 +169,7 @@ export default {
   // /admin
   "admin.title": "Administracja",
   "admin.button.users": "Zarządzanie użytkownikami",
+  "admin.button.shares": "Share management",
   "admin.button.config": "Konfiguracja",
   "admin.version": "Wersja",
   // END /admin
@@ -195,6 +196,15 @@ export default {
   "admin.users.modal.create.admin": "Uprawnienia administratora",
   "admin.users.modal.create.admin.description": "Jeśli zaznaczone, użytkownik będzie miał dostęp do panelu administratora.",
   // END /admin/users
+  // /admin/shares
+  "admin.shares.title": "Share management",
+  "admin.shares.table.id": "Share ID",
+  "admin.shares.table.username": "Creator",
+  "admin.shares.table.visitors": "Visitors",
+  "admin.shares.table.expires": "Expires At",
+  "admin.shares.edit.delete.title": "Delete share {id}",
+  "admin.shares.edit.delete.description": "Do you really want to delete this share?",
+  // END /admin/shares
   // /upload
   "upload.title": "Prześlij",
   "upload.notify.generic-error": "Wystąpił błąd podczas zakończenia tworzenia udziału.",

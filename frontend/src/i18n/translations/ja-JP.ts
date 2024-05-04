@@ -169,6 +169,7 @@ export default {
   // /admin
   "admin.title": "管理画面",
   "admin.button.users": "ユーザー管理",
+  "admin.button.shares": "Share management",
   "admin.button.config": "設定",
   "admin.version": "バージョン",
   // END /admin
@@ -195,6 +196,15 @@ export default {
   "admin.users.modal.create.admin": "管理者権限",
   "admin.users.modal.create.admin.description": "チェックされている場合、ユーザーは管理画面にアクセスできるようになります。",
   // END /admin/users
+  // /admin/shares
+  "admin.shares.title": "Share management",
+  "admin.shares.table.id": "Share ID",
+  "admin.shares.table.username": "Creator",
+  "admin.shares.table.visitors": "Visitors",
+  "admin.shares.table.expires": "Expires At",
+  "admin.shares.edit.delete.title": "Delete share {id}",
+  "admin.shares.edit.delete.description": "Do you really want to delete this share?",
+  // END /admin/shares
   // /upload
   "upload.title": "アップロード",
   "upload.notify.generic-error": "共有を仕上げている最中にエラーが発生しました。",

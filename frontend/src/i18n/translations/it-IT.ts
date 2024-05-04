@@ -169,6 +169,7 @@ export default {
   // /admin
   "admin.title": "Amministrazione",
   "admin.button.users": "Gestione degli utenti",
+  "admin.button.shares": "Share management",
   "admin.button.config": "Configurazione",
   "admin.version": "Versione",
   // END /admin
@@ -195,6 +196,15 @@ export default {
   "admin.users.modal.create.admin": "Privilegi di amministrazione",
   "admin.users.modal.create.admin.description": "Se selezionato, l'utente sarà in grado di accedere al pannello amministratore.",
   // END /admin/users
+  // /admin/shares
+  "admin.shares.title": "Share management",
+  "admin.shares.table.id": "Share ID",
+  "admin.shares.table.username": "Creator",
+  "admin.shares.table.visitors": "Visitors",
+  "admin.shares.table.expires": "Expires At",
+  "admin.shares.edit.delete.title": "Delete share {id}",
+  "admin.shares.edit.delete.description": "Do you really want to delete this share?",
+  // END /admin/shares
   // /upload
   "upload.title": "Upload",
   "upload.notify.generic-error": "Si è verificato un errore durante il completamento della condivisione.",
@@ -229,9 +239,9 @@ export default {
   "upload.modal.expires.month-plural": "Mesi",
   "upload.modal.expires.year-singular": "Anno",
   "upload.modal.expires.year-plural": "Anni",
-  "upload.modal.accordion.name-and-description.title": "Name and description",
-  "upload.modal.accordion.name-and-description.name.placeholder": "Name",
-  "upload.modal.accordion.name-and-description.description.placeholder": "Note for the recipients of this share",
+  "upload.modal.accordion.name-and-description.title": "Nome e descrizione",
+  "upload.modal.accordion.name-and-description.name.placeholder": "Nome",
+  "upload.modal.accordion.name-and-description.description.placeholder": "Nota per i destinatari di questa condivisione",
   "upload.modal.accordion.email.title": "Destinatari di posta elettronica",
   "upload.modal.accordion.email.placeholder": "Inserisci le email dei destinatari",
   "upload.modal.accordion.email.invalid-email": "Indirizzo email non valido",
