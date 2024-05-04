@@ -1,3 +1,10 @@
+## [0.24.1](https://github.com/stonith404/pingvin-share/compare/v0.24.0...v0.24.1) (2024-05-04)
+
+
+### Bug Fixes
+
+* error on admin share management page if a share was created by an anonymous user ([c999df1](https://github.com/stonith404/pingvin-share/commit/c999df15e04a927f6e952db3c807b9591fb14894))
+
 ## [0.24.0](https://github.com/stonith404/pingvin-share/compare/v0.23.1...v0.24.0) (2024-05-04)
 
 
