@@ -4,7 +4,7 @@ export type Share = {
   id: string;
   name?: string;
   files: any;
-  creator: User;
+  creator?: User;
   description?: string;
   expiration: Date;
   size: number;

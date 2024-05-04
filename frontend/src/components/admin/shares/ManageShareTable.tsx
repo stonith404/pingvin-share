@@ -5,6 +5,7 @@ import {
   MediaQuery,
   Skeleton,
   Table,
+  Text,
 } from "@mantine/core";
 import { useClipboard } from "@mantine/hooks";
 import { useModals } from "@mantine/modals";
@@ -65,7 +66,13 @@ const ManageShareTable = ({
                 <tr key={share.id}>
                   <td>{share.id}</td>
                   <td>{share.name}</td>
-                  <td>{share.creator.username}</td>
+                  <td>
+                    {share.creator ? (
+                      share.creator.username
+                    ) : (
+                      <Text color="dimmed">Anonymous</Text>
+                    )}
+                  </td>
                   <td>{share.views}</td>
                   <td>{byteToHumanSizeString(share.size)}</td>
                   <td>
