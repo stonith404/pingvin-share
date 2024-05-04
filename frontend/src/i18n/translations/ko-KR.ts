@@ -1,17 +1,17 @@
 export default {
   // Navbar
-  "navbar.upload": "Upload",
-  "navbar.signin": "Sign in",
-  "navbar.home": "Home",
-  "navbar.signup": "Sign Up",
-  "navbar.links.shares": "My shares",
-  "navbar.links.reverse": "Reverse shares",
-  "navbar.avatar.account": "My account",
-  "navbar.avatar.admin": "Administration",
-  "navbar.avatar.signout": "Sign out",
+  "navbar.upload": "업로드",
+  "navbar.signin": "로그인",
+  "navbar.home": "홈",
+  "navbar.signup": "계정 만들기",
+  "navbar.links.shares": "내 공유",
+  "navbar.links.reverse": "역 공유",
+  "navbar.avatar.account": "내 계정",
+  "navbar.avatar.admin": "관리자",
+  "navbar.avatar.signout": "로그아웃",
   // END navbar
   // /
-  "home.title": "A <h>self-hosted</h> file sharing platform.",
+  "home.title": "<h>직접 호스팅</h>하는 파일 공유 플랫폼.",
   "home.description": "Do you really want to give your personal files in the hand of third parties like WeTransfer?",
   "home.bullet.a.name": "Self-Hosted",
   "home.bullet.a.description": "Host Pingvin Share on your own machine.",
