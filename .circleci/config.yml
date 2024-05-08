@@ -1,0 +1,63 @@
+version: 2.1
+
+orbs:
+  aws-ecr: circleci/aws-ecr@7.3.0
+  aws-ecs: circleci/aws-ecs@3.2.0
+  
+workflows:
+  build-docker:
+    jobs:
+      - aws-ecr/build-and-push-image:
+          name: ecr-build-push
+          account-url: AWS_ECR_ACCOUNT_URL
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          dockerfile: Dockerfile
+          region: AWS_DEFAULT_REGION
+          repo: stella-prod-pingvin
+          skip-when-tags-exist: true
+          tag: 'latest,$CIRCLE_SHA1'
+          filters:
+            branches:
+              only:
+                - master
+      - aws-ecs/deploy-service-update:
+          cluster: 'stella-prod'
+          container-image-name-updates: 'container=pingvin,tag=${CIRCLE_SHA1}'
+          family: 'stella-prod-auth-pingvin'
+          service-name: 'wings'
+          force-new-deployment: true
+          task-definition-tags: "key=commit,value=${CIRCLE_SHA1}"
+          requires:
+            - ecr-build-push
+          filters:
+            branches:
+              only:
+                - master
+      - aws-ecr/build-and-push-image:
+          name: ecr-build-push-develop
+          account-url: AWS_ECR_ACCOUNT_URL
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          dockerfile: Dockerfile
+          region: AWS_DEFAULT_REGION
+          repo: stella-dev-pingvin
+          skip-when-tags-exist: true
+          tag: 'latest,$CIRCLE_SHA1'
+          filters:
+            branches:
+              only:
+                - develop
+      - aws-ecs/deploy-service-update:
+          cluster: 'stella-dev'
+          container-image-name-updates: 'container=pingvin,tag=${CIRCLE_SHA1}'
+          family: 'auth-dev-wings'
+          service-name: 'pingvin'
+          force-new-deployment: true
+          task-definition-tags: "key=commit,value=${CIRCLE_SHA1}"
+          requires:
+            - ecr-build-push-develop
+          filters:
+            branches:
+              only:
+                - develop
