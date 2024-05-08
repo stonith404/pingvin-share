@@ -20,7 +20,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
       - aws-ecs/deploy-service-update:
           cluster: 'stella-prod'
           container-image-name-updates: 'container=pingvin,tag=${CIRCLE_SHA1}'
@@ -33,7 +33,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
       - aws-ecr/build-and-push-image:
           name: ecr-build-push-develop
           account-url: AWS_ECR_ACCOUNT_URL
