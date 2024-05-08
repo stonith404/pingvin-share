@@ -24,7 +24,7 @@ workflows:
       - aws-ecs/deploy-service-update:
           cluster: 'stella-prod'
           container-image-name-updates: 'container=pingvin,tag=${CIRCLE_SHA1}'
-          family: 'stella-prod-auth-pingvin'
+          family: 'portal-prod-wings'
           service-name: 'wings'
           force-new-deployment: true
           task-definition-tags: "key=commit,value=${CIRCLE_SHA1}"
