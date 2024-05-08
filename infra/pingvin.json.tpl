@@ -33,7 +33,7 @@
         },
         {
             "name": "DATABASE_URL",
-            "value": "/tmp/data/pingvin-share.db?connection_limit=3"
+            "value": "file://tmp/data/pingvin-share.db?connection_limit=3"
         }
     ]
   }
