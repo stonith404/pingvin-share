@@ -4,6 +4,7 @@ data "template_file" "pingvin" {
   vars = {
     awslogs_group           = module.label.id
     region                  = var.region
+    ecr_image_uri           = module.pingvin.repository_url
   }
 }
 

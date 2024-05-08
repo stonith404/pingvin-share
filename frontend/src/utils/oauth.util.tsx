@@ -7,6 +7,9 @@ import {
 } from "react-icons/si";
 import React from "react";
 import api from "../services/api.service";
+import {
+  Text
+} from "@mantine/core";
 
 const getOAuthUrl = (appUrl: string, provider: string) => {
   return `${appUrl}/api/oauth/auth/${provider}`;
@@ -18,7 +21,7 @@ const getOAuthIcon = (provider: string) => {
     microsoft: <SiMicrosoft />,
     github: <SiGithub />,
     discord: <SiDiscord />,
-    oidc: <SiOpenid />,
+    oidc: <Text>Sign in with Stella</Text>,
   }[provider];
 };
 

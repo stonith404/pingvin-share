@@ -127,8 +127,8 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
           </Anchor>
         </Text>
       )}
-      <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-        <form
+      {/* <Paper withBorder shadow="md" p={30} mt={30} radius="md"> */}
+        {/* <form
           onSubmit={form.onSubmit((values) => {
             signIn(values.emailOrUsername, values.password);
           })}
@@ -154,18 +154,17 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
           <Button fullWidth mt="xl" type="submit">
             <FormattedMessage id="signin.button.submit" />
           </Button>
-        </form>
+        </form> */}
         {oauth.length > 0 && (
           <Stack mt="xl">
-            <Group align="center" className={classes.or}>
+            {/* <Group align="center" className={classes.or}>
               <Text>{t("signIn.oauth.or")}</Text>
-            </Group>
+            </Group> */}
             <Group position="center">
               {oauth.map((provider) => (
                 <Button
                   key={provider}
                   component="a"
-                  target="_blank"
                   title={t(`signIn.oauth.${provider}`)}
                   href={getOAuthUrl(config.get("general.appUrl"), provider)}
                   variant="light"
@@ -176,7 +175,7 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
             </Group>
           </Stack>
         )}
-      </Paper>
+      {/* </Paper> */}
     </Container>
   );
 };

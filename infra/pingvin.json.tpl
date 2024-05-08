@@ -1,7 +1,7 @@
 [
   {
     "name": "pingvin",
-    "image": "stonith404/pingvin-share",
+    "image": "${ecr_image_uri}",
     "cpu": 0,
     "memory": 1024,
     "essential": true,

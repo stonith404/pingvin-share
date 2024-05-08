@@ -104,7 +104,8 @@ function App({ Component, pageProps }: AppProps) {
           theme={{ colorScheme, ...globalStyle }}
         >
           <ColorSchemeProvider
-            colorScheme={colorScheme}
+            //colorScheme={colorScheme}
+            colorScheme={"light"}
             toggleColorScheme={toggleColorScheme}
           >
             <GlobalStyle />
