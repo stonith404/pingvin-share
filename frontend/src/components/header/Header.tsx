@@ -137,10 +137,10 @@ const Header = () => {
   ];
 
   let unauthenticatedLinks: NavLink[] = [
-    {
-      link: "/auth/signIn",
-      label: t("navbar.signin"),
-    },
+    // {
+    //   link: "/auth/signIn",
+    //   label: t("navbar.signin"),
+    // },
   ];
 
   if (config.get("share.allowUnauthenticatedShares")) {
