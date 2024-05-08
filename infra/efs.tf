@@ -12,7 +12,7 @@ resource "aws_efs_access_point" "this" {
 }
 
 resource "aws_efs_mount_target" "alpha" {
-  for_each           = toset(var.subnet_ids)
+  for_each           = toset(split(",", var.subnet_ids))
   file_system_id     = aws_efs_file_system.this.id
   subnet_id          = each.value
 }
