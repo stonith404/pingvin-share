@@ -14,7 +14,7 @@ workflows:
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           dockerfile: Dockerfile
           region: AWS_DEFAULT_REGION
-          repo: stella-prod-pingvin
+          repo: portal-prod-pingvin
           skip-when-tags-exist: true
           tag: 'latest,$CIRCLE_SHA1'
           filters:
@@ -41,7 +41,7 @@ workflows:
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           dockerfile: Dockerfile
           region: AWS_DEFAULT_REGION
-          repo: stella-dev-pingvin
+          repo: portal-dev-pingvin
           skip-when-tags-exist: true
           tag: 'latest,$CIRCLE_SHA1'
           filters:
