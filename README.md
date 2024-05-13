@@ -31,7 +31,7 @@ Pingvin Share is self-hosted file sharing platform and an alternative for WeTran
 ### Installation with Docker (recommended)
 
 1. Download the `docker-compose.yml` file
-2. Run `docker-compose up -d`
+2. Run `docker compose up -d`
 
 The website is now listening on `http://localhost:3000`, have fun with Pingvin Share 🐧!
 
