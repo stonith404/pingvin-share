@@ -57,7 +57,7 @@ export default {
   // /auth/reset-password
   "resetPassword.title": "忘记密码？",
   "resetPassword.description": "请输入电子邮箱地址来接收重置密码邮件",
-  "resetPassword.notify.success": "A message with a link to reset your password has been sent if the email exists.",
+  "resetPassword.notify.success": "如果该电子邮箱存在，则已发送一条包含重置密码链接的邮件。",
   "resetPassword.button.back": "返回登录页面",
   "resetPassword.text.resetPassword": "重置密码",
   "resetPassword.text.enterNewPassword": "请输入新密码",
@@ -80,10 +80,10 @@ export default {
   "account.card.oauth.microsoft": "Microsoft",
   "account.card.oauth.discord": "Discord",
   "account.card.oauth.oidc": "OpenID",
-  "account.card.oauth.link": "Link",
-  "account.card.oauth.unlink": "Unlink",
-  "account.card.oauth.unlinked": "Unlinked",
-  "account.modal.unlink.title": "Unlink account",
+  "account.card.oauth.link": "关联",
+  "account.card.oauth.unlink": "解除关联",
+  "account.card.oauth.unlinked": "已解除关联",
+  "account.modal.unlink.title": "解除关联",
   "account.modal.unlink.description": "如果您不记得您的用户名和密码，解除和社交账号的关联可能会导致丢失账户。",
   "account.notify.oauth.unlinked.success": "解除关联成功",
   "account.card.security.title": "安全",
@@ -169,7 +169,7 @@ export default {
   // /admin
   "admin.title": "管理",
   "admin.button.users": "用户管理",
-  "admin.button.shares": "Share management",
+  "admin.button.shares": "共享管理",
   "admin.button.config": "配置管理",
   "admin.version": "版本",
   // END /admin
