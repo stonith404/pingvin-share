@@ -169,7 +169,7 @@ export default {
   // /admin
   "admin.title": "Verwaltung",
   "admin.button.users": "Benutzerverwaltung",
-  "admin.button.shares": "Share management",
+  "admin.button.shares": "Freigabenverwaltung",
   "admin.button.config": "Konfiguration",
   "admin.version": "Version",
   // END /admin
@@ -197,13 +197,13 @@ export default {
   "admin.users.modal.create.admin.description": "Wenn aktiviert, kann der Benutzer auf das Administrator-Panel zugreifen.",
   // END /admin/users
   // /admin/shares
-  "admin.shares.title": "Share management",
-  "admin.shares.table.id": "Share ID",
-  "admin.shares.table.username": "Creator",
-  "admin.shares.table.visitors": "Visitors",
-  "admin.shares.table.expires": "Expires At",
-  "admin.shares.edit.delete.title": "Delete share {id}",
-  "admin.shares.edit.delete.description": "Do you really want to delete this share?",
+  "admin.shares.title": "Freigabenverwaltung",
+  "admin.shares.table.id": "ID teilen",
+  "admin.shares.table.username": "Ersteller",
+  "admin.shares.table.visitors": "Besucher",
+  "admin.shares.table.expires": "Läuft ab am",
+  "admin.shares.edit.delete.title": "Lösche Freigabe {id}",
+  "admin.shares.edit.delete.description": "Möchtest du wirklich diese Freigabe löschen?",
   // END /admin/shares
   // /upload
   "upload.title": "Upload",
@@ -239,9 +239,9 @@ export default {
   "upload.modal.expires.month-plural": "Monate",
   "upload.modal.expires.year-singular": "Jahr",
   "upload.modal.expires.year-plural": "Year",
-  "upload.modal.accordion.name-and-description.title": "Name and description",
+  "upload.modal.accordion.name-and-description.title": "Name und Beschreibung",
   "upload.modal.accordion.name-and-description.name.placeholder": "Name",
-  "upload.modal.accordion.name-and-description.description.placeholder": "Note for the recipients of this share",
+  "upload.modal.accordion.name-and-description.description.placeholder": "Hinweis für die Empfänger dieser Freigabe",
   "upload.modal.accordion.email.title": "Email Empfänger",
   "upload.modal.accordion.email.placeholder": "Email der Empfänger eingeben",
   "upload.modal.accordion.email.invalid-email": "Ungültige Emailadresse",

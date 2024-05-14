@@ -169,7 +169,7 @@ export default {
   // /admin
   "admin.title": "Amministrazione",
   "admin.button.users": "Gestione degli utenti",
-  "admin.button.shares": "Share management",
+  "admin.button.shares": "Gestione condivisioni",
   "admin.button.config": "Configurazione",
   "admin.version": "Versione",
   // END /admin
@@ -197,13 +197,13 @@ export default {
   "admin.users.modal.create.admin.description": "Se selezionato, l'utente sarà in grado di accedere al pannello amministratore.",
   // END /admin/users
   // /admin/shares
-  "admin.shares.title": "Share management",
-  "admin.shares.table.id": "Share ID",
-  "admin.shares.table.username": "Creator",
-  "admin.shares.table.visitors": "Visitors",
-  "admin.shares.table.expires": "Expires At",
-  "admin.shares.edit.delete.title": "Delete share {id}",
-  "admin.shares.edit.delete.description": "Do you really want to delete this share?",
+  "admin.shares.title": "Gestione condivisioni",
+  "admin.shares.table.id": "ID Condivisione",
+  "admin.shares.table.username": "Autore",
+  "admin.shares.table.visitors": "Visitatori",
+  "admin.shares.table.expires": "Scade il",
+  "admin.shares.edit.delete.title": "Elimina condivisione {id}",
+  "admin.shares.edit.delete.description": "Vuoi davvero cancellare questa condivisione?",
   // END /admin/shares
   // /upload
   "upload.title": "Upload",
