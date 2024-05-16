@@ -32,7 +32,7 @@ export default {
   // END /
 
   // /auth/signin
-  "signin.title": "Share files with Stella Wings",
+  "signin.title": "Share files with Stella Share",
   "signin.description": "You don't have an account yet?",
   "signin.button.signup": "Sign up",
   "signin.input.email-or-username": "Email or username",
