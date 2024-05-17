@@ -94,7 +94,7 @@ export default function Home() {
                 id="home.title"
                 values={{
                   h: (chunks) => (
-                    <span className={classes.highlight}>{chunks} </span>
+                    <span className={classes.highlight}>{chunks}</span>
                   ),
                 }}
               />
