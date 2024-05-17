@@ -5,9 +5,9 @@ import {
 } from "@nestjs/common";
 import { User } from "@prisma/client";
 import { Request } from "express";
+import { ConfigService } from "src/config/config.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { JwtGuard } from "../../auth/guard/jwt.guard";
-import { ConfigService } from "src/config/config.service";
 
 @Injectable()
 export class ShareOwnerGuard extends JwtGuard {
@@ -34,10 +34,20 @@ export class ShareOwnerGuard extends JwtGuard {
 
     if (!share) throw new NotFoundException("Share not found");
 
+    // Run the JWTGuard to set the user
+    await super.canActivate(context);
+    const user = request.user as User;
+
+    // If the user is an admin, allow access
+    if (user?.isAdmin) return true;
+
+    // If it's a anonymous share, allow access
     if (!share.creatorId) return true;
 
-    if (!(await super.canActivate(context))) return false;
+    // If not signed in, deny access
+    if (!user) return false;
 
-    return share.creatorId == (request.user as User).id;
+    // If the user is the creator of the share, allow access
+    return share.creatorId == user.id;
   }
 }

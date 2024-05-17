@@ -94,8 +94,9 @@ export class ShareController {
 
   @Delete(":id")
   @UseGuards(ShareOwnerGuard)
-  async remove(@Param("id") id: string) {
-    await this.shareService.remove(id);
+  async remove(@Param("id") id: string, @GetUser() user: User) {
+    const isDeleterAdmin = user?.isAdmin === true;
+    await this.shareService.remove(id, isDeleterAdmin);
   }
 
   @Throttle(10, 60)

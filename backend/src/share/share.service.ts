@@ -267,13 +267,14 @@ export class ShareService {
     return share;
   }
 
-  async remove(shareId: string) {
+  async remove(shareId: string, isDeleterAdmin = false) {
     const share = await this.prisma.share.findUnique({
       where: { id: shareId },
     });
 
     if (!share) throw new NotFoundException("Share not found");
-    if (!share.creatorId)
+
+    if (!share.creatorId && !isDeleterAdmin)
       throw new ForbiddenException("Anonymous shares can't be deleted");
 
     await this.fileService.deleteAllFiles(shareId);
