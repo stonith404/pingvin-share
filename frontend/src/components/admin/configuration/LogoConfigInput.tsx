@@ -33,6 +33,7 @@ const LogoConfigInput = ({
           value={logo}
           onChange={(v) => setLogo(v)}
           accept=".png"
+          // @ts-ignore (https://github.com/mantinedev/mantine/issues/5401)
           placeholder={t("admin.config.general.logo.placeholder")}
         />
       </Box>
