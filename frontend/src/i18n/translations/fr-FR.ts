@@ -169,7 +169,7 @@ export default {
   // /admin
   "admin.title": "Administration",
   "admin.button.users": "Gestion des utilisateurs",
-  "admin.button.shares": "Share management",
+  "admin.button.shares": "Gestion des partages",
   "admin.button.config": "Paramètres",
   "admin.version": "Version",
   // END /admin
@@ -197,13 +197,13 @@ export default {
   "admin.users.modal.create.admin.description": "Si coché, l’utilisateur pourra accéder au panneau d'administration.",
   // END /admin/users
   // /admin/shares
-  "admin.shares.title": "Share management",
-  "admin.shares.table.id": "Share ID",
-  "admin.shares.table.username": "Creator",
-  "admin.shares.table.visitors": "Visitors",
-  "admin.shares.table.expires": "Expires At",
-  "admin.shares.edit.delete.title": "Delete share {id}",
-  "admin.shares.edit.delete.description": "Do you really want to delete this share?",
+  "admin.shares.title": "Gestion des partages",
+  "admin.shares.table.id": "ID de partage",
+  "admin.shares.table.username": "Créateur",
+  "admin.shares.table.visitors": "Visiteurs",
+  "admin.shares.table.expires": "Expire le",
+  "admin.shares.edit.delete.title": "Supprimer le partage {id}",
+  "admin.shares.edit.delete.description": "Voulez-vous vraiment supprimer ce partage ?",
   // END /admin/shares
   // /upload
   "upload.title": "Envoyer",
@@ -239,9 +239,9 @@ export default {
   "upload.modal.expires.month-plural": "Mois",
   "upload.modal.expires.year-singular": "An",
   "upload.modal.expires.year-plural": "Ans",
-  "upload.modal.accordion.name-and-description.title": "Name and description",
-  "upload.modal.accordion.name-and-description.name.placeholder": "Name",
-  "upload.modal.accordion.name-and-description.description.placeholder": "Note for the recipients of this share",
+  "upload.modal.accordion.name-and-description.title": "Nom et description",
+  "upload.modal.accordion.name-and-description.name.placeholder": "Nom",
+  "upload.modal.accordion.name-and-description.description.placeholder": "Note pour les destinataires de ce partage",
   "upload.modal.accordion.email.title": "Adresse courriel des destinataires",
   "upload.modal.accordion.email.placeholder": "Saisir les destinataires de ce partage",
   "upload.modal.accordion.email.invalid-email": "Courriel invalide",
