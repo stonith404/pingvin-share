@@ -1,3 +1,11 @@
+## [0.24.2](https://github.com/stonith404/pingvin-share/compare/v0.24.1...v0.24.2) (2024-05-22)
+
+
+### Bug Fixes
+
+* admin couldn't delete shares created by anonymous users ([7afda85](https://github.com/stonith404/pingvin-share/commit/7afda85f03d410a6c611860d0c3fb2b88a2e3679))
+* whitespace in title on homepage ([74cd520](https://github.com/stonith404/pingvin-share/commit/74cd520cb8c4ea87822ab6d54c0bf010455f401b))
+
 ## [0.24.1](https://github.com/stonith404/pingvin-share/compare/v0.24.0...v0.24.1) (2024-05-04)
 
 
