@@ -1,6 +1,6 @@
 # <div align="center"><img  src="https://user-images.githubusercontent.com/58886915/166198400-c2134044-1198-4647-a8b6-da9c4a204c68.svg" width="40"/> </br>Pingvin Share</div>
 
----
+[![](https://dcbadge.limes.pink/api/server/7EzzGzKS)](https://dsc.gg/pingvin-share) [![](https://img.shields.io/badge/Crowdin-2E3340.svg?style=for-the-badge&logo=Crowdin&logoColor=white)](https://crowdin.com/project/pingvin-share) [![](https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#white)](https://github.com/sponsors/stonith404)
 
 _Read this in another language: [Spanish](/docs/README.es.md), [English](/README.md), [简体中文](/docs/README.zh-cn.md), [日本語](/docs/README.ja-jp.md)_
 
