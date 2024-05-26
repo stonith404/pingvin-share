@@ -36,12 +36,12 @@ const Dropzone = ({
   title,
   isUploading,
   maxShareSize,
-  showCreateUploadModalCallback,
+  onFilesChanged,
 }: {
   title?: string;
   isUploading: boolean;
   maxShareSize: number;
-  showCreateUploadModalCallback: (files: FileUpload[]) => void;
+  onFilesChanged: (files: FileUpload[]) => void;
 }) => {
   const t = useTranslate();
 
@@ -69,7 +69,7 @@ const Dropzone = ({
               newFile.uploadingProgress = 0;
               return newFile;
             });
-            showCreateUploadModalCallback(files);
+            onFilesChanged(files);
           }
         }}
         className={classes.dropzone}
