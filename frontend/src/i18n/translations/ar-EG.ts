@@ -1,12 +1,12 @@
 export default {
   // Navbar
-  "navbar.upload": "Upload",
-  "navbar.signin": "Sign in",
-  "navbar.home": "Home",
-  "navbar.signup": "Sign Up",
+  "navbar.upload": "رفع",
+  "navbar.signin": "تسجيل الدخول",
+  "navbar.home": "الصفحة الرئيسية",
+  "navbar.signup": "إنشاء حساب",
   "navbar.links.shares": "My shares",
   "navbar.links.reverse": "Reverse shares",
-  "navbar.avatar.account": "My account",
+  "navbar.avatar.account": "حسابي",
   "navbar.avatar.admin": "Administration",
   "navbar.avatar.signout": "Sign out",
   // END navbar
