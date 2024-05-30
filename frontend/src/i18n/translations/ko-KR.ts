@@ -167,11 +167,11 @@ export default {
   "account.reverseShares.modal.delete.description": "Do you really want to delete this reverse share? If you do, the associated shares will be deleted as well.",
   // END /account/reverseShares
   // /admin
-  "admin.title": "Administration",
-  "admin.button.users": "User management",
-  "admin.button.shares": "Share management",
-  "admin.button.config": "Configuration",
-  "admin.version": "Version",
+  "admin.title": "관리자",
+  "admin.button.users": "사용자 관리",
+  "admin.button.shares": "공유 관리",
+  "admin.button.config": "구성",
+  "admin.version": "버전",
   // END /admin
   // /admin/users
   "admin.users.title": "User management",
