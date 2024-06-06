@@ -87,7 +87,6 @@ function App({ Component, pageProps }: AppProps) {
 
   const language = useRef(pageProps.language);
   moment.locale(language.current);
-  console.log(language.current);
 
   return (
     <>
