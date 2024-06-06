@@ -29,6 +29,9 @@ import Config from "../types/config.type";
 import { CurrentUser } from "../types/user.type";
 import i18nUtil from "../utils/i18n.util";
 import userPreferences from "../utils/userPreferences.util";
+import "moment/min/locales";
+import moment from "moment";
+
 
 const excludeDefaultLayoutRoutes = ["/admin/config/[category]"];
 
@@ -84,6 +87,8 @@ function App({ Component, pageProps }: AppProps) {
   };
 
   const language = useRef(pageProps.language);
+  moment.locale(language.current);
+  console.log(language.current)
 
   return (
     <>
