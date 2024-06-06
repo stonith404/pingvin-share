@@ -53,10 +53,19 @@ function CopyTextField(props: { link: string }) {
               </ActionIcon>
             </a>
           </Tooltip>
+
+
           {window.isSecureContext && (
-            <ActionIcon onClick={copyLink}>
-              {checkState ? <TbCheck /> : <TbCopy />}
-            </ActionIcon>
+            <Tooltip
+              label={t("account.modal.totp.clickToCopy")} // Reused totp i18n because it should work. Maybe change that key to common as well?
+              position="top"
+              offset={-2}
+              openDelay={200}
+            >
+              <ActionIcon onClick={copyLink}>
+                {checkState ? <TbCheck /> : <TbCopy />}
+              </ActionIcon>
+            </Tooltip>
           )}
         </>
       }
