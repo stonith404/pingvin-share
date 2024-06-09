@@ -103,6 +103,7 @@ model ReverseShare {
   maxShareSize          String
   sendEmailNotification Boolean
   remainingUses         Int
+  simplified   Boolean @default(false)
 
   creatorId String
   creator   User   @relation(fields: [creatorId], references: [id], onDelete: Cascade)
