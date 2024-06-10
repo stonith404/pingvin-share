@@ -72,6 +72,10 @@ export default function AppShellDemo() {
   };
 
   const updateConfigVariable = (configVariable: UpdateConfig) => {
+    if (configVariable.key === 'general.appUrl') {
+      configVariable.value = sanitizeUrl(configVariable.value);
+    }
+
     const index = updatedConfigVariables.findIndex(
       (item) => item.key === configVariable.key,
     );
@@ -84,6 +88,10 @@ export default function AppShellDemo() {
     } else {
       setUpdatedConfigVariables([...updatedConfigVariables, configVariable]);
     }
+  };
+
+  const sanitizeUrl = (url: string): string => {
+    return url.endsWith('/') ? url.slice(0, -1) : url;
   };
 
   useEffect(() => {

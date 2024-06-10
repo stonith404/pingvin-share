@@ -122,7 +122,7 @@ export default {
   "account.modal.totp.step2": "Step 2: Validate your code",
   "account.modal.totp.enterManually": "Enter manually",
   "account.modal.totp.code": "Code",
-  "account.modal.totp.clickToCopy": "Click to copy",
+  "common.button.clickToCopy": "Click to copy",
   "account.modal.totp.verify": "Verify",
   "account.notify.totp.disable": "TOTP disabled successfully",
   "account.notify.totp.enable": "TOTP enabled successfully",
