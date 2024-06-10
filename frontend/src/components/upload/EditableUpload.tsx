@@ -217,7 +217,7 @@ const EditableUpload = ({
       <Dropzone
         title={t("share.edit.append-upload")}
         maxShareSize={maxShareSize}
-        showCreateUploadModalCallback={appendFiles}
+        onFilesChanged={appendFiles}
         isUploading={isUploading}
       />
       {existingAndUploadedFiles.length > 0 && (
