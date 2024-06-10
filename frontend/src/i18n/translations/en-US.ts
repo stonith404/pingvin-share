@@ -450,7 +450,7 @@ export default {
   "admin.config.share.chunk-size": "Chunk size",
   "admin.config.share.chunk-size.description": "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
   "admin.config.share.auto-open-share-modal": "Auto open create share modal",
-  "admin.config.share.auto-open-share-modal.description": "The Create Share modal automatically opens each time the user selects file(s) to be uploaded.",
+  "admin.config.share.auto-open-share-modal.description": "The share creation modal automatically appears when a user selects files, eliminating the need to manually click the button.",
 
   "admin.config.smtp.enabled": "Enabled",
   "admin.config.smtp.enabled.description":
