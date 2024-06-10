@@ -56,7 +56,7 @@ function CopyTextField(props: { link: string }) {
 
           {window.isSecureContext && (
             <Tooltip
-              label={t("account.modal.totp.clickToCopy")} // Reused totp i18n because it should work. Maybe change that key to common as well?
+              label={t("common.button.clickToCopy")}
               position="top"
               offset={-2}
               openDelay={200}
