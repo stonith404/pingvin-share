@@ -140,12 +140,11 @@ const Upload = ({
   };
 
   const handleDropzoneFilesChanged = (files: FileUpload[]) => {
-    
     if (autoOpenCreateUploadModal) {
       setFiles(files);
       showCreateUploadModalCallback(files);
     } else {
-      setFiles(oldArr => [...oldArr, ...files]);
+      setFiles((oldArr) => [...oldArr, ...files]);
     }
   };
 
@@ -201,7 +200,11 @@ const Upload = ({
         </Button>
       </Group>
       <Dropzone
-        title={!autoOpenCreateUploadModal && files.length > 0 ? t("share.edit.append-upload") : undefined}
+        title={
+          !autoOpenCreateUploadModal && files.length > 0
+            ? t("share.edit.append-upload")
+            : undefined
+        }
         maxShareSize={maxShareSize}
         onFilesChanged={handleDropzoneFilesChanged}
         isUploading={isUploading}

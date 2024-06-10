@@ -72,7 +72,7 @@ export default function AppShellDemo() {
   };
 
   const updateConfigVariable = (configVariable: UpdateConfig) => {
-    if (configVariable.key === 'general.appUrl') {
+    if (configVariable.key === "general.appUrl") {
       configVariable.value = sanitizeUrl(configVariable.value);
     }
 
@@ -91,7 +91,7 @@ export default function AppShellDemo() {
   };
 
   const sanitizeUrl = (url: string): string => {
-    return url.endsWith('/') ? url.slice(0, -1) : url;
+    return url.endsWith("/") ? url.slice(0, -1) : url;
   };
 
   useEffect(() => {
