@@ -12,13 +12,17 @@ export default {
   // END navbar
   // /
   "home.title": "<h>직접 호스팅</h>하는 파일 공유 플랫폼.",
-  "home.description": "정말 WeTransfer와 같은 제3자에게 개인 파일을 맡기고 싶으세요?",
+  "home.description":
+    "정말 WeTransfer와 같은 제3자에게 개인 파일을 맡기고 싶으세요?",
   "home.bullet.a.name": "직접 호스팅",
-  "home.bullet.a.description": "자신의 컴퓨터에서 Pingvin Share를 호스팅하세요.",
+  "home.bullet.a.description":
+    "자신의 컴퓨터에서 Pingvin Share를 호스팅하세요.",
   "home.bullet.b.name": "개인 정보 보호",
-  "home.bullet.b.description": "당신의 파일은 당신의 것이므로 절대로 제3자의 손에 들어가서는 안 됩니다.",
+  "home.bullet.b.description":
+    "당신의 파일은 당신의 것이므로 절대로 제3자의 손에 들어가서는 안 됩니다.",
   "home.bullet.c.name": "귀찮은 파일 크기 제한 없음",
-  "home.bullet.c.description": "원하는 만큼 큰 파일을 업로드하세요. 오직 여러분의 하드 디스크만이 한계가 될 것입니다.",
+  "home.bullet.c.description":
+    "원하는 만큼 큰 파일을 업로드하세요. 오직 여러분의 하드 디스크만이 한계가 될 것입니다.",
   "home.button.start": "시작하기",
   "home.button.source": "소스 코드",
   // END /
@@ -27,7 +31,8 @@ export default {
   "signin.description": "아직 계정이 없으신가요?",
   "signin.button.signup": "계정 만들기",
   "signin.input.email-or-username": "이메일 또는 사용자 이름",
-  "signin.input.email-or-username.placeholder": "당신의 이메일 또는 사용자 이름",
+  "signin.input.email-or-username.placeholder":
+    "당신의 이메일 또는 사용자 이름",
   "signin.input.password": "비밀번호",
   "signin.input.password.placeholder": "당신의 비밀번호",
   "signin.button.submit": "로그인",
@@ -57,12 +62,14 @@ export default {
   // /auth/reset-password
   "resetPassword.title": "비밀번호를 잊으셨나요?",
   "resetPassword.description": "비밀번호를 재설정하려면 이메일을 입력하세요.",
-  "resetPassword.notify.success": "이메일이 존재한다면 비밀번호를 재설정하는 링크를 포함한 메시지가 발송되었습니다.",
+  "resetPassword.notify.success":
+    "이메일이 존재한다면 비밀번호를 재설정하는 링크를 포함한 메시지가 발송되었습니다.",
   "resetPassword.button.back": "로그인 페이지로 돌아가기",
   "resetPassword.text.resetPassword": "비밀번호 재설정",
   "resetPassword.text.enterNewPassword": "새로운 비밀번호를 입력하세요",
   "resetPassword.input.password": "새로운 비밀번호",
-  "resetPassword.notify.passwordReset": "비밀번호가 성공적으로 재설정되었습니다.",
+  "resetPassword.notify.passwordReset":
+    "비밀번호가 성공적으로 재설정되었습니다.",
   // /account
   "account.title": "내 계정",
   "account.card.info.title": "계정 정보",
@@ -72,7 +79,8 @@ export default {
   "account.card.password.title": "비밀번호",
   "account.card.password.old": "기존 비밀번호",
   "account.card.password.new": "새로운 비밀번호",
-  "account.card.password.noPasswordSet": "비밀번호를 설정하지 않았습니다. 이메일과 비밀번호로 로그인하려면 비밀번호를 설정해야 합니다.",
+  "account.card.password.noPasswordSet":
+    "비밀번호를 설정하지 않았습니다. 이메일과 비밀번호로 로그인하려면 비밀번호를 설정해야 합니다.",
   "account.notify.password.success": "비밀번호 변경 완료",
   "account.card.oauth.title": "소셜 로그인",
   "account.card.oauth.github": "깃허브",
@@ -84,23 +92,27 @@ export default {
   "account.card.oauth.unlink": "연결 해제",
   "account.card.oauth.unlinked": "연결 해제",
   "account.modal.unlink.title": "계정 연결 해제",
-  "account.modal.unlink.description": "소셜 계정 연결을 해제하면 사용자 이름과 비밀번호를 기억하지 못할 경우 계정을 잃을 수 있습니다.",
+  "account.modal.unlink.description":
+    "소셜 계정 연결을 해제하면 사용자 이름과 비밀번호를 기억하지 못할 경우 계정을 잃을 수 있습니다.",
   "account.notify.oauth.unlinked.success": "연결 해제됨",
   "account.card.security.title": "보안",
-  "account.card.security.totp.enable.description": "TOTP 활성화를 시작하려면 현재 비밀번호를 입력하세요.",
-  "account.card.security.totp.disable.description": "TOTP 를 비활성화 하려면 비밀번호를 입력하세요.",
+  "account.card.security.totp.enable.description":
+    "TOTP 활성화를 시작하려면 현재 비밀번호를 입력하세요.",
+  "account.card.security.totp.disable.description":
+    "TOTP 를 비활성화 하려면 비밀번호를 입력하세요.",
   "account.card.security.totp.button.start": "시작",
   "account.modal.totp.title": "TOTP 활성화",
   "account.modal.totp.step1": "1단계: 인증기를 추가하세요.",
   "account.modal.totp.step2": "2 단계: 코드 유효성 검사",
   "account.modal.totp.enterManually": "직접 입력",
   "account.modal.totp.code": "코드",
-  "account.modal.totp.clickToCopy": "클릭하여 복사",
+  "common.button.clickToCopy": "클릭하여 복사",
   "account.modal.totp.verify": "인증",
   "account.notify.totp.disable": "TOTP가 비활성화되었습니다.",
   "account.notify.totp.enable": "TOTP가 활성화 되었습니다.",
   "account.card.language.title": "언어",
-  "account.card.language.description": "이 프로젝트는 커뮤니티에 의해 번역됩니다. 일부 언어는 불완전할 수 있습니다.",
+  "account.card.language.description":
+    "이 프로젝트는 커뮤니티에 의해 번역됩니다. 일부 언어는 불완전할 수 있습니다.",
   "account.card.color.title": "배경 설정",
   // ThemeSwitcher.tsx
   "account.theme.dark": "어두운 배경",
@@ -108,7 +120,8 @@ export default {
   "account.theme.system": "시스템",
   "account.button.delete": "계정 삭제",
   "account.modal.delete.title": "계정 삭제",
-  "account.modal.delete.description": "정말로 활성화된 모든 공유를 포함하여 계정을 삭제하시겠습니까?",
+  "account.modal.delete.description":
+    "정말로 활성화된 모든 공유를 포함하여 계정을 삭제하시겠습니까?",
   // END /account
   // /account/shares
   "account.shares.title": "내 공유",
@@ -126,11 +139,13 @@ export default {
   "account.shares.modal.share-informations": "공유 정보",
   "account.shares.modal.share-link": "공유 링크",
   "account.shares.modal.delete.title": "공유 삭제 {share}",
-  "account.shares.modal.delete.description": "정말로 이 공유를 삭제하시겠습니까?",
+  "account.shares.modal.delete.description":
+    "정말로 이 공유를 삭제하시겠습니까?",
   // END /account/shares
   // /account/reverseShares
   "account.reverseShares.title": "역방향 공유",
-  "account.reverseShares.description": "역방향 공유를 통해 외부 사용자가 공유를 생성할 수 있는 고유 URL을 생성할 수 있습니다.",
+  "account.reverseShares.description":
+    "역방향 공유를 통해 외부 사용자가 공유를 생성할 수 있는 고유 URL을 생성할 수 있습니다.",
   "account.reverseShares.title.empty": "이곳은 아무것도 없는것 같아요 👀",
   "account.reverseShares.description.empty": "당신은 역방향 공유한것이 없어요.",
   // showCreateReverseShareModal.tsx
@@ -150,11 +165,14 @@ export default {
   "account.reverseShares.modal.expiration.year-plural": "년",
   "account.reverseShares.modal.max-size.label": "최대 공유 크기",
   "account.reverseShares.modal.send-email": "이메일 알림 보내기",
-  "account.reverseShares.modal.send-email.description": "이 역방향 공유 링크를 사용하여 공유가 생성되면 이메일 알림을 보냅니다.",
+  "account.reverseShares.modal.send-email.description":
+    "이 역방향 공유 링크를 사용하여 공유가 생성되면 이메일 알림을 보냅니다.",
   "account.reverseShares.modal.max-use.label": "공유 생성 제한",
-  "account.reverseShares.modal.max-use.description": "이 URL을 사용하여 공유를 생성할 수 있는 최대 횟수입니다.",
+  "account.reverseShares.modal.max-use.description":
+    "이 URL을 사용하여 공유를 생성할 수 있는 최대 횟수입니다.",
   "account.reverseShare.never-expires": "이 역공유 링크는 만료되지 않습니다.",
-  "account.reverseShare.expires-on": "이 역방향 공유는 {expiration} 에 만료됩니다.",
+  "account.reverseShare.expires-on":
+    "이 역방향 공유는 {expiration} 에 만료됩니다.",
   "account.reverseShares.table.no-shares": "아직 생성된 공유가 없습니다.",
   "account.reverseShares.table.count.singular": "공유",
   "account.reverseShares.table.count.plural": "공유",
@@ -375,7 +393,8 @@ export default {
   "admin.config.oauth.oidc-enabled": "OpenID 연결",
   "admin.config.oauth.oidc-enabled.description": "OpenID Connect 로그인 사용 여부",
   "admin.config.oauth.oidc-discovery-uri": "OpenID Connect Discovery URI",
-  "admin.config.oauth.oidc-discovery-uri.description": "Discovery URI of the OpenID Connect OAuth app",
+  "admin.config.oauth.oidc-discovery-uri.description":
+    "Discovery URI of the OpenID Connect OAuth app",
   "admin.config.oauth.oidc-username-claim": "OpenID Connect username claim",
   "admin.config.oauth.oidc-username-claim.description": "OpenID Connect ID 토큰의 Username claim 입니다. 이 구성이 무엇인지 모르면 비워 둡니다.",
   "admin.config.oauth.oidc-client-id": "OpenID Connect 클라이언트 ID",

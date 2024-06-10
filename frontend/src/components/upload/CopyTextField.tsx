@@ -53,10 +53,18 @@ function CopyTextField(props: { link: string }) {
               </ActionIcon>
             </a>
           </Tooltip>
+
           {window.isSecureContext && (
-            <ActionIcon onClick={copyLink}>
-              {checkState ? <TbCheck /> : <TbCopy />}
-            </ActionIcon>
+            <Tooltip
+              label={t("common.button.clickToCopy")}
+              position="top"
+              offset={-2}
+              openDelay={200}
+            >
+              <ActionIcon onClick={copyLink}>
+                {checkState ? <TbCheck /> : <TbCopy />}
+              </ActionIcon>
+            </Tooltip>
           )}
         </>
       }
