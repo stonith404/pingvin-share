@@ -40,6 +40,7 @@ const Upload = ({
   const chunkSize = useRef(parseInt(config.get("share.chunkSize")));
 
   maxShareSize ??= parseInt(config.get("share.maxSize"));
+  const autoOpenCreateUploadModal = config.get("share.autoOpenShareModal");
 
   const uploadFiles = async (share: CreateShare, files: FileUpload[]) => {
     setisUploading(true);
@@ -121,7 +122,6 @@ const Upload = ({
   };
 
   const showCreateUploadModalCallback = (files: FileUpload[]) => {
-    setFiles(files);
     showCreateUploadModal(
       modals,
       {
@@ -137,6 +137,15 @@ const Upload = ({
       files,
       uploadFiles,
     );
+  };
+
+  const handleDropzoneFilesChanged = (files: FileUpload[]) => {
+    if (autoOpenCreateUploadModal) {
+      setFiles(files);
+      showCreateUploadModalCallback(files);
+    } else {
+      setFiles((oldArr) => [...oldArr, ...files]);
+    }
   };
 
   useEffect(() => {
@@ -191,8 +200,13 @@ const Upload = ({
         </Button>
       </Group>
       <Dropzone
+        title={
+          !autoOpenCreateUploadModal && files.length > 0
+            ? t("share.edit.append-upload")
+            : undefined
+        }
         maxShareSize={maxShareSize}
-        showCreateUploadModalCallback={showCreateUploadModalCallback}
+        onFilesChanged={handleDropzoneFilesChanged}
         isUploading={isUploading}
       />
       {files.length > 0 && (

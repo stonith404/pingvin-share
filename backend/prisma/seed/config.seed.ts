@@ -56,6 +56,11 @@ const configVariables: ConfigVariables = {
       defaultValue: "10000000",
       secret: false,
     },
+    autoOpenShareModal: {
+      type: "boolean",
+      defaultValue: "false",
+      secret: false,
+    },
   },
   email: {
     enableShareEmailRecipients: {

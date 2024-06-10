@@ -358,8 +358,9 @@ export default {
   "admin.config.share.zip-compression-level.description":
     "调整压缩质量来平衡压缩文件的大小和压缩的速度。有效值介于 0 和 9 之间，0 为不压缩，9 为最高质量压缩。 ",
   "admin.config.share.chunk-size": "块大小",
-  "admin.config.share.chunk-size.description":
-    "根据你的互联网连接情况调整上传文件的块大小（以字节为单位），以平衡效率和可靠性。 较小的块有助于提高不稳定网络环境中的上传成功率，而较大的块则可以加快稳定网络环境中的上传速度。",
+  "admin.config.share.chunk-size.description": "根据你的互联网连接情况调整上传文件的块大小（以字节为单位），以平衡效率和可靠性。 较小的块有助于提高不稳定网络环境中的上传成功率，而较大的块则可以加快稳定网络环境中的上传速度。",
+  "admin.config.share.auto-open-share-modal": "自动打开创建共享对话框",
+  "admin.config.share.auto-open-share-modal.description": "每当用户选择完将要被上传的文件后，自动打开创建共享的对话框。",
   "admin.config.smtp.enabled": "启用",
   "admin.config.smtp.enabled.description":
     "是否开启 SMTP，仅当输入主机名、端口、发送邮箱、用户名和密码后开启",
