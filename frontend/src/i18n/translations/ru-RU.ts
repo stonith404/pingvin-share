@@ -270,10 +270,9 @@ export default {
   "upload.modal.expires.month-plural": "Месяца(-ев)",
   "upload.modal.expires.year-singular": "Год",
   "upload.modal.expires.year-plural": "Года (лет)",
-  "upload.modal.accordion.name-and-description.title": "Name and description",
-  "upload.modal.accordion.name-and-description.name.placeholder": "Name",
-  "upload.modal.accordion.name-and-description.description.placeholder":
-    "Note for the recipients of this share",
+  "upload.modal.accordion.name-and-description.title": "Имя и описание",
+  "upload.modal.accordion.name-and-description.name.placeholder": "Имя",
+  "upload.modal.accordion.name-and-description.description.placeholder": "Note for the recipients of this share",
   "upload.modal.accordion.email.title": "Получатели письма",
   "upload.modal.accordion.email.placeholder": "Получатели e-mail",
   "upload.modal.accordion.email.invalid-email":
@@ -384,11 +383,9 @@ export default {
   "admin.config.share.max-size.description":
     "Максимальный размер файла в байтах",
   "admin.config.share.zip-compression-level": "Уровень сжатия Zip",
-  "admin.config.share.zip-compression-level.description":
-    "Регулировка уровня баланса между размером файла и скоростью сжатия. Допустимые значения от 0 до 9, с 0 без сжатия, а 9 - максимальное сжатие. ",
-  "admin.config.share.chunk-size": "Chunk size",
-  "admin.config.share.chunk-size.description":
-    "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
+  "admin.config.share.zip-compression-level.description": "Регулировка уровня баланса между размером файла и скоростью сжатия. Допустимые значения от 0 до 9, с 0 без сжатия, а 9 - максимальное сжатие. ",
+  "admin.config.share.chunk-size": "Размер чанка",
+  "admin.config.share.chunk-size.description": "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
   "admin.config.smtp.enabled": "Включено",
   "admin.config.smtp.enabled.description":
     "Включено ли SMTP. Установите значение true только если вы ввели хост, порт, email, пользователь и пароль вашего SMTP-сервера.",
@@ -513,7 +510,7 @@ export default {
   "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "или",
   "common.button.go-back": "Назад",
-  "common.button.go-home": "Go home",
+  "common.button.go-home": "Домой",
   "common.notify.copied": "Ваша ссылка скопирована в буфер обмена",
   "common.success": "Успешно",
   "common.error": "Ошибочка",
