@@ -16,6 +16,8 @@ import { FormattedMessage } from "react-intl";
 import Logo from "../components/Logo";
 import Meta from "../components/Meta";
 import useUser from "../hooks/user.hook";
+import {initMixPanel} from "../utils/mixpane.util";
+import mixpanel from "mixpanel-browser";
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -76,12 +78,21 @@ export default function Home() {
 
   // If the user is already logged in, redirect to the upload page
   useEffect(() => {
+    //init mixPanel for event tracking for this page
+    initMixPanel();
+
     refreshUser().then((user) => {
       if (user) {
         router.replace("/upload");
       }
     });
   }, []);
+
+  const handleStartClick = ()=>{
+    mixpanel.track('Button Clicked', {
+      buttonName: 'home.button.start'
+    });
+  }
 
   return (
     <>
@@ -146,6 +157,7 @@ export default function Home() {
                 radius="xl"
                 size="md"
                 className={classes.control}
+                onClick={handleStartClick}
               >
                 <FormattedMessage id="home.button.start" />
               </Button>
