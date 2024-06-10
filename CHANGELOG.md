@@ -1,3 +1,16 @@
+## [0.25.0](https://github.com/stonith404/pingvin-share/compare/v0.24.2...v0.25.0) (2024-06-10)
+
+
+### Features
+
+* add auto open share modal config for global. ([#474](https://github.com/stonith404/pingvin-share/issues/474)) ([4fd2903](https://github.com/stonith404/pingvin-share/commit/4fd29037a08dbe505bdd8cf20f6f114cbade8483))
+* **frontend:** locale for dates and tooltip for copy link button ([#492](https://github.com/stonith404/pingvin-share/issues/492)) ([1c7832a](https://github.com/stonith404/pingvin-share/commit/1c7832ad1fb445fd1dbe1c111be5a331eaa4b797))
+
+
+### Bug Fixes
+
+* share size not displayed on my shares page ([c0cc16f](https://github.com/stonith404/pingvin-share/commit/c0cc16fa430bc64afb024c19d5faf24456bd417c))
+
 ## [0.24.2](https://github.com/stonith404/pingvin-share/compare/v0.24.1...v0.24.2) (2024-05-22)
 
 
