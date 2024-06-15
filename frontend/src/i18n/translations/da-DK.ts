@@ -200,7 +200,7 @@ export default {
   "admin.shares.title": "Share management",
   "admin.shares.table.id": "Share ID",
   "admin.shares.table.username": "Creator",
-  "admin.shares.table.visitors": "Visitors",
+  "admin.shares.table.visitors": "Besøgende",
   "admin.shares.table.expires": "Expires At",
   "admin.shares.edit.delete.title": "Delete share {id}",
   "admin.shares.edit.delete.description": "Do you really want to delete this share?",
@@ -240,7 +240,7 @@ export default {
   "upload.modal.expires.year-singular": "År",
   "upload.modal.expires.year-plural": "År",
   "upload.modal.accordion.name-and-description.title": "Name and description",
-  "upload.modal.accordion.name-and-description.name.placeholder": "Name",
+  "upload.modal.accordion.name-and-description.name.placeholder": "Navn",
   "upload.modal.accordion.name-and-description.description.placeholder": "Note for the recipients of this share",
   "upload.modal.accordion.email.title": "E-mail modtagere",
   "upload.modal.accordion.email.placeholder": "Indtast e-mail modtagere",
@@ -276,7 +276,7 @@ export default {
   "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
   // END /share/[id]
   // /share/[id]/edit
-  "share.edit.title": "Edit {shareId}",
+  "share.edit.title": "Rediger {shareId}",
   "share.edit.append-upload": "Append file",
   "share.edit.notify.generic-error": "An error occurred while finishing your share.",
   "share.edit.notify.save-success": "Share updated successfully",
