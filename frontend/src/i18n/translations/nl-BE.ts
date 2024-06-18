@@ -57,7 +57,7 @@ export default {
   // /auth/reset-password
   "resetPassword.title": "Wachtwoord vergeten?",
   "resetPassword.description": "Voer uw e-mailadres in om uw wachtwoord opnieuw in te stellen.",
-  "resetPassword.notify.success": "A message with a link to reset your password has been sent if the email exists.",
+  "resetPassword.notify.success": "Er is een bericht verzonden met een link om uw wachtwoord te resetten als het e-mail adres bestaat.",
   "resetPassword.button.back": "Terug naar login pagina",
   "resetPassword.text.resetPassword": "Wachtwoord opnieuw instellen",
   "resetPassword.text.enterNewPassword": "Voer uw nieuwe wachtwoord in",
@@ -199,11 +199,11 @@ export default {
   // /admin/shares
   "admin.shares.title": "Share management",
   "admin.shares.table.id": "Share ID",
-  "admin.shares.table.username": "Creator",
-  "admin.shares.table.visitors": "Visitors",
-  "admin.shares.table.expires": "Expires At",
-  "admin.shares.edit.delete.title": "Delete share {id}",
-  "admin.shares.edit.delete.description": "Do you really want to delete this share?",
+  "admin.shares.table.username": "Auteur",
+  "admin.shares.table.visitors": "Bezoekers",
+  "admin.shares.table.expires": "Vervalt op",
+  "admin.shares.edit.delete.title": "Verwijder share {id}",
+  "admin.shares.edit.delete.description": "Weet u zeker dat u deze share wilt verwijderen?",
   // END /admin/shares
   // /upload
   "upload.title": "Uploaden",
@@ -239,8 +239,8 @@ export default {
   "upload.modal.expires.month-plural": "Maanden",
   "upload.modal.expires.year-singular": "Jaar",
   "upload.modal.expires.year-plural": "Jaren",
-  "upload.modal.accordion.name-and-description.title": "Name and description",
-  "upload.modal.accordion.name-and-description.name.placeholder": "Name",
+  "upload.modal.accordion.name-and-description.title": "Naam en beschrijving",
+  "upload.modal.accordion.name-and-description.name.placeholder": "Naam",
   "upload.modal.accordion.name-and-description.description.placeholder": "Note for the recipients of this share",
   "upload.modal.accordion.email.title": "E-mail van de ontvangers",
   "upload.modal.accordion.email.placeholder": "Voer e-mail ontvangers in",
