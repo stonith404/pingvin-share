@@ -347,7 +347,8 @@ const CreateUploadModalBody = ({
                     placeholder={t("upload.modal.accordion.email.placeholder")}
                     searchable
                     creatable
-                    autoComplete="email-recipients"
+                    autoComplete="email"
+                    type="email"
                     getCreateLabel={(query) => `+ ${query}`}
                     onCreate={(query) => {
                       if (!query.match(/^\S+@\S+\.\S+$/)) {
