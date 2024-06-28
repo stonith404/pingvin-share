@@ -59,10 +59,6 @@ const showCreateUploadModal = (
   });
 };
 
-const handleInputChange = (event: any) => {
-  console.log("Input changed:", event);
-};
-
 const CreateUploadModalBody = ({
   uploadCallback,
   files,
