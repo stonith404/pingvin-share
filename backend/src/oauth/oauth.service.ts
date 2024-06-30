@@ -1,5 +1,6 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { User } from "@prisma/client";
+import { nanoid } from "nanoid";
 import { AuthService } from "../auth/auth.service";
 import { ConfigService } from "../config/config.service";
 import { PrismaService } from "../prisma/prisma.service";
@@ -101,6 +102,23 @@ export class OAuthService {
     }
   }
 
+  private async getAvailableUsername(preferredUsername: string) {
+    // only remove + and - from preferred username for now (maybe not enough)
+    let username = preferredUsername.replace(/[+-]/g, "").substring(0, 20);
+    while (true) {
+      const user = await this.prisma.user.findFirst({
+        where: {
+          username: username,
+        },
+      });
+      if (user) {
+        username = username + "_" + nanoid(10).replaceAll("-", "");
+      } else {
+        return username;
+      }
+    }
+  }
+
   private async signUp(user: OAuthSignInDto) {
     // register
     if (!this.config.get("oauth.allowRegistration")) {
@@ -135,7 +153,7 @@ export class OAuthService {
 
     const result = await this.auth.signUp({
       email: user.email,
-      username: user.providerUsername,
+      username: await this.getAvailableUsername(user.providerUsername),
       password: null,
     });
 
