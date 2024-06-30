@@ -368,9 +368,12 @@ const CreateUploadModalBody = ({
                     }}
                     {...form.getInputProps("recipients")}
                     onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                      // Add email on comma or semicolon
                       if (e.key === "," || e.key === ";") {
                         e.preventDefault();
-                        const inputValue = (e.target as HTMLInputElement).value.trim();
+                        const inputValue = (
+                          e.target as HTMLInputElement
+                        ).value.trim();
                         if (inputValue.match(/^\S+@\S+\.\S+$/)) {
                           form.setFieldValue("recipients", [
                             ...form.values.recipients,
@@ -383,9 +386,7 @@ const CreateUploadModalBody = ({
                         (e.target as HTMLInputElement).value = "";
                       }
                     }}
-
                   />
-
                 </Accordion.Panel>
               </Accordion.Item>
             )}
