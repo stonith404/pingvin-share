@@ -30,6 +30,7 @@ import shareService from "../../../services/share.service";
 import { FileUpload } from "../../../types/File.type";
 import { CreateShare } from "../../../types/share.type";
 import { getExpirationPreview } from "../../../utils/date.util";
+import React from "react";
 
 const showCreateUploadModal = (
   modals: ModalsContextProps,
@@ -242,7 +243,6 @@ const CreateUploadModalBody = ({
                     disabled={form.values.never_expires}
                     {...form.getInputProps("expiration_unit")}
                     data={[
-                      // Set the label to singular if the number is 1, else plural
                       {
                         value: "-minutes",
                         label:
@@ -347,7 +347,9 @@ const CreateUploadModalBody = ({
                     placeholder={t("upload.modal.accordion.email.placeholder")}
                     searchable
                     creatable
-                    autoComplete="email-recipients"
+                    id="recipient_email"
+                    autoComplete="email"
+                    type="email"
                     getCreateLabel={(query) => `+ ${query}`}
                     onCreate={(query) => {
                       if (!query.match(/^\S+@\S+\.\S+$/)) {
@@ -365,6 +367,25 @@ const CreateUploadModalBody = ({
                       }
                     }}
                     {...form.getInputProps("recipients")}
+                    onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                      // Add email on comma or semicolon
+                      if (e.key === "," || e.key === ";") {
+                        e.preventDefault();
+                        const inputValue = (
+                          e.target as HTMLInputElement
+                        ).value.trim();
+                        if (inputValue.match(/^\S+@\S+\.\S+$/)) {
+                          form.setFieldValue("recipients", [
+                            ...form.values.recipients,
+                            inputValue,
+                          ]);
+                          (e.target as HTMLInputElement).value = "";
+                        }
+                      } else if (e.key === " ") {
+                        e.preventDefault();
+                        (e.target as HTMLInputElement).value = "";
+                      }
+                    }}
                   />
                 </Accordion.Panel>
               </Accordion.Item>
