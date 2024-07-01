@@ -37,6 +37,11 @@ const configVariables: ConfigVariables = {
       defaultValue: "false",
       secret: false,
     },
+    sessionDuration: {
+      type: "number",
+      defaultValue: "2160",
+      secret: false,
+    },
     maxExpiration: {
       type: "number",
       defaultValue: "0",

@@ -319,6 +319,8 @@ export default {
   "admin.config.share.allow-registration.description": "Gibt an, ob eine Registrierung erlaubt ist",
   "admin.config.share.allow-unauthenticated-shares": "Nicht authentifizierte Freigaben erlauben",
   "admin.config.share.allow-unauthenticated-shares.description": "Gibt an, ob nicht authentifizierte Benutzer Freigaben erstellen können",
+  "admin.config.share.session-duration": "Session-Dauer",
+  "admin.config.share.session-duration.description": "Zeit in Stunden, nach der ein Benutzer sich erneut anmelden muss (Voreinstellung: 3 Monate).",
   "admin.config.share.max-expiration": "Max. Ablaufdatum",
   "admin.config.share.max-expiration.description": "Maximale Ablaufzeit in Stunden. Auf 0 setzen, um kein Ablaufdatum zu definieren.",
   "admin.config.share.max-size": "Maximale Größe",

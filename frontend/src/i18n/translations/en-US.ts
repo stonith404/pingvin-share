@@ -432,6 +432,7 @@ export default {
   "admin.config.email.invite-message": "Invite message",
   "admin.config.email.invite-message.description":
     "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL and {password} with the password.",
+
   "admin.config.share.allow-registration": "Allow registration",
   "admin.config.share.allow-registration.description":
     "Whether registration is allowed",
@@ -439,6 +440,10 @@ export default {
     "Allow unauthenticated shares",
   "admin.config.share.allow-unauthenticated-shares.description":
     "Whether unauthenticated users can create shares",
+  "admin.config.share.session-duration": 
+    "Session Duration",
+  "admin.config.share.session-duration.description": 
+    "Time in hours after which a user must log in again (default: 3 months).",
   "admin.config.share.max-expiration": "Max expiration",
   "admin.config.share.max-expiration.description":
     "Maximum share expiration in hours. Set to 0 to allow unlimited expiration.",
