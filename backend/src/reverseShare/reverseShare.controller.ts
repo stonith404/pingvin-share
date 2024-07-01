@@ -36,7 +36,12 @@ export class ReverseShareController {
     return { token, link };
   }
 
-  @Throttle(20, 60)
+  @Throttle({
+    default: {
+      limit: 20,
+      ttl: 60,
+    },
+  })
   @Get(":reverseShareToken")
   async getByToken(@Param("reverseShareToken") reverseShareToken: string) {
     const isValid = await this.reverseShareService.isValid(reverseShareToken);

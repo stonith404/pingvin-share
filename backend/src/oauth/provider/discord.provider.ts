@@ -1,5 +1,4 @@
 import { Injectable } from "@nestjs/common";
-import fetch from "node-fetch";
 import { ConfigService } from "../../config/config.service";
 import { OAuthCallbackDto } from "../dto/oauthCallback.dto";
 import { OAuthSignInDto } from "../dto/oauthSignIn.dto";
@@ -52,7 +51,7 @@ export class DiscordProvider implements OAuthProvider<DiscordToken> {
           this.config.get("general.appUrl") + "/api/oauth/callback/discord",
       }),
     });
-    const token: DiscordToken = await res.json();
+    const token = (await res.json()) as DiscordToken;
     return {
       accessToken: token.access_token,
       refreshToken: token.refresh_token,

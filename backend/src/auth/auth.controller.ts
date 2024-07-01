@@ -37,7 +37,12 @@ export class AuthController {
   ) {}
 
   @Post("signUp")
-  @Throttle(10, 5 * 60)
+  @Throttle({
+    default: {
+      limit: 20,
+      ttl: 5 * 60,
+    },
+  })
   async signUp(
     @Body() dto: AuthRegisterDTO,
     @Res({ passthrough: true }) response: Response,
@@ -57,7 +62,12 @@ export class AuthController {
   }
 
   @Post("signIn")
-  @Throttle(10, 5 * 60)
+  @Throttle({
+    default: {
+      limit: 20,
+      ttl: 5 * 60,
+    },
+  })
   @HttpCode(200)
   async signIn(
     @Body() dto: AuthSignInDTO,
@@ -77,7 +87,12 @@ export class AuthController {
   }
 
   @Post("signIn/totp")
-  @Throttle(10, 5 * 60)
+  @Throttle({
+    default: {
+      limit: 20,
+      ttl: 5 * 60,
+    },
+  })
   @HttpCode(200)
   async signInTotp(
     @Body() dto: AuthSignInTotpDTO,
@@ -95,14 +110,24 @@ export class AuthController {
   }
 
   @Post("resetPassword/:email")
-  @Throttle(5, 5 * 60)
+  @Throttle({
+    default: {
+      limit: 20,
+      ttl: 5 * 60,
+    },
+  })
   @HttpCode(202)
   async requestResetPassword(@Param("email") email: string) {
     this.authService.requestResetPassword(email);
   }
 
   @Post("resetPassword")
-  @Throttle(5, 5 * 60)
+  @Throttle({
+    default: {
+      limit: 20,
+      ttl: 5 * 60,
+    },
+  })
   @HttpCode(204)
   async resetPassword(@Body() dto: ResetPasswordDTO) {
     return await this.authService.resetPassword(dto.token, dto.password);

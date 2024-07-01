@@ -16,6 +16,7 @@ import { Request, Response } from "express";
 import { GetUser } from "src/auth/decorator/getUser.decorator";
 import { AdministratorGuard } from "src/auth/guard/isAdmin.guard";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
+import { AdminShareDTO } from "./dto/adminShare.dto";
 import { CreateShareDTO } from "./dto/createShare.dto";
 import { MyShareDTO } from "./dto/myShare.dto";
 import { ShareDTO } from "./dto/share.dto";
@@ -26,7 +27,6 @@ import { ShareOwnerGuard } from "./guard/shareOwner.guard";
 import { ShareSecurityGuard } from "./guard/shareSecurity.guard";
 import { ShareTokenSecurity } from "./guard/shareTokenSecurity.guard";
 import { ShareService } from "./share.service";
-import { AdminShareDTO } from "./dto/adminShare.dto";
 @Controller("shares")
 export class ShareController {
   constructor(private shareService: ShareService) {}
@@ -99,14 +99,24 @@ export class ShareController {
     await this.shareService.remove(id, isDeleterAdmin);
   }
 
-  @Throttle(10, 60)
+  @Throttle({
+    default: {
+      limit: 10,
+      ttl: 60,
+    },
+  })
   @Get("isShareIdAvailable/:id")
   async isShareIdAvailable(@Param("id") id: string) {
     return this.shareService.isShareIdAvailable(id);
   }
 
   @HttpCode(200)
-  @Throttle(20, 5 * 60)
+  @Throttle({
+    default: {
+      limit: 20,
+      ttl: 5 * 60,
+    },
+  })
   @UseGuards(ShareTokenSecurity)
   @Post(":id/token")
   async getShareToken(

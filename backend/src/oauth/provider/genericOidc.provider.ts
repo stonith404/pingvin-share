@@ -1,5 +1,4 @@
 import { Logger } from "@nestjs/common";
-import fetch from "node-fetch";
 import { ConfigService } from "../../config/config.service";
 import { JwtService } from "@nestjs/jwt";
 import { Cache } from "cache-manager";
@@ -25,7 +24,7 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
     protected cache: Cache,
   ) {
     this.discoveryUri = this.getDiscoveryUri();
-    this.config.addListener("update", (key: string, _: unknown) => {
+    this.config.addListener("update", (key: string) => {
       if (this.keyOfConfigUpdateEvents.includes(key)) {
         this.deinit();
         this.discoveryUri = this.getDiscoveryUri();
@@ -94,7 +93,7 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
         redirect_uri: this.getRedirectUri(),
       }).toString(),
     });
-    const token: OidcToken = await res.json();
+    const token = (await res.json()) as OidcToken;
     return {
       accessToken: token.access_token,
       expiresIn: token.expires_in,
@@ -159,7 +158,7 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
       : Date.now() + 1000 * 60 * 60 * 24;
     this.configuration = {
       expires,
-      data: await res.json(),
+      data: (await res.json()) as OidcConfiguration,
     };
   }
 

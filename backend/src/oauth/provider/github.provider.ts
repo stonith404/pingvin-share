@@ -1,5 +1,4 @@
 import { Injectable } from "@nestjs/common";
-import fetch from "node-fetch";
 import { ConfigService } from "../../config/config.service";
 import { OAuthCallbackDto } from "../dto/oauthCallback.dto";
 import { OAuthSignInDto } from "../dto/oauthSignIn.dto";
@@ -38,7 +37,7 @@ export class GitHubProvider implements OAuthProvider<GitHubToken> {
         },
       },
     );
-    const token: GitHubToken = await res.json();
+    const token = (await res.json()) as GitHubToken;
     return {
       accessToken: token.access_token,
       tokenType: token.token_type,

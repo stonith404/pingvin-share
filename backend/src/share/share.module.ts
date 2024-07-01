@@ -11,7 +11,7 @@ import { ShareService } from "./share.service";
   imports: [
     JwtModule.register({}),
     EmailModule,
-    ClamScanModule,
+    forwardRef(() => ClamScanModule),
     ReverseShareModule,
     forwardRef(() => FileModule),
   ],
