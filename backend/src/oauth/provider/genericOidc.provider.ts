@@ -125,9 +125,9 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
 
     const username = claim
       ? idTokenData[claim]
-      : idTokenData.name ||
-        idTokenData.nickname ||
-        idTokenData.preferred_username;
+      : idTokenData.preferred_username ||
+        idTokenData.name ||
+        idTokenData.nickname;
 
     if (!username) {
       this.logger.error(

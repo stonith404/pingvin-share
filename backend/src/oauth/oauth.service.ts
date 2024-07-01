@@ -102,9 +102,9 @@ export class OAuthService {
     }
   }
 
-  private async getAvailableUsername(email: string) {
-    // only remove + and - from email for now (maybe not enough)
-    let username = email.split("@")[0].replace(/[+-]/g, "").substring(0, 20);
+  private async getAvailableUsername(preferredUsername: string) {
+    // only remove + and - from preferred username for now (maybe not enough)
+    let username = preferredUsername.replace(/[+-]/g, "").substring(0, 20);
     while (true) {
       const user = await this.prisma.user.findFirst({
         where: {
@@ -153,7 +153,7 @@ export class OAuthService {
 
     const result = await this.auth.signUp({
       email: user.email,
-      username: await this.getAvailableUsername(user.email),
+      username: await this.getAvailableUsername(user.providerUsername),
       password: null,
     });
 
