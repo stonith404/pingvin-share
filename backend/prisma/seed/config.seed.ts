@@ -25,6 +25,11 @@ const configVariables: ConfigVariables = {
       defaultValue: "true",
       secret: false,
     },
+    sessionDuration: {
+      type: "number",
+      defaultValue: "2160",
+      secret: false,
+    },
   },
   share: {
     allowRegistration: {
