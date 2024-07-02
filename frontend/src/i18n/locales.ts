@@ -21,6 +21,7 @@ import thai from "./translations/th-TH";
 import ukrainian from "./translations/uk-UA";
 import chineseSimplified from "./translations/zh-CN";
 import chineseTraditional from "./translations/zh-TW";
+import turkish from "./translations/tr-TR";
 
 export const LOCALES = {
   ENGLISH: {
@@ -137,5 +138,10 @@ export const LOCALES = {
     name: "한국어",
     code: "ko-KR",
     messages: korean,
+  },
+  TURKISH: {
+    name: "Türkçe",
+    code: "tr-TR",
+    messages: turkish,
   },
 };
