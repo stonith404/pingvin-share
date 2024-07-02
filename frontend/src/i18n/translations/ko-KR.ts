@@ -294,6 +294,8 @@ export default {
   "admin.config.general.app-url.description": "Pingvin Share를 사용할 수 있는 URL",
   "admin.config.general.show-home-page": "홈 페이지 표시",
   "admin.config.general.show-home-page.description": "홈 페이지를 표시할지 여부를 점검하십시오.",
+  "admin.config.general.session-duration": "Session Duration",
+  "admin.config.general.session-duration.description": "Time in hours after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "로고",
   "admin.config.general.logo.description": "새 이미지를 업로드하여 로고를 변경하십시오. 이미지는 PNG여야 하며 1:1 비율이어야 합니다.",
   "admin.config.general.logo.placeholder": "이미지 선택",
