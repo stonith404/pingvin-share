@@ -294,6 +294,8 @@ export default {
   "admin.config.general.app-url.description": "Pod którym adresem URL Pingvin Share jest dostępny",
   "admin.config.general.show-home-page": "Pokaż stronę główną",
   "admin.config.general.show-home-page.description": "Czy wyświetlać stronę główną",
+  "admin.config.general.session-duration": "Session Duration",
+  "admin.config.general.session-duration.description": "Time in hours after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Logo",
   "admin.config.general.logo.description": "Zmień logo, przesyłając nowy obraz. Obraz musi być plikiem PNG i mieć proporcje 1:1.",
   "admin.config.general.logo.placeholder": "Wybierz obraz",

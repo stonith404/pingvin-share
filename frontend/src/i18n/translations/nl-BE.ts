@@ -294,6 +294,8 @@ export default {
   "admin.config.general.app-url.description": "De URL waar Pingvin Share bereikbaar is",
   "admin.config.general.show-home-page": "Toon startpagina",
   "admin.config.general.show-home-page.description": "Toon of verberg de home pagina",
+  "admin.config.general.session-duration": "Session Duration",
+  "admin.config.general.session-duration.description": "Time in hours after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Logo",
   "admin.config.general.logo.description": "Verander uw logo door een nieuwe afbeelding te uploaden. De afbeelding moet PNG zijn en het formaat moet 1:1 hebben.",
   "admin.config.general.logo.placeholder": "Afbeelding kiezen",

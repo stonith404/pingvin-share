@@ -294,6 +294,8 @@ export default {
   "admin.config.general.app-url.description": "Η διεύθυνση URL όπου το Pingvin Share είναι διαθέσιμο",
   "admin.config.general.show-home-page": "Εμφάνιση αρχικής σελίδας",
   "admin.config.general.show-home-page.description": "Εάν θα εμφανίζεται η αρχική σελίδα",
+  "admin.config.general.session-duration": "Session Duration",
+  "admin.config.general.session-duration.description": "Time in hours after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Λογότυπο",
   "admin.config.general.logo.description": "Αλλάξτε το λογότυπό σας ανεβάζοντας μια νέα εικόνα. Η εικόνα πρέπει να είναι PNG και αναλογία 1:1.",
   "admin.config.general.logo.placeholder": "Επιλέξτε εικόνα",
