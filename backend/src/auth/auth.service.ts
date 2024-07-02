@@ -208,7 +208,7 @@ export class AuthService {
       data: {
         userId,
         expiresAt: moment()
-          .add(this.config.get("share.sessionDuration"), "hours")
+          .add(this.config.get("general.sessionDuration"), "hours")
           .toDate(),
       },
     });
@@ -241,7 +241,7 @@ export class AuthService {
         path: "/api/auth/token",
         httpOnly: true,
         sameSite: "strict",
-        maxAge: 1000 * 60 * 60 * this.config.get("share.sessionDuration"),
+        maxAge: 1000 * 60 * 60 * this.config.get("general.sessionDuration"),
       });
   }
 

@@ -25,6 +25,11 @@ const configVariables: ConfigVariables = {
       defaultValue: "true",
       secret: false,
     },
+    sessionDuration: {
+      type: "number",
+      defaultValue: "2160",
+      secret: false,
+    },
   },
   share: {
     allowRegistration: {
@@ -35,11 +40,6 @@ const configVariables: ConfigVariables = {
     allowUnauthenticatedShares: {
       type: "boolean",
       defaultValue: "false",
-      secret: false,
-    },
-    sessionDuration: {
-      type: "number",
-      defaultValue: "2160",
       secret: false,
     },
     maxExpiration: {
