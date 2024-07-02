@@ -294,6 +294,8 @@ export default {
   "admin.config.general.app-url.description": "Pingvin Share 的 URL",
   "admin.config.general.show-home-page": "顯示首頁",
   "admin.config.general.show-home-page.description": "是否顯示首頁",
+  "admin.config.general.session-duration": "Session Duration",
+  "admin.config.general.session-duration.description": "Time in hours after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Logo",
   "admin.config.general.logo.description": "上傳個性化 Logo，圖片必須是長寬比 1:1 的 PNG 格式",
   "admin.config.general.logo.placeholder": "選擇圖片",
