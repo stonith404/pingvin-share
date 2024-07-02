@@ -294,6 +294,8 @@ export default {
   "admin.config.general.app-url.description": "Адреса, на якій доступний Pingvin Share",
   "admin.config.general.show-home-page": "Показувати домашню сторінку",
   "admin.config.general.show-home-page.description": "Показувати домашню сторінку чи ні",
+  "admin.config.general.session-duration": "Session Duration",
+  "admin.config.general.session-duration.description": "Time in hours after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Логотип",
   "admin.config.general.logo.description": "Змініть свій логотип, завантаживши нове зображення. Зображення має бути PNG і повинно мати формат 1:1.",
   "admin.config.general.logo.placeholder": "Виберіть зображення",
