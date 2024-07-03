@@ -1,3 +1,16 @@
+## [0.26.0](https://github.com/stonith404/pingvin-share/compare/v0.25.0...v0.26.0) (2024-07-03)
+
+
+### Features
+
+* **backend:** Make session duration configurable ([#512](https://github.com/stonith404/pingvin-share/issues/512)) ([367f804](https://github.com/stonith404/pingvin-share/commit/367f804a494c85b4caf879d51982339fb6b86ba1)), closes [#507](https://github.com/stonith404/pingvin-share/issues/507)
+
+
+### Bug Fixes
+
+* **oauth:** provider username is ignored when signing up using OAuth ([#511](https://github.com/stonith404/pingvin-share/issues/511)) ([31366d9](https://github.com/stonith404/pingvin-share/commit/31366d961f5827c200038b65ec9de5d4ddc8b898)), closes [#505](https://github.com/stonith404/pingvin-share/issues/505)
+* set max age of access token cookie to 15 minutes ([2dac385](https://github.com/stonith404/pingvin-share/commit/2dac38560b6c54b6e7676dcd4682bfa57973292f))
+
 ## [0.25.0](https://github.com/stonith404/pingvin-share/compare/v0.24.2...v0.25.0) (2024-06-10)
 
 
