@@ -148,6 +148,11 @@ const configVariables: ConfigVariables = {
       type: "boolean",
       defaultValue: "true",
     },
+    "disablePassword": {
+      type: "boolean",
+      defaultValue: "false",
+      secret: false,
+    },
     "github-enabled": {
       type: "boolean",
       defaultValue: "false",
