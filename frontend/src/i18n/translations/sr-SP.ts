@@ -294,6 +294,8 @@ export default {
   "admin.config.general.app-url.description": "На којој URL адреси је доступан Pingvin Share",
   "admin.config.general.show-home-page": "Прикажи почетну страницу",
   "admin.config.general.show-home-page.description": "Да ли да се прикаже почетна страница",
+  "admin.config.general.session-duration": "Session Duration",
+  "admin.config.general.session-duration.description": "Time in hours after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Лого",
   "admin.config.general.logo.description": "Промените свој логотип тако што ћете отпремити нову слику. Слика мора да буде PNG и треба да има формат 1:1.",
   "admin.config.general.logo.placeholder": "Изабери слику",

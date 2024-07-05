@@ -205,7 +205,12 @@ export class AuthService {
 
   async createRefreshToken(userId: string) {
     const { id, token } = await this.prisma.refreshToken.create({
-      data: { userId, expiresAt: moment().add(3, "months").toDate() },
+      data: {
+        userId,
+        expiresAt: moment()
+          .add(this.config.get("general.sessionDuration"), "hours")
+          .toDate(),
+      },
     });
 
     return { refreshTokenId: id, refreshToken: token };
@@ -229,14 +234,14 @@ export class AuthService {
     if (accessToken)
       response.cookie("access_token", accessToken, {
         sameSite: "lax",
-        maxAge: 1000 * 60 * 60 * 15, // 15 minutes
+        maxAge: 1000 * 60 * 15, // 15 minutes
       });
     if (refreshToken)
       response.cookie("refresh_token", refreshToken, {
         path: "/api/auth/token",
         httpOnly: true,
         sameSite: "strict",
-        maxAge: 1000 * 60 * 60 * 24 * 30 * 3, // 3 months
+        maxAge: 1000 * 60 * 60 * this.config.get("general.sessionDuration"),
       });
   }
 
