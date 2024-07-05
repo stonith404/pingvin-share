@@ -3,7 +3,7 @@ services:
     image: stonith404/pingvin-share
     restart: unless-stopped
     ports:
-      - 3000:3000
+      - 3333:3333
     volumes:
       - "./data:/opt/app/backend/data"
       - "./data/images:/opt/app/frontend/public/img"
