@@ -61,6 +61,9 @@ export class AuthService {
     if (!dto.email && !dto.username)
       throw new BadRequestException("Email or username is required");
 
+    if (this.config.get("oauth.disablePassword"))
+      throw new ForbiddenException("Password sign in is disabled");
+
     const user = await this.prisma.user.findFirst({
       where: {
         OR: [{ email: dto.email }, { username: dto.username }],
@@ -94,6 +97,9 @@ export class AuthService {
   }
 
   async requestResetPassword(email: string) {
+    if (this.config.get("oauth.disablePassword"))
+      throw new ForbiddenException("Password sign in is disabled");
+
     const user = await this.prisma.user.findFirst({
       where: { email },
       include: { resetPasswordToken: true },
@@ -119,6 +125,9 @@ export class AuthService {
   }
 
   async resetPassword(token: string, newPassword: string) {
+    if (this.config.get("oauth.disablePassword"))
+      throw new ForbiddenException("Password sign in is disabled");
+
     const user = await this.prisma.user.findFirst({
       where: { resetPasswordToken: { token } },
     });
