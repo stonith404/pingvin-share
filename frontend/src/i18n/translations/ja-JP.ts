@@ -344,6 +344,8 @@ export default {
   "admin.config.smtp.password": "パスワード",
   "admin.config.smtp.password.description": "SMTPサーバーのパスワード",
   "admin.config.smtp.button.test": "テストメールを送信",
+  "admin.config.smtp.allow-unauthenticated-certificates": "Trust unauthenticated SMTP server certificates",
+  "admin.config.smtp.allow-unauthenticated-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "登録を許可する",
   "admin.config.oauth.allow-registration.description": "ユーザーにソーシャルアカウント経由での登録を許可します",
   "admin.config.oauth.ignore-totp": "二段階認証を無視する",
