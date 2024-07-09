@@ -344,6 +344,8 @@ export default {
   "admin.config.smtp.password": "Lösenord",
   "admin.config.smtp.password.description": "Lösenord för SMTP-servern",
   "admin.config.smtp.button.test": "Skicka testmeddelande",
+  "admin.config.smtp.allow-unauthenticated-certificates": "Trust unauthenticated SMTP server certificates",
+  "admin.config.smtp.allow-unauthenticated-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "Tillåt registrering",
   "admin.config.oauth.allow-registration.description": "Tillåt användare att registrera sig via social inloggning",
   "admin.config.oauth.ignore-totp": "Ignorera TOTP",
