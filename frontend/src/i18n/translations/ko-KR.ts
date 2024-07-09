@@ -344,6 +344,8 @@ export default {
   "admin.config.smtp.password": "비밀번호",
   "admin.config.smtp.password.description": "SMTP 서버 비밀번호",
   "admin.config.smtp.button.test": "테스트 이메일 보내기",
+  "admin.config.smtp.allow-unauthenticated-certificates": "Trust unauthenticated SMTP server certificates",
+  "admin.config.smtp.allow-unauthenticated-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "가입 허용",
   "admin.config.oauth.allow-registration.description": "사용자가 소셜 로그인을 통해 등록할 수 있도록 허용",
   "admin.config.oauth.ignore-totp": "TOTP 무시",
