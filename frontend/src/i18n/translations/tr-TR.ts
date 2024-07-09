@@ -344,6 +344,8 @@ export default {
   "admin.config.smtp.password": "Şifre",
   "admin.config.smtp.password.description": "SMTP sunucusunun şifresi",
   "admin.config.smtp.button.test": "Test e-postası gönder",
+  "admin.config.smtp.allow-unauthenticated-certificates": "Trust unauthenticated SMTP server certificates",
+  "admin.config.smtp.allow-unauthenticated-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "Kayıtlara izin ver",
   "admin.config.oauth.allow-registration.description": "Sosyal Medya kayıtlarına izin verilip verilmeyeceği",
   "admin.config.oauth.ignore-totp": "2FA görmezden gel",
