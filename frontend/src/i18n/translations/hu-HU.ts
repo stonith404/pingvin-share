@@ -344,6 +344,8 @@ export default {
   "admin.config.smtp.password": "Jelszó",
   "admin.config.smtp.password.description": "Jelszó az SMTP kiszolgálón",
   "admin.config.smtp.button.test": "Teszt email küldése",
+  "admin.config.smtp.allow-unauthenticated-certificates": "Trust unauthenticated SMTP server certificates",
+  "admin.config.smtp.allow-unauthenticated-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "Regisztráció engedélyezése",
   "admin.config.oauth.allow-registration.description": "A felhasználók közösségi bejelentkezésen át is regisztrálhatnak",
   "admin.config.oauth.ignore-totp": "TOTP mellőzése",
