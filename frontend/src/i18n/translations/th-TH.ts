@@ -344,6 +344,8 @@ export default {
   "admin.config.smtp.password": "รหัสผ่าน",
   "admin.config.smtp.password.description": "รหัสผ่านของเซิร์ฟเวอร์ SMTP",
   "admin.config.smtp.button.test": "ส่งอีเมล์์์์์์ทดสอบ",
+  "admin.config.smtp.allow-unauthenticated-certificates": "Trust unauthenticated SMTP server certificates",
+  "admin.config.smtp.allow-unauthenticated-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "Allow registration",
   "admin.config.oauth.allow-registration.description": "Allow users to register via social login",
   "admin.config.oauth.ignore-totp": "Ignore TOTP",
