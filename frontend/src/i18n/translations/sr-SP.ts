@@ -344,6 +344,8 @@ export default {
   "admin.config.smtp.password": "Лозинка",
   "admin.config.smtp.password.description": "Лозинка SMTP сервера",
   "admin.config.smtp.button.test": "Пошаљи тестну е-пошту",
+  "admin.config.smtp.allow-unauthenticated-certificates": "Trust unauthenticated SMTP server certificates",
+  "admin.config.smtp.allow-unauthenticated-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "Дозволи регистрацију",
   "admin.config.oauth.allow-registration.description": "Дозволите корисницима да се региструју путем друштвене пријаве",
   "admin.config.oauth.ignore-totp": "Занемари ТОТП",
