@@ -74,6 +74,12 @@ const configVariables: ConfigVariables = {
 
       secret: false,
     },
+    allowUnauthenticatedCertificates: {
+      type: "boolean",
+      defaultValue: "false",
+
+      secret: false,
+    },
     shareRecipientsSubject: {
       type: "string",
       defaultValue: "Files shared with you",
