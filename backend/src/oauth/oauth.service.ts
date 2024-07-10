@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@nestjs/common";
+import { Inject, Injectable, Logger } from "@nestjs/common";
 import { User } from "@prisma/client";
 import { nanoid } from "nanoid";
 import { AuthService } from "../auth/auth.service";
@@ -15,6 +15,7 @@ export class OAuthService {
     private auth: AuthService,
     @Inject("OAUTH_PLATFORMS") private platforms: string[],
   ) {}
+  private readonly logger = new Logger(OAuthService.name);
 
   available(): string[] {
     return this.platforms
@@ -39,7 +40,7 @@ export class OAuthService {
     return Object.fromEntries(oauthUsers.map((u) => [u.provider, u]));
   }
 
-  async signIn(user: OAuthSignInDto) {
+  async signIn(user: OAuthSignInDto, ip: string) {
     const oauthUser = await this.prisma.oAuthUser.findFirst({
       where: {
         provider: user.provider,
@@ -50,10 +51,11 @@ export class OAuthService {
       },
     });
     if (oauthUser) {
+      this.logger.log(`Successful login for user ${user.email} from IP ${ip}`);
       return this.auth.generateToken(oauthUser.user, true);
     }
 
-    return this.signUp(user);
+    return this.signUp(user, ip);
   }
 
   async link(
@@ -119,7 +121,7 @@ export class OAuthService {
     }
   }
 
-  private async signUp(user: OAuthSignInDto) {
+  private async signUp(user: OAuthSignInDto, ip: string) {
     // register
     if (!this.config.get("oauth.allowRegistration")) {
       throw new ErrorPageException("no_user", "/auth/signIn", [
@@ -151,11 +153,14 @@ export class OAuthService {
       return this.auth.generateToken(existingUser, true);
     }
 
-    const result = await this.auth.signUp({
-      email: user.email,
-      username: await this.getAvailableUsername(user.providerUsername),
-      password: null,
-    });
+    const result = await this.auth.signUp(
+      {
+        email: user.email,
+        username: await this.getAvailableUsername(user.providerUsername),
+        password: null,
+      },
+      ip,
+    );
 
     await this.prisma.oAuthUser.create({
       data: {

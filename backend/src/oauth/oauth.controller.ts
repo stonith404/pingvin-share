@@ -85,7 +85,7 @@ export class OAuthController {
         accessToken?: string;
         refreshToken?: string;
         loginToken?: string;
-      } = await this.oauthService.signIn(user);
+      } = await this.oauthService.signIn(user, request.ip);
       if (token.accessToken) {
         this.authService.addTokensToResponse(
           response,
