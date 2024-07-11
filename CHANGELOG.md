@@ -1,3 +1,12 @@
+## [0.27.0](https://github.com/stonith404/pingvin-share/compare/v0.26.0...v0.27.0) (2024-07-11)
+
+
+### Features
+
+* add logs for successful registration, successful login and failed login ([d2bfb9a](https://github.com/stonith404/pingvin-share/commit/d2bfb9a55fdad6a05377b8552471cf1151304c90))
+* **auth:** Allow to hide username / password login form when OAuth is enabled ([#518](https://github.com/stonith404/pingvin-share/issues/518)) ([e1a68f7](https://github.com/stonith404/pingvin-share/commit/e1a68f75f7b034f1ef9e45f26de584f13e355589)), closes [#489](https://github.com/stonith404/pingvin-share/issues/489)
+* **smtp:** allow unauthorized mail server certificates ([#525](https://github.com/stonith404/pingvin-share/issues/525)) ([083d82c](https://github.com/stonith404/pingvin-share/commit/083d82c28b835c178f076e89ef8f5885e8ea31cb))
+
 ## [0.26.0](https://github.com/stonith404/pingvin-share/compare/v0.25.0...v0.26.0) (2024-07-03)
 
 
