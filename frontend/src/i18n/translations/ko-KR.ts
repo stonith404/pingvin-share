@@ -39,6 +39,7 @@ export default {
   "signIn.notify.totp-required.title": "2단계 인증이 필요합니다",
   "signIn.notify.totp-required.description": "2단계 인증 코드를 입력해주세요",
   "signIn.oauth.or": "또는",
+  "signIn.oauth.signInWith": "Sign in with",
   "signIn.oauth.github": "깃허브",
   "signIn.oauth.google": "구글",
   "signIn.oauth.microsoft": "마이크로소프트",
@@ -398,16 +399,15 @@ export default {
   "admin.config.smtp.password": "비밀번호",
   "admin.config.smtp.password.description": "SMTP 서버 비밀번호",
   "admin.config.smtp.button.test": "테스트 이메일 보내기",
-  "admin.config.smtp.allow-unauthorized-certificates":
-    "Trust unauthorized SMTP server certificates",
-  "admin.config.smtp.allow-unauthorized-certificates.description":
-    "Only set this to true if you need to trust self signed certificates.",
+  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "가입 허용",
   "admin.config.oauth.allow-registration.description":
     "사용자가 소셜 로그인을 통해 등록할 수 있도록 허용",
   "admin.config.oauth.ignore-totp": "TOTP 무시",
-  "admin.config.oauth.ignore-totp.description":
-    "사용자가 소셜 로그인을 사용하는 경우 TOTP를 무시할 것인지 여부",
+  "admin.config.oauth.ignore-totp.description": "사용자가 소셜 로그인을 사용하는 경우 TOTP를 무시할 것인지 여부",
+  "admin.config.oauth.disable-password": "Disable password login",
+  "admin.config.oauth.disable-password.description": "Whether to disable password login\nMake sure that an OAuth provider is properly configured before activating this configuration to avoid being locked out.",
   "admin.config.oauth.github-enabled": "깃허브",
   "admin.config.oauth.github-enabled.description": "깃허브 로그인 사용 여부",
   "admin.config.oauth.github-client-id": "GitHub 클라이언트 ID",

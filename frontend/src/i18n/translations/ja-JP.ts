@@ -40,6 +40,7 @@ export default {
   "signIn.notify.totp-required.description":
     "二段階認証コードを入力してください",
   "signIn.oauth.or": "または",
+  "signIn.oauth.signInWith": "Sign in with",
   "signIn.oauth.github": "GitHub",
   "signIn.oauth.google": "Google",
   "signIn.oauth.microsoft": "Microsoft",
@@ -405,16 +406,15 @@ export default {
   "admin.config.smtp.password": "パスワード",
   "admin.config.smtp.password.description": "SMTPサーバーのパスワード",
   "admin.config.smtp.button.test": "テストメールを送信",
-  "admin.config.smtp.allow-unauthorized-certificates":
-    "Trust unauthorized SMTP server certificates",
-  "admin.config.smtp.allow-unauthorized-certificates.description":
-    "Only set this to true if you need to trust self signed certificates.",
+  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "登録を許可する",
   "admin.config.oauth.allow-registration.description":
     "ユーザーにソーシャルアカウント経由での登録を許可します",
   "admin.config.oauth.ignore-totp": "二段階認証を無視する",
-  "admin.config.oauth.ignore-totp.description":
-    "ソーシャルログイン時に二段階認証を無視するかどうかを設定します",
+  "admin.config.oauth.ignore-totp.description": "ソーシャルログイン時に二段階認証を無視するかどうかを設定します",
+  "admin.config.oauth.disable-password": "Disable password login",
+  "admin.config.oauth.disable-password.description": "Whether to disable password login\nMake sure that an OAuth provider is properly configured before activating this configuration to avoid being locked out.",
   "admin.config.oauth.github-enabled": "GitHub",
   "admin.config.oauth.github-enabled.description":
     "GitHubアカウントを使用したログインを許可するかどうかを設定します",

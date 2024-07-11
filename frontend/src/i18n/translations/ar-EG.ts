@@ -37,6 +37,7 @@ export default {
   "signIn.notify.totp-required.title": "إن المصادقة الثنائية ضرورية",
   "signIn.notify.totp-required.description": "فضلًا أدخل رمز المصادقة الثنائية",
   "signIn.oauth.or": "أو",
+  "signIn.oauth.signInWith": "Sign in with",
   "signIn.oauth.github": "GitHub",
   "signIn.oauth.google": "Google",
   "signIn.oauth.microsoft": "Microsoft",
@@ -397,16 +398,15 @@ export default {
   "admin.config.smtp.password": "كلمة السر",
   "admin.config.smtp.password.description": "كلمة السر لخادم الـSMTP",
   "admin.config.smtp.button.test": "إرسال رسالة بريد تجريبية",
-  "admin.config.smtp.allow-unauthorized-certificates":
-    "Trust unauthorized SMTP server certificates",
-  "admin.config.smtp.allow-unauthorized-certificates.description":
-    "Only set this to true if you need to trust self signed certificates.",
+  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "السماح بتسجيل الحسابات الجديدة",
   "admin.config.oauth.allow-registration.description":
     "السماح للمستخدمين بالدخول بواسطة حساباتهم الاجتماعية",
   "admin.config.oauth.ignore-totp": "تجاهل TOTP",
-  "admin.config.oauth.ignore-totp.description":
-    "تجاهل TOTP إذا دخل المستخدم بحسابه الاجتماعي",
+  "admin.config.oauth.ignore-totp.description": "تجاهل TOTP إذا دخل المستخدم بحسابه الاجتماعي",
+  "admin.config.oauth.disable-password": "Disable password login",
+  "admin.config.oauth.disable-password.description": "Whether to disable password login\nMake sure that an OAuth provider is properly configured before activating this configuration to avoid being locked out.",
   "admin.config.oauth.github-enabled": "GitHub",
   "admin.config.oauth.github-enabled.description":
     "تفعيل خيار الدخول بحساب GitHub",

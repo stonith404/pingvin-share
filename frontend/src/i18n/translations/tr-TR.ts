@@ -38,6 +38,7 @@ export default {
   "signIn.notify.totp-required.description":
     "Lütfen iki faktörlü doğrulama kodunuzu girin",
   "signIn.oauth.or": "YA DA",
+  "signIn.oauth.signInWith": "Sign in with",
   "signIn.oauth.github": "GitHub",
   "signIn.oauth.google": "Google",
   "signIn.oauth.microsoft": "Microsoft",
@@ -406,16 +407,15 @@ export default {
   "admin.config.smtp.password": "Şifre",
   "admin.config.smtp.password.description": "SMTP sunucusunun şifresi",
   "admin.config.smtp.button.test": "Test e-postası gönder",
-  "admin.config.smtp.allow-unauthorized-certificates":
-    "Trust unauthorized SMTP server certificates",
-  "admin.config.smtp.allow-unauthorized-certificates.description":
-    "Only set this to true if you need to trust self signed certificates.",
+  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "Kayıtlara izin ver",
   "admin.config.oauth.allow-registration.description":
     "Sosyal Medya kayıtlarına izin verilip verilmeyeceği",
   "admin.config.oauth.ignore-totp": "2FA görmezden gel",
-  "admin.config.oauth.ignore-totp.description":
-    "Sosyal Medya ile giriş yapıldıktıktan sonra 2FA görmezden gelinip gelinmeyeceği",
+  "admin.config.oauth.ignore-totp.description": "Sosyal Medya ile giriş yapıldıktıktan sonra 2FA görmezden gelinip gelinmeyeceği",
+  "admin.config.oauth.disable-password": "Disable password login",
+  "admin.config.oauth.disable-password.description": "Whether to disable password login\nMake sure that an OAuth provider is properly configured before activating this configuration to avoid being locked out.",
   "admin.config.oauth.github-enabled": "GitHub",
   "admin.config.oauth.github-enabled.description":
     "GitHub girişine izin verilip verilmeyeceği",

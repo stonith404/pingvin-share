@@ -40,6 +40,7 @@ export default {
   "signIn.notify.totp-required.description":
     "Prosim vnesite vašo kodo dvofaktorske avtentikacije",
   "signIn.oauth.or": "ALI",
+  "signIn.oauth.signInWith": "Sign in with",
   "signIn.oauth.github": "GitHub",
   "signIn.oauth.google": "Google",
   "signIn.oauth.microsoft": "Microsoft",
@@ -411,16 +412,15 @@ export default {
   "admin.config.smtp.password": "Geslo",
   "admin.config.smtp.password.description": "Geslo SMTP strežnika",
   "admin.config.smtp.button.test": "Pošlji testno sporočilo",
-  "admin.config.smtp.allow-unauthorized-certificates":
-    "Trust unauthorized SMTP server certificates",
-  "admin.config.smtp.allow-unauthorized-certificates.description":
-    "Only set this to true if you need to trust self signed certificates.",
+  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "Dovoli registracijo",
   "admin.config.oauth.allow-registration.description":
     "Dovoli registracijo uporabnika prek družbenih omrežij",
   "admin.config.oauth.ignore-totp": "Ignoriraj TOTP",
-  "admin.config.oauth.ignore-totp.description":
-    "Če ignorirati TOTP, ko se uporabnik registrira prek družbenih omrežij",
+  "admin.config.oauth.ignore-totp.description": "Če ignorirati TOTP, ko se uporabnik registrira prek družbenih omrežij",
+  "admin.config.oauth.disable-password": "Disable password login",
+  "admin.config.oauth.disable-password.description": "Whether to disable password login\nMake sure that an OAuth provider is properly configured before activating this configuration to avoid being locked out.",
   "admin.config.oauth.github-enabled": "GitHub",
   "admin.config.oauth.github-enabled.description":
     "Če je dovoljena prijava z GitHub računom",

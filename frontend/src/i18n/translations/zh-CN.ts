@@ -34,6 +34,7 @@ export default {
   "signIn.notify.totp-required.title": "请继续两步验证",
   "signIn.notify.totp-required.description": "请输入一次性验证码",
   "signIn.oauth.or": "或",
+  "signIn.oauth.signInWith": "Sign in with",
   "signIn.oauth.github": "GitHub",
   "signIn.oauth.google": "谷歌",
   "signIn.oauth.microsoft": "Microsoft",
@@ -380,16 +381,15 @@ export default {
   "admin.config.smtp.password": "密码",
   "admin.config.smtp.password.description": "SMTP 主机密码",
   "admin.config.smtp.button.test": "发送测试邮件",
-  "admin.config.smtp.allow-unauthorized-certificates":
-    "Trust unauthorized SMTP server certificates",
-  "admin.config.smtp.allow-unauthorized-certificates.description":
-    "Only set this to true if you need to trust self signed certificates.",
+  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "允许注册",
   "admin.config.oauth.allow-registration.description":
     "允许用户通过登录社交账号来注册",
   "admin.config.oauth.ignore-totp": "忽略两步验证",
-  "admin.config.oauth.ignore-totp.description":
-    "用户通过社交账号登录时是否忽略两步验证",
+  "admin.config.oauth.ignore-totp.description": "用户通过社交账号登录时是否忽略两步验证",
+  "admin.config.oauth.disable-password": "Disable password login",
+  "admin.config.oauth.disable-password.description": "Whether to disable password login\nMake sure that an OAuth provider is properly configured before activating this configuration to avoid being locked out.",
   "admin.config.oauth.github-enabled": "GitHub",
   "admin.config.oauth.github-enabled.description": "是否启用 GitHub 账号登录",
   "admin.config.oauth.github-client-id": "GitHub Client ID",

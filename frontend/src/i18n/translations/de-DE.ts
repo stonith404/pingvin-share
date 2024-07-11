@@ -352,8 +352,7 @@ export default {
   "admin.config.oauth.ignore-totp": "TOTP ignorieren",
   "admin.config.oauth.ignore-totp.description": "Gibt an, ob TOTP ignoriert werden soll, wenn sich der Benutzer über Soziale Netzwerke anmeldet",
   "admin.config.oauth.disable-password": "Anmelden mit Passwort deaktivieren",
-  "admin.config.oauth.disable-password.description":
-    "Deaktiviert das Anmelden mit Passwort\nStelle vor Aktivierung dieser Konfiguration sicher, dass ein OAuth-Provider korrekt konfiguriert ist, um nicht ausgesperrt zu werden.",
+  "admin.config.oauth.disable-password.description": "Deaktiviert das Anmelden mit Passwort\nStelle vor Aktivierung dieser Konfiguration sicher, dass ein OAuth-Provider korrekt konfiguriert ist, um nicht ausgesperrt zu werden.",
   "admin.config.oauth.github-enabled": "GitHub",
   "admin.config.oauth.github-enabled.description": "GitHub Anmeldung erlaubt",
   "admin.config.oauth.github-client-id": "GitHub Client-ID",

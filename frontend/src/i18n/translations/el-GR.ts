@@ -41,6 +41,7 @@ export default {
   "signIn.notify.totp-required.description":
     "Παρακαλώ εισάγετε τον κωδικό 2FA.",
   "signIn.oauth.or": "Ή",
+  "signIn.oauth.signInWith": "Sign in with",
   "signIn.oauth.github": "GitHub",
   "signIn.oauth.google": "Google",
   "signIn.oauth.microsoft": "Microsoft",
@@ -427,16 +428,15 @@ export default {
   "admin.config.smtp.password.description":
     "Κωδικός πρόσβασης στον εξυπηρετητή SMTP",
   "admin.config.smtp.button.test": "Αποστολή δοκιμαστικού email",
-  "admin.config.smtp.allow-unauthorized-certificates":
-    "Trust unauthorized SMTP server certificates",
-  "admin.config.smtp.allow-unauthorized-certificates.description":
-    "Only set this to true if you need to trust self signed certificates.",
+  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "Να επιτρέπεται η εγγραφή",
   "admin.config.oauth.allow-registration.description":
     "Επιτρέψτε στους χρήστες να εγγραφούν μέσω λογαριασμών κοινωνικής δικτύωσης",
   "admin.config.oauth.ignore-totp": "Παράβλεψη TOTP",
-  "admin.config.oauth.ignore-totp.description":
-    "Αν θα αγνοηθεί το TOTP όταν ο χρήστης χρησιμοποιεί την κοινωνική σύνδεση",
+  "admin.config.oauth.ignore-totp.description": "Αν θα αγνοηθεί το TOTP όταν ο χρήστης χρησιμοποιεί την κοινωνική σύνδεση",
+  "admin.config.oauth.disable-password": "Disable password login",
+  "admin.config.oauth.disable-password.description": "Whether to disable password login\nMake sure that an OAuth provider is properly configured before activating this configuration to avoid being locked out.",
   "admin.config.oauth.github-enabled": "GitHub",
   "admin.config.oauth.github-enabled.description":
     "Αν είναι ενεργοποιημένη η σύνδεση GitHub",

@@ -39,6 +39,7 @@ export default {
   "signIn.notify.totp-required.description":
     "Voer uw tweestapsverificatiecode in",
   "signIn.oauth.or": "OF",
+  "signIn.oauth.signInWith": "Sign in with",
   "signIn.oauth.github": "GitHub",
   "signIn.oauth.google": "Google",
   "signIn.oauth.microsoft": "Microsoft",
@@ -416,16 +417,15 @@ export default {
   "admin.config.smtp.password": "Wachtwoord",
   "admin.config.smtp.password.description": "Wachtwoord van de SMTP-server",
   "admin.config.smtp.button.test": "Teste-mail verzenden",
-  "admin.config.smtp.allow-unauthorized-certificates":
-    "Trust unauthorized SMTP server certificates",
-  "admin.config.smtp.allow-unauthorized-certificates.description":
-    "Only set this to true if you need to trust self signed certificates.",
+  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "Sta registratie toe",
   "admin.config.oauth.allow-registration.description":
     "Gebruikers toestaan zich te registreren via sociale login",
   "admin.config.oauth.ignore-totp": "TOTP negeren",
-  "admin.config.oauth.ignore-totp.description":
-    "TOTP negeren wanneer gebruiker sociale login gebruikt",
+  "admin.config.oauth.ignore-totp.description": "TOTP negeren wanneer gebruiker sociale login gebruikt",
+  "admin.config.oauth.disable-password": "Disable password login",
+  "admin.config.oauth.disable-password.description": "Whether to disable password login\nMake sure that an OAuth provider is properly configured before activating this configuration to avoid being locked out.",
   "admin.config.oauth.github-enabled": "GitHub",
   "admin.config.oauth.github-enabled.description":
     "Ofdat GitHub login is ingeschakeld",

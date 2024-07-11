@@ -35,6 +35,7 @@ export default {
   "signIn.notify.totp-required.title": "請繼續兩步驗證",
   "signIn.notify.totp-required.description": "請輸入一次性驗證碼",
   "signIn.oauth.or": "OR",
+  "signIn.oauth.signInWith": "Sign in with",
   "signIn.oauth.github": "GitHub",
   "signIn.oauth.google": "Google",
   "signIn.oauth.microsoft": "Microsoft",
@@ -381,16 +382,15 @@ export default {
   "admin.config.smtp.password": "密碼",
   "admin.config.smtp.password.description": "SMTP 主機密碼",
   "admin.config.smtp.button.test": "發送測試Email",
-  "admin.config.smtp.allow-unauthorized-certificates":
-    "Trust unauthorized SMTP server certificates",
-  "admin.config.smtp.allow-unauthorized-certificates.description":
-    "Only set this to true if you need to trust self signed certificates.",
+  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "允許註冊",
   "admin.config.oauth.allow-registration.description":
     "允許使用者以第三方登入註冊",
   "admin.config.oauth.ignore-totp": "略過 TOTP",
-  "admin.config.oauth.ignore-totp.description":
-    "當使用者使用第三方登入時，略過 TOTP 驗證",
+  "admin.config.oauth.ignore-totp.description": "當使用者使用第三方登入時，略過 TOTP 驗證",
+  "admin.config.oauth.disable-password": "Disable password login",
+  "admin.config.oauth.disable-password.description": "Whether to disable password login\nMake sure that an OAuth provider is properly configured before activating this configuration to avoid being locked out.",
   "admin.config.oauth.github-enabled": "GitHub",
   "admin.config.oauth.github-enabled.description": "啟用 Github 登入",
   "admin.config.oauth.github-client-id": "GitHub Client ID",

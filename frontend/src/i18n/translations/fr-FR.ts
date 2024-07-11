@@ -40,6 +40,7 @@ export default {
   "signIn.notify.totp-required.description":
     "Veuillez entrer votre code d'authentification à deux facteurs",
   "signIn.oauth.or": "OU",
+  "signIn.oauth.signInWith": "Se connecter avec",
   "signIn.oauth.github": "GitHub",
   "signIn.oauth.google": "Google",
   "signIn.oauth.microsoft": "Microsoft",
@@ -341,11 +342,9 @@ export default {
   "admin.config.general.app-url.description":
     "Depuis quel URL le partage Pingvin est disponible",
   "admin.config.general.show-home-page": "Afficher la page d’accueil",
-  "admin.config.general.show-home-page.description":
-    "Afficher ou non la page d’accueil",
-  "admin.config.general.session-duration": "Session Duration",
-  "admin.config.general.session-duration.description":
-    "Time in hours after which a user must log in again (default: 3 months).",
+  "admin.config.general.show-home-page.description": "Afficher ou non la page d’accueil",
+  "admin.config.general.session-duration": "Durée de la session",
+  "admin.config.general.session-duration.description": "Nombre d’heures après lesquelles un utilisateur doit se reconnecter (par défaut : 3 mois).",
   "admin.config.general.logo": "Logo",
   "admin.config.general.logo.description":
     "Changez de logo en envoyant une nouvelle image. L’image doit être au format PNG et doit avoir un ratio 1:1.",
@@ -422,12 +421,15 @@ export default {
   "admin.config.smtp.allow-unauthorized-certificates.description":
     "Only set this to true if you need to trust self signed certificates.",
   "admin.config.smtp.button.test": "Envoyer un courriel de test",
+  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "Autoriser l’inscription",
   "admin.config.oauth.allow-registration.description":
     "Permettre aux utilisateurs de s’inscrire via leur identifiant social",
   "admin.config.oauth.ignore-totp": "Ignorer TOTP",
-  "admin.config.oauth.ignore-totp.description":
-    "Ignorer le TOTP lorsque l’utilisateur utilise un identifiant social.",
+  "admin.config.oauth.ignore-totp.description": "Ignorer le TOTP lorsque l’utilisateur utilise un identifiant social.",
+  "admin.config.oauth.disable-password": "Désactiver la connexion par mot de passe",
+  "admin.config.oauth.disable-password.description": "Désactive la connexion par mot de passe\nAssurez-vous qu’un fournisseur OAuth soit correctement configuré avant d’activer cette configuration pour éviter d'être enfermé.",
   "admin.config.oauth.github-enabled": "GitHub",
   "admin.config.oauth.github-enabled.description":
     "Permettre la connexion via GitHub.",

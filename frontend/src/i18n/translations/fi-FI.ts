@@ -40,6 +40,7 @@ export default {
   "signIn.notify.totp-required.description":
     "Syötä kaksivaiheisen tunnistautumisen koodi tähän",
   "signIn.oauth.or": "OR",
+  "signIn.oauth.signInWith": "Sign in with",
   "signIn.oauth.github": "GitHub",
   "signIn.oauth.google": "Google",
   "signIn.oauth.microsoft": "Microsoft",
@@ -410,16 +411,15 @@ export default {
   "admin.config.smtp.password": "Salasana",
   "admin.config.smtp.password.description": "SMTP palvelimen salasana",
   "admin.config.smtp.button.test": "Lähetä testisähköposti",
-  "admin.config.smtp.allow-unauthorized-certificates":
-    "Trust unauthorized SMTP server certificates",
-  "admin.config.smtp.allow-unauthorized-certificates.description":
-    "Only set this to true if you need to trust self signed certificates.",
+  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "Allow registration",
   "admin.config.oauth.allow-registration.description":
     "Allow users to register via social login",
   "admin.config.oauth.ignore-totp": "Ignore TOTP",
-  "admin.config.oauth.ignore-totp.description":
-    "Whether to ignore TOTP when user using social login",
+  "admin.config.oauth.ignore-totp.description": "Whether to ignore TOTP when user using social login",
+  "admin.config.oauth.disable-password": "Disable password login",
+  "admin.config.oauth.disable-password.description": "Whether to disable password login\nMake sure that an OAuth provider is properly configured before activating this configuration to avoid being locked out.",
   "admin.config.oauth.github-enabled": "GitHub",
   "admin.config.oauth.github-enabled.description":
     "Whether GitHub login is enabled",

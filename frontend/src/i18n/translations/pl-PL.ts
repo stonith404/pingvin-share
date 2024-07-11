@@ -41,6 +41,7 @@ export default {
   "signIn.notify.totp-required.description":
     "Wprowadź kod uwierzytelniania dwuetapowego",
   "signIn.oauth.or": "LUB",
+  "signIn.oauth.signInWith": "Sign in with",
   "signIn.oauth.github": "GitHub",
   "signIn.oauth.google": "Google",
   "signIn.oauth.microsoft": "Microsoft",
@@ -418,16 +419,15 @@ export default {
   "admin.config.smtp.password": "Hasło",
   "admin.config.smtp.password.description": "Hasło serwera SMTP",
   "admin.config.smtp.button.test": "Wyślij testowego e-maila",
-  "admin.config.smtp.allow-unauthorized-certificates":
-    "Trust unauthorized SMTP server certificates",
-  "admin.config.smtp.allow-unauthorized-certificates.description":
-    "Only set this to true if you need to trust self signed certificates.",
+  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "Zezwól na rejestrację",
   "admin.config.oauth.allow-registration.description":
     "Zezwalaj użytkownikom na rejestrację za pomocą konta społecznościowego",
   "admin.config.oauth.ignore-totp": "Ignoruj TOTP",
-  "admin.config.oauth.ignore-totp.description":
-    "Czy zignorować TOTP, kiedy użytkownik loguje się za pomocą konta społecznościowego",
+  "admin.config.oauth.ignore-totp.description": "Czy zignorować TOTP, kiedy użytkownik loguje się za pomocą konta społecznościowego",
+  "admin.config.oauth.disable-password": "Disable password login",
+  "admin.config.oauth.disable-password.description": "Whether to disable password login\nMake sure that an OAuth provider is properly configured before activating this configuration to avoid being locked out.",
   "admin.config.oauth.github-enabled": "GitHub",
   "admin.config.oauth.github-enabled.description":
     "Czy login na GitHub jest włączony",
