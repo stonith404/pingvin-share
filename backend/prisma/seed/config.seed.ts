@@ -116,7 +116,7 @@ const configVariables: ConfigVariables = {
       defaultValue: "false",
       secret: false,
     },
-    allowUnauthenticatedCertificates: {
+    allowUnauthorizedCertificates: {
       type: "boolean",
       defaultValue: "false",
 
