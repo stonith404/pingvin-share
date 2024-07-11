@@ -345,6 +345,8 @@ export default {
   "admin.config.smtp.password": "Пароль",
   "admin.config.smtp.password.description": "Пароль SMTP-сервера",
   "admin.config.smtp.button.test": "Відправити тестовий лист",
+  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "Дозволити реєстрацію",
   "admin.config.oauth.allow-registration.description": "Дозволити користувачам реєструватися, використовуючи облікові записи соціальних мереж",
   "admin.config.oauth.ignore-totp": "Ігнорувати TOTP",
