@@ -11,11 +11,11 @@ export default {
   "navbar.avatar.signout": "Kirjaudu ulos",
   // END navbar
   // /
-  "home.title": '<h>"Itse isännöitty"</h> tiedostojen jakamisen alusta.',
+  "home.title": "<h>\"Itse isännöitty\"</h> tiedostojen jakamisen alusta.",
   "home.description":
     "Haluatko oikeasti jakaa yksityisiä tiedostojasi kolmannen osapuolen yhtiöille niin kuin WeTransfer?",
   "home.bullet.a.name": "Itse-Isännöitty",
-  "home.bullet.a.description": 'Isännöi "Pingvin Share" omalla palvelimellasi.',
+  "home.bullet.a.description": "Isännöi \"Pingvin Share\" omalla palvelimellasi.",
   "home.bullet.b.name": "Yksityisyys",
   "home.bullet.b.description":
     "Sinun tiedostosi ovat sinun ja niiden ei ikinä pidä päättyä kolmannen osapuolen käsiin.",
