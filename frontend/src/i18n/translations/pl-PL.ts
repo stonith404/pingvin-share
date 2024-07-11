@@ -11,14 +11,18 @@ export default {
   "navbar.avatar.signout": "Wyloguj się",
   // END navbar
   // /
-  "home.title": "<h>Samodzielnie utrzymywana</h> platforma udostępniania plików.",
-  "home.description": "Czy na pewno chcesz przekazać swoje prywatne pliki w ręce osób trzecich, takich jak WeTransfer?",
+  "home.title":
+    "<h>Samodzielnie utrzymywana</h> platforma udostępniania plików.",
+  "home.description":
+    "Czy na pewno chcesz przekazać swoje prywatne pliki w ręce osób trzecich, takich jak WeTransfer?",
   "home.bullet.a.name": "Samodzielnie Utrzymywana",
   "home.bullet.a.description": "Utrzymuj Pingvin Share na własnym serwerze.",
   "home.bullet.b.name": "Prywatność",
-  "home.bullet.b.description": "To są twoje pliki i nigdy nie powinny trafiać w ręce osób trzecich.",
+  "home.bullet.b.description":
+    "To są twoje pliki i nigdy nie powinny trafiać w ręce osób trzecich.",
   "home.bullet.c.name": "Brak irytującego ograniczenia rozmiaru pliku",
-  "home.bullet.c.description": "Prześlij tak duże pliki, jak chcesz. Ograniczeniem będzie tylko twój dysk twardy.",
+  "home.bullet.c.description":
+    "Prześlij tak duże pliki, jak chcesz. Ograniczeniem będzie tylko twój dysk twardy.",
   "home.button.start": "Zaczynajmy",
   "home.button.source": "Kod źródłowy",
   // END /
@@ -27,12 +31,15 @@ export default {
   "signin.description": "Nie masz jeszcze konta?",
   "signin.button.signup": "Zarejestruj się",
   "signin.input.email-or-username": "Adres e-mail lub nazwa użytkownika",
-  "signin.input.email-or-username.placeholder": "Adres e-mail lub nazwa użytkownika",
+  "signin.input.email-or-username.placeholder":
+    "Adres e-mail lub nazwa użytkownika",
   "signin.input.password": "Hasło",
   "signin.input.password.placeholder": "Twoje hasło",
   "signin.button.submit": "Zaloguj się",
-  "signIn.notify.totp-required.title": "Wymagane jest uwierzytelnianie dwuetapowe",
-  "signIn.notify.totp-required.description": "Wprowadź kod uwierzytelniania dwuetapowego",
+  "signIn.notify.totp-required.title":
+    "Wymagane jest uwierzytelnianie dwuetapowe",
+  "signIn.notify.totp-required.description":
+    "Wprowadź kod uwierzytelniania dwuetapowego",
   "signIn.oauth.or": "LUB",
   "signIn.oauth.signInWith": "Sign in with",
   "signIn.oauth.github": "GitHub",
@@ -57,8 +64,10 @@ export default {
   // END /auth/totp
   // /auth/reset-password
   "resetPassword.title": "Nie pamiętasz hasła?",
-  "resetPassword.description": "Wprowadź swój e-mail, aby zresetować swoje hasło.",
-  "resetPassword.notify.success": "Jeśli e-mail istnieje, to została wysłana wiadomość z linkiem do zresetowania hasła.",
+  "resetPassword.description":
+    "Wprowadź swój e-mail, aby zresetować swoje hasło.",
+  "resetPassword.notify.success":
+    "Jeśli e-mail istnieje, to została wysłana wiadomość z linkiem do zresetowania hasła.",
   "resetPassword.button.back": "Powrót do strony logowania",
   "resetPassword.text.resetPassword": "Resetuj hasło",
   "resetPassword.text.enterNewPassword": "Wprowadź nowe hasło",
@@ -73,7 +82,8 @@ export default {
   "account.card.password.title": "Hasło",
   "account.card.password.old": "Dotychczasowe hasło",
   "account.card.password.new": "Nowe hasło",
-  "account.card.password.noPasswordSet": "Nie masz ustawionego hasła. Jeśli chcesz zalogować się za pomocą adresu e-mail i hasła, musisz ustawić hasło.",
+  "account.card.password.noPasswordSet":
+    "Nie masz ustawionego hasła. Jeśli chcesz zalogować się za pomocą adresu e-mail i hasła, musisz ustawić hasło.",
   "account.notify.password.success": "Hasło zostało pomyślnie zmienione",
   "account.card.oauth.title": "Logowanie za pomocą konta społecznościowego",
   "account.card.oauth.github": "GitHub",
@@ -85,11 +95,14 @@ export default {
   "account.card.oauth.unlink": "Odłącz",
   "account.card.oauth.unlinked": "Rozłączono",
   "account.modal.unlink.title": "Odłącz konto",
-  "account.modal.unlink.description": "Odłączenie kont społecznościowych, jeśli nie pamiętasz nazwy użytkownika i hasła, może spowodować utratę konta.",
+  "account.modal.unlink.description":
+    "Odłączenie kont społecznościowych, jeśli nie pamiętasz nazwy użytkownika i hasła, może spowodować utratę konta.",
   "account.notify.oauth.unlinked.success": "Odłączono pomyślnie",
   "account.card.security.title": "Zabezpieczenia",
-  "account.card.security.totp.enable.description": "Wprowadź aktualne hasło, aby móc włączyć TOTP",
-  "account.card.security.totp.disable.description": "Wprowadź aktualne hasło, aby wyłączyć TOTP",
+  "account.card.security.totp.enable.description":
+    "Wprowadź aktualne hasło, aby móc włączyć TOTP",
+  "account.card.security.totp.disable.description":
+    "Wprowadź aktualne hasło, aby wyłączyć TOTP",
   "account.card.security.totp.button.start": "Uruchom",
   "account.modal.totp.title": "Uruchom TOTP",
   "account.modal.totp.step1": "Krok 1: Dodaj swój uwierzytelniacz",
@@ -101,7 +114,8 @@ export default {
   "account.notify.totp.disable": "%s wyłączono pomyślnie",
   "account.notify.totp.enable": "TOTP włączono pomyślnie",
   "account.card.language.title": "Język",
-  "account.card.language.description": "Projekt jest tłumaczony przez społeczność. Niektóre języki mogą być niekompletne.",
+  "account.card.language.description":
+    "Projekt jest tłumaczony przez społeczność. Niektóre języki mogą być niekompletne.",
   "account.card.color.title": "Schemat kolorów",
   // ThemeSwitcher.tsx
   "account.theme.dark": "Ciemny",
@@ -109,7 +123,8 @@ export default {
   "account.theme.system": "System",
   "account.button.delete": "Usuń Konto",
   "account.modal.delete.title": "Usuń Konto",
-  "account.modal.delete.description": "Czy na pewno chcesz usunąć swoje konto, w tym wszystkie aktywne udziały?",
+  "account.modal.delete.description":
+    "Czy na pewno chcesz usunąć swoje konto, w tym wszystkie aktywne udziały?",
   // END /account
   // /account/shares
   "account.shares.title": "Moje udziały",
@@ -127,13 +142,16 @@ export default {
   "account.shares.modal.share-informations": "Informacje udziału",
   "account.shares.modal.share-link": "Udostępnij link",
   "account.shares.modal.delete.title": "Usuń udostępnianie {share}",
-  "account.shares.modal.delete.description": "Czy na pewno chcesz usunąć to udostępnianie?",
+  "account.shares.modal.delete.description":
+    "Czy na pewno chcesz usunąć to udostępnianie?",
   // END /account/shares
   // /account/reverseShares
   "account.reverseShares.title": "Udziały odwrotne",
-  "account.reverseShares.description": "Udostępnianie odwrotne pozwala na wygenerowanie unikalnego adresu URL, który umożliwia użytkownikom zewnętrznym na tworzenie udostępniania.",
+  "account.reverseShares.description":
+    "Udostępnianie odwrotne pozwala na wygenerowanie unikalnego adresu URL, który umożliwia użytkownikom zewnętrznym na tworzenie udostępniania.",
   "account.reverseShares.title.empty": "Tu jest pusto 👀",
-  "account.reverseShares.description.empty": "Nie masz żadnych udostępnień odwrotnych.",
+  "account.reverseShares.description.empty":
+    "Nie masz żadnych udostępnień odwrotnych.",
   // showCreateReverseShareModal.tsx
   "account.reverseShares.modal.title": "Utwórz udostępnianie odwrotne",
   "account.reverseShares.modal.expiration.label": "Wygasanie",
@@ -151,11 +169,15 @@ export default {
   "account.reverseShares.modal.expiration.year-plural": "Lata/lat",
   "account.reverseShares.modal.max-size.label": "Maksymalny rozmiar udziału",
   "account.reverseShares.modal.send-email": "Wysyłanie powiadomienia e-mail",
-  "account.reverseShares.modal.send-email.description": "Wyślij powiadomienie e-mail, gdy udostępnianie zostanie utworzone za pomocą linku udostępniania odwrotnego.",
+  "account.reverseShares.modal.send-email.description":
+    "Wyślij powiadomienie e-mail, gdy udostępnianie zostanie utworzone za pomocą linku udostępniania odwrotnego.",
   "account.reverseShares.modal.max-use.label": "Limit użyć",
-  "account.reverseShares.modal.max-use.description": "Maksymalna ilość razy, kiedy ten adres URL może być użyty do utworzenia udostępniania.",
-  "account.reverseShare.never-expires": "To udostępnienie odwrotne nigdy nie wygasa.",
-  "account.reverseShare.expires-on": "To udostępnienie odwrotne wygaśnie dnia {expiration}.",
+  "account.reverseShares.modal.max-use.description":
+    "Maksymalna ilość razy, kiedy ten adres URL może być użyty do utworzenia udostępniania.",
+  "account.reverseShare.never-expires":
+    "To udostępnienie odwrotne nigdy nie wygasa.",
+  "account.reverseShare.expires-on":
+    "To udostępnienie odwrotne wygaśnie dnia {expiration}.",
   "account.reverseShares.table.no-shares": "Nie utworzono jeszcze udostępnień",
   "account.reverseShares.table.count.singular": "udostępnij",
   "account.reverseShares.table.count.plural": "udziały",
@@ -163,9 +185,11 @@ export default {
   "account.reverseShares.table.remaining": "Pozostało miejsca",
   "account.reverseShares.table.max-size": "Maksymalny rozmiar udziału",
   "account.reverseShares.table.expires": "Wygasa",
-  "account.reverseShares.modal.reverse-share-link": "Link udostępnienia odwrotnego",
+  "account.reverseShares.modal.reverse-share-link":
+    "Link udostępnienia odwrotnego",
   "account.reverseShares.modal.delete.title": "Usuń udostępnienie odwrotnie",
-  "account.reverseShares.modal.delete.description": "Czy na pewno chcesz usunąć to udostępnienie odwrotne? Jeśli tak, to również zostaną usunięte powiązane z nim udostępnienia.",
+  "account.reverseShares.modal.delete.description":
+    "Czy na pewno chcesz usunąć to udostępnienie odwrotne? Jeśli tak, to również zostaną usunięte powiązane z nim udostępnienia.",
   // END /account/reverseShares
   // /admin
   "admin.title": "Administracja",
@@ -184,18 +208,22 @@ export default {
   "admin.users.edit.update.change-password.title": "Zmień hasło",
   "admin.users.edit.update.change-password.field": "Nowe hasło",
   "admin.users.edit.update.change-password.button": "Zapisz nowe hasło",
-  "admin.users.edit.update.notify.password.success": "Hasło pomyślnie zmienione",
+  "admin.users.edit.update.notify.password.success":
+    "Hasło pomyślnie zmienione",
   "admin.users.edit.delete.title": "Usuń użytkownika {username}",
-  "admin.users.edit.delete.description": "Czy na pewno chcesz usunąć tego użytkownika i wszystkie jego udziały?",
+  "admin.users.edit.delete.description":
+    "Czy na pewno chcesz usunąć tego użytkownika i wszystkie jego udziały?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "Utwórz użytkownika",
   "admin.users.modal.create.username": "Nazwa użytkownika",
   "admin.users.modal.create.email": "Adres e-mail",
   "admin.users.modal.create.password": "Hasło",
   "admin.users.modal.create.manual-password": "Ustaw ręcznie hasło",
-  "admin.users.modal.create.manual-password.description": "Jeśli nie zaznaczone, użytkownik otrzyma e-mail z linkiem do ustawienia hasła.",
+  "admin.users.modal.create.manual-password.description":
+    "Jeśli nie zaznaczone, użytkownik otrzyma e-mail z linkiem do ustawienia hasła.",
   "admin.users.modal.create.admin": "Uprawnienia administratora",
-  "admin.users.modal.create.admin.description": "Jeśli zaznaczone, użytkownik będzie miał dostęp do panelu administratora.",
+  "admin.users.modal.create.admin.description":
+    "Jeśli zaznaczone, użytkownik będzie miał dostęp do panelu administratora.",
   // END /admin/users
   // /admin/shares
   "admin.shares.title": "Share management",
@@ -204,28 +232,36 @@ export default {
   "admin.shares.table.visitors": "Visitors",
   "admin.shares.table.expires": "Expires At",
   "admin.shares.edit.delete.title": "Delete share {id}",
-  "admin.shares.edit.delete.description": "Do you really want to delete this share?",
+  "admin.shares.edit.delete.description":
+    "Do you really want to delete this share?",
   // END /admin/shares
   // /upload
   "upload.title": "Prześlij",
-  "upload.notify.generic-error": "Wystąpił błąd podczas zakończenia tworzenia udziału.",
-  "upload.notify.count-failed": "Nie udało się przesłać {count} plików. Próbuję ponownie.",
+  "upload.notify.generic-error":
+    "Wystąpił błąd podczas zakończenia tworzenia udziału.",
+  "upload.notify.count-failed":
+    "Nie udało się przesłać {count} plików. Próbuję ponownie.",
   // Dropzone.tsx
   "upload.dropzone.title": "Prześlij pliki",
-  "upload.dropzone.description": "Przeciągnij i upuść pliki tutaj, aby rozpocząć udostępnianie. Możemy zaakceptować tylko pliki mniejsze niż {maxSize}.",
-  "upload.dropzone.notify.file-too-big": "Twoje pliki przekraczają maksymalny rozmiar {maxSize}.",
+  "upload.dropzone.description":
+    "Przeciągnij i upuść pliki tutaj, aby rozpocząć udostępnianie. Możemy zaakceptować tylko pliki mniejsze niż {maxSize}.",
+  "upload.dropzone.notify.file-too-big":
+    "Twoje pliki przekraczają maksymalny rozmiar {maxSize}.",
   // FileList.tsx
   "upload.filelist.name": "Nazwa",
   "upload.filelist.size": "Rozmiar",
   // showCreateUploadModal.tsx
   "upload.modal.title": "Utwórz Udział",
-  "upload.modal.link.error.invalid": "Może zawierać tylko litery, cyfry, znaki podkreślenia i myślniki",
+  "upload.modal.link.error.invalid":
+    "Może zawierać tylko litery, cyfry, znaki podkreślenia i myślniki",
   "upload.modal.link.error.taken": "Ten link jest już w użyciu",
   "upload.modal.not-signed-in": "Nie jesteś zalogowany/a",
-  "upload.modal.not-signed-in-description": "Nie możesz ręcznie usunąć swojego udziału ani wyświetlić licznika odwiedzających.",
+  "upload.modal.not-signed-in-description":
+    "Nie możesz ręcznie usunąć swojego udziału ani wyświetlić licznika odwiedzających.",
   "upload.modal.expires.never": "nigdy",
   "upload.modal.expires.never-long": "Nigdy nie wygasa",
-  "upload.modal.expires.error.too-long": "Termin ważności przekracza maksymalną datę wygaśnięcia {max}.",
+  "upload.modal.expires.error.too-long":
+    "Termin ważności przekracza maksymalną datę wygaśnięcia {max}.",
   "upload.modal.link.label": "Link",
   "upload.modal.expires.label": "Wygasanie",
   "upload.modal.expires.minute-singular": "Minuta",
@@ -242,44 +278,57 @@ export default {
   "upload.modal.expires.year-plural": "Lat/a",
   "upload.modal.accordion.name-and-description.title": "Name and description",
   "upload.modal.accordion.name-and-description.name.placeholder": "Name",
-  "upload.modal.accordion.name-and-description.description.placeholder": "Note for the recipients of this share",
+  "upload.modal.accordion.name-and-description.description.placeholder":
+    "Note for the recipients of this share",
   "upload.modal.accordion.email.title": "Odbiorcy wiadomości e-mail",
-  "upload.modal.accordion.email.placeholder": "Wprowadź adresatów wiadomości e-mail",
-  "upload.modal.accordion.email.invalid-email": "Adres e-mail jest nieprawidłowy",
+  "upload.modal.accordion.email.placeholder":
+    "Wprowadź adresatów wiadomości e-mail",
+  "upload.modal.accordion.email.invalid-email":
+    "Adres e-mail jest nieprawidłowy",
   "upload.modal.accordion.security.title": "Ustawienia bezpieczeństwa",
   "upload.modal.accordion.security.password.label": "Ochrona hasłem",
   "upload.modal.accordion.security.password.placeholder": "Brak hasła",
-  "upload.modal.accordion.security.max-views.label": "Maksymalna liczba wyświetleń",
+  "upload.modal.accordion.security.max-views.label":
+    "Maksymalna liczba wyświetleń",
   "upload.modal.accordion.security.max-views.placeholder": "Bez ograniczeń",
   // showCompletedUploadModal.tsx
-  "upload.modal.completed.never-expires": "To udostępnienie nigdy nie wygaśnie.",
-  "upload.modal.completed.expires-on": "To udostępnienie wygaśnie dnia {expiration}.",
+  "upload.modal.completed.never-expires":
+    "To udostępnienie nigdy nie wygaśnie.",
+  "upload.modal.completed.expires-on":
+    "To udostępnienie wygaśnie dnia {expiration}.",
   "upload.modal.completed.share-ready": "Udostępnianie gotowe",
   // END /upload
   // /share/[id]
   "share.title": "Udostępnij {shareId}",
   "share.description": "Spójrz, co ci udostępniłem!",
-  "share.error.visitor-limit-exceeded.title": "Przekroczono limit odwiedzających",
-  "share.error.visitor-limit-exceeded.description": "Limit odwiedzających dla tego udziału został przekroczony.",
+  "share.error.visitor-limit-exceeded.title":
+    "Przekroczono limit odwiedzających",
+  "share.error.visitor-limit-exceeded.description":
+    "Limit odwiedzających dla tego udziału został przekroczony.",
   "share.error.removed.title": "Udostępnianie usunięte",
   "share.error.not-found.title": "Nie znaleziono udziału",
   "share.error.not-found.description": "Udział, który szukasz, nie istnieje.",
   "share.modal.password.title": "Wymagane hasło",
-  "share.modal.password.description": "Aby uzyskać dostęp do tego udziału, wprowadź hasło.",
+  "share.modal.password.description":
+    "Aby uzyskać dostęp do tego udziału, wprowadź hasło.",
   "share.modal.password": "Hasło",
   "share.modal.error.invalid-password": "Hasło jest nieprawidłowe",
   "share.button.download-all": "Pobierz wszystko",
-  "share.notify.download-all-preparing": "Udostępnianie jest przygotowywane. Spróbuj ponownie za kilka minut.",
+  "share.notify.download-all-preparing":
+    "Udostępnianie jest przygotowywane. Spróbuj ponownie za kilka minut.",
   "share.modal.file-link": "Link do pliku",
   "share.table.name": "Nazwa",
   "share.table.size": "Rozmiar",
-  "share.modal.file-preview.error.not-supported.title": "Podgląd nie jest obsługiwany",
-  "share.modal.file-preview.error.not-supported.description": "Podgląd dla tego typu pliku nie jest obsługiwany. Pobierz plik, aby go zobaczyć.",
+  "share.modal.file-preview.error.not-supported.title":
+    "Podgląd nie jest obsługiwany",
+  "share.modal.file-preview.error.not-supported.description":
+    "Podgląd dla tego typu pliku nie jest obsługiwany. Pobierz plik, aby go zobaczyć.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "Edytuj {shareId}",
   "share.edit.append-upload": "Dołącz plik",
-  "share.edit.notify.generic-error": "W trakcie zakańczania tworzenia udziału wystąpił błąd.",
+  "share.edit.notify.generic-error":
+    "W trakcie zakańczania tworzenia udziału wystąpił błąd.",
   "share.edit.notify.save-success": "Udział zaktualizowany pomyślnie",
   // END /share/[id]/edit
   // /admin/config
@@ -292,54 +341,79 @@ export default {
   "admin.config.general.app-name": "Nazwa aplikacji",
   "admin.config.general.app-name.description": "Nazwa aplikacji",
   "admin.config.general.app-url": "Adres URL aplikacji",
-  "admin.config.general.app-url.description": "Pod którym adresem URL Pingvin Share jest dostępny",
+  "admin.config.general.app-url.description":
+    "Pod którym adresem URL Pingvin Share jest dostępny",
   "admin.config.general.show-home-page": "Pokaż stronę główną",
-  "admin.config.general.show-home-page.description": "Czy wyświetlać stronę główną",
+  "admin.config.general.show-home-page.description":
+    "Czy wyświetlać stronę główną",
   "admin.config.general.session-duration": "Session Duration",
-  "admin.config.general.session-duration.description": "Time in hours after which a user must log in again (default: 3 months).",
+  "admin.config.general.session-duration.description":
+    "Time in hours after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Logo",
-  "admin.config.general.logo.description": "Zmień logo, przesyłając nowy obraz. Obraz musi być plikiem PNG i mieć proporcje 1:1.",
+  "admin.config.general.logo.description":
+    "Zmień logo, przesyłając nowy obraz. Obraz musi być plikiem PNG i mieć proporcje 1:1.",
   "admin.config.general.logo.placeholder": "Wybierz obraz",
-  "admin.config.email.enable-share-email-recipients": "Włącz adresatów wiadomości e-mail dla udziału",
-  "admin.config.email.enable-share-email-recipients.description": "Czy zezwolić na wysyłanie e-maili do adresatów udziału? Włącz to tylko wtedy, gdy włączyłeś SMTP.",
+  "admin.config.email.enable-share-email-recipients":
+    "Włącz adresatów wiadomości e-mail dla udziału",
+  "admin.config.email.enable-share-email-recipients.description":
+    "Czy zezwolić na wysyłanie e-maili do adresatów udziału? Włącz to tylko wtedy, gdy włączyłeś SMTP.",
   "admin.config.email.share-recipients-subject": "Temat dla odbiorców udziału",
-  "admin.config.email.share-recipients-subject.description": "Temat wiadomości e-mail, która zostanie wysłana do odbiorców udziału.",
-  "admin.config.email.share-recipients-message": "Wiadomość dla odbiorców udziału",
-  "admin.config.email.share-recipients-message.description": "Wiadomość, która zostanie wysłana do odbiorców udziału. Dostępne zmienne:\n {creator} - Nazwa użytkownika twórcy udziału\n {shareUrl} - Adres URL udziału\n {desc} - Opis udziału\n {expires} - Data wygaśnięcia udziału\n Zmienne zostaną zastąpione rzeczywistą wartością.",
+  "admin.config.email.share-recipients-subject.description":
+    "Temat wiadomości e-mail, która zostanie wysłana do odbiorców udziału.",
+  "admin.config.email.share-recipients-message":
+    "Wiadomość dla odbiorców udziału",
+  "admin.config.email.share-recipients-message.description":
+    "Wiadomość, która zostanie wysłana do odbiorców udziału. Dostępne zmienne:\n {creator} - Nazwa użytkownika twórcy udziału\n {shareUrl} - Adres URL udziału\n {desc} - Opis udziału\n {expires} - Data wygaśnięcia udziału\n Zmienne zostaną zastąpione rzeczywistą wartością.",
   "admin.config.email.reverse-share-subject": "Temat udziału odwrotnego",
-  "admin.config.email.reverse-share-subject.description": "Temat wiadomości e-mail, która zostanie wysłana, gdy ktoś utworzy udostępnienie za pomocą linku udziału odwrotnego.",
+  "admin.config.email.reverse-share-subject.description":
+    "Temat wiadomości e-mail, która zostanie wysłana, gdy ktoś utworzy udostępnienie za pomocą linku udziału odwrotnego.",
   "admin.config.email.reverse-share-message": "Wiadomość udziału odwrotnego",
-  "admin.config.email.reverse-share-message.description": "Wiadomość, która zostanie wysłana, gdy ktoś utworzy udział za pomocą twojego linku udziału odwrotnego. {shareUrl} zostanie zastąpiony nazwą twórcy i adresem URL udziału.",
+  "admin.config.email.reverse-share-message.description":
+    "Wiadomość, która zostanie wysłana, gdy ktoś utworzy udział za pomocą twojego linku udziału odwrotnego. {shareUrl} zostanie zastąpiony nazwą twórcy i adresem URL udziału.",
   "admin.config.email.reset-password-subject": "Temat resetowania hasła",
-  "admin.config.email.reset-password-subject.description": "Temat wiadomości e-mail, która zostanie wysłana, gdy użytkownik zażąda zresetowania hasła.",
+  "admin.config.email.reset-password-subject.description":
+    "Temat wiadomości e-mail, która zostanie wysłana, gdy użytkownik zażąda zresetowania hasła.",
   "admin.config.email.reset-password-message": "Wiadomość resetowania hasła",
-  "admin.config.email.reset-password-message.description": "Wiadomość, która zostanie wysłana, gdy użytkownik zażąda zresetowania hasła. {url} zostanie zastąpiony adresem URL resetowania hasła.",
+  "admin.config.email.reset-password-message.description":
+    "Wiadomość, która zostanie wysłana, gdy użytkownik zażąda zresetowania hasła. {url} zostanie zastąpiony adresem URL resetowania hasła.",
   "admin.config.email.invite-subject": "Temat zaproszenia",
-  "admin.config.email.invite-subject.description": "Temat wiadomości e-mail, która zostanie wysłana, gdy administrator zaprasza użytkownika.",
+  "admin.config.email.invite-subject.description":
+    "Temat wiadomości e-mail, która zostanie wysłana, gdy administrator zaprasza użytkownika.",
   "admin.config.email.invite-message": "Wiadomość zaproszenia",
-  "admin.config.email.invite-message.description": "Wiadomość, która zostanie wysłana, gdy administrator zaprasza użytkownika. {url} zostanie zastąpiony adresem URL zaproszenia, a {password} hasłem.",
+  "admin.config.email.invite-message.description":
+    "Wiadomość, która zostanie wysłana, gdy administrator zaprasza użytkownika. {url} zostanie zastąpiony adresem URL zaproszenia, a {password} hasłem.",
   "admin.config.share.allow-registration": "Zezwól na rejestrację",
-  "admin.config.share.allow-registration.description": "Czy dozwolona jest rejestracja",
-  "admin.config.share.allow-unauthenticated-shares": "Zezwalaj na nieuwierzytelnione udostępnianie",
-  "admin.config.share.allow-unauthenticated-shares.description": "Czy nieautoryzowani użytkownicy mogą tworzyć udostępnienia",
+  "admin.config.share.allow-registration.description":
+    "Czy dozwolona jest rejestracja",
+  "admin.config.share.allow-unauthenticated-shares":
+    "Zezwalaj na nieuwierzytelnione udostępnianie",
+  "admin.config.share.allow-unauthenticated-shares.description":
+    "Czy nieautoryzowani użytkownicy mogą tworzyć udostępnienia",
   "admin.config.share.max-expiration": "Maksymalny okres ważności",
-  "admin.config.share.max-expiration.description": "Maksymalny okres ważności udziału w godzinach. Ustaw na 0, aby zezwolić na nieograniczony okres ważności.",
+  "admin.config.share.max-expiration.description":
+    "Maksymalny okres ważności udziału w godzinach. Ustaw na 0, aby zezwolić na nieograniczony okres ważności.",
   "admin.config.share.max-size": "Rozmiar maksymalny",
-  "admin.config.share.max-size.description": "Maksymalny rozmiar udziału w bajtach",
+  "admin.config.share.max-size.description":
+    "Maksymalny rozmiar udziału w bajtach",
   "admin.config.share.zip-compression-level": "Poziom kompresji Zip",
-  "admin.config.share.zip-compression-level.description": "Dostosuj poziom do równowagi między rozmiarem pliku a szybkością kompresji. Prawidłowe wartości mieszczą się w zakresie od 0 do 9, przy czym 0 to brak kompresji a 9 maksymalną kompresją. ",
+  "admin.config.share.zip-compression-level.description":
+    "Dostosuj poziom do równowagi między rozmiarem pliku a szybkością kompresji. Prawidłowe wartości mieszczą się w zakresie od 0 do 9, przy czym 0 to brak kompresji a 9 maksymalną kompresją. ",
   "admin.config.share.chunk-size": "Chunk size",
-  "admin.config.share.chunk-size.description": "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
+  "admin.config.share.chunk-size.description":
+    "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
   "admin.config.share.auto-open-share-modal": "Auto open create share modal",
-  "admin.config.share.auto-open-share-modal.description": "The share creation modal automatically appears when a user selects files, eliminating the need to manually click the button.",
+  "admin.config.share.auto-open-share-modal.description":
+    "The share creation modal automatically appears when a user selects files, eliminating the need to manually click the button.",
   "admin.config.smtp.enabled": "Włączony",
-  "admin.config.smtp.enabled.description": "Czy SMTP ma zostać włączony. Ustaw to, tylko jeśli wprowadziłeś host, port, e-mail, nazwę użytkownika i hasło serwera SMTP.",
+  "admin.config.smtp.enabled.description":
+    "Czy SMTP ma zostać włączony. Ustaw to, tylko jeśli wprowadziłeś host, port, e-mail, nazwę użytkownika i hasło serwera SMTP.",
   "admin.config.smtp.host": "Host",
   "admin.config.smtp.host.description": "Host serwera SMTP",
   "admin.config.smtp.port": "Numer portu",
   "admin.config.smtp.port.description": "Numer portu serwera SMTP",
   "admin.config.smtp.email": "Adres e-mail",
-  "admin.config.smtp.email.description": "Adres e-mail, z którego e-maile są wysyłane",
+  "admin.config.smtp.email.description":
+    "Adres e-mail, z którego e-maile są wysyłane",
   "admin.config.smtp.username": "Nazwa użytkownika",
   "admin.config.smtp.username.description": "Nazwa użytkownika serwera SMTP",
   "admin.config.smtp.password": "Hasło",
@@ -348,49 +422,71 @@ export default {
   "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
   "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "Zezwól na rejestrację",
-  "admin.config.oauth.allow-registration.description": "Zezwalaj użytkownikom na rejestrację za pomocą konta społecznościowego",
+  "admin.config.oauth.allow-registration.description":
+    "Zezwalaj użytkownikom na rejestrację za pomocą konta społecznościowego",
   "admin.config.oauth.ignore-totp": "Ignoruj TOTP",
   "admin.config.oauth.ignore-totp.description": "Czy zignorować TOTP, kiedy użytkownik loguje się za pomocą konta społecznościowego",
   "admin.config.oauth.disable-password": "Disable password login",
   "admin.config.oauth.disable-password.description": "Whether to disable password login\nMake sure that an OAuth provider is properly configured before activating this configuration to avoid being locked out.",
   "admin.config.oauth.github-enabled": "GitHub",
-  "admin.config.oauth.github-enabled.description": "Czy login na GitHub jest włączony",
+  "admin.config.oauth.github-enabled.description":
+    "Czy login na GitHub jest włączony",
   "admin.config.oauth.github-client-id": "ID klienta GitHub",
-  "admin.config.oauth.github-client-id.description": "ID klienta aplikacji GitHub OAuth",
+  "admin.config.oauth.github-client-id.description":
+    "ID klienta aplikacji GitHub OAuth",
   "admin.config.oauth.github-client-secret": "Sekret klienta GitHub",
-  "admin.config.oauth.github-client-secret.description": "Sekret klienta aplikacji GitHub OAuth",
+  "admin.config.oauth.github-client-secret.description":
+    "Sekret klienta aplikacji GitHub OAuth",
   "admin.config.oauth.google-enabled": "Google",
-  "admin.config.oauth.google-enabled.description": "Czy jest włączony login na GitHub",
+  "admin.config.oauth.google-enabled.description":
+    "Czy jest włączony login na GitHub",
   "admin.config.oauth.google-client-id": "ID klienta Google",
-  "admin.config.oauth.google-client-id.description": "ID klienta aplikacji GitHub OAuth",
+  "admin.config.oauth.google-client-id.description":
+    "ID klienta aplikacji GitHub OAuth",
   "admin.config.oauth.google-client-secret": "Sekret klienta Google",
-  "admin.config.oauth.google-client-secret.description": "Sekret klienta aplikacji Google OAuth",
+  "admin.config.oauth.google-client-secret.description":
+    "Sekret klienta aplikacji Google OAuth",
   "admin.config.oauth.microsoft-enabled": "Microsoft",
-  "admin.config.oauth.microsoft-enabled.description": "Czy jest włączony login na GitHub",
+  "admin.config.oauth.microsoft-enabled.description":
+    "Czy jest włączony login na GitHub",
   "admin.config.oauth.microsoft-tenant": "Microsoft Tenant",
-  "admin.config.oauth.microsoft-tenant.description": "Tenant ID aplikacji Microsoft OAuth\nogólnie: Użytkownicy zarówno z osobistym kontem Microsoft, jak i kontem do pracy lub szkoły z Microsoft Entra ID mogą się zalogować do aplikacji. organizacje: Zalogować do aplikacji mogą tylko użytkownicy z kontami pracowniczymi lub szkolnymi z Microsoft Entra ID.\nkonsumenci: Zalogować się do aplikacji mogą tylko użytkownicy z osobistym kontem Microsoft.\nNazwa domeny lokatora Microsoft Entra lub identyfikator lokatora w formacie GUID: Zalogować się do aplikacji mogą tylko użytkownicy określonego najemcy Microsoft Entra (z listy członków na koncie służbowym lub szkolnym albo z listy gości na koncie osobistym Microsoft).",
+  "admin.config.oauth.microsoft-tenant.description":
+    "Tenant ID aplikacji Microsoft OAuth\nogólnie: Użytkownicy zarówno z osobistym kontem Microsoft, jak i kontem do pracy lub szkoły z Microsoft Entra ID mogą się zalogować do aplikacji. organizacje: Zalogować do aplikacji mogą tylko użytkownicy z kontami pracowniczymi lub szkolnymi z Microsoft Entra ID.\nkonsumenci: Zalogować się do aplikacji mogą tylko użytkownicy z osobistym kontem Microsoft.\nNazwa domeny lokatora Microsoft Entra lub identyfikator lokatora w formacie GUID: Zalogować się do aplikacji mogą tylko użytkownicy określonego najemcy Microsoft Entra (z listy członków na koncie służbowym lub szkolnym albo z listy gości na koncie osobistym Microsoft).",
   "admin.config.oauth.microsoft-client-id": "ID klienta Microsoft",
-  "admin.config.oauth.microsoft-client-id.description": "ID klienta aplikacji Microsoft OAuth",
+  "admin.config.oauth.microsoft-client-id.description":
+    "ID klienta aplikacji Microsoft OAuth",
   "admin.config.oauth.microsoft-client-secret": "Sekret klienta Microsoft",
-  "admin.config.oauth.microsoft-client-secret.description": "Sekret klienta aplikacji Microsoft OAuth",
+  "admin.config.oauth.microsoft-client-secret.description":
+    "Sekret klienta aplikacji Microsoft OAuth",
   "admin.config.oauth.discord-enabled": "Discord",
-  "admin.config.oauth.discord-enabled.description": "Czy jest włączony login na Discord",
-  "admin.config.oauth.discord-limited-guild": "ID ograniczonego serwera Discord",
-  "admin.config.oauth.discord-limited-guild.description": "Ogranicz logowanie do użytkowników na określonym serwerze. Pozostaw puste, aby wyłączyć.",
+  "admin.config.oauth.discord-enabled.description":
+    "Czy jest włączony login na Discord",
+  "admin.config.oauth.discord-limited-guild":
+    "ID ograniczonego serwera Discord",
+  "admin.config.oauth.discord-limited-guild.description":
+    "Ogranicz logowanie do użytkowników na określonym serwerze. Pozostaw puste, aby wyłączyć.",
   "admin.config.oauth.discord-client-id": "ID klienta Discord",
-  "admin.config.oauth.discord-client-id.description": "ID klienta aplikacji Discord OAuth",
+  "admin.config.oauth.discord-client-id.description":
+    "ID klienta aplikacji Discord OAuth",
   "admin.config.oauth.discord-client-secret": "Sekret klienta Discord",
-  "admin.config.oauth.discord-client-secret.description": "Sekret klienta aplikacji Discord OAuth",
+  "admin.config.oauth.discord-client-secret.description":
+    "Sekret klienta aplikacji Discord OAuth",
   "admin.config.oauth.oidc-enabled": "OpenID Connect",
-  "admin.config.oauth.oidc-enabled.description": "Czy jest włączony login OpenID Connect",
+  "admin.config.oauth.oidc-enabled.description":
+    "Czy jest włączony login OpenID Connect",
   "admin.config.oauth.oidc-discovery-uri": "Wykrywanie URI OpenID Connect",
-  "admin.config.oauth.oidc-discovery-uri.description": "Wykrywanie URI OAuth aplikacji OpenID Connect",
-  "admin.config.oauth.oidc-username-claim": "Żądanie nazwy użytkownika OpenID Connect",
-  "admin.config.oauth.oidc-username-claim.description": "Żądanie nazwy użytkownika w tokenie identyfikatora OpenID Connect. Jeśli nie wiesz, czym jest ta konfiguracja, pozostaw pustą.",
+  "admin.config.oauth.oidc-discovery-uri.description":
+    "Wykrywanie URI OAuth aplikacji OpenID Connect",
+  "admin.config.oauth.oidc-username-claim":
+    "Żądanie nazwy użytkownika OpenID Connect",
+  "admin.config.oauth.oidc-username-claim.description":
+    "Żądanie nazwy użytkownika w tokenie identyfikatora OpenID Connect. Jeśli nie wiesz, czym jest ta konfiguracja, pozostaw pustą.",
   "admin.config.oauth.oidc-client-id": "Identyfikator klienta OpenID Connect",
-  "admin.config.oauth.oidc-client-id.description": "Identyfikator klienta OAuth aplikacji OpenID Connect",
+  "admin.config.oauth.oidc-client-id.description":
+    "Identyfikator klienta OAuth aplikacji OpenID Connect",
   "admin.config.oauth.oidc-client-secret": "Sekret klienta OpenID Connect",
-  "admin.config.oauth.oidc-client-secret.description": "Sekret klienta OAuth aplikacji OpenID Connect",
+  "admin.config.oauth.oidc-client-secret.description":
+    "Sekret klienta OAuth aplikacji OpenID Connect",
   // 404
   "404.description": "Ups! Ta strona nie istnieje.",
   "404.button.home": "Wróć do strony domowej",
@@ -399,16 +495,22 @@ export default {
   "error.description": "Ups!",
   "error.button.back": "Wróć",
   "error.msg.default": "Coś poszło nie tak.",
-  "error.msg.access_denied": "Anulowałeś proces uwierzytelniania, spróbuj ponownie.",
-  "error.msg.expired_token": "Proces uwierzytelniania trwał zbyt długo, spróbuj ponownie.",
+  "error.msg.access_denied":
+    "Anulowałeś proces uwierzytelniania, spróbuj ponownie.",
+  "error.msg.expired_token":
+    "Proces uwierzytelniania trwał zbyt długo, spróbuj ponownie.",
   "error.msg.invalid_token": "Błąd wewnętrzny",
   "error.msg.no_user": "Użytkownik powiązany z tym kontem {0} nie istnieje.",
   "error.msg.no_email": "Nie można pobrać adresu e-mail z tego konta {0}.",
-  "error.msg.already_linked": "To konto {0} zostało już połączone z innym kontem.",
-  "error.msg.not_linked": "To konto {0} nie zostało jeszcze połączone z żadnym kontem.",
-  "error.msg.unverified_account": "To konto {0} nie zostało zweryfikowane, spróbuj ponownie po weryfikacji.",
+  "error.msg.already_linked":
+    "To konto {0} zostało już połączone z innym kontem.",
+  "error.msg.not_linked":
+    "To konto {0} nie zostało jeszcze połączone z żadnym kontem.",
+  "error.msg.unverified_account":
+    "To konto {0} nie zostało zweryfikowane, spróbuj ponownie po weryfikacji.",
   "error.msg.discord_guild_permission_denied": "Nie możesz się zalogować.",
-  "error.msg.cannot_get_user_info": "Nie można uzyskać informacji o użytkowniku z tego konta {0}.",
+  "error.msg.cannot_get_user_info":
+    "Nie można uzyskać informacji o użytkowniku z tego konta {0}.",
   "error.param.provider_github": "GitHub",
   "error.param.provider_google": "Google",
   "error.param.provider_microsoft": "Microsoft",
@@ -439,5 +541,5 @@ export default {
   "common.error.too-long": "Musi mieć co najmniej {length} znaków",
   "common.error.exact-length": "Musi mieć dokładnie {length} znaków",
   "common.error.invalid-number": "Musi być liczbą",
-  "common.error.field-required": "To pole jest wymagane"
+  "common.error.field-required": "To pole jest wymagane",
 };

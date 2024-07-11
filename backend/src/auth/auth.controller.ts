@@ -45,12 +45,13 @@ export class AuthController {
   })
   async signUp(
     @Body() dto: AuthRegisterDTO,
+    @Req() { ip }: Request,
     @Res({ passthrough: true }) response: Response,
   ) {
     if (!this.config.get("share.allowRegistration"))
       throw new ForbiddenException("Registration is not allowed");
 
-    const result = await this.authService.signUp(dto);
+    const result = await this.authService.signUp(dto, ip);
 
     this.authService.addTokensToResponse(
       response,
@@ -71,9 +72,10 @@ export class AuthController {
   @HttpCode(200)
   async signIn(
     @Body() dto: AuthSignInDTO,
+    @Req() { ip }: Request,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const result = await this.authService.signIn(dto);
+    const result = await this.authService.signIn(dto, ip);
 
     if (result.accessToken && result.refreshToken) {
       this.authService.addTokensToResponse(

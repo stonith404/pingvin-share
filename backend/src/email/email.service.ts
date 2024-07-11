@@ -25,6 +25,11 @@ export class EmailService {
         user: this.config.get("smtp.username"),
         pass: this.config.get("smtp.password"),
       },
+      tls: {
+        rejectUnauthorized: !this.config.get(
+          "smtp.allowUnauthorizedCertificates",
+        ),
+      },
     });
   }
 
