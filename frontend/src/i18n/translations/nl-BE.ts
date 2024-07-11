@@ -345,6 +345,8 @@ export default {
   "admin.config.smtp.password": "Wachtwoord",
   "admin.config.smtp.password.description": "Wachtwoord van de SMTP-server",
   "admin.config.smtp.button.test": "Teste-mail verzenden",
+  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "Sta registratie toe",
   "admin.config.oauth.allow-registration.description": "Gebruikers toestaan zich te registreren via sociale login",
   "admin.config.oauth.ignore-totp": "TOTP negeren",
