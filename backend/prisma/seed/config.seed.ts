@@ -116,6 +116,12 @@ const configVariables: ConfigVariables = {
       defaultValue: "false",
       secret: false,
     },
+    allowUnauthorizedCertificates: {
+      type: "boolean",
+      defaultValue: "false",
+
+      secret: false,
+    },
     host: {
       type: "string",
       defaultValue: "",

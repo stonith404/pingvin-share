@@ -400,9 +400,8 @@ export default {
   "admin.config.general.show-home-page": "Show home page",
   "admin.config.general.show-home-page.description":
     "Whether to show the home page",
-  "admin.config.general.session-duration": 
-    "Session Duration",
-  "admin.config.general.session-duration.description": 
+  "admin.config.general.session-duration": "Session Duration",
+  "admin.config.general.session-duration.description":
     "Time in hours after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Logo",
   "admin.config.general.logo.description":
@@ -454,9 +453,11 @@ export default {
   "admin.config.share.zip-compression-level.description":
     "Adjust the level to balance between file size and compression speed. Valid values range from 0 to 9, with 0 being no compression and 9 being maximum compression. ",
   "admin.config.share.chunk-size": "Chunk size",
-  "admin.config.share.chunk-size.description": "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
+  "admin.config.share.chunk-size.description":
+    "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
   "admin.config.share.auto-open-share-modal": "Auto open create share modal",
-  "admin.config.share.auto-open-share-modal.description": "The share creation modal automatically appears when a user selects files, eliminating the need to manually click the button.",
+  "admin.config.share.auto-open-share-modal.description":
+    "The share creation modal automatically appears when a user selects files, eliminating the need to manually click the button.",
 
   "admin.config.smtp.enabled": "Enabled",
   "admin.config.smtp.enabled.description":
@@ -473,6 +474,10 @@ export default {
   "admin.config.smtp.password": "Password",
   "admin.config.smtp.password.description": "Password of the SMTP server",
   "admin.config.smtp.button.test": "Send test email",
+  "admin.config.smtp.allow-unauthorized-certificates":
+    "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description":
+    "Only set this to true if you need to trust self signed certificates.",
 
   "admin.config.oauth.allow-registration": "Allow registration",
   "admin.config.oauth.allow-registration.description":
