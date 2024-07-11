@@ -473,8 +473,8 @@ export default {
   "admin.config.smtp.password": "Password",
   "admin.config.smtp.password.description": "Password of the SMTP server",
   "admin.config.smtp.button.test": "Send test email",
-  "admin.config.smtp.allow-unauthenticated-certificates": "Trust unauthenticated SMTP server certificates",
-  "admin.config.smtp.allow-unauthenticated-certificates.description": "Only set this to true if you need to trust self signed certificates.",
+  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthenticated SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
 
   "admin.config.oauth.allow-registration": "Allow registration",
   "admin.config.oauth.allow-registration.description":
