@@ -345,6 +345,8 @@ export default {
   "admin.config.smtp.password": "Mot de passe",
   "admin.config.smtp.password.description": "Mot de passe du serveur SMTP",
   "admin.config.smtp.button.test": "Envoyer un courriel de test",
+  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "Autoriser l’inscription",
   "admin.config.oauth.allow-registration.description": "Permettre aux utilisateurs de s’inscrire via leur identifiant social",
   "admin.config.oauth.ignore-totp": "Ignorer TOTP",
