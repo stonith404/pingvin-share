@@ -345,6 +345,8 @@ export default {
   "admin.config.smtp.password": "Κωδικός πρόσβασης",
   "admin.config.smtp.password.description": "Κωδικός πρόσβασης στον εξυπηρετητή SMTP",
   "admin.config.smtp.button.test": "Αποστολή δοκιμαστικού email",
+  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "Να επιτρέπεται η εγγραφή",
   "admin.config.oauth.allow-registration.description": "Επιτρέψτε στους χρήστες να εγγραφούν μέσω λογαριασμών κοινωνικής δικτύωσης",
   "admin.config.oauth.ignore-totp": "Παράβλεψη TOTP",
