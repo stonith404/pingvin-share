@@ -345,6 +345,8 @@ export default {
   "admin.config.smtp.password": "Adgangskode",
   "admin.config.smtp.password.description": "Adgangskoden til SMTP serveren",
   "admin.config.smtp.button.test": "Send test e-mail",
+  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "Tillad registrering",
   "admin.config.oauth.allow-registration.description": "Allow users to register via social login",
   "admin.config.oauth.ignore-totp": "Ignore TOTP",
