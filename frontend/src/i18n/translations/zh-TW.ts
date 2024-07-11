@@ -345,6 +345,8 @@ export default {
   "admin.config.smtp.password": "密碼",
   "admin.config.smtp.password.description": "SMTP 主機密碼",
   "admin.config.smtp.button.test": "發送測試Email",
+  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "允許註冊",
   "admin.config.oauth.allow-registration.description": "允許使用者以第三方登入註冊",
   "admin.config.oauth.ignore-totp": "略過 TOTP",
