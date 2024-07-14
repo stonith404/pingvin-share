@@ -73,7 +73,7 @@ export default {
   "account.card.password.title": "Passwort",
   "account.card.password.old": "Altes Passwort",
   "account.card.password.new": "Neues Passwort",
-  "account.card.password.noPasswordSet": "Du hast kein Passwort erstellt. Wenn Du Dich mit E-Mail und Passwort anmelden möchtest, musst Du ein Passwort festlegen.",
+  "account.card.password.noPasswordSet": "Du hast kein Passwort erstellt. Wenn du dich mit E-Mail und Passwort anmelden möchtest, musst du ein Passwort festlegen.",
   "account.notify.password.success": "Passwort erfolgreich geändert",
   "account.card.oauth.title": "Anmeldung über soziale Netzwerke",
   "account.card.oauth.github": "GitHub",
@@ -85,7 +85,7 @@ export default {
   "account.card.oauth.unlink": "Verknüpfung aufheben",
   "account.card.oauth.unlinked": "Verknüpfung aufgehoben",
   "account.modal.unlink.title": "Kontoverknüpfung aufheben",
-  "account.modal.unlink.description": "Das Entfernen der Verknüpfung mit Deinem sozialen Konten kann dazu führen, dass Du Dein Konto verlierst, wenn Du Dich nicht an Deinen Benutzernamen und Dein Passwort erinnerst.",
+  "account.modal.unlink.description": "Das Entfernen der Verknüpfung mit deinem sozialen Konten kann dazu führen, dass du dein Konto verlierst, wenn du dich nicht an deinen Benutzernamen und dein Passwort erinnerst.",
   "account.notify.oauth.unlinked.success": "Verknüpfung erfolgreich aufgehoben",
   "account.card.security.title": "Sicherheit",
   "account.card.security.totp.enable.description": "Gib dein aktuelles Passwort ein, um TOTP zu aktivieren",
@@ -301,7 +301,7 @@ export default {
   "admin.config.general.logo.description": "Ändere dein Logo durch Hochladen eines Bildes. Das Bild muss im PNG-Format vorliegen und sollte mit Seitenverhältnis 1:1 sein.",
   "admin.config.general.logo.placeholder": "Bild auswählen",
   "admin.config.email.enable-share-email-recipients": "Erlaube das Teilen der Freigabe via Email",
-  "admin.config.email.enable-share-email-recipients.description": "Gibt an, ob Emails an Freigabe-Empfänger ermöglicht werden sollen. Aktiviere dies nur, wenn Du SMTP aktivierst hast.",
+  "admin.config.email.enable-share-email-recipients.description": "Gibt an, ob Emails an Freigabe-Empfänger ermöglicht werden sollen. Aktiviere dies nur, wenn du SMTP aktivierst hast.",
   "admin.config.email.share-recipients-subject": "Betreff für Freigabe-Empfänger",
   "admin.config.email.share-recipients-subject.description": "Betreff der E-Mail, die an die Freigabe-Empfänger gesendet wird.",
   "admin.config.email.share-recipients-message": "Nachricht für Freigabe-Empfänger",
@@ -333,7 +333,7 @@ export default {
   "admin.config.share.auto-open-share-modal": "Auto open create share modal",
   "admin.config.share.auto-open-share-modal.description": "The share creation modal automatically appears when a user selects files, eliminating the need to manually click the button.",
   "admin.config.smtp.enabled": "Aktiviert",
-  "admin.config.smtp.enabled.description": "Gibt an, ob SMTP aktiviert ist. Aktiviere dies nur, wenn Du den Host, den Port, die Email, den Benutzernamen und das Passwort deines SMTP-Servers eingegeben hast.",
+  "admin.config.smtp.enabled.description": "Gibt an, ob SMTP aktiviert ist. Aktiviere dies nur, wenn du den Host, den Port, die Email, den Benutzernamen und das Passwort deines SMTP-Servers eingegeben hast.",
   "admin.config.smtp.host": "Host",
   "admin.config.smtp.host.description": "Host des SMTP-Servers",
   "admin.config.smtp.port": "Port",
@@ -387,6 +387,19 @@ export default {
   "admin.config.oauth.oidc-discovery-uri.description": "Discovery-URL der OpenID OAuth App",
   "admin.config.oauth.oidc-username-claim": "OpenID Connect Benutzername anfordern",
   "admin.config.oauth.oidc-username-claim.description": "Benutzername im OpenID Token. Leer lassen, wenn du nicht weißt, was diese Konfiguration bedeutet.",
+  "admin.config.oauth.oidc-role-path": "Path to roles in OpenID Connect token",
+  "admin.config.oauth.oidc-role-path.description":
+    "Muss ein valider JMES-Pfad sein, der zu einem Array an Rollen führt. " +
+    "Die Zugangsverwaltung über Rollen in OpenID Connect ist nur empfohlen, wenn kein anderer Identitätsprovider konfiguriert und die Anmeldung per Password deaktiviert ist. " +
+    "Leer lassen, wenn du nicht weißt, was diese Konfiguration bedeutet.",
+  "admin.config.oauth.oidc-role-general-access": "OpenID Connect role for general access",
+  "admin.config.oauth.oidc-role-general-access.description":
+    "Rolle für generellen Zugriff. Muss Teil der Rollen eines Benutzers sein, damit dieser sich anmelden kann. " +
+    "Leer lassen, wenn du nicht weißt, was diese Konfiguration bedeutet.",
+  "admin.config.oauth.oidc-role-admin-access": "OpenID Connect role for admin access",
+  "admin.config.oauth.oidc-role-admin-access.description":
+    "Rolle für administrativen Zugriff. Muss Teil der Rollen eines Benutzers sein, damit dieser auf das Administrator-Panel zugreifen kann. " +
+    "Leer lassen, wenn du nicht weißt, was diese Konfiguration bedeutet.",
   "admin.config.oauth.oidc-client-id": "OpenID Connect Client-ID",
   "admin.config.oauth.oidc-client-id.description": "Client-ID der OpenID Connect OAuth-App",
   "admin.config.oauth.oidc-client-secret": "OpenID Connect Client-Secret",
@@ -407,7 +420,7 @@ export default {
   "error.msg.already_linked": "Das Konto {0} ist bereits mit einem anderen Konto verknüpft.",
   "error.msg.not_linked": "Das Konto {0} wurde noch nicht mit einem Konto verknüpft.",
   "error.msg.unverified_account": "Dieses Konto {0} wurde noch nicht verifiziert, bitte versuche es nach der Verifikation erneut.",
-  "error.msg.discord_guild_permission_denied": "Du bist nicht berechtigt, Dich anzumelden.",
+  "error.msg.user_not_allowed": "Du bist nicht berechtigt, dich anzumelden.",
   "error.msg.cannot_get_user_info": "Deine Benutzerinformationen können nicht von diesem Konto {0} abgerufen werden.",
   "error.param.provider_github": "GitHub",
   "error.param.provider_google": "Google",

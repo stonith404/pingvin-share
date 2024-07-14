@@ -518,7 +518,7 @@ export default {
     "Αυτός ο λογαριασμός {0} δεν έχει συνδεθεί με κανένα λογαριασμό ακόμα.",
   "error.msg.unverified_account":
     "Αυτός ο λογαριασμός {0} δεν έχει επαληθευτεί, παρακαλώ προσπαθήστε ξανά μετά την επαλήθευση.",
-  "error.msg.discord_guild_permission_denied": "Δεν σας επιτρέπεται η σύνδεση.",
+  "error.msg.user_not_allowed": "Δεν σας επιτρέπεται η σύνδεση.",
   "error.msg.cannot_get_user_info":
     "Δεν είναι δυνατή η λήψη των πληροφοριών χρήστη από αυτόν τον λογαριασμό {0}.",
   "error.param.provider_github": "GitHub",

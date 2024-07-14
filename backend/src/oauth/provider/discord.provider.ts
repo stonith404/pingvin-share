@@ -101,10 +101,10 @@ export class DiscordProvider implements OAuthProvider<DiscordToken> {
       });
       const guilds = (await res.json()) as DiscordPartialGuild[];
       if (!guilds.some((guild) => guild.id === guildId)) {
-        throw new ErrorPageException("discord_guild_permission_denied");
+        throw new ErrorPageException("user_not_allowed");
       }
     } catch {
-      throw new ErrorPageException("discord_guild_permission_denied");
+      throw new ErrorPageException("user_not_allowed");
     }
   }
 }

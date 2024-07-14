@@ -461,7 +461,7 @@ export default {
   "error.msg.not_linked": "此 {0} 帳號尚未關聯到任何帳號。",
   "error.msg.unverified_account":
     "This {0} account is unverified, please try again after verification.",
-  "error.msg.discord_guild_permission_denied":
+  "error.msg.user_not_allowed":
     "You are not allowed to sign in.",
   "error.msg.cannot_get_user_info":
     "Can not get your user info from this {0} account.",

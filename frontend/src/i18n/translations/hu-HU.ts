@@ -503,7 +503,7 @@ export default {
     "Ez a(z){0} fiók még nem kapcsolódott egyetlen fiókhoz sem.",
   "error.msg.unverified_account":
     "Ezt a(z) {0} fiókot még nem igazolták vissza, kérem próbálja újra a megerősítés után.",
-  "error.msg.discord_guild_permission_denied": "Nem jelentkezhet be.",
+  "error.msg.user_not_allowed": "Nem jelentkezhet be.",
   "error.msg.cannot_get_user_info":
     "Nem nyerhető ki felhasználói információ ebből a(z) {0} fiókból.",
   "error.param.provider_github": "GitHub",

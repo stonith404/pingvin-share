@@ -516,7 +516,7 @@ export default {
     "Esta conta {0} ainda não foi vinculada a nenhuma conta.",
   "error.msg.unverified_account":
     "Esta conta {0} não foi verificada, tente novamente após a verificação.",
-  "error.msg.discord_guild_permission_denied":
+  "error.msg.user_not_allowed":
     "Você não tem permissão para acessar.",
   "error.msg.cannot_get_user_info":
     "Não é possível obter suas informações de usuário desta conta {0}.",

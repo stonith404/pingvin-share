@@ -2,6 +2,7 @@ import { Logger } from "@nestjs/common";
 import { ConfigService } from "../../config/config.service";
 import { JwtService } from "@nestjs/jwt";
 import { Cache } from "cache-manager";
+import * as jmespath from "jmespath";
 import { nanoid } from "nanoid";
 import { OAuthCallbackDto } from "../dto/oauthCallback.dto";
 import { OAuthProvider, OAuthToken } from "./oauthProvider.interface";
@@ -108,6 +109,11 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
     token: OAuthToken<OidcToken>,
     query: OAuthCallbackDto,
     claim?: string,
+    roleConfig?: {
+      path?: string;
+      generalAccess?: string;
+      adminAccess?: string;
+    },
   ): Promise<OAuthSignInDto> {
     const idTokenData = this.decodeIdToken(token.idToken);
     // maybe it's not necessary to verify the id token since it's directly obtained from the provider
@@ -127,6 +133,39 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
       : idTokenData.preferred_username ||
         idTokenData.name ||
         idTokenData.nickname;
+    
+    let isAdmin: boolean = undefined;
+    
+    if (roleConfig && roleConfig.path) {
+      // A path to read roles from the token is configured
+      let roles: string[] | null;
+      try {
+        roles = jmespath.search(idTokenData, roleConfig.path);
+      } catch (e) {
+        roles = null;
+      }
+      if (Array.isArray(roles)) {
+        // Roles are found in the token
+        if (roleConfig.generalAccess && !roles.includes(roleConfig.generalAccess)) {
+          // Role for general access is configured and the user does not have it
+          this.logger.error(`User roles ${roles} do not include ${roleConfig.generalAccess}`);
+          throw new ErrorPageException("user_not_allowed");
+        }
+        if (roleConfig.adminAccess) {
+          // Role for admin access is configured
+          isAdmin = roles.includes(roleConfig.adminAccess);
+        }
+      } else {
+        this.logger.error(
+          `Roles not found at path ${roleConfig.path} in ID Token ${JSON.stringify(
+            idTokenData,
+            undefined,
+            2,
+          )}`,
+        );
+        throw new ErrorPageException("user_not_allowed");
+      }
+    }
 
     if (!username) {
       this.logger.error(
@@ -146,6 +185,7 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
       email: idTokenData.email,
       providerId: idTokenData.sub,
       providerUsername: username,
+      ...(isAdmin !== undefined && { isAdmin }),
     };
   }
 

@@ -484,7 +484,7 @@ export default {
     "이 {0} 계정은 아직 어떤 계정에도 연결되지 않았습니다.",
   "error.msg.unverified_account":
     "이 {0} 계정은 확인되지 않았습니다. 확인 후 다시 시도하십시오.",
-  "error.msg.discord_guild_permission_denied": "로그인할 수 없습니다.",
+  "error.msg.user_not_allowed": "로그인할 수 없습니다.",
   "error.msg.cannot_get_user_info":
     "이 {0} 계정에서 사용자 정보를 가져올 수 없습니다",
   "error.param.provider_github": "깃허브",

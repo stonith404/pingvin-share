@@ -504,7 +504,7 @@ export default {
   "error.msg.not_linked": "Le compte {0} n’est pas encore associé à compte.",
   "error.msg.unverified_account":
     "Le compte {0} n'est pas vérifié, veuillez réessayer après vérification.",
-  "error.msg.discord_guild_permission_denied":
+  "error.msg.user_not_allowed":
     "Vous n’êtes pas autorisé à vous authentifier.",
   "error.msg.cannot_get_user_info":
     "Impossible d’obtenir vos informations utilisateur à partir du compte {0}.",

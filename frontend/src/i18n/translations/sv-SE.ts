@@ -497,7 +497,7 @@ export default {
     "Detta {0} konto har ännu inte länkat till något konto.",
   "error.msg.unverified_account":
     "Detta {0} -konto är overifierat, försök igen efter verifiering.",
-  "error.msg.discord_guild_permission_denied":
+  "error.msg.user_not_allowed":
     "Du är inte tillåten att logga in.",
   "error.msg.cannot_get_user_info":
     "Kan inte hämta din användarinformation från detta {0} konto.",

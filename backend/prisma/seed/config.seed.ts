@@ -230,6 +230,18 @@ const configVariables: ConfigVariables = {
       type: "string",
       defaultValue: "",
     },
+    "oidc-rolePath": {
+      type: "string",
+      defaultValue: "",
+    },
+    "oidc-roleGeneralAccess": {
+      type: "string",
+      defaultValue: "",
+    },
+    "oidc-roleAdminAccess": {
+      type: "string",
+      defaultValue: "",
+    },
     "oidc-clientId": {
       type: "string",
       defaultValue: "",

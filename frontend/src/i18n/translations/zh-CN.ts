@@ -458,7 +458,7 @@ export default {
   "error.msg.already_linked": "{0} 这个账户已经关联到另一个账号。",
   "error.msg.not_linked": "{0} 这个账户尚未关联到任何账号。",
   "error.msg.unverified_account": "{0} 这个账户尚未验证，请在验证后重试。",
-  "error.msg.discord_guild_permission_denied": "您无权登录。",
+  "error.msg.user_not_allowed": "您无权登录。",
   "error.msg.cannot_get_user_info": "无法从 {0} 这个账户获取您的用户信息。",
   "error.param.provider_github": "GitHub",
   "error.param.provider_google": "谷歌",

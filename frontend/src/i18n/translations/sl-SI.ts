@@ -498,7 +498,7 @@ export default {
   "error.msg.not_linked": "Račun {0} še ni povezan z nobenim računom.",
   "error.msg.unverified_account":
     "Račun {0} je nepreverjen, prosimo poskusite ponovno po preverjanju.",
-  "error.msg.discord_guild_permission_denied": "Nimate dovoljenja za prijavo.",
+  "error.msg.user_not_allowed": "Nimate dovoljenja za prijavo.",
   "error.msg.cannot_get_user_info":
     "Ne moremo najti uporabniških informacij za račun {0}.",
   "error.param.provider_github": "GitHub",

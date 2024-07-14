@@ -512,7 +512,7 @@ export default {
     "Questo account {0} non è ancora collegato ad alcun account.",
   "error.msg.unverified_account":
     "Questo account {0} non è verificato, per favore riprova dopo la verifica.",
-  "error.msg.discord_guild_permission_denied":
+  "error.msg.user_not_allowed":
     "Non sei autorizzato ad accedere.",
   "error.msg.cannot_get_user_info":
     "Non è possibile ottenere le informazioni utente da questo account {0}.",
