@@ -4,7 +4,7 @@ import {
   Injectable,
   NotFoundException,
 } from "@nestjs/common";
-import { JwtService } from "@nestjs/jwt";
+import { JwtService, JwtSignOptions } from "@nestjs/jwt";
 import { Share, User } from "@prisma/client";
 import * as archiver from "archiver";
 import * as argon from "argon2";
@@ -328,15 +328,21 @@ export class ShareService {
     const { expiration } = await this.prisma.share.findUnique({
       where: { id: shareId },
     });
-    return this.jwtService.sign(
-      {
-        shareId,
-      },
-      {
-        expiresIn: moment(expiration).diff(new Date(), "seconds") + "s",
-        secret: this.config.get("internal.jwtSecret"),
-      },
-    );
+
+    const tokenPayload = {
+      shareId,
+      iat: moment().unix(),
+    };
+
+    const tokenOptions: JwtSignOptions = {
+      secret: this.config.get("internal.jwtSecret"),
+    };
+
+    if (!moment(expiration).isSame(0)) {
+      tokenOptions.expiresIn = moment(expiration).diff(new Date(), "seconds");
+    }
+
+    return this.jwtService.sign(tokenPayload, tokenOptions);
   }
 
   async verifyShareToken(shareId: string, token: string) {

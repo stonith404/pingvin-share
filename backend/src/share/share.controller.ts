@@ -10,9 +10,11 @@ import {
   Res,
   UseGuards,
 } from "@nestjs/common";
+import { JwtService } from "@nestjs/jwt";
 import { Throttle } from "@nestjs/throttler";
 import { User } from "@prisma/client";
 import { Request, Response } from "express";
+import * as moment from "moment";
 import { GetUser } from "src/auth/decorator/getUser.decorator";
 import { AdministratorGuard } from "src/auth/guard/isAdmin.guard";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
@@ -29,7 +31,10 @@ import { ShareTokenSecurity } from "./guard/shareTokenSecurity.guard";
 import { ShareService } from "./share.service";
 @Controller("shares")
 export class ShareController {
-  constructor(private shareService: ShareService) {}
+  constructor(
+    private shareService: ShareService,
+    private jwtService: JwtService,
+  ) {}
 
   @Get("all")
   @UseGuards(JwtGuard, AdministratorGuard)
@@ -121,15 +126,46 @@ export class ShareController {
   @Post(":id/token")
   async getShareToken(
     @Param("id") id: string,
+    @Req() request: Request,
     @Res({ passthrough: true }) response: Response,
     @Body() body: SharePasswordDto,
   ) {
     const token = await this.shareService.getShareToken(id, body.password);
+
+    this.clearShareTokenCookies(request, response);
     response.cookie(`share_${id}_token`, token, {
       path: "/",
       httpOnly: true,
     });
 
     return { token };
+  }
+
+  /**
+   * Keeps the 10 most recent share token cookies and deletes the rest and all expired ones
+   */
+  private clearShareTokenCookies(request: Request, response: Response) {
+    const shareTokenCookies = Object.entries(request.cookies)
+      .filter(([key]) => key.startsWith("share_") && key.endsWith("_token"))
+      .map(([key, value]) => ({
+        key,
+        payload: this.jwtService.decode(value),
+      }));
+
+    const expiredTokens = shareTokenCookies.filter(
+      (cookie) => cookie.payload.exp < moment().unix(),
+    );
+    const validTokens = shareTokenCookies.filter(
+      (cookie) => cookie.payload.exp >= moment().unix(),
+    );
+
+    expiredTokens.forEach((cookie) => response.clearCookie(cookie.key));
+
+    if (validTokens.length > 10) {
+      validTokens
+        .sort((a, b) => a.payload.exp - b.payload.exp)
+        .slice(0, -10)
+        .forEach((cookie) => response.clearCookie(cookie.key));
+    }
   }
 }
