@@ -493,7 +493,7 @@ export default {
   "error.msg.not_linked": "Bu {0} hesabı henüz bir hesaba bağlı değil.",
   "error.msg.unverified_account":
     "Bu {0} hesabı doğrulanmamış, lütfen doğruladıktan sonra yeniden dene.",
-  "error.msg.discord_guild_permission_denied": "Giriş yapmana izin verilmiyor.",
+  "error.msg.user_not_allowed": "Giriş yapmana izin verilmiyor.",
   "error.msg.cannot_get_user_info":
     "Bu {0} hesabından kullanıcı bilgilerinizi alamıyorum.",
   "error.param.provider_github": "GitHub",

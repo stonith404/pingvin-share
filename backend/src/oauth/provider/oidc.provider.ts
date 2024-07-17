@@ -34,6 +34,13 @@ export class OidcProvider extends GenericOidcProvider {
     _?: string,
   ): Promise<OAuthSignInDto> {
     const claim = this.config.get("oauth.oidc-usernameClaim") || undefined;
-    return super.getUserInfo(token, query, claim);
+    const rolePath = this.config.get("oauth.oidc-rolePath") || undefined;
+    const roleGeneralAccess = this.config.get("oauth.oidc-roleGeneralAccess") || undefined;
+    const roleAdminAccess = this.config.get("oauth.oidc-roleAdminAccess") || undefined;
+    return super.getUserInfo(token, query, claim, {
+      path: rolePath,
+      generalAccess: roleGeneralAccess,
+      adminAccess: roleAdminAccess,
+    });
   }
 }

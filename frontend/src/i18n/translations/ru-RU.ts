@@ -500,7 +500,7 @@ export default {
     "Эта учетная запись {0} ещё не привязана ни к одному аккаунту.",
   "error.msg.unverified_account":
     "Эта учетная запись {0} не подтверждена, повторите попытку после подтверждения.",
-  "error.msg.discord_guild_permission_denied": "У вас нет разрешения на вход.",
+  "error.msg.user_not_allowed": "У вас нет разрешения на вход.",
   "error.msg.cannot_get_user_info":
     "Can not get your user info from this {0} account.",
   "error.param.provider_github": "GitHub",

@@ -46,13 +46,16 @@ export class OAuthService {
         provider: user.provider,
         providerUserId: user.providerId,
       },
-      include: {
-        user: true,
-      },
     });
     if (oauthUser) {
+      await this.updateIsAdmin(user);
+      const updatedUser = await this.prisma.user.findFirst({
+        where: {
+          email: user.email,
+        },
+      });
       this.logger.log(`Successful login for user ${user.email} from IP ${ip}`);
-      return this.auth.generateToken(oauthUser.user, true);
+      return this.auth.generateToken(updatedUser, true);
     }
 
     return this.signUp(user, ip);
@@ -150,6 +153,7 @@ export class OAuthService {
           userId: existingUser.id,
         },
       });
+      await this.updateIsAdmin(user);
       return this.auth.generateToken(existingUser, true);
     }
 
@@ -160,6 +164,7 @@ export class OAuthService {
         password: null,
       },
       ip,
+      user.isAdmin,
     );
 
     await this.prisma.oAuthUser.create({
@@ -172,5 +177,17 @@ export class OAuthService {
     });
 
     return result;
+  }
+
+  private async updateIsAdmin(user: OAuthSignInDto) {
+    if ("isAdmin" in user)
+      await this.prisma.user.update({
+        where: {
+          email: user.email,
+        },
+        data: {
+          isAdmin: user.isAdmin,
+        },
+      });
   }
 }

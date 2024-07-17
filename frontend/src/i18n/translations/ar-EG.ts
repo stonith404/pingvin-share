@@ -485,7 +485,7 @@ export default {
   "error.msg.not_linked": "لم يتم ربط حساب {0} هذا بأي حساب حتى الآن.",
   "error.msg.unverified_account":
     "لم يتم التحقق من حساب {0} هذا، يرجى المحاولة مرة أخرى بعد التحقق.",
-  "error.msg.discord_guild_permission_denied": "غير مسموح لك بتسجيل الدخول.",
+  "error.msg.user_not_allowed": "غير مسموح لك بتسجيل الدخول.",
   "error.msg.cannot_get_user_info":
     "فشلت عملية جلب معلومات المستخدم الخاصة بك من حساب {0} هذا.",
   "error.param.provider_github": "GitHub",

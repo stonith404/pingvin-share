@@ -508,7 +508,7 @@ export default {
     "To konto {0} nie zostało jeszcze połączone z żadnym kontem.",
   "error.msg.unverified_account":
     "To konto {0} nie zostało zweryfikowane, spróbuj ponownie po weryfikacji.",
-  "error.msg.discord_guild_permission_denied": "Nie możesz się zalogować.",
+  "error.msg.user_not_allowed": "Nie możesz się zalogować.",
   "error.msg.cannot_get_user_info":
     "Nie można uzyskać informacji o użytkowniku z tego konta {0}.",
   "error.param.provider_github": "GitHub",

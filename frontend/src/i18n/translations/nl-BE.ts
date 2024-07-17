@@ -504,7 +504,7 @@ export default {
     "Dit {0} account is nog aan geen enkel account gekoppeld.",
   "error.msg.unverified_account":
     "Dit {0} account is nog niet geverifieerd, probeer het opnieuw na de verificatie.",
-  "error.msg.discord_guild_permission_denied":
+  "error.msg.user_not_allowed":
     "U heeft geen toestemming om in te loggen.",
   "error.msg.cannot_get_user_info":
     "Kan uw gebruikersgegevens van dit {0} account niet ophalen.",

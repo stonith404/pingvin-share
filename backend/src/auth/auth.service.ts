@@ -27,7 +27,7 @@ export class AuthService {
   ) {}
   private readonly logger = new Logger(AuthService.name);
 
-  async signUp(dto: AuthRegisterDTO, ip: string) {
+  async signUp(dto: AuthRegisterDTO, ip: string, isAdmin?: boolean) {
     const isFirstUser = (await this.prisma.user.count()) == 0;
 
     const hash = dto.password ? await argon.hash(dto.password) : null;
@@ -37,7 +37,7 @@ export class AuthService {
           email: dto.email,
           username: dto.username,
           password: hash,
-          isAdmin: isFirstUser,
+          isAdmin: isAdmin ?? isFirstUser,
         },
       });
 
@@ -80,7 +80,7 @@ export class AuthService {
       throw new UnauthorizedException("Wrong email or password");
     }
 
-    this.logger.log(`Successful login for user ${dto.email} from IP ${ip}`);
+    this.logger.log(`Successful login for user ${user.email} from IP ${ip}`);
     return this.generateToken(user);
   }
 

@@ -509,7 +509,7 @@ export default {
     "Esta cuenta {0} aún no ha sido vinculada a ninguna cuenta.",
   "error.msg.unverified_account":
     "Esta cuenta {0} no está verificada, por favor inténtalo de nuevo después de la verificación.",
-  "error.msg.discord_guild_permission_denied":
+  "error.msg.user_not_allowed":
     "No tienes permitido iniciar sesion.",
   "error.msg.cannot_get_user_info":
     "No se puede obtener la información de usuario de la cuenta {0}.",

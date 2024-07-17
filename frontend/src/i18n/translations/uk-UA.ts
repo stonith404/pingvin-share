@@ -506,7 +506,7 @@ export default {
     "Цей обліковий запис {0} ще не прив'язаний до жодного акаунту.",
   "error.msg.unverified_account":
     "Цей обліковий запис {0} не підтверджено, повторіть спробу після підтвердження.",
-  "error.msg.discord_guild_permission_denied": "У вас немає дозволу на вхід.",
+  "error.msg.user_not_allowed": "У вас немає дозволу на вхід.",
   "error.msg.cannot_get_user_info":
     "Не вдається отримати інфу про користувача з цього {0} облікового запису.",
   "error.param.provider_github": "GitHub",
