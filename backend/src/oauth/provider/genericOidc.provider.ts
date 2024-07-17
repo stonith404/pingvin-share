@@ -134,9 +134,9 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
         idTokenData.name ||
         idTokenData.nickname;
     
-    let isAdmin: boolean = undefined;
+    let isAdmin: boolean;
     
-    if (roleConfig && roleConfig.path) {
+    if (roleConfig?.path) {
       // A path to read roles from the token is configured
       let roles: string[] | null;
       try {

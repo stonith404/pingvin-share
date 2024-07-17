@@ -40,18 +40,6 @@ export class OAuthService {
     return Object.fromEntries(oauthUsers.map((u) => [u.provider, u]));
   }
 
-  async updateIsAdmin(user: OAuthSignInDto) {
-    if ("isAdmin" in user)
-      await this.prisma.user.update({
-        where: {
-          email: user.email,
-        },
-        data: {
-          isAdmin: user.isAdmin,
-        },
-      });
-  }
-
   async signIn(user: OAuthSignInDto, ip: string) {
     const oauthUser = await this.prisma.oAuthUser.findFirst({
       where: {
@@ -189,5 +177,17 @@ export class OAuthService {
     });
 
     return result;
+  }
+
+  private async updateIsAdmin(user: OAuthSignInDto) {
+    if ("isAdmin" in user)
+      await this.prisma.user.update({
+        where: {
+          email: user.email,
+        },
+        data: {
+          isAdmin: user.isAdmin,
+        },
+      });
   }
 }
