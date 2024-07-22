@@ -1,3 +1,15 @@
+## [0.28.0](https://github.com/stonith404/pingvin-share/compare/v0.27.0...v0.28.0) (2024-07-22)
+
+
+### Features
+
+* **auth:** Add role-based access management from OpenID Connect ([#535](https://github.com/stonith404/pingvin-share/issues/535)) ([70fd2d9](https://github.com/stonith404/pingvin-share/commit/70fd2d94be3411cc430f5c56e522028398127efb))
+
+
+### Bug Fixes
+
+* store only 10 share tokens in the cookies and clear the expired ones ([e5a0c64](https://github.com/stonith404/pingvin-share/commit/e5a0c649e36e0db419d04446affe2564c45cf321))
+
 ## [0.27.0](https://github.com/stonith404/pingvin-share/compare/v0.26.0...v0.27.0) (2024-07-11)
 
 
