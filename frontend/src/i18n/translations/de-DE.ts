@@ -388,18 +388,11 @@ export default {
   "admin.config.oauth.oidc-username-claim": "OpenID Connect Benutzername anfordern",
   "admin.config.oauth.oidc-username-claim.description": "Benutzername im OpenID Token. Leer lassen, wenn du nicht weißt, was diese Konfiguration bedeutet.",
   "admin.config.oauth.oidc-role-path": "Path to roles in OpenID Connect token",
-  "admin.config.oauth.oidc-role-path.description":
-    "Muss ein valider JMES-Pfad sein, der zu einem Array an Rollen führt. " +
-    "Die Zugangsverwaltung über Rollen in OpenID Connect ist nur empfohlen, wenn kein anderer Identitätsprovider konfiguriert und die Anmeldung per Password deaktiviert ist. " +
-    "Leer lassen, wenn du nicht weißt, was diese Konfiguration bedeutet.",
+  "admin.config.oauth.oidc-role-path.description": "Muss ein valider JMES-Pfad sein, der zu einem Array an Rollen führt. " + "Die Zugangsverwaltung über Rollen in OpenID Connect ist nur empfohlen, wenn kein anderer Identitätsprovider konfiguriert und die Anmeldung per Password deaktiviert ist. " + "Leer lassen, wenn du nicht weißt, was diese Konfiguration bedeutet.",
   "admin.config.oauth.oidc-role-general-access": "OpenID Connect role for general access",
-  "admin.config.oauth.oidc-role-general-access.description":
-    "Rolle für generellen Zugriff. Muss Teil der Rollen eines Benutzers sein, damit dieser sich anmelden kann. " +
-    "Leer lassen, wenn du nicht weißt, was diese Konfiguration bedeutet.",
+  "admin.config.oauth.oidc-role-general-access.description": "Rolle für generellen Zugriff. Muss Teil der Rollen eines Benutzers sein, damit dieser sich anmelden kann. " + "Leer lassen, wenn du nicht weißt, was diese Konfiguration bedeutet.",
   "admin.config.oauth.oidc-role-admin-access": "OpenID Connect role for admin access",
-  "admin.config.oauth.oidc-role-admin-access.description":
-    "Rolle für administrativen Zugriff. Muss Teil der Rollen eines Benutzers sein, damit dieser auf das Administrator-Panel zugreifen kann. " +
-    "Leer lassen, wenn du nicht weißt, was diese Konfiguration bedeutet.",
+  "admin.config.oauth.oidc-role-admin-access.description": "Rolle für administrativen Zugriff. Muss Teil der Rollen eines Benutzers sein, damit dieser auf das Administrator-Panel zugreifen kann. " + "Leer lassen, wenn du nicht weißt, was diese Konfiguration bedeutet.",
   "admin.config.oauth.oidc-client-id": "OpenID Connect Client-ID",
   "admin.config.oauth.oidc-client-id.description": "Client-ID der OpenID Connect OAuth-App",
   "admin.config.oauth.oidc-client-secret": "OpenID Connect Client-Secret",

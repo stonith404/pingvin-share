@@ -58,8 +58,7 @@ export default {
   // /auth/reset-password
   "resetPassword.title": "忘记密码？",
   "resetPassword.description": "请输入电子邮箱地址来接收重置密码邮件",
-  "resetPassword.notify.success":
-    "如果该电子邮箱存在，则已发送一条包含重置密码链接的邮件。",
+  "resetPassword.notify.success": "如果该电子邮箱存在，则已发送一条包含重置密码链接的邮件。",
   "resetPassword.button.back": "返回登录页面",
   "resetPassword.text.resetPassword": "重置密码",
   "resetPassword.text.enterNewPassword": "请输入新密码",
@@ -74,8 +73,7 @@ export default {
   "account.card.password.title": "密码",
   "account.card.password.old": "旧密码",
   "account.card.password.new": "新密码",
-  "account.card.password.noPasswordSet":
-    "您还未设置密码。如果您想通过邮箱和密码登录，请先设置密码。",
+  "account.card.password.noPasswordSet": "您还未设置密码。如果您想通过邮箱和密码登录，请先设置密码。",
   "account.notify.password.success": "密码更改成功！",
   "account.card.oauth.title": "社交账号登录",
   "account.card.oauth.github": "GitHub",
@@ -87,13 +85,11 @@ export default {
   "account.card.oauth.unlink": "解除关联",
   "account.card.oauth.unlinked": "已解除关联",
   "account.modal.unlink.title": "解除关联",
-  "account.modal.unlink.description":
-    "如果您不记得您的用户名和密码，解除和社交账号的关联可能会导致丢失账户。",
+  "account.modal.unlink.description": "如果您不记得您的用户名和密码，解除和社交账号的关联可能会导致丢失账户。",
   "account.notify.oauth.unlinked.success": "解除关联成功",
   "account.card.security.title": "安全",
   "account.card.security.totp.enable.description": "请输入当前密码开启两步验证",
-  "account.card.security.totp.disable.description":
-    "请输入当前密码关闭两步验证",
+  "account.card.security.totp.disable.description": "请输入当前密码关闭两步验证",
   "account.card.security.totp.button.start": "开启",
   "account.modal.totp.title": "开启两步验证",
   "account.modal.totp.step1": "第一步：添加验证器 Authenticator",
@@ -105,8 +101,7 @@ export default {
   "account.notify.totp.disable": "成功关闭两步验证！",
   "account.notify.totp.enable": "成功开启两步验证！",
   "account.card.language.title": "语言",
-  "account.card.language.description":
-    "本项目由社区成员翻译，部分语言可能暂未提供翻译。",
+  "account.card.language.description": "本项目由社区成员翻译，部分语言可能暂未提供翻译。",
   "account.card.color.title": "颜色外观",
   // ThemeSwitcher.tsx
   "account.theme.dark": "暗黑模式",
@@ -114,8 +109,7 @@ export default {
   "account.theme.system": "跟随系统",
   "account.button.delete": "删除账户",
   "account.modal.delete.title": "删除账户",
-  "account.modal.delete.description":
-    "你真的想删除你的账户，并删除所有的共享吗？",
+  "account.modal.delete.description": "你真的想删除你的账户，并删除所有的共享吗？",
   // END /account
   // /account/shares
   "account.shares.title": "我的共享",
@@ -137,8 +131,7 @@ export default {
   // END /account/shares
   // /account/reverseShares
   "account.reverseShares.title": "预留共享",
-  "account.reverseShares.description":
-    "预留共享允许你创建一个特定共享链接，以便外部用户以此链接创建共享",
+  "account.reverseShares.description": "预留共享允许你创建一个特定共享链接，以便外部用户以此链接创建共享",
   "account.reverseShares.title.empty": "这里空空如也 👀",
   "account.reverseShares.description.empty": "你没有创建任何预留共享",
   // showCreateReverseShareModal.tsx
@@ -158,11 +151,9 @@ export default {
   "account.reverseShares.modal.expiration.year-plural": "年",
   "account.reverseShares.modal.max-size.label": "共享文件上限",
   "account.reverseShares.modal.send-email": "发送邮件提醒",
-  "account.reverseShares.modal.send-email.description":
-    "当这个预留共享链接被用于共享时，发送邮件提醒",
+  "account.reverseShares.modal.send-email.description": "当这个预留共享链接被用于共享时，发送邮件提醒",
   "account.reverseShares.modal.max-use.label": "最大使用次数",
-  "account.reverseShares.modal.max-use.description":
-    "这个预留共享链接可被用于创建共享的最大使用次数",
+  "account.reverseShares.modal.max-use.description": "这个预留共享链接可被用于创建共享的最大使用次数",
   "account.reverseShare.never-expires": "这个预留共享永不过期",
   "account.reverseShare.expires-on": "这个预留共享将过期于 {expiration}",
   "account.reverseShares.table.no-shares": "当前没有创建任何共享",
@@ -174,8 +165,7 @@ export default {
   "account.reverseShares.table.expires": "过期时间",
   "account.reverseShares.modal.reverse-share-link": "预留共享链接",
   "account.reverseShares.modal.delete.title": "删除预留共享链接",
-  "account.reverseShares.modal.delete.description":
-    "你真的想删除此预留共享链接吗？链接下所有关联的共享都将被删除",
+  "account.reverseShares.modal.delete.description": "你真的想删除此预留共享链接吗？链接下所有关联的共享都将被删除",
   // END /account/reverseShares
   // /admin
   "admin.title": "管理",
@@ -196,19 +186,16 @@ export default {
   "admin.users.edit.update.change-password.button": "保存新密码",
   "admin.users.edit.update.notify.password.success": "密码更新成功！",
   "admin.users.edit.delete.title": "删除用户 {username}",
-  "admin.users.edit.delete.description":
-    "你真的想删除这个账户，并删除该用户所有的共享吗？",
+  "admin.users.edit.delete.description": "你真的想删除这个账户，并删除该用户所有的共享吗？",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "创建用户",
   "admin.users.modal.create.username": "用户名",
   "admin.users.modal.create.email": "电子邮件",
   "admin.users.modal.create.password": "密码",
   "admin.users.modal.create.manual-password": "手动设置密码",
-  "admin.users.modal.create.manual-password.description":
-    "如果不勾选，用户将会收到一封电子邮件来设置他们的密码",
+  "admin.users.modal.create.manual-password.description": "如果不勾选，用户将会收到一封电子邮件来设置他们的密码",
   "admin.users.modal.create.admin": "管理员",
-  "admin.users.modal.create.admin.description":
-    "如果勾选，用户将能访问管理员面板",
+  "admin.users.modal.create.admin.description": "如果勾选，用户将能访问管理员面板",
   // END /admin/users
   // /admin/shares
   "admin.shares.title": "共享管理",
@@ -225,8 +212,7 @@ export default {
   "upload.notify.count-failed": "{count} 文件上传失败，请重试",
   // Dropzone.tsx
   "upload.dropzone.title": "上传文件",
-  "upload.dropzone.description":
-    "拖放至此以上传文件，文件大小不能超过上限 {maxSize}",
+  "upload.dropzone.description": "拖放至此以上传文件，文件大小不能超过上限 {maxSize}",
   "upload.dropzone.notify.file-too-big": "你的文件超过了最大上传限制 {maxSize}",
   // FileList.tsx
   "upload.filelist.name": "文件名",
@@ -236,12 +222,10 @@ export default {
   "upload.modal.link.error.invalid": "只能包括字母，数字，下划线(_)，和横线(-)",
   "upload.modal.link.error.taken": "这个链接已经存在了",
   "upload.modal.not-signed-in": "当前没有登录",
-  "upload.modal.not-signed-in-description":
-    "你将不能删除你的共享或查看访问次数",
+  "upload.modal.not-signed-in-description": "你将不能删除你的共享或查看访问次数",
   "upload.modal.expires.never": "永不",
   "upload.modal.expires.never-long": "永不过期",
-  "upload.modal.expires.error.too-long":
-    "您设置的过期时间超出了系统上限 {max}。",
+  "upload.modal.expires.error.too-long": "您设置的过期时间超出了系统上限 {max}。",
   "upload.modal.link.label": "共享链接",
   "upload.modal.expires.label": "过期时间",
   "upload.modal.expires.minute-singular": "1 分钟",
@@ -258,8 +242,7 @@ export default {
   "upload.modal.expires.year-plural": "年",
   "upload.modal.accordion.name-and-description.title": "名称与描述",
   "upload.modal.accordion.name-and-description.name.placeholder": "名称",
-  "upload.modal.accordion.name-and-description.description.placeholder":
-    "写给接收者的备注",
+  "upload.modal.accordion.name-and-description.description.placeholder": "写给接收者的备注",
   "upload.modal.accordion.email.title": "邮件提醒",
   "upload.modal.accordion.email.placeholder": "收件人电子邮件地址",
   "upload.modal.accordion.email.invalid-email": "邮件地址不可用",
@@ -291,8 +274,7 @@ export default {
   "share.table.name": "文件名",
   "share.table.size": "文件大小",
   "share.modal.file-preview.error.not-supported.title": "该文件类型不支持预览",
-  "share.modal.file-preview.error.not-supported.description":
-    "不支持此文件类型的预览，请下载文件查看。",
+  "share.modal.file-preview.error.not-supported.description": "不支持此文件类型的预览，请下载文件查看。",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "编辑 {shareId}",
@@ -314,62 +296,44 @@ export default {
   "admin.config.general.show-home-page": "显示首页",
   "admin.config.general.show-home-page.description": "是否显示首页",
   "admin.config.general.session-duration": "Session Duration",
-  "admin.config.general.session-duration.description":
-    "Time in hours after which a user must log in again (default: 3 months).",
+  "admin.config.general.session-duration.description": "Time in hours after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Logo",
-  "admin.config.general.logo.description":
-    "上传你的个性化 Logo，图片必须是长宽比 1:1 的 PNG 格式",
+  "admin.config.general.logo.description": "上传你的个性化 Logo，图片必须是长宽比 1:1 的 PNG 格式",
   "admin.config.general.logo.placeholder": "选择图片",
   "admin.config.email.enable-share-email-recipients": "开启共享邮件通知",
-  "admin.config.email.enable-share-email-recipients.description":
-    "是否允许通过邮件通知发送共享信息，只有设置了 SMTP 后该选项才有效",
+  "admin.config.email.enable-share-email-recipients.description": "是否允许通过邮件通知发送共享信息，只有设置了 SMTP 后该选项才有效",
   "admin.config.email.share-recipients-subject": "共享邮件通知主题",
-  "admin.config.email.share-recipients-subject.description":
-    "发送共享邮件通知的邮件主题",
+  "admin.config.email.share-recipients-subject.description": "发送共享邮件通知的邮件主题",
   "admin.config.email.share-recipients-message": "共享邮件通知内容",
-  "admin.config.email.share-recipients-message.description":
-    "发给接收者的共享邮件通知的具体内容。可选的变量有：\n {creator} - 该共享的创建者\n {shareUrl} - 该共享的链接\n {desc} - 该共享的描述\n {expires} - 该共享的过期时间\n 这些变量会被实际的值所替代",
+  "admin.config.email.share-recipients-message.description": "发给接收者的共享邮件通知的具体内容。可选的变量有：\n {creator} - 该共享的创建者\n {shareUrl} - 该共享的链接\n {desc} - 该共享的描述\n {expires} - 该共享的过期时间\n 这些变量会被实际的值所替代",
   "admin.config.email.reverse-share-subject": "预留共享邮件通知主题",
-  "admin.config.email.reverse-share-subject.description":
-    "当有人使用了你的预留共享链接时，发送的预留共享邮件通知主题",
+  "admin.config.email.reverse-share-subject.description": "当有人使用了你的预留共享链接时，发送的预留共享邮件通知主题",
   "admin.config.email.reverse-share-message": "预留共享邮件通知内容",
-  "admin.config.email.reverse-share-message.description":
-    "当有人使用了你的预留共享链接时，发送的通知内容。{shareUrl} 会被创建者的用户名和共享链接代替",
+  "admin.config.email.reverse-share-message.description": "当有人使用了你的预留共享链接时，发送的通知内容。{shareUrl} 会被创建者的用户名和共享链接代替",
   "admin.config.email.reset-password-subject": "重置密码邮件通知主题",
-  "admin.config.email.reset-password-subject.description":
-    "当用户发起重置密码时，发送的重置密码邮件通知主题",
+  "admin.config.email.reset-password-subject.description": "当用户发起重置密码时，发送的重置密码邮件通知主题",
   "admin.config.email.reset-password-message": "重置密码邮件通知内容",
-  "admin.config.email.reset-password-message.description":
-    "当用户发起重置密码时，重置密码邮件通知内容。{url} 会被重置密码链接代替",
+  "admin.config.email.reset-password-message.description": "当用户发起重置密码时，重置密码邮件通知内容。{url} 会被重置密码链接代替",
   "admin.config.email.invite-subject": "邀请邮件通知主题",
-  "admin.config.email.invite-subject.description":
-    "当管理员邀请用户时，发送的邀请邮件通知主题",
+  "admin.config.email.invite-subject.description": "当管理员邀请用户时，发送的邀请邮件通知主题",
   "admin.config.email.invite-message": "邀请邮件通知内容",
-  "admin.config.email.invite-message.description":
-    "当管理员邀请用户时，发送的邀请邮件通知内容。{url} 会被邀请链接代替，{password} 会被密码代替",
+  "admin.config.email.invite-message.description": "当管理员邀请用户时，发送的邀请邮件通知内容。{url} 会被邀请链接代替，{password} 会被密码代替",
   "admin.config.share.allow-registration": "允许注册",
   "admin.config.share.allow-registration.description": "是否允许注册",
   "admin.config.share.allow-unauthenticated-shares": "是否允许未验证的共享",
-  "admin.config.share.allow-unauthenticated-shares.description":
-    "是否允许未验证的用户创建共享",
+  "admin.config.share.allow-unauthenticated-shares.description": "是否允许未验证的用户创建共享",
   "admin.config.share.max-expiration": "最长过期时间",
-  "admin.config.share.max-expiration.description":
-    "“最长过期时间”以小时为单位，如果将其设置为“0”则为永不过期。",
+  "admin.config.share.max-expiration.description": "“最长过期时间”以小时为单位，如果将其设置为“0”则为永不过期。",
   "admin.config.share.max-size": "最大文件上限",
-  "admin.config.share.max-size.description":
-    "最大文件上限，单位 bytes (1GB=1024MB=1048576KB=1073741824bytes)",
+  "admin.config.share.max-size.description": "最大文件上限，单位 bytes (1GB=1024MB=1048576KB=1073741824bytes)",
   "admin.config.share.zip-compression-level": "Zip 文件压缩质量",
-  "admin.config.share.zip-compression-level.description":
-    "调整压缩质量来平衡压缩文件的大小和压缩的速度。有效值介于 0 和 9 之间，0 为不压缩，9 为最高质量压缩。 ",
+  "admin.config.share.zip-compression-level.description": "调整压缩质量来平衡压缩文件的大小和压缩的速度。有效值介于 0 和 9 之间，0 为不压缩，9 为最高质量压缩。 ",
   "admin.config.share.chunk-size": "块大小",
-  "admin.config.share.chunk-size.description":
-    "根据你的互联网连接情况调整上传文件的块大小（以字节为单位），以平衡效率和可靠性。 较小的块有助于提高不稳定网络环境中的上传成功率，而较大的块则可以加快稳定网络环境中的上传速度。",
+  "admin.config.share.chunk-size.description": "根据你的互联网连接情况调整上传文件的块大小（以字节为单位），以平衡效率和可靠性。 较小的块有助于提高不稳定网络环境中的上传成功率，而较大的块则可以加快稳定网络环境中的上传速度。",
   "admin.config.share.auto-open-share-modal": "自动打开创建共享对话框",
-  "admin.config.share.auto-open-share-modal.description":
-    "每当用户选择完将要被上传的文件后，自动打开创建共享的对话框。",
+  "admin.config.share.auto-open-share-modal.description": "每当用户选择完将要被上传的文件后，自动打开创建共享的对话框。",
   "admin.config.smtp.enabled": "启用",
-  "admin.config.smtp.enabled.description":
-    "是否开启 SMTP，仅当输入主机名、端口、发送邮箱、用户名和密码后开启",
+  "admin.config.smtp.enabled.description": "是否开启 SMTP，仅当输入主机名、端口、发送邮箱、用户名和密码后开启",
   "admin.config.smtp.host": "主机名",
   "admin.config.smtp.host.description": "SMTP 主机名",
   "admin.config.smtp.port": "端口",
@@ -384,8 +348,7 @@ export default {
   "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
   "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "允许注册",
-  "admin.config.oauth.allow-registration.description":
-    "允许用户通过登录社交账号来注册",
+  "admin.config.oauth.allow-registration.description": "允许用户通过登录社交账号来注册",
   "admin.config.oauth.ignore-totp": "忽略两步验证",
   "admin.config.oauth.ignore-totp.description": "用户通过社交账号登录时是否忽略两步验证",
   "admin.config.oauth.disable-password": "Disable password login",
@@ -393,55 +356,47 @@ export default {
   "admin.config.oauth.github-enabled": "GitHub",
   "admin.config.oauth.github-enabled.description": "是否启用 GitHub 账号登录",
   "admin.config.oauth.github-client-id": "GitHub Client ID",
-  "admin.config.oauth.github-client-id.description":
-    "GitHub OAuth App 的 Client ID",
+  "admin.config.oauth.github-client-id.description": "GitHub OAuth App 的 Client ID",
   "admin.config.oauth.github-client-secret": "GitHub 的 Client secret",
-  "admin.config.oauth.github-client-secret.description":
-    "GitHub OAuth App 的 Client secret",
+  "admin.config.oauth.github-client-secret.description": "GitHub OAuth App 的 Client secret",
   "admin.config.oauth.google-enabled": "谷歌",
   "admin.config.oauth.google-enabled.description": "是否启用谷歌账号登录",
   "admin.config.oauth.google-client-id": "谷歌 Client ID",
-  "admin.config.oauth.google-client-id.description":
-    "Google OAuth App 的 Client ID",
+  "admin.config.oauth.google-client-id.description": "Google OAuth App 的 Client ID",
   "admin.config.oauth.google-client-secret": "谷歌 Client secret",
-  "admin.config.oauth.google-client-secret.description":
-    "Google OAuth App 的 Client secret",
+  "admin.config.oauth.google-client-secret.description": "Google OAuth App 的 Client secret",
   "admin.config.oauth.microsoft-enabled": "Microsoft",
   "admin.config.oauth.microsoft-enabled.description": "是否启用微软账号登录",
   "admin.config.oauth.microsoft-tenant": "Microsoft 租户（Tenant）",
-  "admin.config.oauth.microsoft-tenant.description":
-    "Microsoft OAuth 应用的 租户（Tenant） ID，共有四种类型，参阅https://learn.microsoft.com/zh-cn/security/zero-trust/develop/identity-supported-account-types。\ncommon（常规）：个人 Microsoft 账户和 Microsoft Entra ID 工作或学校账户均可登录。\norganizations（组织）：只有Microsoft Entra ID 工作或学校账户可以登录。\nconsumers（客户）：只有个人 Microsoft 账户可以登录。\nMicrosoft Entra 租户的域名或 GUID 格式的租户 ID：只有来自特定 Microsoft Entra 租户的用户（具有工作或学校账户的目录成员或具有个人 Microsoft 账户的目录来宾）才能登录。",
+  "admin.config.oauth.microsoft-tenant.description": "Microsoft OAuth 应用的 租户（Tenant） ID，共有四种类型，参阅https://learn.microsoft.com/zh-cn/security/zero-trust/develop/identity-supported-account-types。\ncommon（常规）：个人 Microsoft 账户和 Microsoft Entra ID 工作或学校账户均可登录。\norganizations（组织）：只有Microsoft Entra ID 工作或学校账户可以登录。\nconsumers（客户）：只有个人 Microsoft 账户可以登录。\nMicrosoft Entra 租户的域名或 GUID 格式的租户 ID：只有来自特定 Microsoft Entra 租户的用户（具有工作或学校账户的目录成员或具有个人 Microsoft 账户的目录来宾）才能登录。",
   "admin.config.oauth.microsoft-client-id": "Microsoft Client ID",
-  "admin.config.oauth.microsoft-client-id.description":
-    "Microsoft OAuth App 的 Client ID",
+  "admin.config.oauth.microsoft-client-id.description": "Microsoft OAuth App 的 Client ID",
   "admin.config.oauth.microsoft-client-secret": "Microsoft 的 Client secret",
-  "admin.config.oauth.microsoft-client-secret.description":
-    "Microsoft OAuth App 的 Client secret",
+  "admin.config.oauth.microsoft-client-secret.description": "Microsoft OAuth App 的 Client secret",
   "admin.config.oauth.discord-enabled": "Discord",
   "admin.config.oauth.discord-enabled.description": "是否启用 Discord 账号登录",
   "admin.config.oauth.discord-limited-guild": "Discord 的 limited server ID",
-  "admin.config.oauth.discord-limited-guild.description":
-    "限制特定服务器中的用户登录。留空来禁用。",
+  "admin.config.oauth.discord-limited-guild.description": "限制特定服务器中的用户登录。留空来禁用。",
   "admin.config.oauth.discord-client-id": "Discord 的 Client ID",
-  "admin.config.oauth.discord-client-id.description":
-    "Discord OAuth App 的 Client ID",
+  "admin.config.oauth.discord-client-id.description": "Discord OAuth App 的 Client ID",
   "admin.config.oauth.discord-client-secret": "Discord 的 Client secret",
-  "admin.config.oauth.discord-client-secret.description":
-    "Discord OAuth App 的 Client secret",
+  "admin.config.oauth.discord-client-secret.description": "Discord OAuth App 的 Client secret",
   "admin.config.oauth.oidc-enabled": "OpenID Connect",
   "admin.config.oauth.oidc-enabled.description": "是否启用 OpenID Connect 登录",
   "admin.config.oauth.oidc-discovery-uri": "OpenID Connect 的 Discovery URI",
-  "admin.config.oauth.oidc-discovery-uri.description":
-    "OpenID Connect OAuth App 的 Discovery URI",
+  "admin.config.oauth.oidc-discovery-uri.description": "OpenID Connect OAuth App 的 Discovery URI",
   "admin.config.oauth.oidc-username-claim": "OpenID Connect 用户名请求",
-  "admin.config.oauth.oidc-username-claim.description":
-    "OpenID Connect ID token 中的用户名请求。如果您不知道这项配置是什么，请留空。",
+  "admin.config.oauth.oidc-username-claim.description": "OpenID Connect ID token 中的用户名请求。如果您不知道这项配置是什么，请留空。",
+  "admin.config.oauth.oidc-role-path": "Path to roles in OpenID Connect token",
+  "admin.config.oauth.oidc-role-path.description": "Must be a valid JMES path referencing an array of roles. " + "Managing access rights using OpenID Connect roles is only recommended if no other identity provider is configured and password login is disabled. " + "Leave it blank if you don't know what this config is.",
+  "admin.config.oauth.oidc-role-general-access": "OpenID Connect role for general access",
+  "admin.config.oauth.oidc-role-general-access.description": "Role required for general access. Must be present in a user’s roles for them to log in. " + "Leave it blank if you don't know what this config is.",
+  "admin.config.oauth.oidc-role-admin-access": "OpenID Connect role for admin access",
+  "admin.config.oauth.oidc-role-admin-access.description": "Role required for administrative access. Must be present in a user’s roles for them to access the admin panel. " + "Leave it blank if you don't know what this config is.",
   "admin.config.oauth.oidc-client-id": "OpenID Connect 的 Client ID",
-  "admin.config.oauth.oidc-client-id.description":
-    "OpenID Connect OAuth App 的 Client ID",
+  "admin.config.oauth.oidc-client-id.description": "OpenID Connect OAuth App 的 Client ID",
   "admin.config.oauth.oidc-client-secret": "OpenID Connect 的 Client secret",
-  "admin.config.oauth.oidc-client-secret.description":
-    "OpenID Connect OAuth App 的 Client secret",
+  "admin.config.oauth.oidc-client-secret.description": "OpenID Connect OAuth App 的 Client secret",
   // 404
   "404.description": "当前的页面走丢啦",
   "404.button.home": "返回主页",
@@ -490,5 +445,5 @@ export default {
   "common.error.too-long": "必须不超过 {length} 个字符",
   "common.error.exact-length": "必须为 {length} 个字符",
   "common.error.invalid-number": "必须为数字",
-  "common.error.field-required": "必填项",
+  "common.error.field-required": "必填项"
 };
