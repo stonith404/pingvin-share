@@ -412,18 +412,9 @@ export default {
   "error.msg.no_email": "無法從此 {0} 帳號取得Email地址。",
   "error.msg.already_linked": "此 {0} 帳號已與另一個帳號關聯。",
   "error.msg.not_linked": "此 {0} 帳號尚未關聯到任何帳號。",
-<<<<<<< HEAD
   "error.msg.unverified_account": "This {0} account is unverified, please try again after verification.",
   "error.msg.user_not_allowed": "You are not allowed to sign in.",
   "error.msg.cannot_get_user_info": "Can not get your user info from this {0} account.",
-=======
-  "error.msg.unverified_account":
-    "This {0} account is unverified, please try again after verification.",
-  "error.msg.user_not_allowed":
-    "You are not allowed to sign in.",
-  "error.msg.cannot_get_user_info":
-    "Can not get your user info from this {0} account.",
->>>>>>> main
   "error.param.provider_github": "GitHub",
   "error.param.provider_google": "Google",
   "error.param.provider_microsoft": "Microsoft",

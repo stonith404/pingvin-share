@@ -412,17 +412,9 @@ export default {
   "error.msg.no_email": "Bu {0} hesaptan e-posta adresi alınamıyor.",
   "error.msg.already_linked": "Bu {0} hesabı zaten başka bir hesaba bağlı.",
   "error.msg.not_linked": "Bu {0} hesabı henüz bir hesaba bağlı değil.",
-<<<<<<< HEAD
   "error.msg.unverified_account": "Bu {0} hesabı doğrulanmamış, lütfen doğruladıktan sonra yeniden dene.",
   "error.msg.user_not_allowed": "Giriş yapmana izin verilmiyor.",
   "error.msg.cannot_get_user_info": "Bu {0} hesabından kullanıcı bilgilerinizi alamıyorum.",
-=======
-  "error.msg.unverified_account":
-    "Bu {0} hesabı doğrulanmamış, lütfen doğruladıktan sonra yeniden dene.",
-  "error.msg.user_not_allowed": "Giriş yapmana izin verilmiyor.",
-  "error.msg.cannot_get_user_info":
-    "Bu {0} hesabından kullanıcı bilgilerinizi alamıyorum.",
->>>>>>> main
   "error.param.provider_github": "GitHub",
   "error.param.provider_google": "Google",
   "error.param.provider_microsoft": "Microsoft",
