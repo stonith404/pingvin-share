@@ -39,7 +39,7 @@ const FileList = ({
   const t = useTranslate();
 
   const [sort, setSort] = useState<TableSort>({
-    property: undefined,
+    property: "name",
     direction: "desc",
   });
 

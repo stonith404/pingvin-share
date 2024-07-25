@@ -239,7 +239,11 @@ export class ShareService {
     const share = await this.prisma.share.findUnique({
       where: { id },
       include: {
-        files: true,
+        files: {
+          orderBy: {
+            name: "asc",
+          },
+        },
         creator: true,
         security: true,
       },
