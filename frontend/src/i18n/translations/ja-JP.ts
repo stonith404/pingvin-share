@@ -34,7 +34,7 @@ export default {
   "signIn.notify.totp-required.title": "二段階認証が必要です",
   "signIn.notify.totp-required.description": "二段階認証コードを入力してください",
   "signIn.oauth.or": "または",
-  "signIn.oauth.signInWith": "Sign in with",
+  "signIn.oauth.signInWith": "サインインの方法",
   "signIn.oauth.github": "GitHub",
   "signIn.oauth.google": "Google",
   "signIn.oauth.microsoft": "Microsoft",
@@ -58,7 +58,7 @@ export default {
   // /auth/reset-password
   "resetPassword.title": "パスワードを忘れてしまいましたか？",
   "resetPassword.description": "登録しているメールアドレスを入力してください。",
-  "resetPassword.notify.success": "A message with a link to reset your password has been sent if the email exists.",
+  "resetPassword.notify.success": "電子メールが存在する場合、パスワードをリセットするためのリンクを含むメッセージが送信されました。",
   "resetPassword.button.back": "サインインページに戻る",
   "resetPassword.text.resetPassword": "パスワードをリセット",
   "resetPassword.text.enterNewPassword": "新規パスワードを入力",
@@ -170,7 +170,7 @@ export default {
   // /admin
   "admin.title": "管理画面",
   "admin.button.users": "ユーザー管理",
-  "admin.button.shares": "Share management",
+  "admin.button.shares": "共有管理",
   "admin.button.config": "設定",
   "admin.version": "バージョン",
   // END /admin
@@ -198,13 +198,13 @@ export default {
   "admin.users.modal.create.admin.description": "チェックされている場合、ユーザーは管理画面にアクセスできるようになります。",
   // END /admin/users
   // /admin/shares
-  "admin.shares.title": "Share management",
-  "admin.shares.table.id": "Share ID",
-  "admin.shares.table.username": "Creator",
-  "admin.shares.table.visitors": "Visitors",
-  "admin.shares.table.expires": "Expires At",
-  "admin.shares.edit.delete.title": "Delete share {id}",
-  "admin.shares.edit.delete.description": "Do you really want to delete this share?",
+  "admin.shares.title": "共有管理",
+  "admin.shares.table.id": "共有ID",
+  "admin.shares.table.username": "作成者",
+  "admin.shares.table.visitors": "訪問者",
+  "admin.shares.table.expires": "有効期限",
+  "admin.shares.edit.delete.title": "共有 {id} を削除",
+  "admin.shares.edit.delete.description": "この共有を削除してもよろしいですか？",
   // END /admin/shares
   // /upload
   "upload.title": "アップロード",
@@ -240,9 +240,9 @@ export default {
   "upload.modal.expires.month-plural": "ヶ月間",
   "upload.modal.expires.year-singular": "年間",
   "upload.modal.expires.year-plural": "年間",
-  "upload.modal.accordion.name-and-description.title": "Name and description",
-  "upload.modal.accordion.name-and-description.name.placeholder": "Name",
-  "upload.modal.accordion.name-and-description.description.placeholder": "Note for the recipients of this share",
+  "upload.modal.accordion.name-and-description.title": "名前と説明",
+  "upload.modal.accordion.name-and-description.name.placeholder": "名前",
+  "upload.modal.accordion.name-and-description.description.placeholder": "この共有に関する受信者へのメモ",
   "upload.modal.accordion.email.title": "メールで受け取る相手",
   "upload.modal.accordion.email.placeholder": "メールの宛先を入力",
   "upload.modal.accordion.email.invalid-email": "無効なメールアドレスです",
@@ -274,7 +274,7 @@ export default {
   "share.table.name": "ファイル名",
   "share.table.size": "サイズ",
   "share.modal.file-preview.error.not-supported.title": "プレビューに対応していません",
-  "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
+  "share.modal.file-preview.error.not-supported.description": "このファイルタイプのプレビューはサポートされていません。ファイルをダウンロードして表示してください。",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "編集 {shareId}",
