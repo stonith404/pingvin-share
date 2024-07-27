@@ -1,6 +1,8 @@
 import jwtDecode from "jwt-decode";
 import { NextRequest, NextResponse } from "next/server";
 import configService from "./services/config.service";
+import axios from 'axios';
+import { parse, parseSetCookie } from 'cookie-es';
 
 // This middleware redirects based on different conditions:
 // - Authentication state
@@ -30,7 +32,29 @@ export async function middleware(request: NextRequest) {
 
   const route = request.nextUrl.pathname;
   let user: { isAdmin: boolean } | null = null;
-  const accessToken = request.cookies.get("access_token")?.value;
+  let accessToken = request.cookies.get("access_token")?.value;
+  let setCookiesOfRefreshToken: string[] | undefined;
+
+  // Refresh access token if it has expired
+
+  if (!accessToken) { // access_token expired if it doesn't exist
+    const reqCookie = request.headers.get('cookie');
+    await fetch(`${apiUrl}/api/auth/token`, {
+      method: 'POST',
+      headers: reqCookie ? { cookie: reqCookie } : {},
+    }).then((res) => {
+      setCookiesOfRefreshToken = res.headers.getSetCookie() ?? [];
+
+      for (const cookie of setCookiesOfRefreshToken) {
+        const parsed = parseSetCookie(cookie);
+
+        if (parsed?.name === 'access_token') {
+          accessToken = parsed.value;
+          break;
+        }
+      }
+    }).catch(() => void 0);
+  }
 
   try {
     const claims = jwtDecode<{ exp: number; isAdmin: boolean }>(
@@ -62,8 +86,8 @@ export async function middleware(request: NextRequest) {
       condition: routes.disabled.contains(route),
       path: "/",
     },
-     // Authenticated state
-     {
+    // Authenticated state
+    {
       condition: user && routes.unauthenticated.contains(route) && !getConfig("share.allowUnauthenticatedShares"),
       path: "/upload",
     },
@@ -97,12 +121,23 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL(path, request.url));
     }
   }
+
+
+  if (setCookiesOfRefreshToken && accessToken) {
+    const response = NextResponse.next();
+
+    for (const item of setCookiesOfRefreshToken) {
+      response.headers.append('set-cookie', item);
+    }
+
+    return response;
+  }
 }
 
 // Helper class to check if a route matches a list of routes
 class Routes {
   // eslint-disable-next-line no-unused-vars
-  constructor(public routes: string[]) {}
+  constructor(public routes: string[]) { }
 
   contains(_route: string) {
     for (const route of this.routes) {

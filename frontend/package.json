@@ -19,6 +19,7 @@
     "@mantine/next": "^6.0.21",
     "@mantine/notifications": "^6.0.21",
     "axios": "^1.7.2",
+    "cookie-es": "^1.2.2",
     "cookies-next": "^2.1.2",
     "file-saver": "^2.0.5",
     "jose": "^4.15.5",

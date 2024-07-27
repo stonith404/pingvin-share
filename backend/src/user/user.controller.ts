@@ -51,7 +51,7 @@ export class UserController {
   ) {
     response.cookie("access_token", "accessToken", { maxAge: -1 });
     response.cookie("refresh_token", "", {
-      path: "/api/auth/token",
+      path: "/",
       httpOnly: true,
       maxAge: -1,
     });

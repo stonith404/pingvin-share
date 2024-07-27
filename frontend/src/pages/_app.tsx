@@ -31,6 +31,7 @@ import i18nUtil from "../utils/i18n.util";
 import userPreferences from "../utils/userPreferences.util";
 import "moment/min/locales";
 import moment from "moment";
+import { parse as parseCookie, parseSetCookie } from 'cookie-es';
 
 const excludeDefaultLayoutRoutes = ["/admin/config/[category]"];
 
@@ -169,10 +170,20 @@ App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
   };
 
   if (ctx.req) {
-    const cookieHeader = ctx.req.headers.cookie;
+    let accessToken = parseCookie(ctx.req.headers.cookie ?? "")["access_token"];
+    let setCookie = ctx.res.getHeader('set-cookie') as string[] | undefined;
+    if (setCookie) {
+      for (const item of setCookie) {
+        const parsed = parseSetCookie(item);
+        if (parsed.name === "access_token") {
+          accessToken = parsed.value;
+          break;
+        }
+      }
+    }
 
     pageProps.user = await axios(`${apiURL}/api/users/me`, {
-      headers: { cookie: cookieHeader },
+      headers: { cookie: `access_token=${accessToken}` },
     })
       .then((res) => res.data)
       .catch(() => null);

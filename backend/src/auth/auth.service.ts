@@ -255,7 +255,6 @@ export class AuthService {
       });
     if (refreshToken)
       response.cookie("refresh_token", refreshToken, {
-        path: "/api/auth/token",
         httpOnly: true,
         sameSite: "strict",
         maxAge: 1000 * 60 * 60 * this.config.get("general.sessionDuration"),

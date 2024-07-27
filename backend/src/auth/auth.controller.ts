@@ -175,7 +175,6 @@ export class AuthController {
     await this.authService.signOut(request.cookies.access_token);
     response.cookie("access_token", "accessToken", { maxAge: -1 });
     response.cookie("refresh_token", "", {
-      path: "/api/auth/token",
       httpOnly: true,
       maxAge: -1,
     });
