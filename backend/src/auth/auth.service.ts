@@ -251,7 +251,7 @@ export class AuthService {
     if (accessToken)
       response.cookie("access_token", accessToken, {
         sameSite: "lax",
-        maxAge: 1000 * 60 * 15, // 15 minutes
+        maxAge: 1000 * 60 * 60 * 24 * 30 * 3, // 3 months
       });
     if (refreshToken)
       response.cookie("refresh_token", refreshToken, {
