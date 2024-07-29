@@ -521,7 +521,7 @@ const SimplifiedCreateUploadModalModal = ({
   });
 
   return (
-    <>
+    <Stack>
       {showNotSignedInAlert && !options.isUserSignedIn && (
         <Alert
           withCloseButton
@@ -556,7 +556,7 @@ const SimplifiedCreateUploadModalModal = ({
           </Button>
         </Stack>
       </form>
-    </>
+    </Stack>
   );
 };
 
