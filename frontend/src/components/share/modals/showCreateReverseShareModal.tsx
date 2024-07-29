@@ -22,6 +22,8 @@ import { getExpirationPreview } from "../../../utils/date.util";
 import toast from "../../../utils/toast.util";
 import FileSizeInput from "../FileSizeInput";
 import showCompletedReverseShareModal from "./showCompletedReverseShareModal";
+import { getCookie, setCookie } from 'cookies-next';
+
 
 const showCreateReverseShareModal = (
   modals: ModalsContextProps,
@@ -61,12 +63,16 @@ const Body = ({
       sendEmailNotification: false,
       expiration_num: 1,
       expiration_unit: "-days",
-      simplified: false,
-      publicAccess: true,
+      simplified: !!(getCookie('reverse-share.simplified') ?? false),
+      publicAccess: !!(getCookie('reverse-share.public-access') ?? true),
     },
   });
 
   const onSubmit = form.onSubmit(async (values) => {
+    // remember simplified and publicAccess in cookies
+    setCookie('reverse-share.simplified', values.simplified);
+    setCookie('reverse-share.public-access', values.publicAccess);
+
     const expirationDate = moment().add(
       form.values.expiration_num,
       form.values.expiration_unit.replace(
