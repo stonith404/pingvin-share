@@ -35,11 +35,13 @@ const Body = ({ share, appUrl }: { share: ShareForComplete; appUrl: string }) =>
   return (
     <Stack align="stretch">
       <CopyTextField link={link} />
-      { share.isSendEmailToReverseShareCreator === true && (
+      {share.isSendEmailToReverseShareCreator === true && (
         <Text
           size="sm"
           sx={(theme) => ({
-            color: theme.colors.dark[4],
+            color: theme.colorScheme === "dark"
+              ? theme.colors.gray[3]
+              : theme.colors.dark[4],
           })}
         >{t("upload.modal.completed.send-email-to-reverse-share-creator")}</Text>
       )}
@@ -53,8 +55,8 @@ const Body = ({ share, appUrl }: { share: ShareForComplete; appUrl: string }) =>
         {moment(share.expiration).unix() === 0
           ? t("upload.modal.completed.never-expires")
           : t("upload.modal.completed.expires-on", {
-              expiration: moment(share.expiration).format("LLL"),
-            })}
+            expiration: moment(share.expiration).format("LLL"),
+          })}
       </Text>
 
       <Button
