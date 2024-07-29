@@ -483,15 +483,6 @@ const SimplifiedCreateUploadModalModal = ({
       .transform((value) => value || undefined)
       .min(3, t("common.error.too-short", { length: 3 }))
       .max(30, t("common.error.too-long", { length: 30 })),
-    password: yup
-      .string()
-      .transform((value) => value || undefined)
-      .min(3, t("common.error.too-short", { length: 3 }))
-      .max(30, t("common.error.too-long", { length: 30 })),
-    maxViews: yup
-      .number()
-      .transform((value) => value || undefined)
-      .min(1),
   });
 
   const form = useForm({
