@@ -1,19 +1,19 @@
 import { Expose, plainToClass } from "class-transformer";
 import { ShareDTO } from "./share.dto";
 
-export class ShareCompleteDTO extends ShareDTO {
+export class CompletedShareDTO extends ShareDTO {
   @Expose()
-  isSendEmailToReverseShareCreator?: boolean;
+  notifyReverseShareCreator?: boolean;
 
-  from(partial: Partial<ShareCompleteDTO>) {
-    return plainToClass(ShareCompleteDTO, partial, {
+  from(partial: Partial<CompletedShareDTO>) {
+    return plainToClass(CompletedShareDTO, partial, {
       excludeExtraneousValues: true,
     });
   }
 
-  fromList(partial: Partial<ShareCompleteDTO>[]) {
+  fromList(partial: Partial<CompletedShareDTO>[]) {
     return partial.map((part) =>
-      plainToClass(ShareCompleteDTO, part, { excludeExtraneousValues: true }),
+      plainToClass(CompletedShareDTO, part, { excludeExtraneousValues: true }),
     );
   }
 }

@@ -11,13 +11,13 @@ export type Share = {
   hasPassword: boolean;
 };
 
-export type ShareForComplete = Share & {
+export type CompletedShare = Share & {
   /**
    * undefined means is not reverse share
    * true means server was send email to reverse share creator
    * false means server was not send email to reverse share creator
    * */
-  isSendEmailToReverseShareCreator: boolean | undefined;
+  notifyReverseShareCreator: boolean | undefined;
 };
 
 export type CreateShare = {

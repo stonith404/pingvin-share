@@ -159,12 +159,12 @@ export class ShareService {
       );
     }
 
-    const isSendEmailToReverseShareCreator = share.reverseShare
+    const notifyReverseShareCreator = share.reverseShare
       ? this.config.get("smtp.enabled") &&
         share.reverseShare.sendEmailNotification
       : undefined;
 
-    if (isSendEmailToReverseShareCreator) {
+    if (notifyReverseShareCreator) {
       await this.emailService.sendMailToReverseShareCreator(
         share.reverseShare.creator.email,
         share.id,
@@ -188,7 +188,7 @@ export class ShareService {
 
     return {
       ...updatedShare,
-      isSendEmailToReverseShareCreator,
+      notifyReverseShareCreator,
     };
   }
 
