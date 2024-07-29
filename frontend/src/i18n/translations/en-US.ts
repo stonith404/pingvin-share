@@ -201,11 +201,11 @@ export default {
 
   "account.reverseShares.modal.simplified": "Simple mode",
   "account.reverseShares.modal.simplified.description":
-    "Make it easy for the person uploading the file to share it with you. They will not be able to customize the share link and additional security options.",
+    "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
 
   "account.reverseShares.modal.public-access": "Public access",
   "account.reverseShares.modal.public-access.description":
-    "Anyone who knows the share link can access this shared file. When this switch is on, the file uploader can share their link with anyone.",
+    "Make the created shares with this reverse share public. If disabled only you can view the created shares.",
 
   "account.reverseShares.modal.max-use.label": "Max uses",
   "account.reverseShares.modal.max-use.description":
@@ -350,7 +350,7 @@ export default {
   "upload.modal.completed.expires-on":
     "This share will expire on {expiration}.",
   "upload.modal.completed.share-ready": "Share ready",
-  "upload.modal.completed.send-email-to-reverse-share-creator": "We have already sent the shared link to the creator of the Reverse Share via email. You can also manually share this link with them through other means.",
+  "upload.modal.completed.send-email-to-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
 
   // END /upload
 
