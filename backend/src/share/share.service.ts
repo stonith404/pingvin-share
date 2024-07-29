@@ -30,7 +30,7 @@ export class ShareService {
     private jwtService: JwtService,
     private reverseShareService: ReverseShareService,
     private clamScanService: ClamScanService,
-  ) {}
+  ) { }
 
   async create(share: CreateShareDTO, user?: User, reverseShareToken?: string) {
     if (!(await this.isShareIdAvailable(share.id)).isAvailable)
@@ -59,9 +59,9 @@ export class ShareService {
         this.config.get("share.maxExpiration") !== 0 &&
         (expiresNever ||
           parsedExpiration >
-            moment()
-              .add(this.config.get("share.maxExpiration"), "hours")
-              .toDate())
+          moment()
+            .add(this.config.get("share.maxExpiration"), "hours")
+            .toDate())
       ) {
         throw new BadRequestException(
           "Expiration date exceeds maximum expiration date",
@@ -159,10 +159,12 @@ export class ShareService {
       );
     }
 
-    if (
-      share.reverseShare &&
+    const isSendEmailToReverseShareCreator = share.reverseShare ?
       this.config.get("smtp.enabled") &&
-      share.reverseShare.sendEmailNotification
+      share.reverseShare.sendEmailNotification : undefined;
+
+    if (
+      isSendEmailToReverseShareCreator
     ) {
       await this.emailService.sendMailToReverseShareCreator(
         share.reverseShare.creator.email,
@@ -180,10 +182,15 @@ export class ShareService {
       });
     }
 
-    return this.prisma.share.update({
+    const updatedShare = await this.prisma.share.update({
       where: { id },
       data: { uploadLocked: true },
     });
+
+    return {
+      ...updatedShare,
+      isSendEmailToReverseShareCreator,
+    };
   }
 
   async revertComplete(id: string) {

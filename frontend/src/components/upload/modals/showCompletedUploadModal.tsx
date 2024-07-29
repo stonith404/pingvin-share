@@ -7,12 +7,12 @@ import { FormattedMessage } from "react-intl";
 import useTranslate, {
   translateOutsideContext,
 } from "../../../hooks/useTranslate.hook";
-import { Share } from "../../../types/share.type";
+import { ShareForComplete } from "../../../types/share.type";
 import CopyTextField from "../CopyTextField";
 
 const showCompletedUploadModal = (
   modals: ModalsContextProps,
-  share: Share,
+  share: ShareForComplete,
   appUrl: string,
 ) => {
   const t = translateOutsideContext();
@@ -25,7 +25,7 @@ const showCompletedUploadModal = (
   });
 };
 
-const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
+const Body = ({ share, appUrl }: { share: ShareForComplete; appUrl: string }) => {
   const modals = useModals();
   const router = useRouter();
   const t = useTranslate();
@@ -35,6 +35,14 @@ const Body = ({ share, appUrl }: { share: Share; appUrl: string }) => {
   return (
     <Stack align="stretch">
       <CopyTextField link={link} />
+      { share.isSendEmailToReverseShareCreator === true && (
+        <Text
+          size="sm"
+          sx={(theme) => ({
+            color: theme.colors.dark[4],
+          })}
+        >{t("upload.modal.completed.send-email-to-reverse-share-creator")}</Text>
+      )}
       <Text
         size="xs"
         sx={(theme) => ({

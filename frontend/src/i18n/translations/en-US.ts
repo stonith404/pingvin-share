@@ -346,6 +346,7 @@ export default {
   "upload.modal.completed.expires-on":
     "This share will expire on {expiration}.",
   "upload.modal.completed.share-ready": "Share ready",
+  "upload.modal.completed.send-email-to-reverse-share-creator": "We have already sent the shared link to the creator of the Reverse Share via email. You can also manually share this link with them through other means.",
 
   // END /upload
 

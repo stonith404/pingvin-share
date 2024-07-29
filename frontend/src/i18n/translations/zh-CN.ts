@@ -258,6 +258,7 @@ export default {
   "upload.modal.completed.never-expires": "这个共享永不过期",
   "upload.modal.completed.expires-on": "这个共享将过期于 {expiration}.",
   "upload.modal.completed.share-ready": "共享创建完毕",
+  "upload.modal.completed.send-email-to-reverse-share-creator": "我们已经通过电子邮件将共享链接发送给预留共享的创建者。您也可以通过其他方式将该链接手动分享给他们。",
   // END /upload
   // /share/[id]
   "share.title": "共享 {shareId}",
