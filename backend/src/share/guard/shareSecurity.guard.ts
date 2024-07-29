@@ -1,5 +1,4 @@
 import {
-  CanActivate,
   ExecutionContext,
   ForbiddenException,
   Injectable,
@@ -9,13 +8,19 @@ import { Request } from "express";
 import * as moment from "moment";
 import { PrismaService } from "src/prisma/prisma.service";
 import { ShareService } from "src/share/share.service";
+import { ConfigService } from "src/config/config.service";
+import { JwtGuard } from 'src/auth/guard/jwt.guard';
+import { User } from '@prisma/client';
 
 @Injectable()
-export class ShareSecurityGuard implements CanActivate {
+export class ShareSecurityGuard extends JwtGuard {
   constructor(
     private shareService: ShareService,
     private prisma: PrismaService,
-  ) {}
+    configService: ConfigService,
+  ) {
+    super(configService);
+  }
 
   async canActivate(context: ExecutionContext) {
     const request: Request = context.switchToHttp().getRequest();
@@ -31,7 +36,7 @@ export class ShareSecurityGuard implements CanActivate {
 
     const share = await this.prisma.share.findUnique({
       where: { id: shareId },
-      include: { security: true },
+      include: { security: true, reverseShare: true },
     });
 
     if (
@@ -51,6 +56,17 @@ export class ShareSecurityGuard implements CanActivate {
       throw new ForbiddenException(
         "Share token required",
         "share_token_required",
+      );
+
+    // Run the JWTGuard to set the user
+    await super.canActivate(context);
+    const user = request.user as User;
+
+    // Deny non-public access and not reverse share creator access the share
+    if (!share.reverseShare?.publicAccess && share.creatorId !== user?.id)
+      throw new ForbiddenException(
+        "Only reverse share creator can access this share",
+        "private_share",
       );
 
     return true;

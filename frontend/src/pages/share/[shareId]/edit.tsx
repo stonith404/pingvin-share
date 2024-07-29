@@ -43,6 +43,12 @@ const Share = ({ shareId }: { shareId: string }) => {
               t("share.error.not-found.description"),
             );
           }
+        } else if (e.response.status == 403 && error == "share_removed") {
+          showErrorModal(
+            modals,
+            t("share.error.access-denied.title"),
+            t("share.error.access-denied.description"),
+          );
         } else {
           showErrorModal(modals, t("common.error"), t("common.error.unknown"));
         }

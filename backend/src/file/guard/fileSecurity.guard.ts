@@ -9,14 +9,16 @@ import * as moment from "moment";
 import { PrismaService } from "src/prisma/prisma.service";
 import { ShareSecurityGuard } from "src/share/guard/shareSecurity.guard";
 import { ShareService } from "src/share/share.service";
+import { ConfigService } from 'src/config/config.service';
 
 @Injectable()
 export class FileSecurityGuard extends ShareSecurityGuard {
   constructor(
     private _shareService: ShareService,
     private _prisma: PrismaService,
+    _config: ConfigService,
   ) {
-    super(_shareService, _prisma);
+    super(_shareService, _prisma, _config);
   }
 
   async canActivate(context: ExecutionContext) {

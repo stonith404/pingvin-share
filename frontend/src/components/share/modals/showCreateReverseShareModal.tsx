@@ -62,6 +62,7 @@ const Body = ({
       expiration_num: 1,
       expiration_unit: "-days",
       simplified: false,
+      publicAccess: true,
     },
   });
 
@@ -92,7 +93,8 @@ const Body = ({
         values.maxShareSize,
         values.maxUseCount,
         values.sendEmailNotification,
-        values.simplified
+        values.simplified,
+        values.publicAccess,
       )
       .then(({ link }) => {
         modals.closeAll();
@@ -213,17 +215,27 @@ const Body = ({
             />
           )}
           <Switch
-              mt="xs"
-              labelPosition="left"
-              label={t("account.reverseShares.modal.simplified")}
-              description={t(
-                "account.reverseShares.modal.simplified.description",
-              )}
-              {...form.getInputProps("simplified", {
-                type: "checkbox",
-              })}
-            />
-
+            mt="xs"
+            labelPosition="left"
+            label={t("account.reverseShares.modal.simplified")}
+            description={t(
+              "account.reverseShares.modal.simplified.description",
+            )}
+            {...form.getInputProps("simplified", {
+              type: "checkbox",
+            })}
+          />
+          <Switch
+            mt="xs"
+            labelPosition="left"
+            label={t("account.reverseShares.modal.public-access")}
+            description={t(
+              "account.reverseShares.modal.public-access.description",
+            )}
+            {...form.getInputProps("publicAccess", {
+              type: "checkbox",
+            })}
+          />
           <Button mt="md" type="submit">
             <FormattedMessage id="common.button.create" />
           </Button>

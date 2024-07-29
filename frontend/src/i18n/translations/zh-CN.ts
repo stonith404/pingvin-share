@@ -155,6 +155,9 @@ export default {
   "account.reverseShares.modal.simplified": "简单模式",
   "account.reverseShares.modal.simplified.description":
     "让对方更简单快速地分享文件给你，对方将不能自定义分享的链接和额外的安全选项。",
+  "account.reverseShares.modal.public-access": "公开访问",
+  "account.reverseShares.modal.public-access.description":
+    "知道共享链接的任何人都可以访问这个共享文件，打开此项后，文件上传者可以将他的共享链接分享给任何人。",
   "account.reverseShares.modal.max-use.label": "最大使用次数",
   "account.reverseShares.modal.max-use.description": "这个预留共享链接可被用于创建共享的最大使用次数",
   "account.reverseShare.never-expires": "这个预留共享永不过期",
@@ -268,6 +271,8 @@ export default {
   "share.error.removed.title": "共享已删除",
   "share.error.not-found.title": "共享未找到",
   "share.error.not-found.description": "共享文件走丢了",
+  "share.error.access-denied.title": "私有共享",
+  "share.error.access-denied.description": "当前账户没有权限访问此共享",
   "share.modal.password.title": "需要密码",
   "share.modal.password.description": "请输入密码来访问此共享",
   "share.modal.password": "密码",

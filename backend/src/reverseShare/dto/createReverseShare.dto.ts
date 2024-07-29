@@ -16,4 +16,7 @@ export class CreateReverseShareDTO {
 
   @IsBoolean()
   simplified: boolean;
+
+  @IsBoolean()
+  publicAccess: boolean;
 }
