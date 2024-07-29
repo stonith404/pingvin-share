@@ -152,6 +152,9 @@ export default {
   "account.reverseShares.modal.max-size.label": "共享文件上限",
   "account.reverseShares.modal.send-email": "发送邮件提醒",
   "account.reverseShares.modal.send-email.description": "当这个预留共享链接被用于共享时，发送邮件提醒",
+  "account.reverseShares.modal.simplified": "简单模式",
+  "account.reverseShares.modal.simplified.description":
+    "让对方更简单快速地分享文件给你，对方将不能自定义分享的链接和额外的安全选项。",
   "account.reverseShares.modal.max-use.label": "最大使用次数",
   "account.reverseShares.modal.max-use.description": "这个预留共享链接可被用于创建共享的最大使用次数",
   "account.reverseShare.never-expires": "这个预留共享永不过期",

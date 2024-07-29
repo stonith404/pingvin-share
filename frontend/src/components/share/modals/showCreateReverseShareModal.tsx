@@ -61,6 +61,7 @@ const Body = ({
       sendEmailNotification: false,
       expiration_num: 1,
       expiration_unit: "-days",
+      simplified: false,
     },
   });
 
@@ -91,6 +92,7 @@ const Body = ({
         values.maxShareSize,
         values.maxUseCount,
         values.sendEmailNotification,
+        values.simplified
       )
       .then(({ link }) => {
         modals.closeAll();
@@ -210,6 +212,17 @@ const Body = ({
               })}
             />
           )}
+          <Switch
+              mt="xs"
+              labelPosition="left"
+              label={t("account.reverseShares.modal.simplified")}
+              description={t(
+                "account.reverseShares.modal.simplified.description",
+              )}
+              {...form.getInputProps("simplified", {
+                type: "checkbox",
+              })}
+            />
 
           <Button mt="md" type="submit">
             <FormattedMessage id="common.button.create" />

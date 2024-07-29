@@ -31,6 +31,7 @@ import { FileUpload } from "../../../types/File.type";
 import { CreateShare } from "../../../types/share.type";
 import { getExpirationPreview } from "../../../utils/date.util";
 import React from "react";
+import toast from '../../../utils/toast.util';
 
 const showCreateUploadModal = (
   modals: ModalsContextProps,
@@ -41,11 +42,25 @@ const showCreateUploadModal = (
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
     maxExpirationInHours: number;
+    simplified: boolean;
   },
   files: FileUpload[],
   uploadCallback: (createShare: CreateShare, files: FileUpload[]) => void,
 ) => {
   const t = translateOutsideContext();
+
+  if (options.simplified) {
+    return modals.openModal({
+      title: t("upload.modal.title"),
+      children: (
+        <SimplifiedCreateUploadModalModal
+          options={options}
+          files={files}
+          uploadCallback={uploadCallback}
+        />
+      ),
+    })
+  }
 
   return modals.openModal({
     title: t("upload.modal.title"),
@@ -57,6 +72,22 @@ const showCreateUploadModal = (
       />
     ),
   });
+};
+
+const generateLink = () => Buffer.from(Math.random().toString(), "utf8")
+  .toString("base64")
+  .substring(10, 17);
+
+const generateAvailableLink = async (times = 10): Promise<string> => {
+  if (times <= 0) {
+    throw new Error("Could not generate available link");
+  }
+  const _link = generateLink();
+  if (!(await shareService.isShareIdAvailable(_link))) {
+    return await generateAvailableLink(times - 1);
+  } else {
+    return _link;
+  }
 };
 
 const CreateUploadModalBody = ({
@@ -78,9 +109,7 @@ const CreateUploadModalBody = ({
   const modals = useModals();
   const t = useTranslate();
 
-  const generatedLink = Buffer.from(Math.random().toString(), "utf8")
-    .toString("base64")
-    .substr(10, 7);
+  const generatedLink = generateLink();
 
   const [showNotSignedInAlert, setShowNotSignedInAlert] = useState(true);
 
@@ -205,9 +234,7 @@ const CreateUploadModalBody = ({
               onClick={() =>
                 form.setFieldValue(
                   "link",
-                  Buffer.from(Math.random().toString(), "utf8")
-                    .toString("base64")
-                    .substr(10, 7),
+                  generateLink(),
                 )
               }
             >
@@ -420,6 +447,119 @@ const CreateUploadModalBody = ({
               </Accordion.Panel>
             </Accordion.Item>
           </Accordion>
+          <Button type="submit" data-autofocus>
+            <FormattedMessage id="common.button.share" />
+          </Button>
+        </Stack>
+      </form>
+    </>
+  );
+};
+
+const SimplifiedCreateUploadModalModal = ({
+  uploadCallback,
+  files,
+  options,
+}: {
+  files: FileUpload[];
+  uploadCallback: (createShare: CreateShare, files: FileUpload[]) => void;
+  options: {
+    isUserSignedIn: boolean;
+    isReverseShare: boolean;
+    appUrl: string;
+    allowUnauthenticatedShares: boolean;
+    enableEmailRecepients: boolean;
+    maxExpirationInHours: number;
+  };
+}) => {
+  const modals = useModals();
+  const t = useTranslate();
+
+  const [showNotSignedInAlert, setShowNotSignedInAlert] = useState(true);
+
+  const validationSchema = yup.object().shape({
+    name: yup
+      .string()
+      .transform((value) => value || undefined)
+      .min(3, t("common.error.too-short", { length: 3 }))
+      .max(30, t("common.error.too-long", { length: 30 })),
+    password: yup
+      .string()
+      .transform((value) => value || undefined)
+      .min(3, t("common.error.too-short", { length: 3 }))
+      .max(30, t("common.error.too-long", { length: 30 })),
+    maxViews: yup
+      .number()
+      .transform((value) => value || undefined)
+      .min(1),
+  });
+
+  const form = useForm({
+    initialValues: {
+      name: undefined,
+      description: undefined,
+    },
+    validate: yupResolver(validationSchema),
+  });
+
+  const onSubmit = form.onSubmit(async (values) => {
+    const link = await generateAvailableLink().catch(() => {
+      toast.error(t("upload.modal.link.error.taken"));
+      return undefined;
+    });
+
+    if (!link) {
+      return;
+    }
+
+    uploadCallback(
+      {
+        id: link,
+        name: values.name,
+        expiration: "never",
+        recipients: [],
+        description: values.description,
+        security: {
+          password: undefined,
+          maxViews: undefined,
+        },
+      },
+      files,
+    );
+    modals.closeAll();
+  });
+
+  return (
+    <>
+      {showNotSignedInAlert && !options.isUserSignedIn && (
+        <Alert
+          withCloseButton
+          onClose={() => setShowNotSignedInAlert(false)}
+          icon={<TbAlertCircle size={16} />}
+          title={t("upload.modal.not-signed-in")}
+          color="yellow"
+        >
+          <FormattedMessage id="upload.modal.not-signed-in-description" />
+        </Alert>
+      )}
+      <form onSubmit={onSubmit}>
+        <Stack align="stretch">
+          <Stack align="stretch">
+            <TextInput
+              variant="filled"
+              placeholder={t(
+                "upload.modal.accordion.name-and-description.name.placeholder",
+              )}
+              {...form.getInputProps("name")}
+            />
+            <Textarea
+              variant="filled"
+              placeholder={t(
+                "upload.modal.accordion.name-and-description.description.placeholder",
+              )}
+              {...form.getInputProps("description")}
+            />
+          </Stack>
           <Button type="submit" data-autofocus>
             <FormattedMessage id="common.button.share" />
           </Button>

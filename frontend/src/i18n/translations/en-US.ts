@@ -199,6 +199,10 @@ export default {
   "account.reverseShares.modal.send-email.description":
     "Send an email notification when a share is created with this reverse share link.",
 
+  "account.reverseShares.modal.simplified": "Simple Mode",
+  "account.reverseShares.modal.simplified.description":
+    "Make it easy for the person uploading the file to share it with you. They will not be able to customize the share link and additional security options.",
+
   "account.reverseShares.modal.max-use.label": "Max uses",
   "account.reverseShares.modal.max-use.description":
     "The maximum amount of times this URL can be used to create a share.",

@@ -25,9 +25,11 @@ let createdShare: Share;
 const Upload = ({
   maxShareSize,
   isReverseShare = false,
+  simplified
 }: {
   maxShareSize?: number;
   isReverseShare: boolean;
+  simplified: boolean
 }) => {
   const modals = useModals();
   const t = useTranslate();
@@ -133,6 +135,7 @@ const Upload = ({
         ),
         enableEmailRecepients: config.get("email.enableShareEmailRecipients"),
         maxExpirationInHours: config.get("share.maxExpiration"),
+        simplified,
       },
       files,
       uploadFiles,
