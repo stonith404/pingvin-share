@@ -75,8 +75,7 @@ const Share = ({ shareId }: { shareId: string }) => {
             t("share.error.access-denied.title"),
             t("share.error.access-denied.description"),
           );
-        }
-        else if (error == "share_password_required") {
+        } else if (error == "share_password_required") {
           showEnterPasswordModal(modals, getShareToken);
         } else if (error == "share_token_required") {
           getShareToken();

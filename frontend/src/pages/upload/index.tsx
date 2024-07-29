@@ -25,11 +25,11 @@ let createdShare: Share;
 const Upload = ({
   maxShareSize,
   isReverseShare = false,
-  simplified
+  simplified,
 }: {
   maxShareSize?: number;
   isReverseShare: boolean;
-  simplified: boolean
+  simplified: boolean;
 }) => {
   const modals = useModals();
   const t = useTranslate();

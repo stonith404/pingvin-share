@@ -40,7 +40,13 @@ const Share = ({ reverseShareToken }: { reverseShareToken: string }) => {
 
   if (isLoading) return <LoadingOverlay visible />;
 
-  return <Upload isReverseShare maxShareSize={maxShareSize} simplified={simplified} />;
+  return (
+    <Upload
+      isReverseShare
+      maxShareSize={maxShareSize}
+      simplified={simplified}
+    />
+  );
 };
 
 export default Share;

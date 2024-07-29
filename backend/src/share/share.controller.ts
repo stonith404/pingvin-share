@@ -29,7 +29,7 @@ import { ShareOwnerGuard } from "./guard/shareOwner.guard";
 import { ShareSecurityGuard } from "./guard/shareSecurity.guard";
 import { ShareTokenSecurity } from "./guard/shareTokenSecurity.guard";
 import { ShareService } from "./share.service";
-import { ShareCompleteDTO } from './dto/shareComplete.dto';
+import { ShareCompleteDTO } from "./dto/shareComplete.dto";
 @Controller("shares")
 export class ShareController {
   constructor(

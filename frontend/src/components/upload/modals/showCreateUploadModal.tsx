@@ -31,7 +31,7 @@ import { FileUpload } from "../../../types/File.type";
 import { CreateShare } from "../../../types/share.type";
 import { getExpirationPreview } from "../../../utils/date.util";
 import React from "react";
-import toast from '../../../utils/toast.util';
+import toast from "../../../utils/toast.util";
 
 const showCreateUploadModal = (
   modals: ModalsContextProps,
@@ -59,7 +59,7 @@ const showCreateUploadModal = (
           uploadCallback={uploadCallback}
         />
       ),
-    })
+    });
   }
 
   return modals.openModal({
@@ -74,9 +74,10 @@ const showCreateUploadModal = (
   });
 };
 
-const generateLink = () => Buffer.from(Math.random().toString(), "utf8")
-  .toString("base64")
-  .substring(10, 17);
+const generateLink = () =>
+  Buffer.from(Math.random().toString(), "utf8")
+    .toString("base64")
+    .substring(10, 17);
 
 const generateAvailableLink = async (times = 10): Promise<string> => {
   if (times <= 0) {
@@ -231,12 +232,7 @@ const CreateUploadModalBody = ({
             <Button
               style={{ flex: "0 0 auto" }}
               variant="outline"
-              onClick={() =>
-                form.setFieldValue(
-                  "link",
-                  generateLink(),
-                )
-              }
+              onClick={() => form.setFieldValue("link", generateLink())}
             >
               <FormattedMessage id="common.button.generate" />
             </Button>
