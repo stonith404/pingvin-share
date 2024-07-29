@@ -205,7 +205,7 @@ export default {
 
   "account.reverseShares.modal.public-access": "Public access",
   "account.reverseShares.modal.public-access.description":
-    "Make the created shares with this reverse share public. If disabled only you can view the created shares.",
+    "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
 
   "account.reverseShares.modal.max-use.label": "Max uses",
   "account.reverseShares.modal.max-use.description":
@@ -350,7 +350,7 @@ export default {
   "upload.modal.completed.expires-on":
     "This share will expire on {expiration}.",
   "upload.modal.completed.share-ready": "Share ready",
-  "upload.modal.completed.send-email-to-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
+  "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
 
   // END /upload
 

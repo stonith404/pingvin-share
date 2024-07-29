@@ -45,7 +45,7 @@ const Body = ({ share, appUrl }: { share: CompletedShare; appUrl: string }) => {
                 : theme.colors.dark[4],
           })}
         >
-          {t("upload.modal.completed.send-email-to-reverse-share-creator")}
+          {t("upload.modal.completed.notified-reverse-share-creator")}
         </Text>
       )}
       <Text

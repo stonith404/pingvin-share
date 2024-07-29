@@ -157,7 +157,7 @@ export default {
     "让上传者更轻松地与你共享文件，他们仅能自定义共享的名称和描述。",
   "account.reverseShares.modal.public-access": "公开访问",
   "account.reverseShares.modal.public-access.description":
-    "让通过这个反向共享创建共享能被公开访问。如果禁用，将只有您能够访问。",
+    "让通过这个预留共享创建共享能被公开访问。如果禁用，将只有您和创建者能够访问。",
   "account.reverseShares.modal.max-use.label": "最大使用次数",
   "account.reverseShares.modal.max-use.description": "这个预留共享链接可被用于创建共享的最大使用次数",
   "account.reverseShare.never-expires": "这个预留共享永不过期",
@@ -261,7 +261,7 @@ export default {
   "upload.modal.completed.never-expires": "这个共享永不过期",
   "upload.modal.completed.expires-on": "这个共享将过期于 {expiration}.",
   "upload.modal.completed.share-ready": "共享创建完毕",
-  "upload.modal.completed.send-email-to-reverse-share-creator": "我们已经通知预留共享的创建者。您也可以通过其他方式将该链接手动分享给他们。",
+  "upload.modal.completed.notified-reverse-share-creator": "我们已经通知预留共享的创建者。您也可以通过其他方式将该链接手动分享给他们。",
   // END /upload
   // /share/[id]
   "share.title": "共享 {shareId}",
