@@ -152,6 +152,10 @@ export default {
   "account.reverseShares.modal.max-size.label": "Maximale share-grootte",
   "account.reverseShares.modal.send-email": "Stuur e-mailnotificatie",
   "account.reverseShares.modal.send-email.description": "Stuur een e-mailnotificatie wanneer er bestanden zijn gedeeld via deze omgekeerde share link.",
+  "account.reverseShares.modal.simplified": "Simple mode",
+  "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
+  "account.reverseShares.modal.public-access": "Public access",
+  "account.reverseShares.modal.public-access.description": "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
   "account.reverseShares.modal.max-use.label": "Maximaal gebruikte keren",
   "account.reverseShares.modal.max-use.description": "Maximale keren dat deze URL gebruikt kan worden om een share aan te maken.",
   "account.reverseShare.never-expires": "Deze omgekeerde share zal nooit verlopen.",
@@ -255,6 +259,7 @@ export default {
   "upload.modal.completed.never-expires": "Deze omgekeerde share zal nooit verlopen.",
   "upload.modal.completed.expires-on": "Deze omgekeerde share verloopt op {expiration}.",
   "upload.modal.completed.share-ready": "Share is gereed",
+  "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
   // END /upload
   // /share/[id]
   "share.title": "Share {shareId}",
@@ -264,6 +269,8 @@ export default {
   "share.error.removed.title": "Share was verwijderd",
   "share.error.not-found.title": "Share niet gevonden",
   "share.error.not-found.description": "De share die u zoekt kan niet gevonden worden.",
+  "share.error.access-denied.title": "Private share",
+  "share.error.access-denied.description": "The current account does not have permission to access this share",
   "share.modal.password.title": "Wachtwoord vereist",
   "share.modal.password.description": "Vul een wachtwoord in om toegang te krijgen tot deze share.",
   "share.modal.password": "Wachtwoord",
