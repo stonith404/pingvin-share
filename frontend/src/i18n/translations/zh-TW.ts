@@ -152,6 +152,10 @@ export default {
   "account.reverseShares.modal.max-size.label": "上傳大小上限",
   "account.reverseShares.modal.send-email": "發送Email提醒",
   "account.reverseShares.modal.send-email.description": "當這個檔案請求聯結被用於分享時，發送Email提醒",
+  "account.reverseShares.modal.simplified": "Simple mode",
+  "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
+  "account.reverseShares.modal.public-access": "Public access",
+  "account.reverseShares.modal.public-access.description": "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
   "account.reverseShares.modal.max-use.label": "最大使用次數",
   "account.reverseShares.modal.max-use.description": "這個檔案請求聯結可被用於建立分享的最大使用次數",
   "account.reverseShare.never-expires": "這個檔案請求永不過期",
@@ -255,6 +259,7 @@ export default {
   "upload.modal.completed.never-expires": "這個分享永不過期",
   "upload.modal.completed.expires-on": "這個分享將過期於 {expiration}。",
   "upload.modal.completed.share-ready": "分享建立完畢",
+  "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
   // END /upload
   // /share/[id]
   "share.title": "分享 {shareId}",
@@ -264,6 +269,8 @@ export default {
   "share.error.removed.title": "分享已刪除",
   "share.error.not-found.title": "分享未找到",
   "share.error.not-found.description": "分享檔案遺失了",
+  "share.error.access-denied.title": "Private share",
+  "share.error.access-denied.description": "The current account does not have permission to access this share",
   "share.modal.password.title": "需要密碼",
   "share.modal.password.description": "請輸入密碼來查看此分享",
   "share.modal.password": "密碼",
