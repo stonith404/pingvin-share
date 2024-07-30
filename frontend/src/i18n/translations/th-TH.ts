@@ -152,6 +152,10 @@ export default {
   "account.reverseShares.modal.max-size.label": "ขนาดสูงสุดของแชร์",
   "account.reverseShares.modal.send-email": "ส่งอีเมล์์์์์์์แจ้งเตือน",
   "account.reverseShares.modal.send-email.description": "ส่งอีเมล์์์์์์์แจ้งเตือนเมื่อมีการสร้างแชร์ด้วยลิงค์รีเวิร์สนี้",
+  "account.reverseShares.modal.simplified": "Simple mode",
+  "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
+  "account.reverseShares.modal.public-access": "Public access",
+  "account.reverseShares.modal.public-access.description": "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
   "account.reverseShares.modal.max-use.label": "จำนวนการใช้งานสูงสุด",
   "account.reverseShares.modal.max-use.description": "จำนวนครั้งสูงสุดที่ลิงค์นี้สามารถใช้งานได้",
   "account.reverseShare.never-expires": "ลิงค์นี้ไม่มีวันหมดอายุ",
@@ -255,6 +259,7 @@ export default {
   "upload.modal.completed.never-expires": "การแชร์นี้จะไม่มีวันหมดอายุ",
   "upload.modal.completed.expires-on": "การแชร์นี้จะหมดอายุเมื่อวันที่ {expiration}",
   "upload.modal.completed.share-ready": "แชร์พร้อมใช้งาน",
+  "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
   // END /upload
   // /share/[id]
   "share.title": "แชร์ {shareId}",
@@ -264,6 +269,8 @@ export default {
   "share.error.removed.title": "การแชร์ถูกลบ",
   "share.error.not-found.title": "ไม่พบการแชร์นี้",
   "share.error.not-found.description": "การแชร์ที่คุณกำลังมองหาไม่มีอยู่จริง",
+  "share.error.access-denied.title": "Private share",
+  "share.error.access-denied.description": "The current account does not have permission to access this share",
   "share.modal.password.title": "ต้องการรหัสผ่าน",
   "share.modal.password.description": "กรุณาป้อนรหัสผ่านเพื่อเข้าถึงการแชร์นี้",
   "share.modal.password": "รหัสผ่าน",
