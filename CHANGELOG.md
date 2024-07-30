@@ -1,3 +1,16 @@
+## [0.29.0](https://github.com/stonith404/pingvin-share/compare/v0.28.0...v0.29.0) (2024-07-30)
+
+
+### Features
+
+* add more options to reverse shares ([#495](https://github.com/stonith404/pingvin-share/issues/495)) ([fe735f9](https://github.com/stonith404/pingvin-share/commit/fe735f9704c9d96398f3127a559e17848b08d140)), closes [#155](https://github.com/stonith404/pingvin-share/issues/155)
+* sort share files by name by default ([27ee9fb](https://github.com/stonith404/pingvin-share/commit/27ee9fb6cb98177661bed20a0baa399b27e70b7e))
+
+
+### Reverts
+
+* Revert "fix: set max age of access token cookie to 15 minutes" ([14c2185](https://github.com/stonith404/pingvin-share/commit/14c2185e6f1a81d63e25fbeec3e30a54cf6a44c5))
+
 ## [0.28.0](https://github.com/stonith404/pingvin-share/compare/v0.27.0...v0.28.0) (2024-07-22)
 
 
