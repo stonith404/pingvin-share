@@ -152,6 +152,10 @@ export default {
   "account.reverseShares.modal.max-size.label": "Max storlek på delning",
   "account.reverseShares.modal.send-email": "Skicka e-postavisering",
   "account.reverseShares.modal.send-email.description": "Skicka ett e-postmeddelande när en delning skapas med denna länk för omvänd delning.",
+  "account.reverseShares.modal.simplified": "Simple mode",
+  "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
+  "account.reverseShares.modal.public-access": "Public access",
+  "account.reverseShares.modal.public-access.description": "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
   "account.reverseShares.modal.max-use.label": "Maxanvändningar",
   "account.reverseShares.modal.max-use.description": "Den maximala mängden gånger denna URL kan användas för att skapa en delning.",
   "account.reverseShare.never-expires": "Denna omvända delning kommer aldrig att förfalla.",
@@ -255,6 +259,7 @@ export default {
   "upload.modal.completed.never-expires": "Denna delning kommer aldrig att upphöra.",
   "upload.modal.completed.expires-on": "Denna delning upphör att gälla {expiration}.",
   "upload.modal.completed.share-ready": "Delning redo",
+  "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
   // END /upload
   // /share/[id]
   "share.title": "Delning {shareId}",
@@ -264,6 +269,8 @@ export default {
   "share.error.removed.title": "Delning borttagen",
   "share.error.not-found.title": "Delningen hittades inte",
   "share.error.not-found.description": "Delningen du letar efter existerar inte.",
+  "share.error.access-denied.title": "Private share",
+  "share.error.access-denied.description": "The current account does not have permission to access this share",
   "share.modal.password.title": "Lösenord krävs",
   "share.modal.password.description": "För att komma åt denna delning, vänligen ange lösenordet för delningen.",
   "share.modal.password": "Lösenord",
