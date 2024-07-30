@@ -57,4 +57,7 @@ EXPOSE 3000
 HEALTHCHECK --interval=10s --timeout=3s CMD curl -f http://localhost:3000/api/health || exit 1
 
 # Application startup updated for Caddy
-CMD cp -rn /tmp/img/* /opt/app/frontend/public/img && caddy run --config /etc/caddy/Caddyfile & PORT=3333 HOSTNAME=0.0.0.0 node frontend/server.js & cd backend && npm run prod
+CMD cp -rn /tmp/img/* /opt/app/frontend/public/img && \
+ caddy run --config /etc/caddy/Caddyfile 2> caddy.log & \
+ PORT=3333 HOSTNAME=0.0.0.0 node frontend/server.js & \
+ cd backend && npm run prod
