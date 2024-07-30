@@ -152,6 +152,10 @@ export default {
   "account.reverseShares.modal.max-size.label": "Suurin tiedostonkoko",
   "account.reverseShares.modal.send-email": "Lähetä sähköposti-ilmoitus",
   "account.reverseShares.modal.send-email.description": "Lähetä sähköpostiilmoitus kun jako on luotu tällä käänteisellä jakolinkillä.",
+  "account.reverseShares.modal.simplified": "Simple mode",
+  "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
+  "account.reverseShares.modal.public-access": "Public access",
+  "account.reverseShares.modal.public-access.description": "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
   "account.reverseShares.modal.max-use.label": "Käyttökertoja enintään",
   "account.reverseShares.modal.max-use.description": "Enimmäismäärä kertoja, joilla tämä URL-osoite voidaan käyttää joita luomiseen.",
   "account.reverseShare.never-expires": "Tämä käänteinen jako ei koskaan vanhene.",
@@ -255,6 +259,7 @@ export default {
   "upload.modal.completed.never-expires": "Tämä käänteinen jako ei koskaan vanhene.",
   "upload.modal.completed.expires-on": "Tämä käänteinen jako vanhenee kun on {expiration}.",
   "upload.modal.completed.share-ready": "Jako valmiina",
+  "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
   // END /upload
   // /share/[id]
   "share.title": "Jaa {shareId}",
@@ -264,6 +269,8 @@ export default {
   "share.error.removed.title": "Jako poistettu",
   "share.error.not-found.title": "Jakoa ei löydetty",
   "share.error.not-found.description": "Etsimääsi sivua ei ole olemassa.",
+  "share.error.access-denied.title": "Private share",
+  "share.error.access-denied.description": "The current account does not have permission to access this share",
   "share.modal.password.title": "Salasana vaaditaan",
   "share.modal.password.description": "Päästäksesi käsiksi tähän jakoon anna jaon salasana.",
   "share.modal.password": "Salasana",
