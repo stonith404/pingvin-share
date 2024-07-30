@@ -153,11 +153,9 @@ export default {
   "account.reverseShares.modal.send-email": "发送邮件提醒",
   "account.reverseShares.modal.send-email.description": "当这个预留共享链接被用于共享时，发送邮件提醒",
   "account.reverseShares.modal.simplified": "简单模式",
-  "account.reverseShares.modal.simplified.description":
-    "让上传者更轻松地与你共享文件，他们仅能自定义共享的名称和描述。",
+  "account.reverseShares.modal.simplified.description": "让上传者更轻松地与你共享文件，他们仅能自定义共享的名称和描述。",
   "account.reverseShares.modal.public-access": "公开访问",
-  "account.reverseShares.modal.public-access.description":
-    "让通过这个预留共享创建共享能被公开访问。如果禁用，将只有您和创建者能够访问。",
+  "account.reverseShares.modal.public-access.description": "让通过这个预留共享创建共享能被公开访问。如果禁用，将只有您和创建者能够访问。",
   "account.reverseShares.modal.max-use.label": "最大使用次数",
   "account.reverseShares.modal.max-use.description": "这个预留共享链接可被用于创建共享的最大使用次数",
   "account.reverseShare.never-expires": "这个预留共享永不过期",
