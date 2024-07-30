@@ -152,6 +152,10 @@ export default {
   "account.reverseShares.modal.max-size.label": "최대 공유 크기",
   "account.reverseShares.modal.send-email": "이메일 알림 보내기",
   "account.reverseShares.modal.send-email.description": "이 역방향 공유 링크를 사용하여 공유가 생성되면 이메일 알림을 보냅니다.",
+  "account.reverseShares.modal.simplified": "Simple mode",
+  "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
+  "account.reverseShares.modal.public-access": "Public access",
+  "account.reverseShares.modal.public-access.description": "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
   "account.reverseShares.modal.max-use.label": "공유 생성 제한",
   "account.reverseShares.modal.max-use.description": "이 URL을 사용하여 공유를 생성할 수 있는 최대 횟수입니다.",
   "account.reverseShare.never-expires": "이 역공유 링크는 만료되지 않습니다.",
@@ -255,6 +259,7 @@ export default {
   "upload.modal.completed.never-expires": "이 공유 만료되지 않습니다.",
   "upload.modal.completed.expires-on": "이 공유는 {expiration} 에 만료됩니다.",
   "upload.modal.completed.share-ready": "공유 준비",
+  "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
   // END /upload
   // /share/[id]
   "share.title": "공유 {shareId}",
@@ -264,6 +269,8 @@ export default {
   "share.error.removed.title": "공유가 삭제됨",
   "share.error.not-found.title": "공유를 찾을 수 없습니다.",
   "share.error.not-found.description": "당신이 찾는 공유는 존재하지 않습니다.",
+  "share.error.access-denied.title": "Private share",
+  "share.error.access-denied.description": "The current account does not have permission to access this share",
   "share.modal.password.title": "비밀번호 필요",
   "share.modal.password.description": "이 공유에 접근하려면 공유의 암호를 입력하십시오.",
   "share.modal.password": "비밀번호",
