@@ -152,6 +152,10 @@ export default {
   "account.reverseShares.modal.max-size.label": "Največja velikost delitve",
   "account.reverseShares.modal.send-email": "Pošlji e-poštno obvestilo",
   "account.reverseShares.modal.send-email.description": "Pošlji e-poštno obvestilo, ko je ustvarjena delitev s povezavo te delitve v obratni smeri.",
+  "account.reverseShares.modal.simplified": "Simple mode",
+  "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
+  "account.reverseShares.modal.public-access": "Public access",
+  "account.reverseShares.modal.public-access.description": "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
   "account.reverseShares.modal.max-use.label": "Največ uporab",
   "account.reverseShares.modal.max-use.description": "Največje število uporab URL-ja za ustvarjanje delitve.",
   "account.reverseShare.never-expires": "Ta povezava delitve v obratni smeri ne bo nikoli potekla.",
@@ -255,6 +259,7 @@ export default {
   "upload.modal.completed.never-expires": "Ta delitev ne bo nikoli potekla.",
   "upload.modal.completed.expires-on": "Ta delitev bo potekla {expiration}.",
   "upload.modal.completed.share-ready": "Delitev je pripravljena",
+  "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
   // END /upload
   // /share/[id]
   "share.title": "Deli {shareId}",
@@ -264,6 +269,8 @@ export default {
   "share.error.removed.title": "Delitev je odstranjena",
   "share.error.not-found.title": "Delitve ni mogoče najti",
   "share.error.not-found.description": "Delitev, ki jo iščete ne obstaja.",
+  "share.error.access-denied.title": "Private share",
+  "share.error.access-denied.description": "The current account does not have permission to access this share",
   "share.modal.password.title": "Zahtevano geslo",
   "share.modal.password.description": "Za ogled delitve vnesite geslo te delitve.",
   "share.modal.password": "Geslo",
