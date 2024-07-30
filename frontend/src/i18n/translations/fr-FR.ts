@@ -152,6 +152,10 @@ export default {
   "account.reverseShares.modal.max-size.label": "Taille maximale du partage",
   "account.reverseShares.modal.send-email": "Envoyer un courriel de notification",
   "account.reverseShares.modal.send-email.description": "Envoyer une notification par courriel lorsqu'un partage est créé depuis ce partage inversé.",
+  "account.reverseShares.modal.simplified": "Simple mode",
+  "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
+  "account.reverseShares.modal.public-access": "Public access",
+  "account.reverseShares.modal.public-access.description": "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
   "account.reverseShares.modal.max-use.label": "Nombre d'utilisation max",
   "account.reverseShares.modal.max-use.description": "Le nombre maximal de fois que cette URL peut être utilisée pour créer un partage.",
   "account.reverseShare.never-expires": "Ce partage inversé n'expirera jamais.",
@@ -255,6 +259,7 @@ export default {
   "upload.modal.completed.never-expires": "Ce partage n’expirera jamais.",
   "upload.modal.completed.expires-on": "Ce partage expirera le {expiration}.",
   "upload.modal.completed.share-ready": "Partage prêt",
+  "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
   // END /upload
   // /share/[id]
   "share.title": "Partage {shareId}",
@@ -264,6 +269,8 @@ export default {
   "share.error.removed.title": "Partage supprimé",
   "share.error.not-found.title": "Partage introuvable",
   "share.error.not-found.description": "Le partage que vous cherchez n’existe pas.",
+  "share.error.access-denied.title": "Private share",
+  "share.error.access-denied.description": "The current account does not have permission to access this share",
   "share.modal.password.title": "Mot de passe requis",
   "share.modal.password.description": "Pour accéder à ce partage, veuillez entrer le mot de passe du partage.",
   "share.modal.password": "Mot de passe",
