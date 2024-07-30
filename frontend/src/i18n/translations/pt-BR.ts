@@ -152,6 +152,10 @@ export default {
   "account.reverseShares.modal.max-size.label": "Tamanho máximo do compartilhamento",
   "account.reverseShares.modal.send-email": "Enviar notificação por e-mail",
   "account.reverseShares.modal.send-email.description": "Enviar uma notificação por e-mail quando um compartilhamento for criado com este link reverso.",
+  "account.reverseShares.modal.simplified": "Simple mode",
+  "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
+  "account.reverseShares.modal.public-access": "Public access",
+  "account.reverseShares.modal.public-access.description": "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
   "account.reverseShares.modal.max-use.label": "Limite de uso",
   "account.reverseShares.modal.max-use.description": "A quantidade máxima de vezes que esta URL pode ser usada para criar um compartilhamento.",
   "account.reverseShare.never-expires": "Este compartilhamento reverso nunca irá expirar.",
@@ -255,6 +259,7 @@ export default {
   "upload.modal.completed.never-expires": "Este compartilhamento reverso nunca irá expirar.",
   "upload.modal.completed.expires-on": "Este compartilhamento reverso irá expirar em {expiration}.",
   "upload.modal.completed.share-ready": "Compartilhamento pronto",
+  "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
   // END /upload
   // /share/[id]
   "share.title": "Compartilhar {shareId}",
@@ -264,6 +269,8 @@ export default {
   "share.error.removed.title": "Compartilhamento removido",
   "share.error.not-found.title": "Compartilhamento não encontrado",
   "share.error.not-found.description": "O compartilhamento que você procura não existe.",
+  "share.error.access-denied.title": "Private share",
+  "share.error.access-denied.description": "The current account does not have permission to access this share",
   "share.modal.password.title": "Senha necessária",
   "share.modal.password.description": "Para acessar este compartilhamento, por favor digite a senha para o compartilhamento.",
   "share.modal.password": "Senha",
