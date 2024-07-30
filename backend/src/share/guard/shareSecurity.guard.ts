@@ -63,9 +63,12 @@ export class ShareSecurityGuard extends JwtGuard {
     const user = request.user as User;
 
     // Only the creator and reverse share creator can access the reverse share if it's not public
-    if (share.reverseShare && !share.reverseShare.publicAccess
-      && share.creatorId !== user?.id
-      && share.reverseShare.creatorId !== user?.id)
+    if (
+      share.reverseShare &&
+      !share.reverseShare.publicAccess &&
+      share.creatorId !== user?.id &&
+      share.reverseShare.creatorId !== user?.id
+    )
       throw new ForbiddenException(
         "Only reverse share creator can access this share",
         "private_share",

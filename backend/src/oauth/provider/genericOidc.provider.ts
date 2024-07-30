@@ -133,9 +133,9 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
       : idTokenData.preferred_username ||
         idTokenData.name ||
         idTokenData.nickname;
-    
+
     let isAdmin: boolean;
-    
+
     if (roleConfig?.path) {
       // A path to read roles from the token is configured
       let roles: string[] | null;
@@ -146,9 +146,14 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
       }
       if (Array.isArray(roles)) {
         // Roles are found in the token
-        if (roleConfig.generalAccess && !roles.includes(roleConfig.generalAccess)) {
+        if (
+          roleConfig.generalAccess &&
+          !roles.includes(roleConfig.generalAccess)
+        ) {
           // Role for general access is configured and the user does not have it
-          this.logger.error(`User roles ${roles} do not include ${roleConfig.generalAccess}`);
+          this.logger.error(
+            `User roles ${roles} do not include ${roleConfig.generalAccess}`,
+          );
           throw new ErrorPageException("user_not_allowed");
         }
         if (roleConfig.adminAccess) {
