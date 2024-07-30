@@ -13,4 +13,10 @@ export class CreateReverseShareDTO {
   @Min(1)
   @Max(1000)
   maxUseCount: number;
+
+  @IsBoolean()
+  simplified: boolean;
+
+  @IsBoolean()
+  publicAccess: boolean;
 }

@@ -159,11 +159,12 @@ export class ShareService {
       );
     }
 
-    if (
-      share.reverseShare &&
-      this.config.get("smtp.enabled") &&
-      share.reverseShare.sendEmailNotification
-    ) {
+    const notifyReverseShareCreator = share.reverseShare
+      ? this.config.get("smtp.enabled") &&
+        share.reverseShare.sendEmailNotification
+      : undefined;
+
+    if (notifyReverseShareCreator) {
       await this.emailService.sendMailToReverseShareCreator(
         share.reverseShare.creator.email,
         share.id,
@@ -180,10 +181,15 @@ export class ShareService {
       });
     }
 
-    return this.prisma.share.update({
+    const updatedShare = await this.prisma.share.update({
       where: { id },
       data: { uploadLocked: true },
     });
+
+    return {
+      ...updatedShare,
+      notifyReverseShareCreator,
+    };
   }
 
   async revertComplete(id: string) {

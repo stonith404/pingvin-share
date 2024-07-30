@@ -29,6 +29,7 @@ import { ShareOwnerGuard } from "./guard/shareOwner.guard";
 import { ShareSecurityGuard } from "./guard/shareSecurity.guard";
 import { ShareTokenSecurity } from "./guard/shareTokenSecurity.guard";
 import { ShareService } from "./share.service";
+import { CompletedShareDTO } from "./dto/shareComplete.dto";
 @Controller("shares")
 export class ShareController {
   constructor(
@@ -86,7 +87,7 @@ export class ShareController {
   @UseGuards(CreateShareGuard, ShareOwnerGuard)
   async complete(@Param("id") id: string, @Req() request: Request) {
     const { reverse_share_token } = request.cookies;
-    return new ShareDTO().from(
+    return new CompletedShareDTO().from(
       await this.shareService.complete(id, reverse_share_token),
     );
   }

@@ -199,6 +199,14 @@ export default {
   "account.reverseShares.modal.send-email.description":
     "Send an email notification when a share is created with this reverse share link.",
 
+  "account.reverseShares.modal.simplified": "Simple mode",
+  "account.reverseShares.modal.simplified.description":
+    "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
+
+  "account.reverseShares.modal.public-access": "Public access",
+  "account.reverseShares.modal.public-access.description":
+    "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
+
   "account.reverseShares.modal.max-use.label": "Max uses",
   "account.reverseShares.modal.max-use.description":
     "The maximum amount of times this URL can be used to create a share.",
@@ -342,6 +350,7 @@ export default {
   "upload.modal.completed.expires-on":
     "This share will expire on {expiration}.",
   "upload.modal.completed.share-ready": "Share ready",
+  "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
 
   // END /upload
 
@@ -355,6 +364,8 @@ export default {
   "share.error.not-found.title": "Share not found",
   "share.error.not-found.description":
     "The share you're looking for doesn't exist.",
+  "share.error.access-denied.title": "Private share",
+  "share.error.access-denied.description": "The current account does not have permission to access this share",
 
   "share.modal.password.title": "Password required",
   "share.modal.password.description":

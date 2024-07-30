@@ -152,6 +152,12 @@ export default {
   "account.reverseShares.modal.max-size.label": "共享文件上限",
   "account.reverseShares.modal.send-email": "发送邮件提醒",
   "account.reverseShares.modal.send-email.description": "当这个预留共享链接被用于共享时，发送邮件提醒",
+  "account.reverseShares.modal.simplified": "简单模式",
+  "account.reverseShares.modal.simplified.description":
+    "让上传者更轻松地与你共享文件，他们仅能自定义共享的名称和描述。",
+  "account.reverseShares.modal.public-access": "公开访问",
+  "account.reverseShares.modal.public-access.description":
+    "让通过这个预留共享创建共享能被公开访问。如果禁用，将只有您和创建者能够访问。",
   "account.reverseShares.modal.max-use.label": "最大使用次数",
   "account.reverseShares.modal.max-use.description": "这个预留共享链接可被用于创建共享的最大使用次数",
   "account.reverseShare.never-expires": "这个预留共享永不过期",
@@ -255,6 +261,7 @@ export default {
   "upload.modal.completed.never-expires": "这个共享永不过期",
   "upload.modal.completed.expires-on": "这个共享将过期于 {expiration}.",
   "upload.modal.completed.share-ready": "共享创建完毕",
+  "upload.modal.completed.notified-reverse-share-creator": "我们已经通知预留共享的创建者。您也可以通过其他方式将该链接手动分享给他们。",
   // END /upload
   // /share/[id]
   "share.title": "共享 {shareId}",
@@ -264,6 +271,8 @@ export default {
   "share.error.removed.title": "共享已删除",
   "share.error.not-found.title": "共享未找到",
   "share.error.not-found.description": "共享文件走丢了",
+  "share.error.access-denied.title": "私有共享",
+  "share.error.access-denied.description": "当前账户没有权限访问此共享",
   "share.modal.password.title": "需要密码",
   "share.modal.password.description": "请输入密码来访问此共享",
   "share.modal.password": "密码",

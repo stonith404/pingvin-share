@@ -17,12 +17,14 @@ const Share = ({ reverseShareToken }: { reverseShareToken: string }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [maxShareSize, setMaxShareSize] = useState(0);
+  const [simplified, setSimplified] = useState(false);
 
   useEffect(() => {
     shareService
       .setReverseShare(reverseShareToken)
       .then((reverseShareTokenData) => {
         setMaxShareSize(parseInt(reverseShareTokenData.maxShareSize));
+        setSimplified(reverseShareTokenData.simplified);
         setIsLoading(false);
       })
       .catch(() => {
@@ -38,7 +40,13 @@ const Share = ({ reverseShareToken }: { reverseShareToken: string }) => {
 
   if (isLoading) return <LoadingOverlay visible />;
 
-  return <Upload isReverseShare maxShareSize={maxShareSize} />;
+  return (
+    <Upload
+      isReverseShare
+      maxShareSize={maxShareSize}
+      simplified={simplified}
+    />
+  );
 };
 
 export default Share;

@@ -49,6 +49,8 @@ export class ReverseShareService {
         remainingUses: data.maxUseCount,
         maxShareSize: data.maxShareSize,
         sendEmailNotification: data.sendEmailNotification,
+        simplified: data.simplified,
+        publicAccess: data.publicAccess,
         creatorId,
       },
     });
