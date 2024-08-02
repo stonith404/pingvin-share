@@ -167,3 +167,7 @@ Any issues while translating? Feel free to participate in the [Localization disc
 ### Project
 
 You're very welcome to contribute to Pingvin Share! Please follow the [contribution guide](/CONTRIBUTING.md) to get started.
+
+## Sponsors
+Thank you for supporting Pingvin Share 🙏
+- [@COMPLEXWASTAKEN](https://github.com/COMPLEXWASTAKEN)
