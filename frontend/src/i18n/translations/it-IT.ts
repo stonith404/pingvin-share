@@ -211,11 +211,11 @@ export default {
   "admin.shares.edit.delete.description": "Vuoi davvero cancellare questa condivisione?",
   // END /admin/shares
   // /upload
-  "upload.title": "Upload",
+  "upload.title": "Carica",
   "upload.notify.generic-error": "Si è verificato un errore durante il completamento della condivisione.",
   "upload.notify.count-failed": "Impossibile caricare {count} file. Riprovare.",
   // Dropzone.tsx
-  "upload.dropzone.title": "Upload files",
+  "upload.dropzone.title": "Carica File",
   "upload.dropzone.description": "Trascina qui i file per iniziare la tua condivisione. Possiamo accettare solo i file che sono inferiori a {maxSize} in totale.",
   "upload.dropzone.notify.file-too-big": "I tuoi file superano la dimensione massima di condivisione di {maxSize}.",
   // FileList.tsx
