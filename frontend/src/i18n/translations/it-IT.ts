@@ -152,7 +152,7 @@ export default {
   "account.reverseShares.modal.max-size.label": "Dimensione massima della condivisione",
   "account.reverseShares.modal.send-email": "Invia una notifica via email",
   "account.reverseShares.modal.send-email.description": "Invia una notifica email quando viene creata una condivisione con questo link di condivisione inversa.",
-  "account.reverseShares.modal.simplified": "Modalità semplice",
+  "account.reverseShares.modal.simplified": "Modalità semplificata",
   "account.reverseShares.modal.simplified.description": "Rendi facile la condivisione con te per la persona che carica il file. Potranno personalizzare solo il nome e la descrizione della condivisione.",
   "account.reverseShares.modal.public-access": "Accesso pubblico",
   "account.reverseShares.modal.public-access.description": "Rendi pubbliche le condivisioni create con questa condivisione inversa. Se disabilitata, solo tu e il creatore della condivisione potrete vederlo.",
