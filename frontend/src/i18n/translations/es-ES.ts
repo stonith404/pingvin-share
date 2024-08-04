@@ -34,7 +34,7 @@ export default {
   "signIn.notify.totp-required.title": "Se requiere autenticación de dos factores",
   "signIn.notify.totp-required.description": "Por favor ingrese su código de autenticación de dos factores",
   "signIn.oauth.or": "O",
-  "signIn.oauth.signInWith": "Sign in with",
+  "signIn.oauth.signInWith": "Iniciar sesión con",
   "signIn.oauth.github": "GitHub",
   "signIn.oauth.google": "Google",
   "signIn.oauth.microsoft": "Microsoft",
@@ -152,10 +152,10 @@ export default {
   "account.reverseShares.modal.max-size.label": "Tamaño máximo del compartido",
   "account.reverseShares.modal.send-email": "Enviar notificación por correo",
   "account.reverseShares.modal.send-email.description": "Enviar una notificación por correo cuando se comparta algo con este enlace de compartición inversa.",
-  "account.reverseShares.modal.simplified": "Simple mode",
-  "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
-  "account.reverseShares.modal.public-access": "Public access",
-  "account.reverseShares.modal.public-access.description": "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
+  "account.reverseShares.modal.simplified": "Modo simple",
+  "account.reverseShares.modal.simplified.description": "Facilita que la persona que suba el archivo comparta el mismo contigo. Serán capaces de personalizar sólo el nombre y la descripción de la compartición.",
+  "account.reverseShares.modal.public-access": "Acceso público",
+  "account.reverseShares.modal.public-access.description": "Haz públicas las comparticiones creadas con esta compartición inversa. Si está desactivado, sólo tú y el creador de la compartición pueden verla.",
   "account.reverseShares.modal.max-use.label": "Máximo de usos",
   "account.reverseShares.modal.max-use.description": "Cantidad máxima de veces que esta URL se puede usar para crear un compartido.",
   "account.reverseShare.never-expires": "Esta compartición inversa nunca expirará.",
@@ -174,7 +174,7 @@ export default {
   // /admin
   "admin.title": "Administración",
   "admin.button.users": "Gestión de usuarios",
-  "admin.button.shares": "Share management",
+  "admin.button.shares": "Gestión de comparticiones",
   "admin.button.config": "Configuración",
   "admin.version": "Versión",
   // END /admin
@@ -202,13 +202,13 @@ export default {
   "admin.users.modal.create.admin.description": "Si se marca, el usuario podrá acceder al panel de administrador.",
   // END /admin/users
   // /admin/shares
-  "admin.shares.title": "Share management",
-  "admin.shares.table.id": "Share ID",
-  "admin.shares.table.username": "Creator",
-  "admin.shares.table.visitors": "Visitors",
-  "admin.shares.table.expires": "Expires At",
-  "admin.shares.edit.delete.title": "Delete share {id}",
-  "admin.shares.edit.delete.description": "Do you really want to delete this share?",
+  "admin.shares.title": "Gestión de comparticiones",
+  "admin.shares.table.id": "ID de compartición",
+  "admin.shares.table.username": "Creador",
+  "admin.shares.table.visitors": "Visitantes",
+  "admin.shares.table.expires": "Expira el",
+  "admin.shares.edit.delete.title": "Eliminar compartido {id}",
+  "admin.shares.edit.delete.description": "¿Seguro que quieres eliminar este compartido?",
   // END /admin/shares
   // /upload
   "upload.title": "Subir",
