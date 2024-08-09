@@ -152,6 +152,10 @@ export default {
   "account.reverseShares.modal.max-size.label": "最大ファイルサイズ",
   "account.reverseShares.modal.send-email": "メール通知を送信",
   "account.reverseShares.modal.send-email.description": "このファイルリクエストリンクを使用して、ファイルがアップロードされた場合にメールで通知します。",
+  "account.reverseShares.modal.simplified": "シンプルモード",
+  "account.reverseShares.modal.simplified.description": "ファイルをアップロードする人が簡単に共有できるようにします。共有の名前と説明のみをカスタマイズできます。",
+  "account.reverseShares.modal.public-access": "公開アクセス",
+  "account.reverseShares.modal.public-access.description": "このファイルリクエストで作成された共有を公開にします。無効にすると、あなたと共有の作成者のみが閲覧できます。",
   "account.reverseShares.modal.max-use.label": "最大回数",
   "account.reverseShares.modal.max-use.description": "このURLを使用してファイルをアップロードできる最大回数です。",
   "account.reverseShare.never-expires": "このファイルリクエストリンクは期限切れになりません。",
@@ -255,6 +259,7 @@ export default {
   "upload.modal.completed.never-expires": "この共有は期限切れになりません。",
   "upload.modal.completed.expires-on": "この共有は、{expiration} に期限切れとなります。",
   "upload.modal.completed.share-ready": "共有の準備ができました",
+  "upload.modal.completed.notified-reverse-share-creator": "ファイルリクエストの作成者に通知しました。他の手段でこのリンクを手動で共有することもできます。",
   // END /upload
   // /share/[id]
   "share.title": "「{shareId}」が共有されました",
@@ -264,6 +269,8 @@ export default {
   "share.error.removed.title": "共有が削除されました",
   "share.error.not-found.title": "共有が見つかりません",
   "share.error.not-found.description": "お探しの共有が見つかりません。",
+  "share.error.access-denied.title": "プライベートシェア",
+  "share.error.access-denied.description": "現在のアカウントにはこの共有にアクセスする権限がありません",
   "share.modal.password.title": "パスワードが必要です",
   "share.modal.password.description": "この共有にアクセスするには、共有相手から伝えられているパスワードを入力してください。",
   "share.modal.password": "パスワード",

@@ -152,6 +152,10 @@ export default {
   "account.reverseShares.modal.max-size.label": "Μέγιστο μέγεθος κοινοποίησης",
   "account.reverseShares.modal.send-email": "Αποστολή ειδοποιήσεων με email",
   "account.reverseShares.modal.send-email.description": "Στείλτε μια ειδοποίηση μέσω ηλεκτρονικού ταχυδρομείου όταν δημιουργείται ένας διαμοιρασμός με αυτόν τον σύνδεσμο ανάστροφης κοινοποίησης.",
+  "account.reverseShares.modal.simplified": "Simple mode",
+  "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
+  "account.reverseShares.modal.public-access": "Public access",
+  "account.reverseShares.modal.public-access.description": "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
   "account.reverseShares.modal.max-use.label": "Μέγιστες χρήσεις",
   "account.reverseShares.modal.max-use.description": "Ο μέγιστος αριθμός που μπορεί να χρησιμοποιηθεί αυτό το URL για τη δημιουργία ενός διαμοιρασμού.",
   "account.reverseShare.never-expires": "Αυτός ο αντίστροφος διαμοιρασμός δε λήγει.",
@@ -255,6 +259,7 @@ export default {
   "upload.modal.completed.never-expires": "Αυτός ο διαμοιρασμός δεν λήγει.",
   "upload.modal.completed.expires-on": "Αυτός ο διαμοιρασμός θα λήξει {expiration}.",
   "upload.modal.completed.share-ready": "Κοινοποίηση έτοιμου",
+  "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
   // END /upload
   // /share/[id]
   "share.title": "Διαμοιρασμός {shareId}",
@@ -264,6 +269,8 @@ export default {
   "share.error.removed.title": "Κοινοποίηση αφαιρέθηκε",
   "share.error.not-found.title": "Η κοινοποίηση δε βρέθηκε",
   "share.error.not-found.description": "Η κοινοποίηση που ψάχνετε δεν υπάρχει.",
+  "share.error.access-denied.title": "Private share",
+  "share.error.access-denied.description": "The current account does not have permission to access this share",
   "share.modal.password.title": "Απαιτείται κωδικός",
   "share.modal.password.description": "Για να αποκτήσετε πρόσβαση σε αυτή την κοινοποίηση εισάγετε τον κωδικό πρόσβασης.",
   "share.modal.password": "Κωδικός πρόσβασης",

@@ -152,6 +152,10 @@ export default {
   "account.reverseShares.modal.max-size.label": "الحد الأقصى لحجم المشاركة",
   "account.reverseShares.modal.send-email": "أرسل إشعارًا بالبريد",
   "account.reverseShares.modal.send-email.description": "إرسال إشعار بالبريد الإلكتروني عند إنشاء مشاركة باستخدام رابط المشاركة العكسي هذا.",
+  "account.reverseShares.modal.simplified": "Simple mode",
+  "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
+  "account.reverseShares.modal.public-access": "Public access",
+  "account.reverseShares.modal.public-access.description": "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
   "account.reverseShares.modal.max-use.label": "الحد الأقصى لعدد الاستخدامات",
   "account.reverseShares.modal.max-use.description": "أقصى عدد من المرّات التي يمكن فيها استخدام هذا الرابط لإنشاء مشاركة.",
   "account.reverseShare.never-expires": "لن تنتهي صلاحية هذه المشاركة العكسية أبدًا.",
@@ -255,6 +259,7 @@ export default {
   "upload.modal.completed.never-expires": "لن تنتهي صلاحية هذه المشاركة أبدًا.",
   "upload.modal.completed.expires-on": "هذه المشاركة ستنتهي صلاحيتها في {expiration}.",
   "upload.modal.completed.share-ready": "المشاركة جاهزة",
+  "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
   // END /upload
   // /share/[id]
   "share.title": "المشاركة {shareId}",
@@ -264,6 +269,8 @@ export default {
   "share.error.removed.title": "تمت إزالة المشاركة",
   "share.error.not-found.title": "المشاركة غير موجودة",
   "share.error.not-found.description": "المشاركة التي تبحث عنها غير موجودة.",
+  "share.error.access-denied.title": "Private share",
+  "share.error.access-denied.description": "The current account does not have permission to access this share",
   "share.modal.password.title": "كلمة السر مطلوبة",
   "share.modal.password.description": "للوصول إلى هذه المشاركة الرجاء إدخال كلمة سر المشاركة.",
   "share.modal.password": "كلمة السر",

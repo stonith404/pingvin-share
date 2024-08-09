@@ -152,6 +152,10 @@ export default {
   "account.reverseShares.modal.max-size.label": "Megosztás megengedett max mérete",
   "account.reverseShares.modal.send-email": "Email értesítés küldése",
   "account.reverseShares.modal.send-email.description": "Email értesítés arról, amikor a fordított megosztási hivatkozást használva megosztást hoznak létre.",
+  "account.reverseShares.modal.simplified": "Simple mode",
+  "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
+  "account.reverseShares.modal.public-access": "Public access",
+  "account.reverseShares.modal.public-access.description": "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
   "account.reverseShares.modal.max-use.label": "Megengedett alkalmak száma",
   "account.reverseShares.modal.max-use.description": "A megosztási hivatkozás megengedett felhasználási alkalmainak száma.",
   "account.reverseShare.never-expires": "Ez a fordított megosztás soha nem fog lejárni.",
@@ -255,6 +259,7 @@ export default {
   "upload.modal.completed.never-expires": "Ez a megosztás soha nem fog lejárni.",
   "upload.modal.completed.expires-on": "A megosztás lejárata: {expiration}.",
   "upload.modal.completed.share-ready": "A megosztás készen áll",
+  "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
   // END /upload
   // /share/[id]
   "share.title": "Megosztás: {shareId}",
@@ -264,6 +269,8 @@ export default {
   "share.error.removed.title": "Korábban már eltávolított megosztás",
   "share.error.not-found.title": "Fel nem lelhető megosztás",
   "share.error.not-found.description": "A keresett megosztás nem létezik.",
+  "share.error.access-denied.title": "Private share",
+  "share.error.access-denied.description": "The current account does not have permission to access this share",
   "share.modal.password.title": "Jelszó szükséges",
   "share.modal.password.description": "A megosztott tartalom eléréséhez adja meg a megosztás jelszavát.",
   "share.modal.password": "Jelszó",

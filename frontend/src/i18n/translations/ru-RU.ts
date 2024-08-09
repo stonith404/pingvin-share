@@ -152,6 +152,10 @@ export default {
   "account.reverseShares.modal.max-size.label": "Макс. размер загрузки",
   "account.reverseShares.modal.send-email": "Отправить уведомление по эл. почте",
   "account.reverseShares.modal.send-email.description": "Отправлять уведомление по электронной почте, когда загрузка создается с помощью этой обратной ссылки.",
+  "account.reverseShares.modal.simplified": "Simple mode",
+  "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
+  "account.reverseShares.modal.public-access": "Public access",
+  "account.reverseShares.modal.public-access.description": "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
   "account.reverseShares.modal.max-use.label": "Максимум использований",
   "account.reverseShares.modal.max-use.description": "Максимальное количество раз, когда URL может быть использован для создания загрузки.",
   "account.reverseShare.never-expires": "Эта обратная загрузка никогда не устареет.",
@@ -255,6 +259,7 @@ export default {
   "upload.modal.completed.never-expires": "Эта загрузка никогда не устареет.",
   "upload.modal.completed.expires-on": "Эта загрузка устареет {expiration}.",
   "upload.modal.completed.share-ready": "Готово",
+  "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
   // END /upload
   // /share/[id]
   "share.title": "Загрузка {shareId}",
@@ -264,6 +269,8 @@ export default {
   "share.error.removed.title": "Загрузка удалена",
   "share.error.not-found.title": "Загрузка не найдена",
   "share.error.not-found.description": "Страница, которую вы ищете, не существует.",
+  "share.error.access-denied.title": "Private share",
+  "share.error.access-denied.description": "The current account does not have permission to access this share",
   "share.modal.password.title": "Требуется пароль",
   "share.modal.password.description": "Для доступа к этому ресурсу введите пароль для общего доступа.",
   "share.modal.password": "Пароль",

@@ -152,6 +152,10 @@ export default {
   "account.reverseShares.modal.max-size.label": "Maksymalny rozmiar udziału",
   "account.reverseShares.modal.send-email": "Wysyłanie powiadomienia e-mail",
   "account.reverseShares.modal.send-email.description": "Wyślij powiadomienie e-mail, gdy udostępnianie zostanie utworzone za pomocą linku udostępniania odwrotnego.",
+  "account.reverseShares.modal.simplified": "Simple mode",
+  "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
+  "account.reverseShares.modal.public-access": "Public access",
+  "account.reverseShares.modal.public-access.description": "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
   "account.reverseShares.modal.max-use.label": "Limit użyć",
   "account.reverseShares.modal.max-use.description": "Maksymalna ilość razy, kiedy ten adres URL może być użyty do utworzenia udostępniania.",
   "account.reverseShare.never-expires": "To udostępnienie odwrotne nigdy nie wygasa.",
@@ -255,6 +259,7 @@ export default {
   "upload.modal.completed.never-expires": "To udostępnienie nigdy nie wygaśnie.",
   "upload.modal.completed.expires-on": "To udostępnienie wygaśnie dnia {expiration}.",
   "upload.modal.completed.share-ready": "Udostępnianie gotowe",
+  "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
   // END /upload
   // /share/[id]
   "share.title": "Udostępnij {shareId}",
@@ -264,6 +269,8 @@ export default {
   "share.error.removed.title": "Udostępnianie usunięte",
   "share.error.not-found.title": "Nie znaleziono udziału",
   "share.error.not-found.description": "Udział, który szukasz, nie istnieje.",
+  "share.error.access-denied.title": "Private share",
+  "share.error.access-denied.description": "The current account does not have permission to access this share",
   "share.modal.password.title": "Wymagane hasło",
   "share.modal.password.description": "Aby uzyskać dostęp do tego udziału, wprowadź hasło.",
   "share.modal.password": "Hasło",

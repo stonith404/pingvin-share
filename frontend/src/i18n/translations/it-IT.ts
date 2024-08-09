@@ -152,6 +152,10 @@ export default {
   "account.reverseShares.modal.max-size.label": "Dimensione massima della condivisione",
   "account.reverseShares.modal.send-email": "Invia una notifica via email",
   "account.reverseShares.modal.send-email.description": "Invia una notifica email quando viene creata una condivisione con questo link di condivisione inversa.",
+  "account.reverseShares.modal.simplified": "Modalità semplificata",
+  "account.reverseShares.modal.simplified.description": "Rendi facile la condivisione con te per la persona che carica il file. Potranno personalizzare solo il nome e la descrizione della condivisione.",
+  "account.reverseShares.modal.public-access": "Accesso pubblico",
+  "account.reverseShares.modal.public-access.description": "Rendi pubbliche le condivisioni create con questa condivisione inversa. Se disabilitata, solo tu e il creatore della condivisione potrete vederlo.",
   "account.reverseShares.modal.max-use.label": "Utilizzo massimo",
   "account.reverseShares.modal.max-use.description": "La quantità massima di volte che questo URL può essere usato per creare una condivisione.",
   "account.reverseShare.never-expires": "Questa condivisione inversa non scadrà mai.",
@@ -207,11 +211,11 @@ export default {
   "admin.shares.edit.delete.description": "Vuoi davvero cancellare questa condivisione?",
   // END /admin/shares
   // /upload
-  "upload.title": "Upload",
+  "upload.title": "Carica",
   "upload.notify.generic-error": "Si è verificato un errore durante il completamento della condivisione.",
   "upload.notify.count-failed": "Impossibile caricare {count} file. Riprovare.",
   // Dropzone.tsx
-  "upload.dropzone.title": "Upload files",
+  "upload.dropzone.title": "Carica File",
   "upload.dropzone.description": "Trascina qui i file per iniziare la tua condivisione. Possiamo accettare solo i file che sono inferiori a {maxSize} in totale.",
   "upload.dropzone.notify.file-too-big": "I tuoi file superano la dimensione massima di condivisione di {maxSize}.",
   // FileList.tsx
@@ -255,6 +259,7 @@ export default {
   "upload.modal.completed.never-expires": "Questa condivisione non scadrà mai.",
   "upload.modal.completed.expires-on": "Questa condivisione scadrà il {expiration}.",
   "upload.modal.completed.share-ready": "Condivisione pronta",
+  "upload.modal.completed.notified-reverse-share-creator": "Abbiamo avvisato il creatore della condivisione inversa. Puoi anche condividere manualmente questo link tramite altri mezzi.",
   // END /upload
   // /share/[id]
   "share.title": "Condividi {shareId}",
@@ -264,6 +269,8 @@ export default {
   "share.error.removed.title": "Condivisione rimossa",
   "share.error.not-found.title": "Condivisione non trovata",
   "share.error.not-found.description": "La condivisione che stai cercando non esiste.",
+  "share.error.access-denied.title": "Condivisione privata",
+  "share.error.access-denied.description": "L' account non ha il premesso di accedere a questa condivisione",
   "share.modal.password.title": "Password richiesta",
   "share.modal.password.description": "Per accedere a questa condivisione inserisci la password.",
   "share.modal.password": "Password",
