@@ -106,7 +106,7 @@ docker compose up -d
    ```bash
    pm2 stop pingvin-share-backend pingvin-share-frontend
    ```
-2. Repeat the steps from the [installation guide](#stand-alone-installation) except the `git clone` step.
+2. Run the following commands:
 
    ```bash
    cd pingvin-share
@@ -117,6 +117,7 @@ docker compose up -d
    # Start the backend
    cd backend
    npm install
+   npx prisma generate
    npm run build
    pm2 restart pingvin-share-backend
 
