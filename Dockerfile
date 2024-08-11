@@ -30,12 +30,9 @@ RUN npm run build && npm prune --production
 FROM node:20-alpine AS runner
 ENV NODE_ENV=docker
 
-# Install Caddy
 RUN apk update --no-cache \
     && apk upgrade --no-cache \
     && apk add --no-cache curl caddy
-
-COPY ./Caddyfile /etc/caddy/Caddyfile
 
 WORKDIR /opt/app/frontend
 COPY --from=frontend-builder /opt/app/public ./public
@@ -49,15 +46,13 @@ COPY --from=backend-builder /opt/app/dist ./dist
 COPY --from=backend-builder /opt/app/prisma ./prisma
 COPY --from=backend-builder /opt/app/package.json ./
 
+COPY ./Caddyfile /etc/caddy/Caddyfile
+COPY ./scripts/docker-entrypoint.sh /opt/app/docker-entrypoint.sh
+
 WORKDIR /opt/app
 
 EXPOSE 3000
 
-# Health check remains unchanged
 HEALTHCHECK --interval=10s --timeout=3s CMD curl -f http://localhost:3000/api/health || exit 1
 
-# Application startup updated for Caddy
-CMD cp -rn /tmp/img/* /opt/app/frontend/public/img && \
- caddy run --config /etc/caddy/Caddyfile 2> caddy.log & \
- PORT=3333 HOSTNAME=0.0.0.0 node frontend/server.js & \
- cd backend && npm run prod
+CMD ["sh", "/opt/app/docker-entrypoint.sh"]
