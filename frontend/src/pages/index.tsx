@@ -77,6 +77,7 @@ export default function Home() {
   const config = useConfig();
   const [signupEnabled, setSignupEnabled] = useState(true);
 
+  // If user is already authenticated, redirect to the upload page
   useEffect(() => {
     refreshUser().then((user) => {
       if (user) {
@@ -84,6 +85,7 @@ export default function Home() {
       }
     });
 
+    // If registration is disabled, get started button should redirect to the sign in page
     try {
       const allowRegistration = config.get("share.allowRegistration");
       setSignupEnabled(allowRegistration !== false);
