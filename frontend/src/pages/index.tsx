@@ -164,7 +164,6 @@ export default function Home() {
               >
                 <FormattedMessage 
                   id="home.button.start"
-                  defaultMessage="Get started"
                 />
               </Button>
               <Button
