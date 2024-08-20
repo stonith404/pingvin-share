@@ -10,12 +10,13 @@ import {
 } from "@mantine/core";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { TbCheck } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 import Logo from "../components/Logo";
 import Meta from "../components/Meta";
 import useUser from "../hooks/user.hook";
+import useConfig from "../hooks/config.hook";
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -73,15 +74,29 @@ export default function Home() {
   const { classes } = useStyles();
   const { refreshUser } = useUser();
   const router = useRouter();
+  const config = useConfig();
+  const [signupEnabled, setSignupEnabled] = useState(true);
 
-  // If the user is already logged in, redirect to the upload page
+  // If user is already authenticated, redirect to the upload page
   useEffect(() => {
     refreshUser().then((user) => {
       if (user) {
         router.replace("/upload");
       }
     });
-  }, []);
+
+    // If registration is disabled, get started button should redirect to the sign in page
+    try {
+      const allowRegistration = config.get("share.allowRegistration");
+      setSignupEnabled(allowRegistration !== false);
+    } catch (error) {
+      setSignupEnabled(true);
+    }
+  }, [config]);
+
+  const getButtonHref = () => {
+    return signupEnabled ? "/auth/signUp" : "/auth/signIn";
+  };
 
   return (
     <>
@@ -142,12 +157,14 @@ export default function Home() {
             <Group mt={30}>
               <Button
                 component={Link}
-                href="/auth/signUp"
+                href={getButtonHref()}
                 radius="xl"
                 size="md"
                 className={classes.control}
               >
-                <FormattedMessage id="home.button.start" />
+                <FormattedMessage 
+                  id="home.button.start"
+                />
               </Button>
               <Button
                 component={Link}
