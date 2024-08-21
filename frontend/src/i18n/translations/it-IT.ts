@@ -1,17 +1,17 @@
 export default {
   // Navbar
   "navbar.upload": "Carica",
-  "navbar.signin": "Registrati",
+  "navbar.signin": "Accedi",
   "navbar.home": "Home",
-  "navbar.signup": "Accedi",
+  "navbar.signup": "Registrati",
   "navbar.links.shares": "Le mie condivisioni",
   "navbar.links.reverse": "Condivisioni Inverse",
   "navbar.avatar.account": "Il mio account",
   "navbar.avatar.admin": "Amministrazione",
-  "navbar.avatar.signout": "Disconetti",
+  "navbar.avatar.signout": "Esci",
   // END navbar
   // /
-  "home.title": "Una piattaforma di condivisione di file <h>autohosted</h>.",
+  "home.title": "Una piattaforma di condivisione file <h>self-hosted</h>.",
   "home.description": "Vuoi davvero dare i tuoi file personali in mano a terzi come WeTransfer?",
   "home.bullet.a.name": "Self-hosted",
   "home.bullet.a.description": "Ospita Pingvin Condividi sulla tua macchina.",
@@ -115,7 +115,7 @@ export default {
   "account.shares.title": "Le mie condivisioni",
   "account.shares.title.empty": "È vuoto qui 👀",
   "account.shares.description.empty": "Non hai nessuna condivisione.",
-  "account.shares.button.create": "Creane uno",
+  "account.shares.button.create": "Creane una",
   "account.shares.info.title": "Condividi le informazioni",
   "account.shares.table.id": "ID",
   "account.shares.table.name": "Nome",
