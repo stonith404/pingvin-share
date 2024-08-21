@@ -14,7 +14,7 @@ export default {
   "home.title": "Una piattaforma di condivisione file <h>self-hosted</h>.",
   "home.description": "Vuoi davvero dare i tuoi file personali in mano a terzi come WeTransfer?",
   "home.bullet.a.name": "Self-hosted",
-  "home.bullet.a.description": "Ospita Pingvin Condividi sulla tua macchina.",
+  "home.bullet.a.description": "Configura Pingvin Share sul tuo server.",
   "home.bullet.b.name": "Privacy",
   "home.bullet.b.description": "I tuoi file sono i tuoi file e non dovrebbero mai entrare nelle mani di terzi.",
   "home.bullet.c.name": "Nessun fastidioso limite alle dimensioni dei files",
