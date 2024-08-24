@@ -4,8 +4,6 @@ id: installation
 
 # Installation
 
-> Note: Pingvin Share is in its early stages and may contain bugs.
-
 ### Installation with Docker (recommended)
 
 1. Download the `docker-compose.yml` file
