@@ -36,7 +36,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: "img/pingvinshare.jpg",
+    image: "img/pingvinshare.svg",
     navbar: {
       title: "Pingvin Share",
       logo: {
