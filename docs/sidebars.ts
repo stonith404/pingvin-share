@@ -48,11 +48,11 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: "doc",
-          id: "How to/translate",
+          id: "help-out/translate",
         },
         {
           type: "doc",
-          id: "How to/contribute",
+          id: "help-out/contribute",
         },
       ],
     },
