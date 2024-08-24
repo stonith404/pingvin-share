@@ -1,3 +1,7 @@
+---
+id: oauth2login
+---
+
 # OAuth 2 Login Guide
 
 ## Config Built-in OAuth 2 Providers
@@ -24,8 +28,7 @@ Redirect URL: `https://<your-domain>/api/oauth/callback/google`
 
 Please follow the [official guide](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app) to register an application.
 
-> [!IMPORTANT]
-> **Microsoft Tenant** you set in the admin panel must match the **supported account types** you set in the Microsoft Entra admin center, otherwise the OAuth login will not work. Refer to the [official documentation](https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri) for more details.
+> [!IMPORTANT] > **Microsoft Tenant** you set in the admin panel must match the **supported account types** you set in the Microsoft Entra admin center, otherwise the OAuth login will not work. Refer to the [official documentation](https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri) for more details.
 
 Redirect URL: `https://<your-domain>/api/oauth/callback/microsoft`
 
@@ -67,8 +70,8 @@ const configVariables: ConfigVariables = {
       defaultValue: "",
       obscured: true,
     },
-  }
-}
+  },
+};
 ```
 
 ### 2. Create provider class
@@ -106,23 +109,29 @@ Register your provider in [`OAuthModule`](../backend/src/oauth/oauth.module.ts) 
     // your provider
     {
       provide: "OAUTH_PROVIDERS",
-      useFactory(github: GitHubProvider, /* your provider */): Record<string, OAuthProvider<unknown>> {
+      useFactory(
+        github: GitHubProvider /* your provider */
+      ): Record<string, OAuthProvider<unknown>> {
         return {
           github,
           /* your provider */
         };
       },
-      inject: [GitHubProvider, /* your provider */],
+      inject: [GitHubProvider /* your provider */],
     },
   ],
 })
-export class OAuthModule {
-}
+export class OAuthModule {}
 ```
 
 ```ts
 export interface OAuthSignInDto {
-  provider: 'github' | 'google' | 'microsoft' | 'discord' | 'oidc' /* your provider*/;
+  provider:
+    | "github"
+    | "google"
+    | "microsoft"
+    | "discord"
+    | "oidc" /* your provider*/;
   providerId: string;
   providerUsername: string;
   email: string;
@@ -136,10 +145,10 @@ Add an icon in [`oauth.util.tsx`](../frontend/src/utils/oauth.util.tsx).
 ```tsx
 const getOAuthIcon = (provider: string) => {
   return {
-    'github': <SiGithub />,
+    github: <SiGithub />,
     /* your provider */
   }[provider];
-}
+};
 ```
 
 ### 5. Add i18n text
