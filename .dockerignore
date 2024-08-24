@@ -1,8 +1,0 @@
-backend/dist/
-backend/node_modules/
-backend/data
-
-frontend/node_modules/
-frontend/.next/
-
-**/.git/

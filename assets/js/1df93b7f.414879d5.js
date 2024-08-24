@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpingvindocs=self.webpackChunkpingvindocs||[]).push([[583],{6866:(n,i,s)=>{s.r(i),s.d(i,{default:()=>c});s(6540);var t=s(6347),u=s(4848);function c(){return(0,u.jsx)(t.rd,{to:"/introduction"})}}}]);

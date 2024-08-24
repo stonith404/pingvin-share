@@ -1,6 +1,0 @@
-services:
-  clamav:
-    restart: unless-stopped
-    ports:
-      - 3310:3310
-    image: clamav/clamav
