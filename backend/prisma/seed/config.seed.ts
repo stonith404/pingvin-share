@@ -144,6 +144,42 @@ const configVariables: ConfigVariables = {
       obscured: true,
     },
   },
+  ldap: {
+    enabled: {
+      type: "boolean",
+      defaultValue: "false",
+      secret: false,
+    },
+
+    url: {
+      type: "string",
+      defaultValue: "",
+    },
+
+    bindDn: {
+      type: "string",
+      defaultValue: "",
+    },
+    bindPassword: {
+      type: "string",
+      defaultValue: "",
+      obscured: true,
+    },
+
+    searchBase: {
+      type: "string",
+      defaultValue: "",
+    },
+    searchQuery: {
+      type: "string",
+      defaultValue: ""
+    },
+
+    adminGroups: {
+      type: "string",
+      defaultValue: ""
+    }
+  },
   oauth: {
     "allowRegistration": {
       type: "boolean",
@@ -308,7 +344,7 @@ async function migrateConfigVariables() {
   for (const existingConfigVariable of existingConfigVariables) {
     const configVariable =
       configVariables[existingConfigVariable.category]?.[
-        existingConfigVariable.name
+      existingConfigVariable.name
       ];
 
     // Delete the config variable if it doesn't exist in the seed

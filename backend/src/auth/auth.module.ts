@@ -5,6 +5,8 @@ import { AuthController } from "./auth.controller";
 import { AuthService } from "./auth.service";
 import { AuthTotpService } from "./authTotp.service";
 import { JwtStrategy } from "./strategy/jwt.strategy";
+import { LdapService } from "./ldap.service";
+import { UserModule } from "../user/user.module";
 
 @Module({
   imports: [
@@ -12,9 +14,10 @@ import { JwtStrategy } from "./strategy/jwt.strategy";
       global: true,
     }),
     EmailModule,
+    UserModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService, AuthTotpService, JwtStrategy],
+  providers: [AuthService, AuthTotpService, JwtStrategy, LdapService],
   exports: [AuthService],
 })
-export class AuthModule {}
+export class AuthModule { }
