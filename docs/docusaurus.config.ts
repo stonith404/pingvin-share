@@ -28,7 +28,7 @@ const config: Config = {
         docs: {
           routeBasePath: "/",
           sidebarPath: "./sidebars.ts",
-          editUrl: "https://github.com/stonith404/pingvin-share/docs",
+          editUrl: "https://github.com/stonith404/pingvin-share/edit/main/docs",
         },
         blog: false,
       } satisfies Preset.Options,
