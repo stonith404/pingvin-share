@@ -107,7 +107,7 @@ const configVariables: ConfigVariables = {
     inviteMessage: {
       type: "text",
       defaultValue:
-        "Hey!\n\nYou were invited to Pingvin Share. Click this link to accept the invite: {url}\n\nYour password is: {password}\n\nPingvin Share 🐧",
+        'Hey!\n\nYou were invited to Pingvin Share. Click this link to accept the invite: {url}\n\nYou can use the email "{email}" and the password "{password}" to sign in.\n\nPingvin Share 🐧',
     },
   },
   smtp: {
