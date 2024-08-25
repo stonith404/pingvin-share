@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "Тема запрошення",
   "admin.config.email.invite-subject.description": "Тема листа, який надсилається, коли адміністратор запрошує користувача.",
   "admin.config.email.invite-message": "Повідомлення із запрошенням",
-  "admin.config.email.invite-message.description": "Повідомлення запрошення. {url} буде замінено посиланням запрошення, а {password} паролем.",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "Дозволити реєстрацію",
   "admin.config.share.allow-registration.description": "Чи дозволена реєстрація",
   "admin.config.share.allow-unauthenticated-shares": "Дозволити неавторизовані завантаження",
