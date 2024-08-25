@@ -1,12 +1,12 @@
 {
   "name": "pingvin-share",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "format": "cd frontend && npm run format && cd ../backend && npm run format",
     "lint": "cd frontend && npm run lint && cd ../backend && npm run lint",
     "version": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s && git add CHANGELOG.md",
     "release:patch": "cd backend && npm version patch --commit-hooks false && cd ../frontend && npm version patch --commit-hooks false && cd .. && git add . && npm version patch --force -m 'release: %s' && git push && git push --tags",
-    "release:major": "cd backend && npm version major --commit-hooks false && cd ../frontend && npm version major --commit-hooks false && cd .. && git add . && npm version major --force -m 'release: %s' && git push && git push --tags",
+    "release:minor": "cd backend && npm version minor --commit-hooks false && cd ../frontend && npm version minor --commit-hooks false && cd .. && git add . && npm version major --force -m 'release: %s' && git push && git push --tags",
     "deploy:dev": "docker buildx build --push --tag stonith404/pingvin-share:development --platform linux/amd64,linux/arm64 ."
   },
   "devDependencies": {
