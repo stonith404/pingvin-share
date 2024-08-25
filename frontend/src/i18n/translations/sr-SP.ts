@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "Позивна тема",
   "admin.config.email.invite-subject.description": "Тема е-поруке која се шаље када администратор позове корисника.",
   "admin.config.email.invite-message": "Позивна порука",
-  "admin.config.email.invite-message.description": "Порука која се шаље када администратор позове корисника. {url} ће бити замењен УРЛ-ом позива, а {password} лозинком.",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "Дозволи регистрацију",
   "admin.config.share.allow-registration.description": "Да ли је регистрација дозвољена",
   "admin.config.share.allow-unauthenticated-shares": "Дозволи дељење без аутентификације",
