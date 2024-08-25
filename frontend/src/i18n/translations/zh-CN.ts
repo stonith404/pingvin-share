@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "邀请邮件通知主题",
   "admin.config.email.invite-subject.description": "当管理员邀请用户时，发送的邀请邮件通知主题",
   "admin.config.email.invite-message": "邀请邮件通知内容",
-  "admin.config.email.invite-message.description": "当管理员邀请用户时，发送的邀请邮件通知内容。{url} 会被邀请链接代替，{password} 会被密码代替",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "允许注册",
   "admin.config.share.allow-registration.description": "是否允许注册",
   "admin.config.share.allow-unauthenticated-shares": "是否允许未验证的共享",
