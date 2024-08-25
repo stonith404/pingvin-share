@@ -418,6 +418,7 @@ export default {
   "admin.config.ldap.search-query": "Felhasználó lekérdezés",
   "admin.config.ldap.search-query.description": "A felhasználó lekérdezés kísérli meg az LDAP felhasználó elérését a felhasználóbázisban. %username% helyettesítheti az adott felhasználónevet.",
   "admin.config.ldap.admin-groups": "Admin csoport",
+  "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
   // 404
   "404.description": "Hoppá - ez az oldal nem létezik.",
   "404.button.home": "Vissza a Kezdőlapra",
