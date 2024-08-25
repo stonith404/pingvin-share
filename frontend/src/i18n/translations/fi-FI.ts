@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "Kutsun aihe",
   "admin.config.email.invite-subject.description": "Sähköpostin aihe, mikä lähetetään kun ylläpitäjä kutsuu käyttäjää.",
   "admin.config.email.invite-message": "Kutsun viesti",
-  "admin.config.email.invite-message.description": "Viesti mikä lähetetään kuin yp invaa käyttäjän. {url} korvataan kutsuosoitteella ja {password} salasanalla.",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "Salli rekisteröinti",
   "admin.config.share.allow-registration.description": "Onko rekisteröinti sallittu",
   "admin.config.share.allow-unauthenticated-shares": "Salli anonyymit jaot",
