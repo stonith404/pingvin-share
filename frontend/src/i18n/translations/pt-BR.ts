@@ -418,7 +418,7 @@ export default {
   "admin.config.ldap.search-query": "Consulta de usuário",
   "admin.config.ldap.search-query.description": "A consulta do usuário será usada para pesquisar a 'base de usuários' para o usuário LDAP. %username% pode ser usado como espaço reservado para o usuário fornecido na entrada.",
   "admin.config.ldap.admin-groups": "Grupo de administração",
-  "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
+  "admin.config.ldap.admin-groups.description": "Grupo necessário para acesso administrativo.",
   // 404
   "404.description": "Ops, esta página não existe.",
   "404.button.home": "Me traga de volta para casa",
