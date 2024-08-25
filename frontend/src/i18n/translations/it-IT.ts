@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "Oggetto dell'email di invito",
   "admin.config.email.invite-subject.description": "Oggetto dell'email che viene inviata quando un amministratore invita un utente.",
   "admin.config.email.invite-message": "Testo dell'email di invito",
-  "admin.config.email.invite-message.description": "Messaggio che viene inviato quando un amministratore invita un utente. {url} verrà sostituito con l'URL di invito e {password} con la password.",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "Consenti la registrazione",
   "admin.config.share.allow-registration.description": "Indica se la registrazione è autorizzata",
   "admin.config.share.allow-unauthenticated-shares": "Consenti condivisioni non autenticate",
