@@ -116,7 +116,8 @@ export class EmailService {
       this.config
         .get("email.inviteMessage")
         .replaceAll("{url}", loginUrl)
-        .replaceAll("{password}", password),
+        .replaceAll("{password}", password)
+        .replaceAll("{email}", recipientEmail),
     );
   }
 
