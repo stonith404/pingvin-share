@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "Тема приглашения",
   "admin.config.email.invite-subject.description": "Тема письма, которое отправляется, когда администратор приглашает пользователя.",
   "admin.config.email.invite-message": "Сообщение с приглашением",
-  "admin.config.email.invite-message.description": "Сообщение приглашения. {url} будет заменён ссылкой приглашения, а {password} паролем.",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "Разрешить регистрацию",
   "admin.config.share.allow-registration.description": "Разрешена ли регистрация",
   "admin.config.share.allow-unauthenticated-shares": "Разрешить неавторизованные загрузки",
