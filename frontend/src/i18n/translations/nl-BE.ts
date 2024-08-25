@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "Onderwerp voor uitnodiging",
   "admin.config.email.invite-subject.description": "Onderwerp van de e-mail die wordt verzonden wanneer een beheerder een gebruiker uitnodigt.",
   "admin.config.email.invite-message": "Bericht voor uitnodiging",
-  "admin.config.email.invite-message.description": "Bericht dat wordt verzonden wanneer een beheerder een gebruiker uitnodigt. {url} zal worden vervangen door de uitnodigings-URL en {password} met het wachtwoord.",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "Sta registratie toe",
   "admin.config.share.allow-registration.description": "Of registratie is toegestaan",
   "admin.config.share.allow-unauthenticated-shares": "Ongeverifieerde shares toestaan",
