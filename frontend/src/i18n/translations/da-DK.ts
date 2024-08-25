@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "Invitations emne",
   "admin.config.email.invite-subject.description": "Emne for den e-mail, der sendes, når en administrator inviterer en ny bruger.",
   "admin.config.email.invite-message": "Invitations besked",
-  "admin.config.email.invite-message.description": "Besked som bliver sendt, når en administrator inviterer en bruger. {url} vil blive erstattet med invitations-URL'en og {password} med adgangskoden.",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "Tillad oprettelser",
   "admin.config.share.allow-registration.description": "Om alle skal kunne oprette en bruger",
   "admin.config.share.allow-unauthenticated-shares": "Tillad uautoriserede delinger",
