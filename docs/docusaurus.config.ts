@@ -37,6 +37,9 @@ const config: Config = {
 
   themeConfig: {
     image: "img/pingvinshare.svg",
+    colorMode:{
+      respectPrefersColorScheme: true,
+    },
     navbar: {
       title: "Pingvin Share",
       logo: {
