@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "Inbjudan ämne",
   "admin.config.email.invite-subject.description": "Ämne i e-postmeddelandet som skickas när en administratör bjuder in en användare.",
   "admin.config.email.invite-message": "Inbjudningsmeddelanden",
-  "admin.config.email.invite-message.description": "Meddelande som skickas när en administratör bjuder in en användare. {url} kommer att ersättas med inbjudningsadressen och {password} med lösenordet.",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "Tillåt registrering",
   "admin.config.share.allow-registration.description": "Om registrering är tillåten",
   "admin.config.share.allow-unauthenticated-shares": "Tillåt oautentiserade delningar",
