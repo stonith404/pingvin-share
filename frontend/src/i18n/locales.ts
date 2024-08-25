@@ -22,6 +22,7 @@ import ukrainian from "./translations/uk-UA";
 import chineseSimplified from "./translations/zh-CN";
 import chineseTraditional from "./translations/zh-TW";
 import turkish from "./translations/tr-TR";
+import czech from "./translations/cs-CZ";
 
 export const LOCALES = {
   ENGLISH: {
@@ -143,5 +144,10 @@ export const LOCALES = {
     name: "Türkçe",
     code: "tr-TR",
     messages: turkish,
+  },
+  CZECH: {
+    name: "Čeština",
+    code: "cs-CZ",
+    messages: czech,
   },
 };
