@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "عنوان الدعوة",
   "admin.config.email.invite-subject.description": "عنوان البريد الذي سيُرسل عندما يقوم المشرف بدعوة مستخدم ما.",
   "admin.config.email.invite-message": "رسالة الدعوة",
-  "admin.config.email.invite-message.description": "الرسالة التي ستُرسل عندما يدعو مشرفٌ مستخدمًا. سيُوضع رابط الدعوة مكان {url} وكلمة السر مكان {password}.",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "السماح بالتسجيل",
   "admin.config.share.allow-registration.description": "إتاحة تسجيل حساب جديد",
   "admin.config.share.allow-unauthenticated-shares": "السماح بالمشاركات غير المصادق عليها",
