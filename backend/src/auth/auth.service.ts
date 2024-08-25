@@ -76,7 +76,7 @@ export class AuthService {
         },
       });
 
-      if (user && await argon.verify(user.password, dto.password)) {
+      if (user?.password && await argon.verify(user.password, dto.password)) {
         this.logger.log(`Successful password login for user ${user.email} from IP ${ip}`);
         return this.generateToken(user);
       }
