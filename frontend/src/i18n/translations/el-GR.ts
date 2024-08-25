@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "Θέμα μηνύματος πρόσκλησης",
   "admin.config.email.invite-subject.description": "Θέμα του email που αποστέλλεται όταν ένας διαχειριστής προσκαλεί έναν χρήστη.",
   "admin.config.email.invite-message": "Μήνυμα μηνύματος πρόσκλησης",
-  "admin.config.email.invite-message.description": "Το μήνυμα που αποστέλλεται όταν ένας διαχειριστής προσκαλεί έναν χρήστη. Το {url} θα αντικατασταθεί με το URL πρόσκλησης και το {password} με τον κωδικό πρόσβασης.",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "Να επιτρέπεται η εγγραφή",
   "admin.config.share.allow-registration.description": "Αν επιτρέπεται η εγγραφή",
   "admin.config.share.allow-unauthenticated-shares": "Επιτρέψτε κοινές χρήσεις χωρίς έλεγχο ταυτότητας",
