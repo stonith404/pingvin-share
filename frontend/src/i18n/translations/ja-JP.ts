@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "無効な件名",
   "admin.config.email.invite-subject.description": "管理者がユーザーを招待したときに送信されるメールの件名です。",
   "admin.config.email.invite-message": "無効な本文",
-  "admin.config.email.invite-message.description": "管理者がユーザーを招待したときに送信されるメールの本文です。{url} は、招待URLに、{password} は、パスワードに置き換えられます。",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "登録を許可する",
   "admin.config.share.allow-registration.description": "登録を許可するかどうかを選択してください。",
   "admin.config.share.allow-unauthenticated-shares": "ログインしていない状態での共有を許可する",
