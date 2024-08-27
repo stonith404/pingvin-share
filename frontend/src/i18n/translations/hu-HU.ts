@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "Meghívó tárgya",
   "admin.config.email.invite-subject.description": "Az adminisztrátortól a meghívott felhasználó felé küldött email tárgya.",
   "admin.config.email.invite-message": "Meghívó szövege",
-  "admin.config.email.invite-message.description": "Az adminisztrátortól a meghívott felhasználó felé küldött email szövege. A(z) {url} helyére a meghívó URL hivatkozása kerül, a(z) {password} helyére a jelszó.",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "Regisztráció engedélyezése",
   "admin.config.share.allow-registration.description": "Regisztráció engedélyezésének ki- és bekapcsolása",
   "admin.config.share.allow-unauthenticated-shares": "Hitelesítés nélküli megosztások engedélyezése",
@@ -418,6 +418,7 @@ export default {
   "admin.config.ldap.search-query": "Felhasználó lekérdezés",
   "admin.config.ldap.search-query.description": "A felhasználó lekérdezés kísérli meg az LDAP felhasználó elérését a felhasználóbázisban. %username% helyettesítheti az adott felhasználónevet.",
   "admin.config.ldap.admin-groups": "Admin csoport",
+  "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
   // 404
   "404.description": "Hoppá - ez az oldal nem létezik.",
   "404.button.home": "Vissza a Kezdőlapra",

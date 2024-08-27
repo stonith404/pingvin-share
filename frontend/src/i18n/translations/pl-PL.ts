@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "Temat zaproszenia",
   "admin.config.email.invite-subject.description": "Temat wiadomości e-mail, która zostanie wysłana, gdy administrator zaprasza użytkownika.",
   "admin.config.email.invite-message": "Wiadomość zaproszenia",
-  "admin.config.email.invite-message.description": "Wiadomość, która zostanie wysłana, gdy administrator zaprasza użytkownika. {url} zostanie zastąpiony adresem URL zaproszenia, a {password} hasłem.",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "Zezwól na rejestrację",
   "admin.config.share.allow-registration.description": "Czy dozwolona jest rejestracja",
   "admin.config.share.allow-unauthenticated-shares": "Zezwalaj na nieuwierzytelnione udostępnianie",
@@ -418,6 +418,7 @@ export default {
   "admin.config.ldap.search-query": "User query",
   "admin.config.ldap.search-query.description": "The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.",
   "admin.config.ldap.admin-groups": "Admin group",
+  "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
   // 404
   "404.description": "Ups! Ta strona nie istnieje.",
   "404.button.home": "Wróć do strony domowej",

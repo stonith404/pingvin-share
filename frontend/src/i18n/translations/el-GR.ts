@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "Θέμα μηνύματος πρόσκλησης",
   "admin.config.email.invite-subject.description": "Θέμα του email που αποστέλλεται όταν ένας διαχειριστής προσκαλεί έναν χρήστη.",
   "admin.config.email.invite-message": "Μήνυμα μηνύματος πρόσκλησης",
-  "admin.config.email.invite-message.description": "Το μήνυμα που αποστέλλεται όταν ένας διαχειριστής προσκαλεί έναν χρήστη. Το {url} θα αντικατασταθεί με το URL πρόσκλησης και το {password} με τον κωδικό πρόσβασης.",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "Να επιτρέπεται η εγγραφή",
   "admin.config.share.allow-registration.description": "Αν επιτρέπεται η εγγραφή",
   "admin.config.share.allow-unauthenticated-shares": "Επιτρέψτε κοινές χρήσεις χωρίς έλεγχο ταυτότητας",
@@ -418,6 +418,7 @@ export default {
   "admin.config.ldap.search-query": "User query",
   "admin.config.ldap.search-query.description": "The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.",
   "admin.config.ldap.admin-groups": "Admin group",
+  "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
   // 404
   "404.description": "Ουπς. Αυτή η σελίδα δεν υπάρχει.",
   "404.button.home": "Πήγαινέ με πίσω",

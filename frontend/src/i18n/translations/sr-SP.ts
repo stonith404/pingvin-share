@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "Позивна тема",
   "admin.config.email.invite-subject.description": "Тема е-поруке која се шаље када администратор позове корисника.",
   "admin.config.email.invite-message": "Позивна порука",
-  "admin.config.email.invite-message.description": "Порука која се шаље када администратор позове корисника. {url} ће бити замењен УРЛ-ом позива, а {password} лозинком.",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "Дозволи регистрацију",
   "admin.config.share.allow-registration.description": "Да ли је регистрација дозвољена",
   "admin.config.share.allow-unauthenticated-shares": "Дозволи дељење без аутентификације",
@@ -418,6 +418,7 @@ export default {
   "admin.config.ldap.search-query": "User query",
   "admin.config.ldap.search-query.description": "The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.",
   "admin.config.ldap.admin-groups": "Admin group",
+  "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
   // 404
   "404.description": "Опа - Ова страна не постоји.",
   "404.button.home": "Врати ме на почетак",

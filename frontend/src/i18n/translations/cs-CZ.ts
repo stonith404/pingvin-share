@@ -1,122 +1,95 @@
 export default {
   // Navbar
-  "navbar.upload": "Upload",
-  "navbar.signin": "Sign in",
-  "navbar.home": "Home",
-  "navbar.signup": "Sign Up",
-
-  "navbar.links.shares": "My shares",
-  "navbar.links.reverse": "Reverse shares",
-
-  "navbar.avatar.account": "My account",
-  "navbar.avatar.admin": "Administration",
-  "navbar.avatar.signout": "Sign out",
+  "navbar.upload": "Nahrát",
+  "navbar.signin": "Přihlásit se",
+  "navbar.home": "Domů",
+  "navbar.signup": "Zaregistrovat se",
+  "navbar.links.shares": "Mé sdílení",
+  "navbar.links.reverse": "Zpětné sdílení",
+  "navbar.avatar.account": "Můj účet",
+  "navbar.avatar.admin": "Administrace",
+  "navbar.avatar.signout": "Odhlásit se",
   // END navbar
-
   // /
-  "home.title": "A <h>self-hosted</h> file sharing platform.",
-
-  "home.description":
-    "Do you really want to give your personal files in the hand of third parties like WeTransfer?",
+  "home.title": "<h>Samostatně hostovaná</h> platforma pro sdílení souborů.",
+  "home.description": "Opravdu chcete dát své osobní soubory do rukou třetích stran, jako je WeTransfer?",
   "home.bullet.a.name": "Self-Hosted",
-  "home.bullet.a.description": "Host Pingvin Share on your own machine.",
-  "home.bullet.b.name": "Privacy",
-  "home.bullet.b.description":
-    "Your files are your files and should never get into the hands of third parties.",
-  "home.bullet.c.name": "No annoying file size limit",
-  "home.bullet.c.description":
-    "Upload as big files as you want. Only your hard drive will be your limit.",
-
-  "home.button.start": "Get started",
-  "home.button.source": "Source code",
+  "home.bullet.a.description": "Hostujte Pingvin Share na svém vlastním počítači.",
+  "home.bullet.b.name": "Soukromí",
+  "home.bullet.b.description": "Vaše soubory jsou vaše soubory a nikdy by se neměly dostat do rukou třetích stran.",
+  "home.bullet.c.name": "Žádný otravný limit pro velikost souborů",
+  "home.bullet.c.description": "Nahrajte tak velké soubory, jak chcete. Limitem je pouze váš pevný disk.",
+  "home.button.start": "Začít",
+  "home.button.source": "Zdrojový kód",
   // END /
-
   // /auth/signin
-  "signin.title": "Welcome back",
-  "signin.description": "You don't have an account yet?",
-  "signin.button.signup": "Sign up",
-  "signin.input.email-or-username": "Email or username",
-  "signin.input.email-or-username.placeholder": "Your email or username",
-  "signin.input.password": "Password",
-  "signin.input.password.placeholder": "Your password",
-  "signin.button.submit": "Sign in",
-  "signIn.notify.totp-required.title": "Two-factor authentication required",
-  "signIn.notify.totp-required.description":
-    "Please enter your two-factor authentication code",
-  "signIn.oauth.or": "OR",
-  "signIn.oauth.signInWith": "Sign in with",
+  "signin.title": "Vítejte zpět",
+  "signin.description": "Ještě nemáte účet?",
+  "signin.button.signup": "Zaregistrovat se",
+  "signin.input.email-or-username": "E-mail nebo uživatelské jméno",
+  "signin.input.email-or-username.placeholder": "Váš e-mail nebo uživatelské jméno",
+  "signin.input.password": "Heslo",
+  "signin.input.password.placeholder": "Vaše heslo",
+  "signin.button.submit": "Přihlásit se",
+  "signIn.notify.totp-required.title": "Vyžadováno dvoufaktorové ověření",
+  "signIn.notify.totp-required.description": "Zadejte prosím svůj dvoufaktorový ověřovací kód",
+  "signIn.oauth.or": "NEBO",
+  "signIn.oauth.signInWith": "Přihlásit se pomocí",
   "signIn.oauth.github": "GitHub",
   "signIn.oauth.google": "Google",
   "signIn.oauth.microsoft": "Microsoft",
   "signIn.oauth.discord": "Discord",
   "signIn.oauth.oidc": "OpenID",
-
   // END /auth/signin
-
   // /auth/signup
-  "signup.title": "Create an account",
-  "signup.description": "Already have an account?",
-  "signup.button.signin": "Sign in",
-  "signup.input.username": "Username",
-  "signup.input.username.placeholder": "Your username",
-  "signup.input.email": "Email",
-  "signup.input.email.placeholder": "Your email",
-  "signup.button.submit": "Let's get started",
-
+  "signup.title": "Vytvořit účet",
+  "signup.description": "Máte již svůj účet?",
+  "signup.button.signin": "Přihlásit se",
+  "signup.input.username": "Uživatelské jméno",
+  "signup.input.username.placeholder": "Vaše uživatelské jméno",
+  "signup.input.email": "E-mail",
+  "signup.input.email.placeholder": "Váš e-mail",
+  "signup.button.submit": "Pojďme na to",
   // END /auth/signup
-
   // /auth/totp
-  "totp.title": "TOTP Authentication",
-  "totp.button.signIn": "Sign in",
-
+  "totp.title": "TOTP ověření",
+  "totp.button.signIn": "Přihlásit se",
   // END /auth/totp
-
   // /auth/reset-password
-  "resetPassword.title": "Forgot your password?",
-  "resetPassword.description": "Enter your email to reset your password.",
-  "resetPassword.notify.success":
-    "A message with a link to reset your password has been sent if the email exists.",
-  "resetPassword.button.back": "Back to sign in page",
-  "resetPassword.text.resetPassword": "Reset password",
-  "resetPassword.text.enterNewPassword": "Enter your new password",
-  "resetPassword.input.password": "New password",
-  "resetPassword.notify.passwordReset":
-    "Your password has been reset successfully.",
-
+  "resetPassword.title": "Zapomněli jste heslo?",
+  "resetPassword.description": "Zadejte svůj e-mail pro obnovení hesla.",
+  "resetPassword.notify.success": "Pokud e-mail existuje, byla na něj odeslána zpráva s odkazem k obnovení hesla.",
+  "resetPassword.button.back": "Zpět na přihlašovací stránku",
+  "resetPassword.text.resetPassword": "Obnovit heslo",
+  "resetPassword.text.enterNewPassword": "Zadejte své nové heslo",
+  "resetPassword.input.password": "Nové heslo",
+  "resetPassword.notify.passwordReset": "Vaše heslo bylo úspěšně obnoveno.",
   // /account
-  "account.title": "My account",
-
-  "account.card.info.title": "Account info",
-  "account.card.info.username": "Username",
-  "account.card.info.email": "Email",
-  "account.notify.info.success": "Account updated successfully",
-
-  "account.card.password.title": "Password",
-  "account.card.password.old": "Old password",
-  "account.card.password.new": "New password",
-  "account.card.password.noPasswordSet":
-    "You don't have a password set. If you want to sign in with email and password you need to set a password.",
-  "account.notify.password.success": "Password changed successfully",
-
-  "account.card.oauth.title": "Social login",
+  "account.title": "Můj účet",
+  "account.card.info.title": "Informace o účtu",
+  "account.card.info.username": "Uživatelské jméno",
+  "account.card.info.email": "E-mail",
+  "account.notify.info.success": "Účet byl úspěšně aktualizován",
+  "account.card.password.title": "Heslo",
+  "account.card.password.old": "Staré heslo",
+  "account.card.password.new": "Nové heslo",
+  "account.card.password.noPasswordSet": "Nemáte nastaveno heslo. Pokud se chcete přihlásit pomocí e-mailu a hesla, musíte si nastavit heslo.",
+  "account.notify.password.success": "Heslo bylo úspěšně změněno",
+  "account.card.oauth.title": "Přihlášení přes sociální sítě",
   "account.card.oauth.github": "GitHub",
   "account.card.oauth.google": "Google",
   "account.card.oauth.microsoft": "Microsoft",
   "account.card.oauth.discord": "Discord",
   "account.card.oauth.oidc": "OpenID",
-  "account.card.oauth.link": "Link",
-  "account.card.oauth.unlink": "Unlink",
-  "account.card.oauth.unlinked": "Unlinked",
-  "account.modal.unlink.title": "Unlink account",
-  "account.modal.unlink.description":
-    "Unlinking your social accounts may cause you to lose your account if you don't remember your username and password.",
-  "account.notify.oauth.unlinked.success": "Unlinked successfully",
-
-  "account.card.security.title": "Security",
-  "account.card.security.totp.enable.description":
-    "Enter your current password to start enabling TOTP",
-  "account.card.security.totp.disable.description":
-    "Enter your current password to disable TOTP",
+  "account.card.oauth.link": "Odkaz",
+  "account.card.oauth.unlink": "Odpojit",
+  "account.card.oauth.unlinked": "Odpojeno",
+  "account.modal.unlink.title": "Odpojit účet",
+  "account.modal.unlink.description": "Odpojení vašich sociálních účtů může způsobit ztrátu účtu, pokud si nepamatujete své uživatelské jméno a heslo.",
+  "account.notify.oauth.unlinked.success": "Úspěšně odpojeno",
+  "account.card.security.title": "Zabezpečení",
+  "account.card.security.totp.enable.description": "Zadejte své současné heslo, abyste mohli povolit TOTP",
+  "account.card.security.totp.disable.description": "Zadejte své současné heslo pro zakázání TOTP",
   "account.card.security.totp.button.start": "Start",
   "account.modal.totp.title": "Enable TOTP",
   "account.modal.totp.step1": "Step 1: Add your authenticator",
@@ -127,29 +100,22 @@ export default {
   "account.modal.totp.verify": "Verify",
   "account.notify.totp.disable": "TOTP disabled successfully",
   "account.notify.totp.enable": "TOTP enabled successfully",
-
   "account.card.language.title": "Language",
-  "account.card.language.description":
-    "The project is translated by the community. Some languages might be incomplete.",
+  "account.card.language.description": "The project is translated by the community. Some languages might be incomplete.",
   "account.card.color.title": "Color scheme",
-
   // ThemeSwitcher.tsx
   "account.theme.dark": "Dark",
   "account.theme.light": "Light",
   "account.theme.system": "System",
-
   "account.button.delete": "Delete Account",
   "account.modal.delete.title": "Delete Account",
-  "account.modal.delete.description":
-    "Do you really want to delete your account including all your active shares?",
+  "account.modal.delete.description": "Do you really want to delete your account including all your active shares?",
   // END /account
-
   // /account/shares
   "account.shares.title": "My shares",
   "account.shares.title.empty": "It's empty here 👀",
   "account.shares.description.empty": "You don't have any shares.",
   "account.shares.button.create": "Create one",
-
   "account.shares.info.title": "Share informations",
   "account.shares.table.id": "ID",
   "account.shares.table.name": "Name",
@@ -158,165 +124,114 @@ export default {
   "account.shares.table.expiresAt": "Expires at",
   "account.shares.table.createdAt": "Created at",
   "account.shares.table.size": "Size",
-
   "account.shares.modal.share-informations": "Share informations",
   "account.shares.modal.share-link": "Share link",
-
   "account.shares.modal.delete.title": "Delete share {share}",
-  "account.shares.modal.delete.description":
-    "Do you really want to delete this share?",
-
+  "account.shares.modal.delete.description": "Do you really want to delete this share?",
   // END /account/shares
-
   // /account/reverseShares
   "account.reverseShares.title": "Reverse shares",
-  "account.reverseShares.description":
-    "A reverse share allows you to generate a unique URL that allows external users to create a share.",
-
-  "account.reverseShares.title.empty": "It's empty here 👀",
-  "account.reverseShares.description.empty":
-    "You don't have any reverse shares.",
-
+  "account.reverseShares.description": "Zpětné sdílení umožňuje vygenerovat jedinečné URL, které umožní externím uživatelům vytvořit sdílet soubory.",
+  "account.reverseShares.title.empty": "Je tu prázdno 👀",
+  "account.reverseShares.description.empty": "You don't have any reverse shares.",
   // showCreateReverseShareModal.tsx
-  "account.reverseShares.modal.title": "Create reverse share",
-  "account.reverseShares.modal.expiration.label": "Expiration",
-  "account.reverseShares.modal.expiration.minute-singular": "Minute",
-  "account.reverseShares.modal.expiration.minute-plural": "Minutes",
-  "account.reverseShares.modal.expiration.hour-singular": "Hour",
-  "account.reverseShares.modal.expiration.hour-plural": "Hours",
-  "account.reverseShares.modal.expiration.day-singular": "Day",
-  "account.reverseShares.modal.expiration.day-plural": "Days",
-  "account.reverseShares.modal.expiration.week-singular": "Week",
-  "account.reverseShares.modal.expiration.week-plural": "Weeks",
-  "account.reverseShares.modal.expiration.month-singular": "Month",
+  "account.reverseShares.modal.title": "Vytvořit zpětné sdílení",
+  "account.reverseShares.modal.expiration.label": "Expirace",
+  "account.reverseShares.modal.expiration.minute-singular": "Minuta",
+  "account.reverseShares.modal.expiration.minute-plural": "Minut",
+  "account.reverseShares.modal.expiration.hour-singular": "Hodina",
+  "account.reverseShares.modal.expiration.hour-plural": "Hodin",
+  "account.reverseShares.modal.expiration.day-singular": "Den",
+  "account.reverseShares.modal.expiration.day-plural": "Dnů",
+  "account.reverseShares.modal.expiration.week-singular": "Týden",
+  "account.reverseShares.modal.expiration.week-plural": "Týdnů",
+  "account.reverseShares.modal.expiration.month-singular": "Měsíc",
   "account.reverseShares.modal.expiration.month-plural": "Months",
   "account.reverseShares.modal.expiration.year-singular": "Year",
   "account.reverseShares.modal.expiration.year-plural": "Years",
-
   "account.reverseShares.modal.max-size.label": "Max share size",
-
   "account.reverseShares.modal.send-email": "Send email notification",
-  "account.reverseShares.modal.send-email.description":
-    "Send an email notification when a share is created with this reverse share link.",
-
+  "account.reverseShares.modal.send-email.description": "Send an email notification when a share is created with this reverse share link.",
   "account.reverseShares.modal.simplified": "Simple mode",
-  "account.reverseShares.modal.simplified.description":
-    "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
-
+  "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
   "account.reverseShares.modal.public-access": "Public access",
-  "account.reverseShares.modal.public-access.description":
-    "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
-
+  "account.reverseShares.modal.public-access.description": "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
   "account.reverseShares.modal.max-use.label": "Max uses",
-  "account.reverseShares.modal.max-use.description":
-    "The maximum amount of times this URL can be used to create a share.",
-  "account.reverseShare.never-expires": "This reverse share will never expire.",
-  "account.reverseShare.expires-on":
-    "This reverse share will expire on {expiration}.",
-
-  "account.reverseShares.table.no-shares": "No shares created yet",
-  "account.reverseShares.table.count.singular": "share",
-  "account.reverseShares.table.count.plural": "shares",
-  "account.reverseShares.table.shares": "Shares",
-  "account.reverseShares.table.remaining": "Remaining uses",
-  "account.reverseShares.table.max-size": "Max share size",
-  "account.reverseShares.table.expires": "Expires at",
-
-  "account.reverseShares.modal.reverse-share-link": "Reverse share link",
-
-  "account.reverseShares.modal.delete.title": "Delete reverse share",
-  "account.reverseShares.modal.delete.description":
-    "Do you really want to delete this reverse share? If you do, the associated shares will be deleted as well.",
-
+  "account.reverseShares.modal.max-use.description": "The maximum amount of times this URL can be used to create a share.",
+  "account.reverseShare.never-expires": "Toto zpětné sdílení nikdy nevyprší.",
+  "account.reverseShare.expires-on": "Toto zpětné sdílení vyprší {expiration}.",
+  "account.reverseShares.table.no-shares": "Zatím nebyla vytvořena žádná sdílení",
+  "account.reverseShares.table.count.singular": "sdílení",
+  "account.reverseShares.table.count.plural": "sdílení",
+  "account.reverseShares.table.shares": "Sdílení",
+  "account.reverseShares.table.remaining": "Zbývající použití",
+  "account.reverseShares.table.max-size": "Max. velikost sdílení",
+  "account.reverseShares.table.expires": "Vyprší",
+  "account.reverseShares.modal.reverse-share-link": "Odkaz na zpětné sdílení",
+  "account.reverseShares.modal.delete.title": "Odstranit zpětné sdílení",
+  "account.reverseShares.modal.delete.description": "Opravdu chcete odstranit toto zpětné sdílení? Pokud tak učiníte, související sdílené budou také odstraněny.",
   // END /account/reverseShares
-
   // /admin
-  "admin.title": "Administration",
-  "admin.button.users": "User management",
-  "admin.button.shares": "Share management",
-  "admin.button.config": "Configuration",
-  "admin.version": "Version",
+  "admin.title": "Administrace",
+  "admin.button.users": "Správa uživatelů",
+  "admin.button.shares": "Správa sdílení",
+  "admin.button.config": "Nastavení",
+  "admin.version": "Verze",
   // END /admin
-
   // /admin/users
-  "admin.users.title": "User management",
-  "admin.users.table.username": "Username",
-  "admin.users.table.email": "Email",
-  "admin.users.table.admin": "Admin",
-
-  "admin.users.edit.update.title": "Update user {username}",
-  "admin.users.edit.update.admin-privileges": "Admin privileges",
-  "admin.users.edit.update.change-password.title": "Change password",
-  "admin.users.edit.update.change-password.field": "New password",
-  "admin.users.edit.update.change-password.button": "Save new password",
-  "admin.users.edit.update.notify.password.success":
-    "Password changed successfully",
-
-  "admin.users.edit.delete.title": "Delete user {username}",
-  "admin.users.edit.delete.description":
-    "Do you really want to delete this user and all his shares?",
-
+  "admin.users.title": "Správa uživatelů",
+  "admin.users.table.username": "Uživatelské jméno",
+  "admin.users.table.email": "E-mail",
+  "admin.users.table.admin": "Administrátor",
+  "admin.users.edit.update.title": "Aktualizovat uživatele {username}",
+  "admin.users.edit.update.admin-privileges": "Administrátorská práva",
+  "admin.users.edit.update.change-password.title": "Změnit heslo",
+  "admin.users.edit.update.change-password.field": "Nové heslo",
+  "admin.users.edit.update.change-password.button": "Uložit nové heslo",
+  "admin.users.edit.update.notify.password.success": "Heslo bylo úspěšně změněno",
+  "admin.users.edit.delete.title": "Odstranit uživatele {username}",
+  "admin.users.edit.delete.description": "Opravdu chcete smazat tohoto uživatele a všechny jeho sdílení?",
   // showCreateUserModal.tsx
-  "admin.users.modal.create.title": "Create user",
-  "admin.users.modal.create.username": "Username",
-  "admin.users.modal.create.email": "Email",
-  "admin.users.modal.create.password": "Password",
-  "admin.users.modal.create.manual-password": "Set password manually",
-  "admin.users.modal.create.manual-password.description":
-    "If not checked, the user will receive an email with a link to set their password.",
-  "admin.users.modal.create.admin": "Admin privileges",
-  "admin.users.modal.create.admin.description":
-    "If checked, the user will be able to access the admin panel.",
-
+  "admin.users.modal.create.title": "Vytvořit uživatele",
+  "admin.users.modal.create.username": "Uživatelské jméno",
+  "admin.users.modal.create.email": "E-mail",
+  "admin.users.modal.create.password": "Heslo",
+  "admin.users.modal.create.manual-password": "Ručně nastavit heslo",
+  "admin.users.modal.create.manual-password.description": "Pokud není zaškrtnuto, uživatel obdrží e-mail s odkazem pro nastavení svého hesla.",
+  "admin.users.modal.create.admin": "Administrátorská práva",
+  "admin.users.modal.create.admin.description": "Je-li zaškrtnuto, uživatel bude mít přístup k administračnímu panelu.",
   // END /admin/users
-
   // /admin/shares
-  "admin.shares.title": "Share management",
-  "admin.shares.table.id": "Share ID",
-  "admin.shares.table.username": "Creator",
-  "admin.shares.table.visitors": "Visitors",
-  "admin.shares.table.expires": "Expires At",
-
-  "admin.shares.edit.delete.title": "Delete share {id}",
-  "admin.shares.edit.delete.description":
-    "Do you really want to delete this share?",
-
+  "admin.shares.title": "Správa sdílení",
+  "admin.shares.table.id": "ID sdílení",
+  "admin.shares.table.username": "Autor",
+  "admin.shares.table.visitors": "Návštěvníci",
+  "admin.shares.table.expires": "Vyprší",
+  "admin.shares.edit.delete.title": "Odstranit sdílení {id}",
+  "admin.shares.edit.delete.description": "Opravdu chcete smazat toto sdílení?",
   // END /admin/shares
-
   // /upload
-  "upload.title": "Upload",
-
-  "upload.notify.generic-error":
-    "An error occurred while finishing your share.",
-  "upload.notify.count-failed": "{count} files failed to upload. Trying again.",
-
+  "upload.title": "Nahrát",
+  "upload.notify.generic-error": "Při dokončování vašeho sdílení došlo k chybě.",
+  "upload.notify.count-failed": "{count} souborů se nepodařilo nahrát. Zkouším to znovu.",
   // Dropzone.tsx
-  "upload.dropzone.title": "Upload files",
-  "upload.dropzone.description":
-    "Drag'n'drop files here to start your share. We can accept only files that are less than {maxSize} in total.",
-  "upload.dropzone.notify.file-too-big":
-    "Your files exceed the maximum share size of {maxSize}.",
-
+  "upload.dropzone.title": "Nahrát soubory",
+  "upload.dropzone.description": "Pro zahájení sdílení přetáhněte soubory sem. Můžeme přijmout pouze soubory, které jsou menší než {maxSize}.",
+  "upload.dropzone.notify.file-too-big": "Vaše soubory přesahují maximální velikost {maxSize}.",
   // FileList.tsx
   "upload.filelist.name": "Name",
-  "upload.filelist.size": "Size",
-
+  "upload.filelist.size": "Velikost",
   // showCreateUploadModal.tsx
   "upload.modal.title": "Create Share",
-  "upload.modal.link.error.invalid":
-    "Can only contain letters, numbers, underscores, and hyphens",
-  "upload.modal.link.error.taken": "This link is already in use",
-  "upload.modal.not-signed-in": "You're not signed in",
-  "upload.modal.not-signed-in-description":
-    "You will be unable to delete your share manually and view the visitor count.",
-
+  "upload.modal.link.error.invalid": "Může obsahovat pouze písmena, číslice, podtržítka a pomlčky",
+  "upload.modal.link.error.taken": "Tento odkaz je již používán",
+  "upload.modal.not-signed-in": "Nejste přihlášeni",
+  "upload.modal.not-signed-in-description": "Nebudete moci ručně odstranit své sdílení a zobrazit počet návštěvníků.",
   "upload.modal.expires.never": "never",
-  "upload.modal.expires.never-long": "Never Expires",
-  "upload.modal.expires.error.too-long":
-    "Expiration exceeds maximum expiration date of {max}.",
-
-  "upload.modal.link.label": "Link",
-  "upload.modal.expires.label": "Expiration",
+  "upload.modal.expires.never-long": "Nikdy nevyprší",
+  "upload.modal.expires.error.too-long": "Expiration exceeds maximum expiration date of {max}.",
+  "upload.modal.link.label": "Odkaz",
+  "upload.modal.expires.label": "Expirace",
   "upload.modal.expires.minute-singular": "Minute",
   "upload.modal.expires.minute-plural": "Minutes",
   "upload.modal.expires.hour-singular": "Hour",
@@ -329,72 +244,51 @@ export default {
   "upload.modal.expires.month-plural": "Months",
   "upload.modal.expires.year-singular": "Year",
   "upload.modal.expires.year-plural": "Years",
-
-  "upload.modal.accordion.name-and-description.title": "Name and description",
-  "upload.modal.accordion.name-and-description.name.placeholder": "Name",
-  "upload.modal.accordion.name-and-description.description.placeholder":
-    "Note for the recipients of this share",
-
-  "upload.modal.accordion.email.title": "Email recipients",
-  "upload.modal.accordion.email.placeholder": "Enter email recipients",
-  "upload.modal.accordion.email.invalid-email": "Invalid email address",
-
-  "upload.modal.accordion.security.title": "Security options",
-  "upload.modal.accordion.security.password.label": "Password protection",
-  "upload.modal.accordion.security.password.placeholder": "No password",
-  "upload.modal.accordion.security.max-views.label": "Maximum views",
-  "upload.modal.accordion.security.max-views.placeholder": "No limit",
-
+  "upload.modal.accordion.name-and-description.title": "Název a popis",
+  "upload.modal.accordion.name-and-description.name.placeholder": "Název",
+  "upload.modal.accordion.name-and-description.description.placeholder": "Poznámka pro příjemce tohoto sdílení",
+  "upload.modal.accordion.email.title": "Příjemci e-mailu",
+  "upload.modal.accordion.email.placeholder": "Zadejte příjemce e-mailu",
+  "upload.modal.accordion.email.invalid-email": "Neplatná e-mailová adresa",
+  "upload.modal.accordion.security.title": "Možnosti zabezpečení",
+  "upload.modal.accordion.security.password.label": "Ochrana heslem",
+  "upload.modal.accordion.security.password.placeholder": "Bez hesla",
+  "upload.modal.accordion.security.max-views.label": "Maximální počet zobrazení",
+  "upload.modal.accordion.security.max-views.placeholder": "Bez omezení",
   // showCompletedUploadModal.tsx
-  "upload.modal.completed.never-expires": "This share will never expire.",
-  "upload.modal.completed.expires-on":
-    "This share will expire on {expiration}.",
-  "upload.modal.completed.share-ready": "Share ready",
-  "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
-
+  "upload.modal.completed.never-expires": "Toto sdílení nikdy nevyprší.",
+  "upload.modal.completed.expires-on": "Toto sdílení vyprší {expiration}.",
+  "upload.modal.completed.share-ready": "Sdílení připraveno",
+  "upload.modal.completed.notified-reverse-share-creator": "Upozornili jsme tvůrce zpětného sdílení. Můžete s nimi také ručně sdílet tento odkaz jiným způsobem.",
   // END /upload
-
   // /share/[id]
-  "share.title": "Share {shareId}",
-  "share.description": "Look what I've shared with you!",
-  "share.error.visitor-limit-exceeded.title": "Visitor limit exceeded",
-  "share.error.visitor-limit-exceeded.description":
-    "The visitor limit from this share has been exceeded.",
-  "share.error.removed.title": "Share removed",
-  "share.error.not-found.title": "Share not found",
-  "share.error.not-found.description":
-    "The share you're looking for doesn't exist.",
-  "share.error.access-denied.title": "Private share",
-  "share.error.access-denied.description": "The current account does not have permission to access this share",
-
-  "share.modal.password.title": "Password required",
-  "share.modal.password.description":
-    "To access this share please enter the password for the share.",
-  "share.modal.password": "Password",
+  "share.title": "Sdílení {shareId}",
+  "share.description": "Podívejte se, co jsem s vámi sdílel!",
+  "share.error.visitor-limit-exceeded.title": "Limit návštěvníků překročen",
+  "share.error.visitor-limit-exceeded.description": "Limit návštěvníků tohoto sdílení byl překročen.",
+  "share.error.removed.title": "Sdílení bylo odstraněno",
+  "share.error.not-found.title": "Sdílení nenalezeno",
+  "share.error.not-found.description": "Sdílení, které hledáte, neexistuje.",
+  "share.error.access-denied.title": "Soukromé sdílení",
+  "share.error.access-denied.description": "Aktuální účet nemá oprávnění k přístupu k tomuto sdílení",
+  "share.modal.password.title": "Heslo vyžadováno",
+  "share.modal.password.description": "Pro přístup k tomuto sdílení zadejte prosím heslo pro toto sdílení.",
+  "share.modal.password": "Heslo",
   "share.modal.error.invalid-password": "Invalid password",
-
   "share.button.download-all": "Download all",
-  "share.notify.download-all-preparing":
-    "The share is preparing. Try again in a few minutes.",
-
+  "share.notify.download-all-preparing": "The share is preparing. Try again in a few minutes.",
   "share.modal.file-link": "File link",
   "share.table.name": "Name",
   "share.table.size": "Size",
-
   "share.modal.file-preview.error.not-supported.title": "Preview not supported",
-  "share.modal.file-preview.error.not-supported.description":
-    "A preview for this file type is unsupported. Please download the file to view it.",
-
+  "share.modal.file-preview.error.not-supported.description": "A preview for this file type is unsupported. Please download the file to view it.",
   // END /share/[id]
-
   // /share/[id]/edit
   "share.edit.title": "Edit {shareId}",
   "share.edit.append-upload": "Append file",
-  "share.edit.notify.generic-error":
-    "An error occurred while finishing your share.",
+  "share.edit.notify.generic-error": "An error occurred while finishing your share.",
   "share.edit.notify.save-success": "Share updated successfully",
   // END /share/[id]/edit
-
   // /admin/config
   "admin.config.title": "Configuration",
   "admin.config.category.general": "General",
@@ -402,245 +296,176 @@ export default {
   "admin.config.category.email": "Email",
   "admin.config.category.smtp": "SMTP",
   "admin.config.category.oauth": "Social Login",
-
   "admin.config.general.app-name": "App name",
   "admin.config.general.app-name.description": "Name of the application",
   "admin.config.general.app-url": "App URL",
-  "admin.config.general.app-url.description":
-    "On which URL Pingvin Share is available",
+  "admin.config.general.app-url.description": "On which URL Pingvin Share is available",
   "admin.config.general.show-home-page": "Show home page",
-  "admin.config.general.show-home-page.description":
-    "Whether to show the home page",
+  "admin.config.general.show-home-page.description": "Whether to show the home page",
   "admin.config.general.session-duration": "Session Duration",
-  "admin.config.general.session-duration.description":
-    "Time in hours after which a user must log in again (default: 3 months).",
+  "admin.config.general.session-duration.description": "Time in hours after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Logo",
-  "admin.config.general.logo.description":
-    "Change your logo by uploading a new image. The image must be a PNG and should have the format 1:1.",
+  "admin.config.general.logo.description": "Change your logo by uploading a new image. The image must be a PNG and should have the format 1:1.",
   "admin.config.general.logo.placeholder": "Pick image",
-
-  "admin.config.email.enable-share-email-recipients":
-    "Enable share email recipients",
-  "admin.config.email.enable-share-email-recipients.description":
-    "Whether to allow emails to share recipients. Only enable this if you have enabled SMTP.",
+  "admin.config.email.enable-share-email-recipients": "Enable share email recipients",
+  "admin.config.email.enable-share-email-recipients.description": "Whether to allow emails to share recipients. Only enable this if you have enabled SMTP.",
   "admin.config.email.share-recipients-subject": "Share recipients subject",
-  "admin.config.email.share-recipients-subject.description":
-    "Subject of the email which gets sent to the share recipients.",
+  "admin.config.email.share-recipients-subject.description": "Subject of the email which gets sent to the share recipients.",
   "admin.config.email.share-recipients-message": "Share recipients message",
-  "admin.config.email.share-recipients-message.description":
-    "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n The variables will be replaced with the actual value.",
-  "admin.config.email.reverse-share-subject": "Reverse share subject",
-  "admin.config.email.reverse-share-subject.description":
-    "Subject of the email which gets sent when someone created a share with your reverse share link.",
-  "admin.config.email.reverse-share-message": "Reverse share message",
-  "admin.config.email.reverse-share-message.description":
-    "Message which gets sent when someone created a share with your reverse share link. {shareUrl} will be replaced with the creator's name and the share URL.",
-  "admin.config.email.reset-password-subject": "Reset password subject",
-  "admin.config.email.reset-password-subject.description":
-    "Subject of the email which gets sent when a user requests a password reset.",
-  "admin.config.email.reset-password-message": "Reset password message",
-  "admin.config.email.reset-password-message.description":
-    "Message which gets sent when a user requests a password reset. {url} will be replaced with the reset password URL.",
-  "admin.config.email.invite-subject": "Invite subject",
-  "admin.config.email.invite-subject.description":
-    "Subject of the email which gets sent when an admin invites a user.",
-  "admin.config.email.invite-message": "Invite message",
-  "admin.config.email.invite-message.description":
-    "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL and {password} with the password.",
-
-  "admin.config.share.allow-registration": "Allow registration",
-  "admin.config.share.allow-registration.description":
-    "Whether registration is allowed",
-  "admin.config.share.allow-unauthenticated-shares":
-    "Allow unauthenticated shares",
-  "admin.config.share.allow-unauthenticated-shares.description":
-    "Whether unauthenticated users can create shares",
-  "admin.config.share.max-expiration": "Max expiration",
-  "admin.config.share.max-expiration.description":
-    "Maximum share expiration in hours. Set to 0 to allow unlimited expiration.",
-  "admin.config.share.max-size": "Max size",
-  "admin.config.share.max-size.description": "Maximum share size in bytes",
-  "admin.config.share.zip-compression-level": "Zip compression level",
-  "admin.config.share.zip-compression-level.description":
-    "Adjust the level to balance between file size and compression speed. Valid values range from 0 to 9, with 0 being no compression and 9 being maximum compression. ",
-  "admin.config.share.chunk-size": "Chunk size",
-  "admin.config.share.chunk-size.description":
-    "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
-  "admin.config.share.auto-open-share-modal": "Auto open create share modal",
-  "admin.config.share.auto-open-share-modal.description":
-    "The share creation modal automatically appears when a user selects files, eliminating the need to manually click the button.",
-
-  "admin.config.smtp.enabled": "Enabled",
-  "admin.config.smtp.enabled.description":
-    "Whether SMTP is enabled. Only set this to true if you entered the host, port, email, user and password of your SMTP server.",
-  "admin.config.smtp.host": "Host",
-  "admin.config.smtp.host.description": "Host of the SMTP server",
+  "admin.config.email.share-recipients-message.description": "Zpráva, která bude odeslána příjemcům sdílení. Dostupné proměnné:\n {creator} - Uživatelské jméno tvůrce sdílení\n {shareUrl} - URL sdílení\n {desc} - Popis sdílení\n {expires} - Datum vypršení platností sdílení\n Proměnné budou nahrazeny skutečnou hodnotou.",
+  "admin.config.email.reverse-share-subject": "Předmět e-mailu o zpětném sdílení",
+  "admin.config.email.reverse-share-subject.description": "Předmět e-mailu, který bude odeslán, když někdo vytvoří sdílení s vaším odkazem na zpětné sdílení.",
+  "admin.config.email.reverse-share-message": "Zpráva o zpětném sdílení",
+  "admin.config.email.reverse-share-message.description": "Zpráva, která bude odeslána, když někdo vytvoří sdílení s vaším odkazem na reverzní sdílení. {shareUrl} bude nahrazeno jménem tvůrce a URL pro sdílení.",
+  "admin.config.email.reset-password-subject": "Předmět e-mailu pro obnovení hesla",
+  "admin.config.email.reset-password-subject.description": "Předmět e-mailu, který bude odeslán, když uživatel požádá o obnovení hesla.",
+  "admin.config.email.reset-password-message": "Zpráva o obnovení hesla",
+  "admin.config.email.reset-password-message.description": "Zpráva, která bude odeslána, když uživatel požádá o obnovení hesla. {url} bude nahrazeno URL pro obnovení hesla.",
+  "admin.config.email.invite-subject": "Předmět pozvánky",
+  "admin.config.email.invite-subject.description": "Předmět e-mailu, který bude odeslán, když administrátor pozve uživatele.",
+  "admin.config.email.invite-message": "Zpráva pozvánky",
+  "admin.config.email.invite-message.description": "Zpráva, která bude odeslána, když administrátor pozve uživatele. {url} bude nahrazeno URL pozvánky, {email} e-mailem a {password} heslem uživatele.",
+  "admin.config.share.allow-registration": "Povolit registraci",
+  "admin.config.share.allow-registration.description": "Zda je registrace povolena",
+  "admin.config.share.allow-unauthenticated-shares": "Povolit sdílení neověřeným uživatelům",
+  "admin.config.share.allow-unauthenticated-shares.description": "Zda mohou neověření uživatelé vytvářet sdílení",
+  "admin.config.share.max-expiration": "Max. platnost",
+  "admin.config.share.max-expiration.description": "Maximální platnost sdílení v hodinách. Nastavte na 0 k povolení neomezené platnosti.",
+  "admin.config.share.max-size": "Max. velikost",
+  "admin.config.share.max-size.description": "Maximální velikost sdílení v bajtech",
+  "admin.config.share.zip-compression-level": "Úroveň Zip komprese",
+  "admin.config.share.zip-compression-level.description": "Upravte úroveň pro rovnováhu mezi velikostí souboru a rychlostí komprese. Platné hodnoty se pohybují od 0 do 9, přičemž 0 znamená bez komprese a 9 je maximální komprese. ",
+  "admin.config.share.chunk-size": "Velikost bloku",
+  "admin.config.share.chunk-size.description": "Upravte velikost bloku (v bajtech) pro vaše nahrávání tak, aby byla vyvážena efektivita a spolehlivost podle vašeho internetového připojení. Menší bloky mohou zvýšit spolehlivost nestabilních spojení, zatímco větší bloky urychlují nahrávání při stabilním spojení.",
+  "admin.config.share.auto-open-share-modal": "Automaticky otevřít menu vytvoření sdílení",
+  "admin.config.share.auto-open-share-modal.description": "Menu vytvoření sdílení se automaticky zobrazí, když uživatel vybere soubory, čímž se eliminuje potřeba ručně kliknout na tlačítko.",
+  "admin.config.smtp.enabled": "Povoleno",
+  "admin.config.smtp.enabled.description": "Zda je SMTP povoleno. Povolte pouze pokud jste zadali hostitele, port, e-mail, uživatele a heslo vašeho SMTP serveru.",
+  "admin.config.smtp.host": "Hostitel",
+  "admin.config.smtp.host.description": "Hostitel SMTP serveru",
   "admin.config.smtp.port": "Port",
-  "admin.config.smtp.port.description": "Port of the SMTP server",
-  "admin.config.smtp.email": "Email",
-  "admin.config.smtp.email.description":
-    "Email address which the emails get sent from",
-  "admin.config.smtp.username": "Username",
-  "admin.config.smtp.username.description": "Username of the SMTP server",
-  "admin.config.smtp.password": "Password",
-  "admin.config.smtp.password.description": "Password of the SMTP server",
-  "admin.config.smtp.button.test": "Send test email",
-  "admin.config.smtp.allow-unauthorized-certificates":
-    "Trust unauthorized SMTP server certificates",
-  "admin.config.smtp.allow-unauthorized-certificates.description":
-    "Only set this to true if you need to trust self signed certificates.",
-
-  "admin.config.oauth.allow-registration": "Allow registration",
-  "admin.config.oauth.allow-registration.description":
-    "Allow users to register via social login",
-  "admin.config.oauth.ignore-totp": "Ignore TOTP",
-  "admin.config.oauth.ignore-totp.description":
-    "Whether to ignore TOTP when user using social login",
-  "admin.config.oauth.disable-password": "Disable password login",
-  "admin.config.oauth.disable-password.description":
-    "Whether to disable password login\nMake sure that an OAuth provider is properly configured before activating this configuration to avoid being locked out.",
+  "admin.config.smtp.port.description": "Port SMTP serveru",
+  "admin.config.smtp.email": "E-mail",
+  "admin.config.smtp.email.description": "E-mailová adresa, ze které budou e-maily odesílány",
+  "admin.config.smtp.username": "Uživatelské jméno",
+  "admin.config.smtp.username.description": "Uživatelské jméno SMTP serveru",
+  "admin.config.smtp.password": "Heslo",
+  "admin.config.smtp.password.description": "Heslo SMTP serveru",
+  "admin.config.smtp.button.test": "Odeslat testovací e-mail",
+  "admin.config.smtp.allow-unauthorized-certificates": "Důvěřovat neoprávněným certifikátům SMTP serveru",
+  "admin.config.smtp.allow-unauthorized-certificates.description": "Povolte pouze pokud potřebujete důvěřovat vlastnoručně podepsaným certifikátům.",
+  "admin.config.oauth.allow-registration": "Povolit registraci",
+  "admin.config.oauth.allow-registration.description": "Povolit uživatelům registrovat se přes sociální sítě",
+  "admin.config.oauth.ignore-totp": "Ignorovat TOTP",
+  "admin.config.oauth.ignore-totp.description": "Ignorovat TOTP při přihlášení přes sociální sítě",
+  "admin.config.oauth.disable-password": "Zakázat přihlášení heslem",
+  "admin.config.oauth.disable-password.description": "Zda zakázat přihlášení heslem\nUjistěte se, že je OAuth poskytovatel správně nakonfigurován před aktivací této konfigurace, abyste se vyhnuli ztrátě přístupu.",
   "admin.config.oauth.github-enabled": "GitHub",
-  "admin.config.oauth.github-enabled.description":
-    "Whether GitHub login is enabled",
+  "admin.config.oauth.github-enabled.description": "Zda je povoleno přihlášení přes GitHub",
   "admin.config.oauth.github-client-id": "GitHub Client ID",
-  "admin.config.oauth.github-client-id.description":
-    "Client ID of the GitHub OAuth app",
+  "admin.config.oauth.github-client-id.description": "Client ID GitHub OAuth aplikace",
   "admin.config.oauth.github-client-secret": "GitHub Client secret",
-  "admin.config.oauth.github-client-secret.description":
-    "Client secret of the GitHub OAuth app",
+  "admin.config.oauth.github-client-secret.description": "Client secret of the GitHub OAuth app",
   "admin.config.oauth.google-enabled": "Google",
-  "admin.config.oauth.google-enabled.description":
-    "Whether Google login is enabled",
+  "admin.config.oauth.google-enabled.description": "Zda je povoleno přihlášení přes Google",
   "admin.config.oauth.google-client-id": "Google Client ID",
-  "admin.config.oauth.google-client-id.description":
-    "Client ID of the Google OAuth app",
+  "admin.config.oauth.google-client-id.description": "Client ID of the Google OAuth app",
   "admin.config.oauth.google-client-secret": "Google Client secret",
-  "admin.config.oauth.google-client-secret.description":
-    "Client secret of the Google OAuth app",
+  "admin.config.oauth.google-client-secret.description": "Client secret of the Google OAuth app",
   "admin.config.oauth.microsoft-enabled": "Microsoft",
-  "admin.config.oauth.microsoft-enabled.description":
-    "Whether Microsoft login is enabled",
+  "admin.config.oauth.microsoft-enabled.description": "Zda je povoleno přihlášení přes Microsoft",
   "admin.config.oauth.microsoft-tenant": "Microsoft Tenant",
-  "admin.config.oauth.microsoft-tenant.description":
-    "Tenant ID of the Microsoft OAuth app\ncommon: Users with both a personal Microsoft account and a work or school account from Microsoft Entra ID can sign in to the application. organizations: Only users with work or school accounts from Microsoft Entra ID can sign in to the application.\nconsumers: Only users with a personal Microsoft account can sign in to the application.\ndomain name of the Microsoft Entra tenant or the tenant ID in GUID format: Only users from a specific Microsoft Entra tenant (directory members with a work or school account or directory guests with a personal Microsoft account) can sign in to the application.",
+  "admin.config.oauth.microsoft-tenant.description": "Tenant ID of the Microsoft OAuth app\ncommon: Users with both a personal Microsoft account and a work or school account from Microsoft Entra ID can sign in to the application. organizations: Only users with work or school accounts from Microsoft Entra ID can sign in to the application.\nconsumers: Only users with a personal Microsoft account can sign in to the application.\ndomain name of the Microsoft Entra tenant or the tenant ID in GUID format: Only users from a specific Microsoft Entra tenant (directory members with a work or school account or directory guests with a personal Microsoft account) can sign in to the application.",
   "admin.config.oauth.microsoft-client-id": "Microsoft Client ID",
-  "admin.config.oauth.microsoft-client-id.description":
-    "Client ID of the Microsoft OAuth app",
+  "admin.config.oauth.microsoft-client-id.description": "Client ID of the Microsoft OAuth app",
   "admin.config.oauth.microsoft-client-secret": "Microsoft Client secret",
-  "admin.config.oauth.microsoft-client-secret.description":
-    "Client secret of the Microsoft OAuth app",
+  "admin.config.oauth.microsoft-client-secret.description": "Client secret of the Microsoft OAuth app",
   "admin.config.oauth.discord-enabled": "Discord",
-  "admin.config.oauth.discord-enabled.description":
-    "Whether Discord login is enabled",
+  "admin.config.oauth.discord-enabled.description": "Zda je povoleno přihlášení přes Discord",
   "admin.config.oauth.discord-limited-guild": "Discord limited server ID",
-  "admin.config.oauth.discord-limited-guild.description":
-    "Limit signing in to users in a specific server. Leave it blank to disable.",
+  "admin.config.oauth.discord-limited-guild.description": "Omezit přihlášení na uživatele na konkrétním serveru. Ponechte prázdné pro vypnutí.",
   "admin.config.oauth.discord-client-id": "Discord Client ID",
-  "admin.config.oauth.discord-client-id.description":
-    "Client ID of the Discord OAuth app",
+  "admin.config.oauth.discord-client-id.description": "Client ID of the Discord OAuth app",
   "admin.config.oauth.discord-client-secret": "Discord Client secret",
-  "admin.config.oauth.discord-client-secret.description":
-    "Client secret of the Discord OAuth app",
+  "admin.config.oauth.discord-client-secret.description": "Client secret of the Discord OAuth app",
   "admin.config.oauth.oidc-enabled": "OpenID Connect",
-  "admin.config.oauth.oidc-enabled.description":
-    "Whether OpenID Connect login is enabled",
+  "admin.config.oauth.oidc-enabled.description": "Zda je povoleno přihlášení přes OpenID Connect",
   "admin.config.oauth.oidc-discovery-uri": "OpenID Connect Discovery URI",
-  "admin.config.oauth.oidc-discovery-uri.description":
-    "Discovery URI of the OpenID Connect OAuth app",
+  "admin.config.oauth.oidc-discovery-uri.description": "Discovery URI of the OpenID Connect OAuth app",
   "admin.config.oauth.oidc-username-claim": "OpenID Connect username claim",
-  "admin.config.oauth.oidc-username-claim.description":
-    "Username claim in OpenID Connect ID token. Leave it blank if you don't know what this config is.",
+  "admin.config.oauth.oidc-username-claim.description": "Username claim in OpenID Connect ID token. Leave it blank if you don't know what this config is.",
   "admin.config.oauth.oidc-role-path": "Path to roles in OpenID Connect token",
-  "admin.config.oauth.oidc-role-path.description":
-    "Must be a valid JMES path referencing an array of roles. " +
-    "Managing access rights using OpenID Connect roles is only recommended if no other identity provider is configured and password login is disabled. " +
-    "Leave it blank if you don't know what this config is.",
-  "admin.config.oauth.oidc-role-general-access": "OpenID Connect role for general access",
-  "admin.config.oauth.oidc-role-general-access.description":
-    "Role required for general access. Must be present in a user’s roles for them to log in. " +
-    "Leave it blank if you don't know what this config is.",
+  "admin.config.oauth.oidc-role-path.description": "Musí být platná JMES cesta odkazující na pole rolí. " + "Správa přístupových práv pomocí OpenID Connect rolí je doporučena pouze v případě, že není nastaven žádný jiný poskytovatel identity a přihlášení heslem je zakázáno. " + "Ponechte prázdné, pokud nevíte, co tato konfigurace znamená.",
+  "admin.config.oauth.oidc-role-general-access": "OpenID Connect role pro obecný přístup",
+  "admin.config.oauth.oidc-role-general-access.description": "Role required for general access. Must be present in a user’s roles for them to log in. " + "Ponechte prázdné, pokud nevíte, co tato konfigurace znamená.",
   "admin.config.oauth.oidc-role-admin-access": "OpenID Connect role for admin access",
-  "admin.config.oauth.oidc-role-admin-access.description":
-    "Role required for administrative access. Must be present in a user’s roles for them to access the admin panel. " +
-    "Leave it blank if you don't know what this config is.",
+  "admin.config.oauth.oidc-role-admin-access.description": "Role required for administrative access. Must be present in a user’s roles for them to access the admin panel. " + "Ponechte prázdné, pokud nevíte, co tato konfigurace znamená.",
   "admin.config.oauth.oidc-client-id": "OpenID Connect Client ID",
-  "admin.config.oauth.oidc-client-id.description":
-    "Client ID of the OpenID Connect OAuth app",
+  "admin.config.oauth.oidc-client-id.description": "Client ID of the OpenID Connect OAuth app",
   "admin.config.oauth.oidc-client-secret": "OpenID Connect Client secret",
-  "admin.config.oauth.oidc-client-secret.description":
-    "Client secret of the OpenID Connect OAuth app",
-
+  "admin.config.oauth.oidc-client-secret.description": "Client secret of the OpenID Connect OAuth app",
   "admin.config.category.ldap": "LDAP",
-  "admin.config.ldap.enabled": "Enabled LDAP",
+  "admin.config.ldap.enabled": "Povolit LDAP",
   "admin.config.ldap.enabled.description": "Use LDAP authentication for user login",
-  "admin.config.ldap.url": "Server URL",
+  "admin.config.ldap.url": "URL serveru",
   "admin.config.ldap.url.description": "URL of the LDAP server",
   "admin.config.ldap.bind-dn": "Bind DN",
-  "admin.config.ldap.bind-dn.description": "Default user which will be used to execute the user search",
+  "admin.config.ldap.bind-dn.description": "Výchozí uživatel, který bude použit pro vyhledávání uživatelů",
   "admin.config.ldap.bind-password": "Bind password",
-  "admin.config.ldap.bind-password.description": "Password for the user search user",
+  "admin.config.ldap.bind-password.description": "Heslo pro uživatele pro vyhledávání",
   "admin.config.ldap.search-base": "User base",
-  "admin.config.ldap.search-base.description": "Base location, where the user search will be performed",
+  "admin.config.ldap.search-base.description": "Základní umístění, kde budou prováděna hledání uživatelů",
   "admin.config.ldap.search-query": "User query",
   "admin.config.ldap.search-query.description": "The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.",
   "admin.config.ldap.admin-groups": "Admin group",
-
+  "admin.config.ldap.admin-groups.description": "Skupina potřebná pro administrativní přístup.",
   // 404
-  "404.description": "Oops this page doesn't exist.",
+  "404.description": "Jejda, tato stránka neexistuje.",
   "404.button.home": "Bring me back home",
-
   // error
-  "error.title": "Error",
-  "error.description": "Oops!",
-  "error.button.back": "Go back",
-  "error.msg.default": "Something went wrong.",
-  "error.msg.access_denied":
-    "You canceled the authentication process, please try again.",
-  "error.msg.expired_token":
-    "The authentication process took too long, please try again.",
-  "error.msg.invalid_token": "Internal Error",
-  "error.msg.no_user": "User linked to this {0} account doesn't exist.",
-  "error.msg.no_email": "Can't get email address from this {0} account.",
-  "error.msg.already_linked":
-    "This {0} account is already linked to another account.",
-  "error.msg.not_linked": "This {0} account haven't linked to any account yet.",
-  "error.msg.unverified_account":
-    "This {0} account is unverified, please try again after verification.",
-  "error.msg.user_not_allowed":
-    "You are not allowed to sign in.",
-  "error.msg.cannot_get_user_info":
-    "Can not get your user info from this {0} account.",
+  "error.title": "Chyba",
+  "error.description": "Jejda!",
+  "error.button.back": "Vrátit se zpět",
+  "error.msg.default": "Něco se pokazilo.",
+  "error.msg.access_denied": "Zrušili jste proces ověřování, zkuste to prosím znovu.",
+  "error.msg.expired_token": "Proces ověřování trval příliš dlouho, zkuste to prosím znovu.",
+  "error.msg.invalid_token": "Interní chyba",
+  "error.msg.no_user": "Uživatel propojený s tímto účtem {0} neexistuje.",
+  "error.msg.no_email": "Z tohoto účtu {0} nelze získat e-mailovou adresu.",
+  "error.msg.already_linked": "Tento účet {0} je již propojen s jiným účtem.",
+  "error.msg.not_linked": "Tento účet {0} ještě nebyl propojen s žádným účtem.",
+  "error.msg.unverified_account": "Tento účet {0} není ověřen, zkuste to prosím znovu po ověření.",
+  "error.msg.user_not_allowed": "Nemáte oprávnění k přihlášení.",
+  "error.msg.cannot_get_user_info": "Nelze získat informace o vašem uživateli z tohoto účtu {0}.",
   "error.param.provider_github": "GitHub",
   "error.param.provider_google": "Google",
   "error.param.provider_microsoft": "Microsoft",
   "error.param.provider_discord": "Discord",
   "error.param.provider_oidc": "OpenID Connect",
-
   // Common translations
-  "common.button.save": "Save",
-  "common.button.create": "Create",
-  "common.button.submit": "Submit",
-  "common.button.delete": "Delete",
-  "common.button.cancel": "Cancel",
-  "common.button.confirm": "Confirm",
-  "common.button.disable": "Disable",
-  "common.button.share": "Share",
-  "common.button.generate": "Generate",
-  "common.button.done": "Done",
-  "common.text.link": "Link",
-  "common.text.navigate-to-link": "Go to the link",
-  "common.text.or": "or",
-  "common.button.go-back": "Go back",
-  "common.button.go-home": "Go home",
-  "common.notify.copied": "Your link was copied to the clipboard",
-  "common.success": "Success",
-
-  "common.error": "Error",
-  "common.error.unknown": "An unknown error occurred",
+  "common.button.save": "Uložit",
+  "common.button.create": "Vytvořit",
+  "common.button.submit": "Odeslat",
+  "common.button.delete": "Smazat",
+  "common.button.cancel": "Zrušit",
+  "common.button.confirm": "Potvrdit",
+  "common.button.disable": "Zakázat",
+  "common.button.share": "Sdílet",
+  "common.button.generate": "Generovat",
+  "common.button.done": "Hotovo",
+  "common.text.link": "Odkaz",
+  "common.text.navigate-to-link": "Přejít na odkaz",
+  "common.text.or": "nebo",
+  "common.button.go-back": "Vrátit se zpět",
+  "common.button.go-home": "Jít domů",
+  "common.notify.copied": "Váš odkaz byl zkopírován do schránky",
+  "common.success": "Úspěch",
+  "common.error": "Chyba",
+  "common.error.unknown": "Došlo k neznámé chybě",
   "common.error.invalid-email": "Invalid email address",
   "common.error.too-short": "Must be at least {length} characters",
   "common.error.too-long": "Must be at most {length} characters",
   "common.error.exact-length": "Must be exactly {length} characters",
   "common.error.invalid-number": "Must be a number",
-  "common.error.field-required": "This field is required",
+  "common.error.field-required": "This field is required"
 };

@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "초대 제목",
   "admin.config.email.invite-subject.description": "관리자가 사용자를 초대할 때 전송되는 이메일의 제목입니다.",
   "admin.config.email.invite-message": "초대 메시지",
-  "admin.config.email.invite-message.description": "관리자가 사용자를 초대하면 전송되는 메시지입니다. {url} 은 초대 URL로, {password} 는 비밀번호로 대체됩니다.",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "가입 허용",
   "admin.config.share.allow-registration.description": "등록 가능 여부",
   "admin.config.share.allow-unauthenticated-shares": "인증되지 않은 공유 허용",
@@ -418,6 +418,7 @@ export default {
   "admin.config.ldap.search-query": "User query",
   "admin.config.ldap.search-query.description": "The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.",
   "admin.config.ldap.admin-groups": "Admin group",
+  "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
   // 404
   "404.description": "이런, 이 페이지는 존재하지 않습니다.",
   "404.button.home": "나를 집으로 데려다 줘",

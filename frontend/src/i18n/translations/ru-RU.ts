@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "Тема приглашения",
   "admin.config.email.invite-subject.description": "Тема письма, которое отправляется, когда администратор приглашает пользователя.",
   "admin.config.email.invite-message": "Сообщение с приглашением",
-  "admin.config.email.invite-message.description": "Сообщение приглашения. {url} будет заменён ссылкой приглашения, а {password} паролем.",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "Разрешить регистрацию",
   "admin.config.share.allow-registration.description": "Разрешена ли регистрация",
   "admin.config.share.allow-unauthenticated-shares": "Разрешить неавторизованные загрузки",
@@ -418,6 +418,7 @@ export default {
   "admin.config.ldap.search-query": "User query",
   "admin.config.ldap.search-query.description": "The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.",
   "admin.config.ldap.admin-groups": "Admin group",
+  "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
   // 404
   "404.description": "Упс, этой страницы не существует.",
   "404.button.home": "Верните меня домой",

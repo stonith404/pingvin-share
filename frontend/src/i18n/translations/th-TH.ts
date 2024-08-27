@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "หัวเรื่องการเชิญ",
   "admin.config.email.invite-subject.description": "หัวเรื่องของอีเมล์์์์์์ที่ส่งไปยังผู้ใช้เมื่อผู้ดูแลระบบเชิญผู้ใช้",
   "admin.config.email.invite-message": "ข้อความการเชิญ",
-  "admin.config.email.invite-message.description": "ข้อความที่ส่งไปยังผู้ใช้เมื่อผู้ดูแลระบบเชิญผู้ใช้ ตัวแปรที่ใช้ได้:\n {url} - URL สำหรับเชิญผู้ใช้\n {password} - รหัสผ่านของผู้ใช้\n ตัวแปรจะถูกแทนที่ด้วยค่าจริง",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "อนุญาตให้ลงทะเบียนด้วยตัวเอง",
   "admin.config.share.allow-registration.description": "อนุญาตให้ผู้ใช้ลงทะเบียนด้วยตัวเองเพื่อสร้างแชร์",
   "admin.config.share.allow-unauthenticated-shares": "อนุญาตให้แชร์โดยไม่ต้องเข้าสู่ระบบ",
@@ -418,6 +418,7 @@ export default {
   "admin.config.ldap.search-query": "User query",
   "admin.config.ldap.search-query.description": "The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.",
   "admin.config.ldap.admin-groups": "Admin group",
+  "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
   // 404
   "404.description": "ไม่พบหน้าที่คุณกำลังมองหา",
   "404.button.home": "หน้าแรก",

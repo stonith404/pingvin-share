@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "Davet konusu",
   "admin.config.email.invite-subject.description": "Yönetici bir kullanıcıyı davet ettiğinde gönderilen e-postanın konusu.",
   "admin.config.email.invite-message": "Davet mesajı",
-  "admin.config.email.invite-message.description": "Yönetici bir kullanıcıyı davet ettiğinde gönderilen mesaj. {url} davet URL'si ve {password} şifre ile değiştirilecektir.",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "Kayda izin ver",
   "admin.config.share.allow-registration.description": "Kaydın izin verilip verilmeyeceği",
   "admin.config.share.allow-unauthenticated-shares": "Giriş yapmamış kullanıcılara izin ver",
@@ -418,6 +418,7 @@ export default {
   "admin.config.ldap.search-query": "User query",
   "admin.config.ldap.search-query.description": "The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.",
   "admin.config.ldap.admin-groups": "Admin group",
+  "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
   // 404
   "404.description": "Haydaa, böyle bir sayfa yok.",
   "404.button.home": "Beni eve götür",

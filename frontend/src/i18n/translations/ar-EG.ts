@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "عنوان الدعوة",
   "admin.config.email.invite-subject.description": "عنوان البريد الذي سيُرسل عندما يقوم المشرف بدعوة مستخدم ما.",
   "admin.config.email.invite-message": "رسالة الدعوة",
-  "admin.config.email.invite-message.description": "الرسالة التي ستُرسل عندما يدعو مشرفٌ مستخدمًا. سيُوضع رابط الدعوة مكان {url} وكلمة السر مكان {password}.",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "السماح بالتسجيل",
   "admin.config.share.allow-registration.description": "إتاحة تسجيل حساب جديد",
   "admin.config.share.allow-unauthenticated-shares": "السماح بالمشاركات غير المصادق عليها",
@@ -418,6 +418,7 @@ export default {
   "admin.config.ldap.search-query": "User query",
   "admin.config.ldap.search-query.description": "The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.",
   "admin.config.ldap.admin-groups": "Admin group",
+  "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
   // 404
   "404.description": "هذه الصفحة غير موجودة.",
   "404.button.home": "أعدني للصفحة الرئيسية",

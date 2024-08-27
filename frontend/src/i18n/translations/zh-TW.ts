@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "邀請Email通知主題",
   "admin.config.email.invite-subject.description": "當管理員邀請使用者時，發送的邀請通知主題",
   "admin.config.email.invite-message": "邀請Email通知內容",
-  "admin.config.email.invite-message.description": "當管理員邀請使用者時，發送的邀請通知內容。{url} 會被邀請聯結代替，{password} 會被密碼代替",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "允許註冊",
   "admin.config.share.allow-registration.description": "是否允許註冊",
   "admin.config.share.allow-unauthenticated-shares": "是否允許未登入進行分享",
@@ -418,6 +418,7 @@ export default {
   "admin.config.ldap.search-query": "User query",
   "admin.config.ldap.search-query.description": "The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.",
   "admin.config.ldap.admin-groups": "Admin group",
+  "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
   // 404
   "404.description": "查無此頁",
   "404.button.home": "返回主頁",

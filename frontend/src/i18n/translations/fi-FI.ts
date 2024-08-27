@@ -324,7 +324,7 @@ export default {
   "admin.config.email.invite-subject": "Kutsun aihe",
   "admin.config.email.invite-subject.description": "Sähköpostin aihe, mikä lähetetään kun ylläpitäjä kutsuu käyttäjää.",
   "admin.config.email.invite-message": "Kutsun viesti",
-  "admin.config.email.invite-message.description": "Viesti mikä lähetetään kuin yp invaa käyttäjän. {url} korvataan kutsuosoitteella ja {password} salasanalla.",
+  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
   "admin.config.share.allow-registration": "Salli rekisteröinti",
   "admin.config.share.allow-registration.description": "Onko rekisteröinti sallittu",
   "admin.config.share.allow-unauthenticated-shares": "Salli anonyymit jaot",
@@ -418,6 +418,7 @@ export default {
   "admin.config.ldap.search-query": "User query",
   "admin.config.ldap.search-query.description": "The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.",
   "admin.config.ldap.admin-groups": "Admin group",
+  "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
   // 404
   "404.description": "Hups tätä sivua ei ole olemassa.",
   "404.button.home": "Tuo minut takaisin kotiin",
