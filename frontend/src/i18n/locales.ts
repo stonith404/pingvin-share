@@ -23,6 +23,7 @@ import chineseSimplified from "./translations/zh-CN";
 import chineseTraditional from "./translations/zh-TW";
 import turkish from "./translations/tr-TR";
 import czech from "./translations/cs-CZ";
+import viatnamese from "./translations/vi-VN";
 
 export const LOCALES = {
   ENGLISH: {
@@ -149,5 +150,10 @@ export const LOCALES = {
     name: "Čeština",
     code: "cs-CZ",
     messages: czech,
+  },
+  VIATNAMESE: {
+    name: "Tiếng Việt",
+    code: "vi-VN",
+    messages: viatnamese,
   },
 };
