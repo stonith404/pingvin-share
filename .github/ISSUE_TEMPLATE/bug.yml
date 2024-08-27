@@ -34,11 +34,10 @@ body:
   - type: input
     id: operating-system
     attributes:
-      label: "🌐 Browser"
-      description: "Which browser do you use?"
-      placeholder: "Firefox"
+      label: "📜 Logs"
+      description: "Paste any relevant logs here."
     validations:
-      required: true
+      required: false
   - type: markdown
     attributes:
       value: |
