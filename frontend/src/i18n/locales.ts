@@ -24,6 +24,7 @@ import chineseTraditional from "./translations/zh-TW";
 import turkish from "./translations/tr-TR";
 import czech from "./translations/cs-CZ";
 import viatnamese from "./translations/vi-VN";
+import bulgarian from "./translations/bg-BG";
 
 export const LOCALES = {
   ENGLISH: {
@@ -155,5 +156,10 @@ export const LOCALES = {
     name: "Tiếng Việt",
     code: "vi-VN",
     messages: viatnamese,
+  },
+  BULGARIAN: {
+    name: "Български",
+    code: "bg-BG",
+    messages: bulgarian,
   },
 };
