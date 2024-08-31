@@ -62,7 +62,7 @@ export default {
   "resetPassword.button.back": "Back to sign in page",
   "resetPassword.text.resetPassword": "Reset password",
   "resetPassword.text.enterNewPassword": "Въведете нова парола",
-  "resetPassword.input.password": "New password",
+  "resetPassword.input.password": "Нова парола",
   "resetPassword.notify.passwordReset": "Your password has been reset successfully.",
   // /account
   "account.title": "My account",
