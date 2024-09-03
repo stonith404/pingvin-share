@@ -417,7 +417,7 @@ export default {
   "admin.config.ldap.search-base.description": "Base location, where the user search will be performed",
   "admin.config.ldap.search-query": "User query",
   "admin.config.ldap.search-query.description": "The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.",
-  "admin.config.ldap.admin-groups": "Admin group",
+  "admin.config.ldap.admin-groups": "Administratorengruppe",
   "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
   // 404
   "404.description": "Ups, diese Seite existiert nicht.",
