@@ -34,7 +34,9 @@ export class UserDTO {
   totpVerified: boolean;
 
   from(partial: Partial<UserDTO>) {
-    const result = plainToClass(UserDTO, partial, { excludeExtraneousValues: true });
+    const result = plainToClass(UserDTO, partial, {
+      excludeExtraneousValues: true,
+    });
     result.isLdap = partial.ldapDN?.length > 0;
     return result;
   }

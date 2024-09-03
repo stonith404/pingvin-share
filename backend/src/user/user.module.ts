@@ -8,6 +8,6 @@ import { FileModule } from "src/file/file.module";
   imports: [EmailModule, FileModule],
   providers: [UserSevice],
   controllers: [UserController],
-  exports: [UserSevice]
+  exports: [UserSevice],
 })
-export class UserModule { }
+export class UserModule {}

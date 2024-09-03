@@ -29,7 +29,7 @@ export class AuthService {
     private emailService: EmailService,
     private ldapService: LdapService,
     private userService: UserSevice,
-  ) { }
+  ) {}
   private readonly logger = new Logger(AuthService.name);
 
   async signUp(dto: AuthRegisterDTO, ip: string, isAdmin?: boolean) {
@@ -76,18 +76,28 @@ export class AuthService {
         },
       });
 
-      if (user?.password && await argon.verify(user.password, dto.password)) {
-        this.logger.log(`Successful password login for user ${user.email} from IP ${ip}`);
+      if (user?.password && (await argon.verify(user.password, dto.password))) {
+        this.logger.log(
+          `Successful password login for user ${user.email} from IP ${ip}`,
+        );
         return this.generateToken(user);
       }
     }
 
     if (this.config.get("ldap.enabled")) {
       this.logger.debug(`Trying LDAP login for user ${dto.username}`);
-      const ldapUser = await this.ldapService.authenticateUser(dto.username, dto.password);
+      const ldapUser = await this.ldapService.authenticateUser(
+        dto.username,
+        dto.password,
+      );
       if (ldapUser) {
-        const user = await this.userService.findOrCreateFromLDAP(dto.username, ldapUser);
-        this.logger.log(`Successful LDAP login for user ${user.email} from IP ${ip}`);
+        const user = await this.userService.findOrCreateFromLDAP(
+          dto.username,
+          ldapUser,
+        );
+        this.logger.log(
+          `Successful LDAP login for user ${user.email} from IP ${ip}`,
+        );
         return this.generateToken(user);
       }
     }

@@ -17,7 +17,7 @@ export class UserSevice {
     private emailService: EmailService,
     private fileService: FileService,
     private configService: ConfigService,
-  ) { }
+  ) {}
 
   async list() {
     return await this.prisma.user.findMany();
@@ -94,7 +94,9 @@ export class UserSevice {
 
   async findOrCreateFromLDAP(username: string, ldap: LdapAuthenticateResult) {
     const passwordHash = await argon.hash(crypto.randomUUID());
-    const userEmail = ldap.attributes["userPrincipalName"]?.at(0) ?? `${crypto.randomUUID()}@ldap.local`;
+    const userEmail =
+      ldap.attributes["userPrincipalName"]?.at(0) ??
+      `${crypto.randomUUID()}@ldap.local`;
     const adminGroup = this.configService.get("ldap.adminGroups");
     const isAdmin = ldap.attributes["memberOf"]?.includes(adminGroup) ?? false;
     try {
@@ -114,8 +116,8 @@ export class UserSevice {
           ldapDN: ldap.userDn,
         },
         where: {
-          ldapDN: ldap.userDn
-        }
+          ldapDN: ldap.userDn,
+        },
       });
     } catch (e) {
       if (e instanceof PrismaClientKnownRequestError) {
