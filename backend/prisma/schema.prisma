@@ -16,6 +16,7 @@ model User {
   email    String  @unique
   password String?
   isAdmin  Boolean @default(false)
+  ldapDN   String? @unique
 
   shares        Share[]
   refreshTokens RefreshToken[]

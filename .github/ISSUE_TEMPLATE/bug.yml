@@ -31,14 +31,13 @@ body:
       label: "👎 Actual Behavior"
       description: "What did actually happen? Add screenshots, if applicable."
       placeholder: "It actually ..."
-  - type: input
+  - type: textarea
     id: operating-system
     attributes:
-      label: "🌐 Browser"
-      description: "Which browser do you use?"
-      placeholder: "Firefox"
+      label: "📜 Logs"
+      description: "Paste any relevant logs here."
     validations:
-      required: true
+      required: false
   - type: markdown
     attributes:
       value: |

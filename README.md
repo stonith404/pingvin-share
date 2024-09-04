@@ -4,7 +4,7 @@
 
 ---
 
-Pingvin Share is self-hosted file sharing platform and an alternative for WeTransfer.
+Pingvin Share is a self-hosted file sharing platform and an alternative for WeTransfer.
 
 ## ✨ Features
 

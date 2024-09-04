@@ -107,7 +107,7 @@ const configVariables: ConfigVariables = {
     inviteMessage: {
       type: "text",
       defaultValue:
-        "Hey!\n\nYou were invited to Pingvin Share. Click this link to accept the invite: {url}\n\nYour password is: {password}\n\nPingvin Share 🐧",
+        'Hey!\n\nYou were invited to Pingvin Share. Click this link to accept the invite: {url}\n\nYou can use the email "{email}" and the password "{password}" to sign in.\n\nPingvin Share 🐧',
     },
   },
   smtp: {
@@ -143,6 +143,42 @@ const configVariables: ConfigVariables = {
       defaultValue: "",
       obscured: true,
     },
+  },
+  ldap: {
+    enabled: {
+      type: "boolean",
+      defaultValue: "false",
+      secret: false,
+    },
+
+    url: {
+      type: "string",
+      defaultValue: "",
+    },
+
+    bindDn: {
+      type: "string",
+      defaultValue: "",
+    },
+    bindPassword: {
+      type: "string",
+      defaultValue: "",
+      obscured: true,
+    },
+
+    searchBase: {
+      type: "string",
+      defaultValue: "",
+    },
+    searchQuery: {
+      type: "string",
+      defaultValue: ""
+    },
+
+    adminGroups: {
+      type: "string",
+      defaultValue: ""
+    }
   },
   oauth: {
     "allowRegistration": {
@@ -308,7 +344,7 @@ async function migrateConfigVariables() {
   for (const existingConfigVariable of existingConfigVariables) {
     const configVariable =
       configVariables[existingConfigVariable.category]?.[
-        existingConfigVariable.name
+      existingConfigVariable.name
       ];
 
     // Delete the config variable if it doesn't exist in the seed

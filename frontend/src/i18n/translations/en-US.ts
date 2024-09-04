@@ -446,7 +446,7 @@ export default {
     "Subject of the email which gets sent when an admin invites a user.",
   "admin.config.email.invite-message": "Invite message",
   "admin.config.email.invite-message.description":
-    "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL and {password} with the password.",
+    "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
 
   "admin.config.share.allow-registration": "Allow registration",
   "admin.config.share.allow-registration.description":
@@ -569,6 +569,22 @@ export default {
   "admin.config.oauth.oidc-client-secret": "OpenID Connect Client secret",
   "admin.config.oauth.oidc-client-secret.description":
     "Client secret of the OpenID Connect OAuth app",
+
+  "admin.config.category.ldap": "LDAP",
+  "admin.config.ldap.enabled": "Enabled LDAP",
+  "admin.config.ldap.enabled.description": "Use LDAP authentication for user login",
+  "admin.config.ldap.url": "Server URL",
+  "admin.config.ldap.url.description": "URL of the LDAP server",
+  "admin.config.ldap.bind-dn": "Bind DN",
+  "admin.config.ldap.bind-dn.description": "Default user which will be used to execute the user search",
+  "admin.config.ldap.bind-password": "Bind password",
+  "admin.config.ldap.bind-password.description": "Password for the user search user",
+  "admin.config.ldap.search-base": "User base",
+  "admin.config.ldap.search-base.description": "Base location, where the user search will be performed",
+  "admin.config.ldap.search-query": "User query",
+  "admin.config.ldap.search-query.description": "The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.",
+  "admin.config.ldap.admin-groups": "Admin group",
+  "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
 
   // 404
   "404.description": "Oops this page doesn't exist.",

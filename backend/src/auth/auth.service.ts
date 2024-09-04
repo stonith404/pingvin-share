@@ -16,6 +16,9 @@ import { EmailService } from "src/email/email.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { AuthRegisterDTO } from "./dto/authRegister.dto";
 import { AuthSignInDTO } from "./dto/authSignIn.dto";
+import { LdapService } from "./ldap.service";
+import { inspect } from "util";
+import { UserSevice } from "../user/user.service";
 
 @Injectable()
 export class AuthService {
@@ -24,6 +27,8 @@ export class AuthService {
     private jwtService: JwtService,
     private config: ConfigService,
     private emailService: EmailService,
+    private ldapService: LdapService,
+    private userService: UserSevice,
   ) {}
   private readonly logger = new Logger(AuthService.name);
 
@@ -64,24 +69,43 @@ export class AuthService {
     if (!dto.email && !dto.username)
       throw new BadRequestException("Email or username is required");
 
-    if (this.config.get("oauth.disablePassword"))
-      throw new ForbiddenException("Password sign in is disabled");
+    if (!this.config.get("oauth.disablePassword")) {
+      const user = await this.prisma.user.findFirst({
+        where: {
+          OR: [{ email: dto.email }, { username: dto.username }],
+        },
+      });
 
-    const user = await this.prisma.user.findFirst({
-      where: {
-        OR: [{ email: dto.email }, { username: dto.username }],
-      },
-    });
-
-    if (!user || !(await argon.verify(user.password, dto.password))) {
-      this.logger.log(
-        `Failed login attempt for user ${dto.email} from IP ${ip}`,
-      );
-      throw new UnauthorizedException("Wrong email or password");
+      if (user?.password && (await argon.verify(user.password, dto.password))) {
+        this.logger.log(
+          `Successful password login for user ${user.email} from IP ${ip}`,
+        );
+        return this.generateToken(user);
+      }
     }
 
-    this.logger.log(`Successful login for user ${user.email} from IP ${ip}`);
-    return this.generateToken(user);
+    if (this.config.get("ldap.enabled")) {
+      this.logger.debug(`Trying LDAP login for user ${dto.username}`);
+      const ldapUser = await this.ldapService.authenticateUser(
+        dto.username,
+        dto.password,
+      );
+      if (ldapUser) {
+        const user = await this.userService.findOrCreateFromLDAP(
+          dto.username,
+          ldapUser,
+        );
+        this.logger.log(
+          `Successful LDAP login for user ${user.email} from IP ${ip}`,
+        );
+        return this.generateToken(user);
+      }
+    }
+
+    this.logger.log(
+      `Failed login attempt for user ${dto.email || dto.username} from IP ${ip}`,
+    );
+    throw new UnauthorizedException("Wrong email or password");
   }
 
   async generateToken(user: User, isOAuth = false) {

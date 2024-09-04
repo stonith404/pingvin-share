@@ -1,6 +1,6 @@
 {
   "name": "pingvin-share-backend",
-  "version": "0.29.0",
+  "version": "1.0.3",
   "scripts": {
     "build": "nest build",
     "dev": "cross-env NODE_ENV=development nest start --watch",
@@ -25,6 +25,7 @@
     "@nestjs/throttler": "^5.2.0",
     "@prisma/client": "^5.16.1",
     "@types/jmespath": "^0.15.2",
+    "@types/ldapjs": "^3.0.6",
     "archiver": "^7.0.1",
     "argon2": "^0.40.3",
     "body-parser": "^1.20.2",
@@ -35,6 +36,7 @@
     "content-disposition": "^0.5.4",
     "cookie-parser": "^1.4.6",
     "jmespath": "^0.16.0",
+    "ldapjs": "^3.0.7",
     "mime-types": "^2.1.35",
     "moment": "^2.30.1",
     "nanoid": "^3.3.7",
