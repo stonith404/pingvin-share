@@ -51,7 +51,7 @@ export class OAuthService {
       await this.updateIsAdmin(user);
       const updatedUser = await this.prisma.user.findFirst({
         where: {
-          email: user.email,
+          id: oauthUser.userId,
         },
       });
       this.logger.log(`Successful login for user ${user.email} from IP ${ip}`);
