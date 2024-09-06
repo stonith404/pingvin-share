@@ -7,7 +7,7 @@ const config: Config = {
   tagline:
     "Pingvin Share is self-hosted file sharing platform and an alternative for WeTransfer.",
   favicon: "img/pingvinshare.svg",
-  
+
   url: "https://stonith404.github.io",
   baseUrl: "/pingvin-share/",
   organizationName: "stonith404",
@@ -37,7 +37,7 @@ const config: Config = {
 
   themeConfig: {
     image: "img/pingvinshare.svg",
-    colorMode:{
+    colorMode: {
       respectPrefersColorScheme: true,
     },
     navbar: {
