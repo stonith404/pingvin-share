@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/stonith404/pingvin-share/compare/v1.0.3...v1.0.4) (2024-09-06)
+
+
+### Bug Fixes
+
+* oauth2 login can fail in some cases because the user can't be found ([92e1e82](https://github.com/stonith404/pingvin-share/commit/92e1e82e095075edf04019887f9c2048c21d00d6))
+
 ## [1.0.3](https://github.com/stonith404/pingvin-share/compare/v1.0.2...v1.0.3) (2024-09-03)
 
 
