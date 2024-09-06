@@ -13,6 +13,8 @@ Pingvin Share is a self-hosted file sharing platform and an alternative for WeTr
 - Set an expiration date for shares
 - Secure shares with visitor limits and passwords
 - Email recipients
+- Reverse shares
+- OIDC and LDAP authentication
 - Integration with ClamAV for security scans
 
 ## 🐧 Get to know Pingvin Share
@@ -30,6 +32,9 @@ Pingvin Share is a self-hosted file sharing platform and an alternative for WeTr
 2. Run `docker compose up -d`
 
 The website is now listening on `http://localhost:3000`, have fun with Pingvin Share 🐧!
+
+> [!TIP]
+> Checkout [Pocket ID](https://github.com/stonith404/pocket-id), a simple OIDC provider which allows you to login with Passkeys into your services like Pingvin Share.
 
 ## 📚 Documentation
 
