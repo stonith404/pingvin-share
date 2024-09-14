@@ -456,6 +456,7 @@ export default {
   "common.text.link": "Link",
   "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "hoặc",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Quay lại",
   "common.button.go-home": "Về trang chủ",
   "common.notify.copied": "Đã sao chép liên kết vào bộ nhớ",
