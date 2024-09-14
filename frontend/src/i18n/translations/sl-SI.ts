@@ -456,6 +456,7 @@ export default {
   "common.text.link": "Poveži",
   "common.text.navigate-to-link": "Pojdi na povezavo",
   "common.text.or": "ali",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Nazaj",
   "common.button.go-home": "Pojdi domov",
   "common.notify.copied": "Povezava je bila kopirana v odložišče",
