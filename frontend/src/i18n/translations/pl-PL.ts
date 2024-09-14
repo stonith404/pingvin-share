@@ -456,6 +456,7 @@ export default {
   "common.text.link": "Link",
   "common.text.navigate-to-link": "Przejdź do linku",
   "common.text.or": "lub",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Wróć",
   "common.button.go-home": "Wróć do ekranu głównego",
   "common.notify.copied": "Link został skopiowany do schowka",
