@@ -456,6 +456,7 @@ export default {
   "common.text.link": "Lien",
   "common.text.navigate-to-link": "Accéder au lien",
   "common.text.or": "ou",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Précédent",
   "common.button.go-home": "Accueil",
   "common.notify.copied": "Votre lien a été copié dans le presse-papiers",
