@@ -17,17 +17,18 @@ export class EmailService {
     if (!this.config.get("smtp.enabled"))
       throw new InternalServerErrorException("SMTP is disabled");
 
+    const username = this.config.get("smtp.username");
+    const password = this.config.get("smtp.password");
+
     return nodemailer.createTransport({
       host: this.config.get("smtp.host"),
       port: this.config.get("smtp.port"),
       secure: this.config.get("smtp.port") == 465,
-      auth: {
-        user: this.config.get("smtp.username"),
-        pass: this.config.get("smtp.password"),
-      },
+      auth:
+        username || password ? { user: username, pass: password } : undefined,
       tls: {
         rejectUnauthorized: !this.config.get(
-          "smtp.allowUnauthorizedCertificates",
+          "smtp.allowUnauthorizedCertificates"
         ),
       },
     });
@@ -37,7 +38,7 @@ export class EmailService {
     await this.getTransporter()
       .sendMail({
         from: `"${this.config.get("general.appName")}" <${this.config.get(
-          "smtp.email",
+          "smtp.email"
         )}>`,
         to: email,
         subject,
@@ -54,7 +55,7 @@ export class EmailService {
     shareId: string,
     creator?: User,
     description?: string,
-    expiration?: Date,
+    expiration?: Date
   ) {
     if (!this.config.get("email.enableShareEmailRecipients"))
       throw new InternalServerErrorException("Email service disabled");
@@ -74,8 +75,8 @@ export class EmailService {
           "{expires}",
           moment(expiration).unix() != 0
             ? moment(expiration).fromNow()
-            : "in: never",
-        ),
+            : "in: never"
+        )
     );
   }
 
@@ -88,13 +89,13 @@ export class EmailService {
       this.config
         .get("email.reverseShareMessage")
         .replaceAll("\\n", "\n")
-        .replaceAll("{shareUrl}", shareUrl),
+        .replaceAll("{shareUrl}", shareUrl)
     );
   }
 
   async sendResetPasswordEmail(recipientEmail: string, token: string) {
     const resetPasswordUrl = `${this.config.get(
-      "general.appUrl",
+      "general.appUrl"
     )}/auth/resetPassword/${token}`;
 
     await this.sendMail(
@@ -103,7 +104,7 @@ export class EmailService {
       this.config
         .get("email.resetPasswordMessage")
         .replaceAll("\\n", "\n")
-        .replaceAll("{url}", resetPasswordUrl),
+        .replaceAll("{url}", resetPasswordUrl)
     );
   }
 
@@ -117,7 +118,7 @@ export class EmailService {
         .get("email.inviteMessage")
         .replaceAll("{url}", loginUrl)
         .replaceAll("{password}", password)
-        .replaceAll("{email}", recipientEmail),
+        .replaceAll("{email}", recipientEmail)
     );
   }
 
@@ -125,7 +126,7 @@ export class EmailService {
     await this.getTransporter()
       .sendMail({
         from: `"${this.config.get("general.appName")}" <${this.config.get(
-          "smtp.email",
+          "smtp.email"
         )}>`,
         to: recipientEmail,
         subject: "Test email",
