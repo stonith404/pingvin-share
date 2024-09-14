@@ -456,6 +456,7 @@ export default {
   "common.text.link": "ลิงค์",
   "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "หรือ",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "ย้อนกลับ",
   "common.button.go-home": "Go home",
   "common.notify.copied": "คัดลอกไปยังคลิปบอร์ดแล้ว",
