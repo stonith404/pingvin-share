@@ -4,6 +4,7 @@ import {
   Container,
   createStyles,
   Group,
+  Loader,
   Paper,
   PasswordInput,
   Stack,
@@ -15,7 +16,7 @@ import { useForm, yupResolver } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import { useEffect, useState } from "react";
 import { TbInfoCircle } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 import * as yup from "yup";
@@ -24,8 +25,8 @@ import useUser from "../../hooks/user.hook";
 import useTranslate from "../../hooks/useTranslate.hook";
 import authService from "../../services/auth.service";
 import { getOAuthIcon, getOAuthUrl } from "../../utils/oauth.util";
-import toast from "../../utils/toast.util";
 import { safeRedirectPath } from "../../utils/router.util";
+import toast from "../../utils/toast.util";
 
 const useStyles = createStyles((theme) => ({
   signInWith: {
@@ -74,7 +75,9 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
   const { refreshUser } = useUser();
   const { classes } = useStyles();
 
-  const [oauth, setOAuth] = React.useState<string[]>([]);
+  const [oauthProviders, setOauthProviders] = useState<string[] | null>(null);
+  const [isRedirectingToOauthProvider, setIsRedirectingToOauthProvider] =
+    useState(false);
 
   const validationSchema = yup.object().shape({
     emailOrUsername: yup.string().required(t("common.error.field-required")),
@@ -118,14 +121,35 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
       .catch(toast.axiosError);
   };
 
-  const getAvailableOAuth = async () => {
-    const oauth = await authService.getAvailableOAuth();
-    setOAuth(oauth.data);
-  };
-
-  React.useEffect(() => {
-    getAvailableOAuth().catch(toast.axiosError);
+  useEffect(() => {
+    authService
+      .getAvailableOAuth()
+      .then((providers) => {
+        setOauthProviders(providers.data);
+        if (
+          providers.data.length === 1 &&
+          config.get("oauth.disablePassword")
+        ) {
+          setIsRedirectingToOauthProvider(true);
+          router.push(
+            getOAuthUrl(config.get("general.appUrl"), providers.data[0]),
+          );
+        }
+      })
+      .catch(toast.axiosError);
   }, []);
+
+  if (!oauthProviders) return null;
+
+  if (isRedirectingToOauthProvider)
+    return (
+      <Group align="center" position="center">
+        <Loader size="sm" />
+        <Text align="center">
+          <FormattedMessage id="common.text.redirecting" />
+        </Text>
+      </Group>
+    );
 
   return (
     <Container size={420} my={40}>
@@ -170,7 +194,7 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
             </Button>
           </form>
         )}
-        {oauth.length > 0 && (
+        {oauthProviders.length > 0 && (
           <Stack mt={config.get("oauth.disablePassword") ? undefined : "xl"}>
             {config.get("oauth.disablePassword") ? (
               <Group align="center" className={classes.signInWith}>
@@ -182,7 +206,7 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
               </Group>
             )}
             <Group position="center">
-              {oauth.map((provider) => (
+              {oauthProviders.map((provider) => (
                 <Button
                   key={provider}
                   component="a"
