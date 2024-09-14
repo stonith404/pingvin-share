@@ -456,6 +456,7 @@ export default {
   "common.text.link": "Odkaz",
   "common.text.navigate-to-link": "Přejít na odkaz",
   "common.text.or": "nebo",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Vrátit se zpět",
   "common.button.go-home": "Jít domů",
   "common.notify.copied": "Váš odkaz byl zkopírován do schránky",
