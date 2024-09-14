@@ -456,6 +456,7 @@ export default {
   "common.text.link": "Linkki",
   "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "tai",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Takaisin",
   "common.button.go-home": "Go home",
   "common.notify.copied": "Linkki kopioitiin leikepöydälle",
