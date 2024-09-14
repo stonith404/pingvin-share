@@ -1,3 +1,11 @@
+## [1.1.0](https://github.com/stonith404/pingvin-share/compare/v1.0.4...v1.1.0) (2024-09-14)
+
+
+### Features
+
+* allow smpt without username and password ([8b3e28b](https://github.com/stonith404/pingvin-share/commit/8b3e28bac83e5326234096445395046ebdb0c4d7))
+* auto redirect to oauth provider ([7dc2e56](https://github.com/stonith404/pingvin-share/commit/7dc2e56fee1afc1078774cc702c0f1fee9bae938))
+
 ## [1.0.4](https://github.com/stonith404/pingvin-share/compare/v1.0.3...v1.0.4) (2024-09-06)
 
 
