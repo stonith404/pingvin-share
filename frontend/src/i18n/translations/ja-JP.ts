@@ -456,6 +456,7 @@ export default {
   "common.text.link": "リンク",
   "common.text.navigate-to-link": "リンクへ移動",
   "common.text.or": "または",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "戻る",
   "common.button.go-home": "ホームに戻る",
   "common.notify.copied": "リンクをクリップボードにコピーしました",
