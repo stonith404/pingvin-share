@@ -456,6 +456,7 @@ export default {
   "common.text.link": "Посилання",
   "common.text.navigate-to-link": "Перейти до посилання",
   "common.text.or": "або",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Назад",
   "common.button.go-home": "Перейти додому",
   "common.notify.copied": "Ваше посилання скопійовано в буфер обміну",
