@@ -456,6 +456,7 @@ export default {
   "common.text.link": "Koppeling",
   "common.text.navigate-to-link": "Ga naar de koppeling",
   "common.text.or": "of",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Ga terug",
   "common.button.go-home": "Go home",
   "common.notify.copied": "Uw link is gekopieerd naar het klembord",
