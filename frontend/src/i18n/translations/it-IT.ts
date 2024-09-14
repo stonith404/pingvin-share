@@ -456,6 +456,7 @@ export default {
   "common.text.link": "Collegamento",
   "common.text.navigate-to-link": "Vai al collegamento",
   "common.text.or": "o",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Torna indietro",
   "common.button.go-home": "Vai alla Home Page",
   "common.notify.copied": "Il tuo collegamento e' stato copiato negli appunti",
