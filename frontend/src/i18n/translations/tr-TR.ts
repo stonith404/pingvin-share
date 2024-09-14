@@ -456,6 +456,7 @@ export default {
   "common.text.link": "Bağlantı",
   "common.text.navigate-to-link": "Bağlantıya git",
   "common.text.or": "ya da",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Geri dön",
   "common.button.go-home": "Ana sayfaya dön",
   "common.notify.copied": "Bağlantınız kopyalandı",
