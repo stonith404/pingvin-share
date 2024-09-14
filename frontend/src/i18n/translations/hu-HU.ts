@@ -456,6 +456,7 @@ export default {
   "common.text.link": "Hivatkozás",
   "common.text.navigate-to-link": "Ugrás a hivatkozásra",
   "common.text.or": "vagy",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Vissza",
   "common.button.go-home": "Kezdőlap",
   "common.notify.copied": "A hivatkozást a Vágólapra másoltuk",
