@@ -1,3 +1,15 @@
+## [1.1.1](https://github.com/stonith404/pingvin-share/compare/v1.1.0...v1.1.1) (2024-09-18)
+
+
+### Features
+
+* add environment variable to trust the reverse proxy ([b13a81a](https://github.com/stonith404/pingvin-share/commit/b13a81a88ca871c5714b2ed52d0e12fb7ceca176))
+
+
+### Bug Fixes
+
+* disable email login if ldap is enabled ([d9cfe69](https://github.com/stonith404/pingvin-share/commit/d9cfe697d66e9db7bfbc2252b3700580793ce9bb))
+
 ## [1.1.0](https://github.com/stonith404/pingvin-share/compare/v1.0.4...v1.1.0) (2024-09-14)
 
 
