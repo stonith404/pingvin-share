@@ -40,6 +40,7 @@ export default {
   "signIn.oauth.microsoft": "마이크로소프트",
   "signIn.oauth.discord": "디스코드",
   "signIn.oauth.oidc": "오픈ID",
+  "signIn.error.invalid-username": "Invalid username",
   // END /auth/signin
   // /auth/signup
   "signup.title": "계정 만들기",
