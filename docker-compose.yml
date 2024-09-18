@@ -4,6 +4,8 @@ services:
     restart: unless-stopped
     ports:
       - 3000:3000
+    environment:
+      - TRUST_PROXY=false # Set to true if a reverse proxy is in front of the container
     volumes:
       - "./data:/opt/app/backend/data"
       - "./data/images:/opt/app/frontend/public/img"

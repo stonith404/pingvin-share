@@ -1,0 +1,7 @@
+:3000 {
+    # Reverse proxy for /api
+    reverse_proxy /api/* http://localhost:8080
+
+    # Reverse proxy for all other requests
+    reverse_proxy http://localhost:3333
+}

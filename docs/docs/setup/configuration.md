@@ -48,3 +48,9 @@ For installation specific configuration, you can use environment variables. The 
 | --------- | ----------------------- | ---------------------------------------- |
 | `PORT`    | `3000`                  | The port on which the frontend listens.  |
 | `API_URL` | `http://localhost:8080` | The URL of the backend for the frontend. |
+
+#### Reverse Proxy (inside the Docker container)
+
+| Variable      | Default Value | Description                                                                                                 |
+| ------------- | ------------- | ----------------------------------------------------------------------------------------------------------- |
+| `TRUST_PROXY` | `false`       | Whether Pingvin Share is behind a reverse proxy. If set to `true`, the `X-Forwarded-For` header is trusted. |
