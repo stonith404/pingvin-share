@@ -50,6 +50,7 @@ export default {
   "signIn.oauth.microsoft": "Microsoft",
   "signIn.oauth.discord": "Discord",
   "signIn.oauth.oidc": "OpenID",
+  "signIn.error.invalid-username": "Invalid username",
 
   // END /auth/signin
 

@@ -80,7 +80,9 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
     useState(false);
 
   const validationSchema = yup.object().shape({
-    emailOrUsername: yup.string().required(t("common.error.field-required")),
+    emailOrUsername: config.get("ldap.enabled")
+      ? yup.string().matches(/^[^@]+$/, t("signIn.error.invalid-username"))
+      : yup.string().required(t("common.error.field-required")),
     password: yup
       .string()
       .min(8, t("common.error.too-short", { length: 8 }))
@@ -172,8 +174,16 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
             })}
           >
             <TextInput
-              label={t("signin.input.email-or-username")}
-              placeholder={t("signin.input.email-or-username.placeholder")}
+              label={
+                config.get("ldap.enabled")
+                  ? t("signup.input.username")
+                  : t("signin.input.email-or-username")
+              }
+              placeholder={
+                config.get("ldap.enabled")
+                  ? t("signup.input.username.placeholder")
+                  : t("signin.input.email-or-username.placeholder")
+              }
               {...form.getInputProps("emailOrUsername")}
             />
             <PasswordInput
