@@ -34,13 +34,13 @@ export default {
   "signIn.notify.totp-required.title": "Tweestapsverificatie vereist",
   "signIn.notify.totp-required.description": "Voer uw tweestapsverificatiecode in",
   "signIn.oauth.or": "OF",
-  "signIn.oauth.signInWith": "Sign in with",
+  "signIn.oauth.signInWith": "Registreer met",
   "signIn.oauth.github": "GitHub",
   "signIn.oauth.google": "Google",
   "signIn.oauth.microsoft": "Microsoft",
   "signIn.oauth.discord": "Discord",
   "signIn.oauth.oidc": "OpenID",
-  "signIn.error.invalid-username": "Invalid username",
+  "signIn.error.invalid-username": "Ongeldige gebruikersnaam",
   // END /auth/signin
   // /auth/signup
   "signup.title": "Account aanmaken",
