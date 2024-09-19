@@ -40,7 +40,7 @@ export default {
   "signIn.oauth.microsoft": "Microsoft",
   "signIn.oauth.discord": "Discord",
   "signIn.oauth.oidc": "OpenID",
-  "signIn.error.invalid-username": "Invalid username",
+  "signIn.error.invalid-username": "Nome utente non valido",
   // END /auth/signin
   // /auth/signup
   "signup.title": "Crea un account",
