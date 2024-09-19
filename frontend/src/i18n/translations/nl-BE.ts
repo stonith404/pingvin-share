@@ -40,6 +40,7 @@ export default {
   "signIn.oauth.microsoft": "Microsoft",
   "signIn.oauth.discord": "Discord",
   "signIn.oauth.oidc": "OpenID",
+  "signIn.error.invalid-username": "Invalid username",
   // END /auth/signin
   // /auth/signup
   "signup.title": "Account aanmaken",
@@ -456,6 +457,7 @@ export default {
   "common.text.link": "Koppeling",
   "common.text.navigate-to-link": "Ga naar de koppeling",
   "common.text.or": "of",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Ga terug",
   "common.button.go-home": "Go home",
   "common.notify.copied": "Uw link is gekopieerd naar het klembord",

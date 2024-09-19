@@ -40,6 +40,7 @@ export default {
   "signIn.oauth.microsoft": "Microsoft",
   "signIn.oauth.discord": "Discord",
   "signIn.oauth.oidc": "OpenID",
+  "signIn.error.invalid-username": "Invalid username",
   // END /auth/signin
   // /auth/signup
   "signup.title": "Skapa ett konto",
@@ -456,6 +457,7 @@ export default {
   "common.text.link": "Länk",
   "common.text.navigate-to-link": "Gå till länken",
   "common.text.or": "eller",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Gå tillbaka",
   "common.button.go-home": "Gå hem",
   "common.notify.copied": "Din länk har kopierats till urklipp",

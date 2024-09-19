@@ -40,6 +40,7 @@ export default {
   "signIn.oauth.microsoft": "Microsoft",
   "signIn.oauth.discord": "Discord",
   "signIn.oauth.oidc": "OpenID",
+  "signIn.error.invalid-username": "Invalid username",
   // END /auth/signin
   // /auth/signup
   "signup.title": "Bir hesap oluştur",
@@ -456,6 +457,7 @@ export default {
   "common.text.link": "Bağlantı",
   "common.text.navigate-to-link": "Bağlantıya git",
   "common.text.or": "ya da",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Geri dön",
   "common.button.go-home": "Ana sayfaya dön",
   "common.notify.copied": "Bağlantınız kopyalandı",

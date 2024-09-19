@@ -40,6 +40,7 @@ export default {
   "signIn.oauth.microsoft": "Microsoft",
   "signIn.oauth.discord": "Discord",
   "signIn.oauth.oidc": "OpenID",
+  "signIn.error.invalid-username": "Usuário inválido",
   // END /auth/signin
   // /auth/signup
   "signup.title": "Criar uma conta",
@@ -456,6 +457,7 @@ export default {
   "common.text.link": "Link",
   "common.text.navigate-to-link": "Ir para o link",
   "common.text.or": "ou",
+  "common.text.redirecting": "Redirecionando...",
   "common.button.go-back": "Voltar",
   "common.button.go-home": "Voltar para o Início",
   "common.notify.copied": "O seu link foi copiado para a área de transferência",

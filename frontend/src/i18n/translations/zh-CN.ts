@@ -40,6 +40,7 @@ export default {
   "signIn.oauth.microsoft": "Microsoft",
   "signIn.oauth.discord": "Discord",
   "signIn.oauth.oidc": "OpenID",
+  "signIn.error.invalid-username": "Invalid username",
   // END /auth/signin
   // /auth/signup
   "signup.title": "创建账户",
@@ -456,6 +457,7 @@ export default {
   "common.text.link": "链接",
   "common.text.navigate-to-link": "访问链接",
   "common.text.or": "或",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "返回",
   "common.button.go-home": "返回主页",
   "common.notify.copied": "已复制到剪贴板",

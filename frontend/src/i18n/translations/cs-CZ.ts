@@ -40,6 +40,7 @@ export default {
   "signIn.oauth.microsoft": "Microsoft",
   "signIn.oauth.discord": "Discord",
   "signIn.oauth.oidc": "OpenID",
+  "signIn.error.invalid-username": "Invalid username",
   // END /auth/signin
   // /auth/signup
   "signup.title": "Vytvořit účet",
@@ -456,6 +457,7 @@ export default {
   "common.text.link": "Odkaz",
   "common.text.navigate-to-link": "Přejít na odkaz",
   "common.text.or": "nebo",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Vrátit se zpět",
   "common.button.go-home": "Jít domů",
   "common.notify.copied": "Váš odkaz byl zkopírován do schránky",

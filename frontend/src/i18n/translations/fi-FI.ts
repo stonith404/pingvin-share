@@ -40,6 +40,7 @@ export default {
   "signIn.oauth.microsoft": "Microsoft",
   "signIn.oauth.discord": "Discord",
   "signIn.oauth.oidc": "OpenID",
+  "signIn.error.invalid-username": "Invalid username",
   // END /auth/signin
   // /auth/signup
   "signup.title": "Rekisteröidy",
@@ -456,6 +457,7 @@ export default {
   "common.text.link": "Linkki",
   "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "tai",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Takaisin",
   "common.button.go-home": "Go home",
   "common.notify.copied": "Linkki kopioitiin leikepöydälle",
