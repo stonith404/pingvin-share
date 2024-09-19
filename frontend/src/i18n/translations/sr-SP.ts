@@ -34,13 +34,13 @@ export default {
   "signIn.notify.totp-required.title": "Потребна је двофакторска аутентификација",
   "signIn.notify.totp-required.description": "Унесите свој двофакторски код за аутентификацију",
   "signIn.oauth.or": "Или",
-  "signIn.oauth.signInWith": "Sign in with",
+  "signIn.oauth.signInWith": "Пријавите се са",
   "signIn.oauth.github": "GitHub",
   "signIn.oauth.google": "Google",
   "signIn.oauth.microsoft": "Microsoft",
   "signIn.oauth.discord": "Discord",
   "signIn.oauth.oidc": "OpenID",
-  "signIn.error.invalid-username": "Invalid username",
+  "signIn.error.invalid-username": "Неважеће корисничко име",
   // END /auth/signin
   // /auth/signup
   "signup.title": "Направи налог",
@@ -59,7 +59,7 @@ export default {
   // /auth/reset-password
   "resetPassword.title": "Заборавили сте лозинку?",
   "resetPassword.description": "Унесите своју е-пошту да бисте ресетовали лозинку.",
-  "resetPassword.notify.success": "A message with a link to reset your password has been sent if the email exists.",
+  "resetPassword.notify.success": "Порука са везом за ресетовање ваше лозинке је послата ако имејл постоји.",
   "resetPassword.button.back": "Назад на страницу за пријаву",
   "resetPassword.text.resetPassword": "Обнови лозинку",
   "resetPassword.text.enterNewPassword": "Унесите вашу нову лозинку",
@@ -153,10 +153,10 @@ export default {
   "account.reverseShares.modal.max-size.label": "Максимална величина дељења",
   "account.reverseShares.modal.send-email": "Пошаљите обавештење путем е-поште",
   "account.reverseShares.modal.send-email.description": "Пошаљите обавештење е-поштом када се креира дељење помоћу ове обрнуте везе за дељење.",
-  "account.reverseShares.modal.simplified": "Simple mode",
-  "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
-  "account.reverseShares.modal.public-access": "Public access",
-  "account.reverseShares.modal.public-access.description": "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
+  "account.reverseShares.modal.simplified": "Једноставан режим",
+  "account.reverseShares.modal.simplified.description": "Олакшајте особи која отпрема датотеку да је подели са вама. Они ће моћи да прилагоде само име и опис дељења.",
+  "account.reverseShares.modal.public-access": "Јавни приступ",
+  "account.reverseShares.modal.public-access.description": "Учините креирана дељења са овим обрнутим дељењем јавном. Ако је онемогућено, само ви и креатор дељења можете да га видите.",
   "account.reverseShares.modal.max-use.label": "Максималан број коришћења",
   "account.reverseShares.modal.max-use.description": "Максималан број пута који овај URL може да се користи за прављење дељења.",
   "account.reverseShare.never-expires": "Ово обрнуто дељење никада неће истећи.",
@@ -175,7 +175,7 @@ export default {
   // /admin
   "admin.title": "Администрација",
   "admin.button.users": "Управљање корисницима",
-  "admin.button.shares": "Share management",
+  "admin.button.shares": "Управљање deljenjima",
   "admin.button.config": "Конфигурација",
   "admin.version": "Верзија",
   // END /admin
