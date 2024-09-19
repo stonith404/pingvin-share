@@ -34,13 +34,13 @@ For installation specific configuration, you can use environment variables. The 
 
 #### Backend
 
-| Variable         | Default Value                                      | Description                            |
-| ---------------- | -------------------------------------------------- | -------------------------------------- |
-| `PORT`           | `8080`                                             | The port on which the backend listens. |
-| `DATABASE_URL`   | `file:../data/pingvin-share.db?connection_limit=1` | The URL of the SQLite database.        |
-| `DATA_DIRECTORY` | `./data`                                           | The directory where data is stored.    |
-| `CLAMAV_HOST`    | `127.0.0.1`                                        | The IP address of the ClamAV server.   |
-| `CLAMAV_PORT`    | `3310`                                             | The port number of the ClamAV server.  |
+| Variable         | Default Value                                      | Description                                                                                              |
+| ---------------- | -------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `PORT`           | `8080`                                             | The port on which the backend listens.                                                                   |
+| `DATABASE_URL`   | `file:../data/pingvin-share.db?connection_limit=1` | The URL of the SQLite database.                                                                          |
+| `DATA_DIRECTORY` | `./data`                                           | The directory where data is stored.                                                                      |
+| `CLAMAV_HOST`    | `127.0.0.1` or `clamav` when running with Docker   | The IP address of the ClamAV server. See the [ClamAV docs](integrations.md#clamav) for more information. |
+| `CLAMAV_PORT`    | `3310`                                             | The port number of the ClamAV server.                                                                    |
 
 #### Frontend
 

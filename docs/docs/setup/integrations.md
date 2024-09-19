@@ -4,11 +4,17 @@ id: integrations
 
 # Integrations
 
-#### ClamAV
-
-> **_NOTE:_** Currently ClamAV is only available in the Docker installation.
+## ClamAV
 
 ClamAV is used to scan shares for malicious files and remove them if found.
+
+Please note that ClamAV needs a lot of [ressources](https://docs.clamav.net/manual/Installing/Docker.html#memory-ram-requirements).
+
+### Docker
+
+If you are already running ClamAV elsewhere, you can specify the `CLAMAV_HOST` environment variable to point to that instance.
+
+Else you have to add the ClamAV container to the Pingvin Share Docker Compose stack:
 
 1. Add the ClamAV container to the Docker Compose stack and start the container.
 
@@ -30,4 +36,7 @@ services:
 2. Docker will wait for ClamAV to start before starting Pingvin Share. This may take a minute or two.
 3. The Pingvin Share logs should now log "ClamAV is active"
 
-Please note that ClamAV needs a lot of [ressources](https://docs.clamav.net/manual/Installing/Docker.html#memory-ram-requirements).
+### Stand-Alone
+
+1. Install ClamAV
+2. Specify the `CLAMAV_HOST` environment variable for the backend and restart the Pingvin Share backend.
