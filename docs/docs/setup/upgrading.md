@@ -39,6 +39,6 @@ docker compose up -d
    cd ../frontend
    npm install
    npm run build
-   API_URL=http://localhost:8080 # Set the URL of the backend, default: http://localhost:8080
    pm2 restart pingvin-share-frontend
    ```
+Note that environemnt variables are not picked up when using pm2 restart, if you actually want to change configs, you need to run ````pm2 --update-env restart````
