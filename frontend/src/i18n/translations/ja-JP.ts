@@ -40,6 +40,7 @@ export default {
   "signIn.oauth.microsoft": "Microsoft",
   "signIn.oauth.discord": "Discord",
   "signIn.oauth.oidc": "OpenID",
+  "signIn.error.invalid-username": "Invalid username",
   // END /auth/signin
   // /auth/signup
   "signup.title": "アカウントを作成",
@@ -456,6 +457,7 @@ export default {
   "common.text.link": "リンク",
   "common.text.navigate-to-link": "リンクへ移動",
   "common.text.or": "または",
+  "common.text.redirecting": "リダイレクトしています...",
   "common.button.go-back": "戻る",
   "common.button.go-home": "ホームに戻る",
   "common.notify.copied": "リンクをクリップボードにコピーしました",

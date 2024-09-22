@@ -40,6 +40,7 @@ export default {
   "signIn.oauth.microsoft": "마이크로소프트",
   "signIn.oauth.discord": "디스코드",
   "signIn.oauth.oidc": "오픈ID",
+  "signIn.error.invalid-username": "Invalid username",
   // END /auth/signin
   // /auth/signup
   "signup.title": "계정 만들기",
@@ -456,6 +457,7 @@ export default {
   "common.text.link": "링크",
   "common.text.navigate-to-link": "링크로 이동",
   "common.text.or": "또는",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "뒤로 가기",
   "common.button.go-home": "첫 페이지",
   "common.notify.copied": "당신의 링크가 클립보드에 복사되었습니다.",

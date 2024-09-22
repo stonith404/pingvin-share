@@ -40,6 +40,7 @@ export default {
   "signIn.oauth.microsoft": "Microsoft",
   "signIn.oauth.discord": "Discord",
   "signIn.oauth.oidc": "OpenID",
+  "signIn.error.invalid-username": "Invalid username",
   // END /auth/signin
   // /auth/signup
   "signup.title": "Fiók létrehozása",
@@ -456,6 +457,7 @@ export default {
   "common.text.link": "Hivatkozás",
   "common.text.navigate-to-link": "Ugrás a hivatkozásra",
   "common.text.or": "vagy",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Vissza",
   "common.button.go-home": "Kezdőlap",
   "common.notify.copied": "A hivatkozást a Vágólapra másoltuk",

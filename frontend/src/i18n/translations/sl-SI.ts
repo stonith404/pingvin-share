@@ -40,6 +40,7 @@ export default {
   "signIn.oauth.microsoft": "Microsoft",
   "signIn.oauth.discord": "Discord",
   "signIn.oauth.oidc": "OpenID",
+  "signIn.error.invalid-username": "Invalid username",
   // END /auth/signin
   // /auth/signup
   "signup.title": "Ustvarite račun",
@@ -456,6 +457,7 @@ export default {
   "common.text.link": "Poveži",
   "common.text.navigate-to-link": "Pojdi na povezavo",
   "common.text.or": "ali",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Nazaj",
   "common.button.go-home": "Pojdi domov",
   "common.notify.copied": "Povezava je bila kopirana v odložišče",

@@ -40,6 +40,7 @@ export default {
   "signIn.oauth.microsoft": "Microsoft",
   "signIn.oauth.discord": "Discord",
   "signIn.oauth.oidc": "OpenID",
+  "signIn.error.invalid-username": "Invalid username",
   // END /auth/signin
   // /auth/signup
   "signup.title": "Создать аккаунт",
@@ -456,6 +457,7 @@ export default {
   "common.text.link": "Ссылка",
   "common.text.navigate-to-link": "Go to the link",
   "common.text.or": "или",
+  "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Назад",
   "common.button.go-home": "Домой",
   "common.notify.copied": "Ваша ссылка скопирована в буфер обмена",
