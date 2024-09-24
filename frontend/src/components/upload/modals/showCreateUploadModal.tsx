@@ -370,8 +370,7 @@ const CreateUploadModalBody = ({
                     placeholder={t("upload.modal.accordion.email.placeholder")}
                     searchable
                     creatable
-                    id="recipient_email"
-                    autoComplete="email"
+                    id="recipient-emails"
                     type="email"
                     getCreateLabel={(query) => `+ ${query}`}
                     onCreate={(query) => {
@@ -426,7 +425,7 @@ const CreateUploadModalBody = ({
                       "upload.modal.accordion.security.password.placeholder",
                     )}
                     label={t("upload.modal.accordion.security.password.label")}
-                    autoComplete="off"
+                    autoComplete="new-password"
                     {...form.getInputProps("password")}
                   />
                   <NumberInput
