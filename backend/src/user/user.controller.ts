@@ -19,10 +19,14 @@ import { UpdateOwnUserDTO } from "./dto/updateOwnUser.dto";
 import { UpdateUserDto } from "./dto/updateUser.dto";
 import { UserDTO } from "./dto/user.dto";
 import { UserSevice } from "./user.service";
+import { ConfigService } from "../config/config.service";
 
 @Controller("users")
 export class UserController {
-  constructor(private userService: UserSevice) {}
+  constructor(
+    private userService: UserSevice,
+    private config: ConfigService,
+  ) {}
 
   // Own user operations
   @Get("me")
@@ -49,11 +53,17 @@ export class UserController {
     @GetUser() user: User,
     @Res({ passthrough: true }) response: Response,
   ) {
-    response.cookie("access_token", "accessToken", { maxAge: -1 });
+    const isSecure = this.config.get("general.appUrl").startsWith("https");
+
+    response.cookie("access_token", "accessToken", {
+      maxAge: -1,
+      secure: isSecure,
+    });
     response.cookie("refresh_token", "", {
       path: "/api/auth/token",
       httpOnly: true,
       maxAge: -1,
+      secure: isSecure,
     });
     return new UserDTO().from(await this.userService.delete(user.id));
   }

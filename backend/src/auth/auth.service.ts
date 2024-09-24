@@ -272,9 +272,11 @@ export class AuthService {
     refreshToken?: string,
     accessToken?: string,
   ) {
+    const isSecure = this.config.get("general.appUrl").startsWith("https");
     if (accessToken)
       response.cookie("access_token", accessToken, {
         sameSite: "lax",
+        secure: isSecure,
         maxAge: 1000 * 60 * 60 * 24 * 30 * 3, // 3 months
       });
     if (refreshToken)
@@ -282,6 +284,7 @@ export class AuthService {
         path: "/api/auth/token",
         httpOnly: true,
         sameSite: "strict",
+        secure: isSecure,
         maxAge: 1000 * 60 * 60 * this.config.get("general.sessionDuration"),
       });
   }

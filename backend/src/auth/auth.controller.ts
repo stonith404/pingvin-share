@@ -173,11 +173,17 @@ export class AuthController {
     @Res({ passthrough: true }) response: Response,
   ) {
     await this.authService.signOut(request.cookies.access_token);
-    response.cookie("access_token", "accessToken", { maxAge: -1 });
+
+    const isSecure = this.config.get("general.appUrl").startsWith("https");
+    response.cookie("access_token", "accessToken", {
+      maxAge: -1,
+      secure: isSecure,
+    });
     response.cookie("refresh_token", "", {
       path: "/api/auth/token",
       httpOnly: true,
       maxAge: -1,
+      secure: isSecure,
     });
   }
 
