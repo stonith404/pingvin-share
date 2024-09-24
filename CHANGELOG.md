@@ -1,3 +1,11 @@
+## [1.1.2](https://github.com/stonith404/pingvin-share/compare/v1.1.1...v1.1.2) (2024-09-24)
+
+
+### Bug Fixes
+
+* disable auto complete for email recipients and share password ([ee73293](https://github.com/stonith404/pingvin-share/commit/ee73293c0f822d3e79cfefd096c656d4c36a12d1))
+* enable secure cookies if app url starts with https ([69752b8](https://github.com/stonith404/pingvin-share/commit/69752b8b417edda1ab4a4acedbdda09d545d6df8))
+
 ## [1.1.1](https://github.com/stonith404/pingvin-share/compare/v1.1.0...v1.1.1) (2024-09-18)
 
 
