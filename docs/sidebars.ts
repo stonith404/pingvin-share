@@ -58,6 +58,11 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "link",
+      label: "Demo",
+      href: "https://pingvin-share.dev.eliasschneider.com",
+    },
+    {
+      type: "link",
       label: "Discord",
       href: "https://discord.gg/HutpbfB59Q",
     },
