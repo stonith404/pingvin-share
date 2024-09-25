@@ -8,7 +8,7 @@ import { FileService } from "../file/file.service";
 import { CreateUserDTO } from "./dto/createUser.dto";
 import { UpdateUserDto } from "./dto/updateUser.dto";
 import { ConfigService } from "../config/config.service";
-import { LdapAuthenticateResult } from "../auth/ldap.service";
+import { Entry } from "ldapts";
 
 @Injectable()
 export class UserSevice {
@@ -17,7 +17,7 @@ export class UserSevice {
     private emailService: EmailService,
     private fileService: FileService,
     private configService: ConfigService,
-  ) {}
+  ) { }
 
   async list() {
     return await this.prisma.user.findMany();
@@ -92,13 +92,13 @@ export class UserSevice {
     return await this.prisma.user.delete({ where: { id } });
   }
 
-  async findOrCreateFromLDAP(username: string, ldap: LdapAuthenticateResult) {
+  async findOrCreateFromLDAP(username: string, ldap: Entry) {
     const passwordHash = await argon.hash(crypto.randomUUID());
     const userEmail =
-      ldap.attributes["userPrincipalName"]?.at(0) ??
+      ldap.userPrincipalName?.at(0)?.toString() ??
       `${crypto.randomUUID()}@ldap.local`;
     const adminGroup = this.configService.get("ldap.adminGroups");
-    const isAdmin = ldap.attributes["memberOf"]?.includes(adminGroup) ?? false;
+    const isAdmin = ldap.memberOf?.includes(adminGroup) ?? false;
     try {
       return await this.prisma.user.upsert({
         create: {
@@ -106,17 +106,17 @@ export class UserSevice {
           email: userEmail,
           password: passwordHash,
           isAdmin,
-          ldapDN: ldap.userDn,
+          ldapDN: ldap.dn,
         },
         update: {
           username,
           email: userEmail,
 
           isAdmin,
-          ldapDN: ldap.userDn,
+          ldapDN: ldap.dn,
         },
         where: {
-          ldapDN: ldap.userDn,
+          ldapDN: ldap.dn,
         },
       });
     } catch (e) {

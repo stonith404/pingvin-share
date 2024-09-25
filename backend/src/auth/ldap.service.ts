@@ -1,101 +1,7 @@
 import { Inject, Injectable, Logger } from "@nestjs/common";
-import * as ldap from "ldapjs";
-import {
-  AttributeJson,
-  InvalidCredentialsError,
-  SearchCallbackResponse,
-  SearchOptions,
-} from "ldapjs";
 import { inspect } from "node:util";
 import { ConfigService } from "../config/config.service";
-
-type LdapSearchEntry = {
-  objectName: string;
-  attributes: AttributeJson[];
-};
-
-async function ldapExecuteSearch(
-  client: ldap.Client,
-  base: string,
-  options: SearchOptions,
-): Promise<LdapSearchEntry[]> {
-  const searchResponse = await new Promise<SearchCallbackResponse>(
-    (resolve, reject) => {
-      client.search(base, options, (err, res) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(res);
-        }
-      });
-    },
-  );
-
-  return await new Promise<any[]>((resolve, reject) => {
-    const entries: LdapSearchEntry[] = [];
-    searchResponse.on("searchEntry", (entry) =>
-      entries.push({
-        attributes: entry.pojo.attributes,
-        objectName: entry.pojo.objectName,
-      }),
-    );
-    searchResponse.once("error", reject);
-    searchResponse.once("end", () => resolve(entries));
-  });
-}
-
-async function ldapBindUser(
-  client: ldap.Client,
-  dn: string,
-  password: string,
-): Promise<void> {
-  return new Promise<void>((resolve, reject) => {
-    client.bind(dn, password, (error) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve();
-      }
-    });
-  });
-}
-
-async function ldapCreateConnection(
-  logger: Logger,
-  url: string,
-): Promise<ldap.Client> {
-  const ldapClient = ldap.createClient({
-    url: url.split(","),
-    connectTimeout: 10_000,
-    timeout: 10_000,
-  });
-
-  await new Promise((resolve, reject) => {
-    ldapClient.once("error", reject);
-    ldapClient.on("setupError", reject);
-    ldapClient.on("socketTimeout", reject);
-    ldapClient.on("connectRefused", () =>
-      reject(new Error("connection has been refused")),
-    );
-    ldapClient.on("connectTimeout", () =>
-      reject(new Error("connect timed out")),
-    );
-    ldapClient.on("connectError", reject);
-
-    ldapClient.on("connect", resolve);
-  }).catch((error) => {
-    logger.error(`Connect error: ${inspect(error)}`);
-    ldapClient.destroy();
-    throw error;
-  });
-
-  return ldapClient;
-}
-
-export type LdapAuthenticateResult = {
-  userDn: string;
-  attributes: Record<string, string[]>;
-};
+import { Client, Entry, InvalidCredentialsError } from "ldapts";
 
 @Injectable()
 export class LdapService {
@@ -105,39 +11,35 @@ export class LdapService {
     private readonly serviceConfig: ConfigService,
   ) { }
 
-  private async createLdapConnection(): Promise<ldap.Client> {
+  private async createLdapConnection(): Promise<Client> {
     const ldapUrl = this.serviceConfig.get("ldap.url");
     if (!ldapUrl) {
       throw new Error("LDAP server URL is not defined");
     }
 
-    const ldapClient = await ldapCreateConnection(this.logger, ldapUrl);
-    try {
-      const bindDn = this.serviceConfig.get("ldap.bindDn") || null;
-      if (bindDn) {
-        try {
-          await ldapBindUser(
-            ldapClient,
-            bindDn,
-            this.serviceConfig.get("ldap.bindPassword"),
-          );
-        } catch (error) {
-          this.logger.warn(`Failed to bind to default user: ${error}`);
-          throw new Error("failed to bind to default user");
-        }
-      }
+    const ldapClient = new Client({
+      url: ldapUrl,
+      timeout: 15_000,
+      connectTimeout: 15_000,
+    });
 
-      return ldapClient;
-    } catch (error) {
-      ldapClient.destroy();
-      throw error;
+    const bindDn = this.serviceConfig.get("ldap.bindDn") || null;
+    if (bindDn) {
+      try {
+        await ldapClient.bind(bindDn, this.serviceConfig.get("ldap.bindPassword"));
+      } catch (error) {
+        this.logger.warn(`Failed to bind to default user: ${error}`);
+        throw new Error("failed to bind to default user");
+      }
     }
+
+    return ldapClient;
   }
 
   public async authenticateUser(
     username: string,
     password: string,
-  ): Promise<LdapAuthenticateResult | null> {
+  ): Promise<Entry | null> {
     if (!username.match(/^[a-zA-Z0-9-_.]+$/)) {
       return null;
     }
@@ -149,45 +51,37 @@ export class LdapService {
 
     const ldapClient = await this.createLdapConnection();
     try {
-      const [result] = await ldapExecuteSearch(ldapClient, searchBase, {
+      const { searchEntries } = await ldapClient.search(searchBase, {
         filter: searchQuery,
         scope: "sub",
+
+        attributes: ["*"],
+        returnAttributeValues: true
       });
 
-      if (!result) {
+      if (searchEntries.length > 1) {
+        /* too many users found */
+        this.logger.verbose(`Authentication for username ${username} failed. Too many users found with query ${searchQuery}`);
+        return null;
+      } else if (searchEntries.length == 0) {
         /* user not found */
         this.logger.verbose(`Authentication for username ${username} failed. No user found with query ${searchQuery}`);
         return null;
       }
 
-      this.logger.verbose(`Trying to authenticate ${username} against LDAP user ${result.objectName}`);
+      const targetEntity = searchEntries[0];
+      this.logger.verbose(`Trying to authenticate ${username} against LDAP user ${targetEntity.dn}`);
       try {
-        await ldapBindUser(ldapClient, result.objectName, password);
-
-        /*
-         * In theory we could query the user attributes now,
-         * but as we must query the user attributes for validation anyways
-         * we'll create a second ldap server connection.
-         */
-        return {
-          userDn: result.objectName,
-          attributes: Object.fromEntries(
-            result.attributes.map((attribute) => [
-              attribute.type,
-              attribute.values,
-            ]),
-          ),
-        };
+        await ldapClient.bind(targetEntity.dn, password);
+        return targetEntity;
       } catch (error) {
         if (error instanceof InvalidCredentialsError) {
-          this.logger.verbose(`Failed to authenticate ${username} against ${result.objectName}. Invalid credentials.`);
+          this.logger.verbose(`Failed to authenticate ${username} against ${targetEntity.dn}. Invalid credentials.`);
           return null;
         }
 
         this.logger.warn(`User bind failure: ${inspect(error)}`);
         return null;
-      } finally {
-        ldapClient.destroy();
       }
     } catch (error) {
       this.logger.warn(`Connect error: ${inspect(error)}`);
