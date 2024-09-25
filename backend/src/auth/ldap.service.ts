@@ -103,7 +103,7 @@ export class LdapService {
   constructor(
     @Inject(ConfigService)
     private readonly serviceConfig: ConfigService,
-  ) {}
+  ) { }
 
   private async createLdapConnection(): Promise<ldap.Client> {
     const ldapUrl = this.serviceConfig.get("ldap.url");
@@ -138,7 +138,7 @@ export class LdapService {
     username: string,
     password: string,
   ): Promise<LdapAuthenticateResult | null> {
-    if (!username.match(/^[a-zA-Z0-0]+$/)) {
+    if (!username.match(/^[a-zA-Z0-9-_.]+$/)) {
       return null;
     }
 
@@ -156,9 +156,11 @@ export class LdapService {
 
       if (!result) {
         /* user not found */
+        this.logger.verbose(`Authentication for username ${username} failed. No user found with query ${searchQuery}`);
         return null;
       }
 
+      this.logger.verbose(`Trying to authenticate ${username} against LDAP user ${result.objectName}`);
       try {
         await ldapBindUser(ldapClient, result.objectName, password);
 
@@ -178,16 +180,17 @@ export class LdapService {
         };
       } catch (error) {
         if (error instanceof InvalidCredentialsError) {
+          this.logger.verbose(`Failed to authenticate ${username} against ${result.objectName}. Invalid credentials.`);
           return null;
         }
 
-        this.logger.warn(`LDAP user bind failure: ${inspect(error)}`);
+        this.logger.warn(`User bind failure: ${inspect(error)}`);
         return null;
       } finally {
         ldapClient.destroy();
       }
     } catch (error) {
-      this.logger.warn(`LDAP connect error: ${inspect(error)}`);
+      this.logger.warn(`Connect error: ${inspect(error)}`);
       return null;
     }
   }
