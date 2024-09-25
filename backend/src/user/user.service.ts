@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable, Logger } from "@nestjs/common";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import * as argon from "argon2";
 import * as crypto from "crypto";
@@ -12,6 +12,8 @@ import { Entry } from "ldapts";
 
 @Injectable()
 export class UserSevice {
+  private readonly logger = new Logger(UserSevice.name);
+
   constructor(
     private prisma: PrismaService,
     private emailService: EmailService,
@@ -92,31 +94,45 @@ export class UserSevice {
     return await this.prisma.user.delete({ where: { id } });
   }
 
-  async findOrCreateFromLDAP(username: string, ldap: Entry) {
-    const passwordHash = await argon.hash(crypto.randomUUID());
-    const userEmail =
-      ldap.userPrincipalName?.at(0)?.toString() ??
-      `${crypto.randomUUID()}@ldap.local`;
-    const adminGroup = this.configService.get("ldap.adminGroups");
-    const isAdmin = ldap.memberOf?.includes(adminGroup) ?? false;
+  async findOrCreateFromLDAP(username: string, ldapEntry: Entry) {
+    const fieldNameMemberOf = this.configService.get("ldap.fieldNameMemberOf");
+    const fieldNameEmail = this.configService.get("ldap.fieldNameEmail");
+
+    let isAdmin = false;
+    if (fieldNameMemberOf in ldapEntry) {
+      const adminGroup = this.configService.get("ldap.adminGroups");
+      const entryGroups = Array.isArray(ldapEntry[fieldNameMemberOf]) ? ldapEntry[fieldNameMemberOf] : [ldapEntry[fieldNameMemberOf]];
+      isAdmin = entryGroups.includes(adminGroup) ?? false;
+    } else {
+      this.logger.warn(`Trying to create/update a ldap user but the member field ${fieldNameMemberOf} is not present.`);
+    }
+
+    let userEmail = `${crypto.randomUUID()}@ldap.local`;
+    if (fieldNameEmail in ldapEntry) {
+      const value = Array.isArray(ldapEntry[fieldNameEmail]) ? ldapEntry[fieldNameEmail][0] : ldapEntry[fieldNameEmail];
+      userEmail = value.toString();
+    } else {
+      this.logger.warn(`Trying to create/update a ldap user but the email field ${fieldNameEmail} is not present.`);
+    }
+
     try {
       return await this.prisma.user.upsert({
         create: {
           username,
           email: userEmail,
-          password: passwordHash,
+          password: await argon.hash(crypto.randomUUID()),
           isAdmin,
-          ldapDN: ldap.dn,
+          ldapDN: ldapEntry.dn,
         },
         update: {
           username,
           email: userEmail,
 
           isAdmin,
-          ldapDN: ldap.dn,
+          ldapDN: ldapEntry.dn,
         },
         where: {
-          ldapDN: ldap.dn,
+          ldapDN: ldapEntry.dn,
         },
       });
     } catch (e) {
