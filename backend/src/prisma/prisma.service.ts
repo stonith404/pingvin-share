@@ -1,9 +1,11 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, Logger } from "@nestjs/common";
 import { PrismaClient } from "@prisma/client";
 import { DATABASE_URL } from "../constants";
 
 @Injectable()
 export class PrismaService extends PrismaClient {
+  private readonly logger = new Logger(PrismaService.name);
+
   constructor() {
     super({
       datasources: {
@@ -12,6 +14,6 @@ export class PrismaService extends PrismaClient {
         },
       },
     });
-    super.$connect().then(() => console.info("Connected to the database"));
+    super.$connect().then(() => this.logger.log("Connected to the database"));
   }
 }
