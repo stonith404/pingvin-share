@@ -29,7 +29,7 @@ export class AuthService {
     private emailService: EmailService,
     private ldapService: LdapService,
     private userService: UserSevice,
-  ) {}
+  ) { }
   private readonly logger = new Logger(AuthService.name);
 
   async signUp(dto: AuthRegisterDTO, ip: string, isAdmin?: boolean) {
@@ -66,8 +66,9 @@ export class AuthService {
   }
 
   async signIn(dto: AuthSignInDTO, ip: string) {
-    if (!dto.email && !dto.username)
+    if (!dto.email && !dto.username) {
       throw new BadRequestException("Email or username is required");
+    }
 
     if (!this.config.get("oauth.disablePassword")) {
       const user = await this.prisma.user.findFirst({
@@ -85,18 +86,25 @@ export class AuthService {
     }
 
     if (this.config.get("ldap.enabled")) {
-      this.logger.debug(`Trying LDAP login for user ${dto.username}`);
+      /*
+       * E-mail-like user credentials are passed as the email property
+       * instead of the username. Since the username format does not matter 
+       * when searching for users in LDAP, we simply use the username 
+       * in whatever format it is provided.
+       */
+      const ldapUsername = dto.username || dto.email;
+      this.logger.debug(`Trying LDAP login for user ${ldapUsername}`);
       const ldapUser = await this.ldapService.authenticateUser(
-        dto.username,
+        ldapUsername,
         dto.password,
       );
       if (ldapUser) {
         const user = await this.userService.findOrCreateFromLDAP(
-          dto.username,
+          dto,
           ldapUser,
         );
         this.logger.log(
-          `Successful LDAP login for user ${user.email} from IP ${ip}`,
+          `Successful LDAP login for user ${ldapUsername} (${user.id}) from IP ${ip}`,
         );
         return this.generateToken(user);
       }
