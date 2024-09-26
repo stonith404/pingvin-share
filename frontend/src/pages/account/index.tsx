@@ -162,6 +162,7 @@ const Account = () => {
               />
               <TextInput
                 label={t("account.card.info.email")}
+                disabled={user?.isLdap}
                 {...accountForm.getInputProps("email")}
               />
               <Group position="right">
