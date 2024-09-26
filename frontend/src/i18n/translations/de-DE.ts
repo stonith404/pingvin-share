@@ -40,7 +40,7 @@ export default {
   "signIn.oauth.microsoft": "Microsoft",
   "signIn.oauth.discord": "Discord",
   "signIn.oauth.oidc": "OpenID",
-  "signIn.error.invalid-username": "Invalid username",
+  "signIn.error.invalid-username": "Ungültiger Benutzername",
   // END /auth/signin
   // /auth/signup
   "signup.title": "Erstelle ein Konto",
@@ -325,7 +325,7 @@ export default {
   "admin.config.email.invite-subject": "Betreff für Einladung",
   "admin.config.email.invite-subject.description": "Betreff der E-Mail, die gesendet wird, wenn ein Administrator einen Benutzer einlädt.",
   "admin.config.email.invite-message": "Nachricht für Einladung",
-  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
+  "admin.config.email.invite-message.description": "Nachricht welche gesendet wird, wenn der Administrator einen Nutzer einlädt. {url} wird ersetzt durch die Einladung URL, {email} mit der die E-Mail und {password} mit dem Passwort des Benutzers.",
   "admin.config.share.allow-registration": "Registrierung erlauben",
   "admin.config.share.allow-registration.description": "Gibt an, ob eine Registrierung erlaubt ist",
   "admin.config.share.allow-unauthenticated-shares": "Nicht authentifizierte Freigaben erlauben",
@@ -417,9 +417,9 @@ export default {
   "admin.config.ldap.search-base": "User base",
   "admin.config.ldap.search-base.description": "Base location, where the user search will be performed",
   "admin.config.ldap.search-query": "User query",
-  "admin.config.ldap.search-query.description": "The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.",
+  "admin.config.ldap.search-query.description": "Die Benutzer Abfrage wird in der \"Benutzerdatenbank\" gesucht für den LDAP Benutzer. %username% kann als Platzhalter für den Benutzer eingegeben werden.",
   "admin.config.ldap.admin-groups": "Administratorengruppe",
-  "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
+  "admin.config.ldap.admin-groups.description": "Gruppe benötigt für den Administrations Zugang.",
   // 404
   "404.description": "Ups, diese Seite existiert nicht.",
   "404.button.home": "Zurück zur Startseite",
