@@ -132,7 +132,7 @@ export default {
   // END /account/shares
   // /account/reverseShares
   "account.reverseShares.title": "Externe Freigaben",
-  "account.reverseShares.description": "Eine externe Freigabe erlaubt dir eine einzigartige URL zu erstellen, die externen Benutzern erlaubt Dateien hochzuladen.",
+  "account.reverseShares.description": "Eine externe Freigabe erlaubt dir eine einzigartige URL zu erstellen, die externen Benutzern erlaubt, Dateien hochzuladen.",
   "account.reverseShares.title.empty": "Es ist leer hier 👀",
   "account.reverseShares.description.empty": "Du hast keine externen Freigaben erstellt.",
   // showCreateReverseShareModal.tsx
@@ -156,7 +156,7 @@ export default {
   "account.reverseShares.modal.simplified": "Einfacher Modus",
   "account.reverseShares.modal.simplified.description": "Mache es der Person einfach, die die Datei hochlädt, sie mit Dir zu teilen. Sie können nur den Namen und die Beschreibung der Freigabe ändern.",
   "account.reverseShares.modal.public-access": "Öffentlicher Zugriff",
-  "account.reverseShares.modal.public-access.description": "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
+  "account.reverseShares.modal.public-access.description": "Mache die erstellten Freigaben mit dieser Rückfreigabe öffentlich. Wenn deaktiviert, kannst nur du und der Ersteller der Freigaben diese anzeigen.",
   "account.reverseShares.modal.max-use.label": "Maximale Nutzungen",
   "account.reverseShares.modal.max-use.description": "Die maximale Anzahl von Verwendungen der URL, um Dateien hochzuladen.",
   "account.reverseShare.never-expires": "Diese externe Freigabe wird nicht ablaufen.",
