@@ -40,7 +40,8 @@ export class LdapService {
     username: string,
     password: string,
   ): Promise<Entry | null> {
-    if (!username.match(/^[a-zA-Z0-9-_.]+$/)) {
+    if (!username.match(/^[a-zA-Z0-9-_.@]+$/)) {
+      this.logger.verbose(`Username ${username} does not match username pattern. Authentication failed.`);
       return null;
     }
 
