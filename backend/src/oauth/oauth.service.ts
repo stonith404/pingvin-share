@@ -108,8 +108,10 @@ export class OAuthService {
   }
 
   private async getAvailableUsername(preferredUsername: string) {
-    // only remove + and - from preferred username for now (maybe not enough)
-    let username = preferredUsername.replace(/[+-]/g, "").substring(0, 20);
+    // Only keep letters, numbers, dots, and underscores. Truncate to 20 characters.
+    let username = preferredUsername
+      .replace(/[^a-zA-Z0-9._]/g, "")
+      .substring(0, 20);
     while (true) {
       const user = await this.prisma.user.findFirst({
         where: {
