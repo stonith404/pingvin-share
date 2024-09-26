@@ -325,7 +325,7 @@ export default {
   "admin.config.email.invite-subject": "Sujet d’une invitation",
   "admin.config.email.invite-subject.description": "Intitulé du courriel envoyé lorsqu’un administrateur invite un utilisateur.",
   "admin.config.email.invite-message": "Message d’une invitation",
-  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
+  "admin.config.email.invite-message.description": "Message qui est envoyé lorsqu'un administrateur invite un utilisateur. {url} sera remplacé avec l'URL d'invitation, {email} avec le courriel et {password} avec le mot de passe de l'utilisateur.",
   "admin.config.share.allow-registration": "Autoriser les inscriptions",
   "admin.config.share.allow-registration.description": "Permet aux visiteurs de créer un compte.",
   "admin.config.share.allow-unauthenticated-shares": "Autoriser les partages anonymes",
@@ -419,7 +419,7 @@ export default {
   "admin.config.ldap.search-query": "Requête utilisateur",
   "admin.config.ldap.search-query.description": "La requête utilisateur sera utilisée pour rechercher dans la ‘base d'utilisateurs’ de l'utilisateur LDAP. %username% peut être utilisé comme espace réservé pour les entrées données par l'utilisateur.",
   "admin.config.ldap.admin-groups": "Groupe administrateur",
-  "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
+  "admin.config.ldap.admin-groups.description": "Un groupe est nécessaire pour un accès administratif.",
   // 404
   "404.description": "Désolé, mais cette page n’existe pas.",
   "404.button.home": "Retour à l’accueil",
