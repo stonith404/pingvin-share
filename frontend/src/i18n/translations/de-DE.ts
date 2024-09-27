@@ -40,7 +40,6 @@ export default {
   "signIn.oauth.microsoft": "Microsoft",
   "signIn.oauth.discord": "Discord",
   "signIn.oauth.oidc": "OpenID",
-  "signIn.error.invalid-username": "Ungültiger Benutzername",
   // END /auth/signin
   // /auth/signup
   "signup.title": "Erstelle ein Konto",
@@ -420,6 +419,10 @@ export default {
   "admin.config.ldap.search-query.description": "Die Benutzer Abfrage wird in der \"Benutzerdatenbank\" gesucht für den LDAP Benutzer. %username% kann als Platzhalter für den Benutzer eingegeben werden.",
   "admin.config.ldap.admin-groups": "Administratorengruppe",
   "admin.config.ldap.admin-groups.description": "Gruppe benötigt für den Administrations Zugang.",
+  "admin.config.ldap.field-name-member-of": "User groups attribute name",
+  "admin.config.ldap.field-name-member-of.description": "LDAP attribute name for the groups, an user is a member of. This is used when checking for the admin group.",
+  "admin.config.ldap.field-name-email": "User email attribute name",
+  "admin.config.ldap.field-name-email.description": "LDAP attribute name for the email of an user.",
   // 404
   "404.description": "Ups, diese Seite existiert nicht.",
   "404.button.home": "Zurück zur Startseite",
