@@ -1,3 +1,15 @@
+## [1.1.3](https://github.com/stonith404/pingvin-share/compare/v1.1.2...v1.1.3) (2024-09-27)
+
+
+### Features
+
+* improve the LDAP implementation ([#615](https://github.com/stonith404/pingvin-share/issues/615)) ([3310fe5](https://github.com/stonith404/pingvin-share/commit/3310fe53b3e4c89db78d57ede6c8d57d8137ecc1)), closes [#601](https://github.com/stonith404/pingvin-share/issues/601)
+
+
+### Bug Fixes
+
+* omit invalid username characters in oidc registration ([adc4af9](https://github.com/stonith404/pingvin-share/commit/adc4af996d30b295b06e4ee517aa53be62c0f6c1))
+
 ## [1.1.2](https://github.com/stonith404/pingvin-share/compare/v1.1.1...v1.1.2) (2024-09-24)
 
 
