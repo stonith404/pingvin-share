@@ -384,6 +384,8 @@ export default {
   "admin.config.oauth.discord-enabled.description": "Ofdat discord login is ingeschakeld",
   "admin.config.oauth.discord-limited-guild": "Discord beperkte server ID",
   "admin.config.oauth.discord-limited-guild.description": "Beperk het inloggen tot gebruikers in een specifieke server. Laat leeg om uit te schakelen.",
+  "admin.config.oauth.discord-limited-users": "Beperkte Discord-gebruikers-ID's",
+  "admin.config.oauth.discord-limited-users.description": "Beperk de toegang tot specifieke gebruikers. Laat leeg om uit te schakelen. Scheid meerdere gebruikers-ID's met een komma",
   "admin.config.oauth.discord-client-id": "Discord Client ID",
   "admin.config.oauth.discord-client-id.description": "Client-ID van de discord OAuth app",
   "admin.config.oauth.discord-client-secret": "Discord Client secret",

@@ -384,6 +384,8 @@ export default {
   "admin.config.oauth.discord-enabled.description": "Discordアカウントを使用したログインを許可するかどうかを設定します",
   "admin.config.oauth.discord-limited-guild": "Discord限定サーバーID",
   "admin.config.oauth.discord-limited-guild.description": "特定のサーバーのユーザーにサインインを制限します。無効にするには空白のままにしてください。",
+  "admin.config.oauth.discord-limited-users": "Discordの制限されたユーザーID,",
+  "admin.config.oauth.discord-limited-users.description": "特定のユーザーにログインを制限します。無効にするには空のままにします。複数のユーザーIDをカンマで区切ってください",
   "admin.config.oauth.discord-client-id": "Discord クライアントID",
   "admin.config.oauth.discord-client-id.description": "Discord OAuthアプリのクライアントID",
   "admin.config.oauth.discord-client-secret": "Discord クライアントシークレット",

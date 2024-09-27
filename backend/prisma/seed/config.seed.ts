@@ -254,6 +254,10 @@ const configVariables: ConfigVariables = {
       type: "string",
       defaultValue: "",
     },
+    "discord-limitedUsers": {
+      type: "string",
+      defaultValue: "",
+    },
     "discord-clientId": {
       type: "string",
       defaultValue: "",

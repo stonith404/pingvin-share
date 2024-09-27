@@ -384,6 +384,8 @@ export default {
   "admin.config.oauth.discord-enabled.description": "是否启用 Discord 账号登录",
   "admin.config.oauth.discord-limited-guild": "Discord 的 limited server ID",
   "admin.config.oauth.discord-limited-guild.description": "限制特定服务器中的用户登录。留空来禁用。",
+  "admin.config.oauth.discord-limited-users": "受限的 Discord 用户 ID",
+  "admin.config.oauth.discord-limited-users.description": "限制特定用户的登录。留空以禁用。用逗号分隔多个用户 ID",
   "admin.config.oauth.discord-client-id": "Discord 的 Client ID",
   "admin.config.oauth.discord-client-id.description": "Discord OAuth App 的 Client ID",
   "admin.config.oauth.discord-client-secret": "Discord 的 Client secret",

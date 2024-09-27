@@ -384,6 +384,8 @@ export default {
   "admin.config.oauth.discord-enabled.description": "Om inloggning via Discord är aktiverat",
   "admin.config.oauth.discord-limited-guild": "Discord begränsa till server ID",
   "admin.config.oauth.discord-limited-guild.description": "Begränsa inloggning till användare på en specifik server. Lämna tomt för att inaktivera.",
+  "admin.config.oauth.discord-limited-users": "Begränsade Discord-användar-ID:n",
+  "admin.config.oauth.discord-limited-users.description": "Begränsa åtkomsten till specifika användare. Lämna tomt för att inaktivera. Separera flera användar-ID:n med ett kommatecken",
   "admin.config.oauth.discord-client-id": "Discord Client ID",
   "admin.config.oauth.discord-client-id.description": "Client ID för Discord OAuth",
   "admin.config.oauth.discord-client-secret": "Discord Client secret",

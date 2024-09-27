@@ -384,6 +384,8 @@ export default {
   "admin.config.oauth.discord-enabled.description": "Да ли је пријављивање на Discord омогућено",
   "admin.config.oauth.discord-limited-guild": "Discord limited server ID",
   "admin.config.oauth.discord-limited-guild.description": "Limit signing in to users in a specific server. Leave it blank to disable.",
+  "admin.config.oauth.discord-limited-users": "Ograničeni Discord korisnički ID-evi",
+  "admin.config.oauth.discord-limited-users.description": "Ograničite prijavu na određene korisnike. Ostavite prazno da isključite. Odvojite više korisničkih ID-eva zarezom",
   "admin.config.oauth.discord-client-id": "Discord ИД клијента",
   "admin.config.oauth.discord-client-id.description": "ИД клијента Discord OAuth апликације",
   "admin.config.oauth.discord-client-secret": "Discord клијент тајна",
