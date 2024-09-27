@@ -40,7 +40,6 @@ export default {
   "signIn.oauth.microsoft": "Microsoft",
   "signIn.oauth.discord": "Discord",
   "signIn.oauth.oidc": "OpenID",
-  "signIn.error.invalid-username": "Invalid username",
   // END /auth/signin
   // /auth/signup
   "signup.title": "Δημιουργία λογαριασμού",
@@ -420,6 +419,10 @@ export default {
   "admin.config.ldap.search-query.description": "The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.",
   "admin.config.ldap.admin-groups": "Admin group",
   "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
+  "admin.config.ldap.field-name-member-of": "User groups attribute name",
+  "admin.config.ldap.field-name-member-of.description": "LDAP attribute name for the groups, an user is a member of. This is used when checking for the admin group.",
+  "admin.config.ldap.field-name-email": "User email attribute name",
+  "admin.config.ldap.field-name-email.description": "LDAP attribute name for the email of an user.",
   // 404
   "404.description": "Ουπς. Αυτή η σελίδα δεν υπάρχει.",
   "404.button.home": "Πήγαινέ με πίσω",
