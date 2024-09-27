@@ -35,6 +35,7 @@
     "class-validator": "^0.14.1",
     "content-disposition": "^0.5.4",
     "cookie-parser": "^1.4.6",
+    "diskusage": "^1.2.0",
     "jmespath": "^0.16.0",
     "ldapjs": "^3.0.7",
     "mime-types": "^2.1.35",
