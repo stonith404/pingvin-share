@@ -1,4 +1,5 @@
 import {
+  Badge,
   Button,
   Center,
   Container,
@@ -142,6 +143,9 @@ const Account = () => {
         <Paper withBorder p="xl">
           <Title order={5} mb="xs">
             <FormattedMessage id="account.card.info.title" />
+            {user?.isLdap ? (
+              <Badge style={{ marginLeft: "1em" }}>LDAP</Badge>
+            ) : null}
           </Title>
           <form
             onSubmit={accountForm.onSubmit((values) =>
@@ -162,13 +166,16 @@ const Account = () => {
               />
               <TextInput
                 label={t("account.card.info.email")}
+                disabled={user?.isLdap}
                 {...accountForm.getInputProps("email")}
               />
-              <Group position="right">
-                <Button type="submit">
-                  <FormattedMessage id="common.button.save" />
-                </Button>
-              </Group>
+              {!user?.isLdap && (
+                <Group position="right">
+                  <Button type="submit">
+                    <FormattedMessage id="common.button.save" />
+                  </Button>
+                </Group>
+              )}
             </Stack>
           </form>
         </Paper>

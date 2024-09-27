@@ -4,7 +4,7 @@ import { PrismaService } from "./prisma/prisma.service";
 
 @Controller("/")
 export class AppController {
-  constructor(private prismaService: PrismaService) {}
+  constructor(private prismaService: PrismaService) { }
 
   @Get("health")
   async health(@Res({ passthrough: true }) res: Response) {

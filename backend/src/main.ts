@@ -1,6 +1,7 @@
 import {
   ClassSerializerInterceptor,
   Logger,
+  LogLevel,
   ValidationPipe,
 } from "@nestjs/common";
 import { NestFactory, Reflector } from "@nestjs/core";
@@ -12,10 +13,30 @@ import { NextFunction, Request, Response } from "express";
 import * as fs from "fs";
 import { AppModule } from "./app.module";
 import { ConfigService } from "./config/config.service";
-import { DATA_DIRECTORY } from "./constants";
+import { DATA_DIRECTORY, LOG_LEVEL_AVAILABLE, LOG_LEVEL_DEFAULT, LOG_LEVEL_ENV } from "./constants";
+
+function generateNestJsLogLevels(): LogLevel[] {
+  if (LOG_LEVEL_ENV) {
+    const levelIndex = LOG_LEVEL_AVAILABLE.indexOf(LOG_LEVEL_ENV as any);
+    if (levelIndex === -1) {
+      throw new Error(`log level ${LOG_LEVEL_ENV} unknown`);
+    }
+
+    return LOG_LEVEL_AVAILABLE.slice(levelIndex, LOG_LEVEL_AVAILABLE.length);
+  } else {
+    const levelIndex = LOG_LEVEL_AVAILABLE.indexOf(LOG_LEVEL_DEFAULT);
+    return LOG_LEVEL_AVAILABLE.slice(levelIndex, LOG_LEVEL_AVAILABLE.length);
+  }
+}
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  const logLevels = generateNestJsLogLevels();
+  Logger.log(`Showing ${logLevels.join(", ")} messages`);
+
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    logger: logLevels
+  });
+
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 

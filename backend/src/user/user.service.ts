@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable, Logger } from "@nestjs/common";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import * as argon from "argon2";
 import * as crypto from "crypto";
@@ -8,16 +8,20 @@ import { FileService } from "../file/file.service";
 import { CreateUserDTO } from "./dto/createUser.dto";
 import { UpdateUserDto } from "./dto/updateUser.dto";
 import { ConfigService } from "../config/config.service";
-import { LdapAuthenticateResult } from "../auth/ldap.service";
+import { Entry } from "ldapts";
+import { AuthSignInDTO } from "src/auth/dto/authSignIn.dto";
+import { inspect } from "util";
 
 @Injectable()
 export class UserSevice {
+  private readonly logger = new Logger(UserSevice.name);
+
   constructor(
     private prisma: PrismaService,
     private emailService: EmailService,
     private fileService: FileService,
     private configService: ConfigService,
-  ) {}
+  ) { }
 
   async list() {
     return await this.prisma.user.findMany();
@@ -92,33 +96,91 @@ export class UserSevice {
     return await this.prisma.user.delete({ where: { id } });
   }
 
-  async findOrCreateFromLDAP(username: string, ldap: LdapAuthenticateResult) {
-    const passwordHash = await argon.hash(crypto.randomUUID());
-    const userEmail =
-      ldap.attributes["userPrincipalName"]?.at(0) ??
-      `${crypto.randomUUID()}@ldap.local`;
-    const adminGroup = this.configService.get("ldap.adminGroups");
-    const isAdmin = ldap.attributes["memberOf"]?.includes(adminGroup) ?? false;
+  async findOrCreateFromLDAP(providedCredentials: AuthSignInDTO, ldapEntry: Entry) {
+    const fieldNameMemberOf = this.configService.get("ldap.fieldNameMemberOf");
+    const fieldNameEmail = this.configService.get("ldap.fieldNameEmail");
+
+    let isAdmin = false;
+    if (fieldNameMemberOf in ldapEntry) {
+      const adminGroup = this.configService.get("ldap.adminGroups");
+      const entryGroups = Array.isArray(ldapEntry[fieldNameMemberOf]) ? ldapEntry[fieldNameMemberOf] : [ldapEntry[fieldNameMemberOf]];
+      isAdmin = entryGroups.includes(adminGroup) ?? false;
+    } else {
+      this.logger.warn(`Trying to create/update a ldap user but the member field ${fieldNameMemberOf} is not present.`);
+    }
+
+    let userEmail: string | null = null;
+    if (fieldNameEmail in ldapEntry) {
+      const value = Array.isArray(ldapEntry[fieldNameEmail]) ? ldapEntry[fieldNameEmail][0] : ldapEntry[fieldNameEmail];
+      if (value) {
+        userEmail = value.toString();
+      }
+    } else {
+      this.logger.warn(`Trying to create/update a ldap user but the email field ${fieldNameEmail} is not present.`);
+    }
+
+    if (providedCredentials.email) {
+      /* if LDAP does not provides an users email address, take the user provided email address instead */
+      userEmail = providedCredentials.email;
+    }
+
+    const randomId = crypto.randomUUID();
+    const placeholderUsername = `ldap_user_${randomId}`;
+    const placeholderEMail = `${randomId}@ldap.local`;
+
     try {
-      return await this.prisma.user.upsert({
+      const user = await this.prisma.user.upsert({
         create: {
-          username,
-          email: userEmail,
-          password: passwordHash,
-          isAdmin,
-          ldapDN: ldap.userDn,
-        },
-        update: {
-          username,
-          email: userEmail,
+          username: providedCredentials.username ?? placeholderUsername,
+          email: userEmail ?? placeholderEMail,
+          password: await argon.hash(crypto.randomUUID()),
 
           isAdmin,
-          ldapDN: ldap.userDn,
+          ldapDN: ldapEntry.dn,
+        },
+        update: {
+          isAdmin,
+          ldapDN: ldapEntry.dn,
         },
         where: {
-          ldapDN: ldap.userDn,
+          ldapDN: ldapEntry.dn,
         },
       });
+
+      if (user.username === placeholderUsername) {
+        /* Give the user a human readable name if the user has been created with a placeholder username */
+        await this.prisma.user.update({
+          where: {
+            id: user.id,
+          },
+          data: {
+            username: `user_${user.id}`
+          }
+        }).then(newUser => {
+          user.username = newUser.username;
+        }).catch(error => {
+          this.logger.warn(`Failed to update users ${user.id} placeholder username: ${inspect(error)}`);
+        });
+      }
+
+      if (userEmail && userEmail !== user.email) {
+        /* Sync users email if it has changed */
+        await this.prisma.user.update({
+          where: {
+            id: user.id,
+          },
+          data: {
+            email: userEmail
+          }
+        }).then(newUser => {
+          this.logger.log(`Updated users ${user.id} email from ldap from ${user.email} to ${userEmail}.`);
+          user.email = newUser.email;
+        }).catch(error => {
+          this.logger.error(`Failed to update users ${user.id} email to ${userEmail}: ${inspect(error)}`);
+        });
+      }
+
+      return user;
     } catch (e) {
       if (e instanceof PrismaClientKnownRequestError) {
         if (e.code == "P2002") {

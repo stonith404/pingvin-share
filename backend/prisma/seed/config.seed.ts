@@ -178,6 +178,15 @@ const configVariables: ConfigVariables = {
     adminGroups: {
       type: "string",
       defaultValue: ""
+    },
+
+    fieldNameMemberOf: {
+      type: "string",
+      defaultValue: "memberOf",
+    },
+    fieldNameEmail: {
+      type: "string",
+      defaultValue: "userPrincipalName",
     }
   },
   oauth: {
