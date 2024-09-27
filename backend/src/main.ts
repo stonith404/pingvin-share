@@ -13,7 +13,12 @@ import { NextFunction, Request, Response } from "express";
 import * as fs from "fs";
 import { AppModule } from "./app.module";
 import { ConfigService } from "./config/config.service";
-import { DATA_DIRECTORY, LOG_LEVEL_AVAILABLE, LOG_LEVEL_DEFAULT, LOG_LEVEL_ENV } from "./constants";
+import {
+  DATA_DIRECTORY,
+  LOG_LEVEL_AVAILABLE,
+  LOG_LEVEL_DEFAULT,
+  LOG_LEVEL_ENV,
+} from "./constants";
 
 function generateNestJsLogLevels(): LogLevel[] {
   if (LOG_LEVEL_ENV) {
@@ -34,7 +39,7 @@ async function bootstrap() {
   Logger.log(`Showing ${logLevels.join(", ")} messages`);
 
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
-    logger: logLevels
+    logger: logLevels,
   });
 
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));

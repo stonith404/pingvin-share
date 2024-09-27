@@ -9,7 +9,7 @@ export class LdapService {
   constructor(
     @Inject(ConfigService)
     private readonly serviceConfig: ConfigService,
-  ) { }
+  ) {}
 
   private async createLdapConnection(): Promise<Client> {
     const ldapUrl = this.serviceConfig.get("ldap.url");
@@ -26,7 +26,10 @@ export class LdapService {
     const bindDn = this.serviceConfig.get("ldap.bindDn") || null;
     if (bindDn) {
       try {
-        await ldapClient.bind(bindDn, this.serviceConfig.get("ldap.bindPassword"));
+        await ldapClient.bind(
+          bindDn,
+          this.serviceConfig.get("ldap.bindPassword"),
+        );
       } catch (error) {
         this.logger.warn(`Failed to bind to default user: ${error}`);
         throw new Error("failed to bind to default user");
@@ -41,7 +44,9 @@ export class LdapService {
     password: string,
   ): Promise<Entry | null> {
     if (!username.match(/^[a-zA-Z0-9-_.@]+$/)) {
-      this.logger.verbose(`Username ${username} does not match username pattern. Authentication failed.`);
+      this.logger.verbose(
+        `Username ${username} does not match username pattern. Authentication failed.`,
+      );
       return null;
     }
 
@@ -57,27 +62,35 @@ export class LdapService {
         scope: "sub",
 
         attributes: ["*"],
-        returnAttributeValues: true
+        returnAttributeValues: true,
       });
 
       if (searchEntries.length > 1) {
         /* too many users found */
-        this.logger.verbose(`Authentication for username ${username} failed. Too many users found with query ${searchQuery}`);
+        this.logger.verbose(
+          `Authentication for username ${username} failed. Too many users found with query ${searchQuery}`,
+        );
         return null;
       } else if (searchEntries.length == 0) {
         /* user not found */
-        this.logger.verbose(`Authentication for username ${username} failed. No user found with query ${searchQuery}`);
+        this.logger.verbose(
+          `Authentication for username ${username} failed. No user found with query ${searchQuery}`,
+        );
         return null;
       }
 
       const targetEntity = searchEntries[0];
-      this.logger.verbose(`Trying to authenticate ${username} against LDAP user ${targetEntity.dn}`);
+      this.logger.verbose(
+        `Trying to authenticate ${username} against LDAP user ${targetEntity.dn}`,
+      );
       try {
         await ldapClient.bind(targetEntity.dn, password);
         return targetEntity;
       } catch (error) {
         if (error instanceof InvalidCredentialsError) {
-          this.logger.verbose(`Failed to authenticate ${username} against ${targetEntity.dn}. Invalid credentials.`);
+          this.logger.verbose(
+            `Failed to authenticate ${username} against ${targetEntity.dn}. Invalid credentials.`,
+          );
           return null;
         }
 

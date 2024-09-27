@@ -21,7 +21,7 @@ export class UserSevice {
     private emailService: EmailService,
     private fileService: FileService,
     private configService: ConfigService,
-  ) { }
+  ) {}
 
   async list() {
     return await this.prisma.user.findMany();
@@ -96,27 +96,38 @@ export class UserSevice {
     return await this.prisma.user.delete({ where: { id } });
   }
 
-  async findOrCreateFromLDAP(providedCredentials: AuthSignInDTO, ldapEntry: Entry) {
+  async findOrCreateFromLDAP(
+    providedCredentials: AuthSignInDTO,
+    ldapEntry: Entry,
+  ) {
     const fieldNameMemberOf = this.configService.get("ldap.fieldNameMemberOf");
     const fieldNameEmail = this.configService.get("ldap.fieldNameEmail");
 
     let isAdmin = false;
     if (fieldNameMemberOf in ldapEntry) {
       const adminGroup = this.configService.get("ldap.adminGroups");
-      const entryGroups = Array.isArray(ldapEntry[fieldNameMemberOf]) ? ldapEntry[fieldNameMemberOf] : [ldapEntry[fieldNameMemberOf]];
+      const entryGroups = Array.isArray(ldapEntry[fieldNameMemberOf])
+        ? ldapEntry[fieldNameMemberOf]
+        : [ldapEntry[fieldNameMemberOf]];
       isAdmin = entryGroups.includes(adminGroup) ?? false;
     } else {
-      this.logger.warn(`Trying to create/update a ldap user but the member field ${fieldNameMemberOf} is not present.`);
+      this.logger.warn(
+        `Trying to create/update a ldap user but the member field ${fieldNameMemberOf} is not present.`,
+      );
     }
 
     let userEmail: string | null = null;
     if (fieldNameEmail in ldapEntry) {
-      const value = Array.isArray(ldapEntry[fieldNameEmail]) ? ldapEntry[fieldNameEmail][0] : ldapEntry[fieldNameEmail];
+      const value = Array.isArray(ldapEntry[fieldNameEmail])
+        ? ldapEntry[fieldNameEmail][0]
+        : ldapEntry[fieldNameEmail];
       if (value) {
         userEmail = value.toString();
       }
     } else {
-      this.logger.warn(`Trying to create/update a ldap user but the email field ${fieldNameEmail} is not present.`);
+      this.logger.warn(
+        `Trying to create/update a ldap user but the email field ${fieldNameEmail} is not present.`,
+      );
     }
 
     if (providedCredentials.email) {
@@ -149,35 +160,47 @@ export class UserSevice {
 
       if (user.username === placeholderUsername) {
         /* Give the user a human readable name if the user has been created with a placeholder username */
-        await this.prisma.user.update({
-          where: {
-            id: user.id,
-          },
-          data: {
-            username: `user_${user.id}`
-          }
-        }).then(newUser => {
-          user.username = newUser.username;
-        }).catch(error => {
-          this.logger.warn(`Failed to update users ${user.id} placeholder username: ${inspect(error)}`);
-        });
+        await this.prisma.user
+          .update({
+            where: {
+              id: user.id,
+            },
+            data: {
+              username: `user_${user.id}`,
+            },
+          })
+          .then((newUser) => {
+            user.username = newUser.username;
+          })
+          .catch((error) => {
+            this.logger.warn(
+              `Failed to update users ${user.id} placeholder username: ${inspect(error)}`,
+            );
+          });
       }
 
       if (userEmail && userEmail !== user.email) {
         /* Sync users email if it has changed */
-        await this.prisma.user.update({
-          where: {
-            id: user.id,
-          },
-          data: {
-            email: userEmail
-          }
-        }).then(newUser => {
-          this.logger.log(`Updated users ${user.id} email from ldap from ${user.email} to ${userEmail}.`);
-          user.email = newUser.email;
-        }).catch(error => {
-          this.logger.error(`Failed to update users ${user.id} email to ${userEmail}: ${inspect(error)}`);
-        });
+        await this.prisma.user
+          .update({
+            where: {
+              id: user.id,
+            },
+            data: {
+              email: userEmail,
+            },
+          })
+          .then((newUser) => {
+            this.logger.log(
+              `Updated users ${user.id} email from ldap from ${user.email} to ${userEmail}.`,
+            );
+            user.email = newUser.email;
+          })
+          .catch((error) => {
+            this.logger.error(
+              `Failed to update users ${user.id} email to ${userEmail}: ${inspect(error)}`,
+            );
+          });
       }
 
       return user;

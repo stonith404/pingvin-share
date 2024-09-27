@@ -29,7 +29,7 @@ export class AuthService {
     private emailService: EmailService,
     private ldapService: LdapService,
     private userService: UserSevice,
-  ) { }
+  ) {}
   private readonly logger = new Logger(AuthService.name);
 
   async signUp(dto: AuthRegisterDTO, ip: string, isAdmin?: boolean) {
@@ -88,8 +88,8 @@ export class AuthService {
     if (this.config.get("ldap.enabled")) {
       /*
        * E-mail-like user credentials are passed as the email property
-       * instead of the username. Since the username format does not matter 
-       * when searching for users in LDAP, we simply use the username 
+       * instead of the username. Since the username format does not matter
+       * when searching for users in LDAP, we simply use the username
        * in whatever format it is provided.
        */
       const ldapUsername = dto.username || dto.email;
@@ -99,10 +99,7 @@ export class AuthService {
         dto.password,
       );
       if (ldapUser) {
-        const user = await this.userService.findOrCreateFromLDAP(
-          dto,
-          ldapUser,
-        );
+        const user = await this.userService.findOrCreateFromLDAP(dto, ldapUser);
         this.logger.log(
           `Successful LDAP login for user ${ldapUsername} (${user.id}) from IP ${ip}`,
         );
