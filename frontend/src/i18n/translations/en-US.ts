@@ -493,6 +493,9 @@ export default {
   "admin.config.oauth.allow-registration": "Allow registration",
   "admin.config.oauth.allow-registration.description":
     "Allow users to register via social login",
+  "admin.config.oauth.limit-registration-domain": "Limit registration domain",
+  "admin.config.oauth.limit-registration-domain.description":
+    "Only allow registration with email addresses from a specific domain. Leave it blank to allow all domains.",
   "admin.config.oauth.ignore-totp": "Ignore TOTP",
   "admin.config.oauth.ignore-totp.description":
     "Whether to ignore TOTP when user using social login",
