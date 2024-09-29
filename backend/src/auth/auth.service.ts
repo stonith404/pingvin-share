@@ -33,15 +33,9 @@ export class AuthService {
   private readonly logger = new Logger(AuthService.name);
 
   async signUp(dto: AuthRegisterDTO, ip: string, isAdmin?: boolean) {
-    const isFirstUser = (await this.prisma.user.count()) === 0;
-    if (
-      this.config.get("oauth.limitRegistrationDomain") &&
-      !dto.email.endsWith(this.config.get("oauth.limitRegistrationDomain"))
-    ) {
-      throw new ForbiddenException("Registration is not allowed for this domain");
-    }
+    const isFirstUser = (await this.prisma.user.count()) == 0;
+
     const hash = dto.password ? await argon.hash(dto.password) : null;
-  
     try {
       const user = await this.prisma.user.create({
         data: {
@@ -51,21 +45,25 @@ export class AuthService {
           isAdmin: isAdmin ?? isFirstUser,
         },
       });
-  
-      const { refreshToken, refreshTokenId } = await this.createRefreshToken(user.id);
+
+      const { refreshToken, refreshTokenId } = await this.createRefreshToken(
+        user.id,
+      );
       const accessToken = await this.createAccessToken(user, refreshTokenId);
-  
+
       this.logger.log(`User ${user.email} signed up from IP ${ip}`);
       return { accessToken, refreshToken, user };
     } catch (e) {
-      if (e instanceof PrismaClientKnownRequestError && e.code === "P2002") {
-        const duplicatedField: string = e.meta.target[0];
-        throw new BadRequestException(`A user with this ${duplicatedField} already exists`);
+      if (e instanceof PrismaClientKnownRequestError) {
+        if (e.code == "P2002") {
+          const duplicatedField: string = e.meta.target[0];
+          throw new BadRequestException(
+            `A user with this ${duplicatedField} already exists`,
+          );
+        }
       }
-      throw e;
     }
   }
-  
 
   async signIn(dto: AuthSignInDTO, ip: string) {
     if (!dto.email && !dto.username) {

@@ -194,10 +194,6 @@ const configVariables: ConfigVariables = {
       type: "boolean",
       defaultValue: "true",
     },
-    "limitRegistrationDomain": {
-      type: "string",
-      defaultValue: "",
-    },
     "ignoreTotp": {
       type: "boolean",
       defaultValue: "true",

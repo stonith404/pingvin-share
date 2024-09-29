@@ -50,7 +50,6 @@ export class AuthController {
   ) {
     if (!this.config.get("share.allowRegistration"))
       throw new ForbiddenException("Registration is not allowed");
-    
 
     const result = await this.authService.signUp(dto, ip);
 
