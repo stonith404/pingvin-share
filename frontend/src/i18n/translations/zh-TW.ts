@@ -384,9 +384,6 @@ export default {
   "admin.config.oauth.discord-enabled.description": "啟用 Discord 登入",
   "admin.config.oauth.discord-limited-guild": "Discord limited server ID",
   "admin.config.oauth.discord-limited-guild.description": "Limit signing in to users in a specific server. Leave it blank to disable.",
-  "admin.config.oauth.discord-limited-users": "Discord limited user IDs",
-  "admin.config.oauth.discord-limited-users.description":
-    "Limit signing in to specific users. Leave it blank to disable. Separate multiple user IDs with a comma.",
   "admin.config.oauth.discord-client-id": "Discord Client ID",
   "admin.config.oauth.discord-client-id.description": "Discord OAuth 的 Client ID",
   "admin.config.oauth.discord-client-secret": "Discord Client secret",

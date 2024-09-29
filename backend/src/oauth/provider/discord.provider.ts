@@ -81,9 +81,9 @@ export class DiscordProvider implements OAuthProvider<DiscordToken> {
     if (guild) {
       await this.checkLimitedGuild(token, guild);
     }
-    const limitedusers = this.config.get("oauth.discord-limitedUsers");
-    if (limitedusers) {
-      await this.checkLimitedUsers(user, limitedusers);
+    const limitedUsers = this.config.get("oauth.discord-limitedUsers");
+    if (limitedUsers) {
+      await this.checkLimitedUsers(user, limitedUsers);
     }
    
     return {

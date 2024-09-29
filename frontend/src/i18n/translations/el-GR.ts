@@ -384,8 +384,6 @@ export default {
   "admin.config.oauth.discord-enabled.description": "Αν είναι ενεργοποιημένη η σύνδεση στο Discord",
   "admin.config.oauth.discord-limited-guild": "Αναγνωριστικό διακομιστή περιορισμένης ισχύος Discord",
   "admin.config.oauth.discord-limited-guild.description": "Περιορισμός σύνδεσης σε χρήστες σε ένα συγκεκριμένο διακομιστή. Αφήστε κενό για να απενεργοποιήσετε.",
-  "admin.config.oauth.discord-limited-users": "Περιορισμένα ID χρηστών Discord",
-  "admin.config.oauth.discord-limited-users.description": "Περιορίστε την είσοδο σε συγκεκριμένους χρήστες. Αφήστε το κενό για να το απενεργοποιήσετε. Χωρίστε τα πολλαπλά ID χρηστών με κόμμα. comms",
   "admin.config.oauth.discord-client-id": "Αναγνωριστικό Πελάτη Discord",
   "admin.config.oauth.discord-client-id.description": "Αναγνωριστικό πελάτη της εφαρμογής Discord OAuth",
   "admin.config.oauth.discord-client-secret": "Μυστικό πελάτη Discord",

@@ -384,8 +384,6 @@ export default {
   "admin.config.oauth.discord-enabled.description": "Чи увімкнено логін Discord",
   "admin.config.oauth.discord-limited-guild": "ID обмеженого сервера Discord",
   "admin.config.oauth.discord-limited-guild.description": "Обмеження входу для користувачів певного сервера. Залиште порожнім, щоб відключити.",
-  "admin.config.oauth.discord-limited-users": "Обмежені ID користувачів Discord",
-  "admin.config.oauth.discord-limited-users.description": "Обмежте вхід для конкретних користувачів. Залиште порожнім, щоб вимкнути. Розділіть кілька ID користувачів комою",
   "admin.config.oauth.discord-client-id": "ID клієнта Discord",
   "admin.config.oauth.discord-client-id.description": "ID клієнта в додатку Discord OAuth",
   "admin.config.oauth.discord-client-secret": "Секретний ключ клієнта Discord",

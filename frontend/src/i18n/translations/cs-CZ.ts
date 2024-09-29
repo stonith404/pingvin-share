@@ -384,9 +384,6 @@ export default {
   "admin.config.oauth.discord-enabled.description": "Zda je povoleno přihlášení přes Discord",
   "admin.config.oauth.discord-limited-guild": "Discord limited server ID",
   "admin.config.oauth.discord-limited-guild.description": "Omezit přihlášení na uživatele na konkrétním serveru. Ponechte prázdné pro vypnutí.",
-  "admin.config.oauth.discord-limited-users": "Odsouhlasit omezená ID uživatelů",
-  "admin.config.oauth.discord-limited-users.description":
-    "Omezte přihlašování na konkrétní uživatele. Chcete-li deaktivovat, ponechte pole prázdné. Více uživatelských ID oddělte čárkou.",
   "admin.config.oauth.discord-client-id": "Discord Client ID",
   "admin.config.oauth.discord-client-id.description": "Client ID of the Discord OAuth app",
   "admin.config.oauth.discord-client-secret": "Discord Client secret",
