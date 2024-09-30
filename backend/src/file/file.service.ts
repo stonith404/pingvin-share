@@ -12,20 +12,23 @@ import * as mime from "mime-types";
 import { ConfigService } from "src/config/config.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { SHARE_DIRECTORY } from "../constants";
+import * as diskusage from "diskusage";
+
+const MAX_RETRIES = 3;
 
 @Injectable()
 export class FileService {
   constructor(
     private prisma: PrismaService,
     private jwtService: JwtService,
-    private config: ConfigService,
+    private config: ConfigService
   ) {}
 
   async create(
     data: string,
     chunk: { index: number; total: number },
     file: { id?: string; name: string },
-    shareId: string,
+    shareId: string
   ) {
     if (!file.id) file.id = crypto.randomUUID();
 
@@ -37,69 +40,91 @@ export class FileService {
     if (share.uploadLocked)
       throw new BadRequestException("Share is already completed");
 
-    let diskFileSize: number;
-    try {
-      diskFileSize = fs.statSync(
-        `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
-      ).size;
-    } catch {
-      diskFileSize = 0;
-    }
+    let retries = 0;
+    let success = false;
 
-    // If the sent chunk index and the expected chunk index doesn't match throw an error
-    const chunkSize = this.config.get("share.chunkSize");
-    const expectedChunkIndex = Math.ceil(diskFileSize / chunkSize);
+    while (retries < MAX_RETRIES && !success) {
+      try {
+        const { available } = diskusage.checkSync("/");
+        const buffer = Buffer.from(data, "base64");
+        const fileSize = buffer.byteLength;
 
-    if (expectedChunkIndex != chunk.index)
-      throw new BadRequestException({
-        message: "Unexpected chunk received",
-        error: "unexpected_chunk_index",
-        expectedChunkIndex,
-      });
+        if (available < fileSize) {
+          throw new Error("Not enough disk space");
+        }
 
-    const buffer = Buffer.from(data, "base64");
+        let diskFileSize: number;
+        try {
+          diskFileSize = fs.statSync(
+            `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`
+          ).size;
+        } catch {
+          diskFileSize = 0;
+        }
 
-    // Check if share size limit is exceeded
-    const fileSizeSum = share.files.reduce(
-      (n, { size }) => n + parseInt(size),
-      0,
-    );
+        const chunkSize = this.config.get("share.chunkSize");
+        const expectedChunkIndex = Math.ceil(diskFileSize / chunkSize);
 
-    const shareSizeSum = fileSizeSum + diskFileSize + buffer.byteLength;
+        if (expectedChunkIndex != chunk.index)
+          throw new BadRequestException({
+            message: "Unexpected chunk received",
+            error: "unexpected_chunk_index",
+            expectedChunkIndex,
+          });
 
-    if (
-      shareSizeSum > this.config.get("share.maxSize") ||
-      (share.reverseShare?.maxShareSize &&
-        shareSizeSum > parseInt(share.reverseShare.maxShareSize))
-    ) {
-      throw new HttpException(
-        "Max share size exceeded",
-        HttpStatus.PAYLOAD_TOO_LARGE,
-      );
-    }
+        const fileSizeSum = share.files.reduce(
+          (n, { size }) => n + parseInt(size),
+          0
+        );
 
-    fs.appendFileSync(
-      `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
-      buffer,
-    );
+        const shareSizeSum = fileSizeSum + diskFileSize + buffer.byteLength;
 
-    const isLastChunk = chunk.index == chunk.total - 1;
-    if (isLastChunk) {
-      fs.renameSync(
-        `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
-        `${SHARE_DIRECTORY}/${shareId}/${file.id}`,
-      );
-      const fileSize = fs.statSync(
-        `${SHARE_DIRECTORY}/${shareId}/${file.id}`,
-      ).size;
-      await this.prisma.file.create({
-        data: {
-          id: file.id,
-          name: file.name,
-          size: fileSize.toString(),
-          share: { connect: { id: shareId } },
-        },
-      });
+        if (
+          shareSizeSum > this.config.get("share.maxSize") ||
+          (share.reverseShare?.maxShareSize &&
+            shareSizeSum > parseInt(share.reverseShare.maxShareSize))
+        ) {
+          throw new HttpException(
+            "Max share size exceeded",
+            HttpStatus.PAYLOAD_TOO_LARGE
+          );
+        }
+
+        fs.appendFileSync(
+          `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
+          buffer
+        );
+
+        const isLastChunk = chunk.index == chunk.total - 1;
+        if (isLastChunk) {
+          fs.renameSync(
+            `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
+            `${SHARE_DIRECTORY}/${shareId}/${file.id}`
+          );
+          const finalFileSize = fs.statSync(
+            `${SHARE_DIRECTORY}/${shareId}/${file.id}`
+          ).size;
+          await this.prisma.file.create({
+            data: {
+              id: file.id,
+              name: file.name,
+              size: finalFileSize.toString(),
+              share: { connect: { id: shareId } },
+            },
+          });
+        }
+
+        success = true; // Mark as successful if no errors
+      } catch (error) {
+        retries++;
+        if (retries >= MAX_RETRIES) {
+          // Clean up failed upload
+          fs.unlinkSync(`${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`);
+          throw new BadRequestException(
+            "Upload failed after multiple attempts"
+          );
+        }
+      }
     }
 
     return file;
