@@ -197,6 +197,7 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
       providerId: idTokenData.sub,
       providerUsername: username,
       ...(isAdmin !== undefined && { isAdmin }),
+      idToken: `${this.name}:${token.idToken}`,
     };
   }
 
@@ -251,6 +252,8 @@ export interface OidcConfiguration {
   id_token_signing_alg_values_supported: string[];
   scopes_supported?: string[];
   claims_supported?: string[];
+  frontchannel_logout_supported?: boolean;
+  end_session_endpoint?: string;
 }
 
 export interface OidcJwk {

@@ -392,6 +392,8 @@ export default {
   "admin.config.oauth.oidc-enabled.description": "OpenID Connect Anmeldung erlaubt",
   "admin.config.oauth.oidc-discovery-uri": "OpenID Verbindung Discovery URL",
   "admin.config.oauth.oidc-discovery-uri.description": "Discovery-URL der OpenID OAuth App",
+  "admin.config.oauth.oidc-sign-out": "Abmelden von OpenID Connect",
+  "admin.config.oauth.oidc-sign-out.description": "Wenn aktiviert, wird der Benutzer mit der „Abmelden“-Schaltfläche vom OpenID-Connect-Provider abgemeldet.",
   "admin.config.oauth.oidc-username-claim": "OpenID Connect Benutzername anfordern",
   "admin.config.oauth.oidc-username-claim.description": "Benutzername im OpenID Token. Leer lassen, wenn du nicht weißt, was diese Konfiguration bedeutet.",
   "admin.config.oauth.oidc-role-path": "Path to roles in OpenID Connect token",

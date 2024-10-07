@@ -172,10 +172,10 @@ export class AuthController {
     @Req() request: Request,
     @Res({ passthrough: true }) response: Response,
   ) {
-    await this.authService.signOut(request.cookies.access_token);
+    const redirectURI = await this.authService.signOut(request.cookies.access_token);
 
     const isSecure = this.config.get("general.appUrl").startsWith("https");
-    response.cookie("access_token", "accessToken", {
+    response.cookie("access_token", "", {
       maxAge: -1,
       secure: isSecure,
     });
@@ -185,6 +185,10 @@ export class AuthController {
       maxAge: -1,
       secure: isSecure,
     });
+
+    if (typeof redirectURI === "string") {
+      return { redirectURI: redirectURI.toString() };
+    }
   }
 
   @Post("totp/enable")

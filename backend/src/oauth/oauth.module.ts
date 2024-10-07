@@ -1,4 +1,4 @@
-import { Module } from "@nestjs/common";
+import { forwardRef, Module } from "@nestjs/common";
 import { OAuthController } from "./oauth.controller";
 import { OAuthService } from "./oauth.service";
 import { AuthModule } from "../auth/auth.module";
@@ -51,6 +51,7 @@ import { MicrosoftProvider } from "./provider/microsoft.provider";
       inject: ["OAUTH_PROVIDERS"],
     },
   ],
-  imports: [AuthModule],
+  imports: [forwardRef(() => AuthModule)],
+  exports: [OAuthService],
 })
 export class OAuthModule {}

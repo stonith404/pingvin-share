@@ -4,4 +4,5 @@ export interface OAuthSignInDto {
   providerUsername: string;
   email: string;
   isAdmin?: boolean;
+  idToken?: string;
 }
