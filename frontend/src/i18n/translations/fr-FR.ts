@@ -392,6 +392,8 @@ export default {
   "admin.config.oauth.oidc-enabled.description": "Permettre la connexion via OpenID",
   "admin.config.oauth.oidc-discovery-uri": "URI de découverte OpenID",
   "admin.config.oauth.oidc-discovery-uri.description": "L’URI de découverte de la connexion à l'application OpenID OAuth",
+  "admin.config.oauth.oidc-sign-out": "Sign out from OpenID Connect",
+  "admin.config.oauth.oidc-sign-out.description": "Whether the “Sign out” button will sign out from the OpenID Connect provider",
   "admin.config.oauth.oidc-username-claim": "Revendication du nom d’utilisateur OpenID",
   "admin.config.oauth.oidc-username-claim.description": "Le champ contenant la revendication du nom d’utilisateur dans le jeton OpenID Connect. Laissez vide si vous ne savez pas quoi indiquer.",
   "admin.config.oauth.oidc-role-path": "Chemin vers les rôles dans le jeton OpenID Connect",
