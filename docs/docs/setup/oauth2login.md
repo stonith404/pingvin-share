@@ -42,7 +42,9 @@ Redirect URL: `https://<your-domain>/api/oauth/callback/discord`
 
 Generic OpenID Connect provider is also supported, we have tested it on Keycloak, Authentik and Casdoor.
 
-Redirect URL: `https://<your-domain>/api/oauth/callback/oidc`
+Redirect URI: `https://<your-domain>/api/oauth/callback/oidc`
+
+Post Logout Redirect URI: `https://<your-domain>`
 
 ## Custom your OAuth 2 Provider
 
