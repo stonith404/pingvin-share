@@ -1,6 +1,6 @@
 {
   "name": "pingvin-share-backend",
-  "version": "1.1.3",
+  "version": "1.2.0",
   "scripts": {
     "build": "nest build",
     "dev": "cross-env NODE_ENV=development nest start --watch",

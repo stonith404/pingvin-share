@@ -1,3 +1,16 @@
+## [1.2.0](https://github.com/stonith404/pingvin-share/compare/v1.1.3...v1.2.0) (2024-10-14)
+
+
+### Features
+
+* **oauth:** add ability to limit user IDs for Discord authentication ([#621](https://github.com/stonith404/pingvin-share/issues/621)) ([5883dff](https://github.com/stonith404/pingvin-share/commit/5883dff4cf0abe99b3ac8f0b56fdc9d04e80b51c))
+* **oauth:** Add option to logout from OpenID Connect provider ([2b3ce3f](https://github.com/stonith404/pingvin-share/commit/2b3ce3ffd250f7e3052d43c1c1e76947abf91e55)), closes [#598](https://github.com/stonith404/pingvin-share/issues/598)
+
+
+### Bug Fixes
+
+* use unique port env variable for backend ([d6b8b56](https://github.com/stonith404/pingvin-share/commit/d6b8b56247814087c2b676fe2367300172b5a94b))
+
 ## [1.1.3](https://github.com/stonith404/pingvin-share/compare/v1.1.2...v1.1.3) (2024-09-27)
 
 
