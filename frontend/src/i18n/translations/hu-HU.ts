@@ -392,6 +392,8 @@ export default {
   "admin.config.oauth.oidc-enabled.description": "OpenID Connect bejelentkezés engedélyezése",
   "admin.config.oauth.oidc-discovery-uri": "OpenID Connect Discovery URI",
   "admin.config.oauth.oidc-discovery-uri.description": "Az OpenID Connect OAuth applikáció Discovery URI azonosítója",
+  "admin.config.oauth.oidc-sign-out": "Sign out from OpenID Connect",
+  "admin.config.oauth.oidc-sign-out.description": "Whether the “Sign out” button will sign out from the OpenID Connect provider",
   "admin.config.oauth.oidc-username-claim": "OpenID Connect felhasználónév igény",
   "admin.config.oauth.oidc-username-claim.description": "Az OpenID Connect ID token felhasználónév igénye. Hagyja üresen ha nincs információja a beállításról.",
   "admin.config.oauth.oidc-role-path": "Az OpenID Connect token szerepeinek elérési útvonala",
