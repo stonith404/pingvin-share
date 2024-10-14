@@ -257,6 +257,7 @@ export class AuthService {
           const configuration =  await provider.getConfiguration();
           if (configuration.frontchannel_logout_supported && URL.canParse(configuration.end_session_endpoint)) {
             const redirectURI = new URL(configuration.end_session_endpoint);
+            redirectURI.searchParams.append("post_logout_redirect_uri", this.config.get("general.appUrl"));
             redirectURI.searchParams.append("id_token_hint", idTokenHint);
             redirectURI.searchParams.append("client_id", this.config.get(`oauth.${providerName}-clientId`));
             return redirectURI.toString();
