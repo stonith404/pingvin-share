@@ -392,6 +392,8 @@ export default {
   "admin.config.oauth.oidc-enabled.description": "Чи ввімкнено логін OpenID Connect",
   "admin.config.oauth.oidc-discovery-uri": "OpenID Connect Discovery URI",
   "admin.config.oauth.oidc-discovery-uri.description": "URI Discovery URI додатка OpenID Connect OAuth",
+  "admin.config.oauth.oidc-sign-out": "Sign out from OpenID Connect",
+  "admin.config.oauth.oidc-sign-out.description": "Whether the “Sign out” button will sign out from the OpenID Connect provider",
   "admin.config.oauth.oidc-username-claim": "Заява на ім'я користувача OpenID Connect",
   "admin.config.oauth.oidc-username-claim.description": "Заява про ім'я користувача в токені OpenID Connect ID. Залиште порожнім, якщо не знаєте, що це за конфіг.",
   "admin.config.oauth.oidc-role-path": "Path to roles in OpenID Connect token",
