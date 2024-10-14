@@ -74,7 +74,9 @@ async function bootstrap() {
     SwaggerModule.setup("api/swagger", app, document);
   }
 
-  await app.listen(parseInt(process.env.PORT) || 8080);
+  await app.listen(
+    parseInt(process.env.BACKEND_PORT || process.env.PORT || "8080"),
+  );
 
   const logger = new Logger("UnhandledAsyncError");
   process.on("unhandledRejection", (e) => logger.error(e));

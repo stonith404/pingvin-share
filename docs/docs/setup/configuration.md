@@ -36,7 +36,7 @@ For installation specific configuration, you can use environment variables. The 
 
 | Variable         | Default Value                                      | Description                                                                                              |
 | ---------------- | -------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `PORT`           | `8080`                                             | The port on which the backend listens.                                                                   |
+| `BACKEND_PORT`   | `8080`                                             | The port on which the backend listens.                                                                   |
 | `DATABASE_URL`   | `file:../data/pingvin-share.db?connection_limit=1` | The URL of the SQLite database.                                                                          |
 | `DATA_DIRECTORY` | `./data`                                           | The directory where data is stored.                                                                      |
 | `CLAMAV_HOST`    | `127.0.0.1` or `clamav` when running with Docker   | The IP address of the ClamAV server. See the [ClamAV docs](integrations.md#clamav) for more information. |
