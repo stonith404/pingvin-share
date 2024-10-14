@@ -275,6 +275,10 @@ const configVariables: ConfigVariables = {
       type: "string",
       defaultValue: "",
     },
+    "oidc-signOut": {
+      type: "boolean",
+      defaultValue: "false",
+    },
     "oidc-usernameClaim": {
       type: "string",
       defaultValue: "",
