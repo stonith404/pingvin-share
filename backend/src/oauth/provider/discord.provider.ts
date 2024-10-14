@@ -81,7 +81,11 @@ export class DiscordProvider implements OAuthProvider<DiscordToken> {
     if (guild) {
       await this.checkLimitedGuild(token, guild);
     }
-
+    const limitedUsers = this.config.get("oauth.discord-limitedUsers");
+    if (limitedUsers) {
+      await this.checkLimitedUsers(user, limitedUsers);
+    }
+   
     return {
       provider: "discord",
       providerId: user.id,
@@ -104,6 +108,12 @@ export class DiscordProvider implements OAuthProvider<DiscordToken> {
         throw new ErrorPageException("user_not_allowed");
       }
     } catch {
+      throw new ErrorPageException("user_not_allowed");
+    }
+  }
+
+  async checkLimitedUsers(user: DiscordUser, userIds: string) {
+    if (!userIds.split(",").includes(user.id)) {
       throw new ErrorPageException("user_not_allowed");
     }
   }

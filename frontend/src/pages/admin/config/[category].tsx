@@ -68,6 +68,8 @@ export default function AppShellDemo() {
         })
         .catch(toast.axiosError);
       void config.refresh();
+    } else {
+      toast.success("No changes to save");
     }
   };
 
