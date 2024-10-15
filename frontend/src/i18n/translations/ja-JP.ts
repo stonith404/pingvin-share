@@ -472,6 +472,8 @@ export default {
   "common.error.invalid-email": "無効なメールアドレス",
   "common.error.too-short": "最低{length} 文字である必要があります",
   "common.error.too-long": "最大{length} 文字である必要があります",
+  "common.error.number-too-small": "Must be at least {min}",
+  "common.error.number-too-large": "Must be at most {max}",
   "common.error.exact-length": "{length} 文字である必要があります",
   "common.error.invalid-number": "数字でなければなりません",
   "common.error.field-required": "これは必須項目です"
