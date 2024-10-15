@@ -472,6 +472,8 @@ export default {
   "common.error.invalid-email": "Geçersiz E-Posta adresi",
   "common.error.too-short": "En azından {length} karakter olmalı",
   "common.error.too-long": "En fazla {length} karakter olmalı",
+  "common.error.number-too-small": "Must be at least {min}",
+  "common.error.number-too-large": "Must be at most {max}",
   "common.error.exact-length": "Tam tamına {length} karakter olmalı",
   "common.error.invalid-number": "Bir sayı olmalı",
   "common.error.field-required": "Bu alan gerekli"

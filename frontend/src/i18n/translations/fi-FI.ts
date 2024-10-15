@@ -472,6 +472,8 @@ export default {
   "common.error.invalid-email": "Virheellinen sähköpostiosoite",
   "common.error.too-short": "Täytyy olla vähintään {length} merkkiä",
   "common.error.too-long": "Täytyy olla enintään {length} merkkiä",
+  "common.error.number-too-small": "Must be at least {min}",
+  "common.error.number-too-large": "Must be at most {max}",
   "common.error.exact-length": "On oltava tarkasti {length} merkkiä pitkä",
   "common.error.invalid-number": "Pitää olla luku",
   "common.error.field-required": "Tämä kenttä on pakollinen"

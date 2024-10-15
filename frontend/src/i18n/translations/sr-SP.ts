@@ -472,6 +472,8 @@ export default {
   "common.error.invalid-email": "Неисправна адреса е-поште",
   "common.error.too-short": "Мора да има најмање {length} знакова",
   "common.error.too-long": "Мора да има највише {length} знакова",
+  "common.error.number-too-small": "Must be at least {min}",
+  "common.error.number-too-large": "Must be at most {max}",
   "common.error.exact-length": "Мора да има тачно {length} знакова",
   "common.error.invalid-number": "Мора бити број",
   "common.error.field-required": "Поље је обавезно"

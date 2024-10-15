@@ -472,6 +472,8 @@ export default {
   "common.error.invalid-email": "Ogiltig e-postadress",
   "common.error.too-short": "Måste minst vara {length} tecken långt",
   "common.error.too-long": "Får högst innehålla {length} tecken",
+  "common.error.number-too-small": "Must be at least {min}",
+  "common.error.number-too-large": "Must be at most {max}",
   "common.error.exact-length": "Måste vara exakt {length} tecken långt",
   "common.error.invalid-number": "Måste vara ett tal",
   "common.error.field-required": "Obligatoriskt fält"

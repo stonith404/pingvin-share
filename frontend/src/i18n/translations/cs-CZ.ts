@@ -472,6 +472,8 @@ export default {
   "common.error.invalid-email": "Invalid email address",
   "common.error.too-short": "Musí mít alespoň {length} znaků",
   "common.error.too-long": "Musí mít maximálně {length} znaků",
+  "common.error.number-too-small": "Must be at least {min}",
+  "common.error.number-too-large": "Must be at most {max}",
   "common.error.exact-length": "Musí mít přesně {length} znaků",
   "common.error.invalid-number": "Musí být číslo",
   "common.error.field-required": "Toto pole je povinné"

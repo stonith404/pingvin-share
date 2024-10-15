@@ -472,6 +472,8 @@ export default {
   "common.error.invalid-email": "Ongeldig e-mailadres",
   "common.error.too-short": "Moet ten minste {length} tekens bevatten",
   "common.error.too-long": "Moet maximaal {length} tekens bevatten",
+  "common.error.number-too-small": "Must be at least {min}",
+  "common.error.number-too-large": "Must be at most {max}",
   "common.error.exact-length": "Moet precies {length} tekens bevatten",
   "common.error.invalid-number": "Moet een getal zijn",
   "common.error.field-required": "Dit veld is verplicht"

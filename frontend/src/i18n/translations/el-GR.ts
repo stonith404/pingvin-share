@@ -472,6 +472,8 @@ export default {
   "common.error.invalid-email": "Μη έγκυρη διεύθυνση e-mail",
   "common.error.too-short": "Πρέπει να αποτελείται τουλάχιστον {length} χαρακτήρες",
   "common.error.too-long": "Πρέπει να αποτελείται το πολύ από {length} χαρακτήρες",
+  "common.error.number-too-small": "Must be at least {min}",
+  "common.error.number-too-large": "Must be at most {max}",
   "common.error.exact-length": "Πρέπει να αποτελείται ακριβώς από {length} χαρακτήρες",
   "common.error.invalid-number": "Πρέπει να είναι αριθμός",
   "common.error.field-required": "Αυτό το πεδίο είναι υποχρεωτικό"

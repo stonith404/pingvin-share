@@ -472,6 +472,8 @@ export default {
   "common.error.invalid-email": "Érvénytelen emailcím",
   "common.error.too-short": "Legalább {length} karakter kell",
   "common.error.too-long": "Legfejlebb {length} karakter adható meg",
+  "common.error.number-too-small": "Must be at least {min}",
+  "common.error.number-too-large": "Must be at most {max}",
   "common.error.exact-length": "Pontosan {length} karakter szükséges",
   "common.error.invalid-number": "Számot kell megadnia",
   "common.error.field-required": "Ez egy kötelező mező"

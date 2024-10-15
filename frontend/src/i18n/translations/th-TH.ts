@@ -472,6 +472,8 @@ export default {
   "common.error.invalid-email": "ที่อยู่อีเมล์ไม่ถูกต้อง",
   "common.error.too-short": "ต้องมีอย่างน้อย {length} ตัวอักษร",
   "common.error.too-long": "ต้องมีไม่เกิน {length} ตัวอักษร",
+  "common.error.number-too-small": "Must be at least {min}",
+  "common.error.number-too-large": "Must be at most {max}",
   "common.error.exact-length": "ต้องมีความยาว {length} ตัวอักษร",
   "common.error.invalid-number": "ต้องเป็นตัวเลข",
   "common.error.field-required": "ต้องกรอกข้อมูลนี้"

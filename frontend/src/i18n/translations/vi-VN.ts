@@ -472,6 +472,8 @@ export default {
   "common.error.invalid-email": "Invalid email address",
   "common.error.too-short": "Must be at least {length} characters",
   "common.error.too-long": "Must be at most {length} characters",
+  "common.error.number-too-small": "Must be at least {min}",
+  "common.error.number-too-large": "Must be at most {max}",
   "common.error.exact-length": "Bằng {length} kí tự",
   "common.error.invalid-number": "Phải là số",
   "common.error.field-required": "Trường bắt buộc"
