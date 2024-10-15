@@ -11,7 +11,7 @@ export default {
   "navbar.avatar.signout": "Se déconnecter",
   // END navbar
   // /
-  "home.title": "Une plateforme de partage de fichier <h>auto-hébergée</h>.",
+  "home.title": "Une plateforme de partage de fichiers <h>autohébergée</h>.",
   "home.description": "Voulez-vous vraiment remettre vos fichiers personnels dans les mains de tiers comme WeTransfer ?",
   "home.bullet.a.name": "Auto-hébergé",
   "home.bullet.a.description": "Hébergez Pingvin Share sur votre propre machine.",
@@ -411,10 +411,10 @@ export default {
   "admin.config.ldap.enabled.description": "Utiliser l'authentification LDAP pour la connexion de l'utilisateur",
   "admin.config.ldap.url": "URL du serveur",
   "admin.config.ldap.url.description": "URL du serveur LDAP",
-  "admin.config.ldap.bind-dn": "Lier le DN",
-  "admin.config.ldap.bind-dn.description": "Utilisateur par défaut qui sera utilisé pour exécuter la recherche de l'utilisateur",
-  "admin.config.ldap.bind-password": "Lier le mot de passe",
-  "admin.config.ldap.bind-password.description": "Mot de passe pour l'utilisateur recherché",
+  "admin.config.ldap.bind-dn": "DN de liaison",
+  "admin.config.ldap.bind-dn.description": "Utilisateur par défaut utilisé pour exécuter la recherche de l'utilisateur",
+  "admin.config.ldap.bind-password": "Mot de passe de liaison",
+  "admin.config.ldap.bind-password.description": "Mot de passe utilisé pour exécuter la recherche de l'utilisateur",
   "admin.config.ldap.search-base": "Base d'utilisateurs",
   "admin.config.ldap.search-base.description": "Emplacement de base, où la recherche de l'utilisateur sera effectuée",
   "admin.config.ldap.search-query": "Requête utilisateur",
