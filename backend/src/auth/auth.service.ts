@@ -16,12 +16,12 @@ import * as moment from "moment";
 import { ConfigService } from "src/config/config.service";
 import { EmailService } from "src/email/email.service";
 import { PrismaService } from "src/prisma/prisma.service";
+import { OAuthService } from "../oauth/oauth.service";
+import { GenericOidcProvider } from "../oauth/provider/genericOidc.provider";
+import { UserSevice } from "../user/user.service";
 import { AuthRegisterDTO } from "./dto/authRegister.dto";
 import { AuthSignInDTO } from "./dto/authSignIn.dto";
 import { LdapService } from "./ldap.service";
-import { GenericOidcProvider } from "../oauth/provider/genericOidc.provider";
-import { OAuthService } from "../oauth/oauth.service";
-import { UserSevice } from "../user/user.service";
 
 @Injectable()
 export class AuthService {
@@ -120,10 +120,7 @@ export class AuthService {
   async generateToken(user: User, oauth?: { idToken?: string }) {
     // TODO: Make all old loginTokens invalid when a new one is created
     // Check if the user has TOTP enabled
-    if (
-      user.totpVerified &&
-      !(oauth && this.config.get("oauth.ignoreTotp"))
-    ) {
+    if (user.totpVerified && !(oauth && this.config.get("oauth.ignoreTotp"))) {
       const loginToken = await this.createLoginToken(user.id);
 
       return { loginToken };
@@ -163,7 +160,7 @@ export class AuthService {
       },
     });
 
-    await this.emailService.sendResetPasswordEmail(user.email, token);
+    this.emailService.sendResetPasswordEmail(user.email, token);
   }
 
   async resetPassword(token: string, newPassword: string) {
@@ -231,7 +228,10 @@ export class AuthService {
 
     if (refreshTokenId) {
       const oauthIDToken = await this.prisma.refreshToken
-        .findFirst({ select: { oauthIDToken: true }, where: { id: refreshTokenId } })
+        .findFirst({
+          select: { oauthIDToken: true },
+          where: { id: refreshTokenId },
+        })
         .then((refreshToken) => refreshToken?.oauthIDToken)
         .catch((e) => {
           // Ignore error if refresh token doesn't exist
@@ -249,16 +249,27 @@ export class AuthService {
         const provider = this.oAuthService.availableProviders()[providerName];
         let signOutFromProviderSupportedAndActivated = false;
         try {
-          signOutFromProviderSupportedAndActivated = this.config.get(`oauth.${providerName}-signOut`);
+          signOutFromProviderSupportedAndActivated = this.config.get(
+            `oauth.${providerName}-signOut`,
+          );
         } catch (_) {
           // Ignore error if the provider is not supported or if the provider sign out is not activated
         }
-        if (provider instanceof GenericOidcProvider && signOutFromProviderSupportedAndActivated) {
-          const configuration =  await provider.getConfiguration();
-          if (configuration.frontchannel_logout_supported && URL.canParse(configuration.end_session_endpoint)) {
+        if (
+          provider instanceof GenericOidcProvider &&
+          signOutFromProviderSupportedAndActivated
+        ) {
+          const configuration = await provider.getConfiguration();
+          if (
+            configuration.frontchannel_logout_supported &&
+            URL.canParse(configuration.end_session_endpoint)
+          ) {
             const redirectURI = new URL(configuration.end_session_endpoint);
             redirectURI.searchParams.append("id_token_hint", idTokenHint);
-            redirectURI.searchParams.append("client_id", this.config.get(`oauth.${providerName}-clientId`));
+            redirectURI.searchParams.append(
+              "client_id",
+              this.config.get(`oauth.${providerName}-clientId`),
+            );
             return redirectURI.toString();
           }
         }

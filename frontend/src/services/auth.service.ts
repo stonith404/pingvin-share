@@ -31,7 +31,8 @@ const signUp = async (email: string, username: string, password: string) => {
 const signOut = async () => {
   const response = await api.post("/auth/signOut");
 
-  if (URL.canParse(response.data?.redirectURI)) window.location.href = response.data.redirectURI;
+  if (URL.canParse(response.data?.redirectURI))
+    window.location.href = response.data.redirectURI;
   else window.location.reload();
 };
 

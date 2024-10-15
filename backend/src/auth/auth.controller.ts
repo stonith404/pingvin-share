@@ -120,7 +120,7 @@ export class AuthController {
   })
   @HttpCode(202)
   async requestResetPassword(@Param("email") email: string) {
-    this.authService.requestResetPassword(email);
+    await this.authService.requestResetPassword(email);
   }
 
   @Post("resetPassword")
@@ -172,7 +172,9 @@ export class AuthController {
     @Req() request: Request,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const redirectURI = await this.authService.signOut(request.cookies.access_token);
+    const redirectURI = await this.authService.signOut(
+      request.cookies.access_token,
+    );
 
     const isSecure = this.config.get("general.appUrl").startsWith("https");
     response.cookie("access_token", "", {

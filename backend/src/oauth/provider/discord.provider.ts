@@ -85,7 +85,7 @@ export class DiscordProvider implements OAuthProvider<DiscordToken> {
     if (limitedUsers) {
       await this.checkLimitedUsers(user, limitedUsers);
     }
-   
+
     return {
       provider: "discord",
       providerId: user.id,

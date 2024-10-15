@@ -15,7 +15,8 @@ export class OAuthService {
     private config: ConfigService,
     @Inject(forwardRef(() => AuthService)) private auth: AuthService,
     @Inject("OAUTH_PLATFORMS") private platforms: string[],
-    @Inject("OAUTH_PROVIDERS") private oAuthProviders: Record<string, OAuthProvider<unknown>>,
+    @Inject("OAUTH_PROVIDERS")
+    private oAuthProviders: Record<string, OAuthProvider<unknown>>,
   ) {}
   private readonly logger = new Logger(OAuthService.name);
 
@@ -30,13 +31,15 @@ export class OAuthService {
   }
 
   availableProviders(): Record<string, OAuthProvider<unknown>> {
-    return Object.fromEntries(Object.entries(this.oAuthProviders)
-      .map(([providerName, provider]) => [
-        [providerName, provider],
-        this.config.get(`oauth.${providerName}-enabled`),
-      ])
-      .filter(([_, enabled]) => enabled)
-      .map(([provider, _]) => provider));
+    return Object.fromEntries(
+      Object.entries(this.oAuthProviders)
+        .map(([providerName, provider]) => [
+          [providerName, provider],
+          this.config.get(`oauth.${providerName}-enabled`),
+        ])
+        .filter(([_, enabled]) => enabled)
+        .map(([provider, _]) => provider),
+    );
   }
 
   async status(user: User) {
