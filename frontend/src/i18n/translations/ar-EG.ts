@@ -472,6 +472,8 @@ export default {
   "common.error.invalid-email": "عنوان البريد غير صحيح",
   "common.error.too-short": "يجب أن يكون على الأقل {length} حرفًا",
   "common.error.too-long": "يجب أن يكون على الأكثر {length} حرفًا",
+  "common.error.number-too-small": "Must be at least {min}",
+  "common.error.number-too-large": "Must be at most {max}",
   "common.error.exact-length": "يجب أن يكون بالضبط {length} حرفًا",
   "common.error.invalid-number": "يجب أن يكون رقماً",
   "common.error.field-required": "هذا الحقل مطلوب"
