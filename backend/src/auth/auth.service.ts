@@ -146,6 +146,15 @@ export class AuthService {
 
     if (!user) return;
 
+    if (user.ldapDN) {
+      this.logger.log(
+        `Failed password reset request for user ${email} because it is an LDAP user`,
+      );
+      throw new BadRequestException(
+        "This account can't reset its password here. Please contact your administrator.",
+      );
+    }
+
     // Delete old reset password token
     if (user.resetPasswordToken) {
       await this.prisma.resetPasswordToken.delete({
