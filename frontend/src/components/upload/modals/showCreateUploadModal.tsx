@@ -371,7 +371,7 @@ const CreateUploadModalBody = ({
                     searchable
                     creatable
                     id="recipient-emails"
-                    type="email"
+                    inputMode="email"
                     getCreateLabel={(query) => `+ ${query}`}
                     onCreate={(query) => {
                       if (!query.match(/^\S+@\S+\.\S+$/)) {
