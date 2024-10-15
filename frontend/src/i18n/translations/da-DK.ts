@@ -472,6 +472,8 @@ export default {
   "common.error.invalid-email": "Ugyldig e-mail",
   "common.error.too-short": "Skal være på mindst {length} tegn",
   "common.error.too-long": "Må højst være {length} tegn",
+  "common.error.number-too-small": "Must be at least {min}",
+  "common.error.number-too-large": "Must be at most {max}",
   "common.error.exact-length": "Skal være præcis {length} tegn",
   "common.error.invalid-number": "Skal være et tal",
   "common.error.field-required": "Dette felt er påkrævet"
