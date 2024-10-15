@@ -472,6 +472,8 @@ export default {
   "common.error.invalid-email": "Neveljaven e-poštni naslov",
   "common.error.too-short": "Vsebovati mora vsaj {length} znakov",
   "common.error.too-long": "Vsebuje lahko največ {length} znakov",
+  "common.error.number-too-small": "Must be at least {min}",
+  "common.error.number-too-large": "Must be at most {max}",
   "common.error.exact-length": "Dolžina mora biti točno {length} znakov",
   "common.error.invalid-number": "Mora biti številka",
   "common.error.field-required": "To polje je obvezno"
