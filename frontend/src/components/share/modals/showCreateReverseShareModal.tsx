@@ -9,11 +9,13 @@ import {
   Switch,
   Text,
 } from "@mantine/core";
-import { useForm } from "@mantine/form";
+import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
+import { getCookie, setCookie } from "cookies-next";
 import moment from "moment";
 import { FormattedMessage } from "react-intl";
+import * as yup from "yup";
 import useTranslate, {
   translateOutsideContext,
 } from "../../../hooks/useTranslate.hook";
@@ -22,7 +24,6 @@ import { getExpirationPreview } from "../../../utils/date.util";
 import toast from "../../../utils/toast.util";
 import FileSizeInput from "../FileSizeInput";
 import showCompletedReverseShareModal from "./showCompletedReverseShareModal";
-import { getCookie, setCookie } from "cookies-next";
 
 const showCreateReverseShareModal = (
   modals: ModalsContextProps,
@@ -65,6 +66,16 @@ const Body = ({
       simplified: !!(getCookie("reverse-share.simplified") ?? false),
       publicAccess: !!(getCookie("reverse-share.public-access") ?? true),
     },
+    validate: yupResolver(
+      yup.object().shape({
+        maxUseCount: yup
+          .number()
+          .typeError(t("common.error.invalid-number"))
+          .min(1, t("common.error.number-too-small", { min: 1 }))
+          .max(1000, t("common.error.number-too-large", { max: 1000 }))
+          .required(t("common.error.field-required")),
+      }),
+    ),
   });
 
   const onSubmit = form.onSubmit(async (values) => {
