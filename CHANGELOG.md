@@ -1,3 +1,14 @@
+## [1.2.1](https://github.com/stonith404/pingvin-share/compare/v1.2.0...v1.2.1) (2024-10-15)
+
+
+### Bug Fixes
+
+* disallow passwort reset if it's a ldap user ([2e69224](https://github.com/stonith404/pingvin-share/commit/2e692241c57b001c9312302523c6374c0c24ea0c))
+* error message for invalid max use count of reverse share ([613bae9](https://github.com/stonith404/pingvin-share/commit/613bae90330a76c0964352a3fe927df3697309eb))
+* **oauth:** add `post_logout_redirect_uri` to OAuth logout redirect URI ([#638](https://github.com/stonith404/pingvin-share/issues/638)) ([bfbe8de](https://github.com/stonith404/pingvin-share/commit/bfbe8de98a6a7a2d32dd8d4dddbcc1d4ce6388f4))
+* share can't be created if an invalid email is entered in mail recipients ([d5cd300](https://github.com/stonith404/pingvin-share/commit/d5cd3002a1661e58d584e12280be36f17948c38c))
+* trim username, email and password on sign in and sign up page ([77a092a](https://github.com/stonith404/pingvin-share/commit/77a092a3cf089a4aa8b9897b5ad14e5500181d10))
+
 ## [1.2.0](https://github.com/stonith404/pingvin-share/compare/v1.1.3...v1.2.0) (2024-10-14)
 
 
