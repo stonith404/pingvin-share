@@ -472,6 +472,8 @@ export default {
   "common.error.invalid-email": "이메일 주소가 틀립니다",
   "common.error.too-short": "최소 {length} 자 이상이어야 합니다",
   "common.error.too-long": "최대 {length} 자 까지 입력가능합니다.",
+  "common.error.number-too-small": "Must be at least {min}",
+  "common.error.number-too-large": "Must be at most {max}",
   "common.error.exact-length": "{length} 자 이어야 합니다.",
   "common.error.invalid-number": "숫자만 가능합니다.",
   "common.error.field-required": "이 필드는 필수입니다"
