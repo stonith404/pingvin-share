@@ -472,6 +472,8 @@ export default {
   "common.error.invalid-email": "Email地址不可用",
   "common.error.too-short": "必須不少於 {length} 個字元",
   "common.error.too-long": "必須不超過 {length} 個字元",
+  "common.error.number-too-small": "Must be at least {min}",
+  "common.error.number-too-large": "Must be at most {max}",
   "common.error.exact-length": "必須為 {length} 個字元",
   "common.error.invalid-number": "必須為數字",
   "common.error.field-required": "必填"
