@@ -472,6 +472,8 @@ export default {
   "common.error.invalid-email": "Недопустимый адрес электронной почты",
   "common.error.too-short": "Должно быть не менее {length} символов",
   "common.error.too-long": "Должно быть не больше {length} символов",
+  "common.error.number-too-small": "Must be at least {min}",
+  "common.error.number-too-large": "Must be at most {max}",
   "common.error.exact-length": "Должно быть ровно {length} символов",
   "common.error.invalid-number": "Должно быть числом",
   "common.error.field-required": "Поле обязательно для заполнения"
