@@ -472,6 +472,8 @@ export default {
   "common.error.invalid-email": "Неприпустима адреса електронної пошти",
   "common.error.too-short": "Повинно бути не менше {length} символів",
   "common.error.too-long": "Повинно бути не більше {length} символів",
+  "common.error.number-too-small": "Must be at least {min}",
+  "common.error.number-too-large": "Must be at most {max}",
   "common.error.exact-length": "Повинно бути рівно {length} символів",
   "common.error.invalid-number": "Повинно бути числом",
   "common.error.field-required": "Поле обов'язкове для заповнення"
