@@ -472,8 +472,8 @@ export default {
   "common.error.invalid-email": "Ungültige E-Mail-Adresse",
   "common.error.too-short": "Muss mindestens {length} Zeichen enthalten",
   "common.error.too-long": "Muss maximal {length} Zeichen enthalten",
-  "common.error.number-too-small": "Must be at least {min}",
-  "common.error.number-too-large": "Must be at most {max}",
+  "common.error.number-too-small": "Darf mindestens {min} sein",
+  "common.error.number-too-large": "Darf höchstens {max} sein",
   "common.error.exact-length": "Muss genau {length} Zeichen lang sein",
   "common.error.invalid-number": "Muss eine Zahl sein",
   "common.error.field-required": "Dieses Feld ist erforderlich"
