@@ -48,7 +48,7 @@ const SignUpForm = () => {
 
   const signUp = async (email: string, username: string, password: string) => {
     await authService
-      .signUp(email, username, password)
+      .signUp(email.trim(), username.trim(), password.trim())
       .then(async () => {
         const user = await refreshUser();
         if (user?.isAdmin) {

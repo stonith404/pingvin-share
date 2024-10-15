@@ -97,7 +97,7 @@ const SignInForm = ({ redirectPath }: { redirectPath: string }) => {
 
   const signIn = async (email: string, password: string) => {
     await authService
-      .signIn(email, password)
+      .signIn(email.trim(), password.trim())
       .then(async (response) => {
         if (response.data["loginToken"]) {
           // Prompt the user to enter their totp code
