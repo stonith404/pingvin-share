@@ -392,7 +392,7 @@ export default {
   "admin.config.oauth.oidc-enabled.description": "Se o login do OpenID Connect está ativado",
   "admin.config.oauth.oidc-discovery-uri": "URI de descoberta do OpenID Connect",
   "admin.config.oauth.oidc-discovery-uri.description": "URI da descoberta do aplicativo OpenID Connect OAuth",
-  "admin.config.oauth.oidc-sign-out": "Sign out from OpenID Connect",
+  "admin.config.oauth.oidc-sign-out": "Sair do OpenID Connect",
   "admin.config.oauth.oidc-sign-out.description": "Whether the “Sign out” button will sign out from the OpenID Connect provider",
   "admin.config.oauth.oidc-username-claim": "Reivindicação de nome de usuário OpenID Connect",
   "admin.config.oauth.oidc-username-claim.description": "Nome de usuário no token de ID OpenID Connect. Deixe em branco se você não sabe o que é esta configuração.",
