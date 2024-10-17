@@ -18,11 +18,12 @@ import {
   TbSocial,
   TbSquare,
   TbBinaryTree,
+  TbSettings,
 } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 
 const categories = [
-  { name: "General", icon: <TbSquare /> },
+  { name: "General", icon: <TbSettings /> },
   { name: "Email", icon: <TbMail /> },
   { name: "Share", icon: <TbShare /> },
   { name: "SMTP", icon: <TbAt /> },

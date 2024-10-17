@@ -7,6 +7,9 @@ node_modules
 /frontend/.next/
 /frontend/out/
 
+# yarn
+yarn.lock
+
 # build
 build/
 dist/
