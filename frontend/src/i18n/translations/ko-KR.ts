@@ -382,6 +382,8 @@ export default {
   "admin.config.oauth.microsoft-client-secret.description": "Microsoft OAuth 앱의 클라이언트 비밀",
   "admin.config.oauth.discord-enabled": "디스코드",
   "admin.config.oauth.discord-enabled.description": "Discord 로그인 활성화 여부",
+  "admin.config.oauth.discord-limited-users": "Discord limited users",
+  "admin.config.oauth.discord-limited-users.description": "Limit signing in to specific users by their Discord ID. Leave it blank to disable.",
   "admin.config.oauth.discord-limited-guild": "디스코드 제한 서버 ID",
   "admin.config.oauth.discord-limited-guild.description": "특정 서버의 사용자로 로그인을 제한합니다. 사용하지 않으려면 비워 둡니다.",
   "admin.config.oauth.discord-client-id": "디스코드 클라이언트 ID",
