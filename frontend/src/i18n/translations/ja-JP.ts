@@ -382,6 +382,8 @@ export default {
   "admin.config.oauth.microsoft-client-secret.description": "Microsoft OAuthアプリのクライアントシークレット",
   "admin.config.oauth.discord-enabled": "Discord",
   "admin.config.oauth.discord-enabled.description": "Discordアカウントを使用したログインを許可するかどうかを設定します",
+  "admin.config.oauth.discord-limited-users": "Discord limited users",
+  "admin.config.oauth.discord-limited-users.description": "Limit signing in to specific users by their Discord ID. Leave it blank to disable.",
   "admin.config.oauth.discord-limited-guild": "Discord限定サーバーID",
   "admin.config.oauth.discord-limited-guild.description": "特定のサーバーのユーザーにサインインを制限します。無効にするには空白のままにしてください。",
   "admin.config.oauth.discord-client-id": "Discord クライアントID",
