@@ -382,6 +382,8 @@ export default {
   "admin.config.oauth.microsoft-client-secret.description": "Microsoft OAuth uygulamasının Client Secret'i",
   "admin.config.oauth.discord-enabled": "Discord",
   "admin.config.oauth.discord-enabled.description": "Discord girişine izin verilip verilmeyeceği",
+  "admin.config.oauth.discord-limited-users": "Discord limited users",
+  "admin.config.oauth.discord-limited-users.description": "Limit signing in to specific users by their Discord ID. Leave it blank to disable.",
   "admin.config.oauth.discord-limited-guild": "Discord limitli sunucu ID'si",
   "admin.config.oauth.discord-limited-guild.description": "Oturum açmayı belirli bir sunucudaki kullanıcılarla sınırlayın. Devre dışı bırakmak için boş bırakın.",
   "admin.config.oauth.discord-client-id": "Discord Client ID",
