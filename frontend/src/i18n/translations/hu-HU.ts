@@ -382,6 +382,8 @@ export default {
   "admin.config.oauth.microsoft-client-secret.description": "A Microsoft Oauth applikáció ügyfél titka",
   "admin.config.oauth.discord-enabled": "Discord",
   "admin.config.oauth.discord-enabled.description": "Discord bejelentkezés engedélyezése",
+  "admin.config.oauth.discord-limited-users": "Discord limited users",
+  "admin.config.oauth.discord-limited-users.description": "Limit signing in to specific users by their Discord ID. Leave it blank to disable.",
   "admin.config.oauth.discord-limited-guild": "Discord limitált kiszolgáló ID azonosítója",
   "admin.config.oauth.discord-limited-guild.description": "A kiszolgálón engedélyezett bejelentkezett felhasználók száma. Hagyja üresen a kikapcsoláshoz.",
   "admin.config.oauth.discord-client-id": "Discord ügyfél ID azonosító",
