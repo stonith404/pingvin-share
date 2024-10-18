@@ -40,7 +40,7 @@ Redirect URL: `https://<your-domain>/api/oauth/callback/discord`
 
 ### OpenID Connect
 
-Generic OpenID Connect provider is also supported, we have tested it on Keycloak, Authentik and Casdoor.
+Generic OpenID Connect provider is also supported, we have tested it on Keycloak, Authentik, Casdoor and [Pocket ID](https://github.com/stonith404/pocket-id).
 
 Redirect URI: `https://<your-domain>/api/oauth/callback/oidc`
 

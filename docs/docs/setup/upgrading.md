@@ -14,6 +14,11 @@ As Pingvin Share is in early stage, see the release notes for breaking changes b
 docker compose pull
 docker compose up -d
 ```
+### Portainer
+
+1. In your container page, click on Recreate.
+2. Check the Re-Pull image toggle.
+3. Click on Recreate.
 
 #### Stand-alone
 

@@ -11,6 +11,16 @@ id: installation
 
 The website is now listening on `http://localhost:3000`, have fun with Pingvin Share 🐧!
 
+### Installation with Portainer
+
+1. In the **Stacks** menu, click the **Add stack** button
+2. Give you stack a name (ex. pingvinshare)
+3. In the web editor, paste the content of the [docker-compose](https://github.com/stonith404/pingvin-share/blob/main/docker-compose.yml) file.
+4. Edit the external port and the environment variables (optional).
+5. Click on **Deploy the stack**.
+
+Your container is now listening on `http://localhost:<externalport>`, have fun with Pingvin Share 🐧!
+
 ### Stand-alone Installation
 
 Required tools:
