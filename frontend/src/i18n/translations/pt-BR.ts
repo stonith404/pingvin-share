@@ -382,6 +382,8 @@ export default {
   "admin.config.oauth.microsoft-client-secret.description": "Client secret do aplicativo Microsoft OAuth",
   "admin.config.oauth.discord-enabled": "Discord",
   "admin.config.oauth.discord-enabled.description": "Se o login do Discord está habilitado",
+  "admin.config.oauth.discord-limited-users": "Discord limited users",
+  "admin.config.oauth.discord-limited-users.description": "Limit signing in to specific users by their Discord ID. Leave it blank to disable.",
   "admin.config.oauth.discord-limited-guild": "ID do servidor limitado do Discord",
   "admin.config.oauth.discord-limited-guild.description": "Limite de login para usuários em um servidor específico. Deixe em branco para desativar.",
   "admin.config.oauth.discord-client-id": "ID do Cliente Discord",
