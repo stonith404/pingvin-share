@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.5.2">
 <title data-rh="true">OAuth 2 Login Guide | Pingvin Share</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://stonith404.github.io/pingvin-share/img/pingvinshare.svg"><meta data-rh="true" name="twitter:image" content="https://stonith404.github.io/pingvin-share/img/pingvinshare.svg"><meta data-rh="true" property="og:url" content="https://stonith404.github.io/pingvin-share/setup/oauth2login"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="OAuth 2 Login Guide | Pingvin Share"><meta data-rh="true" name="description" content="Config Built-in OAuth 2 Providers"><meta data-rh="true" property="og:description" content="Config Built-in OAuth 2 Providers"><link data-rh="true" rel="icon" href="/pingvin-share/img/pingvinshare.svg"><link data-rh="true" rel="canonical" href="https://stonith404.github.io/pingvin-share/setup/oauth2login"><link data-rh="true" rel="alternate" href="https://stonith404.github.io/pingvin-share/setup/oauth2login" hreflang="en"><link data-rh="true" rel="alternate" href="https://stonith404.github.io/pingvin-share/setup/oauth2login" hreflang="x-default"><link rel="stylesheet" href="/pingvin-share/assets/css/styles.b116edeb.css">
-<script src="/pingvin-share/assets/js/runtime~main.1662c97b.js" defer="defer"></script>
+<script src="/pingvin-share/assets/js/runtime~main.41e47575.js" defer="defer"></script>
 <script src="/pingvin-share/assets/js/main.dd6114ae.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -33,8 +33,9 @@
 <p>Create an application on <a href="https://discord.com/developers/applications" target="_blank" rel="noopener noreferrer">Discord Developer Portal</a>.</p>
 <p>Redirect URL: <code>https://&lt;your-domain&gt;/api/oauth/callback/discord</code></p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="openid-connect">OpenID Connect<a href="#openid-connect" class="hash-link" aria-label="Direct link to OpenID Connect" title="Direct link to OpenID Connect">​</a></h3>
-<p>Generic OpenID Connect provider is also supported, we have tested it on Keycloak, Authentik and Casdoor.</p>
-<p>Redirect URL: <code>https://&lt;your-domain&gt;/api/oauth/callback/oidc</code></p>
+<p>Generic OpenID Connect provider is also supported, we have tested it on Keycloak, Authentik, Casdoor and <a href="https://github.com/stonith404/pocket-id" target="_blank" rel="noopener noreferrer">Pocket ID</a>.</p>
+<p>Redirect URI: <code>https://&lt;your-domain&gt;/api/oauth/callback/oidc</code></p>
+<p>Post Logout Redirect URI: <code>https://&lt;your-domain&gt;</code></p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="custom-your-oauth-2-provider">Custom your OAuth 2 Provider<a href="#custom-your-oauth-2-provider" class="hash-link" aria-label="Direct link to Custom your OAuth 2 Provider" title="Direct link to Custom your OAuth 2 Provider">​</a></h2>
 <p>If our built-in providers don&#x27;t meet your needs, you can create your own OAuth 2 provider.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="1-create-config">1. Create config<a href="#1-create-config" class="hash-link" aria-label="Direct link to 1. Create config" title="Direct link to 1. Create config">​</a></h3>
