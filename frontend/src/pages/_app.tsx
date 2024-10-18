@@ -9,9 +9,10 @@ import { ModalsProvider } from "@mantine/modals";
 import { Notifications } from "@mantine/notifications";
 import axios from "axios";
 import { getCookie, setCookie } from "cookies-next";
+import moment from "moment";
+import "moment/min/locales";
 import { GetServerSidePropsContext } from "next";
 import type { AppProps } from "next/app";
-import getConfig from "next/config";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
@@ -29,8 +30,6 @@ import Config from "../types/config.type";
 import { CurrentUser } from "../types/user.type";
 import i18nUtil from "../utils/i18n.util";
 import userPreferences from "../utils/userPreferences.util";
-import "moment/min/locales";
-import moment from "moment";
 
 const excludeDefaultLayoutRoutes = ["/admin/config/[category]"];
 
@@ -44,7 +43,7 @@ function App({ Component, pageProps }: AppProps) {
   const [route, setRoute] = useState<string>(pageProps.route);
 
   const [configVariables, setConfigVariables] = useState<Config[]>(
-    pageProps.configVariables,
+    pageProps.configVariables
   );
 
   useEffect(() => {
@@ -54,7 +53,7 @@ function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const interval = setInterval(
       async () => await authService.refreshAccessToken(),
-      2 * 60 * 1000, // 2 minutes
+      2 * 60 * 1000 // 2 minutes
     );
 
     return () => clearInterval(interval);
@@ -154,8 +153,6 @@ function App({ Component, pageProps }: AppProps) {
 // Fetch user and config variables on server side when the first request is made
 // These will get passed as a page prop to the App component and stored in the contexts
 App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
-  const { apiURL } = getConfig().serverRuntimeConfig;
-
   let pageProps: {
     user?: CurrentUser;
     configVariables?: Config[];
@@ -169,6 +166,7 @@ App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
   };
 
   if (ctx.req) {
+    const apiURL = process.env.API_URL || "http://localhost:8080";
     const cookieHeader = ctx.req.headers.cookie;
 
     pageProps.user = await axios(`${apiURL}/api/users/me`, {
@@ -182,7 +180,7 @@ App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
     pageProps.route = ctx.req.url;
 
     const requestLanguage = i18nUtil.getLanguageFromAcceptHeader(
-      ctx.req.headers["accept-language"],
+      ctx.req.headers["accept-language"]
     );
 
     pageProps.language = ctx.req.cookies["language"] ?? requestLanguage;

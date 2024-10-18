@@ -1,3 +1,11 @@
+## [1.2.2](https://github.com/stonith404/pingvin-share/compare/v1.2.1...v1.2.2) (2024-10-18)
+
+
+### Bug Fixes
+
+* **admin:** change general config icon to gear ([#649](https://github.com/stonith404/pingvin-share/issues/649)) ([958b79d](https://github.com/stonith404/pingvin-share/commit/958b79d787585c367a693872fd105a326e6e8d38))
+* environment variable `API_URL` can't be changed ([fe085b5](https://github.com/stonith404/pingvin-share/commit/fe085b58a5f3c0152df12957aa150c0876c2a074))
+
 ## [1.2.1](https://github.com/stonith404/pingvin-share/compare/v1.2.0...v1.2.1) (2024-10-15)
 
 

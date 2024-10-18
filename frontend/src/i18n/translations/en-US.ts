@@ -3,7 +3,7 @@ export default {
   "navbar.upload": "Upload",
   "navbar.signin": "Sign in",
   "navbar.home": "Home",
-  "navbar.signup": "Sign Up",
+  "navbar.signup": "Sign up",
 
   "navbar.links.shares": "My shares",
   "navbar.links.reverse": "Reverse shares",
@@ -22,10 +22,10 @@ export default {
   "home.bullet.a.description": "Host Pingvin Share on your own machine.",
   "home.bullet.b.name": "Privacy",
   "home.bullet.b.description":
-    "Your files are your files and should never get into the hands of third parties.",
+    "Your files are yours and will never be accessed by third parties.",
   "home.bullet.c.name": "No annoying file size limit",
   "home.bullet.c.description":
-    "Upload as big files as you want. Only your hard drive will be your limit.",
+    "Upload files as big as you want. Only your hard drive will be your limit.",
 
   "home.button.start": "Get started",
   "home.button.source": "Source code",
@@ -75,13 +75,13 @@ export default {
   "resetPassword.title": "Forgot your password?",
   "resetPassword.description": "Enter your email to reset your password.",
   "resetPassword.notify.success":
-    "A message with a link to reset your password has been sent if the email exists.",
+    "A message with a link to reset your password has been sent if the provided email exists.",
   "resetPassword.button.back": "Back to sign in page",
   "resetPassword.text.resetPassword": "Reset password",
   "resetPassword.text.enterNewPassword": "Enter your new password",
   "resetPassword.input.password": "New password",
   "resetPassword.notify.passwordReset":
-    "Your password has been reset successfully.",
+    "Your password has been successfully reset.",
 
   // /account
   "account.title": "My account",
@@ -95,7 +95,7 @@ export default {
   "account.card.password.old": "Old password",
   "account.card.password.new": "New password",
   "account.card.password.noPasswordSet":
-    "You don't have a password set. If you want to sign in with email and password you need to set a password.",
+    "You do not have a password set. To sign in using your email and password, you need to create a password.",
   "account.notify.password.success": "Password changed successfully",
 
   "account.card.oauth.title": "Social login",
@@ -109,7 +109,7 @@ export default {
   "account.card.oauth.unlinked": "Unlinked",
   "account.modal.unlink.title": "Unlink account",
   "account.modal.unlink.description":
-    "Unlinking your social accounts may cause you to lose your account if you don't remember your username and password.",
+    "Unlinking your social accounts may cause you to lose your account if you don't remember your login credentials",
   "account.notify.oauth.unlinked.success": "Unlinked successfully",
 
   "account.card.security.title": "Security",
@@ -155,14 +155,14 @@ export default {
   "account.shares.table.name": "Name",
   "account.shares.table.description": "Description",
   "account.shares.table.visitors": "Visitors",
-  "account.shares.table.expiresAt": "Expires at",
-  "account.shares.table.createdAt": "Created at",
+  "account.shares.table.expiresAt": "Expires on",
+  "account.shares.table.createdAt": "Created on",
   "account.shares.table.size": "Size",
 
   "account.shares.modal.share-informations": "Share informations",
   "account.shares.modal.share-link": "Share link",
 
-  "account.shares.modal.delete.title": "Delete share {share}",
+  "account.shares.modal.delete.title": "Delete share: {share}",
   "account.shares.modal.delete.description":
     "Do you really want to delete this share?",
 
@@ -195,17 +195,17 @@ export default {
 
   "account.reverseShares.modal.max-size.label": "Max share size",
 
-  "account.reverseShares.modal.send-email": "Send email notification",
+  "account.reverseShares.modal.send-email": "Send email notifications",
   "account.reverseShares.modal.send-email.description":
-    "Send an email notification when a share is created with this reverse share link.",
+    "Sends you an email notification when a share is created with this reverse share link.",
 
   "account.reverseShares.modal.simplified": "Simple mode",
   "account.reverseShares.modal.simplified.description":
-    "Make it easy for the person uploading the file to share it with you. They will be able to customize only the name and description of the share.",
+    "Make it easy for the person uploading the file to share it with you. They will only be able to customize the name and description of the share.",
 
   "account.reverseShares.modal.public-access": "Public access",
   "account.reverseShares.modal.public-access.description":
-    "Make the created shares with this reverse share public. If disabled, only you and the creator of the share can view it.",
+    "Make the shares created with this reverse share public. If disabled, only you and the share creator will have access to view it.",
 
   "account.reverseShares.modal.max-use.label": "Max uses",
   "account.reverseShares.modal.max-use.description":
@@ -244,7 +244,7 @@ export default {
   "admin.users.table.email": "Email",
   "admin.users.table.admin": "Admin",
 
-  "admin.users.edit.update.title": "Update user {username}",
+  "admin.users.edit.update.title": "Edit user: {username}",
   "admin.users.edit.update.admin-privileges": "Admin privileges",
   "admin.users.edit.update.change-password.title": "Change password",
   "admin.users.edit.update.change-password.field": "New password",
@@ -252,7 +252,7 @@ export default {
   "admin.users.edit.update.notify.password.success":
     "Password changed successfully",
 
-  "admin.users.edit.delete.title": "Delete user {username}",
+  "admin.users.edit.delete.title": "Delete user: {username} ?",
   "admin.users.edit.delete.description":
     "Do you really want to delete this user and all his shares?",
 
@@ -275,9 +275,9 @@ export default {
   "admin.shares.table.id": "Share ID",
   "admin.shares.table.username": "Creator",
   "admin.shares.table.visitors": "Visitors",
-  "admin.shares.table.expires": "Expires At",
+  "admin.shares.table.expires": "Expires on",
 
-  "admin.shares.edit.delete.title": "Delete share {id}",
+  "admin.shares.edit.delete.title": "Delete share: {id}",
   "admin.shares.edit.delete.description":
     "Do you really want to delete this share?",
 
@@ -293,7 +293,7 @@ export default {
   // Dropzone.tsx
   "upload.dropzone.title": "Upload files",
   "upload.dropzone.description":
-    "Drag'n'drop files here to start your share. We can accept only files that are less than {maxSize} in total.",
+    "Drag'n'drop files here to start your share. We only accept files up to {maxSize} in total.",
   "upload.dropzone.notify.file-too-big":
     "Your files exceed the maximum share size of {maxSize}.",
 
@@ -311,9 +311,9 @@ export default {
     "You will be unable to delete your share manually and view the visitor count.",
 
   "upload.modal.expires.never": "never",
-  "upload.modal.expires.never-long": "Never Expires",
+  "upload.modal.expires.never-long": "Permanent share",
   "upload.modal.expires.error.too-long":
-    "Expiration exceeds maximum expiration date of {max}.",
+    "Expiration date exceeds the maximum of {max}.",
 
   "upload.modal.link.label": "Link",
   "upload.modal.expires.label": "Expiration",
@@ -350,7 +350,8 @@ export default {
   "upload.modal.completed.expires-on":
     "This share will expire on {expiration}.",
   "upload.modal.completed.share-ready": "Share ready",
-  "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
+  "upload.modal.completed.notified-reverse-share-creator":
+    "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
 
   // END /upload
 
@@ -365,17 +366,18 @@ export default {
   "share.error.not-found.description":
     "The share you're looking for doesn't exist.",
   "share.error.access-denied.title": "Private share",
-  "share.error.access-denied.description": "The current account does not have permission to access this share",
+  "share.error.access-denied.description":
+    "The current account does not have permission to access this share",
 
   "share.modal.password.title": "Password required",
   "share.modal.password.description":
-    "To access this share please enter the password for the share.",
+    "Please enter the password to acces this share.",
   "share.modal.password": "Password",
   "share.modal.error.invalid-password": "Invalid password",
 
   "share.button.download-all": "Download all",
   "share.notify.download-all-preparing":
-    "The share is preparing. Try again in a few minutes.",
+    "The share is being prepared. Please try again in a few minutes.",
 
   "share.modal.file-link": "File link",
   "share.table.name": "Name",
@@ -383,7 +385,7 @@ export default {
 
   "share.modal.file-preview.error.not-supported.title": "Preview not supported",
   "share.modal.file-preview.error.not-supported.description":
-    "A preview for this file type is unsupported. Please download the file to view it.",
+    "Previews are not supported for this type of files. Please download the file to view it.",
 
   // END /share/[id]
 
@@ -420,33 +422,33 @@ export default {
   "admin.config.general.logo.placeholder": "Pick image",
 
   "admin.config.email.enable-share-email-recipients":
-    "Enable share email recipients",
+    "Enable email recipient sharing",
   "admin.config.email.enable-share-email-recipients.description":
-    "Whether to allow emails to share recipients. Only enable this if you have enabled SMTP.",
+    "Whether to allow email sharing with recipients. Only enable this if SMTP is activated.",
   "admin.config.email.share-recipients-subject": "Share recipients subject",
   "admin.config.email.share-recipients-subject.description":
     "Subject of the email which gets sent to the share recipients.",
   "admin.config.email.share-recipients-message": "Share recipients message",
   "admin.config.email.share-recipients-message.description":
-    "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n The variables will be replaced with the actual value.",
+    "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n These variables will be replaced with the actual value.",
   "admin.config.email.reverse-share-subject": "Reverse share subject",
   "admin.config.email.reverse-share-subject.description":
-    "Subject of the email which gets sent when someone created a share with your reverse share link.",
+    "Subject of the sent email when someone created a share with your reverse share link.",
   "admin.config.email.reverse-share-message": "Reverse share message",
   "admin.config.email.reverse-share-message.description":
     "Message which gets sent when someone created a share with your reverse share link. {shareUrl} will be replaced with the creator's name and the share URL.",
   "admin.config.email.reset-password-subject": "Reset password subject",
   "admin.config.email.reset-password-subject.description":
-    "Subject of the email which gets sent when a user requests a password reset.",
+    "Subject of the sent email when a user requests a password reset.",
   "admin.config.email.reset-password-message": "Reset password message",
   "admin.config.email.reset-password-message.description":
     "Message which gets sent when a user requests a password reset. {url} will be replaced with the reset password URL.",
   "admin.config.email.invite-subject": "Invite subject",
   "admin.config.email.invite-subject.description":
-    "Subject of the email which gets sent when an admin invites a user.",
+    "Subject of the sent email when an admin invites a user.",
   "admin.config.email.invite-message": "Invite message",
   "admin.config.email.invite-message.description":
-    "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the password of the user.",
+    "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the users password.",
 
   "admin.config.share.allow-registration": "Allow registration",
   "admin.config.share.allow-registration.description":
@@ -465,12 +467,12 @@ export default {
     "Adjust the level to balance between file size and compression speed. Valid values range from 0 to 9, with 0 being no compression and 9 being maximum compression. ",
   "admin.config.share.chunk-size": "Chunk size",
   "admin.config.share.chunk-size.description":
-    "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks speed up uploads for stable connections.",
+    "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks make uploads faster for stable connections.",
   "admin.config.share.auto-open-share-modal": "Auto open create share modal",
   "admin.config.share.auto-open-share-modal.description":
     "The share creation modal automatically appears when a user selects files, eliminating the need to manually click the button.",
 
-  "admin.config.smtp.enabled": "Enabled",
+  "admin.config.smtp.enabled": "Enable",
   "admin.config.smtp.enabled.description":
     "Whether SMTP is enabled. Only set this to true if you entered the host, port, email, user and password of your SMTP server.",
   "admin.config.smtp.host": "Host",
@@ -479,7 +481,7 @@ export default {
   "admin.config.smtp.port.description": "Port of the SMTP server",
   "admin.config.smtp.email": "Email",
   "admin.config.smtp.email.description":
-    "Email address which the emails get sent from",
+    "Email address from wich the emails get sent",
   "admin.config.smtp.username": "Username",
   "admin.config.smtp.username.description": "Username of the SMTP server",
   "admin.config.smtp.password": "Password",
@@ -532,6 +534,9 @@ export default {
   "admin.config.oauth.discord-enabled": "Discord",
   "admin.config.oauth.discord-enabled.description":
     "Whether Discord login is enabled",
+  "admin.config.oauth.discord-limited-users": "Discord limited users",
+  "admin.config.oauth.discord-limited-users.description":
+    "Limit signing in to specific users by their Discord ID. Leave it blank to disable.",
   "admin.config.oauth.discord-limited-guild": "Discord limited server ID",
   "admin.config.oauth.discord-limited-guild.description":
     "Limit signing in to users in a specific server. Leave it blank to disable.",
@@ -558,11 +563,13 @@ export default {
     "Must be a valid JMES path referencing an array of roles. " +
     "Managing access rights using OpenID Connect roles is only recommended if no other identity provider is configured and password login is disabled. " +
     "Leave it blank if you don't know what this config is.",
-  "admin.config.oauth.oidc-role-general-access": "OpenID Connect role for general access",
+  "admin.config.oauth.oidc-role-general-access":
+    "OpenID Connect role for general access",
   "admin.config.oauth.oidc-role-general-access.description":
     "Role required for general access. Must be present in a user’s roles for them to log in. " +
     "Leave it blank if you don't know what this config is.",
-  "admin.config.oauth.oidc-role-admin-access": "OpenID Connect role for admin access",
+  "admin.config.oauth.oidc-role-admin-access":
+    "OpenID Connect role for admin access",
   "admin.config.oauth.oidc-role-admin-access.description":
     "Role required for administrative access. Must be present in a user’s roles for them to access the admin panel. " +
     "Leave it blank if you don't know what this config is.",
@@ -574,24 +581,32 @@ export default {
     "Client secret of the OpenID Connect OAuth app",
 
   "admin.config.category.ldap": "LDAP",
-  "admin.config.ldap.enabled": "Enabled LDAP",
-  "admin.config.ldap.enabled.description": "Use LDAP authentication for user login",
+  "admin.config.ldap.enabled": "Enable LDAP",
+  "admin.config.ldap.enabled.description":
+    "Use LDAP authentication for user login",
   "admin.config.ldap.url": "Server URL",
   "admin.config.ldap.url.description": "URL of the LDAP server",
   "admin.config.ldap.bind-dn": "Bind DN",
-  "admin.config.ldap.bind-dn.description": "Default user which will be used to execute the user search",
+  "admin.config.ldap.bind-dn.description":
+    "Default user used to perform the user search",
   "admin.config.ldap.bind-password": "Bind password",
-  "admin.config.ldap.bind-password.description": "Password for the user search user",
+  "admin.config.ldap.bind-password.description":
+    "Password used to perform the user search",
   "admin.config.ldap.search-base": "User base",
-  "admin.config.ldap.search-base.description": "Base location, where the user search will be performed",
+  "admin.config.ldap.search-base.description":
+    "Base location, where the user search will be performed",
   "admin.config.ldap.search-query": "User query",
-  "admin.config.ldap.search-query.description": "The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.",
+  "admin.config.ldap.search-query.description":
+    "The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.",
   "admin.config.ldap.admin-groups": "Admin group",
-  "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
+  "admin.config.ldap.admin-groups.description":
+    "Group required for administrative access.",
   "admin.config.ldap.field-name-member-of": "User groups attribute name",
-  "admin.config.ldap.field-name-member-of.description": "LDAP attribute name for the groups, an user is a member of. This is used when checking for the admin group.",
+  "admin.config.ldap.field-name-member-of.description":
+    "LDAP attribute name for the groups, an user is a member of. This is used when checking for the admin group.",
   "admin.config.ldap.field-name-email": "User email attribute name",
-  "admin.config.ldap.field-name-email.description": "LDAP attribute name for the email of an user.",
+  "admin.config.ldap.field-name-email.description":
+    "LDAP attribute name for the email of an user.",
 
   // 404
   "404.description": "Oops this page doesn't exist.",
@@ -611,13 +626,13 @@ export default {
   "error.msg.no_email": "Can't get email address from this {0} account.",
   "error.msg.already_linked":
     "This {0} account is already linked to another account.",
-  "error.msg.not_linked": "This {0} account haven't linked to any account yet.",
+  "error.msg.not_linked":
+    "This {0} account hasn't been linked to any account yet.",
   "error.msg.unverified_account":
     "This {0} account is unverified, please try again after verification.",
-  "error.msg.user_not_allowed":
-    "You are not allowed to sign in.",
+  "error.msg.user_not_allowed": "You are not allowed to sign in.",
   "error.msg.cannot_get_user_info":
-    "Can not get your user info from this {0} account.",
+    "Cannot get your user info from this {0} account.",
   "error.param.provider_github": "GitHub",
   "error.param.provider_google": "Google",
   "error.param.provider_microsoft": "Microsoft",
@@ -636,7 +651,7 @@ export default {
   "common.button.generate": "Generate",
   "common.button.done": "Done",
   "common.text.link": "Link",
-  "common.text.navigate-to-link": "Go to the link",
+  "common.text.navigate-to-link": "Visit link",
   "common.text.or": "or",
   "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Go back",
