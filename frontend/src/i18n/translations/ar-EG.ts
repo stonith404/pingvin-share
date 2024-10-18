@@ -382,6 +382,8 @@ export default {
   "admin.config.oauth.microsoft-client-secret.description": "الرّمز السرّي للعميل لتطبيق Microsoft OAuth",
   "admin.config.oauth.discord-enabled": "Discord",
   "admin.config.oauth.discord-enabled.description": "تفعيل خيار الدخول بحساب Discord",
+  "admin.config.oauth.discord-limited-users": "Discord limited users",
+  "admin.config.oauth.discord-limited-users.description": "Limit signing in to specific users by their Discord ID. Leave it blank to disable.",
   "admin.config.oauth.discord-limited-guild": "مُعرِّف خادم Discord المحدود",
   "admin.config.oauth.discord-limited-guild.description": "حصر تسجيل الدخول على المستخدمين الموجودين في خادم محدّد. اترك هذا الخيار فارغًا لتعطيله.",
   "admin.config.oauth.discord-client-id": "Discord Client ID",
