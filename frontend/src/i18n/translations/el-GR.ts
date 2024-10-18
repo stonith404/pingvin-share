@@ -382,6 +382,8 @@ export default {
   "admin.config.oauth.microsoft-client-secret.description": "Μυστικό πελάτη της εφαρμογής Microsoft OAuth",
   "admin.config.oauth.discord-enabled": "Discord",
   "admin.config.oauth.discord-enabled.description": "Αν είναι ενεργοποιημένη η σύνδεση στο Discord",
+  "admin.config.oauth.discord-limited-users": "Discord limited users",
+  "admin.config.oauth.discord-limited-users.description": "Limit signing in to specific users by their Discord ID. Leave it blank to disable.",
   "admin.config.oauth.discord-limited-guild": "Αναγνωριστικό διακομιστή περιορισμένης ισχύος Discord",
   "admin.config.oauth.discord-limited-guild.description": "Περιορισμός σύνδεσης σε χρήστες σε ένα συγκεκριμένο διακομιστή. Αφήστε κενό για να απενεργοποιήσετε.",
   "admin.config.oauth.discord-client-id": "Αναγνωριστικό Πελάτη Discord",
