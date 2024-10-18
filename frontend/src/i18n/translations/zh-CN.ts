@@ -382,6 +382,8 @@ export default {
   "admin.config.oauth.microsoft-client-secret.description": "Microsoft OAuth App 的 Client secret",
   "admin.config.oauth.discord-enabled": "Discord",
   "admin.config.oauth.discord-enabled.description": "是否启用 Discord 账号登录",
+  "admin.config.oauth.discord-limited-users": "Discord limited users",
+  "admin.config.oauth.discord-limited-users.description": "Limit signing in to specific users by their Discord ID. Leave it blank to disable.",
   "admin.config.oauth.discord-limited-guild": "Discord 的 limited server ID",
   "admin.config.oauth.discord-limited-guild.description": "限制特定服务器中的用户登录。留空来禁用。",
   "admin.config.oauth.discord-client-id": "Discord 的 Client ID",
