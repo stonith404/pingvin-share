@@ -254,7 +254,7 @@ export default {
 
   "admin.users.edit.delete.title": "Delete user: {username} ?",
   "admin.users.edit.delete.description":
-    "Do you really want to delete this user and all his shares?",
+    "Do you really want to delete this user and all their shares?",
 
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "Create user",
