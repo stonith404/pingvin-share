@@ -190,7 +190,7 @@ export default {
   "admin.users.edit.update.change-password.button": "새 비밀번호 저장",
   "admin.users.edit.update.notify.password.success": "비밀번호 변경 완료",
   "admin.users.edit.delete.title": "Delete user: {username} ?",
-  "admin.users.edit.delete.description": "이 사용자의 모든 공유를 삭제하시겠습니까?",
+  "admin.users.edit.delete.description": "Do you really want to delete this user and all their shares?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "사용자 생성",
   "admin.users.modal.create.username": "사용자 이름",
