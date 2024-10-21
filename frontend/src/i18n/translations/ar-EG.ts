@@ -190,7 +190,7 @@ export default {
   "admin.users.edit.update.change-password.button": "حفظ كلمة السر الجديدة",
   "admin.users.edit.update.notify.password.success": "غيرت كلمة السر بنجاح",
   "admin.users.edit.delete.title": "Delete user: {username} ?",
-  "admin.users.edit.delete.description": "هل تريد حقاً حذف هذا المستخدم وكل مشاركاته؟",
+  "admin.users.edit.delete.description": "Do you really want to delete this user and all their shares?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "أنشئ مستخدمًا",
   "admin.users.modal.create.username": "اسم المستخدم",
