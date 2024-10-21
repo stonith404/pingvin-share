@@ -190,7 +190,7 @@ export default {
   "admin.users.edit.update.change-password.button": "Αποθήκευση νέου κωδικού πρόσβασης",
   "admin.users.edit.update.notify.password.success": "Ο κωδικός πρόσβασης άλλαξε επιτυχώς",
   "admin.users.edit.delete.title": "Delete user: {username} ?",
-  "admin.users.edit.delete.description": "Θέλετε να διαγράψετε το χρήστη και όλες τις κοινοποιήσεις του;",
+  "admin.users.edit.delete.description": "Do you really want to delete this user and all their shares?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "Δημιουργία χρήστη",
   "admin.users.modal.create.username": "Όνομα χρήστη",
