@@ -190,7 +190,7 @@ export default {
   "admin.users.edit.update.change-password.button": "Új jelszó mentése",
   "admin.users.edit.update.notify.password.success": "A jelszó sikeresen frissítésre került",
   "admin.users.edit.delete.title": "Delete user: {username} ?",
-  "admin.users.edit.delete.description": "Valóban törölni kívánja ezt a felhasználót és vele az ő minden egyes megosztását?",
+  "admin.users.edit.delete.description": "Do you really want to delete this user and all their shares?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "Felhasználó létrehozása",
   "admin.users.modal.create.username": "Felhasználónév",
