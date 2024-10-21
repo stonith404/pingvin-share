@@ -190,7 +190,7 @@ export default {
   "admin.users.edit.update.change-password.button": "Spara nytt lösenord",
   "admin.users.edit.update.notify.password.success": "Lösenordet har ändrats",
   "admin.users.edit.delete.title": "Delete user: {username} ?",
-  "admin.users.edit.delete.description": "Vill du verkligen ta bort denna användare och alla deras delningar?",
+  "admin.users.edit.delete.description": "Do you really want to delete this user and all their shares?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "Skapa användare",
   "admin.users.modal.create.username": "Användarnamn",
