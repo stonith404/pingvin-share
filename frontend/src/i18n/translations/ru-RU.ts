@@ -190,7 +190,7 @@ export default {
   "admin.users.edit.update.change-password.button": "Сохранить новый пароль",
   "admin.users.edit.update.notify.password.success": "Пароль успешно изменён",
   "admin.users.edit.delete.title": "Delete user: {username} ?",
-  "admin.users.edit.delete.description": "Вы действительно хотите удалить этого пользователя и все его загрузки?",
+  "admin.users.edit.delete.description": "Do you really want to delete this user and all their shares?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "Создать пользователя",
   "admin.users.modal.create.username": "Логин",
