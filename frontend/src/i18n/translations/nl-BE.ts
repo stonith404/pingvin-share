@@ -190,7 +190,7 @@ export default {
   "admin.users.edit.update.change-password.button": "Nieuw wachtwoord opslaan",
   "admin.users.edit.update.notify.password.success": "Wachtwoord succesvol gewijzigd",
   "admin.users.edit.delete.title": "Delete user: {username} ?",
-  "admin.users.edit.delete.description": "Wilt u echt deze gebruiker en al zijn shares verwijderen?",
+  "admin.users.edit.delete.description": "Do you really want to delete this user and all their shares?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "Gebruiker aanmaken",
   "admin.users.modal.create.username": "Gebruikersnaam",
