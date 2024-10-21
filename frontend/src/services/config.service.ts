@@ -15,7 +15,7 @@ const updateMany = async (data: UpdateConfig[]): Promise<AdminConfig[]> => {
 };
 
 const get = (key: string, configVariables: Config[]): any => {
-  if (!configVariables) return null;
+  if (!Array.isArray(configVariables)) return null;
 
   const configVariable = configVariables.filter(
     (variable) => variable.key == key,
