@@ -190,7 +190,7 @@ export default {
   "admin.users.edit.update.change-password.button": "Yeni şifreyi kaydet",
   "admin.users.edit.update.notify.password.success": "Şifre başarıyla değiştirildi",
   "admin.users.edit.delete.title": "Delete user: {username} ?",
-  "admin.users.edit.delete.description": "Bu kullanıcıyı ve tüm paylaşımlarını gerçekten silmek istiyor musunuz?",
+  "admin.users.edit.delete.description": "Do you really want to delete this user and all their shares?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "Kullanıcı oluştur",
   "admin.users.modal.create.username": "Kullanıcı Adı",
