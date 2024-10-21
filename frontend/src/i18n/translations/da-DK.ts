@@ -190,7 +190,7 @@ export default {
   "admin.users.edit.update.change-password.button": "Gem ny adgangskode",
   "admin.users.edit.update.notify.password.success": "Adgangskoden er ændret",
   "admin.users.edit.delete.title": "Delete user: {username} ?",
-  "admin.users.edit.delete.description": "Er du sikker på du vil slette denne bruger og tilhørende delinger?",
+  "admin.users.edit.delete.description": "Do you really want to delete this user and all their shares?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "Opret bruger",
   "admin.users.modal.create.username": "Brugernavn",
