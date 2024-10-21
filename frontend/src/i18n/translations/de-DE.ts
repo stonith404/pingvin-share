@@ -190,7 +190,7 @@ export default {
   "admin.users.edit.update.change-password.button": "Neues Passwort speichern",
   "admin.users.edit.update.notify.password.success": "Passwort erfolgreich geändert",
   "admin.users.edit.delete.title": "Benutzer löschen: {username}?",
-  "admin.users.edit.delete.description": "Möchtest du wirklich diesen Benutzer und alle zugehörigen Freigaben löschen?",
+  "admin.users.edit.delete.description": "Do you really want to delete this user and all their shares?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "Benutzer erstellen",
   "admin.users.modal.create.username": "Benutzername",
