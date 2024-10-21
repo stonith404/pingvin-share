@@ -190,7 +190,7 @@ export default {
   "admin.users.edit.update.change-password.button": "新しいパスワードを保存",
   "admin.users.edit.update.notify.password.success": "パスワードの変更に成功しました",
   "admin.users.edit.delete.title": "Delete user: {username} ?",
-  "admin.users.edit.delete.description": "このユーザーとこのユーザーに関連する全てのファイルアップロードを削除してもよろしいですか？",
+  "admin.users.edit.delete.description": "Do you really want to delete this user and all their shares?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "ユーザーを作成",
   "admin.users.modal.create.username": "ユーザー名",
