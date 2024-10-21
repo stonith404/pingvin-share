@@ -190,7 +190,7 @@ export default {
   "admin.users.edit.update.change-password.button": "บันทึกรหัสผ่านใหม่",
   "admin.users.edit.update.notify.password.success": "รหัสผ่านเปลี่ยนเรียบร้อยแล้ว",
   "admin.users.edit.delete.title": "Delete user: {username} ?",
-  "admin.users.edit.delete.description": "คุณต้องการลบผู้ใช้นี้และการแชร์ทั้งหมดของเขาหรือไม่?",
+  "admin.users.edit.delete.description": "Do you really want to delete this user and all their shares?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "สร้างผู้ใช้",
   "admin.users.modal.create.username": "ชื่อผู้ใช้",
