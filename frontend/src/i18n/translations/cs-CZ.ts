@@ -190,7 +190,7 @@ export default {
   "admin.users.edit.update.change-password.button": "Uložit nové heslo",
   "admin.users.edit.update.notify.password.success": "Heslo bylo úspěšně změněno",
   "admin.users.edit.delete.title": "Delete user: {username} ?",
-  "admin.users.edit.delete.description": "Opravdu chcete smazat tohoto uživatele a všechny jeho sdílení?",
+  "admin.users.edit.delete.description": "Do you really want to delete this user and all their shares?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "Vytvořit uživatele",
   "admin.users.modal.create.username": "Uživatelské jméno",
