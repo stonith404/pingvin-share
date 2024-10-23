@@ -462,7 +462,7 @@ export default {
   "common.button.generate": "Gerar",
   "common.button.done": "Concluído",
   "common.text.link": "Link",
-  "common.text.navigate-to-link": "Visit link",
+  "common.text.navigate-to-link": "Visitar Link",
   "common.text.or": "ou",
   "common.text.redirecting": "Redirecionando...",
   "common.button.go-back": "Voltar",
