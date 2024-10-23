@@ -37,7 +37,7 @@ const Share = ({ shareId }: { shareId: string }) => {
             modals,
             t("share.error.visitor-limit-exceeded.title"),
             t("share.error.visitor-limit-exceeded.description"),
-            "go-home"
+            "go-home",
           );
         } else if (error == "share_password_required") {
           showEnterPasswordModal(modals, getShareToken);
@@ -61,21 +61,21 @@ const Share = ({ shareId }: { shareId: string }) => {
               modals,
               t("share.error.removed.title"),
               e.response.data.message,
-              "go-home"
+              "go-home",
             );
           } else {
             showErrorModal(
               modals,
               t("share.error.not-found.title"),
               t("share.error.not-found.description"),
-              "go-home"
+              "go-home",
             );
           }
         } else if (e.response.status == 403 && error == "private_share") {
           showErrorModal(
             modals,
             t("share.error.access-denied.title"),
-            t("share.error.access-denied.description")
+            t("share.error.access-denied.description"),
           );
         } else if (error == "share_password_required") {
           showEnterPasswordModal(modals, getShareToken);
@@ -86,7 +86,7 @@ const Share = ({ shareId }: { shareId: string }) => {
             modals,
             t("common.error"),
             t("common.error.unknown"),
-            "go-home"
+            "go-home",
           );
         }
       });

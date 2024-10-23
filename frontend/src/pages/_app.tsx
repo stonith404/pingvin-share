@@ -43,7 +43,7 @@ function App({ Component, pageProps }: AppProps) {
   const [route, setRoute] = useState<string>(pageProps.route);
 
   const [configVariables, setConfigVariables] = useState<Config[]>(
-    pageProps.configVariables
+    pageProps.configVariables,
   );
 
   useEffect(() => {
@@ -53,7 +53,7 @@ function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const interval = setInterval(
       async () => await authService.refreshAccessToken(),
-      2 * 60 * 1000 // 2 minutes
+      2 * 60 * 1000, // 2 minutes
     );
 
     return () => clearInterval(interval);
@@ -180,7 +180,7 @@ App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
     pageProps.route = ctx.req.url;
 
     const requestLanguage = i18nUtil.getLanguageFromAcceptHeader(
-      ctx.req.headers["accept-language"]
+      ctx.req.headers["accept-language"],
     );
 
     pageProps.language = ctx.req.cookies["language"] ?? requestLanguage;
