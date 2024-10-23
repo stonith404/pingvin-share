@@ -315,11 +315,21 @@ export class ShareService {
       },
     });
 
-    if (
-      share?.security?.password &&
-      !(await argon.verify(share.security.password, password))
-    ) {
-      throw new ForbiddenException("Wrong password", "wrong_password");
+    if (share?.security?.password) {
+      if (!password) {
+        throw new ForbiddenException(
+          "This share is password protected",
+          "share_password_required",
+        );
+      }
+
+      const isPasswordValid = await argon.verify(
+        share.security.password,
+        password,
+      );
+      if (!isPasswordValid) {
+        throw new ForbiddenException("Wrong password", "wrong_password");
+      }
     }
 
     if (share.security?.maxViews && share.security.maxViews <= share.views) {
@@ -335,12 +345,13 @@ export class ShareService {
   }
 
   async generateShareToken(shareId: string) {
-    const { expiration } = await this.prisma.share.findUnique({
+    const { expiration, createdAt } = await this.prisma.share.findUnique({
       where: { id: shareId },
     });
 
     const tokenPayload = {
       shareId,
+      shareCreatedAt: moment(createdAt).unix(),
       iat: moment().unix(),
     };
 
@@ -356,7 +367,7 @@ export class ShareService {
   }
 
   async verifyShareToken(shareId: string, token: string) {
-    const { expiration } = await this.prisma.share.findUnique({
+    const { expiration, createdAt } = await this.prisma.share.findUnique({
       where: { id: shareId },
     });
 
@@ -367,7 +378,10 @@ export class ShareService {
         ignoreExpiration: moment(expiration).isSame(0),
       });
 
-      return claims.shareId == shareId;
+      return (
+        claims.shareId == shareId &&
+        claims.shareCreatedAt == moment(createdAt).unix()
+      );
     } catch {
       return false;
     }
