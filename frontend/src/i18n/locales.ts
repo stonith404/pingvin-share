@@ -25,6 +25,7 @@ import turkish from "./translations/tr-TR";
 import czech from "./translations/cs-CZ";
 import viatnamese from "./translations/vi-VN";
 import bulgarian from "./translations/bg-BG";
+import serbianCyrillic from "./translations/sr-CS";
 
 export const LOCALES = {
   ENGLISH: {
@@ -161,5 +162,10 @@ export const LOCALES = {
     name: "Български",
     code: "bg-BG",
     messages: bulgarian,
+  },
+  SERBIAN_CYRILLIC: {
+    name: "Српски",
+    code: "sr-CS",
+    messages: serbianCyrillic,
   },
 };
