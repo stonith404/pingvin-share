@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/stonith404/pingvin-share/compare/v1.2.2...v1.2.3) (2024-10-23)
+
+
+### Bug Fixes
+
+* share password can be bypassed if a deleted share with the same id was visited before ([acbff6e](https://github.com/stonith404/pingvin-share/commit/acbff6e129d236452180f8b96775457d135ac080))
+
 ## [1.2.2](https://github.com/stonith404/pingvin-share/compare/v1.2.1...v1.2.2) (2024-10-18)
 
 
