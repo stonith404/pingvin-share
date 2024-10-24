@@ -190,7 +190,7 @@ export default {
   "admin.users.edit.update.change-password.button": "Enregistrer le nouveau mot de passe",
   "admin.users.edit.update.notify.password.success": "Le mot de passe a été modifié",
   "admin.users.edit.delete.title": "Supprimer l'utilisateur : {username} ?",
-  "admin.users.edit.delete.description": "Do you really want to delete this user and all their shares?",
+  "admin.users.edit.delete.description": "Souhaitez-vous vraiment supprimer cet utilisateur et tous ses partages ?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "Créer un utilisateur",
   "admin.users.modal.create.username": "Surnom",
@@ -383,7 +383,7 @@ export default {
   "admin.config.oauth.discord-enabled": "Discord",
   "admin.config.oauth.discord-enabled.description": "Permettre la connexion via Discord",
   "admin.config.oauth.discord-limited-users": "Discord limited users",
-  "admin.config.oauth.discord-limited-users.description": "Limit signing in to specific users by their Discord ID. Leave it blank to disable.",
+  "admin.config.oauth.discord-limited-users.description": "",
   "admin.config.oauth.discord-limited-guild": "ID de serveur restreint Discord",
   "admin.config.oauth.discord-limited-guild.description": "Limiter la connexion aux utilisateurs sur un serveur spécifique. Laissez vide pour désactiver.",
   "admin.config.oauth.discord-client-id": "ID du client Discord",
