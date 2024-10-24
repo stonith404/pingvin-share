@@ -18,7 +18,7 @@ export default {
   "home.bullet.b.name": "Privatsphäre",
   "home.bullet.b.description": "Ihre Dateien gehören Ihnen und werden niemals von Dritten zugänglich gemacht.",
   "home.bullet.c.name": "Keine lästige Dateigrößenbegrenzung",
-  "home.bullet.c.description": " Laden Sie so große Dateien hoch, wie Sie wollen. Nur Ihre Festplatte ist Ihr Limit.",
+  "home.bullet.c.description": "Laden Sie so große Dateien hoch, wie Sie wollen. Nur Ihre Festplatte ist Ihr Limit.",
   "home.button.start": "Lege los",
   "home.button.source": "Quellcode",
   // END /
