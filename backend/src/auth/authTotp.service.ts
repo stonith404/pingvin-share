@@ -8,6 +8,7 @@ import { User } from "@prisma/client";
 import * as argon from "argon2";
 import { authenticator, totp } from "otplib";
 import * as qrcode from "qrcode-svg";
+import { ConfigService } from "src/config/config.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { AuthService } from "./auth.service";
 import { AuthSignInTotpDTO } from "./dto/authSignInTotp.dto";
@@ -16,6 +17,7 @@ import { AuthSignInTotpDTO } from "./dto/authSignInTotp.dto";
 export class AuthTotpService {
   constructor(
     private prisma: PrismaService,
+    private configService: ConfigService,
     private authService: AuthService,
   ) {}
 
@@ -76,13 +78,10 @@ export class AuthTotpService {
       throw new BadRequestException("TOTP is already enabled");
     }
 
+    const issuer = this.configService.get("general.appName");
     const secret = authenticator.generateSecret();
 
-    const otpURL = totp.keyuri(
-      user.username || user.email,
-      "pingvin-share",
-      secret,
-    );
+    const otpURL = totp.keyuri(user.username || user.email, issuer, secret);
 
     await this.prisma.user.update({
       where: { id: user.id },
