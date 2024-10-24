@@ -1,3 +1,11 @@
+## [1.2.4](https://github.com/stonith404/pingvin-share/compare/v1.2.3...v1.2.4) (2024-10-24)
+
+
+### Bug Fixes
+
+* don't enforce password lenght for sign in form because of LDAP ([428c1d2](https://github.com/stonith404/pingvin-share/commit/428c1d2b993a05a25cc94aabe56216b9ab969fa1))
+* use app name as totp issuer ([c89ca7e](https://github.com/stonith404/pingvin-share/commit/c89ca7e64b08f437dd1b7e9bf2b9d674cc612228))
+
 ## [1.2.3](https://github.com/stonith404/pingvin-share/compare/v1.2.2...v1.2.3) (2024-10-23)
 
 
