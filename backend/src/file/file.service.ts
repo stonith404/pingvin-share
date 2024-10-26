@@ -23,25 +23,12 @@ import { Readable } from "stream";
 
 @Injectable()
 export class FileService {
-  private s3: S3Client | null = null;
 
   constructor(
       private prisma: PrismaService,
       private jwtService: JwtService,
       private config: ConfigService,
-  ) {
-    if (this.config.get("s3.enabled")) {
-      this.s3 = new S3Client({
-        endpoint: this.config.get("s3.endpoint"),
-        region: this.config.get("s3.region"),
-        credentials: {
-          accessKeyId: this.config.get("s3.key"),
-          secretAccessKey: this.config.get("s3.secret"),
-        },
-        forcePathStyle: true,
-      });
-    }
-  }
+  ) {}
 
   async create(
       data: string,
@@ -61,9 +48,10 @@ export class FileService {
 
     let diskFileSize = 0;
 
-    if (this.config.get("s3.enabled")) {
+    const s3 = this.createS3Instance()
+    if (this.config.get("s3.enabled") && s3) {
       try {
-        const object = await this.s3.send(new GetObjectCommand({
+        const object = await s3.send(new GetObjectCommand({
           Bucket: this.config.get("s3.bucketName"),
           Key: `${this.getS3Path()}${shareId}/${file.id}.tmp-chunk`,
         }));
@@ -112,8 +100,8 @@ export class FileService {
       );
     }
 
-    if (this.config.get("s3.enabled") && this.s3) {
-      await this.s3.send(new PutObjectCommand({
+    if (this.config.get("s3.enabled") && s3) {
+      await s3.send(new PutObjectCommand({
         Bucket: this.config.get("s3.bucketName"),
         Key: `${this.getS3Path()}${shareId}/${file.id}.tmp-chunk`,
         Body: buffer,
@@ -127,8 +115,10 @@ export class FileService {
 
     const isLastChunk = chunk.index === chunk.total - 1;
     if (isLastChunk) {
-      if (this.config.get("s3.enabled") && this.s3) {
-        await this.s3.send(new PutObjectCommand({
+
+      const s3 = this.createS3Instance()
+      if (this.config.get("s3.enabled") && s3) {
+        await s3.send(new PutObjectCommand({
           Bucket: this.config.get("s3.bucketName"),
           Key: `${shareId}/${file.id}`,
           Body: buffer,
@@ -164,8 +154,9 @@ export class FileService {
 
     if (!fileMetaData) throw new NotFoundException("File not found");
 
-    if (this.config.get("s3.enabled") && this.s3) {
-      const response = await this.s3.send(new GetObjectCommand({
+    const s3 = this.createS3Instance()
+    if (this.config.get("s3.enabled") && s3) {
+      const response = await s3.send(new GetObjectCommand({
         Bucket: this.config.get("s3.bucketName"),
         Key: `${this.getS3Path()}${shareId}/${fileId}`,
       }));
@@ -197,8 +188,9 @@ export class FileService {
 
     if (!fileMetaData) throw new NotFoundException("File not found");
 
-    if (this.config.get("s3.enabled") && this.s3) {
-      await this.s3.send(new DeleteObjectCommand({
+    const s3 = this.createS3Instance()
+    if (this.config.get("s3.enabled") && s3) {
+      await s3.send(new DeleteObjectCommand({
         Bucket: this.config.get("s3.bucketName"),
         Key: `${this.getS3Path()}${shareId}/${fileId}`,
       }));
@@ -210,12 +202,13 @@ export class FileService {
   }
 
   async deleteAllFiles(shareId: string) {
-    if (this.config.get("s3.enabled") && this.s3) {
+    const s3 = this.createS3Instance()
+    if (this.config.get("s3.enabled") && s3) {
       const listCommand = new ListObjectsV2Command({
         Bucket: this.config.get("s3.bucketName"),
         Prefix: `${this.getS3Path()}${shareId}`,
       });
-      let list = await this.s3.send(listCommand);
+      let list = await s3.send(listCommand);
       if (list.KeyCount) { // if items to delete
         // delete the files
         const deleteCommand = new DeleteObjectsCommand({
@@ -225,7 +218,7 @@ export class FileService {
             Quiet: false,
           },
         });
-        let deleted = await this.s3.send(deleteCommand); // delete the files
+        let deleted = await s3.send(deleteCommand); // delete the files
         if (deleted.Errors) {
           deleted.Errors.map((error) => console.log(`${error.Key} could not be deleted - ${error.Code}`));
         }
@@ -251,5 +244,19 @@ export class FileService {
   getS3Path(): string{
     const configS3Path = this.config.get("s3.bucketPath")
     return configS3Path ? `${configS3Path}/` : ""
+  }
+
+  createS3Instance(): S3Client{
+    if (this.config.get("s3.enabled")) {
+      return new S3Client({
+        endpoint: this.config.get("s3.endpoint"),
+        region: this.config.get("s3.region"),
+        credentials: {
+          accessKeyId: this.config.get("s3.key"),
+          secretAccessKey: this.config.get("s3.secret"),
+        },
+        forcePathStyle: true,
+      });
+    }
   }
 }
