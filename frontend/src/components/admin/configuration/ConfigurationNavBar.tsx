@@ -29,6 +29,7 @@ const categories = [
   { name: "SMTP", icon: <TbAt /> },
   { name: "OAuth", icon: <TbSocial /> },
   { name: "LDAP", icon: <TbBinaryTree /> },
+  { name: "S3", icon: <TbBinaryTree /> },
 ];
 
 const useStyles = createStyles((theme) => ({

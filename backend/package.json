@@ -13,6 +13,7 @@
     "seed": "ts-node prisma/seed/config.seed.ts"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.679.0",
     "@nestjs/cache-manager": "^2.2.2",
     "@nestjs/common": "^10.4.3",
     "@nestjs/config": "^3.2.3",

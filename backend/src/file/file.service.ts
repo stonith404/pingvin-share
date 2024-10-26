@@ -12,20 +12,42 @@ import * as mime from "mime-types";
 import { ConfigService } from "src/config/config.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { SHARE_DIRECTORY } from "../constants";
+import {
+  S3Client,
+  PutObjectCommand,
+  GetObjectCommand,
+  DeleteObjectCommand,
+  ListObjectsV2Command, DeleteObjectsCommand
+} from "@aws-sdk/client-s3";
+import { Readable } from "stream";
 
 @Injectable()
 export class FileService {
+  private s3: S3Client | null = null;
+
   constructor(
-    private prisma: PrismaService,
-    private jwtService: JwtService,
-    private config: ConfigService,
-  ) {}
+      private prisma: PrismaService,
+      private jwtService: JwtService,
+      private config: ConfigService,
+  ) {
+    if (this.config.get("s3.enabled")) {
+      this.s3 = new S3Client({
+        endpoint: this.config.get("s3.endpoint"),
+        region: this.config.get("s3.region"),
+        credentials: {
+          accessKeyId: this.config.get("s3.key"),
+          secretAccessKey: this.config.get("s3.secret"),
+        },
+        forcePathStyle: true,
+      });
+    }
+  }
 
   async create(
-    data: string,
-    chunk: { index: number; total: number },
-    file: { id?: string; name: string },
-    shareId: string,
+      data: string,
+      chunk: { index: number; total: number },
+      file: { id?: string; name: string },
+      shareId: string,
   ) {
     if (!file.id) file.id = crypto.randomUUID();
 
@@ -37,61 +59,91 @@ export class FileService {
     if (share.uploadLocked)
       throw new BadRequestException("Share is already completed");
 
-    let diskFileSize: number;
-    try {
-      diskFileSize = fs.statSync(
-        `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
-      ).size;
-    } catch {
-      diskFileSize = 0;
+    let diskFileSize = 0;
+
+    if (this.config.get("s3.enabled")) {
+      try {
+        const object = await this.s3.send(new GetObjectCommand({
+          Bucket: this.config.get("s3.bucketName"),
+          Key: `${this.getS3Path()}${shareId}/${file.id}.tmp-chunk`,
+        }));
+        diskFileSize = object.ContentLength || 0;
+      } catch {
+        diskFileSize = 0;
+      }
+    } else {
+      try {
+        diskFileSize = fs.statSync(
+            `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
+        ).size;
+      } catch {
+        diskFileSize = 0;
+      }
     }
 
-    // If the sent chunk index and the expected chunk index doesn't match throw an error
     const chunkSize = this.config.get("share.chunkSize");
     const expectedChunkIndex = Math.ceil(diskFileSize / chunkSize);
 
-    if (expectedChunkIndex != chunk.index)
+    if (expectedChunkIndex !== chunk.index) {
       throw new BadRequestException({
         message: "Unexpected chunk received",
         error: "unexpected_chunk_index",
         expectedChunkIndex,
       });
+    }
 
     const buffer = Buffer.from(data, "base64");
 
-    // Check if share size limit is exceeded
     const fileSizeSum = share.files.reduce(
-      (n, { size }) => n + parseInt(size),
-      0,
+        (n, { size }) => n + parseInt(size),
+        0,
     );
 
     const shareSizeSum = fileSizeSum + diskFileSize + buffer.byteLength;
 
     if (
-      shareSizeSum > this.config.get("share.maxSize") ||
-      (share.reverseShare?.maxShareSize &&
-        shareSizeSum > parseInt(share.reverseShare.maxShareSize))
+        shareSizeSum > this.config.get("share.maxSize") ||
+        (share.reverseShare?.maxShareSize &&
+            shareSizeSum > parseInt(share.reverseShare.maxShareSize))
     ) {
       throw new HttpException(
-        "Max share size exceeded",
-        HttpStatus.PAYLOAD_TOO_LARGE,
+          "Max share size exceeded",
+          HttpStatus.PAYLOAD_TOO_LARGE,
       );
     }
 
-    fs.appendFileSync(
-      `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
-      buffer,
-    );
-
-    const isLastChunk = chunk.index == chunk.total - 1;
-    if (isLastChunk) {
-      fs.renameSync(
-        `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
-        `${SHARE_DIRECTORY}/${shareId}/${file.id}`,
+    if (this.config.get("s3.enabled") && this.s3) {
+      await this.s3.send(new PutObjectCommand({
+        Bucket: this.config.get("s3.bucketName"),
+        Key: `${this.getS3Path()}${shareId}/${file.id}.tmp-chunk`,
+        Body: buffer,
+      }));
+    } else {
+      fs.appendFileSync(
+          `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
+          buffer,
       );
-      const fileSize = fs.statSync(
-        `${SHARE_DIRECTORY}/${shareId}/${file.id}`,
-      ).size;
+    }
+
+    const isLastChunk = chunk.index === chunk.total - 1;
+    if (isLastChunk) {
+      if (this.config.get("s3.enabled") && this.s3) {
+        await this.s3.send(new PutObjectCommand({
+          Bucket: this.config.get("s3.bucketName"),
+          Key: `${shareId}/${file.id}`,
+          Body: buffer,
+        }));
+      } else {
+        fs.renameSync(
+            `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
+            `${SHARE_DIRECTORY}/${shareId}/${file.id}`,
+        );
+      }
+
+      const fileSize = this.config.get("s3.enabled")
+          ? buffer.byteLength
+          : fs.statSync(`${SHARE_DIRECTORY}/${shareId}/${file.id}`).size;
+
       await this.prisma.file.create({
         data: {
           id: file.id,
@@ -112,8 +164,22 @@ export class FileService {
 
     if (!fileMetaData) throw new NotFoundException("File not found");
 
-    const file = fs.createReadStream(`${SHARE_DIRECTORY}/${shareId}/${fileId}`);
+    if (this.config.get("s3.enabled") && this.s3) {
+      const response = await this.s3.send(new GetObjectCommand({
+        Bucket: this.config.get("s3.bucketName"),
+        Key: `${this.getS3Path()}${shareId}/${fileId}`,
+      }));
+      return {
+        metaData: {
+          mimeType: mime.contentType(fileMetaData.name.split(".").pop()),
+          ...fileMetaData,
+          size: fileMetaData.size,
+        },
+        file: response.Body as Readable,
+      };
+    }
 
+    const file = fs.createReadStream(`${SHARE_DIRECTORY}/${shareId}/${fileId}`);
     return {
       metaData: {
         mimeType: mime.contentType(fileMetaData.name.split(".").pop()),
@@ -131,19 +197,59 @@ export class FileService {
 
     if (!fileMetaData) throw new NotFoundException("File not found");
 
-    fs.unlinkSync(`${SHARE_DIRECTORY}/${shareId}/${fileId}`);
+    if (this.config.get("s3.enabled") && this.s3) {
+      await this.s3.send(new DeleteObjectCommand({
+        Bucket: this.config.get("s3.bucketName"),
+        Key: `${this.getS3Path()}${shareId}/${fileId}`,
+      }));
+    } else {
+      fs.unlinkSync(`${SHARE_DIRECTORY}/${shareId}/${fileId}`);
+    }
 
     await this.prisma.file.delete({ where: { id: fileId } });
   }
 
   async deleteAllFiles(shareId: string) {
-    await fs.promises.rm(`${SHARE_DIRECTORY}/${shareId}`, {
-      recursive: true,
-      force: true,
-    });
+    if (this.config.get("s3.enabled") && this.s3) {
+      const listCommand = new ListObjectsV2Command({
+        Bucket: this.config.get("s3.bucketName"),
+        Prefix: `${this.getS3Path()}${shareId}`,
+      });
+      let list = await this.s3.send(listCommand);
+      if (list.KeyCount) { // if items to delete
+        // delete the files
+        const deleteCommand = new DeleteObjectsCommand({
+          Bucket: this.config.get("s3.bucketName"),
+          Delete: {
+            Objects: list.Contents.map((item) => ({ Key: item.Key })),
+            Quiet: false,
+          },
+        });
+        let deleted = await this.s3.send(deleteCommand); // delete the files
+        if (deleted.Errors) {
+          deleted.Errors.map((error) => console.log(`${error.Key} could not be deleted - ${error.Code}`));
+        }
+        return `${deleted.Deleted.length} files deleted.`;
+      }
+      // S3 does not support deleting directories, so list all objects in the folder and delete them
+      // Implementation needed here to list and delete each object
+    } else {
+      await fs.promises.rm(`${SHARE_DIRECTORY}/${shareId}`, {
+        recursive: true,
+        force: true,
+      });
+    }
   }
 
   getZip(shareId: string) {
+    if (this.config.get("s3.enabled")) {
+      throw new BadRequestException("Zip download is not supported with S3 storage");
+    }
     return fs.createReadStream(`${SHARE_DIRECTORY}/${shareId}/archive.zip`);
+  }
+
+  getS3Path(): string{
+    const configS3Path = this.config.get("s3.bucketPath")
+    return configS3Path ? `${configS3Path}/` : ""
   }
 }
