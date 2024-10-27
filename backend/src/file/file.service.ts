@@ -204,28 +204,23 @@ export class FileService {
   async deleteAllFiles(shareId: string) {
     const s3 = this.createS3Instance()
     if (this.config.get("s3.enabled") && s3) {
-      const listCommand = new ListObjectsV2Command({
+      let list = await s3.send(new ListObjectsV2Command({
         Bucket: this.config.get("s3.bucketName"),
         Prefix: `${this.getS3Path()}${shareId}`,
-      });
-      let list = await s3.send(listCommand);
+      }));
       if (list.KeyCount) { // if items to delete
-        // delete the files
-        const deleteCommand = new DeleteObjectsCommand({
+        let deleted = await s3.send(new DeleteObjectsCommand({
           Bucket: this.config.get("s3.bucketName"),
           Delete: {
             Objects: list.Contents.map((item) => ({ Key: item.Key })),
             Quiet: false,
           },
-        });
-        let deleted = await s3.send(deleteCommand); // delete the files
+        }));
         if (deleted.Errors) {
           deleted.Errors.map((error) => console.log(`${error.Key} could not be deleted - ${error.Code}`));
         }
         return `${deleted.Deleted.length} files deleted.`;
       }
-      // S3 does not support deleting directories, so list all objects in the folder and delete them
-      // Implementation needed here to list and delete each object
     } else {
       await fs.promises.rm(`${SHARE_DIRECTORY}/${shareId}`, {
         recursive: true,
