@@ -16,7 +16,7 @@ export default {
   "home.bullet.a.name": "Selbst gehostet",
   "home.bullet.a.description": "Betreibe Pingvin Share auf deinem eigenen Server.",
   "home.bullet.b.name": "Privatsphäre",
-  "home.bullet.b.description": "Ihre Dateien gehören Ihnen und werden niemals von Dritten zugänglich gemacht.",
+  "home.bullet.b.description": "Ihre Dateien gehören Ihnen und sind niemals durch Dritte zugänglich.",
   "home.bullet.c.name": "Keine lästige Dateigrößenbegrenzung",
   "home.bullet.c.description": "Laden Sie so große Dateien hoch, wie Sie wollen. Nur Ihre Festplatte ist Ihr Limit.",
   "home.button.start": "Lege los",
@@ -26,7 +26,7 @@ export default {
   "signin.title": "Willkommen zurück",
   "signin.description": "Du hast noch kein Konto?",
   "signin.button.signup": "Registrieren",
-  "signin.input.email-or-username": "Email oder Benutzername",
+  "signin.input.email-or-username": "E-Mail oder Benutzername",
   "signin.input.email-or-username.placeholder": "Deine Email Adresse oder Benutzername",
   "signin.input.password": "Passwort",
   "signin.input.password.placeholder": "Dein Passwort",
@@ -47,8 +47,8 @@ export default {
   "signup.button.signin": "Anmelden",
   "signup.input.username": "Benutzername",
   "signup.input.username.placeholder": "Dein Benutzername",
-  "signup.input.email": "Email",
-  "signup.input.email.placeholder": "Deine Emailadresse",
+  "signup.input.email": "E-Mail",
+  "signup.input.email.placeholder": "Deine E-Mail-Adresse",
   "signup.button.submit": "Lass uns loslegen",
   // END /auth/signup
   // /auth/totp
@@ -57,7 +57,7 @@ export default {
   // END /auth/totp
   // /auth/reset-password
   "resetPassword.title": "Passwort vergessen?",
-  "resetPassword.description": "Gib deine Email Adresse ein, um dein Passwort zurückzusetzen.",
+  "resetPassword.description": "Gib deine E-Mail-Adresse ein, um dein Passwort zurückzusetzen.",
   "resetPassword.notify.success": "Wir haben dir einen Link gesendet, unter dem du dein Passwort zurücksetzen kannst.",
   "resetPassword.button.back": "Zurück zur Anmeldeseite",
   "resetPassword.text.resetPassword": "Passwort zurücksetzen",
