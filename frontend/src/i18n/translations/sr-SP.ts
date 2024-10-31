@@ -339,7 +339,7 @@ export default {
   "admin.config.share.chunk-size.description": "Подесите величину дела (у бајтовима) за ваша отпремање како бисте уравнотежили ефикасност и поузданост у складу са вашом интернет везом. Мањи делови могу побољшати стопу успеха за нестабилне везе, док већи делови омогућавају брже отпремање за стабилне везе.",
   "admin.config.share.auto-open-share-modal": "",
   "admin.config.share.auto-open-share-modal.description": "The share creation modal automatically appears when a user selects files, eliminating the need to manually click the button.",
-  "admin.config.smtp.enabled": "Enable",
+  "admin.config.smtp.enabled": "Омогући",
   "admin.config.smtp.enabled.description": "Да ли је SMTP омогућен. Поставите ово на тачно само ако сте унели хост, порт, е-пошту, корисника и лозинку вашег SMTP сервера.",
   "admin.config.smtp.host": "Домаћин",
   "admin.config.smtp.host.description": "Домаћин SMTP сервера",
