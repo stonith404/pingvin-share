@@ -18,7 +18,7 @@ export default {
   "home.bullet.b.name": "Adatvédelem",
   "home.bullet.b.description": "Your files are yours and will never be accessed by third parties.",
   "home.bullet.c.name": "Nincs bosszantó fájl méretkorlát",
-  "home.bullet.c.description": "Upload files as big as you want. Only your hard drive will be your limit.",
+  "home.bullet.c.description": "Akkora fájlokat oszt meg, amekkorákat csak akar. Határt csak a lemezterület szab.",
   "home.button.start": "Nosza, kezdjük",
   "home.button.source": "Forráskód",
   // END /
