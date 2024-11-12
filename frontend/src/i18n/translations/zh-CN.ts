@@ -3,7 +3,7 @@ export default {
   "navbar.upload": "上传",
   "navbar.signin": "登录",
   "navbar.home": "首页",
-  "navbar.signup": "Sign up",
+  "navbar.signup": "注册",
   "navbar.links.shares": "我的共享",
   "navbar.links.reverse": "预留共享",
   "navbar.avatar.account": "我的账户",
@@ -475,7 +475,7 @@ export default {
   "common.error.too-short": "必须不少于 {length} 个字符",
   "common.error.too-long": "必须不超过 {length} 个字符",
   "common.error.number-too-small": "Must be at least {min}",
-  "common.error.number-too-large": "Must be at most {max}",
+  "common.error.number-too-large": "必须至多为 {max}",
   "common.error.exact-length": "必须为 {length} 个字符",
   "common.error.invalid-number": "必须为数字",
   "common.error.field-required": "必填项"
