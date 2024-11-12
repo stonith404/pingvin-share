@@ -357,7 +357,7 @@ export default {
   "admin.config.oauth.allow-registration": "Autoriser l’inscription",
   "admin.config.oauth.allow-registration.description": "Permettre aux utilisateurs de s’inscrire via leur identifiant social",
   "admin.config.oauth.ignore-totp": "Ignorer double authentification TOTP",
-  "admin.config.oauth.ignore-totp.description": "Ignorer le TOTP lorsque l’utilisateur utilise un identifiant social.",
+  "admin.config.oauth.ignore-totp.description": "Ignorer la double-authentification (TOTP) lorsque l’utilisateur utilise un identifiant social",
   "admin.config.oauth.disable-password": "Désactiver la connexion par mot de passe",
   "admin.config.oauth.disable-password.description": "Désactive la connexion par mot de passe\nAssurez-vous qu’un fournisseur OAuth soit correctement configuré avant d’activer cette configuration pour éviter d'être enfermé.",
   "admin.config.oauth.github-enabled": "GitHub",
