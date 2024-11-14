@@ -212,8 +212,11 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "アップロード",
+  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error": "共有を仕上げている最中にエラーが発生しました。",
   "upload.notify.count-failed": "{count} ファイルがアップロードに失敗しました。再度お試しください。",
+  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
+  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
   // Dropzone.tsx
   "upload.dropzone.title": "ファイルをアップロード",
   "upload.dropzone.description": "共有を開始するにはここにファイルをドラッグ＆ドロップしてください。受け入れ可能なファイルの合計サイズは{maxSize}までです。",
