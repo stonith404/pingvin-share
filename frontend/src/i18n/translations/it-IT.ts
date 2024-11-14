@@ -212,8 +212,11 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "Carica",
+  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error": "Si è verificato un errore durante il completamento della condivisione.",
   "upload.notify.count-failed": "Impossibile caricare {count} file. Riprovare.",
+  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
+  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
   // Dropzone.tsx
   "upload.dropzone.title": "Carica File",
   "upload.dropzone.description": "Trascina qui i file per iniziare la tua condivisione. Possiamo accettare solo i file che sono inferiori a {maxSize} in totale.",
