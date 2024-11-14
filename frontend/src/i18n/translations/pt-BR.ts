@@ -212,11 +212,11 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "Carregar",
-  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
+  "upload.notify.confirm-leave": "Você tem certeza que deseja sair desta página? Seu envio será cancelado.",
   "upload.notify.generic-error": "Ocorreu um erro ao terminar seu compartilhamento.",
   "upload.notify.count-failed": "Falha ao enviar {count} arquivos. Tentando novamente.",
-  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
-  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
+  "upload.reverse-share.error.invalid.title": "Link de compartilhamento reverso inválido",
+  "upload.reverse-share.error.invalid.description": "Este compartilhamento reverso expirou ou é inválido.",
   // Dropzone.tsx
   "upload.dropzone.title": "Carregar arquivos",
   "upload.dropzone.description": "Arraste os arquivos aqui para iniciar o seu compartilhamento. Aceitamos apenas arquivos até {maxSize} no total.",
@@ -303,8 +303,8 @@ export default {
   "admin.config.general.app-name.description": "Nome da aplicação",
   "admin.config.general.app-url": "URL do Aplicativo",
   "admin.config.general.app-url.description": "Em qual URL o Pingvin Share está disponível",
-  "admin.config.general.secure-cookies": "Secure cookies",
-  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
+  "admin.config.general.secure-cookies": "Cookies seguros",
+  "admin.config.general.secure-cookies.description": "Se definir a bandeira segura nos cookies. Se habilitado, o site não funcionará quando acessado por HTTP.",
   "admin.config.general.show-home-page": "Mostrar a página inicial",
   "admin.config.general.show-home-page.description": "Mostrar ou não a página inicial",
   "admin.config.general.session-duration": "Duração de sessão",
