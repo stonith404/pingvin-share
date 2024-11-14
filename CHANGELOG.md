@@ -1,3 +1,19 @@
+## [1.3.0](https://github.com/stonith404/pingvin-share/compare/v1.2.4...v1.3.0) (2024-11-14)
+
+
+### Features
+
+* add 'secureCookies' configuration variable to explicitly set the secure flag and prevent confusion ([4ce6420](https://github.com/stonith404/pingvin-share/commit/4ce64206be7440a99299e1ed238ced7408c0563d))
+* add confirm dialog for leaving the page if an upload is in progress ([d8084e4](https://github.com/stonith404/pingvin-share/commit/d8084e401d7572b2d6e38ffa20cb678a0fb0e615))
+
+
+### Bug Fixes
+
+* improve share completed dialog redirection for reverse shares ([4ef7ebb](https://github.com/stonith404/pingvin-share/commit/4ef7ebb0622f16d2d2c4d114b5fc15298e2ba24f))
+* prevent deletion of last admin account ([e1a5d19](https://github.com/stonith404/pingvin-share/commit/e1a5d195448e3d741b77fb982ce515489a360562))
+* throw error if no disk space is left ([c26de4e](https://github.com/stonith404/pingvin-share/commit/c26de4e881edfe6c7db617c0aeba89871397ebe2))
+* use current window url instead of app url in frontend ([6f45c3b](https://github.com/stonith404/pingvin-share/commit/6f45c3b1fbf4a95b29e5742878b55a1afa0b8886))
+
 ## [1.2.4](https://github.com/stonith404/pingvin-share/compare/v1.2.3...v1.2.4) (2024-10-24)
 
 
