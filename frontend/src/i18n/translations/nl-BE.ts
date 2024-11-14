@@ -212,8 +212,11 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "Uploaden",
+  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error": "Er is een fout opgetreden tijdens het voltooien van uw share.",
   "upload.notify.count-failed": "{count} bestanden konden niet worden geüpload. Probeer het nogmaals.",
+  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
+  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
   // Dropzone.tsx
   "upload.dropzone.title": "Bestanden uploaden",
   "upload.dropzone.description": "Drag'n'drop files here to start your share. We only accept files up to {maxSize} in total.",
@@ -300,6 +303,8 @@ export default {
   "admin.config.general.app-name.description": "Naam van de applicatie",
   "admin.config.general.app-url": "App-URL",
   "admin.config.general.app-url.description": "De URL waar Pingvin Share bereikbaar is",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "Toon startpagina",
   "admin.config.general.show-home-page.description": "Toon of verberg de home pagina",
   "admin.config.general.session-duration": "Sessieduur",

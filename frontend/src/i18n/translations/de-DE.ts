@@ -212,8 +212,11 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "Upload",
+  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error": "Während der Erstellung der Freigabe ist ein Fehler aufgetreten.",
   "upload.notify.count-failed": "{count} Dateien konnten nicht hochgeladen werden. Wird erneut versucht.",
+  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
+  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
   // Dropzone.tsx
   "upload.dropzone.title": "Dateien hochladen",
   "upload.dropzone.description": "Ziehe Dateien per Drag'n'Drop hierher, um deine Freigabe zu starten. Wir akzeptieren nur Dateien mit einer Gesamtgröße von bis zu {maxSize}.",
@@ -300,6 +303,8 @@ export default {
   "admin.config.general.app-name.description": "Name der Applikation",
   "admin.config.general.app-url": "App-URL",
   "admin.config.general.app-url.description": "Auf welcher URL Pingvin Share verfügbar ist",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "Startseite anzeigen",
   "admin.config.general.show-home-page.description": "Ob die Startseite angezeigt werden soll",
   "admin.config.general.session-duration": "Session-Dauer",

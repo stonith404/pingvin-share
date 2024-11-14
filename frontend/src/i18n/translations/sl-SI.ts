@@ -212,8 +212,11 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "Naložite",
+  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error": "Prišlo je do napake pri ustvarjanju vašega deljenja.",
   "upload.notify.count-failed": "Prišlo je do napake pri nalaganju toliko datotek: {count}. Poskušamo ponovno.",
+  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
+  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
   // Dropzone.tsx
   "upload.dropzone.title": "Naloži datoteke",
   "upload.dropzone.description": "Drag'n'drop files here to start your share. We only accept files up to {maxSize} in total.",
@@ -300,6 +303,8 @@ export default {
   "admin.config.general.app-name.description": "Ime vaše aplikacije",
   "admin.config.general.app-url": "URL aplikacije",
   "admin.config.general.app-url.description": "Na katerem URL-ju je dostopen Pingvin Share",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "Prikaži domačo stran",
   "admin.config.general.show-home-page.description": "Ali prikazati domačo stran",
   "admin.config.general.session-duration": "Session Duration",

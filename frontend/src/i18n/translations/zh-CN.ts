@@ -3,7 +3,7 @@ export default {
   "navbar.upload": "上传",
   "navbar.signin": "登录",
   "navbar.home": "首页",
-  "navbar.signup": "Sign up",
+  "navbar.signup": "注册",
   "navbar.links.shares": "我的共享",
   "navbar.links.reverse": "预留共享",
   "navbar.avatar.account": "我的账户",
@@ -212,8 +212,11 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "上传",
+  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error": "创建共享的过程中发生了错误",
   "upload.notify.count-failed": "{count} 文件上传失败，请重试",
+  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
+  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
   // Dropzone.tsx
   "upload.dropzone.title": "上传文件",
   "upload.dropzone.description": "Drag'n'drop files here to start your share. We only accept files up to {maxSize} in total.",
@@ -300,6 +303,8 @@ export default {
   "admin.config.general.app-name.description": "自定义 App 的名称",
   "admin.config.general.app-url": "App 的地址",
   "admin.config.general.app-url.description": "Pingvin Share 的 URL 地址",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "显示首页",
   "admin.config.general.show-home-page.description": "是否显示首页",
   "admin.config.general.session-duration": "会话时长",
@@ -475,7 +480,7 @@ export default {
   "common.error.too-short": "必须不少于 {length} 个字符",
   "common.error.too-long": "必须不超过 {length} 个字符",
   "common.error.number-too-small": "Must be at least {min}",
-  "common.error.number-too-large": "Must be at most {max}",
+  "common.error.number-too-large": "必须至多为 {max}",
   "common.error.exact-length": "必须为 {length} 个字符",
   "common.error.invalid-number": "必须为数字",
   "common.error.field-required": "必填项"

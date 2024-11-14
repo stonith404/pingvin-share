@@ -212,8 +212,11 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "Завантажити",
+  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error": "Сталася помилка під час завершення вашого завантаження.",
   "upload.notify.count-failed": "Не вдалося завантажити файли {count}. Повтор спроби.",
+  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
+  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
   // Dropzone.tsx
   "upload.dropzone.title": "Завантажити файли",
   "upload.dropzone.description": "Drag'n'drop files here to start your share. We only accept files up to {maxSize} in total.",
@@ -300,6 +303,8 @@ export default {
   "admin.config.general.app-name.description": "Видима назва додатка",
   "admin.config.general.app-url": "URL-адреса програми",
   "admin.config.general.app-url.description": "Адреса, на якій доступний Pingvin Share",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "Показувати домашню сторінку",
   "admin.config.general.show-home-page.description": "Показувати домашню сторінку чи ні",
   "admin.config.general.session-duration": "Session Duration",

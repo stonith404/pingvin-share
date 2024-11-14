@@ -212,8 +212,11 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "Μεταφόρτωση",
+  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error": "Παρουσιάστηκε σφάλμα κατά την ολοκλήρωση της κοινής χρήσης σας.",
   "upload.notify.count-failed": "Τα αρχεία {count} απέτυχαν να μεταφορτώσουν. Δοκιμάστε ξανά.",
+  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
+  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
   // Dropzone.tsx
   "upload.dropzone.title": "Μεταφόρτωση αρχείων",
   "upload.dropzone.description": "Drag'n'drop files here to start your share. We only accept files up to {maxSize} in total.",
@@ -300,6 +303,8 @@ export default {
   "admin.config.general.app-name.description": "Ονομασία της εφαρμογής",
   "admin.config.general.app-url": "URL Εφαρμογής",
   "admin.config.general.app-url.description": "Η διεύθυνση URL όπου το Pingvin Share είναι διαθέσιμο",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "Εμφάνιση αρχικής σελίδας",
   "admin.config.general.show-home-page.description": "Εάν θα εμφανίζεται η αρχική σελίδα",
   "admin.config.general.session-duration": "Διάρκεια συνεδρίας",

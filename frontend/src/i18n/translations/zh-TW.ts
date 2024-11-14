@@ -212,8 +212,11 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "上傳",
+  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error": "建立分享的過程中發生了錯誤",
   "upload.notify.count-failed": "{count} 檔案上傳失敗，請重試",
+  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
+  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
   // Dropzone.tsx
   "upload.dropzone.title": "上傳檔案",
   "upload.dropzone.description": "Drag'n'drop files here to start your share. We only accept files up to {maxSize} in total.",
@@ -300,6 +303,8 @@ export default {
   "admin.config.general.app-name.description": "這個 App 的名稱",
   "admin.config.general.app-url": "App URL",
   "admin.config.general.app-url.description": "Pingvin Share 的 URL",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "顯示首頁",
   "admin.config.general.show-home-page.description": "是否顯示首頁",
   "admin.config.general.session-duration": "Session Duration",

@@ -212,8 +212,11 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "Ladda upp",
+  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error": "Ett fel uppstod när din delning skulle slutföras.",
   "upload.notify.count-failed": "{count} filer kunde inte laddas upp. Försöker igen.",
+  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
+  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
   // Dropzone.tsx
   "upload.dropzone.title": "Ladda upp filer",
   "upload.dropzone.description": "Drag'n'drop files here to start your share. We only accept files up to {maxSize} in total.",
@@ -300,6 +303,8 @@ export default {
   "admin.config.general.app-name.description": "Namn på applikationen",
   "admin.config.general.app-url": "Appens URL",
   "admin.config.general.app-url.description": "På vilken URL Pingvin Share finns",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "Visa startsidan",
   "admin.config.general.show-home-page.description": "Om du vill visa startsidan",
   "admin.config.general.session-duration": "Session Duration",

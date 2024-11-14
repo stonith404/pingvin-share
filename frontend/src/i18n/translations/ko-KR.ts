@@ -212,8 +212,11 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "업로드",
+  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error": "공유를 완료하는 동안 오류가 발생했습니다.",
   "upload.notify.count-failed": "{count}개의 파일을 업로드하지 못했습니다. 다시 시도하세요.",
+  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
+  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
   // Dropzone.tsx
   "upload.dropzone.title": "파일 업로드",
   "upload.dropzone.description": "Drag'n'drop files here to start your share. We only accept files up to {maxSize} in total.",
@@ -300,6 +303,8 @@ export default {
   "admin.config.general.app-name.description": "이 앱의 이름",
   "admin.config.general.app-url": "앱 URL",
   "admin.config.general.app-url.description": "Pingvin Share를 사용할 수 있는 URL",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "홈 페이지 표시",
   "admin.config.general.show-home-page.description": "홈 페이지를 표시할지 여부",
   "admin.config.general.session-duration": "세션 기간",

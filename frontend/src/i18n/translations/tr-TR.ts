@@ -212,8 +212,11 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "Yükle",
+  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error": "Paylaşımını bitirirken bir hata meydana geldi.",
   "upload.notify.count-failed": "{count} dosya yüklenemedi. Yeniden deneniyor.",
+  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
+  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
   // Dropzone.tsx
   "upload.dropzone.title": "Dosya yükle",
   "upload.dropzone.description": "Drag'n'drop files here to start your share. We only accept files up to {maxSize} in total.",
@@ -300,6 +303,8 @@ export default {
   "admin.config.general.app-name.description": "Uygulamanın adı",
   "admin.config.general.app-url": "Uygulama URL'si",
   "admin.config.general.app-url.description": "Pingvin Share'in hangi bağlantıda kullanılacağı",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "Ana sayfayı göster",
   "admin.config.general.show-home-page.description": "Ana sayfanın görünürlüğü",
   "admin.config.general.session-duration": "Oturum Süresi",
