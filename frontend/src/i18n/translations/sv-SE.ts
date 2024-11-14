@@ -212,8 +212,11 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "Ladda upp",
+  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error": "Ett fel uppstod när din delning skulle slutföras.",
   "upload.notify.count-failed": "{count} filer kunde inte laddas upp. Försöker igen.",
+  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
+  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
   // Dropzone.tsx
   "upload.dropzone.title": "Ladda upp filer",
   "upload.dropzone.description": "Drag'n'drop files here to start your share. We only accept files up to {maxSize} in total.",
