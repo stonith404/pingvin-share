@@ -300,6 +300,8 @@ export default {
   "admin.config.general.app-name.description": "اسم التطبيق",
   "admin.config.general.app-url": "رابط التطبيق",
   "admin.config.general.app-url.description": "الرابط الذي تكون مشاركة Pingvin صالحة عليه",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "إظهار الصفحة الرئيسية",
   "admin.config.general.show-home-page.description": "تحديد ما إذا كان سيتم عرض الصفحة الرئيسية",
   "admin.config.general.session-duration": "مدة الجلسة",
