@@ -300,6 +300,8 @@ export default {
   "admin.config.general.app-name.description": "ชื่อแอพพลิเคชัน",
   "admin.config.general.app-url": "URL ของแอพ",
   "admin.config.general.app-url.description": "URL ที่สามารถเข้าถึงแอพพลิเคชัน Pingvin Share ได้",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "แสดงหน้าแรก",
   "admin.config.general.show-home-page.description": "หากติ๊ก เว็บไซต์จะแสดงหน้าหลักเวลาเข้าถึง URL หลัก",
   "admin.config.general.session-duration": "Session Duration",
