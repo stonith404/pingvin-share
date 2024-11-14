@@ -300,6 +300,8 @@ export default {
   "admin.config.general.app-name.description": "アプリの名前",
   "admin.config.general.app-url": "アプリ名",
   "admin.config.general.app-url.description": "Pingvin Shareで利用できるURL",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "ホームページを表示する",
   "admin.config.general.show-home-page.description": "ホームページを表示するかどうか選択",
   "admin.config.general.session-duration": "セッション期間",
