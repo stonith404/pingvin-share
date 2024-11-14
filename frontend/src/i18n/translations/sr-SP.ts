@@ -212,8 +212,11 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "Пошаљи",
+  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error": "Дошло је до грешке при довршавању дељења.",
   "upload.notify.count-failed": "Отпремање {count} датотека није успело. Покушавам поново.",
+  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
+  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
   // Dropzone.tsx
   "upload.dropzone.title": "Пошаљи датотеке",
   "upload.dropzone.description": "Превуците и отпустите фајлове овде да бисте започели дељење. Прихватамо само фајлове укупне величине до {maxSize}.",
