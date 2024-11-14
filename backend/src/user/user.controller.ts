@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  HttpCode,
   Param,
   Patch,
   Post,
@@ -14,18 +15,18 @@ import { Response } from "express";
 import { GetUser } from "src/auth/decorator/getUser.decorator";
 import { AdministratorGuard } from "src/auth/guard/isAdmin.guard";
 import { JwtGuard } from "src/auth/guard/jwt.guard";
+import { ConfigService } from "../config/config.service";
 import { CreateUserDTO } from "./dto/createUser.dto";
 import { UpdateOwnUserDTO } from "./dto/updateOwnUser.dto";
 import { UpdateUserDto } from "./dto/updateUser.dto";
 import { UserDTO } from "./dto/user.dto";
 import { UserSevice } from "./user.service";
-import { ConfigService } from "../config/config.service";
 
 @Controller("users")
 export class UserController {
   constructor(
     private userService: UserSevice,
-    private config: ConfigService,
+    private config: ConfigService
   ) {}
 
   // Own user operations
@@ -42,17 +43,20 @@ export class UserController {
   @UseGuards(JwtGuard)
   async updateCurrentUser(
     @GetUser() user: User,
-    @Body() data: UpdateOwnUserDTO,
+    @Body() data: UpdateOwnUserDTO
   ) {
     return new UserDTO().from(await this.userService.update(user.id, data));
   }
 
   @Delete("me")
+  @HttpCode(204)
   @UseGuards(JwtGuard)
   async deleteCurrentUser(
     @GetUser() user: User,
-    @Res({ passthrough: true }) response: Response,
+    @Res({ passthrough: true }) response: Response
   ) {
+    await this.userService.delete(user.id);
+
     const isSecure = this.config.get("general.secureCookies");
 
     response.cookie("access_token", "accessToken", {
@@ -65,7 +69,6 @@ export class UserController {
       maxAge: -1,
       secure: isSecure,
     });
-    return new UserDTO().from(await this.userService.delete(user.id));
   }
 
   // Global user operations
