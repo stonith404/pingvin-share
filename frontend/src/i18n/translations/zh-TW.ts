@@ -300,6 +300,8 @@ export default {
   "admin.config.general.app-name.description": "這個 App 的名稱",
   "admin.config.general.app-url": "App URL",
   "admin.config.general.app-url.description": "Pingvin Share 的 URL",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "顯示首頁",
   "admin.config.general.show-home-page.description": "是否顯示首頁",
   "admin.config.general.session-duration": "Session Duration",
