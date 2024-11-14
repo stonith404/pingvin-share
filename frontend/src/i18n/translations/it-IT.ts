@@ -212,11 +212,11 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "Carica",
-  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
+  "upload.notify.confirm-leave": "Sei sicuro di voler lasciare questa pagina? Il tuo caricamento verrà annullato.",
   "upload.notify.generic-error": "Si è verificato un errore durante il completamento della condivisione.",
   "upload.notify.count-failed": "Impossibile caricare {count} file. Riprovare.",
-  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
-  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
+  "upload.reverse-share.error.invalid.title": "Link di condivisione inversa non valido",
+  "upload.reverse-share.error.invalid.description": "Questa condivisione inversa è scaduta o non è valida.",
   // Dropzone.tsx
   "upload.dropzone.title": "Carica File",
   "upload.dropzone.description": "Trascina qui i file per iniziare la tua condivisione. Possiamo accettare solo i file che sono inferiori a {maxSize} in totale.",
@@ -303,8 +303,8 @@ export default {
   "admin.config.general.app-name.description": "Nome dell' applicazione",
   "admin.config.general.app-url": "URL dell'App",
   "admin.config.general.app-url.description": "Su quale URL Pingvin Share è pubblicato",
-  "admin.config.general.secure-cookies": "Secure cookies",
-  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
+  "admin.config.general.secure-cookies": "Cookie sicuri",
+  "admin.config.general.secure-cookies.description": "Indica se impostare il contrassegno sicuro sui cookie. Se abilitato, il sito non funzionerà quando si accede tramite HTTP.",
   "admin.config.general.show-home-page": "Visualizza Home Page",
   "admin.config.general.show-home-page.description": "Indica se mostrare la home page",
   "admin.config.general.session-duration": "Durata della sessione",
