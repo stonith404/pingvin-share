@@ -30,6 +30,8 @@ const Body = ({ share, appUrl }: { share: CompletedShare; appUrl: string }) => {
   const router = useRouter();
   const t = useTranslate();
 
+  const isReverseShare = !!router.query["reverseShareToken"];
+
   const link = `${appUrl}/s/${share.id}`;
 
   return (
@@ -65,7 +67,11 @@ const Body = ({ share, appUrl }: { share: CompletedShare; appUrl: string }) => {
       <Button
         onClick={() => {
           modals.closeAll();
-          router.push("/upload");
+          if (isReverseShare) {
+            router.reload();
+          } else {
+            router.push("/upload");
+          }
         }}
       >
         <FormattedMessage id="common.button.done" />
