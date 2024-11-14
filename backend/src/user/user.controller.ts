@@ -53,7 +53,7 @@ export class UserController {
     @GetUser() user: User,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const isSecure = this.config.get("general.appUrl").startsWith("https");
+    const isSecure = this.config.get("general.secureCookies");
 
     response.cookie("access_token", "accessToken", {
       maxAge: -1,

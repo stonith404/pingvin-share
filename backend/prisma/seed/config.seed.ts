@@ -20,6 +20,10 @@ const configVariables: ConfigVariables = {
       defaultValue: "http://localhost:3000",
       secret: false,
     },
+    secureCookies: {
+      type: "boolean",
+      defaultValue: "false",
+    },
     showHomePage: {
       type: "boolean",
       defaultValue: "true",
