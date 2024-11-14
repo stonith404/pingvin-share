@@ -3,6 +3,7 @@ import {
   HttpException,
   HttpStatus,
   Injectable,
+  InternalServerErrorException,
   NotFoundException,
 } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
@@ -58,6 +59,13 @@ export class FileService {
       });
 
     const buffer = Buffer.from(data, "base64");
+
+    // Check if there is enough space on the server
+    const space = await fs.promises.statfs(SHARE_DIRECTORY);
+    const availableSpace = space.bavail * space.bsize;
+    if (availableSpace < buffer.byteLength) {
+      throw new InternalServerErrorException("Not enough space on the server");
+    }
 
     // Check if share size limit is exceeded
     const fileSizeSum = share.files.reduce(
