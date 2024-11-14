@@ -286,6 +286,8 @@ export default {
   // /upload
   "upload.title": "Upload",
 
+  "upload.notify.confirm-leave":
+    "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error":
     "An error occurred while finishing your share.",
   "upload.notify.count-failed": "{count} files failed to upload. Trying again.",

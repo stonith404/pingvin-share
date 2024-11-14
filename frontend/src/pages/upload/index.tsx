@@ -11,6 +11,7 @@ import FileList from "../../components/upload/FileList";
 import showCompletedUploadModal from "../../components/upload/modals/showCompletedUploadModal";
 import showCreateUploadModal from "../../components/upload/modals/showCreateUploadModal";
 import useConfig from "../../hooks/config.hook";
+import useConfirmLeave from "../../hooks/confirm-leave.hook";
 import useTranslate from "../../hooks/useTranslate.hook";
 import useUser from "../../hooks/user.hook";
 import shareService from "../../services/share.service";
@@ -38,6 +39,11 @@ const Upload = ({
   const config = useConfig();
   const [files, setFiles] = useState<FileUpload[]>([]);
   const [isUploading, setisUploading] = useState(false);
+
+  useConfirmLeave({
+    message: t("upload.notify.confirm-leave"),
+    enabled: isUploading,
+  });
 
   const chunkSize = useRef(parseInt(config.get("share.chunkSize")));
 
