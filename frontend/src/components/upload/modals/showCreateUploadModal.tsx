@@ -19,7 +19,7 @@ import { useForm, yupResolver } from "@mantine/form";
 import { useModals } from "@mantine/modals";
 import { ModalsContextProps } from "@mantine/modals/lib/context";
 import moment from "moment";
-import { useState } from "react";
+import React, { useState } from "react";
 import { TbAlertCircle } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 import * as yup from "yup";
@@ -30,7 +30,6 @@ import shareService from "../../../services/share.service";
 import { FileUpload } from "../../../types/File.type";
 import { CreateShare } from "../../../types/share.type";
 import { getExpirationPreview } from "../../../utils/date.util";
-import React from "react";
 import toast from "../../../utils/toast.util";
 
 const showCreateUploadModal = (
@@ -38,7 +37,6 @@ const showCreateUploadModal = (
   options: {
     isUserSignedIn: boolean;
     isReverseShare: boolean;
-    appUrl: string;
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
     maxExpirationInHours: number;
@@ -101,7 +99,6 @@ const CreateUploadModalBody = ({
   options: {
     isUserSignedIn: boolean;
     isReverseShare: boolean;
-    appUrl: string;
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
     maxExpirationInHours: number;
@@ -245,7 +242,7 @@ const CreateUploadModalBody = ({
               color: theme.colors.gray[6],
             })}
           >
-            {`${options.appUrl}/s/${form.values.link}`}
+            {`${window.location.origin}/s/${form.values.link}`}
           </Text>
           {!options.isReverseShare && (
             <>
@@ -461,7 +458,6 @@ const SimplifiedCreateUploadModalModal = ({
   options: {
     isUserSignedIn: boolean;
     isReverseShare: boolean;
-    appUrl: string;
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
     maxExpirationInHours: number;

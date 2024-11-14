@@ -13,7 +13,6 @@ import CopyTextField from "../CopyTextField";
 const showCompletedUploadModal = (
   modals: ModalsContextProps,
   share: CompletedShare,
-  appUrl: string,
 ) => {
   const t = translateOutsideContext();
   return modals.openModal({
@@ -21,18 +20,18 @@ const showCompletedUploadModal = (
     withCloseButton: false,
     closeOnEscape: false,
     title: t("upload.modal.completed.share-ready"),
-    children: <Body share={share} appUrl={appUrl} />,
+    children: <Body share={share} />,
   });
 };
 
-const Body = ({ share, appUrl }: { share: CompletedShare; appUrl: string }) => {
+const Body = ({ share }: { share: CompletedShare }) => {
   const modals = useModals();
   const router = useRouter();
   const t = useTranslate();
 
   const isReverseShare = !!router.query["reverseShareToken"];
 
-  const link = `${appUrl}/s/${share.id}`;
+  const link = `${window.location.origin}/s/${share.id}`;
 
   return (
     <Stack align="stretch">

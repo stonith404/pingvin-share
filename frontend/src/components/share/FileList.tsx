@@ -65,7 +65,7 @@ const FileList = ({
   };
 
   const copyFileLink = (file: FileMetaData) => {
-    const link = `${config.get("general.appUrl")}/api/shares/${
+    const link = `${window.location.origin}/api/shares/${
       share.id
     }/files/${file.id}`;
 
