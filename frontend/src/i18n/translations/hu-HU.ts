@@ -300,6 +300,8 @@ export default {
   "admin.config.general.app-name.description": "Az alkalmazás neve",
   "admin.config.general.app-url": "Alkalmazás URL hivatkozás",
   "admin.config.general.app-url.description": "A Pingvin Share megosztáskezelőre mutató hivatkozás",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "Kezdőlap mutatása",
   "admin.config.general.show-home-page.description": "A kezdőlap mutatásának ki- és bekapcsolása",
   "admin.config.general.session-duration": "Munkamenet időtartama",
