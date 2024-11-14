@@ -300,6 +300,8 @@ export default {
   "admin.config.general.app-name.description": "Ονομασία της εφαρμογής",
   "admin.config.general.app-url": "URL Εφαρμογής",
   "admin.config.general.app-url.description": "Η διεύθυνση URL όπου το Pingvin Share είναι διαθέσιμο",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "Εμφάνιση αρχικής σελίδας",
   "admin.config.general.show-home-page.description": "Εάν θα εμφανίζεται η αρχική σελίδα",
   "admin.config.general.session-duration": "Διάρκεια συνεδρίας",
