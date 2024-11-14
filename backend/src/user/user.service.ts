@@ -20,7 +20,7 @@ export class UserSevice {
     private prisma: PrismaService,
     private emailService: EmailService,
     private fileService: FileService,
-    private configService: ConfigService
+    private configService: ConfigService,
   ) {}
 
   async list() {
@@ -55,7 +55,7 @@ export class UserSevice {
         if (e.code == "P2002") {
           const duplicatedField: string = e.meta.target[0];
           throw new BadRequestException(
-            `A user with this ${duplicatedField} already exists`
+            `A user with this ${duplicatedField} already exists`,
           );
         }
       }
@@ -75,7 +75,7 @@ export class UserSevice {
         if (e.code == "P2002") {
           const duplicatedField: string = e.meta.target[0];
           throw new BadRequestException(
-            `A user with this ${duplicatedField} already exists`
+            `A user with this ${duplicatedField} already exists`,
           );
         }
       }
@@ -100,7 +100,7 @@ export class UserSevice {
     }
 
     await Promise.all(
-      user.shares.map((share) => this.fileService.deleteAllFiles(share.id))
+      user.shares.map((share) => this.fileService.deleteAllFiles(share.id)),
     );
 
     return await this.prisma.user.delete({ where: { id } });
@@ -108,7 +108,7 @@ export class UserSevice {
 
   async findOrCreateFromLDAP(
     providedCredentials: AuthSignInDTO,
-    ldapEntry: Entry
+    ldapEntry: Entry,
   ) {
     const fieldNameMemberOf = this.configService.get("ldap.fieldNameMemberOf");
     const fieldNameEmail = this.configService.get("ldap.fieldNameEmail");
@@ -122,7 +122,7 @@ export class UserSevice {
       isAdmin = entryGroups.includes(adminGroup) ?? false;
     } else {
       this.logger.warn(
-        `Trying to create/update a ldap user but the member field ${fieldNameMemberOf} is not present.`
+        `Trying to create/update a ldap user but the member field ${fieldNameMemberOf} is not present.`,
       );
     }
 
@@ -136,7 +136,7 @@ export class UserSevice {
       }
     } else {
       this.logger.warn(
-        `Trying to create/update a ldap user but the email field ${fieldNameEmail} is not present.`
+        `Trying to create/update a ldap user but the email field ${fieldNameEmail} is not present.`,
       );
     }
 
@@ -184,7 +184,7 @@ export class UserSevice {
           })
           .catch((error) => {
             this.logger.warn(
-              `Failed to update users ${user.id} placeholder username: ${inspect(error)}`
+              `Failed to update users ${user.id} placeholder username: ${inspect(error)}`,
             );
           });
       }
@@ -202,13 +202,13 @@ export class UserSevice {
           })
           .then((newUser) => {
             this.logger.log(
-              `Updated users ${user.id} email from ldap from ${user.email} to ${userEmail}.`
+              `Updated users ${user.id} email from ldap from ${user.email} to ${userEmail}.`,
             );
             user.email = newUser.email;
           })
           .catch((error) => {
             this.logger.error(
-              `Failed to update users ${user.id} email to ${userEmail}: ${inspect(error)}`
+              `Failed to update users ${user.id} email to ${userEmail}: ${inspect(error)}`,
             );
           });
       }
@@ -219,7 +219,7 @@ export class UserSevice {
         if (e.code == "P2002") {
           const duplicatedField: string = e.meta.target[0];
           throw new BadRequestException(
-            `A user with this ${duplicatedField} already exists`
+            `A user with this ${duplicatedField} already exists`,
           );
         }
       }

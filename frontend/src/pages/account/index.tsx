@@ -56,7 +56,7 @@ const Account = () => {
         username: yup
           .string()
           .min(3, t("common.error.too-short", { length: 3 })),
-      })
+      }),
     ),
   });
 
@@ -79,7 +79,7 @@ const Account = () => {
           .string()
           .min(8, t("common.error.too-short", { length: 8 }))
           .required(t("common.error.field-required")),
-      })
+      }),
     ),
   });
 
@@ -93,7 +93,7 @@ const Account = () => {
           .string()
           .min(8, t("common.error.too-short", { length: 8 }))
           .required(t("common.error.field-required")),
-      })
+      }),
     ),
   });
 
@@ -110,7 +110,7 @@ const Account = () => {
           .min(6, t("common.error.exact-length", { length: 6 }))
           .max(6, t("common.error.exact-length", { length: 6 }))
           .matches(/^[0-9]+$/, { message: t("common.error.invalid-number") }),
-      })
+      }),
     ),
   });
 
@@ -155,7 +155,7 @@ const Account = () => {
                   email: values.email,
                 })
                 .then(() => toast.success(t("account.notify.info.success")))
-                .catch(toast.axiosError)
+                .catch(toast.axiosError),
             )}
           >
             <Stack>
@@ -193,7 +193,7 @@ const Account = () => {
                     toast.success(t("account.notify.password.success"));
                     passwordForm.reset();
                   })
-                  .catch(toast.axiosError)
+                  .catch(toast.axiosError),
               )}
             >
               <Stack>
@@ -265,7 +265,7 @@ const Account = () => {
                               unlinkOAuth(provider)
                                 .then(() => {
                                   toast.success(
-                                    t("account.notify.oauth.unlinked.success")
+                                    t("account.notify.oauth.unlinked.success"),
                                   );
                                   refreshOAuthStatus();
                                 })
@@ -281,7 +281,7 @@ const Account = () => {
                         component="a"
                         href={getOAuthUrl(
                           config.get("general.appUrl"),
-                          provider
+                          provider,
                         )}
                       >
                         {t("account.card.oauth.link")}
@@ -324,7 +324,7 @@ const Account = () => {
                     <Stack>
                       <PasswordInput
                         description={t(
-                          "account.card.security.totp.disable.description"
+                          "account.card.security.totp.disable.description",
                         )}
                         label={t("account.card.password.title")}
                         {...disableTotpForm.getInputProps("password")}
@@ -366,7 +366,7 @@ const Account = () => {
                       <PasswordInput
                         label={t("account.card.password.title")}
                         description={t(
-                          "account.card.security.totp.enable.description"
+                          "account.card.security.totp.enable.description",
                         )}
                         {...enableTotpForm.getInputProps("password")}
                       />
