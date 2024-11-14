@@ -300,6 +300,8 @@ export default {
   "admin.config.general.app-name.description": "Navnet på applikationen",
   "admin.config.general.app-url": "App URL",
   "admin.config.general.app-url.description": "På hvilken URL Pingvin Share er tilgængelig",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "Vis forside",
   "admin.config.general.show-home-page.description": "Om forsiden skal vises",
   "admin.config.general.session-duration": "Session Duration",
