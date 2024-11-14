@@ -300,6 +300,8 @@ export default {
   "admin.config.general.app-name.description": "Назив апликације",
   "admin.config.general.app-url": "URL апликације",
   "admin.config.general.app-url.description": "На којој URL адреси је доступан Pingvin Share",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "Прикажи почетну страницу",
   "admin.config.general.show-home-page.description": "Да ли да се прикаже почетна страница",
   "admin.config.general.session-duration": "Трајање сесије",
