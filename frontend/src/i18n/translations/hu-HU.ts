@@ -212,8 +212,11 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "Feltöltés",
+  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error": "Hiba lépett fel a megosztás befejezése közben.",
   "upload.notify.count-failed": "{count} darab fájlt nem sikerült feltölteni. Próbálja ismét.",
+  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
+  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
   // Dropzone.tsx
   "upload.dropzone.title": "Fájlok feltöltése",
   "upload.dropzone.description": "Húzza ide a fájlokat a megosztás elkészítéséhez. Legfeljebb {maxSize} fájl húzható egy megosztásba.",
