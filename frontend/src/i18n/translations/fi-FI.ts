@@ -300,6 +300,8 @@ export default {
   "admin.config.general.app-name.description": "Sovelluksen nimi",
   "admin.config.general.app-url": "Sovelluksen URL",
   "admin.config.general.app-url.description": "Millä URL-osoitteella Pingvin Share on saatavilla",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "Näytä kotisivu",
   "admin.config.general.show-home-page.description": "Näytetäänkö kotisivu vai ei",
   "admin.config.general.session-duration": "Session Duration",
