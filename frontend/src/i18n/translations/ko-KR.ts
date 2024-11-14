@@ -300,6 +300,8 @@ export default {
   "admin.config.general.app-name.description": "이 앱의 이름",
   "admin.config.general.app-url": "앱 URL",
   "admin.config.general.app-url.description": "Pingvin Share를 사용할 수 있는 URL",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "홈 페이지 표시",
   "admin.config.general.show-home-page.description": "홈 페이지를 표시할지 여부",
   "admin.config.general.session-duration": "세션 기간",
