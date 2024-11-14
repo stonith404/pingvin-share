@@ -212,8 +212,11 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "อัปโหลด",
+  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error": "เกิดข้อผิดพลาดขณะที่กำลังจัดการการแชร์ของคุณ",
   "upload.notify.count-failed": "มีไฟล์จำนวน {count} ไฟล์ที่ไม่สามารถอัปโหลดได้ กำลังลองอีกครั้ง",
+  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
+  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
   // Dropzone.tsx
   "upload.dropzone.title": "อัปโหลดไฟล์",
   "upload.dropzone.description": "Drag'n'drop files here to start your share. We only accept files up to {maxSize} in total.",
