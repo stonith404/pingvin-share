@@ -300,6 +300,8 @@ export default {
   "admin.config.general.app-name.description": "Uygulamanın adı",
   "admin.config.general.app-url": "Uygulama URL'si",
   "admin.config.general.app-url.description": "Pingvin Share'in hangi bağlantıda kullanılacağı",
+  "admin.config.general.secure-cookies": "Secure cookies",
+  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "Ana sayfayı göster",
   "admin.config.general.show-home-page.description": "Ana sayfanın görünürlüğü",
   "admin.config.general.session-duration": "Oturum Süresi",
