@@ -212,11 +212,11 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "Envoyer",
-  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
+  "upload.notify.confirm-leave": "Êtes-vous sûr de vouloir quitter cette page ? Votre envoi sera annulé.",
   "upload.notify.generic-error": "Une erreur est survenue durant le traitement de votre partage.",
   "upload.notify.count-failed": "{count} fichier(s) n’a(ont) pas pu être envoyé(s). Veuillez réessayer.",
-  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
-  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
+  "upload.reverse-share.error.invalid.title": "Lien de partage inversé invalide",
+  "upload.reverse-share.error.invalid.description": "Ce partage inversé a expiré ou n'est pas valide.",
   // Dropzone.tsx
   "upload.dropzone.title": "Téléverser des fichiers",
   "upload.dropzone.description": "Glisser-déposer les fichiers ici pour commencer votre partage. Nous n'acceptons que les fichiers jusqu'à {maxSize} au total.",
@@ -303,8 +303,8 @@ export default {
   "admin.config.general.app-name.description": "Le nom de l’application",
   "admin.config.general.app-url": "URL de l’appli",
   "admin.config.general.app-url.description": "Depuis quel URL le partage Pingvin est disponible",
-  "admin.config.general.secure-cookies": "Secure cookies",
-  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
+  "admin.config.general.secure-cookies": "Cookies sécurisés",
+  "admin.config.general.secure-cookies.description": "Définir ou non le marquage sécurisé sur les cookies. Si activé, le site ne fonctionnera pas lorsqu'il est accédé via HTTP.",
   "admin.config.general.show-home-page": "Afficher la page d’accueil",
   "admin.config.general.show-home-page.description": "Afficher ou non la page d’accueil",
   "admin.config.general.session-duration": "Durée de la session",
