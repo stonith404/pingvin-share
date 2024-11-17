@@ -317,7 +317,7 @@ export default {
   "admin.config.email.share-recipients-subject": "Betreff für Freigabe-Empfänger",
   "admin.config.email.share-recipients-subject.description": "Betreff der E-Mail, die an die Freigabe-Empfänger gesendet wird.",
   "admin.config.email.share-recipients-message": "Nachricht für Freigabe-Empfänger",
-  "admin.config.email.share-recipients-message.description": "Nachricht, die an die Freigabe-Empfänger gesendet wird. Verfügbare Variablen:\n- {creator} - Der Benutzername des Erstellers der Freigabe\n- {shareUrl} - Die URL der Freigabe\n- {desc} - Die Beschreibung der Freigabe\n- {expires} - Das Ablaufdatum der Freigabe\nVariablen werden durch die aktuellen Werte ersetzt.",
+  "admin.config.email.share-recipients-message.description": "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {creatorEmail} - The email of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n These variables will be replaced with the actual value.",
   "admin.config.email.reverse-share-subject": "Name der externen Freigabe",
   "admin.config.email.reverse-share-subject.description": "Betreff der gesendeten E-Mail, wenn jemand eine Freigabe mit Ihrem externen Freigabe-Link erstellt hat.",
   "admin.config.email.reverse-share-message": "Nachricht für externe Freigabe",
