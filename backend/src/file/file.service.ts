@@ -8,7 +8,8 @@ import {
 } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import * as crypto from "crypto";
-import * as fs from "fs";
+import { createReadStream } from "fs";
+import * as fs from "fs/promises";
 import * as mime from "mime-types";
 import { ConfigService } from "src/config/config.service";
 import { PrismaService } from "src/prisma/prisma.service";
@@ -19,7 +20,6 @@ import { SHARE_DIRECTORY } from "../constants";
 export class FileService {
   constructor(
     private prisma: PrismaService,
-    private jwtService: JwtService,
     private config: ConfigService,
   ) {}
 
@@ -45,8 +45,8 @@ export class FileService {
 
     let diskFileSize: number;
     try {
-      diskFileSize = fs.statSync(
-        `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
+      diskFileSize = (
+        await fs.stat(`${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`)
       ).size;
     } catch {
       diskFileSize = 0;
@@ -66,7 +66,7 @@ export class FileService {
     const buffer = Buffer.from(data, "base64");
 
     // Check if there is enough space on the server
-    const space = await fs.promises.statfs(SHARE_DIRECTORY);
+    const space = await fs.statfs(SHARE_DIRECTORY);
     const availableSpace = space.bavail * space.bsize;
     if (availableSpace < buffer.byteLength) {
       throw new InternalServerErrorException("Not enough space on the server");
@@ -91,19 +91,19 @@ export class FileService {
       );
     }
 
-    fs.appendFileSync(
+    await fs.appendFile(
       `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
       buffer,
     );
 
     const isLastChunk = chunk.index == chunk.total - 1;
     if (isLastChunk) {
-      fs.renameSync(
+      await fs.rename(
         `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
         `${SHARE_DIRECTORY}/${shareId}/${file.id}`,
       );
-      const fileSize = fs.statSync(
-        `${SHARE_DIRECTORY}/${shareId}/${file.id}`,
+      const fileSize = (
+        await fs.stat(`${SHARE_DIRECTORY}/${shareId}/${file.id}`)
       ).size;
       await this.prisma.file.create({
         data: {
@@ -125,7 +125,7 @@ export class FileService {
 
     if (!fileMetaData) throw new NotFoundException("File not found");
 
-    const file = fs.createReadStream(`${SHARE_DIRECTORY}/${shareId}/${fileId}`);
+    const file = createReadStream(`${SHARE_DIRECTORY}/${shareId}/${fileId}`);
 
     return {
       metaData: {
@@ -144,19 +144,19 @@ export class FileService {
 
     if (!fileMetaData) throw new NotFoundException("File not found");
 
-    fs.unlinkSync(`${SHARE_DIRECTORY}/${shareId}/${fileId}`);
+    await fs.unlink(`${SHARE_DIRECTORY}/${shareId}/${fileId}`);
 
     await this.prisma.file.delete({ where: { id: fileId } });
   }
 
   async deleteAllFiles(shareId: string) {
-    await fs.promises.rm(`${SHARE_DIRECTORY}/${shareId}`, {
+    await fs.rm(`${SHARE_DIRECTORY}/${shareId}`, {
       recursive: true,
       force: true,
     });
   }
 
   getZip(shareId: string) {
-    return fs.createReadStream(`${SHARE_DIRECTORY}/${shareId}/archive.zip`);
+    return createReadStream(`${SHARE_DIRECTORY}/${shareId}/archive.zip`);
   }
 }
