@@ -317,7 +317,7 @@ export default {
   "admin.config.email.share-recipients-subject": "宛先への件名",
   "admin.config.email.share-recipients-subject.description": "メールで共有された相手に送信メールの件名です。",
   "admin.config.email.share-recipients-message": "宛先への本文",
-  "admin.config.email.share-recipients-message.description": "共有受信者に送信されるメッセージ。使用可能な変数:\n {creator} - 共有の作成者のユーザー名\n {shareUrl} - 共有の URL\n {desc} - 共有の説明\n {expires} - 共有の有効期限\n これらの変数は実際の値に置き換えられます。",
+  "admin.config.email.share-recipients-message.description": "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {creatorEmail} - The email of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n These variables will be replaced with the actual value.",
   "admin.config.email.reverse-share-subject": "ファイルリクエストの件名",
   "admin.config.email.reverse-share-subject.description": "誰かがあなたのファイルリクエストリンクを使用して共有を作成したときに送信されるメールの件名。",
   "admin.config.email.reverse-share-message": "ファイルリクエストの本文",
