@@ -317,7 +317,7 @@ export default {
   "admin.config.email.share-recipients-subject": "Podelite naslov primaoca",
   "admin.config.email.share-recipients-subject.description": "Tema imejla koja se šalje primaocima deljenja.",
   "admin.config.email.share-recipients-message": "Delite poruku primaoca",
-  "admin.config.email.share-recipients-message.description": "Poruka koja se šalje primaocima deljenja. Dostupne promenljive:\n{creator} - Korisničko ime kreatora deljenja\n{shareUrl} - URL deljenja\n{desc} - Opis deljenja\n{expires} - Datum isteka deljenja\nOve promenljive će biti zamenjene stvarnim vrednostima.",
+  "admin.config.email.share-recipients-message.description": "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {creatorEmail} - The email of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n These variables will be replaced with the actual value.",
   "admin.config.email.reverse-share-subject": "Tema obrnutog deljenja",
   "admin.config.email.reverse-share-subject.description": "Naslov imejla koji se šalje kada neko kreira deljenje sa vašim reverznim linkom za deljenje.",
   "admin.config.email.reverse-share-message": "Obrnuto deljenje poruka",
