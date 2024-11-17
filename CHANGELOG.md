@@ -1,3 +1,15 @@
+## [1.4.0](https://github.com/stonith404/pingvin-share/compare/v1.3.0...v1.4.0) (2024-11-17)
+
+
+### Features
+
+* add "creatorEmail" config bariable to share recipient email message ([c7dacb2](https://github.com/stonith404/pingvin-share/commit/c7dacb26e87504a1c5e6b0d87cdcd5ed91b9cdf5))
+
+
+### Bug Fixes
+
+* remote arbitrary file overwrite on file upload endpoint ([6cf5c66](https://github.com/stonith404/pingvin-share/commit/6cf5c66fe2eda1e0a525edf7440d047fe2f0e35b))
+
 ## [1.3.0](https://github.com/stonith404/pingvin-share/compare/v1.2.4...v1.3.0) (2024-11-14)
 
 
