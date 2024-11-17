@@ -69,6 +69,7 @@ export class EmailService {
         .get("email.shareRecipientsMessage")
         .replaceAll("\\n", "\n")
         .replaceAll("{creator}", creator?.username ?? "Someone")
+        .replaceAll("{creatorEmail}", creator?.email ?? "")
         .replaceAll("{shareUrl}", shareUrl)
         .replaceAll("{desc}", description ?? "No description")
         .replaceAll(
