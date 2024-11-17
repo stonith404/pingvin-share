@@ -68,6 +68,7 @@
     "@types/qrcode-svg": "^1.1.5",
     "@types/sharp": "^0.32.0",
     "@types/supertest": "^6.0.2",
+    "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^8.6.0",
     "@typescript-eslint/parser": "^8.6.0",
     "cross-env": "^7.0.3",

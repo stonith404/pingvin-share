@@ -12,6 +12,7 @@ import * as fs from "fs";
 import * as mime from "mime-types";
 import { ConfigService } from "src/config/config.service";
 import { PrismaService } from "src/prisma/prisma.service";
+import { validate as isValidUUID } from "uuid";
 import { SHARE_DIRECTORY } from "../constants";
 
 @Injectable()
@@ -28,7 +29,11 @@ export class FileService {
     file: { id?: string; name: string },
     shareId: string,
   ) {
-    if (!file.id) file.id = crypto.randomUUID();
+    if (!file.id) {
+      file.id = crypto.randomUUID();
+    } else if (!isValidUUID(file.id)) {
+      throw new BadRequestException("Invalid file ID format");
+    }
 
     const share = await this.prisma.share.findUnique({
       where: { id: shareId },
