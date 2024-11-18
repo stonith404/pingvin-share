@@ -317,7 +317,7 @@ export default {
   "admin.config.email.share-recipients-subject": "Sujet d’un partage",
   "admin.config.email.share-recipients-subject.description": "Intitulé du courriel envoyé aux destinataires d’un partage.",
   "admin.config.email.share-recipients-message": "Message d’un partage",
-  "admin.config.email.share-recipients-message.description": "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {creatorEmail} - The email of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n These variables will be replaced with the actual value.",
+  "admin.config.email.share-recipients-message.description": "Contenu du courriel qui est envoyé aux destinataires du partage. Variables possibles :\n {creator} - Le nom d'utilisateur du créateur du partage\n {creatorEmail} - L'adresse mail du créateur du partage\n {shareUrl} - L'URL du partage\n {desc} - La description du partage\n {expires} - La date d'expiration du partage.\n Ces variables seront remplacées par leur valeur effective.",
   "admin.config.email.reverse-share-subject": "Sujet d’un partage inversé",
   "admin.config.email.reverse-share-subject.description": "Intitulé du courriel envoyé lorsque quelqu’un a partagé des fichiers depuis votre partage inversé.",
   "admin.config.email.reverse-share-message": "Message d’un partage inversé",
