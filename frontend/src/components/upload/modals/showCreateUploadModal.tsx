@@ -40,6 +40,7 @@ const showCreateUploadModal = (
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
     maxExpirationInHours: number;
+    shareIdLength: number;
     simplified: boolean;
   },
   files: FileUpload[],
@@ -72,18 +73,28 @@ const showCreateUploadModal = (
   });
 };
 
-const generateLink = () =>
-  Buffer.from(Math.random().toString(), "utf8")
-    .toString("base64")
-    .substring(10, 17);
+const generateShareId = (length: number = 16) => {
+  const chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+  const randomArray = new Uint8Array(length >= 3 ? length : 3);
+  crypto.getRandomValues(randomArray);
+  randomArray.forEach((number) => {
+    result += chars[number % chars.length];
+  });
+  return result;
+};
 
-const generateAvailableLink = async (times = 10): Promise<string> => {
+const generateAvailableLink = async (
+  shareIdLength: number,
+  times: number = 10,
+): Promise<string> => {
   if (times <= 0) {
     throw new Error("Could not generate available link");
   }
-  const _link = generateLink();
+  const _link = generateShareId(shareIdLength);
   if (!(await shareService.isShareIdAvailable(_link))) {
-    return await generateAvailableLink(times - 1);
+    return await generateAvailableLink(shareIdLength, times - 1);
   } else {
     return _link;
   }
@@ -102,12 +113,13 @@ const CreateUploadModalBody = ({
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
     maxExpirationInHours: number;
+    shareIdLength: number;
   };
 }) => {
   const modals = useModals();
   const t = useTranslate();
 
-  const generatedLink = generateLink();
+  const generatedLink = generateShareId(options.shareIdLength);
 
   const [showNotSignedInAlert, setShowNotSignedInAlert] = useState(true);
 
@@ -229,7 +241,12 @@ const CreateUploadModalBody = ({
             <Button
               style={{ flex: "0 0 auto" }}
               variant="outline"
-              onClick={() => form.setFieldValue("link", generateLink())}
+              onClick={() =>
+                form.setFieldValue(
+                  "link",
+                  generateShareId(options.shareIdLength),
+                )
+              }
             >
               <FormattedMessage id="common.button.generate" />
             </Button>
@@ -461,6 +478,7 @@ const SimplifiedCreateUploadModalModal = ({
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
     maxExpirationInHours: number;
+    shareIdLength: number;
   };
 }) => {
   const modals = useModals();
@@ -485,10 +503,12 @@ const SimplifiedCreateUploadModalModal = ({
   });
 
   const onSubmit = form.onSubmit(async (values) => {
-    const link = await generateAvailableLink().catch(() => {
-      toast.error(t("upload.modal.link.error.taken"));
-      return undefined;
-    });
+    const link = await generateAvailableLink(options.shareIdLength).catch(
+      () => {
+        toast.error(t("upload.modal.link.error.taken"));
+        return undefined;
+      },
+    );
 
     if (!link) {
       return;

@@ -51,6 +51,11 @@ const configVariables: ConfigVariables = {
       defaultValue: "0",
       secret: false,
     },
+    shareIdLength: {
+      type: "number",
+      defaultValue: "8",
+      secret: false,
+    },
     maxSize: {
       type: "number",
       defaultValue: "1000000000",

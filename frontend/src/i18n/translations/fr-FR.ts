@@ -336,6 +336,9 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "Permet aux visiteurs de créer des partages",
   "admin.config.share.max-expiration": "Échéance",
   "admin.config.share.max-expiration.description": "Échéance du partage en heures. Indiquez 0 pour qu’il n’expire jamais.",
+  "admin.config.share.share-id-length": "Taille de l'identifiant généré",
+  "admin.config.share.share-id-length.description":
+    "Taille par défaut de l'identifiant généré pour un partage. Cette valeur est aussi utilisée pour générer les liens des partages inverses. Une valeur inférieure à 8 n'est pas considérée sûre.",
   "admin.config.share.max-size": "Taille max",
   "admin.config.share.max-size.description": "Taille maximale du partage en octets",
   "admin.config.share.zip-compression-level": "Niveau de compression",
