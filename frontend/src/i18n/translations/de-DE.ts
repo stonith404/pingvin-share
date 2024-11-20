@@ -3,7 +3,7 @@ export default {
   "navbar.upload": "Hochladen",
   "navbar.signin": "Anmelden",
   "navbar.home": "Startseite",
-  "navbar.signup": "Anmelden",
+  "navbar.signup": "Registrieren",
   "navbar.links.shares": "Meine Freigaben",
   "navbar.links.reverse": "Externe Freigaben",
   "navbar.avatar.account": "Mein Konto",
@@ -212,7 +212,7 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "Upload",
-  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
+  "upload.notify.confirm-leave": "Sind Sie sicher, dass Sie diese Seite verlassen wollen? Ihr Upload wird abgebrochen.",
   "upload.notify.generic-error": "Während der Erstellung der Freigabe ist ein Fehler aufgetreten.",
   "upload.notify.count-failed": "{count} Dateien konnten nicht hochgeladen werden. Wird erneut versucht.",
   "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
