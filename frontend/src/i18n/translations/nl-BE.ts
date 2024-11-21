@@ -85,7 +85,7 @@ export default {
   "account.card.oauth.unlink": "Ontkoppel",
   "account.card.oauth.unlinked": "Niet-gekoppeld",
   "account.modal.unlink.title": "Ontkoppel account",
-  "account.modal.unlink.description": "Unlinking your social accounts may cause you to lose your account if you don't remember your login credentials",
+  "account.modal.unlink.description": "Het ontkoppelen van sociale accounts kan leiden tot verlies van je account als je de inloggegevens bent vergeten",
   "account.notify.oauth.unlinked.success": "Ontkoppelen succesvol",
   "account.card.security.title": "Beveiliging",
   "account.card.security.totp.enable.description": "Voer uw huidige wachtwoord in om TOTP in te schakelen",
@@ -121,12 +121,12 @@ export default {
   "account.shares.table.name": "Naam",
   "account.shares.table.description": "Beschrijving",
   "account.shares.table.visitors": "Bezoekers",
-  "account.shares.table.expiresAt": "Expires on",
-  "account.shares.table.createdAt": "Created on",
+  "account.shares.table.expiresAt": "Verloopt op",
+  "account.shares.table.createdAt": "Gemaakt op",
   "account.shares.table.size": "Grootte",
   "account.shares.modal.share-informations": "Gegevens delen",
   "account.shares.modal.share-link": "Deel link",
-  "account.shares.modal.delete.title": "Delete share: {share}",
+  "account.shares.modal.delete.title": "Share verwijderd: {share}",
   "account.shares.modal.delete.description": "Weet u zeker dat u deze share wilt verwijderen?",
   // END /account/shares
   // /account/reverseShares
@@ -206,7 +206,7 @@ export default {
   "admin.shares.table.id": "Share ID",
   "admin.shares.table.username": "Auteur",
   "admin.shares.table.visitors": "Bezoekers",
-  "admin.shares.table.expires": "Expires on",
+  "admin.shares.table.expires": "Verloopt op",
   "admin.shares.edit.delete.title": "Delete share: {id}",
   "admin.shares.edit.delete.description": "Weet u zeker dat u deze share wilt verwijderen?",
   // END /admin/shares
