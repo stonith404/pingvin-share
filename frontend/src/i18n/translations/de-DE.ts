@@ -18,7 +18,7 @@ export default {
   "home.bullet.b.name": "Privatsphäre",
   "home.bullet.b.description": "Ihre Dateien gehören Ihnen und sind niemals durch Dritte zugänglich.",
   "home.bullet.c.name": "Keine lästige Dateigrößenbegrenzung",
-  "home.bullet.c.description": "Laden Sie so große Dateien hoch, wie Sie wollen. Nur Ihre Festplatte ist Ihr Limit.",
+  "home.bullet.c.description": "Lade so große Dateien hoch, wie du willst. Nur deine Festplatte ist dein Limit.",
   "home.button.start": "Lege los",
   "home.button.source": "Quellcode",
   // END /
@@ -85,7 +85,7 @@ export default {
   "account.card.oauth.unlink": "Verknüpfung aufheben",
   "account.card.oauth.unlinked": "Verknüpfung aufgehoben",
   "account.modal.unlink.title": "Kontoverknüpfung aufheben",
-  "account.modal.unlink.description": "Die Aufhebung der Verknüpfung mit Ihren sozialen Konten kann dazu führen, dass Sie Ihr Konto verlieren, wenn Sie sich nicht an Ihren Anmeldedaten erinnern",
+  "account.modal.unlink.description": "Die Aufhebung der Verknüpfung mit deinen sozialen Konten kann dazu führen, dass du dein Konto verlierst, wenn du dich nicht an deine Anmeldedaten erinnerst",
   "account.notify.oauth.unlinked.success": "Verknüpfung erfolgreich aufgehoben",
   "account.card.security.title": "Sicherheit",
   "account.card.security.totp.enable.description": "Gib dein aktuelles Passwort ein, um TOTP zu aktivieren",
