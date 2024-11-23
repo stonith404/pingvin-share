@@ -317,7 +317,7 @@ export default {
   "admin.config.email.share-recipients-subject": "分享Email通知主題",
   "admin.config.email.share-recipients-subject.description": "發送分享Email通知的主題",
   "admin.config.email.share-recipients-message": "分享Email通知內容",
-  "admin.config.email.share-recipients-message.description": "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n These variables will be replaced with the actual value.",
+  "admin.config.email.share-recipients-message.description": "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {creatorEmail} - The email of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n These variables will be replaced with the actual value.",
   "admin.config.email.reverse-share-subject": "檔案請求Email通知主題",
   "admin.config.email.reverse-share-subject.description": "Subject of the sent email when someone created a share with your reverse share link.",
   "admin.config.email.reverse-share-message": "檔案請求Email通知內容",

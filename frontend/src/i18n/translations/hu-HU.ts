@@ -317,7 +317,7 @@ export default {
   "admin.config.email.share-recipients-subject": "Megosztási email tárgya",
   "admin.config.email.share-recipients-subject.description": "A megosztások címzettjeinek küldött email tárgya.",
   "admin.config.email.share-recipients-message": "Megosztási email szövege",
-  "admin.config.email.share-recipients-message.description": "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n These variables will be replaced with the actual value.",
+  "admin.config.email.share-recipients-message.description": "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {creatorEmail} - The email of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n These variables will be replaced with the actual value.",
   "admin.config.email.reverse-share-subject": "Fordított megosztás tárgya",
   "admin.config.email.reverse-share-subject.description": "Subject of the sent email when someone created a share with your reverse share link.",
   "admin.config.email.reverse-share-message": "Fordított megosztás üzenete",
