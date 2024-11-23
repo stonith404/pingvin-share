@@ -368,4 +368,12 @@ export class AuthService {
       return null;
     }
   }
+
+  async verifyPassword(user: User, password: string) {
+    if (!user.password && this.config.get("ldap.enabled")) {
+      return !!this.ldapService.authenticateUser(user.username, password);
+    }
+
+    return argon.verify(user.password, password);
+  }
 }

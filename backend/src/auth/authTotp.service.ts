@@ -5,7 +5,6 @@ import {
   UnauthorizedException,
 } from "@nestjs/common";
 import { User } from "@prisma/client";
-import * as argon from "argon2";
 import { authenticator, totp } from "otplib";
 import * as qrcode from "qrcode-svg";
 import { ConfigService } from "src/config/config.service";
@@ -65,7 +64,7 @@ export class AuthTotpService {
   }
 
   async enableTotp(user: User, password: string) {
-    if (!(await argon.verify(user.password, password)))
+    if (!this.authService.verifyPassword(user, password))
       throw new ForbiddenException("Invalid password");
 
     // Check if we have a secret already
@@ -106,9 +105,8 @@ export class AuthTotpService {
     };
   }
 
-  // TODO: Maybe require a token to verify that the user who started enabling totp is the one who is verifying it?
   async verifyTotp(user: User, password: string, code: string) {
-    if (!(await argon.verify(user.password, password)))
+    if (!this.authService.verifyPassword(user, password))
       throw new ForbiddenException("Invalid password");
 
     const { totpSecret } = await this.prisma.user.findUnique({
@@ -137,7 +135,7 @@ export class AuthTotpService {
   }
 
   async disableTotp(user: User, password: string, code: string) {
-    if (!(await argon.verify(user.password, password)))
+    if (!this.authService.verifyPassword(user, password))
       throw new ForbiddenException("Invalid password");
 
     const { totpSecret } = await this.prisma.user.findUnique({
