@@ -336,6 +336,8 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "Zda mohou neověření uživatelé vytvářet sdílení",
   "admin.config.share.max-expiration": "Max. platnost",
   "admin.config.share.max-expiration.description": "Maximální platnost sdílení v hodinách. Nastavte na 0 k povolení neomezené platnosti.",
+  "admin.config.share.share-id-length": "Default share ID length",
+  "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "Max. velikost",
   "admin.config.share.max-size.description": "Maximální velikost sdílení v bajtech",
   "admin.config.share.zip-compression-level": "Úroveň Zip komprese",
