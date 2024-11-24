@@ -336,6 +336,8 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "Om oautentiserade användare kan skapa delningar",
   "admin.config.share.max-expiration": "Max utgångsdatum",
   "admin.config.share.max-expiration.description": "Max längd innan en delning förfaller i timmar. Sätt till 0 för att tillåta obegränsad förfallotid.",
+  "admin.config.share.share-id-length": "Default share ID length",
+  "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "Max storlek",
   "admin.config.share.max-size.description": "Maximal storlek för delning i bytes",
   "admin.config.share.zip-compression-level": "Komprimeringsnivå för zip",
