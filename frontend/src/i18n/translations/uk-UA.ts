@@ -336,6 +336,8 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "Чи можуть неавторизовані користувачі створювати завантаження",
   "admin.config.share.max-expiration": "Максимальний термін дії",
   "admin.config.share.max-expiration.description": "Максимальний термін дії загального доступу в годинах. Встановіть значення 0, щоб дозволити необмежений термін дії.",
+  "admin.config.share.share-id-length": "Default share ID length",
+  "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "Максимальний розмір",
   "admin.config.share.max-size.description": "Максимальний розмір файлу в байтах",
   "admin.config.share.zip-compression-level": "Рівень стиснення Zip",
