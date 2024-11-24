@@ -336,6 +336,8 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "إتاحة إنشاء المشاركات للمستخدمين غير الموثقين",
   "admin.config.share.max-expiration": "أبعد زمن لانتهاء الصلاحية",
   "admin.config.share.max-expiration.description": "أطول زمن لانتهاء صلاحية المشاركات بالساعات. الصفر يعني أن المشاركة لن تنتهي صلاحيتها.",
+  "admin.config.share.share-id-length": "Default share ID length",
+  "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "أكبر حجم",
   "admin.config.share.max-size.description": "أكبر حجم للمشاركة مقيسًا بالبايت",
   "admin.config.share.zip-compression-level": "مستوى ضغط الZip",
