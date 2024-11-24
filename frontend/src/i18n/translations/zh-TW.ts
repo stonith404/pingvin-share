@@ -336,6 +336,8 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "是否允許未登入的使用者建立分享",
   "admin.config.share.max-expiration": "最大過期時間",
   "admin.config.share.max-expiration.description": "最大過期時間(小時)，若設定為0則為永不過期",
+  "admin.config.share.share-id-length": "Default share ID length",
+  "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "最大檔案上限",
   "admin.config.share.max-size.description": "最大檔案上限，單位 bytes (1GB=1024MB=1048576KB=1073741824bytes)",
   "admin.config.share.zip-compression-level": "Zip 壓縮等級",
