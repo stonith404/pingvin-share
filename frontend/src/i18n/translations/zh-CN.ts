@@ -336,6 +336,8 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "是否允许未验证的用户创建共享",
   "admin.config.share.max-expiration": "最长过期时间",
   "admin.config.share.max-expiration.description": "“最长过期时间”以小时为单位，如果将其设置为“0”则为永不过期。",
+  "admin.config.share.share-id-length": "Default share ID length",
+  "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "最大文件上限",
   "admin.config.share.max-size.description": "最大文件上限，单位 bytes (1GB=1024MB=1048576KB=1073741824bytes)",
   "admin.config.share.zip-compression-level": "Zip 文件压缩质量",
