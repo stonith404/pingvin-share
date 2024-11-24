@@ -140,6 +140,7 @@ const Upload = ({
         ),
         enableEmailRecepients: config.get("email.enableShareEmailRecipients"),
         maxExpirationInHours: config.get("share.maxExpiration"),
+        shareIdLength: config.get("share.shareIdLength"),
         simplified,
       },
       files,
