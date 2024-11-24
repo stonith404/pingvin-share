@@ -336,6 +336,8 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "Giriş yapmamış kullanıcıların paylaşım oluşturup oluşturamayacağı",
   "admin.config.share.max-expiration": "Maks sona erme",
   "admin.config.share.max-expiration.description": "Saat üzerinden maksimum paylaşım sona ermesi. Sınırsız için 0 yapın.",
+  "admin.config.share.share-id-length": "Default share ID length",
+  "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "Maks boyut",
   "admin.config.share.max-size.description": "Byte üzerinden maks paylaşım boyutu",
   "admin.config.share.zip-compression-level": "Zip sıkıştırma seviyesi",
