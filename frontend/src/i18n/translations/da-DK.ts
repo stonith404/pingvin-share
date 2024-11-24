@@ -336,6 +336,8 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "Whether unauthenticated users can create shares",
   "admin.config.share.max-expiration": "Maks. udløb",
   "admin.config.share.max-expiration.description": "Maximum share expiration in hours. Set to 0 to allow unlimited expiration.",
+  "admin.config.share.share-id-length": "Default share ID length",
+  "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "Maks. størrelse",
   "admin.config.share.max-size.description": "Maksimal filstørrelse i bytes",
   "admin.config.share.zip-compression-level": "Zip compression level",
