@@ -336,6 +336,8 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "Gibt an, ob nicht authentifizierte Benutzer Freigaben erstellen können",
   "admin.config.share.max-expiration": "Max. Ablaufdatum",
   "admin.config.share.max-expiration.description": "Maximale Ablaufzeit in Stunden. Auf 0 setzen, um kein Ablaufdatum zu definieren.",
+  "admin.config.share.share-id-length": "Default share ID length",
+  "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "Maximale Größe",
   "admin.config.share.max-size.description": "Maximale Größe einer Freigabe in Bytes",
   "admin.config.share.zip-compression-level": "ZIP-Kompressionslevel",
