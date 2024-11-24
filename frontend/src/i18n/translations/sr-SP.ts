@@ -336,6 +336,8 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "Да ли корисници без аутентификације могу да креирају дељења",
   "admin.config.share.max-expiration": "Максимални рок трајања",
   "admin.config.share.max-expiration.description": "Максимални рок трајања дељења у сатима. Поставите на 0 да бисте омогућили неограничено трајање.",
+  "admin.config.share.share-id-length": "Default share ID length",
+  "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "Максимална величина",
   "admin.config.share.max-size.description": "Максимална величина дељења у бајтовима",
   "admin.config.share.zip-compression-level": "Ниво Zip компресије",
