@@ -336,6 +336,8 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "ログインしていないユーザーに共有の作成を許可するかどうかを選択してください。",
   "admin.config.share.max-expiration": "有効期限の上限",
   "admin.config.share.max-expiration.description": "共有に設定可能な有効期限の上限を時間単位で設定できます。0を設定すると、有効期限が無制限になります。",
+  "admin.config.share.share-id-length": "Default share ID length",
+  "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "最大ファイルサイズ",
   "admin.config.share.max-size.description": "最大ファイルサイズ（byte単位）",
   "admin.config.share.zip-compression-level": "Zip圧縮レベル",
