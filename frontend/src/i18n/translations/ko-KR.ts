@@ -336,6 +336,8 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "인증되지 않은 사용자가 공유를 생성할 수 있는지 여부",
   "admin.config.share.max-expiration": "최대 만료 시간",
   "admin.config.share.max-expiration.description": "공유의 최대 만료 시간. 무제한 만료를 허용하려면 0으로 설정하세요.",
+  "admin.config.share.share-id-length": "Default share ID length",
+  "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "최대 크기",
   "admin.config.share.max-size.description": "공유의 최대 크기 (바이트)",
   "admin.config.share.zip-compression-level": "Zip 압축 레벨",
