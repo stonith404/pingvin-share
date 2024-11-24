@@ -336,6 +336,8 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "Εάν οι χρήστες χωρίς έλεγχο ταυτότητας μπορούν να δημιουργήσουν κοινόχρηστα στοιχεία",
   "admin.config.share.max-expiration": "Μέγιστη λήξη",
   "admin.config.share.max-expiration.description": "Μέγιστη λήξη κοινής χρήσης σε ώρες. Ορίστε το 0 για να επιτρέψετε απεριόριστη λήξη.",
+  "admin.config.share.share-id-length": "Default share ID length",
+  "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "Μέγιστο μέγεθος",
   "admin.config.share.max-size.description": "Μέγιστο μέγεθος κοινοποίησης σε bytes",
   "admin.config.share.zip-compression-level": "Βαθμός συμπίεσης ZIP",
