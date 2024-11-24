@@ -336,6 +336,8 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "Могут ли неавторизованные пользователи создавать загрузки",
   "admin.config.share.max-expiration": "Максимальная срок действия",
   "admin.config.share.max-expiration.description": "Максимальный срок действия общего доступа в часах. Установите значение 0, чтобы разрешить неограниченный срок действия.",
+  "admin.config.share.share-id-length": "Default share ID length",
+  "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "Максимальный размер",
   "admin.config.share.max-size.description": "Максимальный размер файла в байтах",
   "admin.config.share.zip-compression-level": "Уровень сжатия Zip",
