@@ -336,6 +336,8 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "Hitelesítés nélküli felhasználók létre hozhatnak-e megosztásokat",
   "admin.config.share.max-expiration": "Max lejárat",
   "admin.config.share.max-expiration.description": "A megosztások megengedett leghosszabb lejárata órában. 0 értékkel a lejárat kikapcsolható.",
+  "admin.config.share.share-id-length": "Default share ID length",
+  "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "Max méret",
   "admin.config.share.max-size.description": "A megosztások megengedett legnagyobb mérete bájtban",
   "admin.config.share.zip-compression-level": "Zip tömörítési szint",
