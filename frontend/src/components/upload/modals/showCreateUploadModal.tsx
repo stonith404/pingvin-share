@@ -253,6 +253,7 @@ const CreateUploadModalBody = ({
           </Group>
 
           <Text
+            truncate
             italic
             size="xs"
             sx={(theme) => ({
