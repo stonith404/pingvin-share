@@ -337,8 +337,7 @@ export default {
   "admin.config.share.max-expiration": "Échéance",
   "admin.config.share.max-expiration.description": "Échéance du partage en heures. Indiquez 0 pour qu’il n’expire jamais.",
   "admin.config.share.share-id-length": "Taille de l'identifiant généré",
-  "admin.config.share.share-id-length.description":
-    "Taille par défaut de l'identifiant généré pour un partage. Cette valeur est aussi utilisée pour générer les liens des partages inverses. Une valeur inférieure à 8 n'est pas considérée sûre.",
+  "admin.config.share.share-id-length.description": "Taille par défaut de l'identifiant généré pour un partage. Cette valeur est aussi utilisée pour générer les liens des partages inverses. Une valeur inférieure à 8 n'est pas considérée sûre.",
   "admin.config.share.max-size": "Taille max",
   "admin.config.share.max-size.description": "Taille maximale du partage en octets",
   "admin.config.share.zip-compression-level": "Niveau de compression",
@@ -404,6 +403,8 @@ export default {
   "admin.config.oauth.oidc-discovery-uri.description": "L’URI de découverte de la connexion à l'application OpenID OAuth",
   "admin.config.oauth.oidc-sign-out": "Déconnexion du fournisseur OpenID Connect",
   "admin.config.oauth.oidc-sign-out.description": "Si activé, le bouton \"Déconnexion\" vous déconnectera également du fournisseur d'identité OpenID Connect",
+  "admin.config.oauth.oidc-scope": "OpenID Connect scope",
+  "admin.config.oauth.oidc-scope.description": "Scopes which should be requested from the OpenID Connect provider.",
   "admin.config.oauth.oidc-username-claim": "Revendication du nom d’utilisateur OpenID",
   "admin.config.oauth.oidc-username-claim.description": "Le champ contenant la revendication du nom d’utilisateur dans le jeton OpenID Connect. Laissez vide si vous ne savez pas quoi indiquer.",
   "admin.config.oauth.oidc-role-path": "Chemin vers les rôles dans le jeton OpenID Connect",
