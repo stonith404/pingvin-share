@@ -403,6 +403,8 @@ export default {
   "admin.config.oauth.oidc-discovery-uri.description": "OpenID Connect OAuth App 的 Discovery URI",
   "admin.config.oauth.oidc-sign-out": "Sign out from OpenID Connect",
   "admin.config.oauth.oidc-sign-out.description": "Whether the “Sign out” button will sign out from the OpenID Connect provider",
+  "admin.config.oauth.oidc-scope": "OpenID Connect scope",
+  "admin.config.oauth.oidc-scope.description": "Scopes which should be requested from the OpenID Connect provider.",
   "admin.config.oauth.oidc-username-claim": "OpenID Connect 用户名请求",
   "admin.config.oauth.oidc-username-claim.description": "OpenID Connect ID token 中的用户名请求。如果您不知道这项配置是什么，请留空。",
   "admin.config.oauth.oidc-role-path": "Path to roles in OpenID Connect token",
