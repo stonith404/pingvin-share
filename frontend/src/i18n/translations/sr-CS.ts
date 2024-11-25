@@ -403,6 +403,8 @@ export default {
   "admin.config.oauth.oidc-discovery-uri.description": "Discovery URI za otkrivanje OpenID Connect OAuth aplikacije",
   "admin.config.oauth.oidc-sign-out": "Odjavljivanje sa OpenID Connect-a",
   "admin.config.oauth.oidc-sign-out.description": "Da li će dugme „Odjavi se“ odjaviti korisnika i sa OpenID Connect provajdera",
+  "admin.config.oauth.oidc-scope": "OpenID Connect scope",
+  "admin.config.oauth.oidc-scope.description": "Scopes which should be requested from the OpenID Connect provider.",
   "admin.config.oauth.oidc-username-claim": "Potraživanje korisničkog imena u OpenID Connect",
   "admin.config.oauth.oidc-username-claim.description": "Potraživanje korisničkog imena u OpenID Connect ID tokenu. Ostavite prazno ako ne znate šta je ova konfiguracija.",
   "admin.config.oauth.oidc-role-path": "Putanja do uloga u OpenID Connect tokenu",
