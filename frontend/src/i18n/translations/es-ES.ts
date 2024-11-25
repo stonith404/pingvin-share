@@ -403,6 +403,8 @@ export default {
   "admin.config.oauth.oidc-discovery-uri.description": "URI de descubrimiento de la aplicación OAuth de OpenID Connect",
   "admin.config.oauth.oidc-sign-out": "Cerrar sesión de OpenID Connect",
   "admin.config.oauth.oidc-sign-out.description": "Si el botón \"Cerrar sesión\" cerrará la sesión del proveedor de OpenID Connect",
+  "admin.config.oauth.oidc-scope": "OpenID Connect scope",
+  "admin.config.oauth.oidc-scope.description": "Scopes which should be requested from the OpenID Connect provider.",
   "admin.config.oauth.oidc-username-claim": "Reclamo de nombre de usuario de OpenID Connect",
   "admin.config.oauth.oidc-username-claim.description": "Reclamo de nombre de usuario en el token de OpenID Connect. Déjalo en blanco si no sabes qué es esta configuración.",
   "admin.config.oauth.oidc-role-path": "Ruta a los roles en el token de OpenID Connect",
