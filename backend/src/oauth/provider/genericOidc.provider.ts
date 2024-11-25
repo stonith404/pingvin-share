@@ -70,7 +70,7 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
       new URLSearchParams({
         client_id: this.config.get(`oauth.${this.name}-clientId`),
         response_type: "code",
-        scope: "openid profile email",
+        scope: this.config.get(`oauth.${this.name}-scope`),
         redirect_uri: this.getRedirectUri(),
         state,
         nonce,

@@ -288,6 +288,10 @@ const configVariables: ConfigVariables = {
       type: "boolean",
       defaultValue: "false",
     },
+    "oidc-scope": {
+      type: "string",
+      defaultValue: "openid email profile",
+    },
     "oidc-usernameClaim": {
       type: "string",
       defaultValue: "",
