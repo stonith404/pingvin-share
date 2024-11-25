@@ -403,6 +403,8 @@ export default {
   "admin.config.oauth.oidc-discovery-uri.description": "URI Discovery URI додатка OpenID Connect OAuth",
   "admin.config.oauth.oidc-sign-out": "Вийти з OpenID Connect",
   "admin.config.oauth.oidc-sign-out.description": "Чи буде кнопка \"Вийти\" виводити користувача з постачальника OpenID Connect",
+  "admin.config.oauth.oidc-scope": "OpenID Connect scope",
+  "admin.config.oauth.oidc-scope.description": "Scopes which should be requested from the OpenID Connect provider.",
   "admin.config.oauth.oidc-username-claim": "Заява на ім'я користувача OpenID Connect",
   "admin.config.oauth.oidc-username-claim.description": "Заява про ім'я користувача в токені OpenID Connect ID. Залиште порожнім, якщо не знаєте, що це за конфіг.",
   "admin.config.oauth.oidc-role-path": "Шлях до ролей у токені OpenID Connect",
