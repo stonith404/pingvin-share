@@ -403,6 +403,8 @@ export default {
   "admin.config.oauth.oidc-discovery-uri.description": "OpenID OAuthアプリのDiscovery URI",
   "admin.config.oauth.oidc-sign-out": "OpenID Connectからサインアウト",
   "admin.config.oauth.oidc-sign-out.description": "「サインアウト」ボタンがOpenID Connectプロバイダーからサインアウトするかどうか",
+  "admin.config.oauth.oidc-scope": "OpenID Connect scope",
+  "admin.config.oauth.oidc-scope.description": "Scopes which should be requested from the OpenID Connect provider.",
   "admin.config.oauth.oidc-username-claim": "OpenID Connect ユーザー名の要求",
   "admin.config.oauth.oidc-username-claim.description": "OpenID Connect ID トークンのユーザー名要求。この設定が何かわからない場合は空白のままにしてください。",
   "admin.config.oauth.oidc-role-path": "OpenID Connectトークンのロールへのパス",
