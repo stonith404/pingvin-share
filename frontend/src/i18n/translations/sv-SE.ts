@@ -403,6 +403,8 @@ export default {
   "admin.config.oauth.oidc-discovery-uri.description": "Discovery URI för OpenID Connect OAuth appen",
   "admin.config.oauth.oidc-sign-out": "Sign out from OpenID Connect",
   "admin.config.oauth.oidc-sign-out.description": "Whether the “Sign out” button will sign out from the OpenID Connect provider",
+  "admin.config.oauth.oidc-scope": "OpenID Connect scope",
+  "admin.config.oauth.oidc-scope.description": "Scopes which should be requested from the OpenID Connect provider.",
   "admin.config.oauth.oidc-username-claim": "OpenID Connect användarnamnsanspråk",
   "admin.config.oauth.oidc-username-claim.description": "Användarnamnsanspråk i OpenID Connect ID token. Lämna tomt om du inte vet vad denna konfiguration är.",
   "admin.config.oauth.oidc-role-path": "Path to roles in OpenID Connect token",
