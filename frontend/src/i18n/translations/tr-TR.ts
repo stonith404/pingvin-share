@@ -403,6 +403,8 @@ export default {
   "admin.config.oauth.oidc-discovery-uri.description": "OpenID Connect OAuth uygulamasının Keşfetme URI'si",
   "admin.config.oauth.oidc-sign-out": "Sign out from OpenID Connect",
   "admin.config.oauth.oidc-sign-out.description": "Whether the “Sign out” button will sign out from the OpenID Connect provider",
+  "admin.config.oauth.oidc-scope": "OpenID Connect scope",
+  "admin.config.oauth.oidc-scope.description": "Scopes which should be requested from the OpenID Connect provider.",
   "admin.config.oauth.oidc-username-claim": "OpenID Connect kullanıcı adı sahiplenme",
   "admin.config.oauth.oidc-username-claim.description": "OpenID Connect ID belirtecinde kullanıcı adı sahiplenme. Bu yapılandırmanın ne olduğunu bilmiyorsanız boş bırakın.",
   "admin.config.oauth.oidc-role-path": "Path to roles in OpenID Connect token",
