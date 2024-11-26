@@ -26,6 +26,7 @@ import czech from "./translations/cs-CZ";
 import viatnamese from "./translations/vi-VN";
 import bulgarian from "./translations/bg-BG";
 import serbianLatin from "./translations/sr-CS";
+import croatian from "./translations/hr-HR";
 
 export const LOCALES = {
   ENGLISH: {
@@ -167,5 +168,10 @@ export const LOCALES = {
     name: "Български",
     code: "bg-BG",
     messages: bulgarian,
+  },
+  CROATIAN: {
+    name: "Hrvatski",
+    code: "hr-HR",
+    messages: croatian,
   },
 };
