@@ -436,6 +436,9 @@ export default {
   "admin.config.ldap.field-name-member-of.description": "Nome attributo LDAP per i gruppi, di cui un utente è membro. Questo viene utilizzato per controllare il gruppo amministratore.",
   "admin.config.ldap.field-name-email": "Nome dell'attributo email dell'utente",
   "admin.config.ldap.field-name-email.description": "Nome attributo LDAP per l'email di un utente.",
+  "admin.config.notify.success": "Configuration updated successfully.",
+  "admin.config.notify.logo-success": "Logo updated successfully. It may take a few minutes to update on the website.",
+  "admin.config.notify.no-changes": "No changes to save.",
   // 404
   "404.description": "Ops, questa pagina non esiste.",
   "404.button.home": "Riportami a casa",
@@ -477,6 +480,7 @@ export default {
   "common.button.go-back": "Torna indietro",
   "common.button.go-home": "Vai alla Home Page",
   "common.notify.copied": "Il tuo collegamento e' stato copiato negli appunti",
+  "common.notify.copied-link": "Il tuo collegamento e' stato copiato negli appunti",
   "common.success": "Successo",
   "common.error": "Errore",
   "common.error.unknown": "Si è verificato un errore sconosciuto",
