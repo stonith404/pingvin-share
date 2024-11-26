@@ -436,6 +436,9 @@ export default {
   "admin.config.ldap.field-name-member-of.description": "ユーザーがメンバーであるグループのLDAP属性名。これは、管理者グループを確認するときに使用されます。",
   "admin.config.ldap.field-name-email": "ユーザーのメール属性名",
   "admin.config.ldap.field-name-email.description": "ユーザーのメールのLDAP属性名。",
+  "admin.config.notify.success": "Configuration updated successfully.",
+  "admin.config.notify.logo-success": "Logo updated successfully. It may take a few minutes to update on the website.",
+  "admin.config.notify.no-changes": "No changes to save.",
   // 404
   "404.description": "ページが見つかりません。",
   "404.button.home": "ホームに戻る",
@@ -477,6 +480,7 @@ export default {
   "common.button.go-back": "戻る",
   "common.button.go-home": "ホームに戻る",
   "common.notify.copied": "リンクをクリップボードにコピーしました",
+  "common.notify.copied-link": "リンクをクリップボードにコピーしました",
   "common.success": "成功",
   "common.error": "エラー",
   "common.error.unknown": "不明なエラーが発生しました",
