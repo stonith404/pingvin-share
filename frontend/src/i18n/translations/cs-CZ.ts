@@ -436,6 +436,9 @@ export default {
   "admin.config.ldap.field-name-member-of.description": "LDAP attribute name for the groups, an user is a member of. This is used when checking for the admin group.",
   "admin.config.ldap.field-name-email": "User email attribute name",
   "admin.config.ldap.field-name-email.description": "LDAP attribute name for the email of an user.",
+  "admin.config.notify.success": "Configuration updated successfully.",
+  "admin.config.notify.logo-success": "Logo updated successfully. It may take a few minutes to update on the website.",
+  "admin.config.notify.no-changes": "No changes to save.",
   // 404
   "404.description": "Jejda, tato stránka neexistuje.",
   "404.button.home": "Bring me back home",
@@ -477,6 +480,7 @@ export default {
   "common.button.go-back": "Vrátit se zpět",
   "common.button.go-home": "Jít domů",
   "common.notify.copied": "Váš odkaz byl zkopírován do schránky",
+  "common.notify.copied-link": "Váš odkaz byl zkopírován do schránky",
   "common.success": "Úspěch",
   "common.error": "Chyba",
   "common.error.unknown": "Došlo k neznámé chybě",
