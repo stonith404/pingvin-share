@@ -26,7 +26,7 @@ const showEnableTotpModal = (
     qrCode: string;
     secret: string;
     password: string;
-  }
+  },
 ) => {
   const t = translateOutsideContext();
   return modals.openModal({

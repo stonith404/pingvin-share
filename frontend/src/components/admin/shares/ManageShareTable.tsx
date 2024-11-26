@@ -89,7 +89,7 @@ const ManageShareTable = ({
                         onClick={() => {
                           if (window.isSecureContext) {
                             clipboard.copy(
-                              `${window.location.origin}/s/${share.id}`
+                              `${window.location.origin}/s/${share.id}`,
                             );
                             toast.success(t("common.notify.copied-link"));
                           } else {

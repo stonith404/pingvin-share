@@ -13,7 +13,7 @@ function CopyTextField(props: { link: string }) {
   const [checkState, setCheckState] = useState(false);
   const [textClicked, setTextClicked] = useState(false);
   const timerRef = useRef<number | ReturnType<typeof setTimeout> | undefined>(
-    undefined
+    undefined,
   );
 
   const copyLink = () => {
