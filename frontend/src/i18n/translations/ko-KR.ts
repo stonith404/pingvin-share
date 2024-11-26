@@ -436,6 +436,9 @@ export default {
   "admin.config.ldap.field-name-member-of.description": "LDAP attribute name for the groups, an user is a member of. This is used when checking for the admin group.",
   "admin.config.ldap.field-name-email": "User email attribute name",
   "admin.config.ldap.field-name-email.description": "LDAP attribute name for the email of an user.",
+  "admin.config.notify.success": "Configuration updated successfully.",
+  "admin.config.notify.logo-success": "Logo updated successfully. It may take a few minutes to update on the website.",
+  "admin.config.notify.no-changes": "No changes to save.",
   // 404
   "404.description": "이런, 이 페이지는 존재하지 않습니다.",
   "404.button.home": "나를 집으로 데려다 줘",
@@ -477,6 +480,7 @@ export default {
   "common.button.go-back": "뒤로 가기",
   "common.button.go-home": "첫 페이지",
   "common.notify.copied": "당신의 링크가 클립보드에 복사되었습니다.",
+  "common.notify.copied-link": "당신의 링크가 클립보드에 복사되었습니다.",
   "common.success": "성공",
   "common.error": "에러",
   "common.error.unknown": "알 수 없는 오류가 발생했습니다.",
