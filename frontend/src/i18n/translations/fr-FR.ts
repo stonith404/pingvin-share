@@ -436,6 +436,9 @@ export default {
   "admin.config.ldap.field-name-member-of.description": "Nom d'attribut LDAP pour les groupes dont un utilisateur est membre. Il est utilisé lors de la vérification du groupe d'administrateurs.",
   "admin.config.ldap.field-name-email": "Nom d'attribut de l'e-mail de l'utilisateur",
   "admin.config.ldap.field-name-email.description": "Nom d'attribut LDAP pour l'e-mail d'un utilisateur.",
+  "admin.config.notify.success": "Configuration updated successfully.",
+  "admin.config.notify.logo-success": "Logo updated successfully. It may take a few minutes to update on the website.",
+  "admin.config.notify.no-changes": "No changes to save.",
   // 404
   "404.description": "Désolé, mais cette page n’existe pas.",
   "404.button.home": "Retour à l’accueil",
@@ -477,6 +480,7 @@ export default {
   "common.button.go-back": "Précédent",
   "common.button.go-home": "Accueil",
   "common.notify.copied": "Votre lien a été copié dans le presse-papiers",
+  "common.notify.copied-link": "Votre lien a été copié dans le presse-papiers",
   "common.success": "Opération réussie",
   "common.error": "Erreur",
   "common.error.unknown": "Une erreur inconnue est survenue",
