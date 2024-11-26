@@ -436,6 +436,9 @@ export default {
   "admin.config.ldap.field-name-member-of.description": "LDAP attribute name for the groups, an user is a member of. This is used when checking for the admin group.",
   "admin.config.ldap.field-name-email": "User email attribute name",
   "admin.config.ldap.field-name-email.description": "LDAP attribute name for the email of an user.",
+  "admin.config.notify.success": "Configuration updated successfully.",
+  "admin.config.notify.logo-success": "Logo updated successfully. It may take a few minutes to update on the website.",
+  "admin.config.notify.no-changes": "No changes to save.",
   // 404
   "404.description": "ไม่พบหน้าที่คุณกำลังมองหา",
   "404.button.home": "หน้าแรก",
@@ -477,6 +480,7 @@ export default {
   "common.button.go-back": "ย้อนกลับ",
   "common.button.go-home": "Go home",
   "common.notify.copied": "คัดลอกไปยังคลิปบอร์ดแล้ว",
+  "common.notify.copied-link": "คัดลอกไปยังคลิปบอร์ดแล้ว",
   "common.success": "สำเร็จ",
   "common.error": "เกิดข้อผิดพลาด",
   "common.error.unknown": "เกิดข้อผิดพลาดที่ไม่รู้จัก",
