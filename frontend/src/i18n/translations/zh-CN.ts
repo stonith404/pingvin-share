@@ -436,6 +436,9 @@ export default {
   "admin.config.ldap.field-name-member-of.description": "LDAP attribute name for the groups, an user is a member of. This is used when checking for the admin group.",
   "admin.config.ldap.field-name-email": "User email attribute name",
   "admin.config.ldap.field-name-email.description": "LDAP attribute name for the email of an user.",
+  "admin.config.notify.success": "Configuration updated successfully.",
+  "admin.config.notify.logo-success": "Logo updated successfully. It may take a few minutes to update on the website.",
+  "admin.config.notify.no-changes": "No changes to save.",
   // 404
   "404.description": "当前的页面走丢啦",
   "404.button.home": "返回主页",
@@ -477,6 +480,7 @@ export default {
   "common.button.go-back": "返回",
   "common.button.go-home": "返回主页",
   "common.notify.copied": "已复制到剪贴板",
+  "common.notify.copied-link": "已复制到剪贴板",
   "common.success": "成功",
   "common.error": "错误",
   "common.error.unknown": "发生未知错误",
