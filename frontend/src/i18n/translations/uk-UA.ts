@@ -436,6 +436,9 @@ export default {
   "admin.config.ldap.field-name-member-of.description": "Назва атрибута LDAP для груп, до яких належить користувач. Це використовується при перевірці адміністративної групи.",
   "admin.config.ldap.field-name-email": "Назва атрибута ел. пошти користувача",
   "admin.config.ldap.field-name-email.description": "Назва атрибута LDAP для ел. пошти користувача.",
+  "admin.config.notify.success": "Configuration updated successfully.",
+  "admin.config.notify.logo-success": "Logo updated successfully. It may take a few minutes to update on the website.",
+  "admin.config.notify.no-changes": "No changes to save.",
   // 404
   "404.description": "Бляха, цієї строрінки не існує.",
   "404.button.home": "Поверни мене додому",
@@ -477,6 +480,7 @@ export default {
   "common.button.go-back": "Назад",
   "common.button.go-home": "Перейти додому",
   "common.notify.copied": "Ваше посилання скопійовано в буфер обміну",
+  "common.notify.copied-link": "Ваше посилання скопійовано в буфер обміну",
   "common.success": "Успішно",
   "common.error": "Помилка",
   "common.error.unknown": "Сталася невідома помилка",
