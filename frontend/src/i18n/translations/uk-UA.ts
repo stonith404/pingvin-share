@@ -12,7 +12,7 @@ export default {
   // END navbar
   // /
   "home.title": "Платформа для обміну файлами із <h>власного хостингу</h>.",
-  "home.description": "Ви дійсно бажаєте надати свої особисті файли У руки третіх осіб, таких як WeTransfer?",
+  "home.description": "Ви дійсно ви хочете передати свої особисті файли в руки третіх осіб, таких як WeTransfer?",
   "home.bullet.a.name": "На власному сервері",
   "home.bullet.a.description": "Pingvin Share працює на вашій машині.",
   "home.bullet.b.name": "Конфіденційність",
@@ -298,7 +298,7 @@ export default {
   "admin.config.category.share": "Завантаження",
   "admin.config.category.email": "Електронна пошта",
   "admin.config.category.smtp": "SMTP",
-  "admin.config.category.oauth": "Авторизація через соціальні мережі",
+  "admin.config.category.oauth": "Вхід через соцмережі",
   "admin.config.general.app-name": "Назва програми",
   "admin.config.general.app-name.description": "Видима назва додатка",
   "admin.config.general.app-url": "URL-адреса програми",
@@ -403,8 +403,8 @@ export default {
   "admin.config.oauth.oidc-discovery-uri.description": "URI Discovery URI додатка OpenID Connect OAuth",
   "admin.config.oauth.oidc-sign-out": "Вийти з OpenID Connect",
   "admin.config.oauth.oidc-sign-out.description": "Чи буде кнопка \"Вийти\" виводити користувача з постачальника OpenID Connect",
-  "admin.config.oauth.oidc-scope": "OpenID Connect scope",
-  "admin.config.oauth.oidc-scope.description": "Scopes which should be requested from the OpenID Connect provider.",
+  "admin.config.oauth.oidc-scope": "Область OpenID Connect",
+  "admin.config.oauth.oidc-scope.description": "Області (scopes), які слід запитати у постачальника OpenID Connect.",
   "admin.config.oauth.oidc-username-claim": "Заява на ім'я користувача OpenID Connect",
   "admin.config.oauth.oidc-username-claim.description": "Заява про ім'я користувача в токені OpenID Connect ID. Залиште порожнім, якщо не знаєте, що це за конфіг.",
   "admin.config.oauth.oidc-role-path": "Шлях до ролей у токені OpenID Connect",
