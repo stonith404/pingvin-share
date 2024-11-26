@@ -436,6 +436,9 @@ export default {
   "admin.config.ldap.field-name-member-of.description": "LDAP attribute name for the groups, an user is a member of. This is used when checking for the admin group.",
   "admin.config.ldap.field-name-email": "User email attribute name",
   "admin.config.ldap.field-name-email.description": "LDAP attribute name for the email of an user.",
+  "admin.config.notify.success": "Configuration updated successfully.",
+  "admin.config.notify.logo-success": "Logo updated successfully. It may take a few minutes to update on the website.",
+  "admin.config.notify.no-changes": "No changes to save.",
   // 404
   "404.description": "Hoppsan den här sidan finns inte.",
   "404.button.home": "Ta mig tillbaka hem",
@@ -477,6 +480,7 @@ export default {
   "common.button.go-back": "Gå tillbaka",
   "common.button.go-home": "Gå hem",
   "common.notify.copied": "Din länk har kopierats till urklipp",
+  "common.notify.copied-link": "Din länk har kopierats till urklipp",
   "common.success": "Slutförd",
   "common.error": "Fel",
   "common.error.unknown": "Ett okänt fel har uppstått",
