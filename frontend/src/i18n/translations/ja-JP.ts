@@ -12,13 +12,17 @@ export default {
   // END navbar
   // /
   "home.title": "<h>セルフホスト</h>のファイル共有プラットフォーム。",
-  "home.description": "WeTransferのようなサードパーティーサービスに自分のファイルを渡したいですか？",
+  "home.description":
+    "WeTransferのようなサードパーティーサービスに自分のファイルを渡したいですか？",
   "home.bullet.a.name": "セルフホスト",
-  "home.bullet.a.description": "Pingvin Shareをあなたのマシンでホストしましょう。",
+  "home.bullet.a.description":
+    "Pingvin Shareをあなたのマシンでホストしましょう。",
   "home.bullet.b.name": "プライバシー",
-  "home.bullet.b.description": "あなたのファイルはあなたのものであり、第三者がアクセスすることは決してありません。",
+  "home.bullet.b.description":
+    "あなたのファイルはあなたのものであり、第三者がアクセスすることは決してありません。",
   "home.bullet.c.name": "ファイルサイズ制限に悩まされることはありません",
-  "home.bullet.c.description": "必要なだけ大きなファイルをアップロードできます。制限があるのはハードドライブのみです。",
+  "home.bullet.c.description":
+    "必要なだけ大きなファイルをアップロードできます。制限があるのはハードドライブのみです。",
   "home.button.start": "始めましょう",
   "home.button.source": "ソースコード",
   // END /
@@ -27,12 +31,14 @@ export default {
   "signin.description": "アカウントをお持ちではありませんか？",
   "signin.button.signup": "会員登録",
   "signin.input.email-or-username": "メールアドレスまたはユーザー名",
-  "signin.input.email-or-username.placeholder": "メールアドレスまたはユーザー名",
+  "signin.input.email-or-username.placeholder":
+    "メールアドレスまたはユーザー名",
   "signin.input.password": "パスワード",
   "signin.input.password.placeholder": "あなたのパスワード",
   "signin.button.submit": "サインイン",
   "signIn.notify.totp-required.title": "二段階認証が必要です",
-  "signIn.notify.totp-required.description": "二段階認証コードを入力してください",
+  "signIn.notify.totp-required.description":
+    "二段階認証コードを入力してください",
   "signIn.oauth.or": "または",
   "signIn.oauth.signInWith": "サインインの方法",
   "signIn.oauth.github": "GitHub",
@@ -58,12 +64,14 @@ export default {
   // /auth/reset-password
   "resetPassword.title": "パスワードを忘れてしまいましたか？",
   "resetPassword.description": "登録しているメールアドレスを入力してください。",
-  "resetPassword.notify.success": "指定されたメールアドレスが存在する場合、パスワードをリセットするためのリンクを含むメッセージが送信されました。",
+  "resetPassword.notify.success":
+    "指定されたメールアドレスが存在する場合、パスワードをリセットするためのリンクを含むメッセージが送信されました。",
   "resetPassword.button.back": "サインインページに戻る",
   "resetPassword.text.resetPassword": "パスワードをリセット",
   "resetPassword.text.enterNewPassword": "新規パスワードを入力",
   "resetPassword.input.password": "新規パスワード",
-  "resetPassword.notify.passwordReset": "パスワードが正常にリセットされました。",
+  "resetPassword.notify.passwordReset":
+    "パスワードが正常にリセットされました。",
   // /account
   "account.title": "マイアカウント",
   "account.card.info.title": "アカウント情報",
@@ -73,7 +81,8 @@ export default {
   "account.card.password.title": "パスワード",
   "account.card.password.old": "現在のパスワード",
   "account.card.password.new": "新規パスワード",
-  "account.card.password.noPasswordSet": "パスワードが設定されていません。メールアドレスとパスワードを使用してサインインするには、パスワードを作成する必要があります。",
+  "account.card.password.noPasswordSet":
+    "パスワードが設定されていません。メールアドレスとパスワードを使用してサインインするには、パスワードを作成する必要があります。",
   "account.notify.password.success": "パスワードの変更に成功しました",
   "account.card.oauth.title": "ソーシャルログイン",
   "account.card.oauth.github": "GitHub",
@@ -85,11 +94,14 @@ export default {
   "account.card.oauth.unlink": "リンク解除",
   "account.card.oauth.unlinked": "リンクされていません",
   "account.modal.unlink.title": "アカウントのリンクを解除",
-  "account.modal.unlink.description": "ソーシャルアカウントのリンクを解除すると、ログイン認証情報を忘れた場合、アカウントを失う可能性があります。",
+  "account.modal.unlink.description":
+    "ソーシャルアカウントのリンクを解除すると、ログイン認証情報を忘れた場合、アカウントを失う可能性があります。",
   "account.notify.oauth.unlinked.success": "リンク解除に成功しました",
   "account.card.security.title": "セキュリティ",
-  "account.card.security.totp.enable.description": "2段階認証を有効にするため、現在のパスワードを入力してください",
-  "account.card.security.totp.disable.description": "2段階認証を無効にするため、現在のパスワードを入力してください",
+  "account.card.security.totp.enable.description":
+    "2段階認証を有効にするため、現在のパスワードを入力してください",
+  "account.card.security.totp.disable.description":
+    "2段階認証を無効にするため、現在のパスワードを入力してください",
   "account.card.security.totp.button.start": "開始",
   "account.modal.totp.title": "2段階認証を有効にする",
   "account.modal.totp.step1": "ステップ1: 認証アプリを追加する",
@@ -101,7 +113,8 @@ export default {
   "account.notify.totp.disable": "2段階認証の無効化に成功しました",
   "account.notify.totp.enable": "2段階認証の有効化に成功しました",
   "account.card.language.title": "言語",
-  "account.card.language.description": "プロジェクトはコミュニティによって翻訳されています。一部の言語の翻訳は不完全の場合があります。",
+  "account.card.language.description":
+    "プロジェクトはコミュニティによって翻訳されています。一部の言語の翻訳は不完全の場合があります。",
   "account.card.color.title": "カラースキーム",
   // ThemeSwitcher.tsx
   "account.theme.dark": "ダーク",
@@ -109,7 +122,8 @@ export default {
   "account.theme.system": "システムに合わせる",
   "account.button.delete": "アカウントを削除",
   "account.modal.delete.title": "アカウントを削除",
-  "account.modal.delete.description": "全ての有効な共有を含め、アカウントに関する全てのデータを完全に削除してもよろしいですか？",
+  "account.modal.delete.description":
+    "全ての有効な共有を含め、アカウントに関する全てのデータを完全に削除してもよろしいですか？",
   // END /account
   // /account/shares
   "account.shares.title": "自分の共有",
@@ -127,11 +141,13 @@ export default {
   "account.shares.modal.share-informations": "共有情報",
   "account.shares.modal.share-link": "共有リンク",
   "account.shares.modal.delete.title": "共有を削除: {share}",
-  "account.shares.modal.delete.description": "この共有を削除してもよろしいですか？",
+  "account.shares.modal.delete.description":
+    "この共有を削除してもよろしいですか？",
   // END /account/shares
   // /account/reverseShares
   "account.reverseShares.title": "ファイルリクエスト",
-  "account.reverseShares.description": "ファイルリクエストは、外部のユーザーにファイルをアップロードしてもらえるユニークなURLを生成できます。",
+  "account.reverseShares.description":
+    "ファイルリクエストは、外部のユーザーにファイルをアップロードしてもらえるユニークなURLを生成できます。",
   "account.reverseShares.title.empty": "まだ何もありません 👀",
   "account.reverseShares.description.empty": "ファイルリクエストがありません。",
   // showCreateReverseShareModal.tsx
@@ -151,16 +167,23 @@ export default {
   "account.reverseShares.modal.expiration.year-plural": "年間",
   "account.reverseShares.modal.max-size.label": "最大ファイルサイズ",
   "account.reverseShares.modal.send-email": "メール通知を送信",
-  "account.reverseShares.modal.send-email.description": "このファイルリクエストリンクを使用して共有が作成されるとメール通知が送信されます。",
+  "account.reverseShares.modal.send-email.description":
+    "このファイルリクエストリンクを使用して共有が作成されるとメール通知が送信されます。",
   "account.reverseShares.modal.simplified": "シンプルモード",
-  "account.reverseShares.modal.simplified.description": "ファイルをアップロードした人が簡単に共有できるようにします。共有の名前と説明のみをカスタマイズできます。",
+  "account.reverseShares.modal.simplified.description":
+    "ファイルをアップロードした人が簡単に共有できるようにします。共有の名前と説明のみをカスタマイズできます。",
   "account.reverseShares.modal.public-access": "公開アクセス",
-  "account.reverseShares.modal.public-access.description": "このファイルリクエストで作成された共有を公開します。無効にするとあなたと共有作成者だけが共有を表示できます。",
+  "account.reverseShares.modal.public-access.description":
+    "このファイルリクエストで作成された共有を公開します。無効にするとあなたと共有作成者だけが共有を表示できます。",
   "account.reverseShares.modal.max-use.label": "最大回数",
-  "account.reverseShares.modal.max-use.description": "このURLを使用してファイルをアップロードできる最大回数です。",
-  "account.reverseShare.never-expires": "このファイルリクエストリンクは期限切れになりません。",
-  "account.reverseShare.expires-on": "このファイルリクエストリンクは、{expiration} に期限切れとなります。",
-  "account.reverseShares.table.no-shares": "まだファイルがアップロードされていません",
+  "account.reverseShares.modal.max-use.description":
+    "このURLを使用してファイルをアップロードできる最大回数です。",
+  "account.reverseShare.never-expires":
+    "このファイルリクエストリンクは期限切れになりません。",
+  "account.reverseShare.expires-on":
+    "このファイルリクエストリンクは、{expiration} に期限切れとなります。",
+  "account.reverseShares.table.no-shares":
+    "まだファイルがアップロードされていません",
   "account.reverseShares.table.count.singular": "共有",
   "account.reverseShares.table.count.plural": "共有",
   "account.reverseShares.table.shares": "共有",
@@ -169,7 +192,8 @@ export default {
   "account.reverseShares.table.expires": "有効期限",
   "account.reverseShares.modal.reverse-share-link": "ファイルリクエストリンク",
   "account.reverseShares.modal.delete.title": "ファイルリクエストを削除",
-  "account.reverseShares.modal.delete.description": "本当にこのファイルリクエストを削除しますか？削除すると、関連するファイルアップロードも削除されます。",
+  "account.reverseShares.modal.delete.description":
+    "本当にこのファイルリクエストを削除しますか？削除すると、関連するファイルアップロードも削除されます。",
   // END /account/reverseShares
   // /admin
   "admin.title": "管理画面",
@@ -188,18 +212,22 @@ export default {
   "admin.users.edit.update.change-password.title": "パスワードを変更",
   "admin.users.edit.update.change-password.field": "新規パスワード",
   "admin.users.edit.update.change-password.button": "新しいパスワードを保存",
-  "admin.users.edit.update.notify.password.success": "パスワードの変更に成功しました",
+  "admin.users.edit.update.notify.password.success":
+    "パスワードの変更に成功しました",
   "admin.users.edit.delete.title": "ユーザーを削除: {username}？",
-  "admin.users.edit.delete.description": "このユーザーとそのすべての共有を本当に削除しますか?",
+  "admin.users.edit.delete.description":
+    "このユーザーとそのすべての共有を本当に削除しますか?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "ユーザーを作成",
   "admin.users.modal.create.username": "ユーザー名",
   "admin.users.modal.create.email": "メールアドレス",
   "admin.users.modal.create.password": "パスワード",
   "admin.users.modal.create.manual-password": "パスワードを手動で設定",
-  "admin.users.modal.create.manual-password.description": "チェックされていない場合、ユーザーにパスワードを設定する為のリンクが記載されたメールを送信します。",
+  "admin.users.modal.create.manual-password.description":
+    "チェックされていない場合、ユーザーにパスワードを設定する為のリンクが記載されたメールを送信します。",
   "admin.users.modal.create.admin": "管理者権限",
-  "admin.users.modal.create.admin.description": "チェックされている場合、ユーザーは管理画面にアクセスできるようになります。",
+  "admin.users.modal.create.admin.description":
+    "チェックされている場合、ユーザーは管理画面にアクセスできるようになります。",
   // END /admin/users
   // /admin/shares
   "admin.shares.title": "共有管理",
@@ -208,31 +236,41 @@ export default {
   "admin.shares.table.visitors": "訪問者",
   "admin.shares.table.expires": "有効期限",
   "admin.shares.edit.delete.title": "共有を削除: {id}",
-  "admin.shares.edit.delete.description": "この共有を削除してもよろしいですか？",
+  "admin.shares.edit.delete.description":
+    "この共有を削除してもよろしいですか？",
   // END /admin/shares
   // /upload
   "upload.title": "アップロード",
-  "upload.notify.confirm-leave": "このページから離れますか？アップロードはキャンセルされます。",
-  "upload.notify.generic-error": "共有を仕上げている最中にエラーが発生しました。",
-  "upload.notify.count-failed": "{count} ファイルがアップロードに失敗しました。再度お試しください。",
+  "upload.notify.confirm-leave":
+    "このページから離れますか？アップロードはキャンセルされます。",
+  "upload.notify.generic-error":
+    "共有を仕上げている最中にエラーが発生しました。",
+  "upload.notify.count-failed":
+    "{count} ファイルがアップロードに失敗しました。再度お試しください。",
   "upload.reverse-share.error.invalid.title": "無効なファイルリクエストリンク",
-  "upload.reverse-share.error.invalid.description": "このファイルリクエストは期限が切れているか無効です。",
+  "upload.reverse-share.error.invalid.description":
+    "このファイルリクエストは期限が切れているか無効です。",
   // Dropzone.tsx
   "upload.dropzone.title": "ファイルをアップロード",
-  "upload.dropzone.description": "共有を開始するにはここにファイルをドラッグ＆ドロップしてください。受け入れ可能なファイルの合計サイズは{maxSize}までです。",
-  "upload.dropzone.notify.file-too-big": "アップロードしようとしたファイルは、最大ファイルサイズの{maxSize} を超えています。",
+  "upload.dropzone.description":
+    "共有を開始するにはここにファイルをドラッグ＆ドロップしてください。受け入れ可能なファイルの合計サイズは{maxSize}までです。",
+  "upload.dropzone.notify.file-too-big":
+    "アップロードしようとしたファイルは、最大ファイルサイズの{maxSize} を超えています。",
   // FileList.tsx
   "upload.filelist.name": "ファイル名",
   "upload.filelist.size": "サイズ",
   // showCreateUploadModal.tsx
   "upload.modal.title": "共有を作成",
-  "upload.modal.link.error.invalid": "文字、数字、アンダースコア、ハイフンのみ使用できます",
+  "upload.modal.link.error.invalid":
+    "文字、数字、アンダースコア、ハイフンのみ使用できます",
   "upload.modal.link.error.taken": "このリンクは既に使用されています",
   "upload.modal.not-signed-in": "サインインしていません",
-  "upload.modal.not-signed-in-description": "共有の手動削除と訪問者カウンターは表示できません。",
+  "upload.modal.not-signed-in-description":
+    "共有の手動削除と訪問者カウンターは表示できません。",
   "upload.modal.expires.never": "永久",
   "upload.modal.expires.never-long": "永久シェア",
-  "upload.modal.expires.error.too-long": "有効期限が最大値{max}を超えています。",
+  "upload.modal.expires.error.too-long":
+    "有効期限が最大値{max}を超えています。",
   "upload.modal.link.label": "リンク",
   "upload.modal.expires.label": "有効期限",
   "upload.modal.expires.minute-singular": "分間",
@@ -249,7 +287,8 @@ export default {
   "upload.modal.expires.year-plural": "年間",
   "upload.modal.accordion.name-and-description.title": "名前と説明",
   "upload.modal.accordion.name-and-description.name.placeholder": "名前",
-  "upload.modal.accordion.name-and-description.description.placeholder": "この共有に関する受信者へのメモ",
+  "upload.modal.accordion.name-and-description.description.placeholder":
+    "この共有に関する受信者へのメモ",
   "upload.modal.accordion.email.title": "メールで受け取る相手",
   "upload.modal.accordion.email.placeholder": "メールの宛先を入力",
   "upload.modal.accordion.email.invalid-email": "無効なメールアドレスです",
@@ -260,31 +299,39 @@ export default {
   "upload.modal.accordion.security.max-views.placeholder": "制限なし",
   // showCompletedUploadModal.tsx
   "upload.modal.completed.never-expires": "この共有は期限切れになりません。",
-  "upload.modal.completed.expires-on": "この共有は、{expiration} に期限切れとなります。",
+  "upload.modal.completed.expires-on":
+    "この共有は、{expiration} に期限切れとなります。",
   "upload.modal.completed.share-ready": "共有の準備ができました",
-  "upload.modal.completed.notified-reverse-share-creator": "ファイルリクエストの作成者に通知しました。他の手段でこのリンクを手動で共有することもできます。",
+  "upload.modal.completed.notified-reverse-share-creator":
+    "ファイルリクエストの作成者に通知しました。他の手段でこのリンクを手動で共有することもできます。",
   // END /upload
   // /share/[id]
   "share.title": "「{shareId}」が共有されました",
   "share.description": "あなたと共有したファイルをご確認ください！",
   "share.error.visitor-limit-exceeded.title": "訪問者の上限を超えました",
-  "share.error.visitor-limit-exceeded.description": "この共有からの訪問者の回数が制限を超えています。",
+  "share.error.visitor-limit-exceeded.description":
+    "この共有からの訪問者の回数が制限を超えています。",
   "share.error.removed.title": "共有が削除されました",
   "share.error.not-found.title": "共有が見つかりません",
   "share.error.not-found.description": "お探しの共有が見つかりません。",
   "share.error.access-denied.title": "プライベートシェア",
-  "share.error.access-denied.description": "現在のアカウントにはこの共有にアクセスする権限がありません",
+  "share.error.access-denied.description":
+    "現在のアカウントにはこの共有にアクセスする権限がありません",
   "share.modal.password.title": "パスワードが必要です",
-  "share.modal.password.description": "この共有にアクセスするにはパスワードを入力してください。",
+  "share.modal.password.description":
+    "この共有にアクセスするにはパスワードを入力してください。",
   "share.modal.password": "パスワード",
   "share.modal.error.invalid-password": "パスワードが間違っています",
   "share.button.download-all": "全てダウンロード",
-  "share.notify.download-all-preparing": "共有の準備中です。数分後にもう一度お試しください。",
+  "share.notify.download-all-preparing":
+    "共有の準備中です。数分後にもう一度お試しください。",
   "share.modal.file-link": "ファイルリンク",
   "share.table.name": "ファイル名",
   "share.table.size": "サイズ",
-  "share.modal.file-preview.error.not-supported.title": "プレビューに対応していません",
-  "share.modal.file-preview.error.not-supported.description": "このファイル形式のプレビューはサポートされていません。ファイルをダウンロードして表示してください。",
+  "share.modal.file-preview.error.not-supported.title":
+    "プレビューに対応していません",
+  "share.modal.file-preview.error.not-supported.description":
+    "このファイル形式のプレビューはサポートされていません。ファイルをダウンロードして表示してください。",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "編集 {shareId}",
@@ -304,50 +351,73 @@ export default {
   "admin.config.general.app-url": "アプリ名",
   "admin.config.general.app-url.description": "Pingvin Shareで利用できるURL",
   "admin.config.general.secure-cookies": "セキュアクッキー",
-  "admin.config.general.secure-cookies.description": "クッキーにセキュアフラグを設定するか。有効にすると、HTTP 経由でアクセスしたときにサイトが機能しなくなります。",
+  "admin.config.general.secure-cookies.description":
+    "クッキーにセキュアフラグを設定するか。有効にすると、HTTP 経由でアクセスしたときにサイトが機能しなくなります。",
   "admin.config.general.show-home-page": "ホームページを表示する",
-  "admin.config.general.show-home-page.description": "ホームページを表示するかどうか選択",
+  "admin.config.general.show-home-page.description":
+    "ホームページを表示するかどうか選択",
   "admin.config.general.session-duration": "セッション期間",
-  "admin.config.general.session-duration.description": "ユーザーが再度ログインする必要がある時間（時間単位）（デフォルト: 3 か月）。",
+  "admin.config.general.session-duration.description":
+    "ユーザーが再度ログインする必要がある時間（時間単位）（デフォルト: 3 か月）。",
   "admin.config.general.logo": "ロゴ",
-  "admin.config.general.logo.description": "新しい画像をアップロードしてロゴを変更できます。画像は、PNG形式でアスペクト比が1:1である必要があります。",
+  "admin.config.general.logo.description":
+    "新しい画像をアップロードしてロゴを変更できます。画像は、PNG形式でアスペクト比が1:1である必要があります。",
   "admin.config.general.logo.placeholder": "画像を選択",
-  "admin.config.email.enable-share-email-recipients": "メール受信者の共有を有効にする",
-  "admin.config.email.enable-share-email-recipients.description": "受信者とのメール共有を許可するかどうか。SMTPが有効な場合にのみこれを有効にします。",
+  "admin.config.email.enable-share-email-recipients":
+    "メール受信者の共有を有効にする",
+  "admin.config.email.enable-share-email-recipients.description":
+    "受信者とのメール共有を許可するかどうか。SMTPが有効な場合にのみこれを有効にします。",
   "admin.config.email.share-recipients-subject": "宛先への件名",
-  "admin.config.email.share-recipients-subject.description": "メールで共有された相手に送信メールの件名です。",
+  "admin.config.email.share-recipients-subject.description":
+    "メールで共有された相手に送信メールの件名です。",
   "admin.config.email.share-recipients-message": "宛先への本文",
-  "admin.config.email.share-recipients-message.description": "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {creatorEmail} - The email of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n These variables will be replaced with the actual value.",
+  "admin.config.email.share-recipients-message.description":
+    "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {creatorEmail} - The email of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n These variables will be replaced with the actual value.",
   "admin.config.email.reverse-share-subject": "ファイルリクエストの件名",
-  "admin.config.email.reverse-share-subject.description": "誰かがあなたのファイルリクエストリンクを使用して共有を作成したときに送信されるメールの件名。",
+  "admin.config.email.reverse-share-subject.description":
+    "誰かがあなたのファイルリクエストリンクを使用して共有を作成したときに送信されるメールの件名。",
   "admin.config.email.reverse-share-message": "ファイルリクエストの本文",
-  "admin.config.email.reverse-share-message.description": "あなたが作成したファイルリクエストリンクからファイルがアップロードされた場合に送信されるメールの本文です。{shareUrl} は、作成者の名前とURLにより置き換えられます。",
+  "admin.config.email.reverse-share-message.description":
+    "あなたが作成したファイルリクエストリンクからファイルがアップロードされた場合に送信されるメールの本文です。{shareUrl} は、作成者の名前とURLにより置き換えられます。",
   "admin.config.email.reset-password-subject": "パスワードリセットの件名",
-  "admin.config.email.reset-password-subject.description": "ユーザーがパスワードのリセットを要求したときに送信されるメールの件名。",
+  "admin.config.email.reset-password-subject.description":
+    "ユーザーがパスワードのリセットを要求したときに送信されるメールの件名。",
   "admin.config.email.reset-password-message": "パスワードリセットの本文",
-  "admin.config.email.reset-password-message.description": "あなたが作成したファイルリクエストリンクからファイルがアップロードされた場合に送信されるメールの本文です。{url} は、実際のパスワードリセットURLによって置き換えられます。",
+  "admin.config.email.reset-password-message.description":
+    "あなたが作成したファイルリクエストリンクからファイルがアップロードされた場合に送信されるメールの本文です。{url} は、実際のパスワードリセットURLによって置き換えられます。",
   "admin.config.email.invite-subject": "無効な件名",
-  "admin.config.email.invite-subject.description": "管理者がユーザーを招待するときに送信されるメールの件名。",
+  "admin.config.email.invite-subject.description":
+    "管理者がユーザーを招待するときに送信されるメールの件名。",
   "admin.config.email.invite-message": "無効な本文",
-  "admin.config.email.invite-message.description": "管理者がユーザーを招待したときに送信されるメッセージ。{url}は招待URLに、{email}はメールアドレスに、{password}はユーザーのパスワードに置き換えられます。",
+  "admin.config.email.invite-message.description":
+    "管理者がユーザーを招待したときに送信されるメッセージ。{url}は招待URLに、{email}はメールアドレスに、{password}はユーザーのパスワードに置き換えられます。",
   "admin.config.share.allow-registration": "登録を許可する",
-  "admin.config.share.allow-registration.description": "登録を許可するかどうかを選択してください。",
-  "admin.config.share.allow-unauthenticated-shares": "ログインしていない状態での共有を許可する",
-  "admin.config.share.allow-unauthenticated-shares.description": "ログインしていないユーザーに共有の作成を許可するかどうかを選択してください。",
+  "admin.config.share.allow-registration.description":
+    "登録を許可するかどうかを選択してください。",
+  "admin.config.share.allow-unauthenticated-shares":
+    "ログインしていない状態での共有を許可する",
+  "admin.config.share.allow-unauthenticated-shares.description":
+    "ログインしていないユーザーに共有の作成を許可するかどうかを選択してください。",
   "admin.config.share.max-expiration": "有効期限の上限",
-  "admin.config.share.max-expiration.description": "共有に設定可能な有効期限の上限を時間単位で設定できます。0を設定すると、有効期限が無制限になります。",
+  "admin.config.share.max-expiration.description":
+    "共有に設定可能な有効期限の上限を時間単位で設定できます。0を設定すると、有効期限が無制限になります。",
   "admin.config.share.share-id-length": "Default share ID length",
-  "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
+  "admin.config.share.share-id-length.description":
+    "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "最大ファイルサイズ",
   "admin.config.share.max-size.description": "最大ファイルサイズ（byte単位）",
   "admin.config.share.zip-compression-level": "Zip圧縮レベル",
-  "admin.config.share.zip-compression-level.description": "ファイルサイズと圧縮速度のバランスを取るように、レベルを調整できます。有効な値は0～9の間で、0が無圧縮、9で最大限の圧縮となります。 ",
+  "admin.config.share.zip-compression-level.description":
+    "ファイルサイズと圧縮速度のバランスを取るように、レベルを調整できます。有効な値は0～9の間で、0が無圧縮、9で最大限の圧縮となります。 ",
   "admin.config.share.chunk-size": "チャンクサイズ",
-  "admin.config.share.chunk-size.description": "インターネット接続に応じて、効率と信頼性のバランスをとるためにアップロードのチャンクサイズ (バイト単位) を調整します。チャンクを小さくすると、不安定な接続での成功率が向上し、チャンクを大きくすると、安定した接続でのアップロードが速くなります。",
+  "admin.config.share.chunk-size.description":
+    "インターネット接続に応じて、効率と信頼性のバランスをとるためにアップロードのチャンクサイズ (バイト単位) を調整します。チャンクを小さくすると、不安定な接続での成功率が向上し、チャンクを大きくすると、安定した接続でのアップロードが速くなります。",
   "admin.config.share.auto-open-share-modal": "共有モーダルを自動的に開く",
-  "admin.config.share.auto-open-share-modal.description": "ユーザーがファイルを選択すると、共有作成モーダルが自動的に表示されるため、手動でボタンをクリックする必要がありません。",
+  "admin.config.share.auto-open-share-modal.description":
+    "ユーザーがファイルを選択すると、共有作成モーダルが自動的に表示されるため、手動でボタンをクリックする必要がありません。",
   "admin.config.smtp.enabled": "有効",
-  "admin.config.smtp.enabled.description": "SMTPを有効にするかどうかを選択してください。SMTPサーバーのホスト名、ポート番号、電子メールアドレス、ユーザー名、パスワードが入力されている場合にのみ、有効にしてください。",
+  "admin.config.smtp.enabled.description":
+    "SMTPを有効にするかどうかを選択してください。SMTPサーバーのホスト名、ポート番号、電子メールアドレス、ユーザー名、パスワードが入力されている場合にのみ、有効にしてください。",
   "admin.config.smtp.host": "ホスト名",
   "admin.config.smtp.host.description": "SMTPサーバーのホスト名",
   "admin.config.smtp.port": "ポート番号",
@@ -359,83 +429,129 @@ export default {
   "admin.config.smtp.password": "パスワード",
   "admin.config.smtp.password.description": "SMTPサーバーのパスワード",
   "admin.config.smtp.button.test": "テストメールを送信",
-  "admin.config.smtp.allow-unauthorized-certificates": "許可されていない SMTP サーバー証明書を信頼します",
-  "admin.config.smtp.allow-unauthorized-certificates.description": "自己署名証明書を信頼する必要がある場合にのみ、これをtrueに設定してください。",
+  "admin.config.smtp.allow-unauthorized-certificates":
+    "許可されていない SMTP サーバー証明書を信頼します",
+  "admin.config.smtp.allow-unauthorized-certificates.description":
+    "自己署名証明書を信頼する必要がある場合にのみ、これをtrueに設定してください。",
   "admin.config.oauth.allow-registration": "登録を許可する",
-  "admin.config.oauth.allow-registration.description": "ユーザーにソーシャルアカウント経由での登録を許可します",
+  "admin.config.oauth.allow-registration.description":
+    "ユーザーにソーシャルアカウント経由での登録を許可します",
   "admin.config.oauth.ignore-totp": "二段階認証を無視する",
-  "admin.config.oauth.ignore-totp.description": "ソーシャルログイン時に二段階認証を無視するかどうかを設定します",
+  "admin.config.oauth.ignore-totp.description":
+    "ソーシャルログイン時に二段階認証を無視するかどうかを設定します",
   "admin.config.oauth.disable-password": "パスワードログインを無効にする",
-  "admin.config.oauth.disable-password.description": "パスワードログインを無効にするかどうか\nロックアウトされないように、この設定を有効にする前にOAuthプロバイダーが適切に設定されていることを確認してください。",
+  "admin.config.oauth.disable-password.description":
+    "パスワードログインを無効にするかどうか\nロックアウトされないように、この設定を有効にする前にOAuthプロバイダーが適切に設定されていることを確認してください。",
   "admin.config.oauth.github-enabled": "GitHub",
-  "admin.config.oauth.github-enabled.description": "GitHubアカウントを使用したログインを許可するかどうかを設定します",
+  "admin.config.oauth.github-enabled.description":
+    "GitHubアカウントを使用したログインを許可するかどうかを設定します",
   "admin.config.oauth.github-client-id": "GitHub クライアントID",
-  "admin.config.oauth.github-client-id.description": "GitHub OAuthアプリのクライアントID",
+  "admin.config.oauth.github-client-id.description":
+    "GitHub OAuthアプリのクライアントID",
   "admin.config.oauth.github-client-secret": "GitHub クライアントシークレット",
-  "admin.config.oauth.github-client-secret.description": "GitHub OAuthアプリのクライアントシークレット",
+  "admin.config.oauth.github-client-secret.description":
+    "GitHub OAuthアプリのクライアントシークレット",
   "admin.config.oauth.google-enabled": "Google",
-  "admin.config.oauth.google-enabled.description": "Googleアカウントを使用したログインを許可するかどうかを設定します",
+  "admin.config.oauth.google-enabled.description":
+    "Googleアカウントを使用したログインを許可するかどうかを設定します",
   "admin.config.oauth.google-client-id": "Google クライアントID",
-  "admin.config.oauth.google-client-id.description": "Google OAuthアプリのクライアントID",
+  "admin.config.oauth.google-client-id.description":
+    "Google OAuthアプリのクライアントID",
   "admin.config.oauth.google-client-secret": "Google クライアントシークレット",
-  "admin.config.oauth.google-client-secret.description": "Google OAuthアプリのクライアントシークレット",
+  "admin.config.oauth.google-client-secret.description":
+    "Google OAuthアプリのクライアントシークレット",
   "admin.config.oauth.microsoft-enabled": "Microsoft",
-  "admin.config.oauth.microsoft-enabled.description": "Microsoftアカウントを使用したログインを許可するかどうかを設定します",
+  "admin.config.oauth.microsoft-enabled.description":
+    "Microsoftアカウントを使用したログインを許可するかどうかを設定します",
   "admin.config.oauth.microsoft-tenant": "Microsoftテナント",
-  "admin.config.oauth.microsoft-tenant.description": "Microsoft OAuthアプリのテナントID\ncommon: 個人のMicrosoftアカウントとMicrosoft Entra IDの職場または学校のアカウントを持つユーザーは、アプリケーションにサインインできます。 \norganizations: Microsoft Entra IDからの職場または学校のアカウントを持つユーザーのみがアプリケーションにサインインできます。\nconsumers: 個人のMicrosoftアカウントを持つユーザーのみがアプリケーションにサインインできます。\nMicrosoft Entraテナントのドメイン名またはGUID形式のテナントID: 特定のMicrosoft Entraテナント (職場または学校のアカウントを持つディレクトリメンバーまたはパーソナルMicrosoftアカウントを持つディレクトリゲスト) からのユーザーのみがアプリケーションにサインインできます。",
+  "admin.config.oauth.microsoft-tenant.description":
+    "Microsoft OAuthアプリのテナントID\ncommon: 個人のMicrosoftアカウントとMicrosoft Entra IDの職場または学校のアカウントを持つユーザーは、アプリケーションにサインインできます。 \norganizations: Microsoft Entra IDからの職場または学校のアカウントを持つユーザーのみがアプリケーションにサインインできます。\nconsumers: 個人のMicrosoftアカウントを持つユーザーのみがアプリケーションにサインインできます。\nMicrosoft Entraテナントのドメイン名またはGUID形式のテナントID: 特定のMicrosoft Entraテナント (職場または学校のアカウントを持つディレクトリメンバーまたはパーソナルMicrosoftアカウントを持つディレクトリゲスト) からのユーザーのみがアプリケーションにサインインできます。",
   "admin.config.oauth.microsoft-client-id": "Microsoft クライアントID",
-  "admin.config.oauth.microsoft-client-id.description": "Microsoft OAuthアプリのクライアントID",
-  "admin.config.oauth.microsoft-client-secret": "Microsoft クライアントシークレット",
-  "admin.config.oauth.microsoft-client-secret.description": "Microsoft OAuthアプリのクライアントシークレット",
+  "admin.config.oauth.microsoft-client-id.description":
+    "Microsoft OAuthアプリのクライアントID",
+  "admin.config.oauth.microsoft-client-secret":
+    "Microsoft クライアントシークレット",
+  "admin.config.oauth.microsoft-client-secret.description":
+    "Microsoft OAuthアプリのクライアントシークレット",
   "admin.config.oauth.discord-enabled": "Discord",
-  "admin.config.oauth.discord-enabled.description": "Discordアカウントを使用したログインを許可するかどうかを設定します",
+  "admin.config.oauth.discord-enabled.description":
+    "Discordアカウントを使用したログインを許可するかどうかを設定します",
   "admin.config.oauth.discord-limited-users": "Discord限定ユーザー",
-  "admin.config.oauth.discord-limited-users.description": "Discord IDによって特定のユーザーのサインインを制限します。無効にするには空白のままにします。",
+  "admin.config.oauth.discord-limited-users.description":
+    "Discord IDによって特定のユーザーのサインインを制限します。無効にするには空白のままにします。",
   "admin.config.oauth.discord-limited-guild": "Discord限定サーバーID",
-  "admin.config.oauth.discord-limited-guild.description": "特定のサーバーのユーザーにサインインを制限します。無効にするには空白のままにしてください。",
+  "admin.config.oauth.discord-limited-guild.description":
+    "特定のサーバーのユーザーにサインインを制限します。無効にするには空白のままにしてください。",
   "admin.config.oauth.discord-client-id": "Discord クライアントID",
-  "admin.config.oauth.discord-client-id.description": "Discord OAuthアプリのクライアントID",
-  "admin.config.oauth.discord-client-secret": "Discord クライアントシークレット",
-  "admin.config.oauth.discord-client-secret.description": "Discord OAuthアプリのクライアントシークレット",
+  "admin.config.oauth.discord-client-id.description":
+    "Discord OAuthアプリのクライアントID",
+  "admin.config.oauth.discord-client-secret":
+    "Discord クライアントシークレット",
+  "admin.config.oauth.discord-client-secret.description":
+    "Discord OAuthアプリのクライアントシークレット",
   "admin.config.oauth.oidc-enabled": "OpenID Connect",
-  "admin.config.oauth.oidc-enabled.description": "OpenID Connect のログインが有効かを設定します",
+  "admin.config.oauth.oidc-enabled.description":
+    "OpenID Connect のログインが有効かを設定します",
   "admin.config.oauth.oidc-discovery-uri": "OpenID Connect Discovery URI",
-  "admin.config.oauth.oidc-discovery-uri.description": "OpenID OAuthアプリのDiscovery URI",
+  "admin.config.oauth.oidc-discovery-uri.description":
+    "OpenID OAuthアプリのDiscovery URI",
   "admin.config.oauth.oidc-sign-out": "OpenID Connectからサインアウト",
-  "admin.config.oauth.oidc-sign-out.description": "「サインアウト」ボタンがOpenID Connectプロバイダーからサインアウトするかどうか",
+  "admin.config.oauth.oidc-sign-out.description":
+    "「サインアウト」ボタンがOpenID Connectプロバイダーからサインアウトするかどうか",
   "admin.config.oauth.oidc-scope": "OpenID Connect scope",
-  "admin.config.oauth.oidc-scope.description": "Scopes which should be requested from the OpenID Connect provider.",
+  "admin.config.oauth.oidc-scope.description":
+    "Scopes which should be requested from the OpenID Connect provider.",
   "admin.config.oauth.oidc-username-claim": "OpenID Connect ユーザー名の要求",
-  "admin.config.oauth.oidc-username-claim.description": "OpenID Connect ID トークンのユーザー名要求。この設定が何かわからない場合は空白のままにしてください。",
+  "admin.config.oauth.oidc-username-claim.description":
+    "OpenID Connect ID トークンのユーザー名要求。この設定が何かわからない場合は空白のままにしてください。",
   "admin.config.oauth.oidc-role-path": "OpenID Connectトークンのロールへのパス",
-  "admin.config.oauth.oidc-role-path.description": "ロールの配列を参照する有効なJMESパスでなければなりません。" + "OpenID Connectのロールを使用してアクセス権を管理することは、他のIDプロバイダが設定されておらず、パスワードログインが無効になっている場合にのみ推奨されます。この構成がわからない場合は空白のままにしてください。" + "この設定が何であるか分からない場合は空白のままにしてください。",
-  "admin.config.oauth.oidc-role-general-access": "一般的なアクセスのためのOpenID Connectのロール",
-  "admin.config.oauth.oidc-role-general-access.description": "一般的なアクセスに必要なロール。ログインするユーザーのロールに存在する必要があります。 " + "この設定が何であるか分からない場合は空白のままにしてください。",
-  "admin.config.oauth.oidc-role-admin-access": "管理者アクセスのための OpenID Connectのロール",
-  "admin.config.oauth.oidc-role-admin-access.description": "管理者アクセスに必要なロール。管理パネルにアクセスするためには、ユーザのロールに存在する必要があります。" + "この設定が何であるか分からない場合は空白のままにしてください。",
+  "admin.config.oauth.oidc-role-path.description":
+    "ロールの配列を参照する有効なJMESパスでなければなりません。" +
+    "OpenID Connectのロールを使用してアクセス権を管理することは、他のIDプロバイダが設定されておらず、パスワードログインが無効になっている場合にのみ推奨されます。この構成がわからない場合は空白のままにしてください。" +
+    "この設定が何であるか分からない場合は空白のままにしてください。",
+  "admin.config.oauth.oidc-role-general-access":
+    "一般的なアクセスのためのOpenID Connectのロール",
+  "admin.config.oauth.oidc-role-general-access.description":
+    "一般的なアクセスに必要なロール。ログインするユーザーのロールに存在する必要があります。 " +
+    "この設定が何であるか分からない場合は空白のままにしてください。",
+  "admin.config.oauth.oidc-role-admin-access":
+    "管理者アクセスのための OpenID Connectのロール",
+  "admin.config.oauth.oidc-role-admin-access.description":
+    "管理者アクセスに必要なロール。管理パネルにアクセスするためには、ユーザのロールに存在する必要があります。" +
+    "この設定が何であるか分からない場合は空白のままにしてください。",
   "admin.config.oauth.oidc-client-id": "OpenID Connect クライアントID",
-  "admin.config.oauth.oidc-client-id.description": "OpenID Connect OAuth アプリのクライアント ID",
+  "admin.config.oauth.oidc-client-id.description":
+    "OpenID Connect OAuth アプリのクライアント ID",
   "admin.config.oauth.oidc-client-secret": "OpenID Connect Client secret",
-  "admin.config.oauth.oidc-client-secret.description": "OpenID Connect OAuthアプリのクライアントシークレット",
+  "admin.config.oauth.oidc-client-secret.description":
+    "OpenID Connect OAuthアプリのクライアントシークレット",
   "admin.config.category.ldap": "LDAP",
   "admin.config.ldap.enabled": "LDAPを有効化",
-  "admin.config.ldap.enabled.description": "ユーザーログインにLDAP認証を使用する",
+  "admin.config.ldap.enabled.description":
+    "ユーザーログインにLDAP認証を使用する",
   "admin.config.ldap.url": "サーバーURL",
   "admin.config.ldap.url.description": "LDAPサーバーのURL",
   "admin.config.ldap.bind-dn": "バインド DN",
-  "admin.config.ldap.bind-dn.description": "ユーザー検索を実行するために使用されるデフォルトのユーザー",
+  "admin.config.ldap.bind-dn.description":
+    "ユーザー検索を実行するために使用されるデフォルトのユーザー",
   "admin.config.ldap.bind-password": "パスワードをバインド",
-  "admin.config.ldap.bind-password.description": "ユーザー検索を実行するために使用するパスワード",
+  "admin.config.ldap.bind-password.description":
+    "ユーザー検索を実行するために使用するパスワード",
   "admin.config.ldap.search-base": "ユーザーベース",
-  "admin.config.ldap.search-base.description": "ユーザーの検索が実行されるベースの場所",
+  "admin.config.ldap.search-base.description":
+    "ユーザーの検索が実行されるベースの場所",
   "admin.config.ldap.search-query": "ユーザークエリ",
-  "admin.config.ldap.search-query.description": "ユーザークエリはLDAPユーザーの「ユーザーベース」を検索するために使用されます。 %username% は、入力されたユーザーのプレースホルダとして使用できます。",
+  "admin.config.ldap.search-query.description":
+    "ユーザークエリはLDAPユーザーの「ユーザーベース」を検索するために使用されます。 %username% は、入力されたユーザーのプレースホルダとして使用できます。",
   "admin.config.ldap.admin-groups": "管理者グループ",
-  "admin.config.ldap.admin-groups.description": "管理者アクセスに必要なグループです。",
+  "admin.config.ldap.admin-groups.description":
+    "管理者アクセスに必要なグループです。",
   "admin.config.ldap.field-name-member-of": "ユーザーグループ属性名",
-  "admin.config.ldap.field-name-member-of.description": "ユーザーがメンバーであるグループのLDAP属性名。これは、管理者グループを確認するときに使用されます。",
+  "admin.config.ldap.field-name-member-of.description":
+    "ユーザーがメンバーであるグループのLDAP属性名。これは、管理者グループを確認するときに使用されます。",
   "admin.config.ldap.field-name-email": "ユーザーのメール属性名",
-  "admin.config.ldap.field-name-email.description": "ユーザーのメールのLDAP属性名。",
+  "admin.config.ldap.field-name-email.description":
+    "ユーザーのメールのLDAP属性名。",
   // 404
   "404.description": "ページが見つかりません。",
   "404.button.home": "ホームに戻る",
@@ -445,15 +561,21 @@ export default {
   "error.button.back": "戻る",
   "error.msg.default": "問題が発生しました。",
   "error.msg.access_denied": "認証処理を中止しました、後で再度お試しください。",
-  "error.msg.expired_token": "認証処理に時間がかかりすぎています、後で再度お試しください。",
+  "error.msg.expired_token":
+    "認証処理に時間がかかりすぎています、後で再度お試しください。",
   "error.msg.invalid_token": "内部エラー",
   "error.msg.no_user": "この{0} アカウントにリンクしたユーザーが存在しません。",
-  "error.msg.no_email": "この{0} アカウントからメールアドレスを取得出来ません。",
-  "error.msg.already_linked": "この{0} アカウントは、既に別のアカウントにリンクされています。",
-  "error.msg.not_linked": "この{0}アカウントはまだどのアカウントにもリンクされていません。",
-  "error.msg.unverified_account": "この {0} アカウントは認証されていません。認証後にもう一度お試しください。",
+  "error.msg.no_email":
+    "この{0} アカウントからメールアドレスを取得出来ません。",
+  "error.msg.already_linked":
+    "この{0} アカウントは、既に別のアカウントにリンクされています。",
+  "error.msg.not_linked":
+    "この{0}アカウントはまだどのアカウントにもリンクされていません。",
+  "error.msg.unverified_account":
+    "この {0} アカウントは認証されていません。認証後にもう一度お試しください。",
   "error.msg.user_not_allowed": "サインインできません。",
-  "error.msg.cannot_get_user_info": "この{0}アカウントからユーザー情報を取得できません。",
+  "error.msg.cannot_get_user_info":
+    "この{0}アカウントからユーザー情報を取得できません。",
   "error.param.provider_github": "GitHub",
   "error.param.provider_google": "Google",
   "error.param.provider_microsoft": "Microsoft",
@@ -476,7 +598,7 @@ export default {
   "common.text.redirecting": "リダイレクトしています...",
   "common.button.go-back": "戻る",
   "common.button.go-home": "ホームに戻る",
-  "common.notify.copied": "リンクをクリップボードにコピーしました",
+  "common.notify.copied-link": "リンクをクリップボードにコピーしました",
   "common.success": "成功",
   "common.error": "エラー",
   "common.error.unknown": "不明なエラーが発生しました",
@@ -487,5 +609,5 @@ export default {
   "common.error.number-too-large": "最大で{max}である必要があります",
   "common.error.exact-length": "{length} 文字である必要があります",
   "common.error.invalid-number": "数字でなければなりません",
-  "common.error.field-required": "これは必須項目です"
+  "common.error.field-required": "これは必須項目です",
 };

@@ -26,7 +26,7 @@ const showEnableTotpModal = (
     qrCode: string;
     secret: string;
     password: string;
-  },
+  }
 ) => {
   const t = translateOutsideContext();
   return modals.openModal({
@@ -87,7 +87,7 @@ const CreateEnableTotpModal = ({
             <Button
               onClick={() => {
                 navigator.clipboard.writeText(options.secret);
-                toast.success("Copied to clipboard");
+                toast.success(t("common.notify.copied"));
               }}
             >
               {options.secret}

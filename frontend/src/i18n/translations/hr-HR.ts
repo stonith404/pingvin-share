@@ -670,7 +670,7 @@ export default {
   "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Go back",
   "common.button.go-home": "Go home",
-  "common.notify.copied": "Your link was copied to the clipboard",
+  "common.notify.copied-link": "Your link was copied to the clipboard",
   "common.success": "Success",
 
   "common.error": "Error",

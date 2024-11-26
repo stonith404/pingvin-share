@@ -12,13 +12,16 @@ export default {
   // END navbar
   // /
   "home.title": "منصة لمشاركة الملفات <h>باستضافة ذاتية</h>.",
-  "home.description": "أحقًا تريد تسليم ملفاتك الشخصية لطرف ثالث مثل WeTransfer؟",
+  "home.description":
+    "أحقًا تريد تسليم ملفاتك الشخصية لطرف ثالث مثل WeTransfer؟",
   "home.bullet.a.name": "استضافة ذاتية",
   "home.bullet.a.description": "قم باستضافة Pingvin Share على جهازك.",
   "home.bullet.b.name": "الخصوصية",
-  "home.bullet.b.description": "Your files are yours and will never be accessed by third parties.",
+  "home.bullet.b.description":
+    "Your files are yours and will never be accessed by third parties.",
   "home.bullet.c.name": "ليس هناك أية قيود على حجم الملفات",
-  "home.bullet.c.description": "Upload files as big as you want. Only your hard drive will be your limit.",
+  "home.bullet.c.description":
+    "Upload files as big as you want. Only your hard drive will be your limit.",
   "home.button.start": "ابدأ",
   "home.button.source": "النص البرمجي المصدري",
   // END /
@@ -58,12 +61,14 @@ export default {
   // /auth/reset-password
   "resetPassword.title": "نسيت كلمة سرّك؟",
   "resetPassword.description": "اكتب بريدك لتعيد تعيين كلمة السر.",
-  "resetPassword.notify.success": "A message with a link to reset your password has been sent if the provided email exists.",
+  "resetPassword.notify.success":
+    "A message with a link to reset your password has been sent if the provided email exists.",
   "resetPassword.button.back": "العودة لصفحة تسجيل الدخول",
   "resetPassword.text.resetPassword": "إعادة تعيين كلمة السر",
   "resetPassword.text.enterNewPassword": "أدخل كلمة السر الجديدة",
   "resetPassword.input.password": "كلمة السر الجديدة",
-  "resetPassword.notify.passwordReset": "Your password has been successfully reset.",
+  "resetPassword.notify.passwordReset":
+    "Your password has been successfully reset.",
   // /account
   "account.title": "حسابي",
   "account.card.info.title": "معلومات الحساب",
@@ -73,7 +78,8 @@ export default {
   "account.card.password.title": "كلمة السر",
   "account.card.password.old": "كلمة السر القديمة",
   "account.card.password.new": "كلمة السر الجديدة",
-  "account.card.password.noPasswordSet": "You do not have a password set. To sign in using your email and password, you need to create a password.",
+  "account.card.password.noPasswordSet":
+    "You do not have a password set. To sign in using your email and password, you need to create a password.",
   "account.notify.password.success": "غيرت كلمة السر بنجاح",
   "account.card.oauth.title": "الدخول بحساب تواصل اجتماعي",
   "account.card.oauth.github": "GitHub",
@@ -85,11 +91,14 @@ export default {
   "account.card.oauth.unlink": "فك الربط",
   "account.card.oauth.unlinked": "تم فك الربط",
   "account.modal.unlink.title": "فك ربط الحساب",
-  "account.modal.unlink.description": "Unlinking your social accounts may cause you to lose your account if you don't remember your login credentials",
+  "account.modal.unlink.description":
+    "Unlinking your social accounts may cause you to lose your account if you don't remember your login credentials",
   "account.notify.oauth.unlinked.success": "تم فك الربط بنجاح",
   "account.card.security.title": "الأمان",
-  "account.card.security.totp.enable.description": "اكتب كلمة سرّك لبدء تمكين TOTP",
-  "account.card.security.totp.disable.description": "اكتب كلمة سرّك لتعطيل TOTP",
+  "account.card.security.totp.enable.description":
+    "اكتب كلمة سرّك لبدء تمكين TOTP",
+  "account.card.security.totp.disable.description":
+    "اكتب كلمة سرّك لتعطيل TOTP",
   "account.card.security.totp.button.start": "ابدأ",
   "account.modal.totp.title": "تمكين TOTP",
   "account.modal.totp.step1": "الخطوة 1: أضف تطبيق المصادقة",
@@ -101,7 +110,8 @@ export default {
   "account.notify.totp.disable": "تم تعطيل TOTP بنجاح",
   "account.notify.totp.enable": "تم تمكين TOTP بنجاح",
   "account.card.language.title": "اللغة",
-  "account.card.language.description": "يقوم المجتمع بترجمة هذا المشروع. ربما بعض اللغات لم تكتمل ترجمتها بعد.",
+  "account.card.language.description":
+    "يقوم المجتمع بترجمة هذا المشروع. ربما بعض اللغات لم تكتمل ترجمتها بعد.",
   "account.card.color.title": "نظام الألوان",
   // ThemeSwitcher.tsx
   "account.theme.dark": "داكن",
@@ -109,7 +119,8 @@ export default {
   "account.theme.system": "حسب النظام",
   "account.button.delete": "حذف الحساب",
   "account.modal.delete.title": "حذف الحساب",
-  "account.modal.delete.description": "هل تريد حقاً حذف حسابك بما في ذلك جميع مشاركاتك النشطة؟",
+  "account.modal.delete.description":
+    "هل تريد حقاً حذف حسابك بما في ذلك جميع مشاركاتك النشطة؟",
   // END /account
   // /account/shares
   "account.shares.title": "مشاركاتي",
@@ -131,7 +142,8 @@ export default {
   // END /account/shares
   // /account/reverseShares
   "account.reverseShares.title": "المشاركات العكسية",
-  "account.reverseShares.description": "تسمح لك المشاركة العكسية بإنشاء رابط فريد يسمح للمستخدمين الخارجيين بإنشاء مشاركة.",
+  "account.reverseShares.description":
+    "تسمح لك المشاركة العكسية بإنشاء رابط فريد يسمح للمستخدمين الخارجيين بإنشاء مشاركة.",
   "account.reverseShares.title.empty": "المكان خالٍ هنا 👀",
   "account.reverseShares.description.empty": "ليس لديك أي مشاركات عكسية.",
   // showCreateReverseShareModal.tsx
@@ -151,15 +163,21 @@ export default {
   "account.reverseShares.modal.expiration.year-plural": "سنوات",
   "account.reverseShares.modal.max-size.label": "الحد الأقصى لحجم المشاركة",
   "account.reverseShares.modal.send-email": "Send email notifications",
-  "account.reverseShares.modal.send-email.description": "Sends you an email notification when a share is created with this reverse share link.",
+  "account.reverseShares.modal.send-email.description":
+    "Sends you an email notification when a share is created with this reverse share link.",
   "account.reverseShares.modal.simplified": "Simple mode",
-  "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will only be able to customize the name and description of the share.",
+  "account.reverseShares.modal.simplified.description":
+    "Make it easy for the person uploading the file to share it with you. They will only be able to customize the name and description of the share.",
   "account.reverseShares.modal.public-access": "Public access",
-  "account.reverseShares.modal.public-access.description": "Make the shares created with this reverse share public. If disabled, only you and the share creator will have access to view it.",
+  "account.reverseShares.modal.public-access.description":
+    "Make the shares created with this reverse share public. If disabled, only you and the share creator will have access to view it.",
   "account.reverseShares.modal.max-use.label": "الحد الأقصى لعدد الاستخدامات",
-  "account.reverseShares.modal.max-use.description": "أقصى عدد من المرّات التي يمكن فيها استخدام هذا الرابط لإنشاء مشاركة.",
-  "account.reverseShare.never-expires": "لن تنتهي صلاحية هذه المشاركة العكسية أبدًا.",
-  "account.reverseShare.expires-on": "هذه المشاركة العكسية ستنتهي صلاحيتها في {expiration}.",
+  "account.reverseShares.modal.max-use.description":
+    "أقصى عدد من المرّات التي يمكن فيها استخدام هذا الرابط لإنشاء مشاركة.",
+  "account.reverseShare.never-expires":
+    "لن تنتهي صلاحية هذه المشاركة العكسية أبدًا.",
+  "account.reverseShare.expires-on":
+    "هذه المشاركة العكسية ستنتهي صلاحيتها في {expiration}.",
   "account.reverseShares.table.no-shares": "لم يتم إنشاء أي مشاركة بعد",
   "account.reverseShares.table.count.singular": "مشاركة",
   "account.reverseShares.table.count.plural": "مشاركات",
@@ -169,7 +187,8 @@ export default {
   "account.reverseShares.table.expires": "تاريخ انتهاء الصلاحية",
   "account.reverseShares.modal.reverse-share-link": "رابط المشاركة العكسية",
   "account.reverseShares.modal.delete.title": "حذف المشاركة العكسية",
-  "account.reverseShares.modal.delete.description": "هل تريد حقاً حذف هذه المشاركة العكسية؟ إذا قمت بذلك، فسيتم حذف المشاركات المرتبطة بها أيضاً.",
+  "account.reverseShares.modal.delete.description":
+    "هل تريد حقاً حذف هذه المشاركة العكسية؟ إذا قمت بذلك، فسيتم حذف المشاركات المرتبطة بها أيضاً.",
   // END /account/reverseShares
   // /admin
   "admin.title": "الإدارة",
@@ -190,16 +209,19 @@ export default {
   "admin.users.edit.update.change-password.button": "حفظ كلمة السر الجديدة",
   "admin.users.edit.update.notify.password.success": "غيرت كلمة السر بنجاح",
   "admin.users.edit.delete.title": "Delete user: {username} ?",
-  "admin.users.edit.delete.description": "Do you really want to delete this user and all their shares?",
+  "admin.users.edit.delete.description":
+    "Do you really want to delete this user and all their shares?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "أنشئ مستخدمًا",
   "admin.users.modal.create.username": "اسم المستخدم",
   "admin.users.modal.create.email": "البريد",
   "admin.users.modal.create.password": "كلمة السر",
   "admin.users.modal.create.manual-password": "تعيين كلمة السر يدوياً",
-  "admin.users.modal.create.manual-password.description": "بدون هذا الخيار، سيتلقى المستخدم رسالة بريد إلكتروني فيها رابط لتعيين كلمة السر الخاصة به.",
+  "admin.users.modal.create.manual-password.description":
+    "بدون هذا الخيار، سيتلقى المستخدم رسالة بريد إلكتروني فيها رابط لتعيين كلمة السر الخاصة به.",
   "admin.users.modal.create.admin": "صلاحيات المدير",
-  "admin.users.modal.create.admin.description": "مع هذا الخيار، سيتمكن المستخدم من الدخول إلى لوحة الإدارة.",
+  "admin.users.modal.create.admin.description":
+    "مع هذا الخيار، سيتمكن المستخدم من الدخول إلى لوحة الإدارة.",
   // END /admin/users
   // /admin/shares
   "admin.shares.title": "إدارة المشاركة",
@@ -212,27 +234,34 @@ export default {
   // END /admin/shares
   // /upload
   "upload.title": "رفع",
-  "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
+  "upload.notify.confirm-leave":
+    "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error": "حدث خطأ أثناء إنهاء مشاركتك.",
   "upload.notify.count-failed": "فشل رفع {count} ملفات. تجري المحاولة مجددًا.",
   "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
-  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
+  "upload.reverse-share.error.invalid.description":
+    "This reverse share has expired or is invalid.",
   // Dropzone.tsx
   "upload.dropzone.title": "رفع الملفات",
-  "upload.dropzone.description": "Drag'n'drop files here to start your share. We only accept files up to {maxSize} in total.",
-  "upload.dropzone.notify.file-too-big": "تتجاوز ملفاتك الحجم الأقصى للمشاركة والذي هو {maxSize}.",
+  "upload.dropzone.description":
+    "Drag'n'drop files here to start your share. We only accept files up to {maxSize} in total.",
+  "upload.dropzone.notify.file-too-big":
+    "تتجاوز ملفاتك الحجم الأقصى للمشاركة والذي هو {maxSize}.",
   // FileList.tsx
   "upload.filelist.name": "الاسم",
   "upload.filelist.size": "الحجم",
   // showCreateUploadModal.tsx
   "upload.modal.title": "إنشاء مشاركة",
-  "upload.modal.link.error.invalid": "يمكن أن يحتوي فقط على الأحرف والأرقام والشرطات السفلية والواصلات",
+  "upload.modal.link.error.invalid":
+    "يمكن أن يحتوي فقط على الأحرف والأرقام والشرطات السفلية والواصلات",
   "upload.modal.link.error.taken": "هذا الرابط مستخدم مسبقاً",
   "upload.modal.not-signed-in": "لم تقم بتسجيل الدخول",
-  "upload.modal.not-signed-in-description": "لن تتمكن من حذف مشاركتك يدوياً أو عرض عدد الزوار.",
+  "upload.modal.not-signed-in-description":
+    "لن تتمكن من حذف مشاركتك يدوياً أو عرض عدد الزوار.",
   "upload.modal.expires.never": "أبدًا",
   "upload.modal.expires.never-long": "Permanent share",
-  "upload.modal.expires.error.too-long": "Expiration date exceeds the maximum of {max}.",
+  "upload.modal.expires.error.too-long":
+    "Expiration date exceeds the maximum of {max}.",
   "upload.modal.link.label": "الرابط",
   "upload.modal.expires.label": "انتهاء الصلاحية",
   "upload.modal.expires.minute-singular": "دقيقة",
@@ -249,7 +278,8 @@ export default {
   "upload.modal.expires.year-plural": "سنوات",
   "upload.modal.accordion.name-and-description.title": "الاسم والوصف",
   "upload.modal.accordion.name-and-description.name.placeholder": "الاسم",
-  "upload.modal.accordion.name-and-description.description.placeholder": "ملاحظة لمستقبلي هذه المشاركة",
+  "upload.modal.accordion.name-and-description.description.placeholder":
+    "ملاحظة لمستقبلي هذه المشاركة",
   "upload.modal.accordion.email.title": "مستلمو البريد الإلكتروني",
   "upload.modal.accordion.email.placeholder": "أدخل مستلمي البريد",
   "upload.modal.accordion.email.invalid-email": "عنوان البريد غير صحيح",
@@ -260,31 +290,38 @@ export default {
   "upload.modal.accordion.security.max-views.placeholder": "لا يوجد حد",
   // showCompletedUploadModal.tsx
   "upload.modal.completed.never-expires": "لن تنتهي صلاحية هذه المشاركة أبدًا.",
-  "upload.modal.completed.expires-on": "هذه المشاركة ستنتهي صلاحيتها في {expiration}.",
+  "upload.modal.completed.expires-on":
+    "هذه المشاركة ستنتهي صلاحيتها في {expiration}.",
   "upload.modal.completed.share-ready": "المشاركة جاهزة",
-  "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
+  "upload.modal.completed.notified-reverse-share-creator":
+    "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
   // END /upload
   // /share/[id]
   "share.title": "المشاركة {shareId}",
   "share.description": "انظر ما الذي شاركته معك!",
   "share.error.visitor-limit-exceeded.title": "تم تجاوز حد المشاهدات",
-  "share.error.visitor-limit-exceeded.description": "تم تجاوز الحد الأقصى لزوار هذه المشاركة.",
+  "share.error.visitor-limit-exceeded.description":
+    "تم تجاوز الحد الأقصى لزوار هذه المشاركة.",
   "share.error.removed.title": "تمت إزالة المشاركة",
   "share.error.not-found.title": "المشاركة غير موجودة",
   "share.error.not-found.description": "المشاركة التي تبحث عنها غير موجودة.",
   "share.error.access-denied.title": "Private share",
-  "share.error.access-denied.description": "The current account does not have permission to access this share",
+  "share.error.access-denied.description":
+    "The current account does not have permission to access this share",
   "share.modal.password.title": "كلمة السر مطلوبة",
-  "share.modal.password.description": "Please enter the password to acces this share.",
+  "share.modal.password.description":
+    "Please enter the password to acces this share.",
   "share.modal.password": "كلمة السر",
   "share.modal.error.invalid-password": "كلمة السر غير صحيحة",
   "share.button.download-all": "تنزيل الكل",
-  "share.notify.download-all-preparing": "The share is being prepared. Please try again in a few minutes.",
+  "share.notify.download-all-preparing":
+    "The share is being prepared. Please try again in a few minutes.",
   "share.modal.file-link": "رابط الملف",
   "share.table.name": "الاسم",
   "share.table.size": "الحجم",
   "share.modal.file-preview.error.not-supported.title": "المعاينة غير مدعومة",
-  "share.modal.file-preview.error.not-supported.description": "Previews are not supported for this type of files. Please download the file to view it.",
+  "share.modal.file-preview.error.not-supported.description":
+    "Previews are not supported for this type of files. Please download the file to view it.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "تحرير {shareId}",
@@ -302,140 +339,211 @@ export default {
   "admin.config.general.app-name": "اسم التطبيق",
   "admin.config.general.app-name.description": "اسم التطبيق",
   "admin.config.general.app-url": "رابط التطبيق",
-  "admin.config.general.app-url.description": "الرابط الذي تكون مشاركة Pingvin صالحة عليه",
+  "admin.config.general.app-url.description":
+    "الرابط الذي تكون مشاركة Pingvin صالحة عليه",
   "admin.config.general.secure-cookies": "Secure cookies",
-  "admin.config.general.secure-cookies.description": "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
+  "admin.config.general.secure-cookies.description":
+    "Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.",
   "admin.config.general.show-home-page": "إظهار الصفحة الرئيسية",
-  "admin.config.general.show-home-page.description": "تحديد ما إذا كان سيتم عرض الصفحة الرئيسية",
+  "admin.config.general.show-home-page.description":
+    "تحديد ما إذا كان سيتم عرض الصفحة الرئيسية",
   "admin.config.general.session-duration": "مدة الجلسة",
-  "admin.config.general.session-duration.description": "الوقت بالساعات الذي يجب على المستخدم بعده إعادة تسجيل الدخول (الافتراضي: 3 أشهر).",
+  "admin.config.general.session-duration.description":
+    "الوقت بالساعات الذي يجب على المستخدم بعده إعادة تسجيل الدخول (الافتراضي: 3 أشهر).",
   "admin.config.general.logo": "الشعار",
-  "admin.config.general.logo.description": "يمكنك تغيير شعارك عن طريق تحميل صورة جديدة. يجب أن تكون الصورة PNG ويجب أن يكون تنسيقها 1:1.",
+  "admin.config.general.logo.description":
+    "يمكنك تغيير شعارك عن طريق تحميل صورة جديدة. يجب أن تكون الصورة PNG ويجب أن يكون تنسيقها 1:1.",
   "admin.config.general.logo.placeholder": "اختر صورة",
-  "admin.config.email.enable-share-email-recipients": "Enable email recipient sharing",
-  "admin.config.email.enable-share-email-recipients.description": "Whether to allow email sharing with recipients. Only enable this if SMTP is activated.",
-  "admin.config.email.share-recipients-subject": "عنوان الرسالة لمستلمي المشاركة",
-  "admin.config.email.share-recipients-subject.description": "عنوان البريد الذي سيُرسَل لمستقبِلي المشاركة.",
+  "admin.config.email.enable-share-email-recipients":
+    "Enable email recipient sharing",
+  "admin.config.email.enable-share-email-recipients.description":
+    "Whether to allow email sharing with recipients. Only enable this if SMTP is activated.",
+  "admin.config.email.share-recipients-subject":
+    "عنوان الرسالة لمستلمي المشاركة",
+  "admin.config.email.share-recipients-subject.description":
+    "عنوان البريد الذي سيُرسَل لمستقبِلي المشاركة.",
   "admin.config.email.share-recipients-message": "رسالتك لمستقبِلي المشاركة",
-  "admin.config.email.share-recipients-message.description": "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {creatorEmail} - The email of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n These variables will be replaced with the actual value.",
+  "admin.config.email.share-recipients-message.description":
+    "Message which gets sent to the share recipients. Available variables:\n {creator} - The username of the creator of the share\n {creatorEmail} - The email of the creator of the share\n {shareUrl} - The URL of the share\n {desc} - The description of the share\n {expires} - The expiration date of the share\n These variables will be replaced with the actual value.",
   "admin.config.email.reverse-share-subject": "عنوان المشاركة العكسية",
-  "admin.config.email.reverse-share-subject.description": "Subject of the sent email when someone created a share with your reverse share link.",
+  "admin.config.email.reverse-share-subject.description":
+    "Subject of the sent email when someone created a share with your reverse share link.",
   "admin.config.email.reverse-share-message": "رسالة المشاركة العكسية",
-  "admin.config.email.reverse-share-message.description": "الرسالة التي ستُرسل عندما يُنشئ شخص ما مشاركة باستخدام رابط المشاركة الخاص بك. سيُوضع اسم المُنشِئ ورابط المشاركة مكان {shareUrl}.",
+  "admin.config.email.reverse-share-message.description":
+    "الرسالة التي ستُرسل عندما يُنشئ شخص ما مشاركة باستخدام رابط المشاركة الخاص بك. سيُوضع اسم المُنشِئ ورابط المشاركة مكان {shareUrl}.",
   "admin.config.email.reset-password-subject": "رسالة إعادة تعيين كلمة السر",
-  "admin.config.email.reset-password-subject.description": "Subject of the sent email when a user requests a password reset.",
+  "admin.config.email.reset-password-subject.description":
+    "Subject of the sent email when a user requests a password reset.",
   "admin.config.email.reset-password-message": "رسالة إعادة تعيين كلمة السر",
-  "admin.config.email.reset-password-message.description": "الرسالة التي ستُرسل عندما يطلب المستخدم إعادة تعيين كلمة سرّه. سيُوضع رابط إعادة تعيين كلمة السر مكان {url}.",
+  "admin.config.email.reset-password-message.description":
+    "الرسالة التي ستُرسل عندما يطلب المستخدم إعادة تعيين كلمة سرّه. سيُوضع رابط إعادة تعيين كلمة السر مكان {url}.",
   "admin.config.email.invite-subject": "عنوان الدعوة",
-  "admin.config.email.invite-subject.description": "Subject of the sent email when an admin invites a user.",
+  "admin.config.email.invite-subject.description":
+    "Subject of the sent email when an admin invites a user.",
   "admin.config.email.invite-message": "رسالة الدعوة",
-  "admin.config.email.invite-message.description": "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the users password.",
+  "admin.config.email.invite-message.description":
+    "Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the users password.",
   "admin.config.share.allow-registration": "السماح بالتسجيل",
   "admin.config.share.allow-registration.description": "إتاحة تسجيل حساب جديد",
-  "admin.config.share.allow-unauthenticated-shares": "السماح بالمشاركات غير المصادق عليها",
-  "admin.config.share.allow-unauthenticated-shares.description": "إتاحة إنشاء المشاركات للمستخدمين غير الموثقين",
+  "admin.config.share.allow-unauthenticated-shares":
+    "السماح بالمشاركات غير المصادق عليها",
+  "admin.config.share.allow-unauthenticated-shares.description":
+    "إتاحة إنشاء المشاركات للمستخدمين غير الموثقين",
   "admin.config.share.max-expiration": "أبعد زمن لانتهاء الصلاحية",
-  "admin.config.share.max-expiration.description": "أطول زمن لانتهاء صلاحية المشاركات بالساعات. الصفر يعني أن المشاركة لن تنتهي صلاحيتها.",
+  "admin.config.share.max-expiration.description":
+    "أطول زمن لانتهاء صلاحية المشاركات بالساعات. الصفر يعني أن المشاركة لن تنتهي صلاحيتها.",
   "admin.config.share.share-id-length": "Default share ID length",
-  "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
+  "admin.config.share.share-id-length.description":
+    "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "أكبر حجم",
   "admin.config.share.max-size.description": "أكبر حجم للمشاركة مقيسًا بالبايت",
   "admin.config.share.zip-compression-level": "مستوى ضغط الZip",
-  "admin.config.share.zip-compression-level.description": "ضبط الميزان بين حجم الملف وسرعة الضغط. يمكنك إدخال قيم بين 0 إلى 9، حيث 0 تعني بدون ضغط و9 تعني أقصى ضغط. ",
+  "admin.config.share.zip-compression-level.description":
+    "ضبط الميزان بين حجم الملف وسرعة الضغط. يمكنك إدخال قيم بين 0 إلى 9، حيث 0 تعني بدون ضغط و9 تعني أقصى ضغط. ",
   "admin.config.share.chunk-size": "حجم القطعة",
-  "admin.config.share.chunk-size.description": "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks make uploads faster for stable connections.",
+  "admin.config.share.chunk-size.description":
+    "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks make uploads faster for stable connections.",
   "admin.config.share.auto-open-share-modal": "Auto open create share modal",
-  "admin.config.share.auto-open-share-modal.description": "The share creation modal automatically appears when a user selects files, eliminating the need to manually click the button.",
+  "admin.config.share.auto-open-share-modal.description":
+    "The share creation modal automatically appears when a user selects files, eliminating the need to manually click the button.",
   "admin.config.smtp.enabled": "Enable",
-  "admin.config.smtp.enabled.description": "تفعيل الـSMTP. لا تفعّله إلا إذا قمت بإدخال المضيف، والمنفذ، والبريد الإلكتروني، واسم المستخدم، وكلمة السر لخادم الـSMTP.",
+  "admin.config.smtp.enabled.description":
+    "تفعيل الـSMTP. لا تفعّله إلا إذا قمت بإدخال المضيف، والمنفذ، والبريد الإلكتروني، واسم المستخدم، وكلمة السر لخادم الـSMTP.",
   "admin.config.smtp.host": "المُضيف",
   "admin.config.smtp.host.description": "مضيف خادم الـSMTP",
   "admin.config.smtp.port": "المنفذ",
   "admin.config.smtp.port.description": "منفذ خادم الـSMTP",
   "admin.config.smtp.email": "البريد الإلكتروني",
-  "admin.config.smtp.email.description": "Email address from wich the emails get sent",
+  "admin.config.smtp.email.description":
+    "Email address from wich the emails get sent",
   "admin.config.smtp.username": "اسم المستخدم",
   "admin.config.smtp.username.description": "اسم المستخدم لخادم الـSMTP",
   "admin.config.smtp.password": "كلمة السر",
   "admin.config.smtp.password.description": "كلمة السر لخادم الـSMTP",
   "admin.config.smtp.button.test": "إرسال رسالة بريد تجريبية",
-  "admin.config.smtp.allow-unauthorized-certificates": "Trust unauthorized SMTP server certificates",
-  "admin.config.smtp.allow-unauthorized-certificates.description": "Only set this to true if you need to trust self signed certificates.",
+  "admin.config.smtp.allow-unauthorized-certificates":
+    "Trust unauthorized SMTP server certificates",
+  "admin.config.smtp.allow-unauthorized-certificates.description":
+    "Only set this to true if you need to trust self signed certificates.",
   "admin.config.oauth.allow-registration": "السماح بتسجيل الحسابات الجديدة",
-  "admin.config.oauth.allow-registration.description": "السماح للمستخدمين بالدخول بواسطة حساباتهم الاجتماعية",
+  "admin.config.oauth.allow-registration.description":
+    "السماح للمستخدمين بالدخول بواسطة حساباتهم الاجتماعية",
   "admin.config.oauth.ignore-totp": "تجاهل TOTP",
-  "admin.config.oauth.ignore-totp.description": "تجاهل TOTP إذا دخل المستخدم بحسابه الاجتماعي",
-  "admin.config.oauth.disable-password": "تعطيل تسجيل الدخول باستخدام كلمة السر",
-  "admin.config.oauth.disable-password.description": "Whether to disable password login\nMake sure that an OAuth provider is properly configured before activating this configuration to avoid being locked out.",
+  "admin.config.oauth.ignore-totp.description":
+    "تجاهل TOTP إذا دخل المستخدم بحسابه الاجتماعي",
+  "admin.config.oauth.disable-password":
+    "تعطيل تسجيل الدخول باستخدام كلمة السر",
+  "admin.config.oauth.disable-password.description":
+    "Whether to disable password login\nMake sure that an OAuth provider is properly configured before activating this configuration to avoid being locked out.",
   "admin.config.oauth.github-enabled": "GitHub",
-  "admin.config.oauth.github-enabled.description": "تفعيل خيار الدخول بحساب GitHub",
+  "admin.config.oauth.github-enabled.description":
+    "تفعيل خيار الدخول بحساب GitHub",
   "admin.config.oauth.github-client-id": "GitHub Client ID",
-  "admin.config.oauth.github-client-id.description": "معرف العميل لتطبيق GitHub OAuth",
+  "admin.config.oauth.github-client-id.description":
+    "معرف العميل لتطبيق GitHub OAuth",
   "admin.config.oauth.github-client-secret": "الرمز السرّي لـGitHub Client",
-  "admin.config.oauth.github-client-secret.description": "الرّمز السرّي للعميل لتطبيق GitHub OAuth",
+  "admin.config.oauth.github-client-secret.description":
+    "الرّمز السرّي للعميل لتطبيق GitHub OAuth",
   "admin.config.oauth.google-enabled": "Google",
-  "admin.config.oauth.google-enabled.description": "تفعيل خيار الدخول بحساب Google",
+  "admin.config.oauth.google-enabled.description":
+    "تفعيل خيار الدخول بحساب Google",
   "admin.config.oauth.google-client-id": "Google Client ID",
-  "admin.config.oauth.google-client-id.description": "معرف العميل لتطبيق Google OAuth",
+  "admin.config.oauth.google-client-id.description":
+    "معرف العميل لتطبيق Google OAuth",
   "admin.config.oauth.google-client-secret": "الرمز السرّي لـ Google Client",
-  "admin.config.oauth.google-client-secret.description": "الرّمز السرّي للعميل لتطبيق Google OAuth",
+  "admin.config.oauth.google-client-secret.description":
+    "الرّمز السرّي للعميل لتطبيق Google OAuth",
   "admin.config.oauth.microsoft-enabled": "Microsoft",
-  "admin.config.oauth.microsoft-enabled.description": "تفعيل خيار الدخول بحساب Microsoft",
+  "admin.config.oauth.microsoft-enabled.description":
+    "تفعيل خيار الدخول بحساب Microsoft",
   "admin.config.oauth.microsoft-tenant": "Microsoft Tenant",
-  "admin.config.oauth.microsoft-tenant.description": "معرف Tenant لتطبيق مايكروسوفت OAuth\nالشائع: يمكن للمستخدمين الذين لديهم حساب مايكروسوفت شخصي وحساب عمل أو مدرسة من معرف Microsoft Entra أن يسجلوا الدخول إلى التطبيق. بالنسبة المؤسسات: يمكن فقط للمستخدمين الذين لديهم حسابات عمل أو مدرسة من Microsoft Entra ID تسجيل الدخول إلى التطبيق.\nالمستهلكين: يمكن فقط للمستخدمين الذين لديهم حساب مايكروسوفت الشخصي تسجيل الدخول إلى التطبيق.\nاسم نطاق مستأجر Microsoft Entra أو معرف المستأجر بتنسيق GUID: يمكن فقط للمستخدمين من مستأجر Microsoft Entra محدد (أعضاء الإدارة الذين لديهم حساب عمل أو مدرسة أو ضيوف الإدارة الذين لديهم حساب شخصي لمايكروسوفت) تسجيل الدخول إلى التطبيق.",
+  "admin.config.oauth.microsoft-tenant.description":
+    "معرف Tenant لتطبيق مايكروسوفت OAuth\nالشائع: يمكن للمستخدمين الذين لديهم حساب مايكروسوفت شخصي وحساب عمل أو مدرسة من معرف Microsoft Entra أن يسجلوا الدخول إلى التطبيق. بالنسبة المؤسسات: يمكن فقط للمستخدمين الذين لديهم حسابات عمل أو مدرسة من Microsoft Entra ID تسجيل الدخول إلى التطبيق.\nالمستهلكين: يمكن فقط للمستخدمين الذين لديهم حساب مايكروسوفت الشخصي تسجيل الدخول إلى التطبيق.\nاسم نطاق مستأجر Microsoft Entra أو معرف المستأجر بتنسيق GUID: يمكن فقط للمستخدمين من مستأجر Microsoft Entra محدد (أعضاء الإدارة الذين لديهم حساب عمل أو مدرسة أو ضيوف الإدارة الذين لديهم حساب شخصي لمايكروسوفت) تسجيل الدخول إلى التطبيق.",
   "admin.config.oauth.microsoft-client-id": "Microsoft Client ID",
-  "admin.config.oauth.microsoft-client-id.description": "معرف العميل لتطبيق Microsoft OAuth",
-  "admin.config.oauth.microsoft-client-secret": "الرمز السرّي لـMicrosoft Client",
-  "admin.config.oauth.microsoft-client-secret.description": "الرّمز السرّي للعميل لتطبيق Microsoft OAuth",
+  "admin.config.oauth.microsoft-client-id.description":
+    "معرف العميل لتطبيق Microsoft OAuth",
+  "admin.config.oauth.microsoft-client-secret":
+    "الرمز السرّي لـMicrosoft Client",
+  "admin.config.oauth.microsoft-client-secret.description":
+    "الرّمز السرّي للعميل لتطبيق Microsoft OAuth",
   "admin.config.oauth.discord-enabled": "Discord",
-  "admin.config.oauth.discord-enabled.description": "تفعيل خيار الدخول بحساب Discord",
+  "admin.config.oauth.discord-enabled.description":
+    "تفعيل خيار الدخول بحساب Discord",
   "admin.config.oauth.discord-limited-users": "Discord limited users",
-  "admin.config.oauth.discord-limited-users.description": "Limit signing in to specific users by their Discord ID. Leave it blank to disable.",
+  "admin.config.oauth.discord-limited-users.description":
+    "Limit signing in to specific users by their Discord ID. Leave it blank to disable.",
   "admin.config.oauth.discord-limited-guild": "مُعرِّف خادم Discord المحدود",
-  "admin.config.oauth.discord-limited-guild.description": "حصر تسجيل الدخول على المستخدمين الموجودين في خادم محدّد. اترك هذا الخيار فارغًا لتعطيله.",
+  "admin.config.oauth.discord-limited-guild.description":
+    "حصر تسجيل الدخول على المستخدمين الموجودين في خادم محدّد. اترك هذا الخيار فارغًا لتعطيله.",
   "admin.config.oauth.discord-client-id": "Discord Client ID",
-  "admin.config.oauth.discord-client-id.description": "معرف العميل لتطبيق Discord OAuth",
+  "admin.config.oauth.discord-client-id.description":
+    "معرف العميل لتطبيق Discord OAuth",
   "admin.config.oauth.discord-client-secret": "الرمز السرّي لـDiscord Client",
-  "admin.config.oauth.discord-client-secret.description": "الرّمز السرّي للعميل لتطبيق Discord OAuth",
+  "admin.config.oauth.discord-client-secret.description":
+    "الرّمز السرّي للعميل لتطبيق Discord OAuth",
   "admin.config.oauth.oidc-enabled": "OpenID Connect",
-  "admin.config.oauth.oidc-enabled.description": "تفعيل الدخول باستخدام OpenID Connect",
+  "admin.config.oauth.oidc-enabled.description":
+    "تفعيل الدخول باستخدام OpenID Connect",
   "admin.config.oauth.oidc-discovery-uri": "OpenID Connect Discovery URI",
-  "admin.config.oauth.oidc-discovery-uri.description": "رابط الاستكشاف لتطبيق OpenID Connect OAuth",
+  "admin.config.oauth.oidc-discovery-uri.description":
+    "رابط الاستكشاف لتطبيق OpenID Connect OAuth",
   "admin.config.oauth.oidc-sign-out": "Sign out from OpenID Connect",
-  "admin.config.oauth.oidc-sign-out.description": "Whether the “Sign out” button will sign out from the OpenID Connect provider",
+  "admin.config.oauth.oidc-sign-out.description":
+    "Whether the “Sign out” button will sign out from the OpenID Connect provider",
   "admin.config.oauth.oidc-scope": "OpenID Connect scope",
-  "admin.config.oauth.oidc-scope.description": "Scopes which should be requested from the OpenID Connect provider.",
+  "admin.config.oauth.oidc-scope.description":
+    "Scopes which should be requested from the OpenID Connect provider.",
   "admin.config.oauth.oidc-username-claim": "OpenID Connect username claim",
-  "admin.config.oauth.oidc-username-claim.description": "طلب اسم المستخدم في رمز معرف OpenID Connect. إذا كنت لا تعرف معنى هذا الإعداد، اتركه فارغًا.",
+  "admin.config.oauth.oidc-username-claim.description":
+    "طلب اسم المستخدم في رمز معرف OpenID Connect. إذا كنت لا تعرف معنى هذا الإعداد، اتركه فارغًا.",
   "admin.config.oauth.oidc-role-path": "Path to roles in OpenID Connect token",
-  "admin.config.oauth.oidc-role-path.description": "Must be a valid JMES path referencing an array of roles. " + "Managing access rights using OpenID Connect roles is only recommended if no other identity provider is configured and password login is disabled. " + "Leave it blank if you don't know what this config is.",
-  "admin.config.oauth.oidc-role-general-access": "OpenID Connect role for general access",
-  "admin.config.oauth.oidc-role-general-access.description": "Role required for general access. Must be present in a user’s roles for them to log in. " + "Leave it blank if you don't know what this config is.",
-  "admin.config.oauth.oidc-role-admin-access": "OpenID Connect role for admin access",
-  "admin.config.oauth.oidc-role-admin-access.description": "Role required for administrative access. Must be present in a user’s roles for them to access the admin panel. " + "Leave it blank if you don't know what this config is.",
+  "admin.config.oauth.oidc-role-path.description":
+    "Must be a valid JMES path referencing an array of roles. " +
+    "Managing access rights using OpenID Connect roles is only recommended if no other identity provider is configured and password login is disabled. " +
+    "Leave it blank if you don't know what this config is.",
+  "admin.config.oauth.oidc-role-general-access":
+    "OpenID Connect role for general access",
+  "admin.config.oauth.oidc-role-general-access.description":
+    "Role required for general access. Must be present in a user’s roles for them to log in. " +
+    "Leave it blank if you don't know what this config is.",
+  "admin.config.oauth.oidc-role-admin-access":
+    "OpenID Connect role for admin access",
+  "admin.config.oauth.oidc-role-admin-access.description":
+    "Role required for administrative access. Must be present in a user’s roles for them to access the admin panel. " +
+    "Leave it blank if you don't know what this config is.",
   "admin.config.oauth.oidc-client-id": "OpenID Connect Client ID",
-  "admin.config.oauth.oidc-client-id.description": "معرف العميل لتطبيق OpenID Connect OAuth",
+  "admin.config.oauth.oidc-client-id.description":
+    "معرف العميل لتطبيق OpenID Connect OAuth",
   "admin.config.oauth.oidc-client-secret": "OpenID Connect Client secret",
-  "admin.config.oauth.oidc-client-secret.description": "الرّمز السرّي للعميل لتطبيق OpenID Connect OAuth",
+  "admin.config.oauth.oidc-client-secret.description":
+    "الرّمز السرّي للعميل لتطبيق OpenID Connect OAuth",
   "admin.config.category.ldap": "LDAP",
   "admin.config.ldap.enabled": "Enable LDAP",
-  "admin.config.ldap.enabled.description": "Use LDAP authentication for user login",
+  "admin.config.ldap.enabled.description":
+    "Use LDAP authentication for user login",
   "admin.config.ldap.url": "Server URL",
   "admin.config.ldap.url.description": "URL of the LDAP server",
   "admin.config.ldap.bind-dn": "Bind DN",
-  "admin.config.ldap.bind-dn.description": "Default user used to perform the user search",
+  "admin.config.ldap.bind-dn.description":
+    "Default user used to perform the user search",
   "admin.config.ldap.bind-password": "Bind password",
-  "admin.config.ldap.bind-password.description": "Password used to perform the user search",
+  "admin.config.ldap.bind-password.description":
+    "Password used to perform the user search",
   "admin.config.ldap.search-base": "User base",
-  "admin.config.ldap.search-base.description": "Base location, where the user search will be performed",
+  "admin.config.ldap.search-base.description":
+    "Base location, where the user search will be performed",
   "admin.config.ldap.search-query": "User query",
-  "admin.config.ldap.search-query.description": "The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.",
+  "admin.config.ldap.search-query.description":
+    "The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.",
   "admin.config.ldap.admin-groups": "Admin group",
-  "admin.config.ldap.admin-groups.description": "Group required for administrative access.",
+  "admin.config.ldap.admin-groups.description":
+    "Group required for administrative access.",
   "admin.config.ldap.field-name-member-of": "User groups attribute name",
-  "admin.config.ldap.field-name-member-of.description": "LDAP attribute name for the groups, an user is a member of. This is used when checking for the admin group.",
+  "admin.config.ldap.field-name-member-of.description":
+    "LDAP attribute name for the groups, an user is a member of. This is used when checking for the admin group.",
   "admin.config.ldap.field-name-email": "User email attribute name",
-  "admin.config.ldap.field-name-email.description": "LDAP attribute name for the email of an user.",
+  "admin.config.ldap.field-name-email.description":
+    "LDAP attribute name for the email of an user.",
   // 404
   "404.description": "هذه الصفحة غير موجودة.",
   "404.button.home": "أعدني للصفحة الرئيسية",
@@ -444,16 +552,22 @@ export default {
   "error.description": "عذرًا!",
   "error.button.back": "العودة",
   "error.msg.default": "حَدث خطأ ما.",
-  "error.msg.access_denied": "قمت بإلغاء عملية المصادقة، الرجاء المحاولة مرة أخرى.",
-  "error.msg.expired_token": "استغرقت عملية المصادقة وقتًا طويلًا، يرجى المحاولة مرة أخرى.",
+  "error.msg.access_denied":
+    "قمت بإلغاء عملية المصادقة، الرجاء المحاولة مرة أخرى.",
+  "error.msg.expired_token":
+    "استغرقت عملية المصادقة وقتًا طويلًا، يرجى المحاولة مرة أخرى.",
   "error.msg.invalid_token": "خطأ داخلي",
   "error.msg.no_user": "المستخدم المرتبط بهذا الحساب {0} غير موجود.",
-  "error.msg.no_email": "لا يمكن الحصول على عنوان البريد الإلكتروني من هذا الحساب {0}.",
+  "error.msg.no_email":
+    "لا يمكن الحصول على عنوان البريد الإلكتروني من هذا الحساب {0}.",
   "error.msg.already_linked": "حساب {0} هذا مرتبط بالفعل بحساب آخر.",
-  "error.msg.not_linked": "This {0} account hasn't been linked to any account yet.",
-  "error.msg.unverified_account": "لم يتم التحقق من حساب {0} هذا، يرجى المحاولة مرة أخرى بعد التحقق.",
+  "error.msg.not_linked":
+    "This {0} account hasn't been linked to any account yet.",
+  "error.msg.unverified_account":
+    "لم يتم التحقق من حساب {0} هذا، يرجى المحاولة مرة أخرى بعد التحقق.",
   "error.msg.user_not_allowed": "غير مسموح لك بتسجيل الدخول.",
-  "error.msg.cannot_get_user_info": "Cannot get your user info from this {0} account.",
+  "error.msg.cannot_get_user_info":
+    "Cannot get your user info from this {0} account.",
   "error.param.provider_github": "GitHub",
   "error.param.provider_google": "Google",
   "error.param.provider_microsoft": "Microsoft",
@@ -476,7 +590,7 @@ export default {
   "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "العودة",
   "common.button.go-home": "العودة للصفحة الرئيسية",
-  "common.notify.copied": "تم نسخ الرابط إلى الحافظة",
+  "common.notify.copied-link": "تم نسخ الرابط إلى الحافظة",
   "common.success": "تم",
   "common.error": "خطأ",
   "common.error.unknown": "حدث خطأ غير معروف",
@@ -487,5 +601,5 @@ export default {
   "common.error.number-too-large": "Must be at most {max}",
   "common.error.exact-length": "يجب أن يكون بالضبط {length} حرفًا",
   "common.error.invalid-number": "يجب أن يكون رقماً",
-  "common.error.field-required": "هذا الحقل مطلوب"
+  "common.error.field-required": "هذا الحقل مطلوب",
 };

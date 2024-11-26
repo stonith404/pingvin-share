@@ -108,7 +108,7 @@ const MyShares = () => {
                           showShareInformationsModal(
                             modals,
                             share,
-                            parseInt(config.get("share.maxSize")),
+                            parseInt(config.get("share.maxSize"))
                           );
                         }}
                       >
@@ -121,9 +121,9 @@ const MyShares = () => {
                         onClick={() => {
                           if (window.isSecureContext) {
                             clipboard.copy(
-                              `${window.location.origin}/s/${share.id}`,
+                              `${window.location.origin}/s/${share.id}`
                             );
-                            toast.success(t("common.notify.copied"));
+                            toast.success(t("common.notify.copied-link"));
                           } else {
                             showShareLinkModal(modals, share.id);
                           }
@@ -155,7 +155,7 @@ const MyShares = () => {
                             onConfirm: () => {
                               shareService.remove(share.id);
                               setShares(
-                                shares.filter((item) => item.id !== share.id),
+                                shares.filter((item) => item.id !== share.id)
                               );
                             },
                           });

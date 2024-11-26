@@ -22,11 +22,11 @@ import LogoConfigInput from "../../../components/admin/configuration/LogoConfigI
 import TestEmailButton from "../../../components/admin/configuration/TestEmailButton";
 import CenterLoader from "../../../components/core/CenterLoader";
 import useConfig from "../../../hooks/config.hook";
+import useTranslate from "../../../hooks/useTranslate.hook";
 import configService from "../../../services/config.service";
 import { AdminConfig, UpdateConfig } from "../../../types/config.type";
 import { camelToKebab } from "../../../utils/string.util";
 import toast from "../../../utils/toast.util";
-import useTranslate from "../../../hooks/useTranslate.hook";
 
 export default function AppShellDemo() {
   const theme = useMantineTheme();
@@ -52,9 +52,7 @@ export default function AppShellDemo() {
         .changeLogo(logo)
         .then(() => {
           setLogo(null);
-          toast.success(
-            "Logo updated successfully. It may take a few minutes to update on the website.",
-          );
+          toast.success(t("admin.config.notify.logo-success"));
         })
         .catch(toast.axiosError);
     }
@@ -64,12 +62,12 @@ export default function AppShellDemo() {
         .updateMany(updatedConfigVariables)
         .then(() => {
           setUpdatedConfigVariables([]);
-          toast.success("Configurations updated successfully");
+          toast.success(t("admin.config.notify.success"));
         })
         .catch(toast.axiosError);
       void config.refresh();
     } else {
-      toast.success("No changes to save");
+      toast.success(t("admin.config.notify.no-changes"));
     }
   };
 
@@ -79,7 +77,7 @@ export default function AppShellDemo() {
     }
 
     const index = updatedConfigVariables.findIndex(
-      (item) => item.key === configVariable.key,
+      (item) => item.key === configVariable.key
     );
 
     if (index > -1) {
@@ -146,7 +144,7 @@ export default function AppShellDemo() {
                       <Title order={6}>
                         <FormattedMessage
                           id={`admin.config.${camelToKebab(
-                            configVariable.key,
+                            configVariable.key
                           )}`}
                         />
                       </Title>
@@ -161,7 +159,7 @@ export default function AppShellDemo() {
                       >
                         <FormattedMessage
                           id={`admin.config.${camelToKebab(
-                            configVariable.key,
+                            configVariable.key
                           )}.description`}
                           values={{ br: <br /> }}
                         />
