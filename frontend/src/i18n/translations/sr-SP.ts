@@ -436,9 +436,9 @@ export default {
   "admin.config.ldap.field-name-member-of.description": "LDAP назив атрибута за групе чији је корисник члан. Ово се користи при провери администраторске групе.",
   "admin.config.ldap.field-name-email": "Назив атрибута за имејл корисника",
   "admin.config.ldap.field-name-email.description": "LDAP назив атрибута за имејл корисника.",
-  "admin.config.notify.success": "Configuration updated successfully.",
-  "admin.config.notify.logo-success": "Logo updated successfully. It may take a few minutes to update on the website.",
-  "admin.config.notify.no-changes": "No changes to save.",
+  "admin.config.notify.success": "Конфигурација је успешно ажурирана.",
+  "admin.config.notify.logo-success": "Лого је успешно ажуриран. Може бити потребно неколико минута да се ажурира на вебсајту.",
+  "admin.config.notify.no-changes": "Нема промена за чување.",
   // 404
   "404.description": "Опа - Ова страна не постоји.",
   "404.button.home": "Врати ме на почетак",
