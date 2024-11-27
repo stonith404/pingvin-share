@@ -215,8 +215,8 @@ export default {
   "upload.notify.confirm-leave": "Are you sure you want to leave this page? Your upload will be canceled.",
   "upload.notify.generic-error": "Ha ocurrido un error mientras se compartía tu archivo.",
   "upload.notify.count-failed": "No se pudo cargar {count} archivos. Intentando nuevamente.",
-  "upload.reverse-share.error.invalid.title": "Invalid reverse share link",
-  "upload.reverse-share.error.invalid.description": "This reverse share has expired or is invalid.",
+  "upload.reverse-share.error.invalid.title": "Enlace de uso compartido inverso inválido",
+  "upload.reverse-share.error.invalid.description": "Este enlace de uso compartido inverso ha caducado o no es válido.",
   // Dropzone.tsx
   "upload.dropzone.title": "Subir archivos",
   "upload.dropzone.description": "Arrastra y suelta los archivos aquí para crear tu enlace compartido. Solo aceptamos archivos de hasta {maxSize} en total.",
