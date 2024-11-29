@@ -608,6 +608,7 @@ export default {
   "admin.config.ldap.field-name-email.description":
     "LDAP attribute name for the email of an user.",
 
+  "admin.config.category.s3": "S3",
   "admin.config.s3.enabled": "Enabled",
   "admin.config.s3.enabled.description": "Could be enabled to store the files in the S3 bucket.",
   "admin.config.s3.endpoint": "Endpoint",
