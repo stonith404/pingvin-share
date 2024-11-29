@@ -24,7 +24,6 @@ export class S3FileService {
     parts: Array<{ ETag: string | undefined; PartNumber: number }>
   }> = {};
 
-
   constructor(private prisma: PrismaService, private config: ConfigService) {
     this.s3 = new S3Client({
       endpoint: config.get('s3.endpoint'),
@@ -166,9 +165,13 @@ export class S3FileService {
     return file;
   }
 
-
   async get(shareId: string, fileId: string): Promise<File> {
-    const key = `${shareId}/${fileId}`;
+
+    const fileName = (
+      await this.prisma.file.findUnique({ where: { id: fileId } })
+    ).name;
+
+    const key = `${this.getS3Path()}${shareId}/${fileName}`;
     const response = await this.s3.send(new GetObjectCommand({
       Bucket: this.config.get('s3.bucketName'),
       Key: key,
@@ -178,7 +181,7 @@ export class S3FileService {
       metaData: {
         id: fileId,
         size: response.ContentLength?.toString() || "0",  // Use actual file size from response, fallback to "0"
-        name: fileId,  // Use the file name or a placeholder if necessary
+        name: fileName,  // Use the file name or a placeholder if necessary
         shareId: shareId,
         createdAt: response.LastModified || new Date(),  // Use S3's last modified time or fallback to current time
         mimeType: mime.contentType(fileId.split('.').pop()) || "application/octet-stream",  // Default to octet-stream if unknown
@@ -199,10 +202,6 @@ export class S3FileService {
     return 'Delete all files is pending implementation';
   }
 
-  getZip() {
-    throw new BadRequestException('ZIP download is not supported with S3 storage');
-  }
-
   async getFileSize(shareId: string, fileName: string): Promise<number> {
     const key = `${this.getS3Path()}${shareId}/${fileName}`;
 
@@ -221,6 +220,10 @@ export class S3FileService {
       console.error(`Failed to get file size for ${key}:`, error);
       throw new Error('Could not retrieve file size');
     }
+  }
+
+  getZip() {
+    throw new BadRequestException('ZIP download is not supported with S3 storage');
   }
 
   getS3Path(): string {
