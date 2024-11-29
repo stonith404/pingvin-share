@@ -279,10 +279,7 @@ const Account = () => {
                     ) : (
                       <Button
                         component="a"
-                        href={getOAuthUrl(
-                          config.get("general.appUrl"),
-                          provider,
-                        )}
+                        href={getOAuthUrl(window.location.origin, provider)}
                       >
                         {t("account.card.oauth.link")}
                       </Button>
@@ -414,8 +411,10 @@ const Account = () => {
                   },
                   confirmProps: { color: "red" },
                   onConfirm: async () => {
-                    await userService.removeCurrentUser();
-                    window.location.reload();
+                    await userService
+                      .removeCurrentUser()
+                      .then(window.location.reload)
+                      .catch(toast.axiosError);
                   },
                 })
               }

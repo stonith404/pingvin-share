@@ -2,15 +2,15 @@ import { BadRequestException, Injectable, Logger } from "@nestjs/common";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import * as argon from "argon2";
 import * as crypto from "crypto";
+import { Entry } from "ldapts";
+import { AuthSignInDTO } from "src/auth/dto/authSignIn.dto";
 import { EmailService } from "src/email/email.service";
 import { PrismaService } from "src/prisma/prisma.service";
+import { inspect } from "util";
+import { ConfigService } from "../config/config.service";
 import { FileService } from "../file/file.service";
 import { CreateUserDTO } from "./dto/createUser.dto";
 import { UpdateUserDto } from "./dto/updateUser.dto";
-import { ConfigService } from "../config/config.service";
-import { Entry } from "ldapts";
-import { AuthSignInDTO } from "src/auth/dto/authSignIn.dto";
-import { inspect } from "util";
 
 @Injectable()
 export class UserSevice {
@@ -88,6 +88,16 @@ export class UserSevice {
       include: { shares: true },
     });
     if (!user) throw new BadRequestException("User not found");
+
+    if (user.isAdmin) {
+      const userCount = await this.prisma.user.count({
+        where: { isAdmin: true },
+      });
+
+      if (userCount === 1) {
+        throw new BadRequestException("Cannot delete the last admin user");
+      }
+    }
 
     await Promise.all(
       user.shares.map((share) => this.fileService.deleteAllFiles(share.id)),

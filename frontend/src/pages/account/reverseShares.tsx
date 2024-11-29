@@ -37,8 +37,6 @@ const MyShares = () => {
 
   const config = useConfig();
 
-  const appUrl = config.get("general.appUrl");
-
   const [reverseShares, setReverseShares] = useState<MyReverseShare[]>();
 
   const getReverseShares = () => {
@@ -146,7 +144,7 @@ const MyShares = () => {
                             {reverseShare.shares.map((share) => (
                               <Group key={share.id} mb={4}>
                                 <Anchor
-                                  href={`${appUrl}/share/${share.id}`}
+                                  href={`${window.location.origin}/share/${share.id}`}
                                   target="_blank"
                                 >
                                   <Text maw={120} truncate>
@@ -159,14 +157,14 @@ const MyShares = () => {
                                   size={25}
                                   onClick={() => {
                                     if (window.isSecureContext) {
-                                      clipboard.copy(`${appUrl}/s/${share.id}`);
-                                      toast.success(t("common.notify.copied"));
-                                    } else {
-                                      showShareLinkModal(
-                                        modals,
-                                        share.id,
-                                        config.get("general.appUrl"),
+                                      clipboard.copy(
+                                        `${window.location.origin}/s/${share.id}`,
                                       );
+                                      toast.success(
+                                        t("common.notify.copied-link"),
+                                      );
+                                    } else {
+                                      showShareLinkModal(modals, share.id);
                                     }
                                   }}
                                 >
@@ -197,16 +195,15 @@ const MyShares = () => {
                         onClick={() => {
                           if (window.isSecureContext) {
                             clipboard.copy(
-                              `${config.get("general.appUrl")}/upload/${
+                              `${window.location.origin}/upload/${
                                 reverseShare.token
                               }`,
                             );
-                            toast.success(t("common.notify.copied"));
+                            toast.success(t("common.notify.copied-link"));
                           } else {
                             showReverseShareLinkModal(
                               modals,
                               reverseShare.token,
-                              config.get("general.appUrl"),
                             );
                           }
                         }}

@@ -11,7 +11,9 @@ import { useClipboard } from "@mantine/hooks";
 import { useModals } from "@mantine/modals";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { TbDownload, TbEye, TbLink } from "react-icons/tb";
+import { FormattedMessage } from "react-intl";
 import useConfig from "../../hooks/config.hook";
+import useTranslate from "../../hooks/useTranslate.hook";
 import shareService from "../../services/share.service";
 import { FileMetaData } from "../../types/File.type";
 import { Share } from "../../types/share.type";
@@ -19,8 +21,6 @@ import { byteToHumanSizeString } from "../../utils/fileSize.util";
 import toast from "../../utils/toast.util";
 import TableSortIcon, { TableSort } from "../core/SortIcon";
 import showFilePreviewModal from "./modals/showFilePreviewModal";
-import useTranslate from "../../hooks/useTranslate.hook";
-import { FormattedMessage } from "react-intl";
 
 const FileList = ({
   files,
@@ -65,13 +65,13 @@ const FileList = ({
   };
 
   const copyFileLink = (file: FileMetaData) => {
-    const link = `${config.get("general.appUrl")}/api/shares/${
+    const link = `${window.location.origin}/api/shares/${
       share.id
     }/files/${file.id}`;
 
     if (window.isSecureContext) {
       clipboard.copy(link);
-      toast.success(t("common.notify.copied"));
+      toast.success(t("common.notify.copied-link"));
     } else {
       modals.openModal({
         title: t("share.modal.file-link"),

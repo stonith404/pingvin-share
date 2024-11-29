@@ -621,26 +621,6 @@ export default {
   "admin.config.ldap.field-name-email": "User email attribute name",
   "admin.config.ldap.field-name-email.description":
     "LDAP attribute name for the email of an user.",
-  "admin.config.notify.success": "Configuration updated successfully.",
-  "admin.config.notify.logo-success":
-    "Logo updated successfully. It may take a few minutes to update on the website.",
-  "admin.config.notify.no-changes": "No changes to save.",
-
-  "admin.config.category.s3": "S3",
-  "admin.config.s3.enabled": "Enabled",
-  "admin.config.s3.enabled.description": "Could be enabled to store the files in the S3 bucket.",
-  "admin.config.s3.endpoint": "Endpoint",
-  "admin.config.s3.endpoint.description": "The URL/Host of the S3 bucket.",
-  "admin.config.s3.region": "Region",
-  "admin.config.s3.region.description": "The region where the S3 bucket is located.",
-  "admin.config.s3.bucket-name": "Bucket name",
-  "admin.config.s3.bucket-name.description": "The name of the S3 bucket.",
-  "admin.config.s3.bucket-path": "Path",
-  "admin.config.s3.bucket-path.description": "The default path which should be used to store the files.",
-  "admin.config.s3.key": "Key",
-  "admin.config.s3.key.description": "The key which allows you to access the S3 bucket.",
-  "admin.config.s3.secret": "Secret",
-  "admin.config.s3.secret.description": "The secret which allows you to access the S3 bucket.",
 
   // 404
   "404.description": "Oops this page doesn't exist.",
@@ -690,7 +670,6 @@ export default {
   "common.text.redirecting": "Redirecting...",
   "common.button.go-back": "Go back",
   "common.button.go-home": "Go home",
-  "common.notify.copied": "Your link was copied to the clipboard",
   "common.notify.copied-link": "Your link was copied to the clipboard",
   "common.success": "Success",
 

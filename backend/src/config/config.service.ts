@@ -5,8 +5,8 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { Config } from "@prisma/client";
-import { PrismaService } from "src/prisma/prisma.service";
 import { EventEmitter } from "events";
+import { PrismaService } from "src/prisma/prisma.service";
 
 /**
  * ConfigService extends EventEmitter to allow listening for config updates,
@@ -100,6 +100,8 @@ export class ConfigService extends EventEmitter {
       );
     }
 
+    this.validateConfigVariable(key, value);
+
     const updatedVariable = await this.prisma.config.update({
       where: {
         name_category: {
@@ -115,5 +117,25 @@ export class ConfigService extends EventEmitter {
     this.emit("update", key, value);
 
     return updatedVariable;
+  }
+
+  validateConfigVariable(key: string, value: string | number | boolean) {
+    const validations = [
+      {
+        key: "share.shareIdLength",
+        condition: (value: number) => value >= 2 && value <= 50,
+        message: "Share ID length must be between 2 and 50",
+      },
+      {
+        key: "share.zipCompressionLevel",
+        condition: (value: number) => value >= 0 && value <= 9,
+        message: "Zip compression level must be between 0 and 9",
+      },
+    ];
+
+    const validation = validations.find((validation) => validation.key == key);
+    if (validation && !validation.condition(value as any)) {
+      throw new BadRequestException(validation.message);
+    }
   }
 }

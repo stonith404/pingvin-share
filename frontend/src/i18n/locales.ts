@@ -15,7 +15,7 @@ import polish from "./translations/pl-PL";
 import portuguese from "./translations/pt-BR";
 import russian from "./translations/ru-RU";
 import slovenian from "./translations/sl-SI";
-import serbian from "./translations/sr-SP";
+import serbianCyrillic from "./translations/sr-SP";
 import swedish from "./translations/sv-SE";
 import thai from "./translations/th-TH";
 import ukrainian from "./translations/uk-UA";
@@ -25,7 +25,8 @@ import turkish from "./translations/tr-TR";
 import czech from "./translations/cs-CZ";
 import viatnamese from "./translations/vi-VN";
 import bulgarian from "./translations/bg-BG";
-import serbianCyrillic from "./translations/sr-CS";
+import serbianLatin from "./translations/sr-CS";
+import croatian from "./translations/hr-HR";
 
 export const LOCALES = {
   ENGLISH: {
@@ -89,9 +90,14 @@ export const LOCALES = {
     messages: thai,
   },
   SERBIAN: {
-    name: "Srpski",
+    name: "Српски",
     code: "sr-SP",
-    messages: serbian,
+    messages: serbianCyrillic,
+  },
+  SERBIAN_LATIN: {
+    name: "Srpski",
+    code: "sr-CS",
+    messages: serbianLatin,
   },
   DUTCH: {
     name: "Nederlands",
@@ -163,9 +169,9 @@ export const LOCALES = {
     code: "bg-BG",
     messages: bulgarian,
   },
-  SERBIAN_CYRILLIC: {
-    name: "Српски",
-    code: "sr-CS",
-    messages: serbianCyrillic,
+  CROATIAN: {
+    name: "Hrvatski",
+    code: "hr-HR",
+    messages: croatian,
   },
 };

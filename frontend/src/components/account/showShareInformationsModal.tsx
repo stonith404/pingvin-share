@@ -11,11 +11,10 @@ import CopyTextField from "../upload/CopyTextField";
 const showShareInformationsModal = (
   modals: ModalsContextProps,
   share: MyShare,
-  appUrl: string,
   maxShareSize: number,
 ) => {
   const t = translateOutsideContext();
-  const link = `${appUrl}/s/${share.id}`;
+  const link = `${window.location.origin}/s/${share.id}`;
 
   const formattedShareSize = byteToHumanSizeString(share.size);
   const formattedMaxShareSize = byteToHumanSizeString(maxShareSize);

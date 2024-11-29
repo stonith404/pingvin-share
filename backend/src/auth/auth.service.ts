@@ -334,7 +334,7 @@ export class AuthService {
     refreshToken?: string,
     accessToken?: string,
   ) {
-    const isSecure = this.config.get("general.appUrl").startsWith("https");
+    const isSecure = this.config.get("general.secureCookies");
     if (accessToken)
       response.cookie("access_token", accessToken, {
         sameSite: "lax",
@@ -367,5 +367,13 @@ export class AuthService {
     } catch {
       return null;
     }
+  }
+
+  async verifyPassword(user: User, password: string) {
+    if (!user.password && this.config.get("ldap.enabled")) {
+      return !!this.ldapService.authenticateUser(user.username, password);
+    }
+
+    return argon.verify(user.password, password);
   }
 }

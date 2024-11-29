@@ -1,3 +1,62 @@
+## [1.6.1](https://github.com/stonith404/pingvin-share/compare/v1.6.0...v1.6.1) (2024-11-26)
+
+
+### Bug Fixes
+
+* error for non oidc oauth clients ([ba2e7e1](https://github.com/stonith404/pingvin-share/commit/ba2e7e122c45bfb2a783b15438112a79fee0c307))
+
+## [1.6.0](https://github.com/stonith404/pingvin-share/compare/v1.5.0...v1.6.0) (2024-11-25)
+
+
+### Features
+
+* add config variable to specify the requested OIDC sopes ([da54ce6](https://github.com/stonith404/pingvin-share/commit/da54ce6ee020a9718f55ec30c614607d411f55c8))
+
+
+### Bug Fixes
+
+* add validation for share id and zip compression config variables ([3160f90](https://github.com/stonith404/pingvin-share/commit/3160f90e1d4bb3d6aa4017e98e400929fc4d3b2e))
+
+## [1.5.0](https://github.com/stonith404/pingvin-share/compare/v1.4.0...v1.5.0) (2024-11-24)
+
+
+### Features
+
+* **share:** add share ID length setting ([#677](https://github.com/stonith404/pingvin-share/issues/677)) ([9d4bb55](https://github.com/stonith404/pingvin-share/commit/9d4bb55a0945450f8a42c212d7f23983db38f37f))
+
+
+### Bug Fixes
+
+* totp can't be enabled if user is a ldap user ([c8f05f2](https://github.com/stonith404/pingvin-share/commit/c8f05f2475a5a54550cf64ef57c8b612580273be))
+
+## [1.4.0](https://github.com/stonith404/pingvin-share/compare/v1.3.0...v1.4.0) (2024-11-17)
+
+
+### Features
+
+* add "creatorEmail" config bariable to share recipient email message ([c7dacb2](https://github.com/stonith404/pingvin-share/commit/c7dacb26e87504a1c5e6b0d87cdcd5ed91b9cdf5))
+
+
+### Bug Fixes
+
+* remote arbitrary file overwrite on file upload endpoint ([6cf5c66](https://github.com/stonith404/pingvin-share/commit/6cf5c66fe2eda1e0a525edf7440d047fe2f0e35b))
+
+## [1.3.0](https://github.com/stonith404/pingvin-share/compare/v1.2.4...v1.3.0) (2024-11-14)
+
+
+### Features
+
+* add 'secureCookies' configuration variable to explicitly set the secure flag and prevent confusion ([4ce6420](https://github.com/stonith404/pingvin-share/commit/4ce64206be7440a99299e1ed238ced7408c0563d))
+* add confirm dialog for leaving the page if an upload is in progress ([d8084e4](https://github.com/stonith404/pingvin-share/commit/d8084e401d7572b2d6e38ffa20cb678a0fb0e615))
+
+
+### Bug Fixes
+
+* improve share completed dialog redirection for reverse shares ([4ef7ebb](https://github.com/stonith404/pingvin-share/commit/4ef7ebb0622f16d2d2c4d114b5fc15298e2ba24f))
+* prevent deletion of last admin account ([e1a5d19](https://github.com/stonith404/pingvin-share/commit/e1a5d195448e3d741b77fb982ce515489a360562))
+* throw error if no disk space is left ([c26de4e](https://github.com/stonith404/pingvin-share/commit/c26de4e881edfe6c7db617c0aeba89871397ebe2))
+* use current window url instead of app url in frontend ([6f45c3b](https://github.com/stonith404/pingvin-share/commit/6f45c3b1fbf4a95b29e5742878b55a1afa0b8886))
+
 ## [1.2.4](https://github.com/stonith404/pingvin-share/compare/v1.2.3...v1.2.4) (2024-10-24)
 
 

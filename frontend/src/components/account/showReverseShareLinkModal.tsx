@@ -5,10 +5,9 @@ import { translateOutsideContext } from "../../hooks/useTranslate.hook";
 const showReverseShareLinkModal = (
   modals: ModalsContextProps,
   reverseShareToken: string,
-  appUrl: string,
 ) => {
   const t = translateOutsideContext();
-  const link = `${appUrl}/upload/${reverseShareToken}`;
+  const link = `${window.location.origin}/upload/${reverseShareToken}`;
   return modals.openModal({
     title: t("account.reverseShares.modal.reverse-share-link"),
     children: (

@@ -20,6 +20,10 @@ const configVariables: ConfigVariables = {
       defaultValue: "http://localhost:3000",
       secret: false,
     },
+    secureCookies: {
+      type: "boolean",
+      defaultValue: "false",
+    },
     showHomePage: {
       type: "boolean",
       defaultValue: "true",
@@ -45,6 +49,11 @@ const configVariables: ConfigVariables = {
     maxExpiration: {
       type: "number",
       defaultValue: "0",
+      secret: false,
+    },
+    shareIdLength: {
+      type: "number",
+      defaultValue: "8",
       secret: false,
     },
     maxSize: {
@@ -80,7 +89,7 @@ const configVariables: ConfigVariables = {
     shareRecipientsMessage: {
       type: "text",
       defaultValue:
-        "Hey!\n\n{creator} shared some files with you, view or download the files with this link: {shareUrl}\n\nThe share will expire {expires}.\n\nNote: {desc}\n\nShared securely with Pingvin Share 🐧",
+        "Hey!\n\n{creator} ({creatorEmail}) shared some files with you, view or download the files with this link: {shareUrl}\n\nThe share will expire {expires}.\n\nNote: {desc}\n\nShared securely with Pingvin Share 🐧",
     },
     reverseShareSubject: {
       type: "string",
@@ -278,6 +287,10 @@ const configVariables: ConfigVariables = {
     "oidc-signOut": {
       type: "boolean",
       defaultValue: "false",
+    },
+    "oidc-scope": {
+      type: "string",
+      defaultValue: "openid email profile",
     },
     "oidc-usernameClaim": {
       type: "string",

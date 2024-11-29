@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Upload from ".";
 import showErrorModal from "../../components/share/showErrorModal";
 import shareService from "../../services/share.service";
+import useTranslate from "../../hooks/useTranslate.hook";
 
 export function getServerSideProps(context: GetServerSidePropsContext) {
   return {
@@ -14,6 +15,7 @@ export function getServerSideProps(context: GetServerSidePropsContext) {
 
 const Share = ({ reverseShareToken }: { reverseShareToken: string }) => {
   const modals = useModals();
+  const t = useTranslate();
   const [isLoading, setIsLoading] = useState(true);
 
   const [maxShareSize, setMaxShareSize] = useState(0);
@@ -30,8 +32,8 @@ const Share = ({ reverseShareToken }: { reverseShareToken: string }) => {
       .catch(() => {
         showErrorModal(
           modals,
-          "Invalid Link",
-          "This link is invalid. Please check your link.",
+          t("upload.reverse-share.error.invalid.title"),
+          t("upload.reverse-share.error.invalid.description"),
           "go-home",
         );
         setIsLoading(false);
