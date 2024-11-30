@@ -37,10 +37,11 @@ export class S3FileService {
     });
   }
 
-  async create(data: string, chunk: { index: number; total: number }, file: {
-    id?: string;
-    name: string
-  }, shareId: string) {
+  async create(
+    data: string,
+    chunk: { index: number; total: number },
+    file: { id?: string; name: string },
+    shareId: string) {
     if (!file.id) {
       file.id = crypto.randomUUID();
     } else if (!isValidUUID(file.id)) {
@@ -54,8 +55,6 @@ export class S3FileService {
     try {
       // Initialize multipart upload if it's the first chunk
       if (chunk.index === 0) {
-        console.log(`Initializing multipart upload for file: ${file.name}`);
-
         const multipartInitResponse = await this.s3.send(
           new CreateMultipartUploadCommand({
             Bucket: bucketName,
@@ -73,8 +72,6 @@ export class S3FileService {
           uploadId,
           parts: [],
         };
-
-        console.log(`Multipart upload initialized with UploadId: ${uploadId}`);
       }
 
       // Get the ongoing multipart upload
@@ -87,7 +84,6 @@ export class S3FileService {
 
       // Upload the current chunk
       const partNumber = chunk.index + 1; // Part numbers start from 1
-      console.log(`Uploading part ${partNumber} of file: ${file.name}`);
 
       const uploadPartResponse: UploadPartCommandOutput = await this.s3.send(
         new UploadPartCommand({
@@ -99,8 +95,6 @@ export class S3FileService {
         })
       );
 
-      console.log(`Part ${partNumber} uploaded. ETag: ${uploadPartResponse.ETag}`);
-
       // Store the ETag and PartNumber for later completion
       multipartUpload.parts.push({
         ETag: uploadPartResponse.ETag,
@@ -109,8 +103,6 @@ export class S3FileService {
 
       // Complete the multipart upload if it's the last chunk
       if (chunk.index === chunk.total - 1) {
-        console.log(`Completing multipart upload for file: ${file.name}`);
-
         await this.s3.send(
           new CompleteMultipartUploadCommand({
             Bucket: bucketName,
@@ -122,14 +114,10 @@ export class S3FileService {
           })
         );
 
-        console.log(`Multipart upload completed for file: ${file.name}`);
-
         // Remove the completed upload from memory
         delete this.multipartUploads[file.id];
       }
     } catch (error) {
-      console.error("Error during multipart upload process:", error);
-
       // Abort the multipart upload if it fails
       const multipartUpload = this.multipartUploads[file.id];
       if (multipartUpload) {
@@ -141,7 +129,6 @@ export class S3FileService {
               UploadId: multipartUpload.uploadId,
             })
           );
-          console.log(`Multipart upload aborted for file: ${file.name}`);
         } catch (abortError) {
           console.error("Error aborting multipart upload:", abortError);
         }
@@ -183,13 +170,13 @@ export class S3FileService {
     return {
       metaData: {
         id: fileId,
-        size: response.ContentLength?.toString() || "0",  // Use actual file size from response, fallback to "0"
-        name: fileName,  // Use the file name or a placeholder if necessary
+        size: response.ContentLength?.toString() || "0",
+        name: fileName,
         shareId: shareId,
-        createdAt: response.LastModified || new Date(),  // Use S3's last modified time or fallback to current time
-        mimeType: mime.contentType(fileId.split('.').pop()) || "application/octet-stream",  // Default to octet-stream if unknown
+        createdAt: response.LastModified || new Date(),
+        mimeType: mime.contentType(fileId.split('.').pop()) || "application/octet-stream",
       },
-      file: response.Body as Readable,  // The file content from S3 or other sources
+      file: response.Body as Readable,
     } as File;
   }
 
@@ -210,7 +197,6 @@ export class S3FileService {
         })
       );
     } catch (error) {
-      console.error(`Failed to delete file ${key}:`, error);
       throw new Error("Could not delete file from S3");
     }
 
@@ -230,8 +216,7 @@ export class S3FileService {
       );
 
       if (!listResponse.Contents || listResponse.Contents.length === 0) {
-        console.log(`No files found for share ${shareId}`);
-        return;
+        throw new Error(`No files found for share ${shareId}`);
       }
 
       // Extract the keys of the files to be deleted
@@ -249,9 +234,7 @@ export class S3FileService {
         })
       );
 
-      console.log(`All files under ${prefix} have been deleted.`);
     } catch (error) {
-      console.error(`Failed to delete files under ${prefix}:`, error);
       throw new Error("Could not delete all files from S3");
     }
   }
@@ -271,7 +254,6 @@ export class S3FileService {
       // Return ContentLength which is the file size in bytes
       return headObjectResponse.ContentLength ?? 0;
     } catch (error) {
-      console.error(`Failed to get file size for ${key}:`, error);
       throw new Error('Could not retrieve file size');
     }
   }
