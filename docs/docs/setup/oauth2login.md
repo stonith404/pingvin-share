@@ -52,7 +52,7 @@ If our built-in providers don't meet your needs, you can create your own OAuth 2
 
 ### 1. Create config
 
-Add your config (client id, client secret, etc.) in [`config.seed.ts`](../backend/prisma/seed/config.seed.ts):
+Add your config (client id, client secret, etc.) in [`config.seed.ts`](https://github.com/stonith404/pingvin-share/blob/main/backend/prisma/seed/config.seed.ts):
 
 ```ts
 const configVariables: ConfigVariables = {
@@ -80,9 +80,9 @@ const configVariables: ConfigVariables = {
 
 #### Generic OpenID Connect
 
-If your provider supports OpenID connect, it's extremely easy to extend [`GenericOidcProvider`](../backend/src/oauth/provider/genericOidc.provider.ts) to add a new OpenID Connect provider.
+If your provider supports OpenID connect, it's extremely easy to extend [`GenericOidcProvider`](https://github.com/stonith404/pingvin-share/blob/main/backend/src/oauth/provider/genericOidc.provider.ts) to add a new OpenID Connect provider.
 
-The [Google provider](../backend/src/oauth/provider/google.provider.ts) and [Microsoft provider](../backend/src/oauth/provider/microsoft.provider.ts) are good examples.
+The [Google provider](https://github.com/stonith404/pingvin-share/blob/main/backend/src/oauth/provider/google.provider.ts) and [Microsoft provider](https://github.com/stonith404/pingvin-share/blob/main/backend/src/oauth/provider/microsoft.provider.ts) are good examples.
 
 Here are some discovery URIs for popular providers:
 
@@ -96,13 +96,13 @@ Here are some discovery URIs for popular providers:
 
 #### OAuth 2
 
-If your provider only supports OAuth 2, you can implement [`OAuthProvider`](../backend/src/oauth/provider/oauthProvider.interface.ts) interface to add a new OAuth 2 provider.
+If your provider only supports OAuth 2, you can implement [`OAuthProvider`](https://github.com/stonith404/pingvin-share/blob/main/backend/src/oauth/provider/oauthProvider.interface.ts) interface to add a new OAuth 2 provider.
 
-The [GitHub provider](../backend/src/oauth/provider/github.provider.ts) and [Discord provider](../backend/src/oauth/provider/discord.provider.ts) are good examples.
+The [GitHub provider](https://github.com/stonith404/pingvin-share/blob/main/backend/src/oauth/provider/github.provider.ts) and [Discord provider](https://github.com/stonith404/pingvin-share/blob/main/backend/src/oauth/provider/discord.provider.ts) are good examples.
 
 ### 3. Register provider
 
-Register your provider in [`OAuthModule`](../backend/src/oauth/oauth.module.ts) and [`OAuthSignInDto`](../backend/src/oauth/dto/oauthSignIn.dto.ts):
+Register your provider in [`OAuthModule`](https://github.com/stonith404/pingvin-share/blob/main/backend/src/oauth/oauth.module.ts) and [`OAuthSignInDto`](https://github.com/stonith404/pingvin-share/blob/main/backend/src/oauth/dto/oauthSignIn.dto.ts):
 
 ```ts
 @Module({
@@ -142,7 +142,7 @@ export interface OAuthSignInDto {
 
 ### 4. Add frontend icon
 
-Add an icon in [`oauth.util.tsx`](../frontend/src/utils/oauth.util.tsx).
+Add an icon in [`oauth.util.tsx`](https://github.com/stonith404/pingvin-share/blob/main/frontend/src/utils/oauth.util.tsx).
 
 ```tsx
 const getOAuthIcon = (provider: string) => {
@@ -155,7 +155,7 @@ const getOAuthIcon = (provider: string) => {
 
 ### 5. Add i18n text
 
-Add keys below to your i18n text in [locale file](../frontend/src/i18n/translations/en-US.ts).
+Add keys below to your i18n text in [locale file](https://github.com/stonith404/pingvin-share/blob/main/frontend/src/i18n/translations/en-US.ts).
 
 - `signIn.oauth.YOUR_PROVIDER_NAME`
 - `account.card.oauth.YOUR_PROVIDER_NAME`
