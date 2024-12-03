@@ -49,8 +49,10 @@ For installation specific configuration, you can use environment variables. The 
 | `PORT`    | `3000`                  | The port on which the frontend listens.  |
 | `API_URL` | `http://localhost:8080` | The URL of the backend for the frontend. |
 
-#### Reverse Proxy (inside the Docker container)
+#### Docker specific
+Environment variables that are only available when running Pingvin Share with Docker.
 
 | Variable      | Default Value | Description                                                                                                 |
 | ------------- | ------------- | ----------------------------------------------------------------------------------------------------------- |
 | `TRUST_PROXY` | `false`       | Whether Pingvin Share is behind a reverse proxy. If set to `true`, the `X-Forwarded-For` header is trusted. |
+| `PUID` and `PGID` | `1000`       |  The user and group ID of the user who should run Pingvin Share inside the Docker container and owns the files that are mounted with the volume. You can get the `PUID` and `GUID` of your user on your host machine by using the command `id`. For more information see [this article](https://docs.linuxserver.io/general/understanding-puid-and-pgid/#using-the-variables). |
