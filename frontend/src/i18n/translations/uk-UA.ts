@@ -436,9 +436,9 @@ export default {
   "admin.config.ldap.field-name-member-of.description": "Назва атрибута LDAP для груп, до яких належить користувач. Це використовується при перевірці адміністративної групи.",
   "admin.config.ldap.field-name-email": "Назва атрибута ел. пошти користувача",
   "admin.config.ldap.field-name-email.description": "Назва атрибута LDAP для ел. пошти користувача.",
-  "admin.config.notify.success": "Configuration updated successfully.",
-  "admin.config.notify.logo-success": "Logo updated successfully. It may take a few minutes to update on the website.",
-  "admin.config.notify.no-changes": "No changes to save.",
+  "admin.config.notify.success": "Конфігурацію оновлено успішно.",
+  "admin.config.notify.logo-success": "Логотип успішно оновлено. Це може зайняти кілька хвилин, щоб оновлення відобразилось на вебсайті.",
+  "admin.config.notify.no-changes": "Змін не потрібно зберігати.",
   // 404
   "404.description": "Бляха, цієї строрінки не існує.",
   "404.button.home": "Поверни мене додому",
