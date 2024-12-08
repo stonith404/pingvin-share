@@ -38,6 +38,10 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "setup/s3",
+        },
+        {
+          type: "doc",
           id: "setup/upgrading",
         },
       ],
