@@ -134,7 +134,7 @@ export class S3FileService {
         }
         delete this.multipartUploads[file.id];
       }
-
+ this.logger.error(error);
       throw new Error("Multipart upload failed. The upload has been aborted.");
     }
 
