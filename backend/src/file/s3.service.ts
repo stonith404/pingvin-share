@@ -153,10 +153,6 @@ export class S3FileService {
       await this.prisma.file.findUnique({ where: { id: fileId } })
     ).name;
 
-    console.log("-------------------------------------------------")
-    console.log(fileName)
-    console.log("-------------------------------------------------")
-
     const s3Instance = this.getS3Instance();
     const key = `${this.getS3Path()}${shareId}/${fileName}`;
     const response = await s3Instance.send(new GetObjectCommand({
