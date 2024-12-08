@@ -322,27 +322,22 @@ const configVariables: ConfigVariables = {
     enabled: {
       type: "boolean",
       defaultValue: "false",
-      secret: false,
     },
     endpoint: {
       type: "string",
       defaultValue: "",
-      secret: false,
     },
     region: {
       type: "string",
       defaultValue: "",
-      secret: false,
     },
     bucketName: {
       type: "string",
       defaultValue: "",
-      secret: false,
     },
     bucketPath: {
       type: "string",
       defaultValue: "",
-      secret: false,
     },
     key: {
       type: "string",
@@ -352,7 +347,7 @@ const configVariables: ConfigVariables = {
     secret: {
       type: "string",
       defaultValue: "",
-      secret: true,
+      obscured: true,
     },
   }
 };
