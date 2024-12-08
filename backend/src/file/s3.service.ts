@@ -21,23 +21,12 @@ import { validate as isValidUUID } from "uuid";
 export class S3FileService {
   private readonly logger = new Logger(S3FileService.name);
 
-  private s3: S3Client;
   private multipartUploads: Record<string, {
     uploadId: string;
     parts: Array<{ ETag: string | undefined; PartNumber: number }>
   }> = {};
 
-  constructor(private prisma: PrismaService, private config: ConfigService) {
-    this.s3 = new S3Client({
-      endpoint: config.get('s3.endpoint'),
-      region: config.get('s3.region'),
-      credentials: {
-        accessKeyId: config.get('s3.key'),
-        secretAccessKey: config.get('s3.secret'),
-      },
-      forcePathStyle: true,
-    });
-  }
+  constructor(private prisma: PrismaService, private config: ConfigService) {}
 
   async create(
     data: string,
@@ -53,11 +42,12 @@ export class S3FileService {
     const buffer = Buffer.from(data, "base64");
     const key = `${this.getS3Path()}${shareId}/${file.name}`;
     const bucketName = this.config.get("s3.bucketName");
+    const s3Instance = this.getS3Instance();
 
     try {
       // Initialize multipart upload if it's the first chunk
       if (chunk.index === 0) {
-        const multipartInitResponse = await this.s3.send(
+        const multipartInitResponse = await s3Instance.send(
           new CreateMultipartUploadCommand({
             Bucket: bucketName,
             Key: key,
@@ -87,7 +77,7 @@ export class S3FileService {
       // Upload the current chunk
       const partNumber = chunk.index + 1; // Part numbers start from 1
 
-      const uploadPartResponse: UploadPartCommandOutput = await this.s3.send(
+      const uploadPartResponse: UploadPartCommandOutput = await s3Instance.send(
         new UploadPartCommand({
           Bucket: bucketName,
           Key: key,
@@ -105,7 +95,7 @@ export class S3FileService {
 
       // Complete the multipart upload if it's the last chunk
       if (chunk.index === chunk.total - 1) {
-        await this.s3.send(
+        await s3Instance.send(
           new CompleteMultipartUploadCommand({
             Bucket: bucketName,
             Key: key,
@@ -124,7 +114,7 @@ export class S3FileService {
       const multipartUpload = this.multipartUploads[file.id];
       if (multipartUpload) {
         try {
-          await this.s3.send(
+          await s3Instance.send(
             new AbortMultipartUploadCommand({
               Bucket: bucketName,
               Key: key,
@@ -136,7 +126,7 @@ export class S3FileService {
         }
         delete this.multipartUploads[file.id];
       }
- this.logger.error(error);
+      this.logger.error(error);
       throw new Error("Multipart upload failed. The upload has been aborted.");
     }
 
@@ -163,8 +153,13 @@ export class S3FileService {
       await this.prisma.file.findUnique({ where: { id: fileId } })
     ).name;
 
+    console.log("-------------------------------------------------")
+    console.log(fileName)
+    console.log("-------------------------------------------------")
+
+    const s3Instance = this.getS3Instance();
     const key = `${this.getS3Path()}${shareId}/${fileName}`;
-    const response = await this.s3.send(new GetObjectCommand({
+    const response = await s3Instance.send(new GetObjectCommand({
       Bucket: this.config.get('s3.bucketName'),
       Key: key,
     }));
@@ -190,9 +185,10 @@ export class S3FileService {
     if (!fileMetaData) throw new NotFoundException("File not found");
 
     const key = `${this.getS3Path()}${shareId}/${fileMetaData.name}`;
+    const s3Instance = this.getS3Instance();
 
     try {
-      await this.s3.send(
+      await s3Instance.send(
         new DeleteObjectCommand({
           Bucket: this.config.get("s3.bucketName"),
           Key: key,
@@ -207,10 +203,11 @@ export class S3FileService {
 
   async deleteAllFiles(shareId: string) {
     const prefix = `${this.getS3Path()}${shareId}/`;
+    const s3Instance = this.getS3Instance();
 
     try {
       // List all objects under the given prefix
-      const listResponse = await this.s3.send(
+      const listResponse = await s3Instance.send(
         new ListObjectsV2Command({
           Bucket: this.config.get("s3.bucketName"),
           Prefix: prefix,
@@ -227,7 +224,7 @@ export class S3FileService {
       }));
 
       // Delete all files in a single request (up to 1000 objects at once)
-      await this.s3.send(
+      await s3Instance.send(
         new DeleteObjectsCommand({
           Bucket: this.config.get("s3.bucketName"),
           Delete: {
@@ -243,10 +240,11 @@ export class S3FileService {
 
   async getFileSize(shareId: string, fileName: string): Promise<number> {
     const key = `${this.getS3Path()}${shareId}/${fileName}`;
+    const s3Instance = this.getS3Instance();
 
     try {
       // Get metadata of the file using HeadObjectCommand
-      const headObjectResponse = await this.s3.send(
+      const headObjectResponse = await s3Instance.send(
         new HeadObjectCommand({
           Bucket: this.config.get('s3.bucketName'),
           Key: key,
@@ -258,6 +256,18 @@ export class S3FileService {
     } catch (error) {
       throw new Error('Could not retrieve file size');
     }
+  }
+
+  getS3Instance(): S3Client{
+    return new S3Client({
+      endpoint: this.config.get('s3.endpoint'),
+      region: this.config.get('s3.region'),
+      credentials: {
+        accessKeyId: this.config.get('s3.key'),
+        secretAccessKey: this.config.get('s3.secret'),
+      },
+      forcePathStyle: true,
+    });
   }
 
   getZip() {
