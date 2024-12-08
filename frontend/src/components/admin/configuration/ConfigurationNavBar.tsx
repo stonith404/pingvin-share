@@ -16,7 +16,7 @@ import {
   TbMail,
   TbShare,
   TbSocial,
-  TbSquare,
+  TbBucket,
   TbBinaryTree,
   TbSettings,
 } from "react-icons/tb";
