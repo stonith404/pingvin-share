@@ -1,4 +1,4 @@
-import {BadRequestException, Injectable, InternalServerErrorException, NotFoundException} from '@nestjs/common';
+import {BadRequestException, Injectable, InternalServerErrorException, NotFoundException, Logger} from '@nestjs/common';
 import {
   AbortMultipartUploadCommand,
   CompleteMultipartUploadCommand,
@@ -19,6 +19,8 @@ import { validate as isValidUUID } from "uuid";
 
 @Injectable()
 export class S3FileService {
+  private readonly logger = new Logger(S3FileService.name);
+
   private s3: S3Client;
   private multipartUploads: Record<string, {
     uploadId: string;
