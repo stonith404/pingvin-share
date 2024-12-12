@@ -151,7 +151,7 @@ export default {
   "account.reverseShares.modal.expiration.year-plural": "Let",
   "account.reverseShares.modal.max-size.label": "Max. velikost sdílení",
   "account.reverseShares.modal.send-email": "Send email notifications",
-  "account.reverseShares.modal.send-email.description": "Sends you an email notification when a share is created with this reverse share link.",
+  "account.reverseShares.modal.send-email.description": "Odešle vám e-mailové upozornění, až bude sdílení pomocí tohoto reverzního sdíleného odkazu vytvořeno.",
   "account.reverseShares.modal.simplified": "Zjednodušený režim",
   "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will only be able to customize the name and description of the share.",
   "account.reverseShares.modal.public-access": "Veřejný přístup",
