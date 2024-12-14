@@ -17,6 +17,7 @@ import { CreateShareGuard } from "src/share/guard/createShare.guard";
 import { ShareOwnerGuard } from "src/share/guard/shareOwner.guard";
 import { FileService } from "./file.service";
 import { FileSecurityGuard } from "./guard/fileSecurity.guard";
+import * as mime from 'mime-types'
 
 @Controller("shares/:shareId/files")
 export class FileController {
@@ -73,13 +74,15 @@ export class FileController {
     const file = await this.fileService.get(shareId, fileId);
 
     const headers = {
-      "Content-Type": file.metaData.mimeType,
+      "Content-Type": mime?.lookup?.(file.metaData.name) || "application/octet-stream",
       "Content-Length": file.metaData.size,
       "Content-Security-Policy": "script-src 'none'",
     };
 
     if (download === "true") {
       headers["Content-Disposition"] = contentDisposition(file.metaData.name);
+    } else {
+      headers["Content-Disposition"] = contentDisposition(file.metaData.name, { type: "inline" });
     }
 
     res.set(headers);
