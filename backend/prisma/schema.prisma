@@ -95,6 +95,7 @@ model Share {
   security   ShareSecurity?
   recipients ShareRecipient[]
   files      File[]
+  storageProvider String @default("LOCAL")
 }
 
 model ReverseShare {

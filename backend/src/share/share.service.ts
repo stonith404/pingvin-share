@@ -18,12 +18,13 @@ import { PrismaService } from "src/prisma/prisma.service";
 import { ReverseShareService } from "src/reverseShare/reverseShare.service";
 import { parseRelativeDateToAbsolute } from "src/utils/date.util";
 import { SHARE_DIRECTORY } from "../constants";
-import { CreateShareDTO } from "./dto/createShare.dto";
+import {CreateShareDTO} from "./dto/createShare.dto";
 
 @Injectable()
 export class ShareService {
   constructor(
     private prisma: PrismaService,
+    private configService: ConfigService,
     private fileService: FileService,
     private emailService: EmailService,
     private config: ConfigService,
@@ -86,6 +87,7 @@ export class ShareService {
             ? share.recipients.map((email) => ({ email }))
             : [],
         },
+        storageProvider: this.configService.get('s3.enabled') ? "S3" : "LOCAL",
       },
     });
 
