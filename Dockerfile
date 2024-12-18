@@ -20,6 +20,8 @@ RUN npm ci
 
 # Stage 4: Build backend
 FROM node:20-alpine AS backend-builder
+RUN apk add openssl
+
 WORKDIR /opt/app
 COPY ./backend .
 COPY --from=backend-dependencies /opt/app/node_modules ./node_modules
@@ -32,7 +34,7 @@ ENV NODE_ENV=docker
 
 RUN apk update --no-cache \
     && apk upgrade --no-cache \
-    && apk add --no-cache curl caddy
+    && apk add --no-cache curl caddy openssl
 
 WORKDIR /opt/app/frontend
 COPY --from=frontend-builder /opt/app/public ./public
