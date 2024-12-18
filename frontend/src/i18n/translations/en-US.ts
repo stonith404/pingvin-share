@@ -621,6 +621,10 @@ export default {
   "admin.config.ldap.field-name-email": "User email attribute name",
   "admin.config.ldap.field-name-email.description":
     "LDAP attribute name for the email of an user.",
+  "admin.config.notify.success": "Configuration updated successfully.",
+  "admin.config.notify.logo-success":
+    "Logo updated successfully. It may take a few minutes to update on the website.",
+  "admin.config.notify.no-changes": "No changes to save.",
 
   // 404
   "404.description": "Oops this page doesn't exist.",
@@ -671,6 +675,7 @@ export default {
   "common.button.go-back": "Go back",
   "common.button.go-home": "Go home",
   "common.notify.copied": "Your link was copied to the clipboard",
+  "common.notify.copied-link": "Your link was copied to the clipboard",
   "common.success": "Success",
 
   "common.error": "Error",

@@ -12,13 +12,16 @@ export default {
   // END navbar
   // /
   "home.title": "Una plataforma <h>autoalojada</h> para compartir archivos.",
-  "home.description": "¿En realidad quieres dejar tus archivos personales en manos de terceros como WeTransfer?",
+  "home.description":
+    "¿En realidad quieres dejar tus archivos personales en manos de terceros como WeTransfer?",
   "home.bullet.a.name": "Autoalojada",
   "home.bullet.a.description": "Aloja Pingvin Share en tu propio equipo.",
   "home.bullet.b.name": "Privacidad",
-  "home.bullet.b.description": "Tus archivos son tuyos y nunca serán accesibles por terceros.",
+  "home.bullet.b.description":
+    "Tus archivos son tuyos y nunca serán accesibles por terceros.",
   "home.bullet.c.name": "Sin molestos límites de tamaño de archivo",
-  "home.bullet.c.description": "Sube archivos del tamaño que desees. Solo el espacio en tu disco duro será tu límite.",
+  "home.bullet.c.description":
+    "Sube archivos del tamaño que desees. Solo el espacio en tu disco duro será tu límite.",
   "home.button.start": "Comenzar",
   "home.button.source": "Código fuente",
   // END /
@@ -31,8 +34,10 @@ export default {
   "signin.input.password": "Contraseña",
   "signin.input.password.placeholder": "Tu contraseña",
   "signin.button.submit": "Iniciar sesión",
-  "signIn.notify.totp-required.title": "Se requiere autenticación de dos factores",
-  "signIn.notify.totp-required.description": "Por favor ingrese su código de autenticación de dos factores",
+  "signIn.notify.totp-required.title":
+    "Se requiere autenticación de dos factores",
+  "signIn.notify.totp-required.description":
+    "Por favor ingrese su código de autenticación de dos factores",
   "signIn.oauth.or": "O",
   "signIn.oauth.signInWith": "Iniciar sesión con",
   "signIn.oauth.github": "GitHub",
@@ -57,13 +62,16 @@ export default {
   // END /auth/totp
   // /auth/reset-password
   "resetPassword.title": "¿Olvidaste tu contraseña?",
-  "resetPassword.description": "Ingresa tu correo para restablecer tu contraseña.",
-  "resetPassword.notify.success": "Se ha enviado un mensaje con un enlace para restablecer tu contraseña si el correo electrónico proporcionado existe.",
+  "resetPassword.description":
+    "Ingresa tu correo para restablecer tu contraseña.",
+  "resetPassword.notify.success":
+    "Se ha enviado un mensaje con un enlace para restablecer tu contraseña si el correo electrónico proporcionado existe.",
   "resetPassword.button.back": "Volver al inicio de sesión",
   "resetPassword.text.resetPassword": "Restablecer contraseña",
   "resetPassword.text.enterNewPassword": "Ingresa tu nueva contraseña",
   "resetPassword.input.password": "Nueva contraseña",
-  "resetPassword.notify.passwordReset": "Tu contraseña ha sido restablecida exitosamente.",
+  "resetPassword.notify.passwordReset":
+    "Tu contraseña ha sido restablecida exitosamente.",
   // /account
   "account.title": "Mi cuenta",
   "account.card.info.title": "Información de cuenta",
@@ -73,7 +81,8 @@ export default {
   "account.card.password.title": "Contraseña",
   "account.card.password.old": "Anterior contraseña",
   "account.card.password.new": "Nueva contraseña",
-  "account.card.password.noPasswordSet": "No tienes una contraseña configurada. Para iniciar sesión usando tu correo electrónico y contraseña, necesitas crear una contraseña.",
+  "account.card.password.noPasswordSet":
+    "No tienes una contraseña configurada. Para iniciar sesión usando tu correo electrónico y contraseña, necesitas crear una contraseña.",
   "account.notify.password.success": "Contraseña cambiada correctamente",
   "account.card.oauth.title": "Inicio de sesión con red social",
   "account.card.oauth.github": "GitHub",
@@ -85,11 +94,14 @@ export default {
   "account.card.oauth.unlink": "Desvincular",
   "account.card.oauth.unlinked": "Desvinculado",
   "account.modal.unlink.title": "Desvincular cuenta",
-  "account.modal.unlink.description": "Desvincular tus cuentas sociales puede hacer que pierdas acceso a tu cuenta si no recuerdas tus credenciales de inicio de sesión",
+  "account.modal.unlink.description":
+    "Desvincular tus cuentas sociales puede hacer que pierdas acceso a tu cuenta si no recuerdas tus credenciales de inicio de sesión",
   "account.notify.oauth.unlinked.success": "Desvinculado correctamente",
   "account.card.security.title": "Seguridad",
-  "account.card.security.totp.enable.description": "Ingrese su contraseña actual para habilitar TOTP",
-  "account.card.security.totp.disable.description": "Ingrese su contraseña actual para deshabilitar TOTP",
+  "account.card.security.totp.enable.description":
+    "Ingrese su contraseña actual para habilitar TOTP",
+  "account.card.security.totp.disable.description":
+    "Ingrese su contraseña actual para deshabilitar TOTP",
   "account.card.security.totp.button.start": "Iniciar",
   "account.modal.totp.title": "Habilitar TOTP",
   "account.modal.totp.step1": "Paso 1: Añadir tu autentificador",
@@ -101,7 +113,8 @@ export default {
   "account.notify.totp.disable": "TOTP deshabilitado correctamente",
   "account.notify.totp.enable": "TOTP habilitado correctamente",
   "account.card.language.title": "Idioma",
-  "account.card.language.description": "El proyecto ha sido traducido por la comunidad. Algunos idiomas pueden estar incompletos.",
+  "account.card.language.description":
+    "El proyecto ha sido traducido por la comunidad. Algunos idiomas pueden estar incompletos.",
   "account.card.color.title": "Esquema de colores",
   // ThemeSwitcher.tsx
   "account.theme.dark": "Oscuro",
@@ -109,7 +122,8 @@ export default {
   "account.theme.system": "Sistema",
   "account.button.delete": "Eliminar Cuenta",
   "account.modal.delete.title": "Eliminar Cuenta",
-  "account.modal.delete.description": "¿Realmente quieres eliminar tu cuenta con todos los archivos que estás compartiendo actualmente?",
+  "account.modal.delete.description":
+    "¿Realmente quieres eliminar tu cuenta con todos los archivos que estás compartiendo actualmente?",
   // END /account
   // /account/shares
   "account.shares.title": "Mis compartidos",
@@ -127,13 +141,16 @@ export default {
   "account.shares.modal.share-informations": "Información del compartido",
   "account.shares.modal.share-link": "Enlace",
   "account.shares.modal.delete.title": "Eliminar enlace compartido: {share}",
-  "account.shares.modal.delete.description": "¿Seguro que quieres eliminar este compartido?",
+  "account.shares.modal.delete.description":
+    "¿Seguro que quieres eliminar este compartido?",
   // END /account/shares
   // /account/reverseShares
   "account.reverseShares.title": "Comparticiones inversas",
-  "account.reverseShares.description": "Una compartición inversa te permite generar una URL única con la que usuarios externos pueden compartir archivos.",
+  "account.reverseShares.description":
+    "Una compartición inversa te permite generar una URL única con la que usuarios externos pueden compartir archivos.",
   "account.reverseShares.title.empty": "Aquí está vacío 👀",
-  "account.reverseShares.description.empty": "No tienes ninguna compartición inversa.",
+  "account.reverseShares.description.empty":
+    "No tienes ninguna compartición inversa.",
   // showCreateReverseShareModal.tsx
   "account.reverseShares.modal.title": "Crear compartición inversa",
   "account.reverseShares.modal.expiration.label": "Expiración",
@@ -150,26 +167,36 @@ export default {
   "account.reverseShares.modal.expiration.year-singular": "Año",
   "account.reverseShares.modal.expiration.year-plural": "Años",
   "account.reverseShares.modal.max-size.label": "Tamaño máximo del compartido",
-  "account.reverseShares.modal.send-email": "Enviar notificaciones por correo electrónico",
-  "account.reverseShares.modal.send-email.description": "Te envía una notificación por correo electrónico cuando se crea un enlace compartido con este enlace de compartición inverso.",
+  "account.reverseShares.modal.send-email":
+    "Enviar notificaciones por correo electrónico",
+  "account.reverseShares.modal.send-email.description":
+    "Te envía una notificación por correo electrónico cuando se crea un enlace compartido con este enlace de compartición inverso.",
   "account.reverseShares.modal.simplified": "Modo simple",
-  "account.reverseShares.modal.simplified.description": "Facilita que la persona que sube el archivo lo comparta contigo. Solo podrá personalizar el nombre y la descripción del enlace compartido.",
+  "account.reverseShares.modal.simplified.description":
+    "Facilita que la persona que sube el archivo lo comparta contigo. Solo podrá personalizar el nombre y la descripción del enlace compartido.",
   "account.reverseShares.modal.public-access": "Acceso público",
-  "account.reverseShares.modal.public-access.description": "Haz que los enlaces compartidos creados con este enlace de compartición inverso sean públicos. Si está desactivado, solo tú y el creador del enlace tendrán acceso para verlo.",
+  "account.reverseShares.modal.public-access.description":
+    "Haz que los enlaces compartidos creados con este enlace de compartición inverso sean públicos. Si está desactivado, solo tú y el creador del enlace tendrán acceso para verlo.",
   "account.reverseShares.modal.max-use.label": "Máximo de usos",
-  "account.reverseShares.modal.max-use.description": "Cantidad máxima de veces que esta URL se puede usar para crear un compartido.",
-  "account.reverseShare.never-expires": "Esta compartición inversa nunca expirará.",
-  "account.reverseShare.expires-on": "Esta compartición inversa expirará en {expiration}.",
-  "account.reverseShares.table.no-shares": "Todavía no se han creado compartidos",
+  "account.reverseShares.modal.max-use.description":
+    "Cantidad máxima de veces que esta URL se puede usar para crear un compartido.",
+  "account.reverseShare.never-expires":
+    "Esta compartición inversa nunca expirará.",
+  "account.reverseShare.expires-on":
+    "Esta compartición inversa expirará en {expiration}.",
+  "account.reverseShares.table.no-shares":
+    "Todavía no se han creado compartidos",
   "account.reverseShares.table.count.singular": "compartido",
   "account.reverseShares.table.count.plural": "compartidos",
   "account.reverseShares.table.shares": "Compartidos",
   "account.reverseShares.table.remaining": "Usos restantes",
   "account.reverseShares.table.max-size": "Tamaño máximo del compartido",
   "account.reverseShares.table.expires": "Expira en",
-  "account.reverseShares.modal.reverse-share-link": "Enlace de compartición inversa",
+  "account.reverseShares.modal.reverse-share-link":
+    "Enlace de compartición inversa",
   "account.reverseShares.modal.delete.title": "Eliminar compartición inversa",
-  "account.reverseShares.modal.delete.description": "¿Seguro que quieres eliminar esta compartición inversa? Si lo haces, todos los archivos asociados también serán eliminados.",
+  "account.reverseShares.modal.delete.description":
+    "¿Seguro que quieres eliminar esta compartición inversa? Si lo haces, todos los archivos asociados también serán eliminados.",
   // END /account/reverseShares
   // /admin
   "admin.title": "Administración",
@@ -188,18 +215,23 @@ export default {
   "admin.users.edit.update.change-password.title": "Cambiar contraseña",
   "admin.users.edit.update.change-password.field": "Nueva contraseña",
   "admin.users.edit.update.change-password.button": "Guardar nueva contraseña",
-  "admin.users.edit.update.notify.password.success": "Contraseña cambiada correctamente",
+  "admin.users.edit.update.notify.password.success":
+    "Contraseña cambiada correctamente",
   "admin.users.edit.delete.title": "Eliminar usuario: {username} ?",
-  "admin.users.edit.delete.description": "¿Realmente deseas eliminar a este usuario y todos sus enlaces compartidos?",
+  "admin.users.edit.delete.description":
+    "¿Realmente deseas eliminar a este usuario y todos sus enlaces compartidos?",
   // showCreateUserModal.tsx
   "admin.users.modal.create.title": "Crear usuario",
   "admin.users.modal.create.username": "Nombre de usuario",
   "admin.users.modal.create.email": "Correo",
   "admin.users.modal.create.password": "Contraseña",
-  "admin.users.modal.create.manual-password": "Establecer contraseña manualmente",
-  "admin.users.modal.create.manual-password.description": "Si no se marca, el usuario recibirá un correo con un enlace para configurar su contraseña.",
+  "admin.users.modal.create.manual-password":
+    "Establecer contraseña manualmente",
+  "admin.users.modal.create.manual-password.description":
+    "Si no se marca, el usuario recibirá un correo con un enlace para configurar su contraseña.",
   "admin.users.modal.create.admin": "Privilegios de administrador",
-  "admin.users.modal.create.admin.description": "Si se marca, el usuario podrá acceder al panel de administrador.",
+  "admin.users.modal.create.admin.description":
+    "Si se marca, el usuario podrá acceder al panel de administrador.",
   // END /admin/users
   // /admin/shares
   "admin.shares.title": "Gestión de comparticiones",
@@ -208,7 +240,8 @@ export default {
   "admin.shares.table.visitors": "Visitantes",
   "admin.shares.table.expires": "Vence el",
   "admin.shares.edit.delete.title": "Eliminar enlace compartido: {id}",
-  "admin.shares.edit.delete.description": "¿Seguro que quieres eliminar este compartido?",
+  "admin.shares.edit.delete.description":
+    "¿Seguro que quieres eliminar este compartido?",
   // END /admin/shares
   // /upload
   "upload.title": "Subir",
@@ -219,20 +252,25 @@ export default {
   "upload.reverse-share.error.invalid.description": "Este enlace de uso compartido inverso ha caducado o no es válido.",
   // Dropzone.tsx
   "upload.dropzone.title": "Subir archivos",
-  "upload.dropzone.description": "Arrastra y suelta los archivos aquí para crear tu enlace compartido. Solo aceptamos archivos de hasta {maxSize} en total.",
-  "upload.dropzone.notify.file-too-big": "Tus archivos exceden el tamaño máximo de {maxSize}.",
+  "upload.dropzone.description":
+    "Arrastra y suelta los archivos aquí para crear tu enlace compartido. Solo aceptamos archivos de hasta {maxSize} en total.",
+  "upload.dropzone.notify.file-too-big":
+    "Tus archivos exceden el tamaño máximo de {maxSize}.",
   // FileList.tsx
   "upload.filelist.name": "Nombre",
   "upload.filelist.size": "Tamaño",
   // showCreateUploadModal.tsx
   "upload.modal.title": "Crear compartido",
-  "upload.modal.link.error.invalid": "Solo puede contener letras, números, guiones y guiones bajos",
+  "upload.modal.link.error.invalid":
+    "Solo puede contener letras, números, guiones y guiones bajos",
   "upload.modal.link.error.taken": "Este enlace ya está en uso",
   "upload.modal.not-signed-in": "No has iniciado sesión",
-  "upload.modal.not-signed-in-description": "No podrás eliminar tus compartidos manualmente ni ver el número de visitas.",
+  "upload.modal.not-signed-in-description":
+    "No podrás eliminar tus compartidos manualmente ni ver el número de visitas.",
   "upload.modal.expires.never": "nunca",
   "upload.modal.expires.never-long": "Enlace compartido permanente",
-  "upload.modal.expires.error.too-long": "La fecha de expiración excede el máximo de {max}.",
+  "upload.modal.expires.error.too-long":
+    "La fecha de expiración excede el máximo de {max}.",
   "upload.modal.link.label": "Enlace",
   "upload.modal.expires.label": "Expiración",
   "upload.modal.expires.minute-singular": "Minuto",
@@ -249,9 +287,11 @@ export default {
   "upload.modal.expires.year-plural": "Años",
   "upload.modal.accordion.name-and-description.title": "Nombre y descripción",
   "upload.modal.accordion.name-and-description.name.placeholder": "Nombre",
-  "upload.modal.accordion.name-and-description.description.placeholder": "Nota para los destinatarios de este compartido",
+  "upload.modal.accordion.name-and-description.description.placeholder":
+    "Nota para los destinatarios de este compartido",
   "upload.modal.accordion.email.title": "Correo de los destinatarios",
-  "upload.modal.accordion.email.placeholder": "Ingresa los correos de los destinatarios",
+  "upload.modal.accordion.email.placeholder":
+    "Ingresa los correos de los destinatarios",
   "upload.modal.accordion.email.invalid-email": "Dirección de correo inválida",
   "upload.modal.accordion.security.title": "Opciones de seguridad",
   "upload.modal.accordion.security.password.label": "Protección por contraseña",
@@ -260,36 +300,46 @@ export default {
   "upload.modal.accordion.security.max-views.placeholder": "Sin límite",
   // showCompletedUploadModal.tsx
   "upload.modal.completed.never-expires": "Este compartido nunca expirará.",
-  "upload.modal.completed.expires-on": "Este compartido expira en {expiration}.",
+  "upload.modal.completed.expires-on":
+    "Este compartido expira en {expiration}.",
   "upload.modal.completed.share-ready": "Compartido listo",
-  "upload.modal.completed.notified-reverse-share-creator": "Hemos notificado al creador de la compartición inversa. También puedes compartir manualmente este enlace con otros a través de otros medios.",
+  "upload.modal.completed.notified-reverse-share-creator":
+    "Hemos notificado al creador de la compartición inversa. También puedes compartir manualmente este enlace con otros a través de otros medios.",
   // END /upload
   // /share/[id]
   "share.title": "Compartido {shareId}",
   "share.description": "¡Mira lo que he compartido contigo!",
   "share.error.visitor-limit-exceeded.title": "Se excedió el límite de visitas",
-  "share.error.visitor-limit-exceeded.description": "Se ha excedido el límite de visitas para este compartido.",
+  "share.error.visitor-limit-exceeded.description":
+    "Se ha excedido el límite de visitas para este compartido.",
   "share.error.removed.title": "Compartido eliminado",
   "share.error.not-found.title": "Compartido no encontrado",
-  "share.error.not-found.description": "El compartido que estás buscando no existe.",
+  "share.error.not-found.description":
+    "El compartido que estás buscando no existe.",
   "share.error.access-denied.title": "Compartición privada",
-  "share.error.access-denied.description": "La cuenta actual no tiene permiso para acceder a este compartido",
+  "share.error.access-denied.description":
+    "La cuenta actual no tiene permiso para acceder a este compartido",
   "share.modal.password.title": "Se requiere contraseña",
-  "share.modal.password.description": "Por favor, ingresa la contraseña para acceder a este enlace compartido.",
+  "share.modal.password.description":
+    "Por favor, ingresa la contraseña para acceder a este enlace compartido.",
   "share.modal.password": "Contraseña",
   "share.modal.error.invalid-password": "Contraseña inválida",
   "share.button.download-all": "Descargar todo",
-  "share.notify.download-all-preparing": "El enlace compartido está en preparación. Por favor, inténtalo de nuevo en unos minutos.",
+  "share.notify.download-all-preparing":
+    "El enlace compartido está en preparación. Por favor, inténtalo de nuevo en unos minutos.",
   "share.modal.file-link": "Enlace del archivo",
   "share.table.name": "Nombre",
   "share.table.size": "Tamaño",
-  "share.modal.file-preview.error.not-supported.title": "Vista previa no disponible",
-  "share.modal.file-preview.error.not-supported.description": "Las vistas previas no son compatibles con este tipo de archivos. Por favor, descargue el archivo para verlo.",
+  "share.modal.file-preview.error.not-supported.title":
+    "Vista previa no disponible",
+  "share.modal.file-preview.error.not-supported.description":
+    "Las vistas previas no son compatibles con este tipo de archivos. Por favor, descargue el archivo para verlo.",
   // END /share/[id]
   // /share/[id]/edit
   "share.edit.title": "Editar {shareId}",
   "share.edit.append-upload": "Agregar archivo",
-  "share.edit.notify.generic-error": "Ha ocurrido un error mientras se compartía tu archivo.",
+  "share.edit.notify.generic-error":
+    "Ha ocurrido un error mientras se compartía tu archivo.",
   "share.edit.notify.save-success": "Compartir actualizado correctamente",
   // END /share/[id]/edit
   // /admin/config
@@ -306,16 +356,22 @@ export default {
   "admin.config.general.secure-cookies": "Cookies seguras",
   "admin.config.general.secure-cookies.description": "Si se establece o no la bandera de seguridad en las cookies. Si se activa, el sitio no funcionará cuando se acceda a través de HTTP.",
   "admin.config.general.show-home-page": "Mostrar página de inicio",
-  "admin.config.general.show-home-page.description": "Mostrar o no la página de inicio",
+  "admin.config.general.show-home-page.description":
+    "Mostrar o no la página de inicio",
   "admin.config.general.session-duration": "Duración de la sesión",
-  "admin.config.general.session-duration.description": "Tiempo en horas después del cual un usuario debe iniciar sesión de nuevo (por defecto: 3 meses).",
+  "admin.config.general.session-duration.description":
+    "Tiempo en horas después del cual un usuario debe iniciar sesión de nuevo (por defecto: 3 meses).",
   "admin.config.general.logo": "Logo",
-  "admin.config.general.logo.description": "Cambia tu logo subiendo una nueva imagen. La imagen debe ser un PNG y debe estar en formato 1:1.",
+  "admin.config.general.logo.description":
+    "Cambia tu logo subiendo una nueva imagen. La imagen debe ser un PNG y debe estar en formato 1:1.",
   "admin.config.general.logo.placeholder": "Elegir imagen",
-  "admin.config.email.enable-share-email-recipients": "Habilitar compartir por correo electrónico",
-  "admin.config.email.enable-share-email-recipients.description": "Si desea permitir compartir por correo electrónico. Solo habilita esto si SMTP está activado.",
+  "admin.config.email.enable-share-email-recipients":
+    "Habilitar compartir por correo electrónico",
+  "admin.config.email.enable-share-email-recipients.description":
+    "Si desea permitir compartir por correo electrónico. Solo habilita esto si SMTP está activado.",
   "admin.config.email.share-recipients-subject": "Asunto destinatario",
-  "admin.config.email.share-recipients-subject.description": "Asunto del correo el cual es enviado al destinatario del compartido.",
+  "admin.config.email.share-recipients-subject.description":
+    "Asunto del correo el cual es enviado al destinatario del compartido.",
   "admin.config.email.share-recipients-message": "Mensaje destinatario",
   "admin.config.email.share-recipients-message.description": "Mensaje que se envía a los destinatarios del enlace compartido. Variables disponibles:\n{creator} - El nombre de usuario del creador del enlace\n{creatorEmail} - El correo electrónico el creador del enlace\n{shareUrl} - La URL del enlace compartido\n{desc} - La descripción del enlace compartido\n{expires} - La fecha de expiración del enlace\nEstas variables se reemplazarán con el valor real.",
   "admin.config.email.reverse-share-subject": "Asunto de la compartición inversa",
@@ -323,84 +379,126 @@ export default {
   "admin.config.email.reverse-share-message": "Mensaje de la compartición inversa",
   "admin.config.email.reverse-share-message.description": "Mensaje que se envía cuando alguien comparte algo con tu enlace de compartición inversa. {shareUrl} Se remplazará con el nombre del creador y la URL del compartido.",
   "admin.config.email.reset-password-subject": "Asunto restablecer contraseña",
-  "admin.config.email.reset-password-subject.description": "Asunto del correo electrónico enviado cuando un usuario solicita un restablecimiento de contraseña.",
+  "admin.config.email.reset-password-subject.description":
+    "Asunto del correo electrónico enviado cuando un usuario solicita un restablecimiento de contraseña.",
   "admin.config.email.reset-password-message": "Mensaje restablecer contraseña",
-  "admin.config.email.reset-password-message.description": "Mensaje que se envía cuando un usuario solicita restablecer la contraseña. {url} se remplazará con la URL para restablecer la contraseña.",
+  "admin.config.email.reset-password-message.description":
+    "Mensaje que se envía cuando un usuario solicita restablecer la contraseña. {url} se remplazará con la URL para restablecer la contraseña.",
   "admin.config.email.invite-subject": "Asunto de la invitación",
-  "admin.config.email.invite-subject.description": "Asunto del correo electrónico enviado cuando un administrador invita a un usuario.",
+  "admin.config.email.invite-subject.description":
+    "Asunto del correo electrónico enviado cuando un administrador invita a un usuario.",
   "admin.config.email.invite-message": "Mensaje de invitación",
-  "admin.config.email.invite-message.description": "Mensaje que se envía cuando un administrador invita a un usuario. {url} se reemplazará con la URL de invitación, {email} con el correo electrónico y {password} con la contraseña del usuario.",
+  "admin.config.email.invite-message.description":
+    "Mensaje que se envía cuando un administrador invita a un usuario. {url} se reemplazará con la URL de invitación, {email} con el correo electrónico y {password} con la contraseña del usuario.",
   "admin.config.share.allow-registration": "Permitir registro",
-  "admin.config.share.allow-registration.description": "Si se permite el registro",
-  "admin.config.share.allow-unauthenticated-shares": "Permitir compartir sin iniciar sesión",
-  "admin.config.share.allow-unauthenticated-shares.description": "Si los usuarios que no han iniciado sesión pueden compartir",
+  "admin.config.share.allow-registration.description":
+    "Si se permite el registro",
+  "admin.config.share.allow-unauthenticated-shares":
+    "Permitir compartir sin iniciar sesión",
+  "admin.config.share.allow-unauthenticated-shares.description":
+    "Si los usuarios que no han iniciado sesión pueden compartir",
   "admin.config.share.max-expiration": "Expiración máxima",
   "admin.config.share.max-expiration.description": "Expiración máxima para compartir en horas. Establezca en 0 para permitir una expiración ilimitada.",
   "admin.config.share.share-id-length": "Longitud de ID compartido por defecto",
   "admin.config.share.share-id-length.description": "Longitud predeterminada para el ID generado de un compartido. Este valor también se usa para generar enlaces compartidos de uso inverso. Un valor inferior a 8 no se considera seguro.",
   "admin.config.share.max-size": "Tamaño máximo",
-  "admin.config.share.max-size.description": "Tamaño máximo de los archivos, en bytes",
+  "admin.config.share.max-size.description":
+    "Tamaño máximo de los archivos, en bytes",
   "admin.config.share.zip-compression-level": "Nivel de compresión del Zip",
-  "admin.config.share.zip-compression-level.description": "Ajustar el nivel para equilibrar entre el tamaño del archivo y la velocidad de compresión. Los valores válidos van del 0 al 9, siendo 0 sin compresión y 9 el nivel máximo de compresión. ",
+  "admin.config.share.zip-compression-level.description":
+    "Ajustar el nivel para equilibrar entre el tamaño del archivo y la velocidad de compresión. Los valores válidos van del 0 al 9, siendo 0 sin compresión y 9 el nivel máximo de compresión. ",
   "admin.config.share.chunk-size": "Tamaño de los fragmentos",
-  "admin.config.share.chunk-size.description": "Ajusta el tamaño del fragmento (en bytes) para tus subidas y equilibra la eficiencia y la fiabilidad según tu conexión a Internet. Fragmentos más pequeños pueden aumentar las tasas de éxito para conexiones inestables, mientras que fragmentos más grandes hacen que las subidas sean más rápidas para conexiones estables.",
-  "admin.config.share.auto-open-share-modal": "Auto abrir un modal de creación de compartidos",
-  "admin.config.share.auto-open-share-modal.description": "El modal de creación de compartir aparece automáticamente cuando un usuario selecciona archivos, eliminando la necesidad de hacer clic manualmente en el botón.",
+  "admin.config.share.chunk-size.description":
+    "Ajusta el tamaño del fragmento (en bytes) para tus subidas y equilibra la eficiencia y la fiabilidad según tu conexión a Internet. Fragmentos más pequeños pueden aumentar las tasas de éxito para conexiones inestables, mientras que fragmentos más grandes hacen que las subidas sean más rápidas para conexiones estables.",
+  "admin.config.share.auto-open-share-modal":
+    "Auto abrir un modal de creación de compartidos",
+  "admin.config.share.auto-open-share-modal.description":
+    "El modal de creación de compartir aparece automáticamente cuando un usuario selecciona archivos, eliminando la necesidad de hacer clic manualmente en el botón.",
   "admin.config.smtp.enabled": "Habilitar",
-  "admin.config.smtp.enabled.description": "Si SMTP está habilitado. Active solo si ha introducido el host, el puerto, el correo, el usuario y la contraseña de su servidor SMTP.",
+  "admin.config.smtp.enabled.description":
+    "Si SMTP está habilitado. Active solo si ha introducido el host, el puerto, el correo, el usuario y la contraseña de su servidor SMTP.",
   "admin.config.smtp.host": "Host",
   "admin.config.smtp.host.description": "Host del servidor SMTP",
   "admin.config.smtp.port": "Puerto",
   "admin.config.smtp.port.description": "Puerto del servidor SMTP",
   "admin.config.smtp.email": "Correo",
-  "admin.config.smtp.email.description": "Dirección desde la cual se envían los correos electrónicos",
+  "admin.config.smtp.email.description":
+    "Dirección desde la cual se envían los correos electrónicos",
   "admin.config.smtp.username": "Usuario",
   "admin.config.smtp.username.description": "Usuario del servidor SMTP",
   "admin.config.smtp.password": "Contraseña",
   "admin.config.smtp.password.description": "Contraseña del servidor SMTP",
   "admin.config.smtp.button.test": "Enviar correo de prueba",
-  "admin.config.smtp.allow-unauthorized-certificates": "Confiar en certificados de servidor SMTP no autorizados",
-  "admin.config.smtp.allow-unauthorized-certificates.description": "Sólo establece esto como verdadero si necesitas confiar en certificados autofirmados.",
+  "admin.config.smtp.allow-unauthorized-certificates":
+    "Confiar en certificados de servidor SMTP no autorizados",
+  "admin.config.smtp.allow-unauthorized-certificates.description":
+    "Sólo establece esto como verdadero si necesitas confiar en certificados autofirmados.",
   "admin.config.oauth.allow-registration": "Permitir registro",
-  "admin.config.oauth.allow-registration.description": "Permitir a los usuarios registrarse mediante login social",
+  "admin.config.oauth.allow-registration.description":
+    "Permitir a los usuarios registrarse mediante login social",
   "admin.config.oauth.ignore-totp": "Ignorar TOTP",
-  "admin.config.oauth.ignore-totp.description": "Ignorar TOTP cuando el usuario utiliza inicio de sesión social",
-  "admin.config.oauth.disable-password": "Desactivar el inicio de sesión con contraseña",
-  "admin.config.oauth.disable-password.description": "Al desactivar el inicio de sesión de contraseña\nAsegúrese de que un proveedor de OAuth está configurado correctamente antes de activar esta configuración para evitar ser bloqueado.",
+  "admin.config.oauth.ignore-totp.description":
+    "Ignorar TOTP cuando el usuario utiliza inicio de sesión social",
+  "admin.config.oauth.disable-password":
+    "Desactivar el inicio de sesión con contraseña",
+  "admin.config.oauth.disable-password.description":
+    "Al desactivar el inicio de sesión de contraseña\nAsegúrese de que un proveedor de OAuth está configurado correctamente antes de activar esta configuración para evitar ser bloqueado.",
   "admin.config.oauth.github-enabled": "GitHub",
-  "admin.config.oauth.github-enabled.description": "Si el inicio de sesión de GitHub está habilitado",
+  "admin.config.oauth.github-enabled.description":
+    "Si el inicio de sesión de GitHub está habilitado",
   "admin.config.oauth.github-client-id": "ID del Cliente de GitHub",
-  "admin.config.oauth.github-client-id.description": "ID de cliente de la aplicación OAuth de GitHub",
-  "admin.config.oauth.github-client-secret": "Palabra secreta del Cliente de GitHub",
-  "admin.config.oauth.github-client-secret.description": "Secreto de cliente de la aplicación OAuth de GitHub",
+  "admin.config.oauth.github-client-id.description":
+    "ID de cliente de la aplicación OAuth de GitHub",
+  "admin.config.oauth.github-client-secret":
+    "Palabra secreta del Cliente de GitHub",
+  "admin.config.oauth.github-client-secret.description":
+    "Secreto de cliente de la aplicación OAuth de GitHub",
   "admin.config.oauth.google-enabled": "Google",
-  "admin.config.oauth.google-enabled.description": "Si el inicio de sesión de Google está habilitado",
+  "admin.config.oauth.google-enabled.description":
+    "Si el inicio de sesión de Google está habilitado",
   "admin.config.oauth.google-client-id": "ID del Cliente de Google",
-  "admin.config.oauth.google-client-id.description": "ID de cliente de la aplicación de Google OAuth",
-  "admin.config.oauth.google-client-secret": "Palabra secreta del cliente de Google",
-  "admin.config.oauth.google-client-secret.description": "Secreto del cliente de la aplicación Google OAuth",
+  "admin.config.oauth.google-client-id.description":
+    "ID de cliente de la aplicación de Google OAuth",
+  "admin.config.oauth.google-client-secret":
+    "Palabra secreta del cliente de Google",
+  "admin.config.oauth.google-client-secret.description":
+    "Secreto del cliente de la aplicación Google OAuth",
   "admin.config.oauth.microsoft-enabled": "Microsoft",
-  "admin.config.oauth.microsoft-enabled.description": "Si el inicio de sesión de Microsoft está habilitado",
+  "admin.config.oauth.microsoft-enabled.description":
+    "Si el inicio de sesión de Microsoft está habilitado",
   "admin.config.oauth.microsoft-tenant": "Microsoft Tenant",
-  "admin.config.oauth.microsoft-tenant.description": "Tenant ID de la aplicación OAuth de Microsoft\ncomún: Los usuarios con una cuenta personal de Microsoft y una cuenta de trabajo o escuela de Microsoft Entra ID pueden iniciar sesión en la aplicación.\norganizaciones: Solo los usuarios con cuentas de trabajo o escuela de Microsoft Entra ID pueden iniciar sesión en la aplicación.\nconsumidores: Solo los usuarios con una cuenta personal de Microsoft pueden iniciar sesión en la aplicación.\nNombre de dominio del Tenant ID de Microsoft Entra o el Tenant ID en formato GUID: Solo los usuarios de un Tenant específico de Microsoft Entra (miembros del directorio con una cuenta de trabajo o escuela o invitados del directorio con una cuenta personal de Microsoft) pueden iniciar sesión en la aplicación.",
+  "admin.config.oauth.microsoft-tenant.description":
+    "Tenant ID de la aplicación OAuth de Microsoft\ncomún: Los usuarios con una cuenta personal de Microsoft y una cuenta de trabajo o escuela de Microsoft Entra ID pueden iniciar sesión en la aplicación.\norganizaciones: Solo los usuarios con cuentas de trabajo o escuela de Microsoft Entra ID pueden iniciar sesión en la aplicación.\nconsumidores: Solo los usuarios con una cuenta personal de Microsoft pueden iniciar sesión en la aplicación.\nNombre de dominio del Tenant ID de Microsoft Entra o el Tenant ID en formato GUID: Solo los usuarios de un Tenant específico de Microsoft Entra (miembros del directorio con una cuenta de trabajo o escuela o invitados del directorio con una cuenta personal de Microsoft) pueden iniciar sesión en la aplicación.",
   "admin.config.oauth.microsoft-client-id": "ID del cliente de Microsoft",
-  "admin.config.oauth.microsoft-client-id.description": "ID de cliente de la app OAuth de Microsoft",
-  "admin.config.oauth.microsoft-client-secret": "Secreto del cliente de Microsoft",
-  "admin.config.oauth.microsoft-client-secret.description": "Secreto del cliente de la aplicación OAuth de Microsoft",
+  "admin.config.oauth.microsoft-client-id.description":
+    "ID de cliente de la app OAuth de Microsoft",
+  "admin.config.oauth.microsoft-client-secret":
+    "Secreto del cliente de Microsoft",
+  "admin.config.oauth.microsoft-client-secret.description":
+    "Secreto del cliente de la aplicación OAuth de Microsoft",
   "admin.config.oauth.discord-enabled": "Discord",
-  "admin.config.oauth.discord-enabled.description": "Si el inicio de sesión de Discord está habilitado",
+  "admin.config.oauth.discord-enabled.description":
+    "Si el inicio de sesión de Discord está habilitado",
   "admin.config.oauth.discord-limited-users": "Usuarios limitados de Discord",
-  "admin.config.oauth.discord-limited-users.description": "Limitar el inicio de sesión a usuarios específicos por su ID de Discord. Deja en blanco para desactivar.",
-  "admin.config.oauth.discord-limited-guild": "ID de servidor limitado de Discord",
-  "admin.config.oauth.discord-limited-guild.description": "Limitar el inicio de sesión a usuarios en un servidor específico. Déjelo en blanco para desactivarlo.",
+  "admin.config.oauth.discord-limited-users.description":
+    "Limitar el inicio de sesión a usuarios específicos por su ID de Discord. Deja en blanco para desactivar.",
+  "admin.config.oauth.discord-limited-guild":
+    "ID de servidor limitado de Discord",
+  "admin.config.oauth.discord-limited-guild.description":
+    "Limitar el inicio de sesión a usuarios en un servidor específico. Déjelo en blanco para desactivarlo.",
   "admin.config.oauth.discord-client-id": "ID de cliente de Discord",
-  "admin.config.oauth.discord-client-id.description": "ID de cliente de la aplicación OAuth de Discord",
+  "admin.config.oauth.discord-client-id.description":
+    "ID de cliente de la aplicación OAuth de Discord",
   "admin.config.oauth.discord-client-secret": "Secreto de cliente de Discord",
-  "admin.config.oauth.discord-client-secret.description": "Secreto del cliente de la aplicación OAuth de Discord",
+  "admin.config.oauth.discord-client-secret.description":
+    "Secreto del cliente de la aplicación OAuth de Discord",
   "admin.config.oauth.oidc-enabled": "Conexión OpenID",
-  "admin.config.oauth.oidc-enabled.description": "Si el inicio de sesión de OpenID Connect está habilitado",
-  "admin.config.oauth.oidc-discovery-uri": "URI de descubrimiento de OpenID Connect",
-  "admin.config.oauth.oidc-discovery-uri.description": "URI de descubrimiento de la aplicación OAuth de OpenID Connect",
+  "admin.config.oauth.oidc-enabled.description":
+    "Si el inicio de sesión de OpenID Connect está habilitado",
+  "admin.config.oauth.oidc-discovery-uri":
+    "URI de descubrimiento de OpenID Connect",
+  "admin.config.oauth.oidc-discovery-uri.description":
+    "URI de descubrimiento de la aplicación OAuth de OpenID Connect",
   "admin.config.oauth.oidc-sign-out": "Cerrar sesión de OpenID Connect",
   "admin.config.oauth.oidc-sign-out.description": "Si el botón \"Cerrar sesión\" cerrará la sesión del proveedor de OpenID Connect",
   "admin.config.oauth.oidc-scope": "Ámbito de OpenID Connect",
@@ -414,31 +512,40 @@ export default {
   "admin.config.oauth.oidc-role-admin-access": "Rol de OpenID Connect para acceso de administrador",
   "admin.config.oauth.oidc-role-admin-access.description": "Rol requerido para el acceso administrativo. Debe estar presente en los roles de un usuario para acceder al panel de administración. " + "Déjalo en blanco si no sabe lo que es esta configuración.",
   "admin.config.oauth.oidc-client-id": "ID de Cliente OpenID Connect",
-  "admin.config.oauth.oidc-client-id.description": "ID de cliente de la aplicación OAuth de OpenID Connect",
-  "admin.config.oauth.oidc-client-secret": "Secreto de cliente de OpenID Connect",
-  "admin.config.oauth.oidc-client-secret.description": "Secreto del cliente de la aplicación OAuth de OpenID Connect",
+  "admin.config.oauth.oidc-client-id.description":
+    "ID de cliente de la aplicación OAuth de OpenID Connect",
+  "admin.config.oauth.oidc-client-secret":
+    "Secreto de cliente de OpenID Connect",
+  "admin.config.oauth.oidc-client-secret.description":
+    "Secreto del cliente de la aplicación OAuth de OpenID Connect",
   "admin.config.category.ldap": "LDAP",
   "admin.config.ldap.enabled": "Habilitar LDAP",
-  "admin.config.ldap.enabled.description": "Usar autenticación LDAP para el inicio de sesión de usuarios",
+  "admin.config.ldap.enabled.description":
+    "Usar autenticación LDAP para el inicio de sesión de usuarios",
   "admin.config.ldap.url": "URL del servidor",
   "admin.config.ldap.url.description": "URL del servidor LDAP",
   "admin.config.ldap.bind-dn": "Bind DN",
-  "admin.config.ldap.bind-dn.description": "Usuario predeterminado utilizado para realizar la búsqueda de usuarios",
+  "admin.config.ldap.bind-dn.description":
+    "Usuario predeterminado utilizado para realizar la búsqueda de usuarios",
   "admin.config.ldap.bind-password": "Bind password",
-  "admin.config.ldap.bind-password.description": "Contraseña utilizada para realizar la búsqueda de usuarios",
+  "admin.config.ldap.bind-password.description":
+    "Contraseña utilizada para realizar la búsqueda de usuarios",
   "admin.config.ldap.search-base": "Base de usuarios",
-  "admin.config.ldap.search-base.description": "Ubicación base, donde se llevará a cabo la búsqueda de usuarios",
+  "admin.config.ldap.search-base.description":
+    "Ubicación base, donde se llevará a cabo la búsqueda de usuarios",
   "admin.config.ldap.search-query": "Consulta de usuario",
-  "admin.config.ldap.search-query.description": "La consulta de usuario se utilizará para buscar en la 'Base de usuarios' al usuario LDAP. Se puede usar %username% como marcador de posición para la entrada del usuario.",
+  "admin.config.ldap.search-query.description":
+    "La consulta de usuario se utilizará para buscar en la 'Base de usuarios' al usuario LDAP. Se puede usar %username% como marcador de posición para la entrada del usuario.",
   "admin.config.ldap.admin-groups": "Grupo de administración",
-  "admin.config.ldap.admin-groups.description": "Grupo requerido para acceso administrativo.",
+  "admin.config.ldap.admin-groups.description":
+    "Grupo requerido para acceso administrativo.",
   "admin.config.ldap.field-name-member-of": "Atributo grupos de usuarios",
-  "admin.config.ldap.field-name-member-of.description": "Nombre del atributo LDAP para los grupos de los que es miembro un usuario. Esto se utiliza al verificar el grupo de administración.",
-  "admin.config.ldap.field-name-email": "Atributo correo electrónico del usuario",
-  "admin.config.ldap.field-name-email.description": "Nombre del atributo LDAP para el correo electrónico de un usuario.",
-  "admin.config.notify.success": "Configuración actualizada correctamente.",
-  "admin.config.notify.logo-success": "Logo actualizado correctamente. Puede tardar unos minutos en actualizarse en el sitio web.",
-  "admin.config.notify.no-changes": "No hay cambios que guardar.",
+  "admin.config.ldap.field-name-member-of.description":
+    "Nombre del atributo LDAP para los grupos de los que es miembro un usuario. Esto se utiliza al verificar el grupo de administración.",
+  "admin.config.ldap.field-name-email":
+    "Atributo correo electrónico del usuario",
+  "admin.config.ldap.field-name-email.description":
+    "Nombre del atributo LDAP para el correo electrónico de un usuario.",
   // 404
   "404.description": "Oops esta página no existe.",
   "404.button.home": "Regrésame al inicio",
@@ -447,16 +554,23 @@ export default {
   "error.description": "¡Ups!",
   "error.button.back": "Volver",
   "error.msg.default": "Algo ha salido mal.",
-  "error.msg.access_denied": "Ha cancelado el proceso de autenticación, por favor inténtelo de nuevo.",
-  "error.msg.expired_token": "El proceso de autenticación ha tardado demasiado, por favor inténtelo de nuevo.",
+  "error.msg.access_denied":
+    "Ha cancelado el proceso de autenticación, por favor inténtelo de nuevo.",
+  "error.msg.expired_token":
+    "El proceso de autenticación ha tardado demasiado, por favor inténtelo de nuevo.",
   "error.msg.invalid_token": "Error interno",
   "error.msg.no_user": "El usuario vinculado a esta cuenta {0} no existe.",
-  "error.msg.no_email": "No se puede obtener la dirección de correo electrónico de esta cuenta {0}.",
-  "error.msg.already_linked": "Esta cuenta {0} ya está vinculada a otra cuenta.",
-  "error.msg.not_linked": "Esta cuenta {0} aún no ha sido vinculada a ninguna cuenta.",
-  "error.msg.unverified_account": "Esta cuenta {0} no está verificada, por favor inténtalo de nuevo después de la verificación.",
+  "error.msg.no_email":
+    "No se puede obtener la dirección de correo electrónico de esta cuenta {0}.",
+  "error.msg.already_linked":
+    "Esta cuenta {0} ya está vinculada a otra cuenta.",
+  "error.msg.not_linked":
+    "Esta cuenta {0} aún no ha sido vinculada a ninguna cuenta.",
+  "error.msg.unverified_account":
+    "Esta cuenta {0} no está verificada, por favor inténtalo de nuevo después de la verificación.",
   "error.msg.user_not_allowed": "No tienes permitido iniciar sesion.",
-  "error.msg.cannot_get_user_info": "No se puede obtener tu información de usuario de esta cuenta {0}.",
+  "error.msg.cannot_get_user_info":
+    "No se puede obtener tu información de usuario de esta cuenta {0}.",
   "error.param.provider_github": "GitHub",
   "error.param.provider_google": "Google",
   "error.param.provider_microsoft": "Microsoft",
@@ -479,7 +593,6 @@ export default {
   "common.text.redirecting": "Redirigiendo...",
   "common.button.go-back": "Volver",
   "common.button.go-home": "Página de inicio",
-  "common.notify.copied": "Tu enlace se ha copiado al portapapeles",
   "common.notify.copied-link": "Tu enlace se ha copiado al portapapeles",
   "common.success": "Éxito",
   "common.error": "Error",
@@ -491,5 +604,5 @@ export default {
   "common.error.number-too-large": "Debe ser como máximo {max}",
   "common.error.exact-length": "Debe tener exactamente {length} caracteres",
   "common.error.invalid-number": "Debe ser un número",
-  "common.error.field-required": "Este campo es requerido"
+  "common.error.field-required": "Este campo es requerido",
 };

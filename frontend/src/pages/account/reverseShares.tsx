@@ -160,7 +160,9 @@ const MyShares = () => {
                                       clipboard.copy(
                                         `${window.location.origin}/s/${share.id}`,
                                       );
-                                      toast.success(t("common.notify.copied"));
+                                      toast.success(
+                                        t("common.notify.copied-link"),
+                                      );
                                     } else {
                                       showShareLinkModal(modals, share.id);
                                     }
@@ -197,7 +199,7 @@ const MyShares = () => {
                                 reverseShare.token
                               }`,
                             );
-                            toast.success(t("common.notify.copied"));
+                            toast.success(t("common.notify.copied-link"));
                           } else {
                             showReverseShareLinkModal(
                               modals,

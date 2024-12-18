@@ -20,6 +20,8 @@ RUN npm ci
 
 # Stage 4: Build backend
 FROM node:20-alpine AS backend-builder
+RUN apk add openssl
+
 WORKDIR /opt/app
 COPY ./backend .
 COPY --from=backend-dependencies /opt/app/node_modules ./node_modules
@@ -30,9 +32,12 @@ RUN npm run build && npm prune --production
 FROM node:20-alpine AS runner
 ENV NODE_ENV=docker
 
+# Delete default node user
+RUN deluser --remove-home node
+
 RUN apk update --no-cache \
     && apk upgrade --no-cache \
-    && apk add --no-cache curl caddy
+    && apk add --no-cache curl caddy su-exec openssl
 
 WORKDIR /opt/app/frontend
 COPY --from=frontend-builder /opt/app/public ./public
@@ -46,13 +51,14 @@ COPY --from=backend-builder /opt/app/dist ./dist
 COPY --from=backend-builder /opt/app/prisma ./prisma
 COPY --from=backend-builder /opt/app/package.json ./
 
-COPY ./reverse-proxy /etc/caddy
-COPY ./scripts/docker-entrypoint.sh /opt/app/docker-entrypoint.sh
-
 WORKDIR /opt/app
+
+COPY ./reverse-proxy /etc/caddy
+COPY ./scripts ./scripts
 
 EXPOSE 3000
 
 HEALTHCHECK --interval=10s --timeout=3s CMD curl -f http://localhost:3000/api/health || exit 1
 
-CMD ["sh", "/opt/app/docker-entrypoint.sh"]
+ENTRYPOINT ["sh", "./scripts/docker/create-user.sh"]
+CMD ["sh", "./scripts/docker/entrypoint.sh"]

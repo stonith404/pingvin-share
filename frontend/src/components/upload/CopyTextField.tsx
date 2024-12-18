@@ -1,8 +1,8 @@
 import { ActionIcon, TextInput, Tooltip } from "@mantine/core";
 import { useClipboard } from "@mantine/hooks";
 import { useRef, useState } from "react";
-import { TbCheck, TbCopy } from "react-icons/tb";
 import { IoOpenOutline } from "react-icons/io5";
+import { TbCheck, TbCopy } from "react-icons/tb";
 import useTranslate from "../../hooks/useTranslate.hook";
 import toast from "../../utils/toast.util";
 
@@ -18,7 +18,7 @@ function CopyTextField(props: { link: string }) {
 
   const copyLink = () => {
     clipboard.copy(props.link);
-    toast.success(t("common.notify.copied"));
+    toast.success(t("common.notify.copied-link"));
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = setTimeout(() => {
       setCheckState(false);
