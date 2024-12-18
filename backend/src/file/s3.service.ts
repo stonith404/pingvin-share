@@ -1,38 +1,54 @@
-import {BadRequestException, Injectable, InternalServerErrorException, NotFoundException, Logger} from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+  Logger,
+} from "@nestjs/common";
 import {
   AbortMultipartUploadCommand,
   CompleteMultipartUploadCommand,
   CreateMultipartUploadCommand,
-  DeleteObjectCommand, DeleteObjectsCommand,
-  GetObjectCommand, HeadObjectCommand, ListObjectsV2Command,
+  DeleteObjectCommand,
+  DeleteObjectsCommand,
+  GetObjectCommand,
+  HeadObjectCommand,
+  ListObjectsV2Command,
   S3Client,
   UploadPartCommand,
-  UploadPartCommandOutput
-} from '@aws-sdk/client-s3';
-import {PrismaService} from 'src/prisma/prisma.service';
-import {ConfigService} from 'src/config/config.service';
-import * as crypto from 'crypto';
-import * as mime from 'mime-types';
-import {File} from "./file.service";
-import {Readable} from "stream";
+  UploadPartCommandOutput,
+} from "@aws-sdk/client-s3";
+import { PrismaService } from "src/prisma/prisma.service";
+import { ConfigService } from "src/config/config.service";
+import * as crypto from "crypto";
+import * as mime from "mime-types";
+import { File } from "./file.service";
+import { Readable } from "stream";
 import { validate as isValidUUID } from "uuid";
 
 @Injectable()
 export class S3FileService {
   private readonly logger = new Logger(S3FileService.name);
 
-  private multipartUploads: Record<string, {
-    uploadId: string;
-    parts: Array<{ ETag: string | undefined; PartNumber: number }>
-  }> = {};
+  private multipartUploads: Record<
+    string,
+    {
+      uploadId: string;
+      parts: Array<{ ETag: string | undefined; PartNumber: number }>;
+    }
+  > = {};
 
-  constructor(private prisma: PrismaService, private config: ConfigService) {}
+  constructor(
+    private prisma: PrismaService,
+    private config: ConfigService,
+  ) {}
 
   async create(
     data: string,
     chunk: { index: number; total: number },
     file: { id?: string; name: string },
-    shareId: string) {
+    shareId: string,
+  ) {
     if (!file.id) {
       file.id = crypto.randomUUID();
     } else if (!isValidUUID(file.id)) {
@@ -51,7 +67,7 @@ export class S3FileService {
           new CreateMultipartUploadCommand({
             Bucket: bucketName,
             Key: key,
-          })
+          }),
         );
 
         const uploadId = multipartInitResponse.UploadId;
@@ -69,7 +85,9 @@ export class S3FileService {
       // Get the ongoing multipart upload
       const multipartUpload = this.multipartUploads[file.id];
       if (!multipartUpload) {
-        throw new InternalServerErrorException("Multipart upload session not found.");
+        throw new InternalServerErrorException(
+          "Multipart upload session not found.",
+        );
       }
 
       const uploadId = multipartUpload.uploadId;
@@ -84,7 +102,7 @@ export class S3FileService {
           PartNumber: partNumber,
           UploadId: uploadId,
           Body: buffer,
-        })
+        }),
       );
 
       // Store the ETag and PartNumber for later completion
@@ -103,7 +121,7 @@ export class S3FileService {
             MultipartUpload: {
               Parts: multipartUpload.parts,
             },
-          })
+          }),
         );
 
         // Remove the completed upload from memory
@@ -119,7 +137,7 @@ export class S3FileService {
               Bucket: bucketName,
               Key: key,
               UploadId: multipartUpload.uploadId,
-            })
+            }),
           );
         } catch (abortError) {
           console.error("Error aborting multipart upload:", abortError);
@@ -132,7 +150,7 @@ export class S3FileService {
 
     const isLastChunk = chunk.index == chunk.total - 1;
     if (isLastChunk) {
-      const fileSize: number = await this.getFileSize(shareId, file.name)
+      const fileSize: number = await this.getFileSize(shareId, file.name);
 
       await this.prisma.file.create({
         data: {
@@ -148,17 +166,18 @@ export class S3FileService {
   }
 
   async get(shareId: string, fileId: string): Promise<File> {
-
     const fileName = (
       await this.prisma.file.findUnique({ where: { id: fileId } })
     ).name;
 
     const s3Instance = this.getS3Instance();
     const key = `${this.getS3Path()}${shareId}/${fileName}`;
-    const response = await s3Instance.send(new GetObjectCommand({
-      Bucket: this.config.get('s3.bucketName'),
-      Key: key,
-    }));
+    const response = await s3Instance.send(
+      new GetObjectCommand({
+        Bucket: this.config.get("s3.bucketName"),
+        Key: key,
+      }),
+    );
 
     return {
       metaData: {
@@ -167,7 +186,9 @@ export class S3FileService {
         name: fileName,
         shareId: shareId,
         createdAt: response.LastModified || new Date(),
-        mimeType: mime.contentType(fileId.split('.').pop()) || "application/octet-stream",
+        mimeType:
+          mime.contentType(fileId.split(".").pop()) ||
+          "application/octet-stream",
       },
       file: response.Body as Readable,
     } as File;
@@ -188,7 +209,7 @@ export class S3FileService {
         new DeleteObjectCommand({
           Bucket: this.config.get("s3.bucketName"),
           Key: key,
-        })
+        }),
       );
     } catch (error) {
       throw new Error("Could not delete file from S3");
@@ -207,7 +228,7 @@ export class S3FileService {
         new ListObjectsV2Command({
           Bucket: this.config.get("s3.bucketName"),
           Prefix: prefix,
-        })
+        }),
       );
 
       if (!listResponse.Contents || listResponse.Contents.length === 0) {
@@ -226,9 +247,8 @@ export class S3FileService {
           Delete: {
             Objects: objectsToDelete,
           },
-        })
+        }),
       );
-
     } catch (error) {
       throw new Error("Could not delete all files from S3");
     }
@@ -242,36 +262,38 @@ export class S3FileService {
       // Get metadata of the file using HeadObjectCommand
       const headObjectResponse = await s3Instance.send(
         new HeadObjectCommand({
-          Bucket: this.config.get('s3.bucketName'),
+          Bucket: this.config.get("s3.bucketName"),
           Key: key,
-        })
+        }),
       );
 
       // Return ContentLength which is the file size in bytes
       return headObjectResponse.ContentLength ?? 0;
     } catch (error) {
-      throw new Error('Could not retrieve file size');
+      throw new Error("Could not retrieve file size");
     }
   }
 
-  getS3Instance(): S3Client{
+  getS3Instance(): S3Client {
     return new S3Client({
-      endpoint: this.config.get('s3.endpoint'),
-      region: this.config.get('s3.region'),
+      endpoint: this.config.get("s3.endpoint"),
+      region: this.config.get("s3.region"),
       credentials: {
-        accessKeyId: this.config.get('s3.key'),
-        secretAccessKey: this.config.get('s3.secret'),
+        accessKeyId: this.config.get("s3.key"),
+        secretAccessKey: this.config.get("s3.secret"),
       },
       forcePathStyle: true,
     });
   }
 
   getZip() {
-    throw new BadRequestException('ZIP download is not supported with S3 storage');
+    throw new BadRequestException(
+      "ZIP download is not supported with S3 storage",
+    );
   }
 
   getS3Path(): string {
-    const configS3Path = this.config.get("s3.bucketPath")
-    return configS3Path ? `${configS3Path}/` : ""
+    const configS3Path = this.config.get("s3.bucketPath");
+    return configS3Path ? `${configS3Path}/` : "";
   }
 }

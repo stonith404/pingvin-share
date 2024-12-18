@@ -4,8 +4,8 @@ import { ReverseShareModule } from "src/reverseShare/reverseShare.module";
 import { ShareModule } from "src/share/share.module";
 import { FileController } from "./file.controller";
 import { FileService } from "./file.service";
-import {LocalFileService} from "./local.service";
-import {S3FileService} from "./s3.service";
+import { LocalFileService } from "./local.service";
+import { S3FileService } from "./s3.service";
 
 @Module({
   imports: [JwtModule.register({}), ReverseShareModule, ShareModule],

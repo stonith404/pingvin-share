@@ -18,7 +18,7 @@ import { PrismaService } from "src/prisma/prisma.service";
 import { ReverseShareService } from "src/reverseShare/reverseShare.service";
 import { parseRelativeDateToAbsolute } from "src/utils/date.util";
 import { SHARE_DIRECTORY } from "../constants";
-import {CreateShareDTO} from "./dto/createShare.dto";
+import { CreateShareDTO } from "./dto/createShare.dto";
 
 @Injectable()
 export class ShareService {
@@ -87,7 +87,7 @@ export class ShareService {
             ? share.recipients.map((email) => ({ email }))
             : [],
         },
-        storageProvider: this.configService.get('s3.enabled') ? "S3" : "LOCAL",
+        storageProvider: this.configService.get("s3.enabled") ? "S3" : "LOCAL",
       },
     });
 
@@ -107,7 +107,7 @@ export class ShareService {
   }
 
   async createZip(shareId: string) {
-    if (this.config.get("s3.enabled")) return
+    if (this.config.get("s3.enabled")) return;
 
     const path = `${SHARE_DIRECTORY}/${shareId}`;
 
