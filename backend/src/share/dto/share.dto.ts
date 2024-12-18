@@ -29,9 +29,6 @@ export class ShareDTO {
   @Expose()
   size: number;
 
-  @Expose()
-  storageProvider: String;
-
   from(partial: Partial<ShareDTO>) {
     return plainToClass(ShareDTO, partial, { excludeExtraneousValues: true });
   }
