@@ -318,6 +318,38 @@ const configVariables: ConfigVariables = {
       obscured: true,
     },
   },
+  s3: {
+    enabled: {
+      type: "boolean",
+      defaultValue: "false",
+    },
+    endpoint: {
+      type: "string",
+      defaultValue: "",
+    },
+    region: {
+      type: "string",
+      defaultValue: "",
+    },
+    bucketName: {
+      type: "string",
+      defaultValue: "",
+    },
+    bucketPath: {
+      type: "string",
+      defaultValue: "",
+    },
+    key: {
+      type: "string",
+      defaultValue: "",
+      secret: true,
+    },
+    secret: {
+      type: "string",
+      defaultValue: "",
+      obscured: true,
+    },
+  }
 };
 
 type ConfigVariables = {

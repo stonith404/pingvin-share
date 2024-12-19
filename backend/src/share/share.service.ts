@@ -24,6 +24,7 @@ import { CreateShareDTO } from "./dto/createShare.dto";
 export class ShareService {
   constructor(
     private prisma: PrismaService,
+    private configService: ConfigService,
     private fileService: FileService,
     private emailService: EmailService,
     private config: ConfigService,
@@ -86,6 +87,7 @@ export class ShareService {
             ? share.recipients.map((email) => ({ email }))
             : [],
         },
+        storageProvider: this.configService.get("s3.enabled") ? "S3" : "LOCAL",
       },
     });
 
@@ -105,6 +107,8 @@ export class ShareService {
   }
 
   async createZip(shareId: string) {
+    if (this.config.get("s3.enabled")) return;
+
     const path = `${SHARE_DIRECTORY}/${shareId}`;
 
     const files = await this.prisma.file.findMany({ where: { shareId } });

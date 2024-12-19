@@ -1,162 +1,88 @@
-import {
-  BadRequestException,
-  HttpException,
-  HttpStatus,
-  Injectable,
-  InternalServerErrorException,
-  NotFoundException,
-} from "@nestjs/common";
-import { JwtService } from "@nestjs/jwt";
-import * as crypto from "crypto";
-import { createReadStream } from "fs";
-import * as fs from "fs/promises";
-import * as mime from "mime-types";
+import { Injectable } from "@nestjs/common";
+import { LocalFileService } from "./local.service";
+import { S3FileService } from "./s3.service";
 import { ConfigService } from "src/config/config.service";
-import { PrismaService } from "src/prisma/prisma.service";
-import { validate as isValidUUID } from "uuid";
-import { SHARE_DIRECTORY } from "../constants";
+import { Readable } from "stream";
+import { PrismaService } from "../prisma/prisma.service";
 
 @Injectable()
 export class FileService {
   constructor(
     private prisma: PrismaService,
-    private config: ConfigService,
+    private localFileService: LocalFileService,
+    private s3FileService: S3FileService,
+    private configService: ConfigService,
   ) {}
+
+  // Determine which service to use based on the current config value
+  // shareId is optional -> can be used to overwrite a storage provider
+  private getStorageService(
+    storageProvider?: string,
+  ): S3FileService | LocalFileService {
+    if (storageProvider != undefined)
+      return storageProvider == "S3"
+        ? this.s3FileService
+        : this.localFileService;
+    return this.configService.get("s3.enabled")
+      ? this.s3FileService
+      : this.localFileService;
+  }
 
   async create(
     data: string,
     chunk: { index: number; total: number },
-    file: { id?: string; name: string },
+    file: {
+      id?: string;
+      name: string;
+    },
     shareId: string,
   ) {
-    if (!file.id) {
-      file.id = crypto.randomUUID();
-    } else if (!isValidUUID(file.id)) {
-      throw new BadRequestException("Invalid file ID format");
-    }
-
-    const share = await this.prisma.share.findUnique({
-      where: { id: shareId },
-      include: { files: true, reverseShare: true },
-    });
-
-    if (share.uploadLocked)
-      throw new BadRequestException("Share is already completed");
-
-    let diskFileSize: number;
-    try {
-      diskFileSize = (
-        await fs.stat(`${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`)
-      ).size;
-    } catch {
-      diskFileSize = 0;
-    }
-
-    // If the sent chunk index and the expected chunk index doesn't match throw an error
-    const chunkSize = this.config.get("share.chunkSize");
-    const expectedChunkIndex = Math.ceil(diskFileSize / chunkSize);
-
-    if (expectedChunkIndex != chunk.index)
-      throw new BadRequestException({
-        message: "Unexpected chunk received",
-        error: "unexpected_chunk_index",
-        expectedChunkIndex,
-      });
-
-    const buffer = Buffer.from(data, "base64");
-
-    // Check if there is enough space on the server
-    const space = await fs.statfs(SHARE_DIRECTORY);
-    const availableSpace = space.bavail * space.bsize;
-    if (availableSpace < buffer.byteLength) {
-      throw new InternalServerErrorException("Not enough space on the server");
-    }
-
-    // Check if share size limit is exceeded
-    const fileSizeSum = share.files.reduce(
-      (n, { size }) => n + parseInt(size),
-      0,
-    );
-
-    const shareSizeSum = fileSizeSum + diskFileSize + buffer.byteLength;
-
-    if (
-      shareSizeSum > this.config.get("share.maxSize") ||
-      (share.reverseShare?.maxShareSize &&
-        shareSizeSum > parseInt(share.reverseShare.maxShareSize))
-    ) {
-      throw new HttpException(
-        "Max share size exceeded",
-        HttpStatus.PAYLOAD_TOO_LARGE,
-      );
-    }
-
-    await fs.appendFile(
-      `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
-      buffer,
-    );
-
-    const isLastChunk = chunk.index == chunk.total - 1;
-    if (isLastChunk) {
-      await fs.rename(
-        `${SHARE_DIRECTORY}/${shareId}/${file.id}.tmp-chunk`,
-        `${SHARE_DIRECTORY}/${shareId}/${file.id}`,
-      );
-      const fileSize = (
-        await fs.stat(`${SHARE_DIRECTORY}/${shareId}/${file.id}`)
-      ).size;
-      await this.prisma.file.create({
-        data: {
-          id: file.id,
-          name: file.name,
-          size: fileSize.toString(),
-          share: { connect: { id: shareId } },
-        },
-      });
-    }
-
-    return file;
+    const storageService = this.getStorageService();
+    return storageService.create(data, chunk, file, shareId);
   }
 
-  async get(shareId: string, fileId: string) {
-    const fileMetaData = await this.prisma.file.findUnique({
-      where: { id: fileId },
+  async get(shareId: string, fileId: string): Promise<File> {
+    const share = await this.prisma.share.findFirst({
+      where: { id: shareId },
     });
-
-    if (!fileMetaData) throw new NotFoundException("File not found");
-
-    const file = createReadStream(`${SHARE_DIRECTORY}/${shareId}/${fileId}`);
-
-    return {
-      metaData: {
-        mimeType: mime.contentType(fileMetaData.name.split(".").pop()),
-        ...fileMetaData,
-        size: fileMetaData.size,
-      },
-      file,
-    };
+    const storageService = this.getStorageService(share.storageProvider);
+    return storageService.get(shareId, fileId);
   }
 
   async remove(shareId: string, fileId: string) {
-    const fileMetaData = await this.prisma.file.findUnique({
-      where: { id: fileId },
-    });
-
-    if (!fileMetaData) throw new NotFoundException("File not found");
-
-    await fs.unlink(`${SHARE_DIRECTORY}/${shareId}/${fileId}`);
-
-    await this.prisma.file.delete({ where: { id: fileId } });
+    const storageService = this.getStorageService();
+    return storageService.remove(shareId, fileId);
   }
 
   async deleteAllFiles(shareId: string) {
-    await fs.rm(`${SHARE_DIRECTORY}/${shareId}`, {
-      recursive: true,
-      force: true,
-    });
+    const storageService = this.getStorageService();
+    return storageService.deleteAllFiles(shareId);
   }
 
   getZip(shareId: string) {
-    return createReadStream(`${SHARE_DIRECTORY}/${shareId}/archive.zip`);
+    const storageService = this.getStorageService();
+    return this.streamToUint8Array(storageService.getZip(shareId) as Readable);
   }
+
+  private async streamToUint8Array(stream: Readable): Promise<Uint8Array> {
+    const chunks: Buffer[] = [];
+
+    return new Promise((resolve, reject) => {
+      stream.on("data", (chunk) => chunks.push(Buffer.from(chunk)));
+      stream.on("end", () => resolve(new Uint8Array(Buffer.concat(chunks))));
+      stream.on("error", reject);
+    });
+  }
+}
+
+export interface File {
+  metaData: {
+    id: string;
+    size: string;
+    createdAt: Date;
+    mimeType: string | false;
+    name: string;
+    shareId: string;
+  };
+  file: Readable;
 }

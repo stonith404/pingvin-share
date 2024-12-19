@@ -16,7 +16,7 @@ import {
   TbMail,
   TbShare,
   TbSocial,
-  TbSquare,
+  TbBucket,
   TbBinaryTree,
   TbSettings,
 } from "react-icons/tb";
@@ -29,6 +29,7 @@ const categories = [
   { name: "SMTP", icon: <TbAt /> },
   { name: "OAuth", icon: <TbSocial /> },
   { name: "LDAP", icon: <TbBinaryTree /> },
+  { name: "S3", icon: <TbBucket /> },
 ];
 
 const useStyles = createStyles((theme) => ({
