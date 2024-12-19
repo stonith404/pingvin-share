@@ -1,3 +1,10 @@
+## [1.7.0](https://github.com/stonith404/pingvin-share/compare/v1.6.1...v1.7.0) (2024-12-19)
+
+
+### Features
+
+* add support for S3 as a storage provider  ([#659](https://github.com/stonith404/pingvin-share/issues/659)) ([5a54fe4](https://github.com/stonith404/pingvin-share/commit/5a54fe4cb7d9c22740edd8619c0a51044ca8c791))
+
 ## [1.6.1](https://github.com/stonith404/pingvin-share/compare/v1.6.0...v1.6.1) (2024-11-26)
 
 
