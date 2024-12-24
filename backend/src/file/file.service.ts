@@ -61,7 +61,7 @@ export class FileService {
 
   getZip(shareId: string) {
     const storageService = this.getStorageService();
-    return this.streamToUint8Array(storageService.getZip(shareId) as Readable);
+    return storageService.getZip(shareId) as Readable;
   }
 
   private async streamToUint8Array(stream: Readable): Promise<Uint8Array> {
