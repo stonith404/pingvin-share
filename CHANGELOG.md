@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/stonith404/pingvin-share/compare/v1.7.0...v1.7.1) (2024-12-24)
+
+
+### Bug Fixes
+
+* incorrect ownership of the public folder ([6a97cc2](https://github.com/stonith404/pingvin-share/commit/6a97cc279c51bf125b9b516d1795f85b208e6ad5))
+
 ## [1.7.0](https://github.com/stonith404/pingvin-share/compare/v1.6.1...v1.7.0) (2024-12-19)
 
 
