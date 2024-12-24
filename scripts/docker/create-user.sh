@@ -25,6 +25,8 @@ fi
 # Change ownership of the data directory
 mkdir -p /opt/app/backend/data
 find /opt/app/backend/data \( ! -group "${PGID}" -o ! -user "${PUID}" \) -exec chown "${PUID}:${PGID}" {} +
+# Change ownership of the frontend public directory
+find /opt/app/frontend/public \( ! -group "${PGID}" -o ! -user "${PUID}" \) -exec chown "${PUID}:${PGID}" {} +
 
 # Switch to the non-root user
 exec su-exec "$PUID:$PGID" "$@"
