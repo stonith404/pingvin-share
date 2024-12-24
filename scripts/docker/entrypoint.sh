@@ -5,9 +5,9 @@ cp -rn /tmp/img/* /opt/app/frontend/public/img
 
 # Start Caddy
 if [ "$TRUST_PROXY" = "true" ]; then
-  caddy start --adapter caddyfile --config /etc/caddy/Caddyfile.trust-proxy &
+  caddy start --adapter caddyfile --config /opt/app/reverse-proxy/Caddyfile.trust-proxy &
 else
-  caddy start --adapter caddyfile --config /etc/caddy/Caddyfile &
+  caddy start --adapter caddyfile --config /opt/app/reverse-proxy/Caddyfile &
 fi
 
 # Run the frontend server

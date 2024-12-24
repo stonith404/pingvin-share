@@ -53,7 +53,7 @@ COPY --from=backend-builder /opt/app/package.json ./
 
 WORKDIR /opt/app
 
-COPY ./reverse-proxy /etc/caddy
+COPY ./reverse-proxy  /opt/app/reverse-proxy
 COPY ./scripts ./scripts
 
 EXPOSE 3000

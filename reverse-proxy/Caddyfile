@@ -1,7 +1,7 @@
 :3000 {
-    # Reverse proxy for /api
-    reverse_proxy /api/* http://localhost:{$BACKEND_PORT:8080}
+	# Reverse proxy for /api
+	reverse_proxy /api/* http://localhost:{$BACKEND_PORT:8080}
 
-    # Reverse proxy for all other requests
-    reverse_proxy http://localhost:{$PORT:3333}
+	# Reverse proxy for all other requests
+	reverse_proxy http://localhost:{$PORT:3333}
 }
