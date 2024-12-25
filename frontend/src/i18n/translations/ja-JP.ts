@@ -301,7 +301,7 @@ export default {
   "admin.config.category.oauth": "ソーシャルログイン",
   "admin.config.general.app-name": "アプリ名",
   "admin.config.general.app-name.description": "アプリの名前",
-  "admin.config.general.app-url": "アプリ名",
+  "admin.config.general.app-url": "アプリのURL",
   "admin.config.general.app-url.description": "Pingvin Shareで利用できるURL",
   "admin.config.general.secure-cookies": "セキュアクッキー",
   "admin.config.general.secure-cookies.description": "クッキーにセキュアフラグを設定するか。有効にすると、HTTP 経由でアクセスしたときにサイトが機能しなくなります。",
