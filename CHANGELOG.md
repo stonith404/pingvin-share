@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/stonith404/pingvin-share/compare/v1.7.1...v1.7.2) (2024-12-28)
+
+
+### Bug Fixes
+
+* crash on zip download if zip is larger than 4GB ([#709](https://github.com/stonith404/pingvin-share/issues/709)) ([bfd4049](https://github.com/stonith404/pingvin-share/commit/bfd4049c154caae037db0458863e5c8c5d398848))
+
 ## [1.7.1](https://github.com/stonith404/pingvin-share/compare/v1.7.0...v1.7.1) (2024-12-24)
 
 
