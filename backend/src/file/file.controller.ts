@@ -55,7 +55,7 @@ export class FileController {
     @Param("shareId") shareId: string,
   ) {
     const zipStream = this.fileService.getZip(shareId);
-  
+
     res.set({
       "Content-Type": "application/zip",
       "Content-Disposition": contentDisposition(`${shareId}.zip`),
