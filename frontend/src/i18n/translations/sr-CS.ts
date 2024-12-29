@@ -124,6 +124,7 @@ export default {
   "account.shares.table.expiresAt": "Ističe",
   "account.shares.table.createdAt": "Napravljeno",
   "account.shares.table.size": "Veličina",
+  "account.shares.table.expiry-never": "Never",
   "account.shares.modal.share-informations": "Delite informacije",
   "account.shares.modal.share-link": "Deli vezu",
   "account.shares.modal.delete.title": "Izbriši deljenje {share}",
