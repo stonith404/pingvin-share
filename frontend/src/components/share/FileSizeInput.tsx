@@ -1,63 +1,70 @@
-import { Col, Grid, NumberInput, Select } from "@mantine/core";
-import { useEffect, useState } from "react";
-import {
-  byteToUnitAndSize,
-  unitAndSizeToByte,
-} from "../../utils/fileSize.util";
+import { NativeSelect, NumberInput } from "@mantine/core";
+import { useState } from "react";
+
+const multipliers = {
+  B: 1,
+  KB: 1000,
+  KiB: 1024,
+  MB: 1000 ** 2,
+  MiB: 1024 ** 2,
+  GB: 1000 ** 3,
+  GiB: 1024 ** 3,
+  TB: 1000 ** 4,
+  TiB: 1024 ** 4,
+}
+
+const units = (["B", "KB", "KiB", "MB", "MiB", "GB", "GiB", "TB", "TiB"] as const).map(unit => ({ label: unit, value: unit }));
+
+function getLargestApplicableUnit(value: number) {
+  return units.findLast(unit => value % multipliers[unit.value] === 0) || units[0];
+}
 
 const FileSizeInput = ({
   label,
   value,
   onChange,
 }: {
-  label: string;
+  label?: string;
   value: number;
   onChange: (number: number) => void;
 }) => {
-  const [unit, setUnit] = useState("MB");
-  const [size, setSize] = useState(100);
-
-  useEffect(() => {
-    const { unit, size } = byteToUnitAndSize(value);
-    setUnit(unit);
-    setSize(size);
-  }, [value]);
+  const [unit, setUnit] = useState(getLargestApplicableUnit(value).value);
+  const [inputValue, setInputValue] = useState(value / multipliers[unit]);
+  const unitSelect = (
+    <NativeSelect
+      data={units}
+      rightSectionWidth={28}
+      styles={{
+        input: {
+          fontWeight: 500,
+          borderTopLeftRadius: 0,
+          borderBottomLeftRadius: 0,
+          width: 76,
+          marginRight: -2,
+        },
+      }}
+      onChange={event => {
+        const unit = event.currentTarget.value as typeof units[number]["value"];
+        setUnit(unit);
+        onChange(multipliers[unit] * inputValue);
+      }}
+    />
+  );
 
   return (
-    <Grid align="flex-end">
-      <Col xs={6}>
-        <NumberInput
-          min={1}
-          max={99999}
-          precision={0}
-          variant="filled"
-          label={label}
-          value={size}
-          onChange={(value) => {
-            if (value) {
-              setSize(value);
-              onChange(unitAndSizeToByte(unit, value));
-            }
-          }}
-        />
-      </Col>
-      <Col xs={6}>
-        <Select
-          data={[
-            { label: "B", value: "B" },
-            { label: "KB", value: "KB" },
-            { label: "MB", value: "MB" },
-            { label: "GB", value: "GB" },
-            { label: "TB", value: "TB" },
-          ]}
-          value={unit}
-          onChange={(value) => {
-            setUnit(value!);
-            onChange(unitAndSizeToByte(value!, size));
-          }}
-        />
-      </Col>
-    </Grid>
+    <NumberInput
+      label={label}
+      min={1}
+      max={999999}
+      precision={0}
+      rightSection={unitSelect}
+      rightSectionWidth={76}
+      onChange={value => {
+        const inputVal = value || 0;
+        setInputValue(inputVal);
+        onChange(multipliers[unit] * inputVal);
+      }}
+    />
   );
 };
 
