@@ -124,6 +124,7 @@ export default {
   "account.shares.table.expiresAt": "Expires on",
   "account.shares.table.createdAt": "Created on",
   "account.shares.table.size": "크기",
+  "account.shares.table.expiry-never": "Never",
   "account.shares.modal.share-informations": "공유 정보",
   "account.shares.modal.share-link": "공유 링크",
   "account.shares.modal.delete.title": "Delete share: {share}",
