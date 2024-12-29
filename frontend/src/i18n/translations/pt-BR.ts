@@ -124,6 +124,7 @@ export default {
   "account.shares.table.expiresAt": "Expira em",
   "account.shares.table.createdAt": "Criada em",
   "account.shares.table.size": "Tamanho",
+  "account.shares.table.expiry-never": "Never",
   "account.shares.modal.share-informations": "Informações do compartilhamento",
   "account.shares.modal.share-link": "Link do compartilhamento",
   "account.shares.modal.delete.title": "Excluir o compartilhamento {share}",
