@@ -124,6 +124,7 @@ export default {
   "account.shares.table.expiresAt": "Verloopt op",
   "account.shares.table.createdAt": "Gemaakt op",
   "account.shares.table.size": "Grootte",
+  "account.shares.table.expiry-never": "Never",
   "account.shares.modal.share-informations": "Gegevens delen",
   "account.shares.modal.share-link": "Deel link",
   "account.shares.modal.delete.title": "Share verwijderd: {share}",
