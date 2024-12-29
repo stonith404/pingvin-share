@@ -124,6 +124,7 @@ export default {
   "account.shares.table.expiresAt": "有効期限",
   "account.shares.table.createdAt": "作成日",
   "account.shares.table.size": "サイズ",
+  "account.shares.table.expiry-never": "Never",
   "account.shares.modal.share-informations": "共有情報",
   "account.shares.modal.share-link": "共有リンク",
   "account.shares.modal.delete.title": "共有を削除: {share}",
