@@ -33,6 +33,7 @@ const FileSizeInput = ({
   const unitSelect = (
     <NativeSelect
       data={units}
+      value={unit}
       rightSectionWidth={28}
       styles={{
         input: {
@@ -54,6 +55,7 @@ const FileSizeInput = ({
   return (
     <NumberInput
       label={label}
+      value={inputValue}
       min={1}
       max={999999}
       precision={0}
