@@ -124,6 +124,7 @@ export default {
   "account.shares.table.expiresAt": "Expires on",
   "account.shares.table.createdAt": "Created on",
   "account.shares.table.size": "Размер",
+  "account.shares.table.expiry-never": "Never",
   "account.shares.modal.share-informations": "Сведения",
   "account.shares.modal.share-link": "Поделиться ссылкой",
   "account.shares.modal.delete.title": "Delete share: {share}",
