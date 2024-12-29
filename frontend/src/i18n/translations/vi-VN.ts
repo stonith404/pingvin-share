@@ -124,6 +124,7 @@ export default {
   "account.shares.table.expiresAt": "Expires on",
   "account.shares.table.createdAt": "Created on",
   "account.shares.table.size": "Dung lượng",
+  "account.shares.table.expiry-never": "Never",
   "account.shares.modal.share-informations": "Share informations",
   "account.shares.modal.share-link": "Chia sẻ liên kết",
   "account.shares.modal.delete.title": "Delete share: {share}",
