@@ -124,6 +124,7 @@ export default {
   "account.shares.table.expiresAt": "Expires on",
   "account.shares.table.createdAt": "Created on",
   "account.shares.table.size": "Μέγεθος",
+  "account.shares.table.expiry-never": "Never",
   "account.shares.modal.share-informations": "Πληροφορίες διαμοιρασμού",
   "account.shares.modal.share-link": "Κοινοποίηση συνδέσμου",
   "account.shares.modal.delete.title": "Delete share: {share}",
