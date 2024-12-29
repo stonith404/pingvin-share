@@ -15,7 +15,7 @@ import { useModals } from "@mantine/modals";
 import moment from "moment";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { TbEdit, TbInfoCircle, TbLink, TbTrash } from "react-icons/tb";
+import { TbEdit, TbInfoCircle, TbLink, TbLock, TbTrash } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 import Meta from "../../components/Meta";
 import showShareInformationsModal from "../../components/account/showShareInformationsModal";
@@ -85,7 +85,9 @@ const MyShares = () => {
             <tbody>
               {shares.map((share) => (
                 <tr key={share.id}>
-                  <td>{share.id}</td>
+                  <td>
+                    {share.id} {share.security.passwordProtected && <TbLock color="orange" title={t("account.shares.table.password-protected")} />}
+                  </td>
                   <td>{share.name}</td>
                   <td>
                     {share.security.maxViews

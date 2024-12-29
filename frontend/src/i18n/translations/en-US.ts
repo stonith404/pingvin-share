@@ -158,6 +158,7 @@ export default {
   "account.shares.table.expiresAt": "Expires on",
   "account.shares.table.createdAt": "Created on",
   "account.shares.table.size": "Size",
+  "account.shares.table.password-protected": "Password protected",
   "account.shares.table.visitor-count": "{count} of {max}",
 
   "account.shares.modal.share-informations": "Share informations",
