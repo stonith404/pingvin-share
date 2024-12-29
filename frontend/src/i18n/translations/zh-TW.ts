@@ -124,6 +124,7 @@ export default {
   "account.shares.table.expiresAt": "失效於",
   "account.shares.table.createdAt": "創建於",
   "account.shares.table.size": "檔案大小",
+  "account.shares.table.expiry-never": "Never",
   "account.shares.modal.share-informations": "分享資訊",
   "account.shares.modal.share-link": "分享連結",
   "account.shares.modal.delete.title": "刪除： {share}",
