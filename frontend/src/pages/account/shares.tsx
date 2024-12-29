@@ -99,7 +99,7 @@ const MyShares = () => {
                   </td>
                   <td>
                     {moment(share.expiration).unix() === 0
-                      ? "Never"
+                      ? <FormattedMessage id="account.shares.table.expiry-never" />
                       : moment(share.expiration).format("LLL")}
                   </td>
                   <td>
