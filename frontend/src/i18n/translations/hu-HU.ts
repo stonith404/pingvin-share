@@ -124,6 +124,7 @@ export default {
   "account.shares.table.expiresAt": "Lejár",
   "account.shares.table.createdAt": "Létrehozva",
   "account.shares.table.size": "Méret",
+  "account.shares.table.expiry-never": "Never",
   "account.shares.modal.share-informations": "Megosztás adatai",
   "account.shares.modal.share-link": "Hivatkozás",
   "account.shares.modal.delete.title": "Megosztás törlése: {share}",
