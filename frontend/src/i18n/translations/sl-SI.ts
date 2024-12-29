@@ -124,6 +124,7 @@ export default {
   "account.shares.table.expiresAt": "Expires on",
   "account.shares.table.createdAt": "Created on",
   "account.shares.table.size": "Velikost",
+  "account.shares.table.expiry-never": "Never",
   "account.shares.modal.share-informations": "Delite informacije",
   "account.shares.modal.share-link": "Delite povezavo",
   "account.shares.modal.delete.title": "Delete share: {share}",
