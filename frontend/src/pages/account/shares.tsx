@@ -87,7 +87,14 @@ const MyShares = () => {
                 <tr key={share.id}>
                   <td>{share.id}</td>
                   <td>{share.name}</td>
-                  <td>{share.views}</td>
+                  <td>
+                    {share.security.maxViews
+                      ? <FormattedMessage
+                          id="account.shares.table.visitor-count"
+                          values={{count: share.views, max: share.security.maxViews}}
+                        />
+                      : share.views}
+                  </td>
                   <td>
                     {moment(share.expiration).unix() === 0
                       ? "Never"

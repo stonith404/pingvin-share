@@ -124,6 +124,7 @@ export default {
   "account.shares.table.expiresAt": "Läuft ab am",
   "account.shares.table.createdAt": "Angelegt am",
   "account.shares.table.size": "Größe",
+  "account.shares.table.visitor-count": "{count} von {max}",
   "account.shares.modal.share-informations": "Teile deine Information",
   "account.shares.modal.share-link": "Freigabe teilen",
   "account.shares.modal.delete.title": "Freigabe löschen: {share}",
