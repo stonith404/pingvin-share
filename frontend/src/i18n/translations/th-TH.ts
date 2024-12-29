@@ -124,6 +124,7 @@ export default {
   "account.shares.table.expiresAt": "Expires on",
   "account.shares.table.createdAt": "Created on",
   "account.shares.table.size": "ขนาด",
+  "account.shares.table.expiry-never": "Never",
   "account.shares.modal.share-informations": "ข้อมูลแชร์",
   "account.shares.modal.share-link": "แชร์ลิงค์",
   "account.shares.modal.delete.title": "Delete share: {share}",
