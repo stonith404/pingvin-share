@@ -4,6 +4,7 @@ import { ModalsContextProps } from "@mantine/modals/lib/context";
 import { FormattedMessage } from "react-intl";
 import { translateOutsideContext } from "../../../hooks/useTranslate.hook";
 import CopyTextField from "../../upload/CopyTextField";
+import QRCode from "../QRCode";
 
 const showCompletedReverseShareModal = (
   modals: ModalsContextProps,
@@ -32,6 +33,7 @@ const Body = ({
   return (
     <Stack align="stretch">
       <CopyTextField link={link} />
+      <QRCode link={link} />
 
       <Button
         onClick={() => {
