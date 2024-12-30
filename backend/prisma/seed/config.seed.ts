@@ -30,8 +30,8 @@ const configVariables: ConfigVariables = {
       secret: false,
     },
     sessionDuration: {
-      type: "number",
-      defaultValue: "2160",
+      type: "timespan",
+      defaultValue: "3 months",
       secret: false,
     },
   },
