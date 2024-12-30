@@ -55,8 +55,15 @@ export async function middleware(request: NextRequest) {
     routes.disabled.routes.push("/auth/resetPassword*");
   }
   
-  if(!getConfig("legal.enabled")) {
+  if (!getConfig("legal.enabled")) {
     routes.disabled.routes.push("/imprint", "/privacy");
+  } else {
+    if (!getConfig("legal.imprintText") && !getConfig("legal.imprintUrl")) {
+      routes.disabled.routes.push("/imprint");
+    }
+    if (!getConfig("legal.privacyPolicyText") && !getConfig("legal.privacyPolicyUrl")) {
+      routes.disabled.routes.push("/privacy");
+    }
   }
 
   // prettier-ignore
