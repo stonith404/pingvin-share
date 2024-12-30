@@ -349,6 +349,17 @@ const configVariables: ConfigVariables = {
       defaultValue: "",
       obscured: true,
     },
+  },
+  legal: {
+    enabled: {
+      type: "boolean",
+      defaultValue: "false",
+      secret: false,
+    },
+    legalNotice: {
+      type: "text",
+      defaultValue: "",
+    },
   }
 };
 

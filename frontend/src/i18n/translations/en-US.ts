@@ -642,6 +642,12 @@ export default {
   "admin.config.s3.secret": "Secret",
   "admin.config.s3.secret.description": "The secret which allows you to access the S3 bucket.",
 
+  "admin.config.category.legal": "Legal",
+  "admin.config.legal.enabled": "Enable legal notice",
+  "admin.config.legal.enabled.description": "Whether to show a link to a legal notice in the footer.",
+  "admin.config.legal.legal-notice": "Legal notice",
+  "admin.config.legal.legal-notice.description": "The content of the legal notice. Supports Markdown.",
+
   // 404
   "404.description": "Oops this page doesn't exist.",
   "404.button.home": "Bring me back home",
