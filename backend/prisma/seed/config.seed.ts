@@ -359,6 +359,7 @@ const configVariables: ConfigVariables = {
     legalNotice: {
       type: "text",
       defaultValue: "",
+      secret: false,
     },
   }
 };
