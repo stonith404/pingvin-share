@@ -292,6 +292,9 @@ export default {
   "share.edit.notify.generic-error": "Während der Erstellung der Freigabe ist ein Fehler aufgetreten.",
   "share.edit.notify.save-success": "Freigabe erfolgreich aktualisiert",
   // END /share/[id]/edit
+  // /legal
+  "legal.title": "Impressum",
+  // END /legal
   // /admin/config
   "admin.config.title": "Einstellungen",
   "admin.config.category.general": "Allgemein",
@@ -454,6 +457,11 @@ export default {
   "admin.config.s3.key.description": "Der Schlüssel, der den Zugriff auf den S3-Bucket ermöglicht.",
   "admin.config.s3.secret": "Geheimnis",
   "admin.config.s3.secret.description": "Das Geheimnis, das den Zugriff auf den S3-Bucket ermöglicht.",
+  "admin.config.category.legal": "Impressum",
+  "admin.config.legal.enabled": "Impressum aktivieren",
+  "admin.config.legal.enabled.description": "Gibt an, ob im Footer der Seite ein Link zum Impressum angezeigt werden soll.",
+  "admin.config.legal.legal-notice": "Impressum",
+  "admin.config.legal.legal-notice.description": "Der Text, der im Impressum angezeigt wird. Unterstützt Markdown.",
   // 404
   "404.description": "Ups, diese Seite existiert nicht.",
   "404.button.home": "Zurück zur Startseite",
