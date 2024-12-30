@@ -124,7 +124,7 @@ export default {
   "account.shares.table.expiresAt": "Діє до",
   "account.shares.table.createdAt": "Створено",
   "account.shares.table.size": "Розмір",
-  "account.shares.table.expiry-never": "Never",
+  "account.shares.table.expiry-never": "Ніколи",
   "account.shares.modal.share-informations": "Відомості",
   "account.shares.modal.share-link": "Поділитися посиланням",
   "account.shares.modal.delete.title": "Видалити завантаження: {share}",
