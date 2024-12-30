@@ -8,7 +8,7 @@ import {
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { AdminConfig, UpdateConfig } from "../../../types/config.type";
-import FileSizeInput from "../../share/FileSizeInput";
+import FileSizeInput from "../../core/FileSizeInput";
 
 const AdminConfigInput = ({
   configVariable,
