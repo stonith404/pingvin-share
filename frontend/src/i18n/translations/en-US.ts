@@ -402,6 +402,10 @@ export default {
   "share.edit.notify.save-success": "Share updated successfully",
   // END /share/[id]/edit
 
+  // /legal
+  "legal.title": "Legal Notice",
+  // END /legal
+
   // /admin/config
   "admin.config.title": "Configuration",
   "admin.config.category.general": "General",
