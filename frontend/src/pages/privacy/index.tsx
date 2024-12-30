@@ -5,15 +5,15 @@ import { FormattedMessage } from "react-intl";
 import useConfig from "../../hooks/config.hook";
 import Markdown from "markdown-to-jsx";
 
-const LegalNotice = () => {
+const PrivacyPolicy = () => {
 	const t = useTranslate();
 	const { colorScheme } = useMantineTheme();
 	const config = useConfig();
 	return (
 		<>
-			<Meta title={t("legal.title")} />
+			<Meta title={t("privacy.title")} />
 			<Title mb={30} order={1}>
-				<FormattedMessage id="legal.title" />
+				<FormattedMessage id="privacy.title" />
 			</Title>
 			<Markdown options={{
 				forceBlock: true,
@@ -44,10 +44,10 @@ const LegalNotice = () => {
 					},
 				},
 			}}>
-				{config.get("legal.legalNotice")}
+				{config.get("legal.privacyPolicyText")}
 			</Markdown>
 		</>
 	);
 };
 
-export default LegalNotice;
+export default PrivacyPolicy;

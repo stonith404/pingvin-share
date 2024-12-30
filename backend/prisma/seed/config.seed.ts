@@ -356,8 +356,23 @@ const configVariables: ConfigVariables = {
       defaultValue: "false",
       secret: false,
     },
-    legalNotice: {
+    imprintText: {
       type: "text",
+      defaultValue: "",
+      secret: false,
+    },
+    imprintUrl: {
+      type: "string",
+      defaultValue: "",
+      secret: false,
+    },
+    privacyPolicyText: {
+      type: "text",
+      defaultValue: "",
+      secret: false,
+    },
+    privacyPolicyUrl: {
+      type: "string",
       defaultValue: "",
       secret: false,
     },
