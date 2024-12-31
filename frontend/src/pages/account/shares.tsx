@@ -86,7 +86,9 @@ const MyShares = () => {
               {shares.map((share) => (
                 <tr key={share.id}>
                   <td>
+                  <Group spacing="xs">
                     {share.id} {share.security.passwordProtected && <TbLock color="orange" title={t("account.shares.table.password-protected")} />}
+                  </Group>
                   </td>
                   <td>{share.name}</td>
                   <td>
