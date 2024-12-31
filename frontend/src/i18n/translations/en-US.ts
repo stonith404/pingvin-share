@@ -654,11 +654,11 @@ export default {
   "admin.config.legal.enabled": "Enable legal notices",
   "admin.config.legal.enabled.description": "Whether to show a link to imprint and privacy policy in the footer.",
   "admin.config.legal.imprint-text": "Imprint text",
-  "admin.config.legal.imprint-text.description": "The text which should be shown in the imprint. Leave blank to link to an external imprint page.",
+  "admin.config.legal.imprint-text.description": "The text which should be shown in the imprint. Supports Markdown. Leave blank to link to an external imprint page.",
   "admin.config.legal.imprint-url": "Imprint URL",
   "admin.config.legal.imprint-url.description": "If you already have an imprint page you can link it here instead of using the text field.",
   "admin.config.legal.privacy-policy-text": "Privacy policy text",
-  "admin.config.legal.privacy-policy-text.description": "The text which should be shown in the privacy policy. Leave blank to link to an external privacy policy page.",
+  "admin.config.legal.privacy-policy-text.description": "The text which should be shown in the privacy policy. Supports Markdown. Leave blank to link to an external privacy policy page.",
   "admin.config.legal.privacy-policy-url": "Privacy policy URL",
   "admin.config.legal.privacy-policy-url.description": "If you already have a privacy policy page you can link it here instead of using the text field.",
 
