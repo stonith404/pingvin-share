@@ -10,7 +10,7 @@ const Footer = () => {
 	const imprintUrl = (!config.get("legal.imprintText") && config.get("legal.imprintUrl")) || "/imprint";
 	const privacyUrl = (!config.get("legal.privacyPolicyText") && config.get("legal.privacyPolicyUrl")) || "/privacy";
 	return (
-		<MFooter height="auto" p={10}>
+		<MFooter height="auto" p={10} zIndex={100}>
 			<Grid>
 				<Grid.Col span={4} />
 				<Grid.Col span={4}>
