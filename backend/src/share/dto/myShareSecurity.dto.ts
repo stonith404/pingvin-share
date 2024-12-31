@@ -1,10 +1,9 @@
-import { IsBoolean, IsNumber, IsOptional } from "class-validator";
+import { Expose } from "class-transformer";
 
 export class MyShareSecurityDTO {
-	@IsBoolean()
+	@Expose()
 	passwordProtected: boolean;
 
-	@IsNumber()
-	@IsOptional()
+	@Expose()
 	maxViews: number;
 }
