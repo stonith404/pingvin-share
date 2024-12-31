@@ -57,7 +57,7 @@ const configVariables: ConfigVariables = {
       secret: false,
     },
     maxSize: {
-      type: "number",
+      type: "filesize",
       defaultValue: "1000000000",
       secret: false,
     },
@@ -66,7 +66,7 @@ const configVariables: ConfigVariables = {
       defaultValue: "9",
     },
     chunkSize: {
-      type: "number",
+      type: "filesize",
       defaultValue: "10000000",
       secret: false,
     },

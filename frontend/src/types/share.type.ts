@@ -34,9 +34,10 @@ export type ShareMetaData = {
   isZipReady: boolean;
 };
 
-export type MyShare = Share & {
+export type MyShare = Omit<Share, "hasPassword"> & {
   views: number;
   createdAt: Date;
+  security: MyShareSecurity;
 };
 
 export type MyReverseShare = {
@@ -51,4 +52,9 @@ export type MyReverseShare = {
 export type ShareSecurity = {
   maxViews?: number;
   password?: string;
+};
+
+export type MyShareSecurity = {
+  passwordProtected: boolean;
+  maxViews: number;
 };
