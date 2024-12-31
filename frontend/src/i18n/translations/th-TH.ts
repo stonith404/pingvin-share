@@ -343,7 +343,7 @@ export default {
   "admin.config.share.zip-compression-level": "ระดับการบีบอัดไฟล์ Zip",
   "admin.config.share.zip-compression-level.description": "ปรับระดับเพื่อปรับความสมดุลระหว่างขนาดไฟล์และความเร็วในการบีบอัด ค่าอยู่ระหว่าง 0-9 โดย 0 คือไม่มีการบีบอัดและ 9 คือการบีบอัดสูงสุด",
   "admin.config.share.chunk-size": "Chunk size",
-  "admin.config.share.chunk-size.description": "Adjust the chunk size (in bytes) for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks make uploads faster for stable connections.",
+  "admin.config.share.chunk-size.description": "Adjust the chunk size for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks make uploads faster for stable connections.",
   "admin.config.share.auto-open-share-modal": "Auto open create share modal",
   "admin.config.share.auto-open-share-modal.description": "The share creation modal automatically appears when a user selects files, eliminating the need to manually click the button.",
   "admin.config.smtp.enabled": "Enable",

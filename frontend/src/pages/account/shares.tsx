@@ -15,7 +15,7 @@ import { useModals } from "@mantine/modals";
 import moment from "moment";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { TbEdit, TbInfoCircle, TbLink, TbTrash } from "react-icons/tb";
+import { TbEdit, TbInfoCircle, TbLink, TbLock, TbTrash } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 import Meta from "../../components/Meta";
 import showShareInformationsModal from "../../components/account/showShareInformationsModal";
@@ -85,13 +85,37 @@ const MyShares = () => {
             <tbody>
               {shares.map((share) => (
                 <tr key={share.id}>
-                  <td>{share.id}</td>
-                  <td>{share.name}</td>
-                  <td>{share.views}</td>
                   <td>
-                    {moment(share.expiration).unix() === 0
-                      ? "Never"
-                      : moment(share.expiration).format("LLL")}
+                    <Group spacing="xs">
+                      {share.id}{" "}
+                      {share.security.passwordProtected && (
+                        <TbLock
+                          color="orange"
+                          title={t("account.shares.table.password-protected")}
+                        />
+                      )}
+                    </Group>
+                  </td>
+                  <td>{share.name}</td>
+                  <td>
+                    {share.security.maxViews ? (
+                      <FormattedMessage
+                        id="account.shares.table.visitor-count"
+                        values={{
+                          count: share.views,
+                          max: share.security.maxViews,
+                        }}
+                      />
+                    ) : (
+                      share.views
+                    )}
+                  </td>
+                  <td>
+                    {moment(share.expiration).unix() === 0 ? (
+                      <FormattedMessage id="account.shares.table.expiry-never" />
+                    ) : (
+                      moment(share.expiration).format("LLL")
+                    )}
                   </td>
                   <td>
                     <Group position="right">
