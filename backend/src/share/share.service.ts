@@ -234,7 +234,7 @@ export class ShareService {
       orderBy: {
         expiration: "desc",
       },
-      include: { recipients: true, files: true },
+      include: { recipients: true, files: true, security: true },
     });
 
     return shares.map((share) => {
@@ -242,6 +242,10 @@ export class ShareService {
         ...share,
         size: share.files.reduce((acc, file) => acc + parseInt(file.size), 0),
         recipients: share.recipients.map((recipients) => recipients.email),
+        security: {
+          maxViews: share.security?.maxViews,
+          passwordProtected: !!share.security?.password,
+        },
       };
     });
   }
