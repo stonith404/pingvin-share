@@ -241,7 +241,10 @@ export class ShareService {
         ...share,
         size: share.files.reduce((acc, file) => acc + parseInt(file.size), 0),
         recipients: share.recipients.map((recipients) => recipients.email),
-        security: { maxViews: share.security?.maxViews, passwordProtected: !!share.security?.password },
+        security: {
+          maxViews: share.security?.maxViews,
+          passwordProtected: !!share.security?.password,
+        },
       };
     });
   }

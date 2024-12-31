@@ -86,23 +86,36 @@ const MyShares = () => {
               {shares.map((share) => (
                 <tr key={share.id}>
                   <td>
-                  <Group spacing="xs">
-                    {share.id} {share.security.passwordProtected && <TbLock color="orange" title={t("account.shares.table.password-protected")} />}
-                  </Group>
+                    <Group spacing="xs">
+                      {share.id}{" "}
+                      {share.security.passwordProtected && (
+                        <TbLock
+                          color="orange"
+                          title={t("account.shares.table.password-protected")}
+                        />
+                      )}
+                    </Group>
                   </td>
                   <td>{share.name}</td>
                   <td>
-                    {share.security.maxViews
-                      ? <FormattedMessage
-                          id="account.shares.table.visitor-count"
-                          values={{count: share.views, max: share.security.maxViews}}
-                        />
-                      : share.views}
+                    {share.security.maxViews ? (
+                      <FormattedMessage
+                        id="account.shares.table.visitor-count"
+                        values={{
+                          count: share.views,
+                          max: share.security.maxViews,
+                        }}
+                      />
+                    ) : (
+                      share.views
+                    )}
                   </td>
                   <td>
-                    {moment(share.expiration).unix() === 0
-                      ? <FormattedMessage id="account.shares.table.expiry-never" />
-                      : moment(share.expiration).format("LLL")}
+                    {moment(share.expiration).unix() === 0 ? (
+                      <FormattedMessage id="account.shares.table.expiry-never" />
+                    ) : (
+                      moment(share.expiration).format("LLL")
+                    )}
                   </td>
                   <td>
                     <Group position="right">

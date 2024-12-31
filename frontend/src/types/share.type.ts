@@ -57,4 +57,4 @@ export type ShareSecurity = {
 export type MyShareSecurity = {
   passwordProtected: boolean;
   maxViews: number;
-}
+};

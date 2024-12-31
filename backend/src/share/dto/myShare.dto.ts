@@ -21,7 +21,7 @@ export class MyShareDTO extends OmitType(ShareDTO, [
   @Expose()
   @Type(() => OmitType(FileDTO, ["share", "from"] as const))
   files: Omit<FileDTO, "share" | "from">[];
-  
+
   @Expose()
   security?: MyShareSecurityDTO;
 
