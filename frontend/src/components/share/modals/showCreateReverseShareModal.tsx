@@ -22,7 +22,7 @@ import useTranslate, {
 import shareService from "../../../services/share.service";
 import { getExpirationPreview } from "../../../utils/date.util";
 import toast from "../../../utils/toast.util";
-import FileSizeInput from "../FileSizeInput";
+import FileSizeInput from "../../core/FileSizeInput";
 import showCompletedReverseShareModal from "./showCompletedReverseShareModal";
 
 const showCreateReverseShareModal = (
