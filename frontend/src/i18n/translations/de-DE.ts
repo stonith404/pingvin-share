@@ -126,6 +126,7 @@ export default {
   "account.shares.table.size": "Größe",
   "account.shares.table.password-protected": "Passwortgeschützt",
   "account.shares.table.visitor-count": "{count} von {max}",
+  "account.shares.table.expiry-never": "nie",
   "account.shares.modal.share-informations": "Teile deine Information",
   "account.shares.modal.share-link": "Freigabe teilen",
   "account.shares.modal.delete.title": "Freigabe löschen: {share}",

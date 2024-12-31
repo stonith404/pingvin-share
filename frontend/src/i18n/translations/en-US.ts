@@ -160,6 +160,7 @@ export default {
   "account.shares.table.size": "Size",
   "account.shares.table.password-protected": "Password protected",
   "account.shares.table.visitor-count": "{count} of {max}",
+  "account.shares.table.expiry-never": "Never",
 
   "account.shares.modal.share-informations": "Share informations",
   "account.shares.modal.share-link": "Share link",
