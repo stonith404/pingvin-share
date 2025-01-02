@@ -349,6 +349,33 @@ const configVariables: ConfigVariables = {
       defaultValue: "",
       obscured: true,
     },
+  },
+  legal: {
+    enabled: {
+      type: "boolean",
+      defaultValue: "false",
+      secret: false,
+    },
+    imprintText: {
+      type: "text",
+      defaultValue: "",
+      secret: false,
+    },
+    imprintUrl: {
+      type: "string",
+      defaultValue: "",
+      secret: false,
+    },
+    privacyPolicyText: {
+      type: "text",
+      defaultValue: "",
+      secret: false,
+    },
+    privacyPolicyUrl: {
+      type: "string",
+      defaultValue: "",
+      secret: false,
+    },
   }
 };
 

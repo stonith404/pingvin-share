@@ -27,8 +27,7 @@ const get = (key: string, configVariables: Config[]): any => {
 
   if (configVariable.type == "number" || configVariable.type == "filesize")
     return parseInt(value);
-  if (configVariable.type == "boolean")
-    return value == "true";
+  if (configVariable.type == "boolean") return value == "true";
   if (configVariable.type == "string" || configVariable.type == "text")
     return value;
 };

@@ -32,8 +32,7 @@ export class ConfigService extends EventEmitter {
 
     if (configVariable.type == "number" || configVariable.type == "filesize")
       return parseInt(value);
-    if (configVariable.type == "boolean")
-      return value == "true";
+    if (configVariable.type == "boolean") return value == "true";
     if (configVariable.type == "string" || configVariable.type == "text")
       return value;
   }
