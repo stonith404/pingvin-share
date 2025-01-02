@@ -14,7 +14,14 @@ export const config = {
 export async function middleware(request: NextRequest) {
   const routes = {
     unauthenticated: new Routes(["/auth/*", "/"]),
-    public: new Routes(["/share/*", "/s/*", "/upload/*", "/error", "/imprint", "/privacy"]),
+    public: new Routes([
+      "/share/*",
+      "/s/*",
+      "/upload/*",
+      "/error",
+      "/imprint",
+      "/privacy",
+    ]),
     admin: new Routes(["/admin/*"]),
     account: new Routes(["/account*"]),
     disabled: new Routes([]),
@@ -54,14 +61,17 @@ export async function middleware(request: NextRequest) {
   if (!getConfig("smtp.enabled")) {
     routes.disabled.routes.push("/auth/resetPassword*");
   }
-  
+
   if (!getConfig("legal.enabled")) {
     routes.disabled.routes.push("/imprint", "/privacy");
   } else {
     if (!getConfig("legal.imprintText") && !getConfig("legal.imprintUrl")) {
       routes.disabled.routes.push("/imprint");
     }
-    if (!getConfig("legal.privacyPolicyText") && !getConfig("legal.privacyPolicyUrl")) {
+    if (
+      !getConfig("legal.privacyPolicyText") &&
+      !getConfig("legal.privacyPolicyUrl")
+    ) {
       routes.disabled.routes.push("/privacy");
     }
   }

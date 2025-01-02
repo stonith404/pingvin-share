@@ -136,7 +136,10 @@ function App({ Component, pageProps }: AppProps) {
                     <Component {...pageProps} />
                   ) : (
                     <>
-                      <Stack justify="space-between" sx={{ minHeight: "100vh" }}>
+                      <Stack
+                        justify="space-between"
+                        sx={{ minHeight: "100vh" }}
+                      >
                         <div>
                           <Header />
                           <Container>
