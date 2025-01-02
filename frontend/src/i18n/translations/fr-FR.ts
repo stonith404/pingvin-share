@@ -296,10 +296,10 @@ export default {
   "share.edit.notify.save-success": "Partage mis à jour avec succès",
   // END /share/[id]/edit
   // /imprint
-  "imprint.title": "Imprint",
+  "imprint.title": "Mentions légales",
   // END /imprint
   // /privacy
-  "privacy.title": "Privacy Policy",
+  "privacy.title": "Politique de confidentialité",
   // END /privacy
   // /admin/config
   "admin.config.title": "Paramètres",
@@ -344,7 +344,7 @@ export default {
   "admin.config.share.allow-unauthenticated-shares": "Autoriser les partages anonymes",
   "admin.config.share.allow-unauthenticated-shares.description": "Permet aux visiteurs de créer des partages",
   "admin.config.share.max-expiration": "Échéance",
-  "admin.config.share.max-expiration.description": "Maximum share expiration. Set to 0 to allow unlimited expiration.",
+  "admin.config.share.max-expiration.description": "Expiration du partage en heures. Réglez sur 0 pour qu'il n'expire jamais.",
   "admin.config.share.share-id-length": "Taille de l'identifiant généré",
   "admin.config.share.share-id-length.description": "Taille par défaut de l'identifiant généré pour un partage. Cette valeur est aussi utilisée pour générer les liens des partages inverses. Une valeur inférieure à 8 n'est pas considérée sûre.",
   "admin.config.share.max-size": "Taille max",
@@ -463,17 +463,17 @@ export default {
   "admin.config.s3.key.description": "La clé qui vous permet d'accéder au bucket S3.",
   "admin.config.s3.secret": "Secret",
   "admin.config.s3.secret.description": "Le secret qui vous permet d'accéder au bucket S3.",
-  "admin.config.category.legal": "Legal",
-  "admin.config.legal.enabled": "Enable legal notices",
-  "admin.config.legal.enabled.description": "Whether to show a link to imprint and privacy policy in the footer.",
-  "admin.config.legal.imprint-text": "Imprint text",
-  "admin.config.legal.imprint-text.description": "The text which should be shown in the imprint. Supports Markdown. Leave blank to link to an external imprint page.",
-  "admin.config.legal.imprint-url": "Imprint URL",
-  "admin.config.legal.imprint-url.description": "If you already have an imprint page you can link it here instead of using the text field.",
-  "admin.config.legal.privacy-policy-text": "Privacy policy text",
-  "admin.config.legal.privacy-policy-text.description": "The text which should be shown in the privacy policy. Supports Markdown. Leave blank to link to an external privacy policy page.",
-  "admin.config.legal.privacy-policy-url": "Privacy policy URL",
-  "admin.config.legal.privacy-policy-url.description": "If you already have a privacy policy page you can link it here instead of using the text field.",
+  "admin.config.category.legal": "Juridique",
+  "admin.config.legal.enabled": "Activer les mentions légales",
+  "admin.config.legal.enabled.description": "Afficher/Masquer dans le pied de page un lien vers les mentions légales et la politique de confidentialité.",
+  "admin.config.legal.imprint-text": "Texte des mentions légales",
+  "admin.config.legal.imprint-text.description": "Le texte qui doit être affiché dans les mentions légales. Supporte le Markdown. Laissez vide pour mettre un lien vers une page de mentions légales externe.",
+  "admin.config.legal.imprint-url": "URL des mentions légales",
+  "admin.config.legal.imprint-url.description": "Si vous avez déjà une page de mentions légales, vous pouvez indiquer son URL ici au lieu d'utiliser le champ de texte.",
+  "admin.config.legal.privacy-policy-text": "Texte de la politique de confidentialité",
+  "admin.config.legal.privacy-policy-text.description": "Le texte qui doit être affiché dans la politique de confidentialité. Supporte le Markdown. Laissez vide pour mettre un lien vers une page de politique de confidentialité externe.",
+  "admin.config.legal.privacy-policy-url": "URL de la politique de confidentialité",
+  "admin.config.legal.privacy-policy-url.description": "Si vous avez déjà une page de politique de confidentialité, vous pouvez indiquer son URL ici au lieu d'utiliser le champ de texte.",
   // 404
   "404.description": "Désolé, mais cette page n’existe pas.",
   "404.button.home": "Retour à l’accueil",
