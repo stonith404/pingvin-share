@@ -295,6 +295,12 @@ export default {
   "share.edit.notify.generic-error": "Während der Erstellung der Freigabe ist ein Fehler aufgetreten.",
   "share.edit.notify.save-success": "Freigabe erfolgreich aktualisiert",
   // END /share/[id]/edit
+  // /imprint
+  "imprint.title": "Imprint",
+  // END /imprint
+  // /privacy
+  "privacy.title": "Privacy Policy",
+  // END /privacy
   // /admin/config
   "admin.config.title": "Einstellungen",
   "admin.config.category.general": "Allgemein",
@@ -338,7 +344,7 @@ export default {
   "admin.config.share.allow-unauthenticated-shares": "Nicht authentifizierte Freigaben erlauben",
   "admin.config.share.allow-unauthenticated-shares.description": "Gibt an, ob nicht authentifizierte Benutzer Freigaben erstellen können",
   "admin.config.share.max-expiration": "Max. Ablaufdatum",
-  "admin.config.share.max-expiration.description": "Maximale Ablaufzeit in Stunden. Auf 0 setzen, um kein Ablaufdatum zu definieren.",
+  "admin.config.share.max-expiration.description": "Maximale Ablaufzeit. Auf 0 setzen, um kein Ablaufdatum zu definieren.",
   "admin.config.share.share-id-length": "Default share ID length",
   "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "Maximale Größe",
@@ -457,6 +463,17 @@ export default {
   "admin.config.s3.key.description": "Der Schlüssel, der den Zugriff auf den S3-Bucket ermöglicht.",
   "admin.config.s3.secret": "Geheimnis",
   "admin.config.s3.secret.description": "Das Geheimnis, das den Zugriff auf den S3-Bucket ermöglicht.",
+  "admin.config.category.legal": "Rechtliches",
+  "admin.config.legal.enabled": "Impressum und Datenschutz aktivieren",
+  "admin.config.legal.enabled.description": "Gibt an, ob die Links zum Impressum und zur Datenschutzerklärung im Footer angezeigt werden sollen.",
+  "admin.config.legal.imprint-text": "Impressum-Text",
+  "admin.config.legal.imprint-text.description": "Der Text, der im Impressum angezeigt wird. Unterstützt Markdown. Leer lassen, um auf eine externe Impressumsseite zu verlinken.",
+  "admin.config.legal.imprint-url": "Impressum-URL",
+  "admin.config.legal.imprint-url.description": "Wenn bereits eine Impressumsseite vorhanden ist, kann sie hier verlinkt werden, anstatt den Text einzugeben.",
+  "admin.config.legal.privacy-policy-text": "Datenschutzerklärungstext",
+  "admin.config.legal.privacy-policy-text.description": "Der Text, der in der Datenschutzerklärung angezeigt wird. Unterstützt Markdown. Leer lassen, um auf eine externe Datenschutzerklärungsseite zu verlinken.",
+  "admin.config.legal.privacy-policy-url": "Datenschutzerklärungs-URL",
+  "admin.config.legal.privacy-policy-url.description": "Wenn bereits eine Datenschutzerklärungsseite vorhanden ist, kann sie hier verlinkt werden, anstatt den Text einzugeben.",
   // 404
   "404.description": "Ups, diese Seite existiert nicht.",
   "404.button.home": "Zurück zur Startseite",
