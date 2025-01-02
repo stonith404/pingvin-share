@@ -295,6 +295,12 @@ export default {
   "share.edit.notify.generic-error": "共有の最終処理でエラーが発生しました。",
   "share.edit.notify.save-success": "共有の更新に成功しました",
   // END /share/[id]/edit
+  // /imprint
+  "imprint.title": "Imprint",
+  // END /imprint
+  // /privacy
+  "privacy.title": "Privacy Policy",
+  // END /privacy
   // /admin/config
   "admin.config.title": "設定",
   "admin.config.category.general": "一般",
@@ -338,7 +344,7 @@ export default {
   "admin.config.share.allow-unauthenticated-shares": "ログインしていない状態での共有を許可する",
   "admin.config.share.allow-unauthenticated-shares.description": "ログインしていないユーザーに共有の作成を許可するかどうかを選択してください。",
   "admin.config.share.max-expiration": "有効期限の上限",
-  "admin.config.share.max-expiration.description": "共有に設定可能な有効期限の上限を時間単位で設定できます。0を設定すると、有効期限が無制限になります。",
+  "admin.config.share.max-expiration.description": "Maximum share expiration. Set to 0 to allow unlimited expiration.",
   "admin.config.share.share-id-length": "デフォルトの共有IDの長さ",
   "admin.config.share.share-id-length.description": "共有の生成されたIDのデフォルトの長さ。この値はファイルリクエストのリンクを生成するためにも使用されます。8未満の値は安全ではないと見なされます。",
   "admin.config.share.max-size": "最大ファイルサイズ",
@@ -457,6 +463,17 @@ export default {
   "admin.config.s3.key.description": "S3バケットにアクセスするためのキー。",
   "admin.config.s3.secret": "秘密",
   "admin.config.s3.secret.description": "S3バケットにアクセスするための秘密。",
+  "admin.config.category.legal": "Legal",
+  "admin.config.legal.enabled": "Enable legal notices",
+  "admin.config.legal.enabled.description": "Whether to show a link to imprint and privacy policy in the footer.",
+  "admin.config.legal.imprint-text": "Imprint text",
+  "admin.config.legal.imprint-text.description": "The text which should be shown in the imprint. Supports Markdown. Leave blank to link to an external imprint page.",
+  "admin.config.legal.imprint-url": "Imprint URL",
+  "admin.config.legal.imprint-url.description": "If you already have an imprint page you can link it here instead of using the text field.",
+  "admin.config.legal.privacy-policy-text": "Privacy policy text",
+  "admin.config.legal.privacy-policy-text.description": "The text which should be shown in the privacy policy. Supports Markdown. Leave blank to link to an external privacy policy page.",
+  "admin.config.legal.privacy-policy-url": "Privacy policy URL",
+  "admin.config.legal.privacy-policy-url.description": "If you already have a privacy policy page you can link it here instead of using the text field.",
   // 404
   "404.description": "ページが見つかりません。",
   "404.button.home": "ホームに戻る",
