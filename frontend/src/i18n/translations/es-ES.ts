@@ -295,6 +295,12 @@ export default {
   "share.edit.notify.generic-error": "Ha ocurrido un error mientras se compartía tu archivo.",
   "share.edit.notify.save-success": "Compartir actualizado correctamente",
   // END /share/[id]/edit
+  // /imprint
+  "imprint.title": "Imprint",
+  // END /imprint
+  // /privacy
+  "privacy.title": "Privacy Policy",
+  // END /privacy
   // /admin/config
   "admin.config.title": "Configuración",
   "admin.config.category.general": "General",
@@ -338,7 +344,7 @@ export default {
   "admin.config.share.allow-unauthenticated-shares": "Permitir compartir sin iniciar sesión",
   "admin.config.share.allow-unauthenticated-shares.description": "Si los usuarios que no han iniciado sesión pueden compartir",
   "admin.config.share.max-expiration": "Expiración máxima",
-  "admin.config.share.max-expiration.description": "Expiración máxima para compartir en horas. Establezca en 0 para permitir una expiración ilimitada.",
+  "admin.config.share.max-expiration.description": "Maximum share expiration. Set to 0 to allow unlimited expiration.",
   "admin.config.share.share-id-length": "Longitud de ID compartido por defecto",
   "admin.config.share.share-id-length.description": "Longitud predeterminada para el ID generado de un compartido. Este valor también se usa para generar enlaces compartidos de uso inverso. Un valor inferior a 8 no se considera seguro.",
   "admin.config.share.max-size": "Tamaño máximo",
@@ -457,6 +463,17 @@ export default {
   "admin.config.s3.key.description": "The key which allows you to access the S3 bucket.",
   "admin.config.s3.secret": "Secret",
   "admin.config.s3.secret.description": "The secret which allows you to access the S3 bucket.",
+  "admin.config.category.legal": "Legal",
+  "admin.config.legal.enabled": "Enable legal notices",
+  "admin.config.legal.enabled.description": "Whether to show a link to imprint and privacy policy in the footer.",
+  "admin.config.legal.imprint-text": "Imprint text",
+  "admin.config.legal.imprint-text.description": "The text which should be shown in the imprint. Supports Markdown. Leave blank to link to an external imprint page.",
+  "admin.config.legal.imprint-url": "Imprint URL",
+  "admin.config.legal.imprint-url.description": "If you already have an imprint page you can link it here instead of using the text field.",
+  "admin.config.legal.privacy-policy-text": "Privacy policy text",
+  "admin.config.legal.privacy-policy-text.description": "The text which should be shown in the privacy policy. Supports Markdown. Leave blank to link to an external privacy policy page.",
+  "admin.config.legal.privacy-policy-url": "Privacy policy URL",
+  "admin.config.legal.privacy-policy-url.description": "If you already have a privacy policy page you can link it here instead of using the text field.",
   // 404
   "404.description": "Oops esta página no existe.",
   "404.button.home": "Regrésame al inicio",
