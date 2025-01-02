@@ -30,8 +30,8 @@ const configVariables: ConfigVariables = {
       secret: false,
     },
     sessionDuration: {
-      type: "number",
-      defaultValue: "2160",
+      type: "timespan",
+      defaultValue: "3 months",
       secret: false,
     },
   },
@@ -47,8 +47,8 @@ const configVariables: ConfigVariables = {
       secret: false,
     },
     maxExpiration: {
-      type: "number",
-      defaultValue: "0",
+      type: "timespan",
+      defaultValue: "0 days",
       secret: false,
     },
     shareIdLength: {

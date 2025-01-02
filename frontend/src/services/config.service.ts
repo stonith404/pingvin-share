@@ -1,6 +1,7 @@
 import axios from "axios";
 import Config, { AdminConfig, UpdateConfig } from "../types/config.type";
 import api from "./api.service";
+import { stringToTimespan } from "../utils/date.util";
 
 const list = async (): Promise<Config[]> => {
   return (await api.get("/configs")).data;
@@ -30,6 +31,8 @@ const get = (key: string, configVariables: Config[]): any => {
   if (configVariable.type == "boolean") return value == "true";
   if (configVariable.type == "string" || configVariable.type == "text")
     return value;
+  if (configVariable.type == "timespan")
+    return stringToTimespan(value);
 };
 
 const finishSetup = async (): Promise<AdminConfig[]> => {
