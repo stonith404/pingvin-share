@@ -295,6 +295,12 @@ export default {
   "share.edit.notify.generic-error": "Дошло је до грешке приликом завршетка вашег дељења.",
   "share.edit.notify.save-success": "Дељење је успешно ажурирано",
   // END /share/[id]/edit
+  // /imprint
+  "imprint.title": "Imprint",
+  // END /imprint
+  // /privacy
+  "privacy.title": "Privacy Policy",
+  // END /privacy
   // /admin/config
   "admin.config.title": "Конфигурација",
   "admin.config.category.general": "Опште",
@@ -338,7 +344,7 @@ export default {
   "admin.config.share.allow-unauthenticated-shares": "Дозволи дељење без аутентификације",
   "admin.config.share.allow-unauthenticated-shares.description": "Да ли корисници без аутентификације могу да креирају дељења",
   "admin.config.share.max-expiration": "Максимални рок трајања",
-  "admin.config.share.max-expiration.description": "Максимални рок трајања дељења у сатима. Поставите на 0 да бисте омогућили неограничено трајање.",
+  "admin.config.share.max-expiration.description": "Maximum share expiration. Set to 0 to allow unlimited expiration.",
   "admin.config.share.share-id-length": "Дужина подразумеваног ID-а за дељење",
   "admin.config.share.share-id-length.description": "Подразумевана дужина генерисаног ID-а за дељење. Ова вредност се такође користи за генерисање линкова за обрнуто дељење. Вредност испод 8 се не сматра безбедном.",
   "admin.config.share.max-size": "Максимална величина",
@@ -457,6 +463,17 @@ export default {
   "admin.config.s3.key.description": "The key which allows you to access the S3 bucket.",
   "admin.config.s3.secret": "Secret",
   "admin.config.s3.secret.description": "The secret which allows you to access the S3 bucket.",
+  "admin.config.category.legal": "Legal",
+  "admin.config.legal.enabled": "Enable legal notices",
+  "admin.config.legal.enabled.description": "Whether to show a link to imprint and privacy policy in the footer.",
+  "admin.config.legal.imprint-text": "Imprint text",
+  "admin.config.legal.imprint-text.description": "The text which should be shown in the imprint. Supports Markdown. Leave blank to link to an external imprint page.",
+  "admin.config.legal.imprint-url": "Imprint URL",
+  "admin.config.legal.imprint-url.description": "If you already have an imprint page you can link it here instead of using the text field.",
+  "admin.config.legal.privacy-policy-text": "Privacy policy text",
+  "admin.config.legal.privacy-policy-text.description": "The text which should be shown in the privacy policy. Supports Markdown. Leave blank to link to an external privacy policy page.",
+  "admin.config.legal.privacy-policy-url": "Privacy policy URL",
+  "admin.config.legal.privacy-policy-url.description": "If you already have a privacy policy page you can link it here instead of using the text field.",
   // 404
   "404.description": "Опа - Ова страна не постоји.",
   "404.button.home": "Врати ме на почетак",
