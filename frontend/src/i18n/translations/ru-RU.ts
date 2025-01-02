@@ -295,6 +295,12 @@ export default {
   "share.edit.notify.generic-error": "Произошла ошибка при завершении вашей загрузки.",
   "share.edit.notify.save-success": "Ссылка на ресурс успешна обновлена",
   // END /share/[id]/edit
+  // /imprint
+  "imprint.title": "Imprint",
+  // END /imprint
+  // /privacy
+  "privacy.title": "Privacy Policy",
+  // END /privacy
   // /admin/config
   "admin.config.title": "Конфигурация",
   "admin.config.category.general": "Общее",
@@ -338,7 +344,7 @@ export default {
   "admin.config.share.allow-unauthenticated-shares": "Разрешить неавторизованные загрузки",
   "admin.config.share.allow-unauthenticated-shares.description": "Могут ли неавторизованные пользователи создавать загрузки",
   "admin.config.share.max-expiration": "Максимальная срок действия",
-  "admin.config.share.max-expiration.description": "Максимальный срок действия общего доступа в часах. Установите значение 0, чтобы разрешить неограниченный срок действия.",
+  "admin.config.share.max-expiration.description": "Maximum share expiration. Set to 0 to allow unlimited expiration.",
   "admin.config.share.share-id-length": "Длина идентификатора по умолчанию",
   "admin.config.share.share-id-length.description": "Длина по умолчанию для сгенерированного ID ресурса. Это значение также используется для генерации ссылок для обратных акций. Значение ниже 8 не считается безопасным.",
   "admin.config.share.max-size": "Максимальный размер",
@@ -457,6 +463,17 @@ export default {
   "admin.config.s3.key.description": "The key which allows you to access the S3 bucket.",
   "admin.config.s3.secret": "Secret",
   "admin.config.s3.secret.description": "The secret which allows you to access the S3 bucket.",
+  "admin.config.category.legal": "Legal",
+  "admin.config.legal.enabled": "Enable legal notices",
+  "admin.config.legal.enabled.description": "Whether to show a link to imprint and privacy policy in the footer.",
+  "admin.config.legal.imprint-text": "Imprint text",
+  "admin.config.legal.imprint-text.description": "The text which should be shown in the imprint. Supports Markdown. Leave blank to link to an external imprint page.",
+  "admin.config.legal.imprint-url": "Imprint URL",
+  "admin.config.legal.imprint-url.description": "If you already have an imprint page you can link it here instead of using the text field.",
+  "admin.config.legal.privacy-policy-text": "Privacy policy text",
+  "admin.config.legal.privacy-policy-text.description": "The text which should be shown in the privacy policy. Supports Markdown. Leave blank to link to an external privacy policy page.",
+  "admin.config.legal.privacy-policy-url": "Privacy policy URL",
+  "admin.config.legal.privacy-policy-url.description": "If you already have a privacy policy page you can link it here instead of using the text field.",
   // 404
   "404.description": "Упс, этой страницы не существует.",
   "404.button.home": "Верните меня домой",
