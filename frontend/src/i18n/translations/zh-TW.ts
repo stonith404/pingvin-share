@@ -295,6 +295,12 @@ export default {
   "share.edit.notify.generic-error": "保存分享的過程中發生了錯誤",
   "share.edit.notify.save-success": "分享已更新成功",
   // END /share/[id]/edit
+  // /imprint
+  "imprint.title": "Imprint",
+  // END /imprint
+  // /privacy
+  "privacy.title": "Privacy Policy",
+  // END /privacy
   // /admin/config
   "admin.config.title": "配置管理",
   "admin.config.category.general": "通用",
@@ -338,7 +344,7 @@ export default {
   "admin.config.share.allow-unauthenticated-shares": "是否允許未登入進行分享",
   "admin.config.share.allow-unauthenticated-shares.description": "是否允許未登入的使用者建立分享",
   "admin.config.share.max-expiration": "最大過期時間",
-  "admin.config.share.max-expiration.description": "最大過期時間(小時)，若設定為0則為永不過期",
+  "admin.config.share.max-expiration.description": "Maximum share expiration. Set to 0 to allow unlimited expiration.",
   "admin.config.share.share-id-length": "預設分享ID長度",
   "admin.config.share.share-id-length.description": "預設的自動生成分享ID長度。這個設定同時用於生成檔案請求連結。小於 8 被認為是不安全的。",
   "admin.config.share.max-size": "最大檔案上限",
@@ -457,6 +463,17 @@ export default {
   "admin.config.s3.key.description": "The key which allows you to access the S3 bucket.",
   "admin.config.s3.secret": "Secret",
   "admin.config.s3.secret.description": "The secret which allows you to access the S3 bucket.",
+  "admin.config.category.legal": "Legal",
+  "admin.config.legal.enabled": "Enable legal notices",
+  "admin.config.legal.enabled.description": "Whether to show a link to imprint and privacy policy in the footer.",
+  "admin.config.legal.imprint-text": "Imprint text",
+  "admin.config.legal.imprint-text.description": "The text which should be shown in the imprint. Supports Markdown. Leave blank to link to an external imprint page.",
+  "admin.config.legal.imprint-url": "Imprint URL",
+  "admin.config.legal.imprint-url.description": "If you already have an imprint page you can link it here instead of using the text field.",
+  "admin.config.legal.privacy-policy-text": "Privacy policy text",
+  "admin.config.legal.privacy-policy-text.description": "The text which should be shown in the privacy policy. Supports Markdown. Leave blank to link to an external privacy policy page.",
+  "admin.config.legal.privacy-policy-url": "Privacy policy URL",
+  "admin.config.legal.privacy-policy-url.description": "If you already have a privacy policy page you can link it here instead of using the text field.",
   // 404
   "404.description": "查無此頁",
   "404.button.home": "返回主頁",
