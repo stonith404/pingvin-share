@@ -295,6 +295,12 @@ export default {
   "share.edit.notify.generic-error": "Сталася помилка під час завершення вашого завантаження.",
   "share.edit.notify.save-success": "Посилання на ресурс успішно оновлено",
   // END /share/[id]/edit
+  // /imprint
+  "imprint.title": "Imprint",
+  // END /imprint
+  // /privacy
+  "privacy.title": "Privacy Policy",
+  // END /privacy
   // /admin/config
   "admin.config.title": "Конфігурація",
   "admin.config.category.general": "Загальне",
@@ -338,7 +344,7 @@ export default {
   "admin.config.share.allow-unauthenticated-shares": "Дозволити неавторизовані завантаження",
   "admin.config.share.allow-unauthenticated-shares.description": "Чи можуть неавторизовані користувачі створювати завантаження",
   "admin.config.share.max-expiration": "Максимальний термін дії",
-  "admin.config.share.max-expiration.description": "Максимальний термін дії загального доступу в годинах. Встановіть значення 0, щоб дозволити необмежений термін дії.",
+  "admin.config.share.max-expiration.description": "Maximum share expiration. Set to 0 to allow unlimited expiration.",
   "admin.config.share.share-id-length": "Стандартна довжина ID завантаження",
   "admin.config.share.share-id-length.description": "Стандартна довжина для згенерованого ID завантаження. Це значення також використовується для створення посилань для зворотних завантажень. Значення менше 8 не вважається безпечним.",
   "admin.config.share.max-size": "Максимальний розмір",
@@ -457,6 +463,17 @@ export default {
   "admin.config.s3.key.description": "Ключ, який дозволяє отримати доступ до S3 бакету.",
   "admin.config.s3.secret": "Секрет",
   "admin.config.s3.secret.description": "Секрет, який дозволяє отримати доступ до S3 бакету.",
+  "admin.config.category.legal": "Legal",
+  "admin.config.legal.enabled": "Enable legal notices",
+  "admin.config.legal.enabled.description": "Whether to show a link to imprint and privacy policy in the footer.",
+  "admin.config.legal.imprint-text": "Imprint text",
+  "admin.config.legal.imprint-text.description": "The text which should be shown in the imprint. Supports Markdown. Leave blank to link to an external imprint page.",
+  "admin.config.legal.imprint-url": "Imprint URL",
+  "admin.config.legal.imprint-url.description": "If you already have an imprint page you can link it here instead of using the text field.",
+  "admin.config.legal.privacy-policy-text": "Privacy policy text",
+  "admin.config.legal.privacy-policy-text.description": "The text which should be shown in the privacy policy. Supports Markdown. Leave blank to link to an external privacy policy page.",
+  "admin.config.legal.privacy-policy-url": "Privacy policy URL",
+  "admin.config.legal.privacy-policy-url.description": "If you already have a privacy policy page you can link it here instead of using the text field.",
   // 404
   "404.description": "Бляха, цієї строрінки не існує.",
   "404.button.home": "Поверни мене додому",
