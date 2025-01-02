@@ -124,6 +124,9 @@ export default {
   "account.shares.table.expiresAt": "Expires on",
   "account.shares.table.createdAt": "Created on",
   "account.shares.table.size": "크기",
+  "account.shares.table.password-protected": "Password protected",
+  "account.shares.table.visitor-count": "{count} of {max}",
+  "account.shares.table.expiry-never": "Never",
   "account.shares.modal.share-informations": "공유 정보",
   "account.shares.modal.share-link": "공유 링크",
   "account.shares.modal.delete.title": "Delete share: {share}",
@@ -292,6 +295,12 @@ export default {
   "share.edit.notify.generic-error": "공유를 완료하는 동안 오류가 발생했습니다.",
   "share.edit.notify.save-success": "공유가 업데이트 되었습니다.",
   // END /share/[id]/edit
+  // /imprint
+  "imprint.title": "Imprint",
+  // END /imprint
+  // /privacy
+  "privacy.title": "Privacy Policy",
+  // END /privacy
   // /admin/config
   "admin.config.title": "구성",
   "admin.config.category.general": "일반",
@@ -335,7 +344,7 @@ export default {
   "admin.config.share.allow-unauthenticated-shares": "인증되지 않은 공유 허용",
   "admin.config.share.allow-unauthenticated-shares.description": "인증되지 않은 사용자가 공유를 생성할 수 있는지 여부",
   "admin.config.share.max-expiration": "최대 만료 시간",
-  "admin.config.share.max-expiration.description": "공유의 최대 만료 시간. 무제한 만료를 허용하려면 0으로 설정하세요.",
+  "admin.config.share.max-expiration.description": "Maximum share expiration. Set to 0 to allow unlimited expiration.",
   "admin.config.share.share-id-length": "Default share ID length",
   "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "최대 크기",
@@ -454,6 +463,17 @@ export default {
   "admin.config.s3.key.description": "The key which allows you to access the S3 bucket.",
   "admin.config.s3.secret": "Secret",
   "admin.config.s3.secret.description": "The secret which allows you to access the S3 bucket.",
+  "admin.config.category.legal": "Legal",
+  "admin.config.legal.enabled": "Enable legal notices",
+  "admin.config.legal.enabled.description": "Whether to show a link to imprint and privacy policy in the footer.",
+  "admin.config.legal.imprint-text": "Imprint text",
+  "admin.config.legal.imprint-text.description": "The text which should be shown in the imprint. Supports Markdown. Leave blank to link to an external imprint page.",
+  "admin.config.legal.imprint-url": "Imprint URL",
+  "admin.config.legal.imprint-url.description": "If you already have an imprint page you can link it here instead of using the text field.",
+  "admin.config.legal.privacy-policy-text": "Privacy policy text",
+  "admin.config.legal.privacy-policy-text.description": "The text which should be shown in the privacy policy. Supports Markdown. Leave blank to link to an external privacy policy page.",
+  "admin.config.legal.privacy-policy-url": "Privacy policy URL",
+  "admin.config.legal.privacy-policy-url.description": "If you already have a privacy policy page you can link it here instead of using the text field.",
   // 404
   "404.description": "이런, 이 페이지는 존재하지 않습니다.",
   "404.button.home": "나를 집으로 데려다 줘",

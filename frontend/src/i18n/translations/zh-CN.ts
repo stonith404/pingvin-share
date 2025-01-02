@@ -124,6 +124,9 @@ export default {
   "account.shares.table.expiresAt": "Expires on",
   "account.shares.table.createdAt": "Created on",
   "account.shares.table.size": "文件大小",
+  "account.shares.table.password-protected": "Password protected",
+  "account.shares.table.visitor-count": "{count} of {max}",
+  "account.shares.table.expiry-never": "Never",
   "account.shares.modal.share-informations": "共享信息",
   "account.shares.modal.share-link": "共享链接",
   "account.shares.modal.delete.title": "Delete share: {share}",
@@ -292,6 +295,12 @@ export default {
   "share.edit.notify.generic-error": "保存共享的过程中发生了错误",
   "share.edit.notify.save-success": "共享已更新成功",
   // END /share/[id]/edit
+  // /imprint
+  "imprint.title": "Imprint",
+  // END /imprint
+  // /privacy
+  "privacy.title": "Privacy Policy",
+  // END /privacy
   // /admin/config
   "admin.config.title": "配置管理",
   "admin.config.category.general": "通用",
@@ -335,7 +344,7 @@ export default {
   "admin.config.share.allow-unauthenticated-shares": "是否允许未验证的共享",
   "admin.config.share.allow-unauthenticated-shares.description": "是否允许未验证的用户创建共享",
   "admin.config.share.max-expiration": "最长过期时间",
-  "admin.config.share.max-expiration.description": "“最长过期时间”以小时为单位，如果将其设置为“0”则为永不过期。",
+  "admin.config.share.max-expiration.description": "Maximum share expiration. Set to 0 to allow unlimited expiration.",
   "admin.config.share.share-id-length": "Default share ID length",
   "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
   "admin.config.share.max-size": "最大文件上限",
@@ -454,6 +463,17 @@ export default {
   "admin.config.s3.key.description": "The key which allows you to access the S3 bucket.",
   "admin.config.s3.secret": "Secret",
   "admin.config.s3.secret.description": "The secret which allows you to access the S3 bucket.",
+  "admin.config.category.legal": "Legal",
+  "admin.config.legal.enabled": "Enable legal notices",
+  "admin.config.legal.enabled.description": "Whether to show a link to imprint and privacy policy in the footer.",
+  "admin.config.legal.imprint-text": "Imprint text",
+  "admin.config.legal.imprint-text.description": "The text which should be shown in the imprint. Supports Markdown. Leave blank to link to an external imprint page.",
+  "admin.config.legal.imprint-url": "Imprint URL",
+  "admin.config.legal.imprint-url.description": "If you already have an imprint page you can link it here instead of using the text field.",
+  "admin.config.legal.privacy-policy-text": "Privacy policy text",
+  "admin.config.legal.privacy-policy-text.description": "The text which should be shown in the privacy policy. Supports Markdown. Leave blank to link to an external privacy policy page.",
+  "admin.config.legal.privacy-policy-url": "Privacy policy URL",
+  "admin.config.legal.privacy-policy-url.description": "If you already have a privacy policy page you can link it here instead of using the text field.",
   // 404
   "404.description": "当前的页面走丢啦",
   "404.button.home": "返回主页",

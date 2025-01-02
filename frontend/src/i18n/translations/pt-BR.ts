@@ -124,6 +124,9 @@ export default {
   "account.shares.table.expiresAt": "Expira em",
   "account.shares.table.createdAt": "Criada em",
   "account.shares.table.size": "Tamanho",
+  "account.shares.table.password-protected": "Password protected",
+  "account.shares.table.visitor-count": "{count} of {max}",
+  "account.shares.table.expiry-never": "Nunca",
   "account.shares.modal.share-informations": "Informações do compartilhamento",
   "account.shares.modal.share-link": "Link do compartilhamento",
   "account.shares.modal.delete.title": "Excluir o compartilhamento {share}",
@@ -292,6 +295,12 @@ export default {
   "share.edit.notify.generic-error": "Ocorreu um erro ao terminar seu compartilhamento.",
   "share.edit.notify.save-success": "Compartilhamento atualizado com sucesso",
   // END /share/[id]/edit
+  // /imprint
+  "imprint.title": "Imprint",
+  // END /imprint
+  // /privacy
+  "privacy.title": "Privacy Policy",
+  // END /privacy
   // /admin/config
   "admin.config.title": "Configuração",
   "admin.config.category.general": "Geral",
@@ -335,7 +344,7 @@ export default {
   "admin.config.share.allow-unauthenticated-shares": "Permitir compartilhamentos sem autenticação",
   "admin.config.share.allow-unauthenticated-shares.description": "Se usuários não autenticados podem criar compartilhamentos",
   "admin.config.share.max-expiration": "Expiração máxima",
-  "admin.config.share.max-expiration.description": "Validade máxima de ações em horas. Defina 0 para permitir expiração ilimitada.",
+  "admin.config.share.max-expiration.description": "Maximum share expiration. Set to 0 to allow unlimited expiration.",
   "admin.config.share.share-id-length": "Comprimento da ID do compartilhamento padrão",
   "admin.config.share.share-id-length.description": "Comprimento padrão para a ID gerada de um compartilhamento. Este valor também é usado para gerar links para ações reversas. Um valor abaixo de 8 não é considerado seguro.",
   "admin.config.share.max-size": "Tamanho máximo",
@@ -454,6 +463,17 @@ export default {
   "admin.config.s3.key.description": "A chave que permite a você acessar o bucket S3.",
   "admin.config.s3.secret": "Segredo",
   "admin.config.s3.secret.description": "O segredo que permite a você acessar o bucket S3.",
+  "admin.config.category.legal": "Legal",
+  "admin.config.legal.enabled": "Enable legal notices",
+  "admin.config.legal.enabled.description": "Whether to show a link to imprint and privacy policy in the footer.",
+  "admin.config.legal.imprint-text": "Imprint text",
+  "admin.config.legal.imprint-text.description": "The text which should be shown in the imprint. Supports Markdown. Leave blank to link to an external imprint page.",
+  "admin.config.legal.imprint-url": "Imprint URL",
+  "admin.config.legal.imprint-url.description": "If you already have an imprint page you can link it here instead of using the text field.",
+  "admin.config.legal.privacy-policy-text": "Privacy policy text",
+  "admin.config.legal.privacy-policy-text.description": "The text which should be shown in the privacy policy. Supports Markdown. Leave blank to link to an external privacy policy page.",
+  "admin.config.legal.privacy-policy-url": "Privacy policy URL",
+  "admin.config.legal.privacy-policy-url.description": "If you already have a privacy policy page you can link it here instead of using the text field.",
   // 404
   "404.description": "Ops, esta página não existe.",
   "404.button.home": "Me traga de volta para casa",
