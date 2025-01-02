@@ -31,6 +31,7 @@ import { FileUpload } from "../../../types/File.type";
 import { CreateShare } from "../../../types/share.type";
 import { getExpirationPreview } from "../../../utils/date.util";
 import toast from "../../../utils/toast.util";
+import { Timespan } from "../../../types/timespan.type";
 
 const showCreateUploadModal = (
   modals: ModalsContextProps,
@@ -39,7 +40,7 @@ const showCreateUploadModal = (
     isReverseShare: boolean;
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
-    maxExpirationInHours: number;
+    maxExpiration: Timespan;
     shareIdLength: number;
     simplified: boolean;
   },
@@ -112,7 +113,7 @@ const CreateUploadModalBody = ({
     isReverseShare: boolean;
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
-    maxExpirationInHours: number;
+    maxExpiration: Timespan;
     shareIdLength: number;
   };
 }) => {
@@ -180,17 +181,17 @@ const CreateUploadModalBody = ({
       );
 
       if (
-        options.maxExpirationInHours != 0 &&
+        options.maxExpiration.value != 0 &&
         (form.values.never_expires ||
           expirationDate.isAfter(
-            moment().add(options.maxExpirationInHours, "hours"),
+            moment().add(options.maxExpiration.value, options.maxExpiration.unit),
           ))
       ) {
         form.setFieldError(
           "expiration_num",
           t("upload.modal.expires.error.too-long", {
             max: moment
-              .duration(options.maxExpirationInHours, "hours")
+              .duration(options.maxExpiration.value, options.maxExpiration.unit)
               .humanize(),
           }),
         );
@@ -327,7 +328,7 @@ const CreateUploadModalBody = ({
                   />
                 </Col>
               </Grid>
-              {options.maxExpirationInHours == 0 && (
+              {options.maxExpiration.value == 0 && (
                 <Checkbox
                   label={t("upload.modal.expires.never-long")}
                   {...form.getInputProps("never_expires")}
@@ -478,7 +479,7 @@ const SimplifiedCreateUploadModalModal = ({
     isReverseShare: boolean;
     allowUnauthenticatedShares: boolean;
     enableEmailRecepients: boolean;
-    maxExpirationInHours: number;
+    maxExpiration: Timespan;
     shareIdLength: number;
   };
 }) => {

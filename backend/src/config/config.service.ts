@@ -7,6 +7,7 @@ import {
 import { Config } from "@prisma/client";
 import { EventEmitter } from "events";
 import { PrismaService } from "src/prisma/prisma.service";
+import { stringToTimespan } from "src/utils/date.util";
 
 /**
  * ConfigService extends EventEmitter to allow listening for config updates,
@@ -30,10 +31,13 @@ export class ConfigService extends EventEmitter {
 
     const value = configVariable.value ?? configVariable.defaultValue;
 
-    if (configVariable.type == "number") return parseInt(value);
+    if (configVariable.type == "number" || configVariable.type == "filesize")
+      return parseInt(value);
     if (configVariable.type == "boolean") return value == "true";
     if (configVariable.type == "string" || configVariable.type == "text")
       return value;
+    if (configVariable.type == "timespan")
+      return stringToTimespan(value);
   }
 
   async getByCategory(category: string) {
@@ -93,7 +97,8 @@ export class ConfigService extends EventEmitter {
     } else if (
       typeof value != configVariable.type &&
       typeof value == "string" &&
-      configVariable.type != "text"
+      configVariable.type != "text" &&
+      configVariable.type != "timespan"
     ) {
       throw new BadRequestException(
         `Config variable must be of type ${configVariable.type}`,
@@ -131,6 +136,7 @@ export class ConfigService extends EventEmitter {
         condition: (value: number) => value >= 0 && value <= 9,
         message: "Zip compression level must be between 0 and 9",
       },
+      // TODO add validation for timespan type
     ];
 
     const validation = validations.find((validation) => validation.key == key);

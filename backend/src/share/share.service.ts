@@ -56,12 +56,13 @@ export class ShareService {
 
       const expiresNever = moment(0).toDate() == parsedExpiration;
 
+      const maxExpiration = this.config.get("share.maxExpiration");
       if (
-        this.config.get("share.maxExpiration") !== 0 &&
+        maxExpiration.value !== 0 &&
         (expiresNever ||
           parsedExpiration >
             moment()
-              .add(this.config.get("share.maxExpiration"), "hours")
+              .add(maxExpiration.value, maxExpiration.unit)
               .toDate())
       ) {
         throw new BadRequestException(
@@ -233,7 +234,7 @@ export class ShareService {
       orderBy: {
         expiration: "desc",
       },
-      include: { recipients: true, files: true },
+      include: { recipients: true, files: true, security: true },
     });
 
     return shares.map((share) => {
@@ -241,6 +242,10 @@ export class ShareService {
         ...share,
         size: share.files.reduce((acc, file) => acc + parseInt(file.size), 0),
         recipients: share.recipients.map((recipients) => recipients.email),
+        security: {
+          maxViews: share.security?.maxViews,
+          passwordProtected: !!share.security?.password,
+        },
       };
     });
   }

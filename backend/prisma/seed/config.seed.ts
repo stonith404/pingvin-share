@@ -30,8 +30,8 @@ const configVariables: ConfigVariables = {
       secret: false,
     },
     sessionDuration: {
-      type: "number",
-      defaultValue: "2160",
+      type: "timespan",
+      defaultValue: "3 months",
       secret: false,
     },
   },
@@ -47,8 +47,8 @@ const configVariables: ConfigVariables = {
       secret: false,
     },
     maxExpiration: {
-      type: "number",
-      defaultValue: "0",
+      type: "timespan",
+      defaultValue: "0 days",
       secret: false,
     },
     shareIdLength: {
@@ -57,7 +57,7 @@ const configVariables: ConfigVariables = {
       secret: false,
     },
     maxSize: {
-      type: "number",
+      type: "filesize",
       defaultValue: "1000000000",
       secret: false,
     },
@@ -66,7 +66,7 @@ const configVariables: ConfigVariables = {
       defaultValue: "9",
     },
     chunkSize: {
-      type: "number",
+      type: "filesize",
       defaultValue: "10000000",
       secret: false,
     },
@@ -348,6 +348,33 @@ const configVariables: ConfigVariables = {
       type: "string",
       defaultValue: "",
       obscured: true,
+    },
+  },
+  legal: {
+    enabled: {
+      type: "boolean",
+      defaultValue: "false",
+      secret: false,
+    },
+    imprintText: {
+      type: "text",
+      defaultValue: "",
+      secret: false,
+    },
+    imprintUrl: {
+      type: "string",
+      defaultValue: "",
+      secret: false,
+    },
+    privacyPolicyText: {
+      type: "text",
+      defaultValue: "",
+      secret: false,
+    },
+    privacyPolicyUrl: {
+      type: "string",
+      defaultValue: "",
+      secret: false,
     },
   }
 };
