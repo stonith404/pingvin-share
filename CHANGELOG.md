@@ -1,3 +1,13 @@
+## [1.8.0](https://github.com/stonith404/pingvin-share/compare/v1.7.2...v1.8.0) (2025-01-02)
+
+
+### Features
+
+* add legal page with configuration options ([#724](https://github.com/stonith404/pingvin-share/issues/724)) ([df1ffaa](https://github.com/stonith404/pingvin-share/commit/df1ffaa2bcc047668cdc207cf8f86d821778cf44))
+* improve UI for timespan inputs on admin page ([#726](https://github.com/stonith404/pingvin-share/issues/726)) ([36afbf9](https://github.com/stonith404/pingvin-share/commit/36afbf91b7ba13e5ce42f2d91ec9898363a560b1))
+* **MyShares:** show information about own share security options ([#720](https://github.com/stonith404/pingvin-share/issues/720)) ([b58dcdb](https://github.com/stonith404/pingvin-share/commit/b58dcdba0b8688b286be4cc71796e2862553972a))
+* **UI:** improve filesize input and use it in settings ([#721](https://github.com/stonith404/pingvin-share/issues/721)) ([53c0551](https://github.com/stonith404/pingvin-share/commit/53c05518dfef4f65d76f5a1b301d0c5f8735576a))
+
 ## [1.7.2](https://github.com/stonith404/pingvin-share/compare/v1.7.1...v1.7.2) (2024-12-28)
 
 

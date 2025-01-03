@@ -306,11 +306,12 @@ export class AuthService {
   }
 
   async createRefreshToken(userId: string, idToken?: string) {
+    const sessionDuration = this.config.get("general.sessionDuration");
     const { id, token } = await this.prisma.refreshToken.create({
       data: {
         userId,
         expiresAt: moment()
-          .add(this.config.get("general.sessionDuration"), "hours")
+          .add(sessionDuration.value, sessionDuration.unit)
           .toDate(),
         oauthIDToken: idToken,
       },
@@ -341,14 +342,18 @@ export class AuthService {
         secure: isSecure,
         maxAge: 1000 * 60 * 60 * 24 * 30 * 3, // 3 months
       });
-    if (refreshToken)
+    if (refreshToken) {
+      const now = moment();
+      const sessionDuration = this.config.get("general.sessionDuration");
+      const maxAge = moment(now).add(sessionDuration.value, sessionDuration.unit).diff(now);
       response.cookie("refresh_token", refreshToken, {
         path: "/api/auth/token",
         httpOnly: true,
         sameSite: "strict",
         secure: isSecure,
-        maxAge: 1000 * 60 * 60 * this.config.get("general.sessionDuration"),
+        maxAge,
       });
+    }
   }
 
   /**
