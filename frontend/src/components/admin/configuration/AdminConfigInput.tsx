@@ -8,6 +8,8 @@ import {
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { AdminConfig, UpdateConfig } from "../../../types/config.type";
+import TimespanInput from "../../core/TimespanInput";
+import { stringToTimespan, timespanToString } from "../../../utils/date.util";
 import FileSizeInput from "../../core/FileSizeInput";
 
 const AdminConfigInput = ({
@@ -90,6 +92,13 @@ const AdminConfigInput = ({
             onChange={(e) => onValueChange(configVariable, e.target.checked)}
           />
         </>
+      )}
+      {configVariable.type == "timespan" && (
+        <TimespanInput
+          value={stringToTimespan(configVariable.value)}
+          onChange={(timespan) => onValueChange(configVariable, timespanToString(timespan))}
+          w={201}
+        />
       )}
     </Stack>
   );
