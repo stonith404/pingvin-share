@@ -54,7 +54,6 @@ const Body = ({
   showSendEmailNotificationOption: boolean;
   maxExpiration: Timespan;
 }) => {
-  console.log(maxExpiration);
   const modals = useModals();
   const t = useTranslate();
 
