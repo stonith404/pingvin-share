@@ -34,7 +34,7 @@ export const getExpirationPreview = (
 
 export const timespanToString = (timespan: Timespan) => {
   return `${timespan.value} ${timespan.unit}`;
-}
+};
 
 export const stringToTimespan = (value: string): Timespan => {
   return {

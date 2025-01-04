@@ -184,7 +184,10 @@ const CreateUploadModalBody = ({
         options.maxExpiration.value != 0 &&
         (form.values.never_expires ||
           expirationDate.isAfter(
-            moment().add(options.maxExpiration.value, options.maxExpiration.unit),
+            moment().add(
+              options.maxExpiration.value,
+              options.maxExpiration.unit,
+            ),
           ))
       ) {
         form.setFieldError(

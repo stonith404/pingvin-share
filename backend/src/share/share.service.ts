@@ -61,9 +61,7 @@ export class ShareService {
         maxExpiration.value !== 0 &&
         (expiresNever ||
           parsedExpiration >
-            moment()
-              .add(maxExpiration.value, maxExpiration.unit)
-              .toDate())
+            moment().add(maxExpiration.value, maxExpiration.unit).toDate())
       ) {
         throw new BadRequestException(
           "Expiration date exceeds maximum expiration date",
