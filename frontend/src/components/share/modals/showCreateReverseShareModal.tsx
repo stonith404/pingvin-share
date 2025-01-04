@@ -20,6 +20,7 @@ import useTranslate, {
   translateOutsideContext,
 } from "../../../hooks/useTranslate.hook";
 import shareService from "../../../services/share.service";
+import { Timespan } from "../../../types/timespan.type";
 import { getExpirationPreview } from "../../../utils/date.util";
 import toast from "../../../utils/toast.util";
 import FileSizeInput from "../../core/FileSizeInput";
@@ -28,7 +29,7 @@ import showCompletedReverseShareModal from "./showCompletedReverseShareModal";
 const showCreateReverseShareModal = (
   modals: ModalsContextProps,
   showSendEmailNotificationOption: boolean,
-  maxExpirationInHours: number,
+  maxExpiration: Timespan,
   getReverseShares: () => void,
 ) => {
   const t = translateOutsideContext();
@@ -38,7 +39,7 @@ const showCreateReverseShareModal = (
       <Body
         showSendEmailNotificationOption={showSendEmailNotificationOption}
         getReverseShares={getReverseShares}
-        maxExpirationInHours={maxExpirationInHours}
+        maxExpiration={maxExpiration}
       />
     ),
   });
@@ -47,12 +48,13 @@ const showCreateReverseShareModal = (
 const Body = ({
   getReverseShares,
   showSendEmailNotificationOption,
-  maxExpirationInHours,
+  maxExpiration,
 }: {
   getReverseShares: () => void;
   showSendEmailNotificationOption: boolean;
-  maxExpirationInHours: number;
+  maxExpiration: Timespan;
 }) => {
+  console.log(maxExpiration);
   const modals = useModals();
   const t = useTranslate();
 
@@ -91,13 +93,17 @@ const Body = ({
       ) as moment.unitOfTime.DurationConstructor,
     );
     if (
-      maxExpirationInHours != 0 &&
-      expirationDate.isAfter(moment().add(maxExpirationInHours, "hours"))
+      maxExpiration.value != 0 &&
+      expirationDate.isAfter(
+        moment().add(maxExpiration.value, maxExpiration.unit),
+      )
     ) {
       form.setFieldError(
         "expiration_num",
         t("upload.modal.expires.error.too-long", {
-          max: moment.duration(maxExpirationInHours, "hours").humanize(),
+          max: moment
+            .duration(maxExpiration.value, maxExpiration.unit)
+            .humanize(),
         }),
       );
       return;

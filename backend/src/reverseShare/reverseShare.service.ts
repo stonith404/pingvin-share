@@ -26,10 +26,11 @@ export class ReverseShareService {
       .toDate();
 
     const parsedExpiration = parseRelativeDateToAbsolute(data.shareExpiration);
+    const maxExpiration = this.config.get("share.maxExpiration");
     if (
-      this.config.get("share.maxExpiration") !== 0 &&
+      maxExpiration.value !== 0 &&
       parsedExpiration >
-        moment().add(this.config.get("share.maxExpiration"), "hours").toDate()
+        moment().add(maxExpiration.value, maxExpiration.unit).toDate()
     ) {
       throw new BadRequestException(
         "Expiration date exceeds maximum expiration date",
