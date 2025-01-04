@@ -345,7 +345,9 @@ export class AuthService {
     if (refreshToken) {
       const now = moment();
       const sessionDuration = this.config.get("general.sessionDuration");
-      const maxAge = moment(now).add(sessionDuration.value, sessionDuration.unit).diff(now);
+      const maxAge = moment(now)
+        .add(sessionDuration.value, sessionDuration.unit)
+        .diff(now);
       response.cookie("refresh_token", refreshToken, {
         path: "/api/auth/token",
         httpOnly: true,

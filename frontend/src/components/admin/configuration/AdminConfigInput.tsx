@@ -96,7 +96,9 @@ const AdminConfigInput = ({
       {configVariable.type == "timespan" && (
         <TimespanInput
           value={stringToTimespan(configVariable.value)}
-          onChange={(timespan) => onValueChange(configVariable, timespanToString(timespan))}
+          onChange={(timespan) =>
+            onValueChange(configVariable, timespanToString(timespan))
+          }
           w={201}
         />
       )}

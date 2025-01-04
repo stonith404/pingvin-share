@@ -36,8 +36,7 @@ export class ConfigService extends EventEmitter {
     if (configVariable.type == "boolean") return value == "true";
     if (configVariable.type == "string" || configVariable.type == "text")
       return value;
-    if (configVariable.type == "timespan")
-      return stringToTimespan(value);
+    if (configVariable.type == "timespan") return stringToTimespan(value);
   }
 
   async getByCategory(category: string) {

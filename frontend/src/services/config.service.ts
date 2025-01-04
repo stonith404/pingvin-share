@@ -31,8 +31,7 @@ const get = (key: string, configVariables: Config[]): any => {
   if (configVariable.type == "boolean") return value == "true";
   if (configVariable.type == "string" || configVariable.type == "text")
     return value;
-  if (configVariable.type == "timespan")
-    return stringToTimespan(value);
+  if (configVariable.type == "timespan") return stringToTimespan(value);
 };
 
 const finishSetup = async (): Promise<AdminConfig[]> => {

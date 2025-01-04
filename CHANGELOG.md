@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/stonith404/pingvin-share/compare/v1.8.0...v1.8.1) (2025-01-04)
+
+
+### Bug Fixes
+
+* wrong validation for expiration in reverse share modal ([b3ea96c](https://github.com/stonith404/pingvin-share/commit/b3ea96c1916980863fc6903c64cd2a7b32d66cfb))
+
 ## [1.8.0](https://github.com/stonith404/pingvin-share/compare/v1.7.2...v1.8.0) (2025-01-02)
 
 
