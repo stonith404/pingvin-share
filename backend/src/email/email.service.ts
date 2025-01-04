@@ -61,7 +61,8 @@ export class EmailService {
       throw new InternalServerErrorException("Email service disabled");
 
     const shareUrl = `${this.config.get("general.appUrl")}/s/${shareId}`;
-
+  
+    // Send email to the recipient
     await this.sendMail(
       recipientEmail,
       this.config.get("email.shareRecipientsSubject"),
@@ -79,6 +80,21 @@ export class EmailService {
             : "in: never",
         ),
     );
+
+    // Send confirmation email to the sender (creator)
+      await this.sendMail(
+        creator.email,
+        "Your share was successfully sent", // Subject line
+        `Hello ${creator.username ?? "User"},\n\n` +
+          `You have successfully shared a file with ${recipientEmail}.\n` +
+          `Here is the share link: ${shareUrl}\n\n` +
+          `Description: ${description ?? "No description"}\n` +
+          `Expiration: ${
+            moment(expiration).unix() != 0 ? moment(expiration).fromNow() : "never"
+          }\n\n` +
+          `Thank you for using our service!`
+      );
+    }
   }
 
   async sendMailToReverseShareCreator(recipientEmail: string, shareId: string) {
