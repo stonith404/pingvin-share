@@ -1,14 +1,17 @@
 services:
   pingvin-share:
-    image: stonith404/pingvin-share # or ghcr.io/stonith404/pingvin-share
+    #    image: stonith404/pingvin-share # or ghcr.io/stonith404/pingvin-share
+    build: .
     restart: unless-stopped
     ports:
-      - 3000:3000
+      - 3001:3000
     environment:
       - TRUST_PROXY=false # Set to true if a reverse proxy is in front of the container
     volumes:
       - "./data:/opt/app/backend/data"
       - "./data/images:/opt/app/frontend/public/img"
+      - "./config.yaml:/opt/app/config.yaml"
+  #      - "./config.yaml:/opt/app/config.yaml" # Add this line, if you want to configure pingvin-share via config file and not via UI
 
   # To add ClamAV, to scan your shares for malicious files, 
   # see https://stonith404.github.io/pingvin-share/setup/integrations/#clamav-docker-only

@@ -16,6 +16,7 @@ Pingvin Share is a self-hosted file sharing platform and an alternative for WeTr
 - Reverse shares
 - OIDC and LDAP authentication
 - Integration with ClamAV for security scans
+- Different file providers: local storage and S3
 
 ## 🐧 Get to know Pingvin Share
 

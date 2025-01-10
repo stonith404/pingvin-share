@@ -1,0 +1,109 @@
+# These values are all the default values and can be left empty with the same result (except the email section).
+# If you want to set the config via UI, you must remove the file mounting in your docker compose file.
+
+general:
+  appName: "Pingvin Share"
+  appUrl: "http://localhost:3000"
+  secureCookies: false
+  showHomePage: true
+  sessionDuration: "3 months"
+
+share:
+  allowRegistration: true
+  allowUnauthenticatedShares: false
+  maxExpiration: 0 days
+  shareIdLength: 8
+  maxSize: 1000000000
+  zipCompressionLevel: 9
+  chunkSize: 10000000
+  autoOpenShareModal: false
+
+# Remove this section to use the default messages.
+# Now all messages would be empty because you are going to overwrite them with empty values.
+email:
+  enableShareEmailRecipients: false
+  shareRecipientsSubject: ""
+  shareRecipientsMessage: ""
+  reverseShareSubject: ""
+  reverseShareMessage: ""
+  resetPasswordSubject: ""
+  resetPasswordMessage: ""
+  inviteSubject: ""
+  inviteMessage: ""
+
+smtp:
+  enabled: false
+  allowUnauthorizedCertificates: false
+  host: ""
+  port: 0
+  email: ""
+  username: ""
+  password: ""
+
+ldap:
+  enabled: false
+  url: ""
+  bindDn: ""
+  bindPassword: ""
+  searchBase: ""
+  searchQuery: ""
+  adminGroups: ""
+  fieldNameMemberOf: "memberOf"
+  fieldNameEmail: "userPrincipalName"
+
+oauth:
+  allowRegistration: false
+  ignoreTotp: false
+  disablePassword: false
+  githubEnabled: false
+  githubClientId: ""
+  githubClientSecret: ""
+  googleEnabled: false
+  googleClientId: ""
+  googleClientSecret: ""
+  microsoftEnabled: false
+  microsoftTenant: ""
+  microsoftClientId: ""
+  microsoftClientSecret: ""
+  discordEnabled: false
+  discordLimitedGuild: ""
+  discordLimitedUsers: ""
+  discordClientId: ""
+  discordClientSecret: ""
+  oidcEnabled: false
+  oidcDiscoveryUri: ""
+  oidcSignOut: false
+  oidcScope: ""
+  oidcUsernameClaim: ""
+  oidcRolePath: ""
+  oidcRoleGeneralAccess: ""
+  oidcRoleAdminAccess: ""
+  oidcClientId: ""
+  oidcClientSecret: ""
+
+s3:
+  enabled: false
+  endpoint: ""
+  region: ""
+  bucketName: ""
+  bucketPath: ""
+  key: ""
+  secret: ""
+
+legal:
+  enabled: false
+  imprintText: ""
+  imprintUrl: ""
+  privacyPolicyText: ""
+  privacyPolicyUrl: ""
+
+# This is only via the config.yaml file available.
+# Consider that you should not use `admin` or this `admin@example.com` as, and definitely not this password
+# as your final credentials. It is highly recommended to change the password after the setup.
+initUser:
+  enabled: true
+  username: "admin"
+  email: "admin@example.com"
+  password: "my-secure-password"
+  isAdmin: true
+  ldapDN: ""
