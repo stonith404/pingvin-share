@@ -4,7 +4,7 @@ services:
     build: .
     restart: unless-stopped
     ports:
-      - 3001:3000
+      - 3000:3000
     environment:
       - TRUST_PROXY=false # Set to true if a reverse proxy is in front of the container
     volumes:
