@@ -68,19 +68,3 @@ file. For this you have to mount the config file to this location: `/opt/app/con
 for all possible settings you can set.
 
 [config.yaml example](https://github.com/stonith404/pingvin-share/blob/main/config.yaml)
-
-### Dynamic text in email
-
-You have the option to set your own email text. To replace dynamic information, you can add the following keywords 
-(with curly brackets).
-
-| Key              | Description                                      | Used in message                                 |
-|------------------|--------------------------------------------------|-------------------------------------------------|
-| `{creator}`      | Name of the creator from a share.                | `shareRecipientsMessage`                        |
-| `{creatorEmail}` | Email of the creator from a share.               | `shareRecipientsMessage`                        |
-| `{shareUrl}`     | The share URL                                    | `shareRecipientsMessage`, `reverseShareMessage` |
-| `{expires}`      | When the share expires                           | `shareRecipientsMessage`                        |
-| `{desc}`         | Description of the share                         | `shareRecipientsMessage`                        |
-| `{url}`          | Password reset url or invitation url             | `resetPasswordMessage`, `inviteMessage`         |
-| `{email}`        | Email for the login during the initialization    | `inviteMessage`                                 |
-| `{password}`     | Password for the login during the initialization | `inviteMessage`                                 |
