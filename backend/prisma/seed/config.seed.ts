@@ -111,52 +111,43 @@ const configVariables: ConfigVariables = {
     enableShareEmailRecipients: {
       type: "boolean",
       defaultValue: "false",
-      value: yamlConfig?.email?.enableShareEmailRecipients.toString(),
       secret: false,
     },
     shareRecipientsSubject: {
       type: "string",
       defaultValue: "Files shared with you",
-      value: yamlConfig?.email?.shareRecipientsSubject,
     },
     shareRecipientsMessage: {
       type: "text",
       defaultValue:
         "Hey!\n\n{creator} ({creatorEmail}) shared some files with you, view or download the files with this link: {shareUrl}\n\nThe share will expire {expires}.\n\nNote: {desc}\n\nShared securely with Pingvin Share 🐧",
-      value: yamlConfig?.email?.shareRecipientsMessage,
     },
     reverseShareSubject: {
       type: "string",
       defaultValue: "Reverse share link used",
-      value: yamlConfig?.email?.reverseShareSubject,
     },
     reverseShareMessage: {
       type: "text",
       defaultValue:
         "Hey!\n\nA share was just created with your reverse share link: {shareUrl}\n\nShared securely with Pingvin Share 🐧",
-      value: yamlConfig?.email?.reverseShareMessage,
     },
     resetPasswordSubject: {
       type: "string",
       defaultValue: "Pingvin Share password reset",
-      value: yamlConfig?.email?.resetPasswordSubject,
     },
     resetPasswordMessage: {
       type: "text",
       defaultValue:
         "Hey!\n\nYou requested a password reset. Click this link to reset your password: {url}\nThe link expires in a hour.\n\nPingvin Share 🐧",
-      value: yamlConfig?.email?.resetPasswordMessage,
     },
     inviteSubject: {
       type: "string",
       defaultValue: "Pingvin Share invite",
-      value: yamlConfig?.email?.inviteSubject,
     },
     inviteMessage: {
       type: "text",
       defaultValue:
         'Hey!\n\nYou were invited to Pingvin Share. Click this link to accept the invite: {url}\n\nYou can use the email "{email}" and the password "{password}" to sign in.\n\nPingvin Share 🐧',
-      value: yamlConfig?.email?.inviteMessage,
     },
   },
   smtp: {
@@ -604,25 +595,12 @@ seedConfigVariables()
 export interface YamlConfig {
   general: General;
   share: Share;
-  email: Email;
   smtp: SMTP;
   ldap: LDAP;
   oauth: Oauth;
   s3: S3;
   legal: Legal;
   initUser: InitUser;
-}
-
-export interface Email {
-  enableShareEmailRecipients: string;
-  shareRecipientsSubject: string;
-  shareRecipientsMessage: string;
-  reverseShareSubject: string;
-  reverseShareMessage: string;
-  resetPasswordSubject: string;
-  resetPasswordMessage: string;
-  inviteSubject: string;
-  inviteMessage: string;
 }
 
 export interface General {
