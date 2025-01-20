@@ -469,7 +469,7 @@ export default {
   "admin.config.legal.imprint-text": "Imprint text",
   "admin.config.legal.imprint-text.description": "The text which should be shown in the imprint. Supports Markdown. Leave blank to link to an external imprint page.",
   "admin.config.legal.imprint-url": "Imprint URL",
-  "admin.config.legal.imprint-url.description": "If you already have an imprint page you can link it here instead of using the text field.",
+  "admin.config.legal.imprint-url.description": "Si ya tiene una página de aviso legal, puede enlazarlo aquí en lugar de utilizar el campo de texto.",
   "admin.config.legal.privacy-policy-text": "Privacy policy text",
   "admin.config.legal.privacy-policy-text.description": "The text which should be shown in the privacy policy. Supports Markdown. Leave blank to link to an external privacy policy page.",
   "admin.config.legal.privacy-policy-url": "Privacy policy URL",
