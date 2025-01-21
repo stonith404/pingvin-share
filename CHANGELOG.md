@@ -1,3 +1,11 @@
+## [1.8.2](https://github.com/stonith404/pingvin-share/compare/v1.8.1...v1.8.2) (2025-01-21)
+
+
+### Bug Fixes
+
+* normal share gets attached to previously visited reverse share ([3a534c7](https://github.com/stonith404/pingvin-share/commit/3a534c7512ef82f3fa982f80e364f53c957306a0))
+* wrong TOTP validation for password ([2b7d3c0](https://github.com/stonith404/pingvin-share/commit/2b7d3c0a8a3e527fc1f7f86795731d5ac77eda49))
+
 ## [1.8.1](https://github.com/stonith404/pingvin-share/compare/v1.8.0...v1.8.1) (2025-01-04)
 
 
