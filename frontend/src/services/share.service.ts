@@ -15,7 +15,10 @@ const list = async (): Promise<MyShare[]> => {
   return (await api.get(`shares/all`)).data;
 };
 
-const create = async (share: CreateShare) => {
+const create = async (share: CreateShare, isReverseShare = false) => {
+  if (!isReverseShare) {
+    deleteCookie("reverse_share_token");
+  }
   return (await api.post("shares", share)).data;
 };
 

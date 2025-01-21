@@ -18,6 +18,7 @@ import shareService from "../../services/share.service";
 import { FileUpload } from "../../types/File.type";
 import { CreateShare, Share } from "../../types/share.type";
 import toast from "../../utils/toast.util";
+import { useRouter } from "next/router";
 
 const promiseLimit = pLimit(3);
 let errorToastShown = false;
@@ -33,6 +34,7 @@ const Upload = ({
   simplified: boolean;
 }) => {
   const modals = useModals();
+  const router = useRouter();
   const t = useTranslate();
 
   const { user } = useUser();
@@ -54,7 +56,8 @@ const Upload = ({
     setisUploading(true);
 
     try {
-      createdShare = await shareService.create(share);
+      const isReverseShare = router.pathname != "/upload";
+      createdShare = await shareService.create(share, isReverseShare);
     } catch (e) {
       toast.axiosError(e);
       setisUploading(false);
