@@ -1,4 +1,6 @@
-import { PickType } from "@nestjs/swagger";
-import { UserDTO } from "src/user/dto/user.dto";
+import { IsString } from "class-validator";
 
-export class EnableTotpDTO extends PickType(UserDTO, ["password"] as const) {}
+export class EnableTotpDTO {
+  @IsString()
+  password: string;
+}
