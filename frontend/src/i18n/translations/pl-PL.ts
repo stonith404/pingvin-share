@@ -278,7 +278,7 @@ export default {
   "share.error.access-denied.title": "Prywatne udostępnienie",
   "share.error.access-denied.description": "Bieżące konto nie ma uprawnień dostępu do tego udostępnienia",
   "share.modal.password.title": "Wymagane hasło",
-  "share.modal.password.description": "Please enter the password to acces this share.",
+  "share.modal.password.description": "Please enter the password to access this share.",
   "share.modal.password": "Hasło",
   "share.modal.error.invalid-password": "Hasło jest nieprawidłowe",
   "share.button.download-all": "Pobierz wszystko",
