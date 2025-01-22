@@ -278,7 +278,7 @@ export default {
   "share.error.access-denied.title": "Private share",
   "share.error.access-denied.description": "The current account does not have permission to access this share",
   "share.modal.password.title": "ต้องการรหัสผ่าน",
-  "share.modal.password.description": "Please enter the password to acces this share.",
+  "share.modal.password.description": "Please enter the password to access this share.",
   "share.modal.password": "รหัสผ่าน",
   "share.modal.error.invalid-password": "รหัสผ่านไม่ถูกต้อง",
   "share.button.download-all": "ดาวน์โหลดทั้งหมด",
