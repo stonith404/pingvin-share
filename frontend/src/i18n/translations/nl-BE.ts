@@ -278,7 +278,7 @@ export default {
   "share.error.access-denied.title": "Private share",
   "share.error.access-denied.description": "Dit account heeft geen toestemming om toegang te krijgen tot deze share",
   "share.modal.password.title": "Wachtwoord vereist",
-  "share.modal.password.description": "Please enter the password to acces this share.",
+  "share.modal.password.description": "Please enter the password to access this share.",
   "share.modal.password": "Wachtwoord",
   "share.modal.error.invalid-password": "Ongeldig wachtwoord",
   "share.button.download-all": "Alles downloaden",
