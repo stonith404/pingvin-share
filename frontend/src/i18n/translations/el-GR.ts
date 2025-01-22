@@ -278,7 +278,7 @@ export default {
   "share.error.access-denied.title": "Ιδιωτική κοινοποίηση",
   "share.error.access-denied.description": "Ο τρέχων λογαριασμός δεν έχει δικαίωμα πρόσβασης σε αυτήν την κοινοποίηση",
   "share.modal.password.title": "Απαιτείται κωδικός",
-  "share.modal.password.description": "Please enter the password to acces this share.",
+  "share.modal.password.description": "Please enter the password to access this share.",
   "share.modal.password": "Κωδικός πρόσβασης",
   "share.modal.error.invalid-password": "Μη έγκυρος κωδικός πρόσβασης",
   "share.button.download-all": "Λήψη όλων",
