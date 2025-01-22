@@ -278,7 +278,7 @@ export default {
   "share.error.access-denied.title": "Приватне завантаження",
   "share.error.access-denied.description": "Поточний акаунт не має дозволу на доступ до цього завантаження",
   "share.modal.password.title": "Потрібен пароль",
-  "share.modal.password.description": "Будь ласка, введіть пароль для доступу до цього завантаження.",
+  "share.modal.password.description": "Please enter the password to access this share.",
   "share.modal.password": "Пароль",
   "share.modal.error.invalid-password": "Невірний пароль",
   "share.button.download-all": "Завантажити все",
