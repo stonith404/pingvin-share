@@ -278,7 +278,7 @@ export default {
   "share.error.access-denied.title": "Compartición privada",
   "share.error.access-denied.description": "La cuenta actual no tiene permiso para acceder a este compartido",
   "share.modal.password.title": "Se requiere contraseña",
-  "share.modal.password.description": "Por favor, ingresa la contraseña para acceder a este enlace compartido.",
+  "share.modal.password.description": "Please enter the password to access this share.",
   "share.modal.password": "Contraseña",
   "share.modal.error.invalid-password": "Contraseña inválida",
   "share.button.download-all": "Descargar todo",
