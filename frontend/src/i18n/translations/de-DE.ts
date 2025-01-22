@@ -5,7 +5,7 @@ export default {
   "navbar.home": "Startseite",
   "navbar.signup": "Registrieren",
   "navbar.links.shares": "Meine Freigaben",
-  "navbar.links.reverse": "Externe Freigaben",
+  "navbar.links.reverse": "Datei Anfrage",
   "navbar.avatar.account": "Mein Konto",
   "navbar.avatar.admin": "Verwaltung",
   "navbar.avatar.signout": "Abmelden",
@@ -133,10 +133,10 @@ export default {
   "account.shares.modal.delete.description": "Möchtest du diese Freigabe wirklich löschen?",
   // END /account/shares
   // /account/reverseShares
-  "account.reverseShares.title": "Externe Freigaben",
-  "account.reverseShares.description": "Eine externe Freigabe erlaubt dir eine einzigartige URL zu erstellen, die externen Benutzern erlaubt, Dateien hochzuladen.",
+  "account.reverseShares.title": "Datei Anfragen",
+  "account.reverseShares.description": "Eine Datei Anfrage erlaubt dir eine einzigartige URL zu erstellen, die externen Benutzern erlaubt, Dateien hochzuladen.",
   "account.reverseShares.title.empty": "Es ist leer hier 👀",
-  "account.reverseShares.description.empty": "Du hast keine externen Freigaben.",
+  "account.reverseShares.description.empty": "Du hast keine Datei Anfrage.",
   // showCreateReverseShareModal.tsx
   "account.reverseShares.modal.title": "Externe Freigabe erstellen",
   "account.reverseShares.modal.expiration.label": "Gültig bis",
