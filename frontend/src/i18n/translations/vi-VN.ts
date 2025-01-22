@@ -278,7 +278,7 @@ export default {
   "share.error.access-denied.title": "Private share",
   "share.error.access-denied.description": "The current account does not have permission to access this share",
   "share.modal.password.title": "Cần mật khẩu để mở khoá",
-  "share.modal.password.description": "Please enter the password to acces this share.",
+  "share.modal.password.description": "Please enter the password to access this share.",
   "share.modal.password": "Mật khẩu",
   "share.modal.error.invalid-password": "Mật khẩu không hợp lệ",
   "share.button.download-all": "Tải xuống tất cả",
