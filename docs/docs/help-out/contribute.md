@@ -23,7 +23,7 @@ Before you submit the pull request for review please ensure that
   When `TYPE` can be:
 
   - **feat** - is a new feature
-  - **doc** - documentation only changes
+  - **docs** - documentation only changes
   - **fix** - a bug fix
   - **refactor** - code change that neither fixes a bug nor adds a feature
 
