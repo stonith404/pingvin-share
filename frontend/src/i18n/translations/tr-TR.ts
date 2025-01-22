@@ -278,7 +278,7 @@ export default {
   "share.error.access-denied.title": "Özel paylaşım",
   "share.error.access-denied.description": "Mevcut hesabın bu paylaşıma erişim izni yok.",
   "share.modal.password.title": "Şifre gerekli",
-  "share.modal.password.description": "Bu paylaşıma erişmek için lütfen şifreyi girin.",
+  "share.modal.password.description": "Please enter the password to access this share.",
   "share.modal.password": "Şifre",
   "share.modal.error.invalid-password": "Geçersiz şifre",
   "share.button.download-all": "Tümünü indir",
