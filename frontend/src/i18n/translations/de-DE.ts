@@ -278,7 +278,7 @@ export default {
   "share.error.access-denied.title": "Private Freigabe",
   "share.error.access-denied.description": "Das aktuelle Konto hat keine Berechtigung, um auf diese Freigabe zuzugreifen",
   "share.modal.password.title": "Passwort erforderlich",
-  "share.modal.password.description": "Bitte gib das Passwort ein, um auf diese Freigabe zuzugreifen.",
+  "share.modal.password.description": "Please enter the password to access this share.",
   "share.modal.password": "Passwort",
   "share.modal.error.invalid-password": "Ungültiges Passwort",
   "share.button.download-all": "Alles herunterladen",
