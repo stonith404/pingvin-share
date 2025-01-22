@@ -8,7 +8,7 @@ id: integrations
 
 ClamAV is used to scan shares for malicious files and remove them if found.
 
-Please note that ClamAV needs a lot of [ressources](https://docs.clamav.net/manual/Installing/Docker.html#memory-ram-requirements).
+Please note that ClamAV needs a lot of [resources](https://docs.clamav.net/manual/Installing/Docker.html#memory-ram-requirements).
 
 ### Docker
 

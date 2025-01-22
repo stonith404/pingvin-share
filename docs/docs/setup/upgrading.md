@@ -46,4 +46,4 @@ docker compose up -d
    npm run build
    pm2 restart pingvin-share-frontend
    ```
-Note that environemnt variables are not picked up when using pm2 restart, if you actually want to change configs, you need to run ````pm2 --update-env restart````
+Note that environment variables are not picked up when using pm2 restart, if you actually want to change configs, you need to run ````pm2 --update-env restart````
