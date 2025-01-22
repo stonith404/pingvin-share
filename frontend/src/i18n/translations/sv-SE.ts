@@ -278,7 +278,7 @@ export default {
   "share.error.access-denied.title": "Private share",
   "share.error.access-denied.description": "The current account does not have permission to access this share",
   "share.modal.password.title": "Lösenord krävs",
-  "share.modal.password.description": "Please enter the password to acces this share.",
+  "share.modal.password.description": "Please enter the password to access this share.",
   "share.modal.password": "Lösenord",
   "share.modal.error.invalid-password": "Ogiltigt lösenord",
   "share.button.download-all": "Ladda ner allt",
