@@ -379,7 +379,7 @@ export default {
 
   "share.modal.password.title": "Password required",
   "share.modal.password.description":
-    "Please enter the password to acces this share.",
+    "Please enter the password to access this share.",
   "share.modal.password": "Password",
   "share.modal.error.invalid-password": "Invalid password",
 
