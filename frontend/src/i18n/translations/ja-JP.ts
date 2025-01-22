@@ -278,7 +278,7 @@ export default {
   "share.error.access-denied.title": "プライベートシェア",
   "share.error.access-denied.description": "現在のアカウントにはこの共有にアクセスする権限がありません",
   "share.modal.password.title": "パスワードが必要です",
-  "share.modal.password.description": "この共有にアクセスするにはパスワードを入力してください。",
+  "share.modal.password.description": "Please enter the password to access this share.",
   "share.modal.password": "パスワード",
   "share.modal.error.invalid-password": "パスワードが間違っています",
   "share.button.download-all": "全てダウンロード",
