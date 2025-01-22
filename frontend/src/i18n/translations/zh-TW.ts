@@ -278,7 +278,7 @@ export default {
   "share.error.access-denied.title": "私人分享",
   "share.error.access-denied.description": "您沒有權限存取此檔案",
   "share.modal.password.title": "需要密碼",
-  "share.modal.password.description": "請輸入密碼來存取此檔案",
+  "share.modal.password.description": "Please enter the password to access this share.",
   "share.modal.password": "密碼",
   "share.modal.error.invalid-password": "密碼錯誤",
   "share.button.download-all": "全部下載",
