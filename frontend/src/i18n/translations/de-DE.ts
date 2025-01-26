@@ -278,7 +278,7 @@ export default {
   "share.error.access-denied.title": "Private Freigabe",
   "share.error.access-denied.description": "Das aktuelle Konto hat keine Berechtigung, um auf diese Freigabe zuzugreifen",
   "share.modal.password.title": "Passwort erforderlich",
-  "share.modal.password.description": "Please enter the password to access this share.",
+  "share.modal.password.description": "Bitte gib das Passwort ein, um auf diese Freigabe zuzugreifen.",
   "share.modal.password": "Passwort",
   "share.modal.error.invalid-password": "Ungültiges Passwort",
   "share.button.download-all": "Alles herunterladen",
@@ -299,7 +299,7 @@ export default {
   "imprint.title": "Impressum",
   // END /imprint
   // /privacy
-  "privacy.title": "Privacy Policy",
+  "privacy.title": "Datenschutzerklärung",
   // END /privacy
   // /admin/config
   "admin.config.title": "Einstellungen",
@@ -345,8 +345,8 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "Gibt an, ob nicht authentifizierte Benutzer Freigaben erstellen können",
   "admin.config.share.max-expiration": "Max. Ablaufdatum",
   "admin.config.share.max-expiration.description": "Maximale Ablaufzeit. Auf 0 setzen, um kein Ablaufdatum zu definieren.",
-  "admin.config.share.share-id-length": "Default share ID length",
-  "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
+  "admin.config.share.share-id-length": "Standardlänge der Freigabe-ID",
+  "admin.config.share.share-id-length.description": "Standardlänge für die generierte ID einer Freigabe. Dieser Wert wird auch verwendet, um Links für umgekehrte Freigaben zu generieren. Ein Wert unter 8 wird als nicht sicher betrachtet.",
   "admin.config.share.max-size": "Maximale Größe",
   "admin.config.share.max-size.description": "Maximale Größe einer Freigabe",
   "admin.config.share.zip-compression-level": "ZIP-Kompressionslevel",
@@ -445,9 +445,9 @@ export default {
   "admin.config.ldap.field-name-member-of.description": "LDAP-Attributname für die Gruppen, in denen ein Benutzer Mitglied ist. Dies wird bei der Überprüfung der Admin-Gruppe verwendet.",
   "admin.config.ldap.field-name-email": "Attributname für die E-Mail-Adresse des Benutzers",
   "admin.config.ldap.field-name-email.description": "LDAP-Attributname für die E-Mail-Adresse eines Benutzers.",
-  "admin.config.notify.success": "Configuration updated successfully.",
-  "admin.config.notify.logo-success": "Logo updated successfully. It may take a few minutes to update on the website.",
-  "admin.config.notify.no-changes": "No changes to save.",
+  "admin.config.notify.success": "Konfiguration erfolgreich aktualisiert.",
+  "admin.config.notify.logo-success": "Logo erfolgreich aktualisiert. Es kann einige Minuten dauern, bis es auf der Website aktualisiert wird.",
+  "admin.config.notify.no-changes": "Keine Änderungen zu speichern.",
   "admin.config.category.s3": "S3",
   "admin.config.s3.enabled": "Aktiviert",
   "admin.config.s3.enabled.description": "Ob S3 verwendet werden soll, um die freigegebenen Dateien anstelle des lokalen Dateisystems zu speichern.",
