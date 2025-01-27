@@ -410,7 +410,7 @@ const CreateUploadModalBody = ({
                     {...form.getInputProps("recipients")}
                     onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
                       // Add email on comma or semicolon
-                      if (e.key === "," || e.key === ";") {
+                      if (e.key === "Enter" || e.key === "," || e.key === ";") {
                         e.preventDefault();
                         const inputValue = (
                           e.target as HTMLInputElement
