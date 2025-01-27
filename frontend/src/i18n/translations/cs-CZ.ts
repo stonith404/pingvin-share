@@ -278,7 +278,7 @@ export default {
   "share.error.access-denied.title": "Soukromé sdílení",
   "share.error.access-denied.description": "Aktuální účet nemá oprávnění k přístupu k tomuto sdílení",
   "share.modal.password.title": "Heslo vyžadováno",
-  "share.modal.password.description": "Please enter the password to acces this share.",
+  "share.modal.password.description": "Please enter the password to access this share.",
   "share.modal.password": "Heslo",
   "share.modal.error.invalid-password": "Neplatné heslo",
   "share.button.download-all": "Stáhnout vše",

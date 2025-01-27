@@ -278,7 +278,7 @@ export default {
   "share.error.access-denied.title": "Privát megosztás",
   "share.error.access-denied.description": "Ez a fiók nem rendelkezik jogosultsággal a megosztás eléréséhez",
   "share.modal.password.title": "Jelszó szükséges",
-  "share.modal.password.description": "Please enter the password to acces this share.",
+  "share.modal.password.description": "Please enter the password to access this share.",
   "share.modal.password": "Jelszó",
   "share.modal.error.invalid-password": "Érvénytelen jelszó",
   "share.button.download-all": "Mindet letölti",

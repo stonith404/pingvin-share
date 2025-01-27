@@ -5,7 +5,7 @@ export default {
   "navbar.home": "Startseite",
   "navbar.signup": "Registrieren",
   "navbar.links.shares": "Meine Freigaben",
-  "navbar.links.reverse": "Externe Freigaben",
+  "navbar.links.reverse": "Datei Anfrage",
   "navbar.avatar.account": "Mein Konto",
   "navbar.avatar.admin": "Verwaltung",
   "navbar.avatar.signout": "Abmelden",
@@ -133,10 +133,10 @@ export default {
   "account.shares.modal.delete.description": "Möchtest du diese Freigabe wirklich löschen?",
   // END /account/shares
   // /account/reverseShares
-  "account.reverseShares.title": "Externe Freigaben",
-  "account.reverseShares.description": "Eine externe Freigabe erlaubt dir eine einzigartige URL zu erstellen, die externen Benutzern erlaubt, Dateien hochzuladen.",
+  "account.reverseShares.title": "Datei Anfragen",
+  "account.reverseShares.description": "Eine Datei Anfrage erlaubt dir eine einzigartige URL zu erstellen, die externen Benutzern erlaubt, Dateien hochzuladen.",
   "account.reverseShares.title.empty": "Es ist leer hier 👀",
-  "account.reverseShares.description.empty": "Du hast keine externen Freigaben.",
+  "account.reverseShares.description.empty": "Du hast keine Datei Anfrage.",
   // showCreateReverseShareModal.tsx
   "account.reverseShares.modal.title": "Externe Freigabe erstellen",
   "account.reverseShares.modal.expiration.label": "Gültig bis",
@@ -299,7 +299,7 @@ export default {
   "imprint.title": "Impressum",
   // END /imprint
   // /privacy
-  "privacy.title": "Privacy Policy",
+  "privacy.title": "Datenschutzerklärung",
   // END /privacy
   // /admin/config
   "admin.config.title": "Einstellungen",
@@ -345,8 +345,8 @@ export default {
   "admin.config.share.allow-unauthenticated-shares.description": "Gibt an, ob nicht authentifizierte Benutzer Freigaben erstellen können",
   "admin.config.share.max-expiration": "Max. Ablaufdatum",
   "admin.config.share.max-expiration.description": "Maximale Ablaufzeit. Auf 0 setzen, um kein Ablaufdatum zu definieren.",
-  "admin.config.share.share-id-length": "Default share ID length",
-  "admin.config.share.share-id-length.description": "Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.",
+  "admin.config.share.share-id-length": "Standardlänge der Freigabe-ID",
+  "admin.config.share.share-id-length.description": "Standardlänge für die generierte ID einer Freigabe. Dieser Wert wird auch verwendet, um Links für umgekehrte Freigaben zu generieren. Ein Wert unter 8 wird als nicht sicher betrachtet.",
   "admin.config.share.max-size": "Maximale Größe",
   "admin.config.share.max-size.description": "Maximale Größe einer Freigabe",
   "admin.config.share.zip-compression-level": "ZIP-Kompressionslevel",
@@ -445,9 +445,9 @@ export default {
   "admin.config.ldap.field-name-member-of.description": "LDAP-Attributname für die Gruppen, in denen ein Benutzer Mitglied ist. Dies wird bei der Überprüfung der Admin-Gruppe verwendet.",
   "admin.config.ldap.field-name-email": "Attributname für die E-Mail-Adresse des Benutzers",
   "admin.config.ldap.field-name-email.description": "LDAP-Attributname für die E-Mail-Adresse eines Benutzers.",
-  "admin.config.notify.success": "Configuration updated successfully.",
-  "admin.config.notify.logo-success": "Logo updated successfully. It may take a few minutes to update on the website.",
-  "admin.config.notify.no-changes": "No changes to save.",
+  "admin.config.notify.success": "Konfiguration erfolgreich aktualisiert.",
+  "admin.config.notify.logo-success": "Logo erfolgreich aktualisiert. Es kann einige Minuten dauern, bis es auf der Website aktualisiert wird.",
+  "admin.config.notify.no-changes": "Keine Änderungen zu speichern.",
   "admin.config.category.s3": "S3",
   "admin.config.s3.enabled": "Aktiviert",
   "admin.config.s3.enabled.description": "Ob S3 verwendet werden soll, um die freigegebenen Dateien anstelle des lokalen Dateisystems zu speichern.",

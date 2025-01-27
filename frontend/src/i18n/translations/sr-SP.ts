@@ -278,7 +278,7 @@ export default {
   "share.error.access-denied.title": "Приватно дељење",
   "share.error.access-denied.description": "Тренутни налог нема дозволу за приступ овом дељењу",
   "share.modal.password.title": "Обавезна лозинка",
-  "share.modal.password.description": "Молимо унесите лозинку за приступ овом дељењу.",
+  "share.modal.password.description": "Please enter the password to access this share.",
   "share.modal.password": "Лозинка",
   "share.modal.error.invalid-password": "Неисправна лозинка",
   "share.button.download-all": "Преузми све",

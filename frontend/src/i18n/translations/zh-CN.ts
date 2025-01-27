@@ -278,7 +278,7 @@ export default {
   "share.error.access-denied.title": "私有共享",
   "share.error.access-denied.description": "当前账户没有权限访问此共享",
   "share.modal.password.title": "需要密码",
-  "share.modal.password.description": "Please enter the password to acces this share.",
+  "share.modal.password.description": "Please enter the password to access this share.",
   "share.modal.password": "密码",
   "share.modal.error.invalid-password": "密码错误",
   "share.button.download-all": "全部下载",

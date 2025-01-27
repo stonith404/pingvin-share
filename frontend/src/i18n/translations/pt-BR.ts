@@ -296,7 +296,7 @@ export default {
   "share.edit.notify.save-success": "Compartilhamento atualizado com sucesso",
   // END /share/[id]/edit
   // /imprint
-  "imprint.title": "Imprint",
+  "imprint.title": "Termos Legais",
   // END /imprint
   // /privacy
   "privacy.title": "Política de Privacidade",

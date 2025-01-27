@@ -278,7 +278,7 @@ export default {
   "share.error.access-denied.title": "Private share",
   "share.error.access-denied.description": "The current account does not have permission to access this share",
   "share.modal.password.title": "비밀번호 필요",
-  "share.modal.password.description": "Please enter the password to acces this share.",
+  "share.modal.password.description": "Please enter the password to access this share.",
   "share.modal.password": "비밀번호",
   "share.modal.error.invalid-password": "잘못된 비밀번호",
   "share.button.download-all": "모두 다운로드",
