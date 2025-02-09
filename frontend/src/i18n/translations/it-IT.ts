@@ -13,7 +13,7 @@ export default {
   // /
   "home.title": "Una piattaforma di condivisione file <h>self-hosted</h>.",
   "home.description": "Vuoi davvero dare i tuoi file personali in mano a terzi come WeTransfer?",
-  "home.bullet.a.name": "Self-hosted",
+  "home.bullet.a.name": "Self-Hosted",
   "home.bullet.a.description": "Configura Pingvin Share sul tuo server.",
   "home.bullet.b.name": "Privacy",
   "home.bullet.b.description": "I tuoi file sono tuoi e non saranno mai accessibili da terze parti.",
@@ -29,7 +29,7 @@ export default {
   "signin.input.email-or-username": "Email o nome utente",
   "signin.input.email-or-username.placeholder": "La tua email o nome utente",
   "signin.input.password": "Password",
-  "signin.input.password.placeholder": "Password",
+  "signin.input.password.placeholder": "La tua password",
   "signin.button.submit": "Accedi",
   "signIn.notify.totp-required.title": "Autenticazione a due fattori richiesta",
   "signIn.notify.totp-required.description": "Inserisci il tuo codice di autenticazione a due fattori",
