@@ -1,3 +1,10 @@
+## [1.9.0](https://github.com/stonith404/pingvin-share/compare/v1.8.2...v1.9.0) (2025-02-12)
+
+
+### Features
+
+* ability to add email to recipients list by clicking enter ([#760](https://github.com/stonith404/pingvin-share/issues/760)) ([70b577f](https://github.com/stonith404/pingvin-share/commit/70b577f5ac8385cfc6a22ffee4c7e317e3cc6403))
+
 ## [1.8.2](https://github.com/stonith404/pingvin-share/compare/v1.8.1...v1.8.2) (2025-01-21)
 
 
