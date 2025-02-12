@@ -5,6 +5,7 @@ import german from "./translations/de-DE";
 import greek from "./translations/el-GR";
 import english from "./translations/en-US";
 import spanish from "./translations/es-ES";
+import estonian from "./translations/et-EE";
 import finnish from "./translations/fi-FI";
 import french from "./translations/fr-FR";
 import croatian from "./translations/hr-HR";
@@ -167,5 +168,10 @@ export const LOCALES = {
     name: "Hrvatski",
     code: "hr-HR",
     messages: croatian,
+  },
+  ESTONIAN: {
+    name: "Eesti",
+    code: "et-EE",
+    messages: estonian,
   },
 };
