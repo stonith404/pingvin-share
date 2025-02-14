@@ -413,7 +413,7 @@ const Account = () => {
                   onConfirm: async () => {
                     await userService
                       .removeCurrentUser()
-                      .then(window.location.reload)
+                      .then(()=> window.location.reload())
                       .catch(toast.axiosError);
                   },
                 })
