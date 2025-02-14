@@ -1,3 +1,11 @@
+## [1.9.1](https://github.com/stonith404/pingvin-share/compare/v1.9.0...v1.9.1) (2025-02-14)
+
+
+### Bug Fixes
+
+* page doesn't reload on user deletion ([a2e0313](https://github.com/stonith404/pingvin-share/commit/a2e031326e51f7663c2d864dd0d08a65f180318e))
+* redirection to the OIDC end session endpoint ([ec92e85](https://github.com/stonith404/pingvin-share/commit/ec92e85c8d294b30117ad2599ad03b0bbb04574c))
+
 ## [1.9.0](https://github.com/stonith404/pingvin-share/compare/v1.8.2...v1.9.0) (2025-02-12)
 
 
