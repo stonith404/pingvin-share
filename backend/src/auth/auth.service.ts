@@ -269,10 +269,7 @@ export class AuthService {
           signOutFromProviderSupportedAndActivated
         ) {
           const configuration = await provider.getConfiguration();
-          if (
-            configuration.frontchannel_logout_supported &&
-            URL.canParse(configuration.end_session_endpoint)
-          ) {
+          if (URL.canParse(configuration.end_session_endpoint)) {
             const redirectURI = new URL(configuration.end_session_endpoint);
             redirectURI.searchParams.append(
               "post_logout_redirect_uri",
