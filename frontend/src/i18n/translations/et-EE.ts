@@ -1,9 +1,9 @@
 export default {
   // Navbar
   "navbar.upload": "Upload",
-  "navbar.signin": "Sign in",
+  "navbar.signin": "Logi sisse",
   "navbar.home": "Home",
-  "navbar.signup": "Sign up",
+  "navbar.signup": "Registreeri",
   "navbar.links.shares": "My shares",
   "navbar.links.reverse": "Reverse shares",
   "navbar.avatar.account": "My account",
@@ -61,7 +61,7 @@ export default {
   "resetPassword.notify.success": "A message with a link to reset your password has been sent if the provided email exists.",
   "resetPassword.button.back": "Back to sign in page",
   "resetPassword.text.resetPassword": "Reset password",
-  "resetPassword.text.enterNewPassword": "Enter your new password",
+  "resetPassword.text.enterNewPassword": "",
   "resetPassword.input.password": "New password",
   "resetPassword.notify.passwordReset": "Your password has been successfully reset.",
   // /account
