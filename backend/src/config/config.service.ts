@@ -128,7 +128,7 @@ export class ConfigService extends EventEmitter {
       (variable) => `${variable.category}.${variable.name}` == key,
     )[0];
 
-    if (!configVariable) throw new Error(`Config variable '${key}' not found`);
+    if (!configVariable) throw new Error(`Config variable ${key} not found`);
 
     const value = configVariable.value ?? configVariable.defaultValue;
 
