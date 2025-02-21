@@ -302,6 +302,7 @@ export default {
   "privacy.title": "Privacy Policy",
   // END /privacy
   // /admin/config
+  "admin.config.config-file.enabled": "Änderungen sind nicht über die Benutzeroberfläche möglich. Bitte bearbeiten Sie die Konfigurationsdatei direkt.",
   "admin.config.title": "Einstellungen",
   "admin.config.category.general": "Allgemein",
   "admin.config.category.share": "Freigabe",
