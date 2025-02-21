@@ -46,6 +46,10 @@ export default function AppShellDemo() {
 
   const [logo, setLogo] = useState<File | null>(null);
 
+  const isEditingAllowed = (): boolean => {
+    return !(configVariables) || configVariables[0].allowEdit;
+  }
+
   const saveConfigVariables = async () => {
     if (logo) {
       configService
@@ -132,6 +136,11 @@ export default function AppShellDemo() {
           ) : (
             <>
               <Stack>
+                {!isEditingAllowed() &&
+                    <p style={{ display: "flex", alignItems: "center", padding: 6, backgroundColor: "#47428E", color: "#E2E1F1", borderRadius: "0.25rem"}}>
+                      {t("admin.config.config-file.enabled")}
+                    </p>
+                }
                 <Title mb="md" order={3}>
                   {t("admin.config.category." + categoryId)}
                 </Title>

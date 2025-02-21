@@ -433,8 +433,8 @@ async function migrateConfigVariables() {
   for (const existingConfigVariable of existingConfigVariables) {
     const configVariable =
       configVariables[existingConfigVariable.category]?.[
-      existingConfigVariable.name
-      ];
+        existingConfigVariable.name
+        ];
 
     // Delete the config variable if it doesn't exist in the seed
     if (!configVariable) {

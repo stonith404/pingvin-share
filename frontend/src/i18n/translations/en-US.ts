@@ -414,6 +414,8 @@ export default {
   // END /privacy
 
   // /admin/config
+  "admin.config.config-file.enabled": "Changes are not allowed via the UI. Please edit the configuration file directly.",
+
   "admin.config.title": "Configuration",
   "admin.config.category.general": "General",
   "admin.config.category.share": "Share",

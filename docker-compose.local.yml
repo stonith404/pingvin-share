@@ -1,0 +1,12 @@
+services:
+  pingvin-share:
+    build: .
+    restart: unless-stopped
+    ports:
+      - 3001:3000
+    environment:
+      - TRUST_PROXY=false
+    volumes:
+      - "./data:/opt/app/backend/data"
+      - "./data/images:/opt/app/frontend/public/img"
+#      - "./config.yaml:/opt/app/config.yaml"
