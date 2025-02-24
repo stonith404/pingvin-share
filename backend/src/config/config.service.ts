@@ -80,7 +80,7 @@ export class ConfigService extends EventEmitter {
       });
     });
 
-    for (const configVariable of configVariables) {
+    for (const [index, configVariable] of configVariables.entries()) {
       const existingConfigVariable = await this.prisma.config.findUnique({
         where: {
           name_category: {
@@ -90,10 +90,6 @@ export class ConfigService extends EventEmitter {
         },
       });
 
-      // TODO: Implement order
-      // const variableOrder = Object.keys(configVariables[existingConfigVariable.category]).indexOf(existingConfigVariable.name);
-      const variableOrder = 0;
-
       if (!existingConfigVariable) {
         await this.prisma.config.create({
           data: {
@@ -101,7 +97,7 @@ export class ConfigService extends EventEmitter {
             name: configVariable.name,
             category: configVariable.category,
             value: configVariable.value,
-            order: variableOrder,
+            order: index,
           },
         });
       } else {
