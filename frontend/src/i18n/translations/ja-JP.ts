@@ -317,7 +317,7 @@ export default {
   "admin.config.general.show-home-page": "ホームページを表示する",
   "admin.config.general.show-home-page.description": "ホームページを表示するかどうか選択",
   "admin.config.general.session-duration": "セッション期間",
-  "admin.config.general.session-duration.description": "ユーザーが再度ログインする必要がある時間（時間単位）（デフォルト: 3 か月）。",
+  "admin.config.general.session-duration.description": "Time after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "ロゴ",
   "admin.config.general.logo.description": "新しい画像をアップロードしてロゴを変更できます。画像は、PNG形式でアスペクト比が1:1である必要があります。",
   "admin.config.general.logo.placeholder": "画像を選択",
