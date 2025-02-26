@@ -317,7 +317,7 @@ export default {
   "admin.config.general.show-home-page": "Toon startpagina",
   "admin.config.general.show-home-page.description": "Toon of verberg de home pagina",
   "admin.config.general.session-duration": "Sessieduur",
-  "admin.config.general.session-duration.description": "Tijd in uren waarna een gebruiker zich opnieuw moet aanmelden (standaard: 3 maanden).",
+  "admin.config.general.session-duration.description": "Time after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Logo",
   "admin.config.general.logo.description": "Verander uw logo door een nieuwe afbeelding te uploaden. De afbeelding moet PNG zijn en het formaat moet 1:1 hebben.",
   "admin.config.general.logo.placeholder": "Afbeelding kiezen",
