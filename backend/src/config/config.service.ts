@@ -116,7 +116,7 @@ export class ConfigService extends EventEmitter {
         ...variable,
         key: `${variable.category}.${variable.name}`,
         value: variable.value ?? variable.defaultValue,
-        allowEdit: this.isEditAllowed(variable),
+        allowEdit: this.isEditAllowed(),
       };
     });
   }
@@ -134,14 +134,14 @@ export class ConfigService extends EventEmitter {
   }
 
   async updateMany(data: { key: string; value: string | number | boolean }[]) {
+    if (!this.isEditAllowed())
+      throw new BadRequestException(
+        "You are only allowed to update config variables via the config.yaml file",
+      );
+
     const response: Config[] = [];
 
     for (const variable of data) {
-      if (!this.isEditAllowed(variable.key))
-        throw new BadRequestException(
-          "You are only allowed to update config variables via the config.yaml file",
-        );
-
         response.push(await this.update(variable.key, variable.value));
     }
 
@@ -149,7 +149,7 @@ export class ConfigService extends EventEmitter {
   }
 
   async update(key: string, value: string | number | boolean) {
-    if (!this.isEditAllowed(key))
+    if (!this.isEditAllowed())
       throw new BadRequestException(
         "You are only allowed to update config variables via the config.yaml file",
       );
@@ -219,12 +219,7 @@ export class ConfigService extends EventEmitter {
     }
   }
 
-  isEditAllowed(configVariable: Config | string): boolean {
-    console.log(this.yamlConfig)
-    if (this.yamlConfig === undefined|| this.yamlConfig === null) return true;
-    if (typeof configVariable === "string") return false;
-    if (this.yamlConfig[configVariable.category] === undefined) return false;
-    if (this.yamlConfig[configVariable.category][configVariable.name] === undefined) return false;
-    return false;
+  isEditAllowed(): boolean {
+    return this.yamlConfig === undefined || this.yamlConfig === null;
   }
 }
