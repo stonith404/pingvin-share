@@ -1,10 +1,15 @@
-import {BadRequestException, Inject, Injectable, NotFoundException,} from "@nestjs/common";
-import {Config} from "@prisma/client";
-import {EventEmitter} from "events";
-import {PrismaService} from "src/prisma/prisma.service";
-import {stringToTimespan} from "src/utils/date.util";
+import {
+  BadRequestException,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from "@nestjs/common";
+import { Config } from "@prisma/client";
+import { EventEmitter } from "events";
+import { PrismaService } from "src/prisma/prisma.service";
+import { stringToTimespan } from "src/utils/date.util";
 import * as fs from "fs";
-import {parse as yamlParse} from "yaml";
+import { parse as yamlParse } from "yaml";
 import * as argon from "argon2";
 
 /**
@@ -13,7 +18,6 @@ import * as argon from "argon2";
  */
 @Injectable()
 export class ConfigService extends EventEmitter {
-
   yamlConfig?: YamlConfig;
 
   constructor(
@@ -33,16 +37,16 @@ export class ConfigService extends EventEmitter {
   }
 
   private async loadYamlConfig() {
-    let configFile: string = ""
+    let configFile: string = "";
     try {
-      configFile = fs.readFileSync('../config.yaml', 'utf8')
+      configFile = fs.readFileSync("../config.yaml", "utf8");
     } catch (e) {
-      console.info("config.yaml is not set: ")
+      console.info("config.yaml is not set: ");
     }
     try {
       this.yamlConfig = yamlParse(configFile);
     } catch (e) {
-      console.error("failed to parse config.yaml: ", e)
+      console.error("failed to parse config.yaml: ", e);
     }
   }
 
@@ -50,35 +54,41 @@ export class ConfigService extends EventEmitter {
     if (!this.yamlConfig.initUser.enabled) return;
 
     const userCount = await this.prisma.user.count({
-      where: {isAdmin: true},
+      where: { isAdmin: true },
     });
     if (userCount === 1) {
-      console.info("Skip initial user creation. Admin user is already existent.")
-      return
+      console.info(
+        "Skip initial user creation. Admin user is already existent.",
+      );
+      return;
     }
     await this.prisma.user.create({
       data: {
         email: this.yamlConfig.initUser.email,
         username: this.yamlConfig.initUser.username,
-        password: this.yamlConfig.initUser.password ? await argon.hash(this.yamlConfig.initUser.password) : null,
+        password: this.yamlConfig.initUser.password
+          ? await argon.hash(this.yamlConfig.initUser.password)
+          : null,
         isAdmin: this.yamlConfig.initUser.isAdmin,
       },
     });
   }
 
   private async migrateConfigVariables(): Promise<void> {
-    const configVariables = Object.entries(this.yamlConfig).flatMap(([category, variables]) => {
-      return Object.entries(variables).map(([name, value]) => {
-        return {
-          category,
-          name,
-          value: value.toString(),
-          type: typeof value,
-          locked: false,
-          defaultValue: value.toString(),
-        };
-      });
-    });
+    const configVariables = Object.entries(this.yamlConfig).flatMap(
+      ([category, variables]) => {
+        return Object.entries(variables).map(([name, value]) => {
+          return {
+            category,
+            name,
+            value: value.toString(),
+            type: typeof value,
+            locked: false,
+            defaultValue: value.toString(),
+          };
+        });
+      },
+    );
 
     for (const [index, configVariable] of configVariables.entries()) {
       const existingConfigVariable = await this.prisma.config.findUnique({
@@ -138,8 +148,8 @@ export class ConfigService extends EventEmitter {
 
   async getByCategory(category: string) {
     const configVariables = await this.prisma.config.findMany({
-      orderBy: {order: "asc"},
-      where: {category, locked: {equals: false}},
+      orderBy: { order: "asc" },
+      where: { category, locked: { equals: false } },
     });
 
     return configVariables.map((variable) => {
@@ -154,7 +164,7 @@ export class ConfigService extends EventEmitter {
 
   async list() {
     const configVariables = await this.prisma.config.findMany({
-      where: {secret: {equals: false}},
+      where: { secret: { equals: false } },
     });
 
     return configVariables.map((variable) => {
@@ -168,7 +178,10 @@ export class ConfigService extends EventEmitter {
   }
 
   async updateMany(data: { key: string; value: string | number | boolean }[]) {
-    if (this.yamlConfig) throw new BadRequestException("You are only allowed to update config variables via the config.yaml file");
+    if (this.yamlConfig)
+      throw new BadRequestException(
+        "You are only allowed to update config variables via the config.yaml file",
+      );
 
     const response: Config[] = [];
 
@@ -180,7 +193,10 @@ export class ConfigService extends EventEmitter {
   }
 
   async update(key: string, value: string | number | boolean) {
-    if (this.yamlConfig) throw new BadRequestException("You are only allowed to update config variables via the config.yaml file");
+    if (this.yamlConfig)
+      throw new BadRequestException(
+        "You are only allowed to update config variables via the config.yaml file",
+      );
 
     const configVariable = await this.prisma.config.findUnique({
       where: {
@@ -216,7 +232,7 @@ export class ConfigService extends EventEmitter {
           name: key.split(".")[1],
         },
       },
-      data: {value: value === null ? null : value.toString()},
+      data: { value: value === null ? null : value.toString() },
     });
 
     this.configVariables = await this.prisma.config.findMany();

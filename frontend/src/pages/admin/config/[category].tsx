@@ -83,7 +83,7 @@ export default function AppShellDemo() {
     }
 
     const index = updatedConfigVariables.findIndex(
-      (item) => item.key === configVariable.key
+      (item) => item.key === configVariable.key,
     );
 
     if (index > -1) {
@@ -161,7 +161,7 @@ export default function AppShellDemo() {
                       <Title order={6}>
                         <FormattedMessage
                           id={`admin.config.${camelToKebab(
-                            configVariable.key
+                            configVariable.key,
                           )}`}
                         />
                       </Title>
@@ -176,7 +176,7 @@ export default function AppShellDemo() {
                       >
                         <FormattedMessage
                           id={`admin.config.${camelToKebab(
-                            configVariable.key
+                            configVariable.key,
                           )}.description`}
                           values={{ br: <br /> }}
                         />
