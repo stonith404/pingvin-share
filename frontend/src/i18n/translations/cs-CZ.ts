@@ -317,7 +317,7 @@ export default {
   "admin.config.general.show-home-page": "Zobrazit domovskou stránku",
   "admin.config.general.show-home-page.description": "Zda zobrazovat domovskou stránku",
   "admin.config.general.session-duration": "Délka trvání relace",
-  "admin.config.general.session-duration.description": "Čas v hodinách, po kterém se uživatel musí znovu přihlásit (výchozí: 3 měsíce).",
+  "admin.config.general.session-duration.description": "Time after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Logo",
   "admin.config.general.logo.description": "Změňte své logo nahráním nového obrázku. Obrázek musí být PNG a měl by mít formát 1:1.",
   "admin.config.general.logo.placeholder": "Vybrat obrázek",
