@@ -8,9 +8,9 @@ import {
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { AdminConfig, UpdateConfig } from "../../../types/config.type";
-import TimespanInput from "../../core/TimespanInput";
 import { stringToTimespan, timespanToString } from "../../../utils/date.util";
 import FileSizeInput from "../../core/FileSizeInput";
+import TimespanInput from "../../core/TimespanInput";
 
 const AdminConfigInput = ({
   configVariable,
@@ -41,6 +41,7 @@ const AdminConfigInput = ({
       {configVariable.type == "string" &&
         (configVariable.obscured ? (
           <PasswordInput
+            autoComplete="new-password"
             style={{
               width: "100%",
             }}
