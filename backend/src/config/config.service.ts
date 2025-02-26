@@ -57,7 +57,6 @@ export class ConfigService extends EventEmitter {
           configVariable.value = category[configVariable.name];
         }
       }
-      console.log(this.configVariables[1]);
     } catch (e) {
       this.logger.error(
         "Failed to parse config.yaml. Falling back to UI configuration: ",
@@ -218,6 +217,8 @@ export class ConfigService extends EventEmitter {
   }
 
   isEditAllowed(configVariable: Config | string) {
+    if (!this.yamlConfig) return true;
+
     if (typeof configVariable === "string") {
       const [key, value] = configVariable.split(".");
       return !this.yamlConfig[key][value];
