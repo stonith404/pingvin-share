@@ -137,9 +137,12 @@ export class ConfigService extends EventEmitter {
     const response: Config[] = [];
 
     for (const variable of data) {
-      if (this.isEditAllowed(variable.key)) {
+      if (!this.isEditAllowed(variable.key))
+        throw new BadRequestException(
+          "You are only allowed to update config variables via the config.yaml file",
+        );
+
         response.push(await this.update(variable.key, variable.value));
-      }
     }
 
     return response;
@@ -216,14 +219,12 @@ export class ConfigService extends EventEmitter {
     }
   }
 
-  isEditAllowed(configVariable: Config | string) {
-    if (!this.yamlConfig) return true;
-
-    if (typeof configVariable === "string") {
-      const [key, value] = configVariable.split(".");
-      return !this.yamlConfig[key][value];
-    } else {
-      return !this.yamlConfig[configVariable.category][configVariable.name];
-    }
+  isEditAllowed(configVariable: Config | string): boolean {
+    console.log(this.yamlConfig)
+    if (this.yamlConfig === undefined|| this.yamlConfig === null) return true;
+    if (typeof configVariable === "string") return false;
+    if (this.yamlConfig[configVariable.category] === undefined) return false;
+    if (this.yamlConfig[configVariable.category][configVariable.name] === undefined) return false;
+    return false;
   }
 }
