@@ -317,7 +317,7 @@ export default {
   "admin.config.general.show-home-page": "Kuva avaleht",
   "admin.config.general.show-home-page.description": "Kas kuvada avalehte",
   "admin.config.general.session-duration": "Seansi kestus",
-  "admin.config.general.session-duration.description": "Aeg, mille järel kasutaja peab uuesti sisse logima (vaikimisi: 3 kuud).",
+  "admin.config.general.session-duration.description": "Time after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Logo",
   "admin.config.general.logo.description": "Muuda oma logo laadides üles uus pilt. Pildi formaat peab olema PNG ja kuju 1:1.",
   "admin.config.general.logo.placeholder": "Vali pilt",
