@@ -317,7 +317,7 @@ export default {
   "admin.config.general.show-home-page": "Visa startsidan",
   "admin.config.general.show-home-page.description": "Om du vill visa startsidan",
   "admin.config.general.session-duration": "Session Duration",
-  "admin.config.general.session-duration.description": "Time in hours after which a user must log in again (default: 3 months).",
+  "admin.config.general.session-duration.description": "Time after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Logotyp",
   "admin.config.general.logo.description": "Ändra din logotyp genom att ladda upp en ny bild. Bilden måste vara en PNG och bör ha formatet 1:1.",
   "admin.config.general.logo.placeholder": "Välj bild",
