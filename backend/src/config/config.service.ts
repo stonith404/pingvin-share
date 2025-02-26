@@ -6,12 +6,12 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import { Config } from "@prisma/client";
+import * as argon from "argon2";
 import { EventEmitter } from "events";
+import * as fs from "fs";
 import { PrismaService } from "src/prisma/prisma.service";
 import { stringToTimespan } from "src/utils/date.util";
-import * as fs from "fs";
 import { parse as yamlParse } from "yaml";
-import * as argon from "argon2";
 import { YamlConfig } from "../../prisma/seed/config.seed";
 
 /**
@@ -34,7 +34,6 @@ export class ConfigService extends EventEmitter {
     await this.loadYamlConfig();
 
     if (this.yamlConfig) {
-      await this.migrateConfigVariables();
       await this.migrateInitUser();
     }
   }
@@ -50,6 +49,15 @@ export class ConfigService extends EventEmitter {
     }
     try {
       this.yamlConfig = yamlParse(configFile);
+      if (this.yamlConfig) {
+        for (const configVariable of this.configVariables) {
+          const category = this.yamlConfig[configVariable.category];
+          if (!category) continue;
+
+          configVariable.value = category[configVariable.name];
+        }
+      }
+      console.log(this.configVariables[1]);
     } catch (e) {
       this.logger.error(
         "Failed to parse config.yaml. Falling back to UI configuration: ",
@@ -82,61 +90,6 @@ export class ConfigService extends EventEmitter {
     });
   }
 
-  private async migrateConfigVariables(): Promise<void> {
-    const configVariables = Object.entries(this.yamlConfig).flatMap(
-      ([category, variables]) => {
-        return Object.entries(variables).map(([name, value]) => {
-          return {
-            category,
-            name,
-            value: value.toString(),
-            type: typeof value,
-            locked: false,
-            defaultValue: value.toString(),
-          };
-        });
-      },
-    );
-
-    for (const [index, configVariable] of configVariables.entries()) {
-      const existingConfigVariable = await this.prisma.config.findUnique({
-        where: {
-          name_category: {
-            category: configVariable.category,
-            name: configVariable.name,
-          },
-        },
-      });
-
-      if (!existingConfigVariable) {
-        await this.prisma.config.create({
-          data: {
-            ...configVariable,
-            name: configVariable.name,
-            category: configVariable.category,
-            value: configVariable.value,
-            order: index,
-          },
-        });
-      } else {
-        await this.prisma.config.update({
-          where: {
-            name_category: {
-              category: configVariable.category,
-              name: configVariable.name,
-            },
-          },
-          data: {
-            value: configVariable.value,
-            type: configVariable.type,
-            locked: configVariable.locked,
-            defaultValue: configVariable.defaultValue,
-          },
-        });
-      }
-    }
-  }
-
   get(key: `${string}.${string}`): any {
     const configVariable = this.configVariables.filter(
       (variable) => `${variable.category}.${variable.name}` == key,
@@ -155,53 +108,46 @@ export class ConfigService extends EventEmitter {
   }
 
   async getByCategory(category: string) {
-    const configVariables = await this.prisma.config.findMany({
-      orderBy: { order: "asc" },
-      where: { category, locked: { equals: false } },
-    });
+    const configVariables = this.configVariables
+      .filter((c) => !c.locked && category == c.category)
+      .sort((c) => c.order);
 
     return configVariables.map((variable) => {
       return {
         ...variable,
         key: `${variable.category}.${variable.name}`,
         value: variable.value ?? variable.defaultValue,
-        allowEdit: !this.yamlConfig,
+        allowEdit: this.isEditAllowed(variable),
       };
     });
   }
 
   async list() {
-    const configVariables = await this.prisma.config.findMany({
-      where: { secret: { equals: false } },
-    });
+    const configVariables = this.configVariables.filter((c) => !c.secret);
 
     return configVariables.map((variable) => {
       return {
         ...variable,
         key: `${variable.category}.${variable.name}`,
         value: variable.value ?? variable.defaultValue,
-        allowEdit: !this.yamlConfig,
       };
     });
   }
 
   async updateMany(data: { key: string; value: string | number | boolean }[]) {
-    if (this.yamlConfig)
-      throw new BadRequestException(
-        "You are only allowed to update config variables via the config.yaml file",
-      );
-
     const response: Config[] = [];
 
     for (const variable of data) {
-      response.push(await this.update(variable.key, variable.value));
+      if (this.isEditAllowed(variable.key)) {
+        response.push(await this.update(variable.key, variable.value));
+      }
     }
 
     return response;
   }
 
   async update(key: string, value: string | number | boolean) {
-    if (this.yamlConfig)
+    if (!this.isEditAllowed(key))
       throw new BadRequestException(
         "You are only allowed to update config variables via the config.yaml file",
       );
@@ -268,6 +214,15 @@ export class ConfigService extends EventEmitter {
     const validation = validations.find((validation) => validation.key == key);
     if (validation && !validation.condition(value as any)) {
       throw new BadRequestException(validation.message);
+    }
+  }
+
+  isEditAllowed(configVariable: Config | string) {
+    if (typeof configVariable === "string") {
+      const [key, value] = configVariable.split(".");
+      return !this.yamlConfig[key][value];
+    } else {
+      return !this.yamlConfig[configVariable.category][configVariable.name];
     }
   }
 }
