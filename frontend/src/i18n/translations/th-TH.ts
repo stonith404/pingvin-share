@@ -317,7 +317,7 @@ export default {
   "admin.config.general.show-home-page": "แสดงหน้าแรก",
   "admin.config.general.show-home-page.description": "หากติ๊ก เว็บไซต์จะแสดงหน้าหลักเวลาเข้าถึง URL หลัก",
   "admin.config.general.session-duration": "Session Duration",
-  "admin.config.general.session-duration.description": "Time in hours after which a user must log in again (default: 3 months).",
+  "admin.config.general.session-duration.description": "Time after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "โลโก้",
   "admin.config.general.logo.description": "เปลี่ยนโลโก้โดยอัปโหลดรูปภาพใหม่ รูปภาพต้องเป็น PNG และควรมีขนาดอัตราส่วน 1:1",
   "admin.config.general.logo.placeholder": "คลิกที่นี่หรือลากไฟล์มา",
