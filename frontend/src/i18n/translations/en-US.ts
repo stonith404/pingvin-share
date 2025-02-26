@@ -434,7 +434,7 @@ export default {
     "Whether to show the home page",
   "admin.config.general.session-duration": "Session Duration",
   "admin.config.general.session-duration.description":
-    "Time in hours after which a user must log in again (default: 3 months).",
+    "Time after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Logo",
   "admin.config.general.logo.description":
     "Change your logo by uploading a new image. The image must be a PNG and should have the format 1:1.",
