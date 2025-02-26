@@ -303,7 +303,7 @@ export default {
   // END /privacy
   // /admin/config
   "admin.config.config-file-warning.title": "Konfigurationsdatei aktiviert",
-  "admin.config.config-file-warning.description": "Die Konfiguration über die Benutzeroberfläche ist deaktiviert, da die Konfiguration über eine Datei erfolgt.",
+  "admin.config.config-file-warning.description": "Da du eine Konfigurationsdatei hast, können die in der Konfigurationsdatei definierten Variablen in der Benutzeroberfläche nicht geändert werden.",
   "admin.config.title": "Einstellungen",
   "admin.config.category.general": "Allgemein",
   "admin.config.category.share": "Freigabe",
