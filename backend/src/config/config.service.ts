@@ -2,6 +2,7 @@ import {
   BadRequestException,
   Inject,
   Injectable,
+  Logger,
   NotFoundException,
 } from "@nestjs/common";
 import { Config } from "@prisma/client";
@@ -20,6 +21,7 @@ import { YamlConfig } from "../../prisma/seed/config.seed";
 @Injectable()
 export class ConfigService extends EventEmitter {
   yamlConfig?: YamlConfig;
+  logger = new Logger(ConfigService.name);
 
   constructor(
     @Inject("CONFIG_VARIABLES") private configVariables: Config[],
@@ -42,12 +44,17 @@ export class ConfigService extends EventEmitter {
     try {
       configFile = fs.readFileSync("../config.yaml", "utf8");
     } catch (e) {
-      console.info("config.yaml is not set: ");
+      this.logger.log(
+        "Config.yaml is not set. Falling back to UI configuration.",
+      );
     }
     try {
       this.yamlConfig = yamlParse(configFile);
     } catch (e) {
-      console.error("failed to parse config.yaml: ", e);
+      this.logger.error(
+        "Failed to parse config.yaml. Falling back to UI configuration: ",
+        e,
+      );
     }
   }
 
@@ -58,7 +65,7 @@ export class ConfigService extends EventEmitter {
       where: { isAdmin: true },
     });
     if (userCount === 1) {
-      console.info(
+      this.logger.log(
         "Skip initial user creation. Admin user is already existent.",
       );
       return;
