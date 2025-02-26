@@ -317,7 +317,7 @@ export default {
   "admin.config.general.show-home-page": "Vis forside",
   "admin.config.general.show-home-page.description": "Om forsiden skal vises",
   "admin.config.general.session-duration": "Session Duration",
-  "admin.config.general.session-duration.description": "Time in hours after which a user must log in again (default: 3 months).",
+  "admin.config.general.session-duration.description": "Time after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Logo",
   "admin.config.general.logo.description": "Skift dit logo ved at uploade et nyt billede. Billedet skal være PNG og skal have formatet 1:1.",
   "admin.config.general.logo.placeholder": "Vælg billede",
