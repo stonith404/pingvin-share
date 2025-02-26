@@ -317,7 +317,7 @@ export default {
   "admin.config.general.show-home-page": "Mostrar a página inicial",
   "admin.config.general.show-home-page.description": "Mostrar ou não a página inicial",
   "admin.config.general.session-duration": "Duração de sessão",
-  "admin.config.general.session-duration.description": "Tempo em horas após o qual um usuário deve iniciar a sessão novamente (padrão: 3 meses).",
+  "admin.config.general.session-duration.description": "Time after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Logo",
   "admin.config.general.logo.description": "Alterar o seu logo carregando uma nova imagem. A imagem deve ser PNG e deve ter o formato 1:1.",
   "admin.config.general.logo.placeholder": "Escolhe uma imagem",
