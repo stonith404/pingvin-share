@@ -317,7 +317,7 @@ export default {
   "admin.config.general.show-home-page": "Прикажи почетну страницу",
   "admin.config.general.show-home-page.description": "Да ли да се прикаже почетна страница",
   "admin.config.general.session-duration": "Трајање сесије",
-  "admin.config.general.session-duration.description": "Време у сатима након којег корисник мора поново да се пријави (подразумевано: 3 месеца).",
+  "admin.config.general.session-duration.description": "Time after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Лого",
   "admin.config.general.logo.description": "Промените свој логотип тако што ћете отпремити нову слику. Слика мора да буде PNG и треба да има формат 1:1.",
   "admin.config.general.logo.placeholder": "Изабери слику",
