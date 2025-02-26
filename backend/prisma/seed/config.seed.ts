@@ -1,7 +1,7 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 import * as crypto from "crypto";
 
-const configVariables: ConfigVariables = {
+const configVariables = {
   internal: {
     jwtSecret: {
       type: "string",
@@ -181,12 +181,12 @@ const configVariables: ConfigVariables = {
     },
     searchQuery: {
       type: "string",
-      defaultValue: ""
+      defaultValue: "",
     },
 
     adminGroups: {
       type: "string",
-      defaultValue: ""
+      defaultValue: "",
     },
 
     fieldNameMemberOf: {
@@ -196,18 +196,18 @@ const configVariables: ConfigVariables = {
     fieldNameEmail: {
       type: "string",
       defaultValue: "userPrincipalName",
-    }
+    },
   },
   oauth: {
-    "allowRegistration": {
+    allowRegistration: {
       type: "boolean",
       defaultValue: "true",
     },
-    "ignoreTotp": {
+    ignoreTotp: {
       type: "boolean",
       defaultValue: "true",
     },
-    "disablePassword": {
+    disablePassword: {
       type: "boolean",
       defaultValue: "false",
       secret: false,
@@ -376,7 +376,22 @@ const configVariables: ConfigVariables = {
       defaultValue: "",
       secret: false,
     },
-  }
+  },
+} satisfies ConfigVariables;
+
+export type YamlConfig = {
+  [Category in keyof typeof configVariables]: {
+    [Key in keyof (typeof configVariables)[Category]]: string;
+  };
+} & {
+  initUser: {
+    enabled: string;
+    username: string;
+    email: string;
+    password: string;
+    isAdmin: boolean;
+    ldapDN: string;
+  };
 };
 
 type ConfigVariables = {
@@ -434,7 +449,7 @@ async function migrateConfigVariables() {
     const configVariable =
       configVariables[existingConfigVariable.category]?.[
         existingConfigVariable.name
-        ];
+      ];
 
     // Delete the config variable if it doesn't exist in the seed
     if (!configVariable) {

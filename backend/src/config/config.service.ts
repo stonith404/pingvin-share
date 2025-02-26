@@ -11,6 +11,7 @@ import { stringToTimespan } from "src/utils/date.util";
 import * as fs from "fs";
 import { parse as yamlParse } from "yaml";
 import * as argon from "argon2";
+import { YamlConfig } from "../../prisma/seed/config.seed";
 
 /**
  * ConfigService extends EventEmitter to allow listening for config updates,
@@ -262,114 +263,4 @@ export class ConfigService extends EventEmitter {
       throw new BadRequestException(validation.message);
     }
   }
-}
-
-export interface YamlConfig {
-  general: General;
-  share: Share;
-  smtp: SMTP;
-  ldap: LDAP;
-  oauth: Oauth;
-  s3: S3;
-  legal: Legal;
-  initUser: InitUser;
-}
-
-export interface General {
-  appName: string;
-  appUrl: string;
-  secureCookies: string;
-  showHomePage: string;
-  sessionDuration: string;
-}
-
-export interface LDAP {
-  enabled: string;
-  url: string;
-  bindDn: string;
-  bindPassword: string;
-  searchBase: string;
-  searchQuery: string;
-  adminGroups: string;
-  fieldNameMemberOf: string;
-  fieldNameEmail: string;
-}
-
-export interface Legal {
-  enabled: string;
-  imprintText: string;
-  imprintUrl: string;
-  privacyPolicyText: string;
-  privacyPolicyUrl: string;
-}
-
-export interface Oauth {
-  allowRegistration: string;
-  ignoreTotp: string;
-  disablePassword: string;
-  githubEnabled: string;
-  githubClientId: string;
-  githubClientSecret: string;
-  googleEnabled: string;
-  googleClientId: string;
-  googleClientSecret: string;
-  microsoftEnabled: string;
-  microsoftTenant: string;
-  microsoftClientId: string;
-  microsoftClientSecret: string;
-  discordEnabled: string;
-  discordLimitedGuild: string;
-  discordLimitedUsers: string;
-  discordClientId: string;
-  discordClientSecret: string;
-  oidcEnabled: string;
-  oidcDiscoveryUri: string;
-  oidcSignOut: string;
-  oidcScope: string;
-  oidcUsernameClaim: string;
-  oidcRolePath: string;
-  oidcRoleGeneralAccess: string;
-  oidcRoleAdminAccess: string;
-  oidcClientId: string;
-  oidcClientSecret: string;
-}
-
-export interface S3 {
-  enabled: string;
-  endpoint: string;
-  region: string;
-  bucketName: string;
-  bucketPath: string;
-  key: string;
-  secret: string;
-}
-
-export interface Share {
-  allowRegistration: string;
-  allowUnauthenticatedShares: string;
-  maxExpiration: string;
-  shareIdLength: string;
-  maxSize: string;
-  zipCompressionLevel: string;
-  chunkSize: string;
-  autoOpenShareModal: string;
-}
-
-export interface SMTP {
-  enabled: string;
-  allowUnauthorizedCertificates: string;
-  host: string;
-  port: string;
-  email: string;
-  username: string;
-  password: string;
-}
-
-export interface InitUser {
-  enabled: string;
-  username: string;
-  email: string;
-  password: string;
-  isAdmin: boolean;
-  ldapDN: string;
 }
