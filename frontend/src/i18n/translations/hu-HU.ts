@@ -317,7 +317,7 @@ export default {
   "admin.config.general.show-home-page": "Kezdőlap mutatása",
   "admin.config.general.show-home-page.description": "A kezdőlap mutatásának ki- és bekapcsolása",
   "admin.config.general.session-duration": "Munkamenet időtartama",
-  "admin.config.general.session-duration.description": "Annak az időtartamnak a megadása, amit követően a felhasználónak ismét be kell jelentkeznie (alapérték: 3 hónap).",
+  "admin.config.general.session-duration.description": "Time after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Logó",
   "admin.config.general.logo.description": "A logó személyessé tételéhez töltsön fel egy új képet. A formátum legyen PNG, az oldalarány 1:1.",
   "admin.config.general.logo.placeholder": "Kép kiválasztása",
