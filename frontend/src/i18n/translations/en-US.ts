@@ -414,7 +414,8 @@ export default {
   // END /privacy
 
   // /admin/config
-  "admin.config.config-file.enabled": "Changes are not allowed via the UI. Please edit the configuration file directly.",
+  "admin.config.config-file-warning.title": "Configuration file present",
+  "admin.config.config-file-warning.description": "As you have a configuration file, the settings can't be changed in the web interface.",
 
   "admin.config.title": "Configuration",
   "admin.config.category.general": "General",

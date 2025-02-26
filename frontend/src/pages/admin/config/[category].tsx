@@ -1,4 +1,5 @@
 import {
+  Alert,
   AppShell,
   Box,
   Button,
@@ -13,6 +14,7 @@ import { useMediaQuery } from "@mantine/hooks";
 
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { TbInfoCircle } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 import Meta from "../../../components/Meta";
 import AdminConfigInput from "../../../components/admin/configuration/AdminConfigInput";
@@ -47,8 +49,8 @@ export default function AppShellDemo() {
   const [logo, setLogo] = useState<File | null>(null);
 
   const isEditingAllowed = (): boolean => {
-    return !(configVariables) || configVariables[0].allowEdit;
-  }
+    return !configVariables || configVariables[0].allowEdit;
+  };
 
   const saveConfigVariables = async () => {
     if (logo) {
@@ -81,7 +83,7 @@ export default function AppShellDemo() {
     }
 
     const index = updatedConfigVariables.findIndex(
-      (item) => item.key === configVariable.key,
+      (item) => item.key === configVariable.key
     );
 
     if (index > -1) {
@@ -136,11 +138,17 @@ export default function AppShellDemo() {
           ) : (
             <>
               <Stack>
-                {!isEditingAllowed() &&
-                    <p style={{ display: "flex", alignItems: "center", padding: 6, backgroundColor: "#47428E", color: "#E2E1F1", borderRadius: "0.25rem"}}>
-                      {t("admin.config.config-file.enabled")}
-                    </p>
-                }
+                {!isEditingAllowed() && (
+                  <Alert
+                    mb={"lg"}
+                    variant="light"
+                    color="primary"
+                    title={t("admin.config.config-file-warning.title")}
+                    icon={<TbInfoCircle />}
+                  >
+                    <FormattedMessage id="admin.config.config-file-warning.description" />
+                  </Alert>
+                )}
                 <Title mb="md" order={3}>
                   {t("admin.config.category." + categoryId)}
                 </Title>
@@ -153,7 +161,7 @@ export default function AppShellDemo() {
                       <Title order={6}>
                         <FormattedMessage
                           id={`admin.config.${camelToKebab(
-                            configVariable.key,
+                            configVariable.key
                           )}`}
                         />
                       </Title>
@@ -168,7 +176,7 @@ export default function AppShellDemo() {
                       >
                         <FormattedMessage
                           id={`admin.config.${camelToKebab(
-                            configVariable.key,
+                            configVariable.key
                           )}.description`}
                           values={{ br: <br /> }}
                         />
