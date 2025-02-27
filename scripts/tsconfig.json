@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "moduleResolution": "node"
+  },
+  "include": ["/**/*.ts", "generate-example-config.ts"],
+  "exclude": ["node_modules"]
+}
