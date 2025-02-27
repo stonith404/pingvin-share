@@ -2,7 +2,8 @@
 # If you want to set the config via UI, you must remove the file mounting in your docker compose file.
 
 general:
-  appName: "Pingvin Share Custom" # Name of the application
+  appName: "Pingvin Share" # Name of the application
+  appUrl: "http://localhost:3000" # On which URL Pingvin Share is available
   secureCookies: false # Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.
   showHomePage: true # Whether to show the home page
   sessionDuration: "3 months" # Time in hours after which a user must log in again (default: 3 months).
