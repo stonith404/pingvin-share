@@ -384,8 +384,6 @@ export default {
   "share.modal.error.invalid-password": "Invalid password",
 
   "share.button.download-all": "Download all",
-  "share.notify.download-all-preparing":
-    "The share is being prepared. Please try again in a few minutes.",
 
   "share.modal.file-link": "File link",
   "share.table.name": "Name",

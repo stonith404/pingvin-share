@@ -80,7 +80,6 @@ model Share {
 
   name          String?
   uploadLocked  Boolean  @default(false)
-  isZipReady    Boolean  @default(false)
   views         Int      @default(0)
   expiration    DateTime
   description   String?
