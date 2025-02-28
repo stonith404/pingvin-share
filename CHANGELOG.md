@@ -1,3 +1,11 @@
+## [1.10.1](https://github.com/stonith404/pingvin-share/compare/v1.10.0...v1.10.1) (2025-02-28)
+
+
+### Bug Fixes
+
+* admin property can't be set if OAuth2 user email doesn't match actual user's email ([1159d97](https://github.com/stonith404/pingvin-share/commit/1159d972a8c32a0d6bf53d161c2fc09e6f8dfb28))
+* type error when trying to run the seed command ([b6d1720](https://github.com/stonith404/pingvin-share/commit/b6d1720fe637497ad624c6cdc40058b1b0f0c74c))
+
 ## [1.10.0](https://github.com/stonith404/pingvin-share/compare/v1.9.1...v1.10.0) (2025-02-28)
 
 
