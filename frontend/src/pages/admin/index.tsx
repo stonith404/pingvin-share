@@ -66,7 +66,7 @@ const Admin = () => {
           },
         ]);
       }
-    });
+    }).catch();
   }, []);
 
   return (
