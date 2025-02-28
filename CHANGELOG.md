@@ -1,3 +1,17 @@
+## [1.10.0](https://github.com/stonith404/pingvin-share/compare/v1.9.1...v1.10.0) (2025-02-28)
+
+
+### Features
+
+* add ability to configure application with a config file ([#740](https://github.com/stonith404/pingvin-share/issues/740)) ([9dfb52a](https://github.com/stonith404/pingvin-share/commit/9dfb52a14587065dacd9fcd2bb2efa1b458880a5))
+
+
+### Bug Fixes
+
+* confusing config configuration description for session duration ([28fdbc2](https://github.com/stonith404/pingvin-share/commit/28fdbc22814260040c78e27a62d86b84df83751f))
+* page crash if new release check fails ([e848675](https://github.com/stonith404/pingvin-share/commit/e848675d634a08efe3aac4e02d98136c36b36bfc))
+* smtp password gets autofilled in Firefox ([f429142](https://github.com/stonith404/pingvin-share/commit/f4291421b5531b0eeae5bcca9139f80c3cd43b4b))
+
 ## [1.9.1](https://github.com/stonith404/pingvin-share/compare/v1.9.0...v1.9.1) (2025-02-14)
 
 
