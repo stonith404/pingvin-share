@@ -142,7 +142,7 @@ export class ConfigService extends EventEmitter {
     const response: Config[] = [];
 
     for (const variable of data) {
-        response.push(await this.update(variable.key, variable.value));
+      response.push(await this.update(variable.key, variable.value));
     }
 
     return response;

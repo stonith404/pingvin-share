@@ -54,19 +54,22 @@ const Admin = () => {
   ]);
 
   useEffect(() => {
-    configService.isNewReleaseAvailable().then((isNewReleaseAvailable) => {
-      if (isNewReleaseAvailable) {
-        setManagementOptions([
-          ...managementOptions,
-          {
-            title: "Update",
-            icon: TbRefresh,
-            route:
-              "https://github.com/stonith404/pingvin-share/releases/latest",
-          },
-        ]);
-      }
-    }).catch();
+    configService
+      .isNewReleaseAvailable()
+      .then((isNewReleaseAvailable) => {
+        if (isNewReleaseAvailable) {
+          setManagementOptions([
+            ...managementOptions,
+            {
+              title: "Update",
+              icon: TbRefresh,
+              route:
+                "https://github.com/stonith404/pingvin-share/releases/latest",
+            },
+          ]);
+        }
+      })
+      .catch();
   }, []);
 
   return (
