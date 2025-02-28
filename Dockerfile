@@ -50,11 +50,12 @@ COPY --from=backend-builder /opt/app/node_modules ./node_modules
 COPY --from=backend-builder /opt/app/dist ./dist
 COPY --from=backend-builder /opt/app/prisma ./prisma
 COPY --from=backend-builder /opt/app/package.json ./
+COPY --from=backend-builder /opt/app/tsconfig.json ./
 
 WORKDIR /opt/app
 
 COPY ./reverse-proxy  /opt/app/reverse-proxy
-COPY ./scripts ./scripts
+COPY ./scripts/docker ./scripts/docker
 
 EXPOSE 3000
 
