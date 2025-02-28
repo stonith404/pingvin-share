@@ -215,3 +215,12 @@ legal:
   privacyPolicyText: ""
   #If you already have a privacy policy page you can link it here instead of using the text field.
   privacyPolicyUrl: ""
+#This configuration is used to create the initial user when the application is started for the first time.
+#Make sure to change at least the password as soon as you log in!
+initUser:
+  enabled: false
+  username: admin
+  email: admin@example.com
+  password: my-secure-password
+  isAdmin: true
+  ldapDN: ""

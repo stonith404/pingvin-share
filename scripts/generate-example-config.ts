@@ -14,11 +14,30 @@ for (const [category, variables] of Object.entries(configVariables)) {
     configVariablesWithDefaultValues[category][variableName] = defaultValue;
   }
 }
+
+// As `initUser` is not part of the `configVariables` object, we add it manually
+configVariablesWithDefaultValues["initUser"] = {
+  enabled: false,
+  username: "admin",
+  email: "admin@example.com",
+  password: "my-secure-password",
+  isAdmin: true,
+  ldapDN: "",
+};
+
 // Create the yaml document
 const doc: any = new yaml.Document(configVariablesWithDefaultValues);
 
 // Add the descriptions imported from `en-US.ts` as comments
 for (const category of doc.contents.items) {
+  //  As `initUser` can't be configured from the UI, we have to add the description manually
+  if (category.key.value === "initUser") {
+    category.key.commentBefore =
+      "This configuration is used to create the initial user when the application is started for the first time.\n";
+    category.key.commentBefore +=
+      "Make sure to change at least the password as soon as you log in!";
+  }
+
   for (const variable of category.value.items) {
     variable.key.commentBefore = getDescription(
       category.key.value,
