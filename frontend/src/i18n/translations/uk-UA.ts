@@ -302,6 +302,8 @@ export default {
   "privacy.title": "Політика конфіденційності",
   // END /privacy
   // /admin/config
+  "admin.config.config-file-warning.title": "Configuration file present",
+  "admin.config.config-file-warning.description": "As you have a configured Pingvin Share with a configuration file, you can't change the configuration through the UI.",
   "admin.config.title": "Конфігурація",
   "admin.config.category.general": "Загальне",
   "admin.config.category.share": "Завантаження",
@@ -317,7 +319,7 @@ export default {
   "admin.config.general.show-home-page": "Показувати домашню сторінку",
   "admin.config.general.show-home-page.description": "Показувати домашню сторінку чи ні",
   "admin.config.general.session-duration": "Тривалість сеансу",
-  "admin.config.general.session-duration.description": "Час у годинах, після якого користувач повинен знову увійти в систему (за замовчуванням: 3 місяці).",
+  "admin.config.general.session-duration.description": "Time after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Логотип",
   "admin.config.general.logo.description": "Змініть свій логотип, завантаживши нове зображення. Зображення має бути PNG і повинно мати формат 1:1.",
   "admin.config.general.logo.placeholder": "Виберіть зображення",

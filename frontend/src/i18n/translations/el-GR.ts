@@ -302,6 +302,8 @@ export default {
   "privacy.title": "Privacy Policy",
   // END /privacy
   // /admin/config
+  "admin.config.config-file-warning.title": "Configuration file present",
+  "admin.config.config-file-warning.description": "As you have a configured Pingvin Share with a configuration file, you can't change the configuration through the UI.",
   "admin.config.title": "Διαμόρφωση",
   "admin.config.category.general": "Γενικά",
   "admin.config.category.share": "Διαμοιρασμός",
@@ -317,7 +319,7 @@ export default {
   "admin.config.general.show-home-page": "Εμφάνιση αρχικής σελίδας",
   "admin.config.general.show-home-page.description": "Εάν θα εμφανίζεται η αρχική σελίδα",
   "admin.config.general.session-duration": "Διάρκεια συνεδρίας",
-  "admin.config.general.session-duration.description": "Χρόνος σε ώρες μετά την οποία ένας χρήστης πρέπει να συνδεθεί ξανά (προεπιλογή: 3 μήνες).",
+  "admin.config.general.session-duration.description": "Time after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Λογότυπο",
   "admin.config.general.logo.description": "Αλλάξτε το λογότυπό σας ανεβάζοντας μια νέα εικόνα. Η εικόνα πρέπει να είναι PNG και αναλογία 1:1.",
   "admin.config.general.logo.placeholder": "Επιλέξτε εικόνα",

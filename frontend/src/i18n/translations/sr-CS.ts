@@ -302,6 +302,8 @@ export default {
   "privacy.title": "Privacy Policy",
   // END /privacy
   // /admin/config
+  "admin.config.config-file-warning.title": "Configuration file present",
+  "admin.config.config-file-warning.description": "As you have a configured Pingvin Share with a configuration file, you can't change the configuration through the UI.",
   "admin.config.title": "Konfiguracija",
   "admin.config.category.general": "Opšte",
   "admin.config.category.share": "Deljenje",
@@ -317,7 +319,7 @@ export default {
   "admin.config.general.show-home-page": "Prikaži početnu stranicu",
   "admin.config.general.show-home-page.description": "Da li da se prikaže početna stranica",
   "admin.config.general.session-duration": "Trajanje sesije",
-  "admin.config.general.session-duration.description": "Vreme u satima nakon kojeg korisnik mora ponovo da se prijavi (podrazumevano: 3 meseca).",
+  "admin.config.general.session-duration.description": "Time after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "Logo",
   "admin.config.general.logo.description": "Promenite svoj logotip tako što ćete otpremiti novu sliku. Slika mora da bude PNG i treba da ima format 1:1.",
   "admin.config.general.logo.placeholder": "Izaberi sliku",

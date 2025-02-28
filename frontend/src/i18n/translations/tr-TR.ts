@@ -302,6 +302,8 @@ export default {
   "privacy.title": "Gizlilik Politikası",
   // END /privacy
   // /admin/config
+  "admin.config.config-file-warning.title": "Configuration file present",
+  "admin.config.config-file-warning.description": "As you have a configured Pingvin Share with a configuration file, you can't change the configuration through the UI.",
   "admin.config.title": "Yapılandırma",
   "admin.config.category.general": "Genel",
   "admin.config.category.share": "Paylaş",
@@ -317,7 +319,7 @@ export default {
   "admin.config.general.show-home-page": "Ana sayfayı göster",
   "admin.config.general.show-home-page.description": "Ana sayfanın gösterilip gösterilmeyeceği",
   "admin.config.general.session-duration": "Oturum Süresi",
-  "admin.config.general.session-duration.description": "Bir kullanıcının tekrar oturum açması gereken saat cinsinden süre (varsayılan: 3 ay).",
+  "admin.config.general.session-duration.description": "Kullanıcının tekrar oturum açması için gereken süre (varsayılan süre: 3 ay).",
   "admin.config.general.logo": "Logo",
   "admin.config.general.logo.description": "Yeni bir resim yükleyerek logonuzu değiştirin. Resim PNG formatında olmalı ve 1:1 oranında olmalıdır.",
   "admin.config.general.logo.placeholder": "Resim seç",

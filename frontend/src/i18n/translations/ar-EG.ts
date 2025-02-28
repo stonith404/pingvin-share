@@ -302,6 +302,8 @@ export default {
   "privacy.title": "Privacy Policy",
   // END /privacy
   // /admin/config
+  "admin.config.config-file-warning.title": "Configuration file present",
+  "admin.config.config-file-warning.description": "As you have a configured Pingvin Share with a configuration file, you can't change the configuration through the UI.",
   "admin.config.title": "الإعدادات",
   "admin.config.category.general": "عام",
   "admin.config.category.share": "مشاركة",
@@ -317,7 +319,7 @@ export default {
   "admin.config.general.show-home-page": "إظهار الصفحة الرئيسية",
   "admin.config.general.show-home-page.description": "تحديد ما إذا كان سيتم عرض الصفحة الرئيسية",
   "admin.config.general.session-duration": "مدة الجلسة",
-  "admin.config.general.session-duration.description": "الوقت بالساعات الذي يجب على المستخدم بعده إعادة تسجيل الدخول (الافتراضي: 3 أشهر).",
+  "admin.config.general.session-duration.description": "Time after which a user must log in again (default: 3 months).",
   "admin.config.general.logo": "الشعار",
   "admin.config.general.logo.description": "يمكنك تغيير شعارك عن طريق تحميل صورة جديدة. يجب أن تكون الصورة PNG ويجب أن يكون تنسيقها 1:1.",
   "admin.config.general.logo.placeholder": "اختر صورة",

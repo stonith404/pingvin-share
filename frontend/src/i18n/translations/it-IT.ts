@@ -302,6 +302,8 @@ export default {
   "privacy.title": "Informativa sulla privacy",
   // END /privacy
   // /admin/config
+  "admin.config.config-file-warning.title": "Configuration file present",
+  "admin.config.config-file-warning.description": "As you have a configured Pingvin Share with a configuration file, you can't change the configuration through the UI.",
   "admin.config.title": "Configurazione",
   "admin.config.category.general": "Generale",
   "admin.config.category.share": "Condivisioni",
@@ -317,7 +319,7 @@ export default {
   "admin.config.general.show-home-page": "Visualizza Home Page",
   "admin.config.general.show-home-page.description": "Indica se mostrare la home page",
   "admin.config.general.session-duration": "Durata della sessione",
-  "admin.config.general.session-duration.description": "Tempo in ore dopo il quale un utente deve accedere nuovamente (default: 3 mesi).",
+  "admin.config.general.session-duration.description": "Tempo dopo il quale un utente deve accedere di nuovo (default: tre mesi).",
   "admin.config.general.logo": "Logo",
   "admin.config.general.logo.description": "Cambia il tuo logo caricando una nuova immagine. L'immagine deve essere un PNG e dovrebbe avere il formato 1:1.",
   "admin.config.general.logo.placeholder": "Scegli un'immagine",
