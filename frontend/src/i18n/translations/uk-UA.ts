@@ -302,6 +302,8 @@ export default {
   "privacy.title": "Політика конфіденційності",
   // END /privacy
   // /admin/config
+  "admin.config.config-file-warning.title": "Configuration file present",
+  "admin.config.config-file-warning.description": "As you have a configured Pingvin Share with a configuration file, you can't change the configuration through the UI.",
   "admin.config.title": "Конфігурація",
   "admin.config.category.general": "Загальне",
   "admin.config.category.share": "Завантаження",
