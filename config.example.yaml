@@ -1,0 +1,226 @@
+#This configuration is pre-filled with the default values.
+#You can remove keys you don't want to set. If a key is missing, the value set in the UI will be used; if that is also unset, the default value applies.
+
+general:
+  #Name of the application
+  appName: Pingvin Share
+  #On which URL Pingvin Share is available
+  appUrl: http://localhost:3000
+  #Whether to set the secure flag on cookies. If enabled, the site will not function when accessed over HTTP.
+  secureCookies: "false"
+  #Whether to show the home page
+  showHomePage: "true"
+  #Time in hours after which a user must log in again (default: 3 months).
+  sessionDuration: 3 months
+share:
+  #Whether registration is allowed
+  allowRegistration: "true"
+  #Whether unauthenticated users can create shares
+  allowUnauthenticatedShares: "false"
+  #Maximum share expiration. Set to 0 to allow unlimited expiration.
+  maxExpiration: 0 days
+  #Default length for the generated ID of a share. This value is also used to generate links for reverse shares. A value below 8 is not considered secure.
+  shareIdLength: "8"
+  #Maximum share size
+  maxSize: "1000000000"
+  #Adjust the level to balance between file size and compression speed. Valid values range from 0 to 9, with 0 being no compression and 9 being maximum compression. 
+  zipCompressionLevel: "9"
+  #Adjust the chunk size for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks make uploads faster for stable connections.
+  chunkSize: "10000000"
+  #The share creation modal automatically appears when a user selects files, eliminating the need to manually click the button.
+  autoOpenShareModal: "false"
+email:
+  #Whether to allow email sharing with recipients. Only enable this if SMTP is activated.
+  enableShareEmailRecipients: "false"
+  #Subject of the email which gets sent to the share recipients.
+  shareRecipientsSubject: Files shared with you
+  #Message which gets sent to the share recipients. Available variables:
+  # {creator} - The username of the creator of the share
+  # {creatorEmail} - The email of the creator of the share
+  # {shareUrl} - The URL of the share
+  # {desc} - The description of the share
+  # {expires} - The expiration date of the share
+  # These variables will be replaced with the actual value.
+  shareRecipientsMessage: >-
+    Hey!
+
+
+    {creator} ({creatorEmail}) shared some files with you, view or download the
+    files with this link: {shareUrl}
+
+
+    The share will expire {expires}.
+
+
+    Note: {desc}
+
+
+    Shared securely with Pingvin Share 🐧
+  #Subject of the sent email when someone created a share with your reverse share link.
+  reverseShareSubject: Reverse share link used
+  #Message which gets sent when someone created a share with your reverse share link. {shareUrl} will be replaced with the creator's name and the share URL.
+  reverseShareMessage: |-
+    Hey!
+
+    A share was just created with your reverse share link: {shareUrl}
+
+    Shared securely with Pingvin Share 🐧
+  #Subject of the sent email when a user requests a password reset.
+  resetPasswordSubject: Pingvin Share password reset
+  #Message which gets sent when a user requests a password reset. {url} will be replaced with the reset password URL.
+  resetPasswordMessage: >-
+    Hey!
+
+
+    You requested a password reset. Click this link to reset your password:
+    {url}
+
+    The link expires in a hour.
+
+
+    Pingvin Share 🐧
+  #Subject of the sent email when an admin invites a user.
+  inviteSubject: Pingvin Share invite
+  #Message which gets sent when an admin invites a user. {url} will be replaced with the invite URL, {email} with the email and {password} with the users password.
+  inviteMessage: >-
+    Hey!
+
+
+    You were invited to Pingvin Share. Click this link to accept the invite:
+    {url}
+
+
+    You can use the email "{email}" and the password "{password}" to sign in.
+
+
+    Pingvin Share 🐧
+smtp:
+  #Whether SMTP is enabled. Only set this to true if you entered the host, port, email, user and password of your SMTP server.
+  enabled: "false"
+  #Only set this to true if you need to trust self signed certificates.
+  allowUnauthorizedCertificates: "false"
+  #Host of the SMTP server
+  host: ""
+  #Port of the SMTP server
+  port: "0"
+  #Email address from wich the emails get sent
+  email: ""
+  #Username of the SMTP server
+  username: ""
+  #Password of the SMTP server
+  password: ""
+ldap:
+  #Use LDAP authentication for user login
+  enabled: "false"
+  #URL of the LDAP server
+  url: ""
+  #Default user used to perform the user search
+  bindDn: ""
+  #Password used to perform the user search
+  bindPassword: ""
+  #Base location, where the user search will be performed
+  searchBase: ""
+  #The user query will be used to search the 'User base' for the LDAP user. %username% can be used as the placeholder for the user given input.
+  searchQuery: ""
+  #Group required for administrative access.
+  adminGroups: ""
+  #LDAP attribute name for the groups, an user is a member of. This is used when checking for the admin group.
+  fieldNameMemberOf: memberOf
+  #LDAP attribute name for the email of an user.
+  fieldNameEmail: userPrincipalName
+oauth:
+  #Allow users to register via social login
+  allowRegistration: "true"
+  #Whether to ignore TOTP when user using social login
+  ignoreTotp: "true"
+  #Whether to disable password login
+  #Make sure that an OAuth provider is properly configured before activating this configuration to avoid being locked out.
+  disablePassword: "false"
+  #Whether GitHub login is enabled
+  github-enabled: "false"
+  #Client ID of the GitHub OAuth app
+  github-clientId: ""
+  #Client secret of the GitHub OAuth app
+  github-clientSecret: ""
+  #Whether Google login is enabled
+  google-enabled: "false"
+  #Client ID of the Google OAuth app
+  google-clientId: ""
+  #Client secret of the Google OAuth app
+  google-clientSecret: ""
+  #Whether Microsoft login is enabled
+  microsoft-enabled: "false"
+  #Tenant ID of the Microsoft OAuth app
+  #common: Users with both a personal Microsoft account and a work or school account from Microsoft Entra ID can sign in to the application. organizations: Only users with work or school accounts from Microsoft Entra ID can sign in to the application.
+  #consumers: Only users with a personal Microsoft account can sign in to the application.
+  #domain name of the Microsoft Entra tenant or the tenant ID in GUID format: Only users from a specific Microsoft Entra tenant (directory members with a work or school account or directory guests with a personal Microsoft account) can sign in to the application.
+  microsoft-tenant: common
+  #Client ID of the Microsoft OAuth app
+  microsoft-clientId: ""
+  #Client secret of the Microsoft OAuth app
+  microsoft-clientSecret: ""
+  #Whether Discord login is enabled
+  discord-enabled: "false"
+  #Limit signing in to users in a specific server. Leave it blank to disable.
+  discord-limitedGuild: ""
+  #Limit signing in to specific users by their Discord ID. Leave it blank to disable.
+  discord-limitedUsers: ""
+  #Client ID of the Discord OAuth app
+  discord-clientId: ""
+  #Client secret of the Discord OAuth app
+  discord-clientSecret: ""
+  #Whether OpenID Connect login is enabled
+  oidc-enabled: "false"
+  #Discovery URI of the OpenID Connect OAuth app
+  oidc-discoveryUri: ""
+  #Whether the “Sign out” button will sign out from the OpenID Connect provider
+  oidc-signOut: "false"
+  #Scopes which should be requested from the OpenID Connect provider.
+  oidc-scope: openid email profile
+  #Username claim in OpenID Connect ID token. Leave it blank if you don't know what this config is.
+  oidc-usernameClaim: ""
+  #Must be a valid JMES path referencing an array of roles. Managing access rights using OpenID Connect roles is only recommended if no other identity provider is configured and password login is disabled. Leave it blank if you don't know what this config is.
+  oidc-rolePath: ""
+  #Role required for general access. Must be present in a user’s roles for them to log in. Leave it blank if you don't know what this config is.
+  oidc-roleGeneralAccess: ""
+  #Role required for administrative access. Must be present in a user’s roles for them to access the admin panel. Leave it blank if you don't know what this config is.
+  oidc-roleAdminAccess: ""
+  #Client ID of the OpenID Connect OAuth app
+  oidc-clientId: ""
+  #Client secret of the OpenID Connect OAuth app
+  oidc-clientSecret: ""
+s3:
+  #Whether S3 should be used to store the shared files instead of the local file system.
+  enabled: "false"
+  #The URL of the S3 bucket.
+  endpoint: ""
+  #The region of the S3 bucket.
+  region: ""
+  #The name of the S3 bucket.
+  bucketName: ""
+  #The default path which should be used to store the files in the S3 bucket.
+  bucketPath: ""
+  #The key which allows you to access the S3 bucket.
+  key: ""
+  #The secret which allows you to access the S3 bucket.
+  secret: ""
+legal:
+  #Whether to show a link to imprint and privacy policy in the footer.
+  enabled: "false"
+  #The text which should be shown in the imprint. Supports Markdown. Leave blank to link to an external imprint page.
+  imprintText: ""
+  #If you already have an imprint page you can link it here instead of using the text field.
+  imprintUrl: ""
+  #The text which should be shown in the privacy policy. Supports Markdown. Leave blank to link to an external privacy policy page.
+  privacyPolicyText: ""
+  #If you already have a privacy policy page you can link it here instead of using the text field.
+  privacyPolicyUrl: ""
+#This configuration is used to create the initial user when the application is started for the first time.
+#Make sure to change at least the password as soon as you log in!
+initUser:
+  enabled: false
+  username: admin
+  email: admin@example.com
+  password: my-secure-password
+  isAdmin: true
+  ldapDN: ""

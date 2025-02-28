@@ -16,6 +16,7 @@ export type AdminConfig = Config & {
   secret: boolean;
   description: string;
   obscured: boolean;
+  allowEdit: boolean;
 };
 
 export type AdminConfigGroupedByCategory = {

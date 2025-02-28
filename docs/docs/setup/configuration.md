@@ -4,27 +4,21 @@ id: configuration
 
 # Configuration
 
-You can customize Pingvin Share by going to the configuration page in your admin dashboard `/admin/config`.
+## General configuration
 
-## General
+There are plenty of settings you can adjust to your needs. Pingvin Share can be configured in two ways:
 
-The **General** Tab will let you customize your Pingvin Share instance to your liking.
+### UI
 
-### App name
+You can change the settings in the UI (`/admin/config`)
 
-To change the name of your instance, insert any text into `App name`.
+### YAML file
 
-### App URL
+You can set the configuration via a YAML file. If you choose this way, you won't be able to change the settings in the UI.
 
-To make your App available trough your own **domain**, insert your specific domain and also subdomain if needed. Add an `https://` if you have an SSL certificate installed. If this is not the case, use `http://`.
+If you use Docker you can create a `config.yml` file based on the [`config.example.yaml`](https://github.com/stonith404/pingvin-share/blob/main/config.yaml) and mount it to `/opt/app/config.yaml` in the container.
 
-### Show home page
-
-If you don't like the **home page** Pingvin Share provides and you just want the upload tab to be the main page, toggle this to `true`.
-
-### Logo
-
-Not only you can change your instances name, but also the logo it shows everywhere. To do that, upload an image as `png` with a 1:1 aspect ratio.
+If you run Pingvin Share without Docker, you can create a `config.yml` file based on the [`config.example.yaml`](https://github.com/stonith404/pingvin-share/blob/main/config.yaml) in the root directory of the project.
 
 ---
 
@@ -50,9 +44,10 @@ For installation specific configuration, you can use environment variables. The 
 | `API_URL` | `http://localhost:8080` | The URL of the backend for the frontend. |
 
 #### Docker specific
+
 Environment variables that are only available when running Pingvin Share with Docker.
 
-| Variable      | Default Value | Description                                                                                                 |
-| ------------- | ------------- | ----------------------------------------------------------------------------------------------------------- |
-| `TRUST_PROXY` | `false`       | Whether Pingvin Share is behind a reverse proxy. If set to `true`, the `X-Forwarded-For` header is trusted. |
-| `PUID` and `PGID` | `1000`       |  The user and group ID of the user who should run Pingvin Share inside the Docker container and owns the files that are mounted with the volume. You can get the `PUID` and `GUID` of your user on your host machine by using the command `id`. For more information see [this article](https://docs.linuxserver.io/general/understanding-puid-and-pgid/#using-the-variables). |
+| Variable          | Default Value | Description                                                                                                                                                                                                                                                                                                                                                                   |
+| ----------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `TRUST_PROXY`     | `false`       | Whether Pingvin Share is behind a reverse proxy. If set to `true`, the `X-Forwarded-For` header is trusted.                                                                                                                                                                                                                                                                   |
+| `PUID` and `PGID` | `1000`        | The user and group ID of the user who should run Pingvin Share inside the Docker container and owns the files that are mounted with the volume. You can get the `PUID` and `GUID` of your user on your host machine by using the command `id`. For more information see [this article](https://docs.linuxserver.io/general/understanding-puid-and-pgid/#using-the-variables). |

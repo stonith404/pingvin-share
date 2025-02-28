@@ -302,6 +302,8 @@ export default {
   "privacy.title": "Datenschutzerklärung",
   // END /privacy
   // /admin/config
+  "admin.config.config-file-warning.title": "Konfigurationsdatei aktiv",
+  "admin.config.config-file-warning.description": "Da Pingvin Share mit einer Konfigurationsdatei konfiguriert ist, kann die Konfiguration nicht über die Benutzeroberfläche geändert werden.",
   "admin.config.title": "Einstellungen",
   "admin.config.category.general": "Allgemein",
   "admin.config.category.share": "Freigabe",

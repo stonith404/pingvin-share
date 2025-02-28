@@ -9,6 +9,7 @@ services:
     volumes:
       - "./data:/opt/app/backend/data"
       - "./data/images:/opt/app/frontend/public/img"
+  #      - "./config.yaml:/opt/app/config.yaml" # Add this line, if you want to configure pingvin-share via config file and not via UI
 
   # To add ClamAV, to scan your shares for malicious files, 
   # see https://stonith404.github.io/pingvin-share/setup/integrations/#clamav-docker-only
