@@ -302,8 +302,8 @@ export default {
   "privacy.title": "隐私政策",
   // END /privacy
   // /admin/config
-  "admin.config.config-file-warning.title": "Configuration file present",
-  "admin.config.config-file-warning.description": "As you have a configured Pingvin Share with a configuration file, you can't change the configuration through the UI.",
+  "admin.config.config-file-warning.title": "配置文件已存在",
+  "admin.config.config-file-warning.description": "由于您已配置了Pingvin 共享的配置文件，您无法通过UI更改配置。",
   "admin.config.title": "配置管理",
   "admin.config.category.general": "通用",
   "admin.config.category.share": "共享",
@@ -319,7 +319,7 @@ export default {
   "admin.config.general.show-home-page": "显示首页",
   "admin.config.general.show-home-page.description": "是否显示首页",
   "admin.config.general.session-duration": "会话时长",
-  "admin.config.general.session-duration.description": "Time after which a user must log in again (default: 3 months).",
+  "admin.config.general.session-duration.description": "用户必须重新登录的时间 (默认：3 个月)。",
   "admin.config.general.logo": "Logo",
   "admin.config.general.logo.description": "上传你的个性化 Logo，图片必须是长宽比 1:1 的 PNG 格式",
   "admin.config.general.logo.placeholder": "选择图片",
@@ -435,7 +435,7 @@ export default {
   "admin.config.ldap.url.description": "LDAP 服务器的 URL",
   "admin.config.ldap.bind-dn": "Bind DN",
   "admin.config.ldap.bind-dn.description": "用于执行用户搜索的默认用户",
-  "admin.config.ldap.bind-password": "Bind password",
+  "admin.config.ldap.bind-password": "绑定密码",
   "admin.config.ldap.bind-password.description": "用于执行用户搜索的密码",
   "admin.config.ldap.search-base": "User base",
   "admin.config.ldap.search-base.description": "进行用户搜索的基本位置",
