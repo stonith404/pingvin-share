@@ -364,7 +364,7 @@ export default {
   "admin.config.smtp.port": "المنفذ",
   "admin.config.smtp.port.description": "منفذ خادم الـSMTP",
   "admin.config.smtp.email": "البريد الإلكتروني",
-  "admin.config.smtp.email.description": "Email address from wich the emails get sent",
+  "admin.config.smtp.email.description": "Email address from which the emails get sent",
   "admin.config.smtp.username": "اسم المستخدم",
   "admin.config.smtp.username.description": "اسم المستخدم لخادم الـSMTP",
   "admin.config.smtp.password": "كلمة السر",
