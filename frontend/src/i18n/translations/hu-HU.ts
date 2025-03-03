@@ -364,7 +364,7 @@ export default {
   "admin.config.smtp.port": "Port",
   "admin.config.smtp.port.description": "Az SMTP kiszolgáló portja",
   "admin.config.smtp.email": "Email",
-  "admin.config.smtp.email.description": "Email address from wich the emails get sent",
+  "admin.config.smtp.email.description": "Email address from which the emails get sent",
   "admin.config.smtp.username": "Felhasználónév",
   "admin.config.smtp.username.description": "Felhasználónév az SMTP kiszolgálón",
   "admin.config.smtp.password": "Jelszó",
