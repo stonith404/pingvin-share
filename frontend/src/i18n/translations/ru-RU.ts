@@ -364,7 +364,7 @@ export default {
   "admin.config.smtp.port": "Порт",
   "admin.config.smtp.port.description": "Порт SMTP сервера",
   "admin.config.smtp.email": "Электронная почта",
-  "admin.config.smtp.email.description": "Email address from wich the emails get sent",
+  "admin.config.smtp.email.description": "Email address from which the emails get sent",
   "admin.config.smtp.username": "Логин",
   "admin.config.smtp.username.description": "Имя пользователя SMTP сервера",
   "admin.config.smtp.password": "Пароль",
