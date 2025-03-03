@@ -364,7 +364,7 @@ export default {
   "admin.config.smtp.port": "端口",
   "admin.config.smtp.port.description": "SMTP 主机端口",
   "admin.config.smtp.email": "发送邮箱",
-  "admin.config.smtp.email.description": "Email address from wich the emails get sent",
+  "admin.config.smtp.email.description": "Email address from which the emails get sent",
   "admin.config.smtp.username": "用户名",
   "admin.config.smtp.username.description": "SMTP 主机用户名",
   "admin.config.smtp.password": "密码",
