@@ -364,7 +364,7 @@ export default {
   "admin.config.smtp.port": "Port",
   "admin.config.smtp.port.description": "SMTP sunucusunun portu",
   "admin.config.smtp.email": "E-posta",
-  "admin.config.smtp.email.description": "E-postaların gönderileceği e-posta adresi",
+  "admin.config.smtp.email.description": "Email address from which the emails get sent",
   "admin.config.smtp.username": "Kullanıcı adı",
   "admin.config.smtp.username.description": "SMTP sunucusunun kullanıcı adı",
   "admin.config.smtp.password": "Şifre",
