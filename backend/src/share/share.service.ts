@@ -145,12 +145,6 @@ export class ShareService {
         "You need at least on file in your share to complete it.",
       );
 
-    // Asynchronously create a zip of all files
-    if (share.files.length > 1)
-      this.createZip(id).then(() =>
-        this.prisma.share.update({ where: { id }, data: { isZipReady: true } }),
-      );
-
     // Send email for each recipient
     for (const recipient of share.recipients) {
       await this.emailService.sendMailToShareRecipients(
@@ -198,7 +192,7 @@ export class ShareService {
   async revertComplete(id: string) {
     return this.prisma.share.update({
       where: { id },
-      data: { uploadLocked: false, isZipReady: false },
+      data: { uploadLocked: false },
     });
   }
 
