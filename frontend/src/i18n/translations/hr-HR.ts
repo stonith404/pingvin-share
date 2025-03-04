@@ -364,7 +364,7 @@ export default {
   "admin.config.smtp.port": "Port",
   "admin.config.smtp.port.description": "Port domaćina SMTP servera",
   "admin.config.smtp.email": "Email",
-  "admin.config.smtp.email.description": "Email adresa s koje se poruke šalju",
+  "admin.config.smtp.email.description": "Email address from which the emails get sent",
   "admin.config.smtp.username": "Korisničko ime",
   "admin.config.smtp.username.description": "Korisničko ime SMTP servera",
   "admin.config.smtp.password": "Lozinka",

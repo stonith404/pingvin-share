@@ -302,8 +302,8 @@ export default {
   "privacy.title": "Política de Privacidade",
   // END /privacy
   // /admin/config
-  "admin.config.config-file-warning.title": "Configuration file present",
-  "admin.config.config-file-warning.description": "As you have a configured Pingvin Share with a configuration file, you can't change the configuration through the UI.",
+  "admin.config.config-file-warning.title": "Arquivo de configuração presente",
+  "admin.config.config-file-warning.description": "Como você tem um Pingvin Share configurado com um arquivo de configuração, você não pode alterar a configuração através da UI.",
   "admin.config.title": "Configuração",
   "admin.config.category.general": "Geral",
   "admin.config.category.share": "Compartilhamento",
@@ -319,7 +319,7 @@ export default {
   "admin.config.general.show-home-page": "Mostrar a página inicial",
   "admin.config.general.show-home-page.description": "Mostrar ou não a página inicial",
   "admin.config.general.session-duration": "Duração de sessão",
-  "admin.config.general.session-duration.description": "Time after which a user must log in again (default: 3 months).",
+  "admin.config.general.session-duration.description": "Tempo após o qual um usuário deve iniciar a sessão novamente (padrão: 3 meses).",
   "admin.config.general.logo": "Logo",
   "admin.config.general.logo.description": "Alterar o seu logo carregando uma nova imagem. A imagem deve ser PNG e deve ter o formato 1:1.",
   "admin.config.general.logo.placeholder": "Escolhe uma imagem",
@@ -364,7 +364,7 @@ export default {
   "admin.config.smtp.port": "Porta",
   "admin.config.smtp.port.description": "Porta do Servidor SMTP",
   "admin.config.smtp.email": "E-mail",
-  "admin.config.smtp.email.description": "Endereço de e-mail do qual os e-mails são enviados",
+  "admin.config.smtp.email.description": "Email address from which the emails get sent",
   "admin.config.smtp.username": "Nome de usuário",
   "admin.config.smtp.username.description": "Nome de usuário do servidor SMTP",
   "admin.config.smtp.password": "Senha",

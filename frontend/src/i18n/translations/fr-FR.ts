@@ -364,7 +364,7 @@ export default {
   "admin.config.smtp.port": "Port",
   "admin.config.smtp.port.description": "Port du serveur SMTP",
   "admin.config.smtp.email": "Courriel",
-  "admin.config.smtp.email.description": "Adresse à partir de laquelle les courriels sont envoyés",
+  "admin.config.smtp.email.description": "Email address from which the emails get sent",
   "admin.config.smtp.username": "Nom d’utilisateur",
   "admin.config.smtp.username.description": "Nom d’utilisateur du serveur SMTP",
   "admin.config.smtp.password": "Mot de passe",

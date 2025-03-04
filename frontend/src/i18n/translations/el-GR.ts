@@ -364,7 +364,7 @@ export default {
   "admin.config.smtp.port": "Θύρα",
   "admin.config.smtp.port.description": "SMTP θύρα",
   "admin.config.smtp.email": "Email",
-  "admin.config.smtp.email.description": "Email address from wich the emails get sent",
+  "admin.config.smtp.email.description": "Email address from which the emails get sent",
   "admin.config.smtp.username": "Όνομα χρήστη",
   "admin.config.smtp.username.description": "Όνομα χρήστη στον SMTP εξυπηρετητή",
   "admin.config.smtp.password": "Κωδικός πρόσβασης",

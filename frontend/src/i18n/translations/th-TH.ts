@@ -364,7 +364,7 @@ export default {
   "admin.config.smtp.port": "พอร์ต",
   "admin.config.smtp.port.description": "พอร์ตของเซิร์ฟเวอร์ SMTP",
   "admin.config.smtp.email": "อีเมล",
-  "admin.config.smtp.email.description": "Email address from wich the emails get sent",
+  "admin.config.smtp.email.description": "Email address from which the emails get sent",
   "admin.config.smtp.username": "ชื่อผู้ใช้",
   "admin.config.smtp.username.description": "ชื่อผู้ใช้ของเซิร์ฟเวอร์ SMTP",
   "admin.config.smtp.password": "รหัสผ่าน",
