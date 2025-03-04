@@ -124,9 +124,9 @@ export default {
   "account.shares.table.expiresAt": "Istječe",
   "account.shares.table.createdAt": "Kreirano",
   "account.shares.table.size": "Veličina",
-  "account.shares.table.password-protected": "Password protected",
+  "account.shares.table.password-protected": "Zaštićeno lozinkom",
   "account.shares.table.visitor-count": "{count} of {max}",
-  "account.shares.table.expiry-never": "Never",
+  "account.shares.table.expiry-never": "Nikad",
   "account.shares.modal.share-informations": "Informacije o dijeljenju",
   "account.shares.modal.share-link": "Podijelite poveznicu",
   "account.shares.modal.delete.title": "Izbriši dijeljenje {share}",
@@ -278,7 +278,7 @@ export default {
   "share.error.access-denied.title": "Privatno dijeljenje",
   "share.error.access-denied.description": "Trenutni račun nema dozvolu za pristup ovom dijeljenju.",
   "share.modal.password.title": "Lozinka je potrebna",
-  "share.modal.password.description": "Please enter the password to access this share.",
+  "share.modal.password.description": "Molimo unesite lozinku za pristup ovom dijeljenju.",
   "share.modal.password": "Lozinka",
   "share.modal.error.invalid-password": "Neispravna lozinka",
   "share.button.download-all": "Preuzmi sve",
@@ -296,14 +296,14 @@ export default {
   "share.edit.notify.save-success": "Dijeljenje je uspješno ažurirano",
   // END /share/[id]/edit
   // /imprint
-  "imprint.title": "Imprint",
+  "imprint.title": "Utisak",
   // END /imprint
   // /privacy
-  "privacy.title": "Privacy Policy",
+  "privacy.title": "Pravilima o zaštiti privatnosti",
   // END /privacy
   // /admin/config
   "admin.config.config-file-warning.title": "Configuration file present",
-  "admin.config.config-file-warning.description": "As you have a configured Pingvin Share with a configuration file, you can't change the configuration through the UI.",
+  "admin.config.config-file-warning.description": "",
   "admin.config.title": "Konfiguracija",
   "admin.config.category.general": "Opće",
   "admin.config.category.share": "Dijeljenje",
