@@ -296,7 +296,7 @@ export default {
   "share.edit.notify.save-success": "Dijeljenje je uspješno ažurirano",
   // END /share/[id]/edit
   // /imprint
-  "imprint.title": "Utisak",
+  "imprint.title": "Otisak",
   // END /imprint
   // /privacy
   "privacy.title": "Pravilima o zaštiti privatnosti",
@@ -451,7 +451,7 @@ export default {
   "admin.config.notify.logo-success": "Logo je uspješno ažuriran. Može potrajati nekoliko minuta dok se promjena ne prikaže na web stranici.",
   "admin.config.notify.no-changes": "Nema promjena za spremanje.",
   "admin.config.category.s3": "S3",
-  "admin.config.s3.enabled": "Enabled",
+  "admin.config.s3.enabled": "Omogućeno",
   "admin.config.s3.enabled.description": "Whether S3 should be used to store the shared files instead of the local file system.",
   "admin.config.s3.endpoint": "Endpoint",
   "admin.config.s3.endpoint.description": "The URL of the S3 bucket.",
@@ -459,8 +459,8 @@ export default {
   "admin.config.s3.region.description": "The region of the S3 bucket.",
   "admin.config.s3.bucket-name": "Bucket name",
   "admin.config.s3.bucket-name.description": "The name of the S3 bucket.",
-  "admin.config.s3.bucket-path": "Path",
-  "admin.config.s3.bucket-path.description": "The default path which should be used to store the files in the S3 bucket.",
+  "admin.config.s3.bucket-path": "Putanja",
+  "admin.config.s3.bucket-path.description": "Zadana staza koja bi se trebala koristiti za pohranu datoteka u S3 spremnik.",
   "admin.config.s3.key": "Key",
   "admin.config.s3.key.description": "The key which allows you to access the S3 bucket.",
   "admin.config.s3.secret": "Secret",
