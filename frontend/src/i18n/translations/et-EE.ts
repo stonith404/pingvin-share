@@ -302,8 +302,8 @@ export default {
   "privacy.title": "Privaatsuspoliitika",
   // END /privacy
   // /admin/config
-  "admin.config.config-file-warning.title": "Configuration file present",
-  "admin.config.config-file-warning.description": "As you have a configured Pingvin Share with a configuration file, you can't change the configuration through the UI.",
+  "admin.config.config-file-warning.title": "Konfiguratsioonifail olemas",
+  "admin.config.config-file-warning.description": "Kuna teil on konfigureeritud Pingvin Share konfiguratsioonifailiga, ei saa te muuta konfiguratsiooni kasutajaliidest kasutades.",
   "admin.config.title": "Seaded",
   "admin.config.category.general": "Üldine",
   "admin.config.category.share": "Jagamine",
@@ -319,7 +319,7 @@ export default {
   "admin.config.general.show-home-page": "Kuva avaleht",
   "admin.config.general.show-home-page.description": "Kas kuvada avalehte",
   "admin.config.general.session-duration": "Seansi kestus",
-  "admin.config.general.session-duration.description": "Time after which a user must log in again (default: 3 months).",
+  "admin.config.general.session-duration.description": "Aeg, mille pärast kasutaja peab uuesti sisse logima (vaikeväärtus: 3 kuud).",
   "admin.config.general.logo": "Logo",
   "admin.config.general.logo.description": "Muuda oma logo laadides üles uus pilt. Pildi formaat peab olema PNG ja kuju 1:1.",
   "admin.config.general.logo.placeholder": "Vali pilt",
@@ -364,7 +364,7 @@ export default {
   "admin.config.smtp.port": "Port",
   "admin.config.smtp.port.description": "SMTP serveri port",
   "admin.config.smtp.email": "E-post",
-  "admin.config.smtp.email.description": "E-posti aadress kust kirjad saadetakse",
+  "admin.config.smtp.email.description": "E-posti aadress, millelt e-kirjad saadetakse",
   "admin.config.smtp.username": "Kasutajanimi",
   "admin.config.smtp.username.description": "SMTP serveri kasutajanimi",
   "admin.config.smtp.password": "Parool",

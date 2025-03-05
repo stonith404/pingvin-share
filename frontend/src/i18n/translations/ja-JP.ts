@@ -364,7 +364,7 @@ export default {
   "admin.config.smtp.port": "ポート番号",
   "admin.config.smtp.port.description": "SMTPサーバーのポート番号",
   "admin.config.smtp.email": "メールアドレス",
-  "admin.config.smtp.email.description": "メールの送信元となるメールアドレス",
+  "admin.config.smtp.email.description": "Email address from which the emails get sent",
   "admin.config.smtp.username": "ユーザー名",
   "admin.config.smtp.username.description": "SMTPサーバーのユーザー名",
   "admin.config.smtp.password": "パスワード",

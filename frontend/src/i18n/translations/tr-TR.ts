@@ -302,8 +302,8 @@ export default {
   "privacy.title": "Gizlilik Politikası",
   // END /privacy
   // /admin/config
-  "admin.config.config-file-warning.title": "Configuration file present",
-  "admin.config.config-file-warning.description": "As you have a configured Pingvin Share with a configuration file, you can't change the configuration through the UI.",
+  "admin.config.config-file-warning.title": "Yapılandırma dosyası mevcut",
+  "admin.config.config-file-warning.description": "Yapılandırma dosyası ile yapılandırılmış bir Pingvin Paylaşımınız olduğundan, yapılandırmayı kullanıcı arayüzü üzerinden değiştiremezsiniz.",
   "admin.config.title": "Yapılandırma",
   "admin.config.category.general": "Genel",
   "admin.config.category.share": "Paylaş",

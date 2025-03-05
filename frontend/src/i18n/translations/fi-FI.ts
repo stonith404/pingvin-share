@@ -364,7 +364,7 @@ export default {
   "admin.config.smtp.port": "Portti",
   "admin.config.smtp.port.description": "SMTP palvelimen portti",
   "admin.config.smtp.email": "Sähköposti",
-  "admin.config.smtp.email.description": "Email address from wich the emails get sent",
+  "admin.config.smtp.email.description": "Email address from which the emails get sent",
   "admin.config.smtp.username": "Käyttäjätunnus",
   "admin.config.smtp.username.description": "SMTP palvelimen käyttäjänimi",
   "admin.config.smtp.password": "Salasana",
