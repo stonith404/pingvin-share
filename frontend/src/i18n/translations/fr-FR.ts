@@ -302,8 +302,8 @@ export default {
   "privacy.title": "Politique de confidentialité",
   // END /privacy
   // /admin/config
-  "admin.config.config-file-warning.title": "Configuration file present",
-  "admin.config.config-file-warning.description": "As you have a configured Pingvin Share with a configuration file, you can't change the configuration through the UI.",
+  "admin.config.config-file-warning.title": "Fichier de configuration présent",
+  "admin.config.config-file-warning.description": "Puisque vous avez configuré Pingvin Share avec un fichier de configuration, vous ne pouvez pas modifier la configuration via l'interface utilisateur.",
   "admin.config.title": "Paramètres",
   "admin.config.category.general": "Général",
   "admin.config.category.share": "Partage",
@@ -364,7 +364,7 @@ export default {
   "admin.config.smtp.port": "Port",
   "admin.config.smtp.port.description": "Port du serveur SMTP",
   "admin.config.smtp.email": "Courriel",
-  "admin.config.smtp.email.description": "Email address from which the emails get sent",
+  "admin.config.smtp.email.description": "Adresse email à partir de laquelle les courriels sont envoyés",
   "admin.config.smtp.username": "Nom d’utilisateur",
   "admin.config.smtp.username.description": "Nom d’utilisateur du serveur SMTP",
   "admin.config.smtp.password": "Mot de passe",
