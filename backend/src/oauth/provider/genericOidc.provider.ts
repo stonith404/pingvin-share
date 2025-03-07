@@ -147,37 +147,32 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
 
     if (roleConfig?.path) {
       // A path to read roles from the token is configured
-      let roles: string[] | null;
+      let roles: string[] = [];
       try {
         roles = jmespath.search(idTokenData, roleConfig.path);
       } catch (e) {
-        roles = null;
-      }
-      if (Array.isArray(roles)) {
-        // Roles are found in the token
-        if (
-          roleConfig.generalAccess &&
-          !roles.includes(roleConfig.generalAccess)
-        ) {
-          // Role for general access is configured and the user does not have it
-          this.logger.error(
-            `User roles ${roles} do not include ${roleConfig.generalAccess}`,
-          );
-          throw new ErrorPageException("user_not_allowed");
-        }
-        if (roleConfig.adminAccess) {
-          // Role for admin access is configured
-          isAdmin = roles.includes(roleConfig.adminAccess);
-        }
-      } else {
-        this.logger.error(
+        this.logger.warn(
           `Roles not found at path ${roleConfig.path} in ID Token ${JSON.stringify(
             idTokenData,
             undefined,
             2,
           )}`,
         );
+      }
+
+      if (
+        roleConfig.generalAccess &&
+        !roles.includes(roleConfig.generalAccess)
+      ) {
+        // Role for general access is configured and the user does not have it
+        this.logger.error(
+          `User roles ${roles} do not include ${roleConfig.generalAccess}`,
+        );
         throw new ErrorPageException("user_not_allowed");
+      }
+      if (roleConfig.adminAccess) {
+        // Role for admin access is configured
+        isAdmin = roles.includes(roleConfig.adminAccess);
       }
     }
 
