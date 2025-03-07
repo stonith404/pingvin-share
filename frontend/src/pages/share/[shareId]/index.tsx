@@ -108,7 +108,7 @@ const Share = ({ shareId }: { shareId: string }) => {
           <Title order={3}>{share?.name || share?.id}</Title>
           <Text size="sm">{share?.description}</Text>
         </Box>
-        {share?.files.length > 1 && <DownloadAllButton shareId={shareId} />}
+        <DownloadAllButton shareId={shareId} />
       </Group>
 
       <FileList
