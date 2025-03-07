@@ -13,7 +13,7 @@
     "seed": "ts-node prisma/seed/config.seed.ts"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.679.0",
+    "@aws-sdk/client-s3": "^3.758.0",
     "@nestjs/cache-manager": "^2.2.2",
     "@nestjs/common": "^10.4.3",
     "@nestjs/config": "^3.2.3",
@@ -24,7 +24,7 @@
     "@nestjs/schedule": "^4.1.1",
     "@nestjs/swagger": "^7.4.2",
     "@nestjs/throttler": "^6.2.1",
-    "@prisma/client": "^5.19.1",
+    "@prisma/client": "^6.4.1",
     "@types/jmespath": "^0.15.2",
     "archiver": "^7.0.1",
     "argon2": "^0.41.1",
@@ -79,7 +79,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "newman": "^6.2.1",
     "prettier": "^3.3.3",
-    "prisma": "^5.19.1",
+    "prisma": "^6.4.1",
     "source-map-support": "^0.5.21",
     "ts-loader": "^9.5.1",
     "tsconfig-paths": "4.2.0",
