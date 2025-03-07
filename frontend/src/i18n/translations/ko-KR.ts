@@ -364,7 +364,7 @@ export default {
   "admin.config.smtp.port": "포트",
   "admin.config.smtp.port.description": "SMTP 서버 포트",
   "admin.config.smtp.email": "이메일",
-  "admin.config.smtp.email.description": "Email address from wich the emails get sent",
+  "admin.config.smtp.email.description": "Email address from which the emails get sent",
   "admin.config.smtp.username": "사용자 이름",
   "admin.config.smtp.username.description": "SMTP 사용자 이름, 서버 비밀번호",
   "admin.config.smtp.password": "비밀번호",

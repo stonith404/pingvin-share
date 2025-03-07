@@ -364,7 +364,7 @@ export default {
   "admin.config.smtp.port": "通訊埠",
   "admin.config.smtp.port.description": "SMTP 通訊埠",
   "admin.config.smtp.email": "發送郵箱",
-  "admin.config.smtp.email.description": "發送的郵箱地址",
+  "admin.config.smtp.email.description": "Email address from which the emails get sent",
   "admin.config.smtp.username": "使用者名稱",
   "admin.config.smtp.username.description": "SMTP 主機使用者名稱",
   "admin.config.smtp.password": "密碼",
