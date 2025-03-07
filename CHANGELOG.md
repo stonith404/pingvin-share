@@ -1,3 +1,10 @@
+## [1.10.2](https://github.com/stonith404/pingvin-share/compare/v1.10.1...v1.10.2) (2025-03-07)
+
+
+### Bug Fixes
+
+* don't throw error if group claim is missing ([e7b3c48](https://github.com/stonith404/pingvin-share/commit/e7b3c48ff48bd7cfb206c32ea97862b757057573))
+
 ## [1.10.1](https://github.com/stonith404/pingvin-share/compare/v1.10.0...v1.10.1) (2025-02-28)
 
 
