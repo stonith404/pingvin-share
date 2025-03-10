@@ -149,7 +149,10 @@ export abstract class GenericOidcProvider implements OAuthProvider<OidcToken> {
       // A path to read roles from the token is configured
       let roles: string[] = [];
       try {
-        roles = jmespath.search(idTokenData, roleConfig.path);
+        const rolesClaim = jmespath.search(idTokenData, roleConfig.path);
+        if (Array.isArray(rolesClaim)) {
+          roles = rolesClaim;
+        }
       } catch (e) {
         this.logger.warn(
           `Roles not found at path ${roleConfig.path} in ID Token ${JSON.stringify(
