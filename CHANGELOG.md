@@ -1,3 +1,10 @@
+## [1.10.3](https://github.com/stonith404/pingvin-share/compare/v1.10.2...v1.10.3) (2025-03-10)
+
+
+### Bug Fixes
+
+* error while signing in with OIDC if roles claim is undefined ([b737cba](https://github.com/stonith404/pingvin-share/commit/b737cba35e59255904eccae9e9de1cbd36284fb1))
+
 ## [1.10.2](https://github.com/stonith404/pingvin-share/compare/v1.10.1...v1.10.2) (2025-03-07)
 
 
