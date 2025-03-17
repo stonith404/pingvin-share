@@ -6,6 +6,7 @@ services:
       - 3000:3000
     environment:
       - TRUST_PROXY=false # Set to true if a reverse proxy is in front of the container
+      - CADDY_DISABLED=false # Set to true if you don't want to use Caddy as a reverse proxy
     volumes:
       - "./data:/opt/app/backend/data"
       - "./data/images:/opt/app/frontend/public/img"
