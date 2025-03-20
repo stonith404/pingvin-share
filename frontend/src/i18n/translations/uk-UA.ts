@@ -302,8 +302,8 @@ export default {
   "privacy.title": "Політика конфіденційності",
   // END /privacy
   // /admin/config
-  "admin.config.config-file-warning.title": "Configuration file present",
-  "admin.config.config-file-warning.description": "As you have a configured Pingvin Share with a configuration file, you can't change the configuration through the UI.",
+  "admin.config.config-file-warning.title": "Файл конфігурації присутній",
+  "admin.config.config-file-warning.description": "Оскільки у вас налаштовано Pingvin Share за допомогою конфігураційного файлу, ви не можете змінювати конфігурацію через інтерфейс користувача.",
   "admin.config.title": "Конфігурація",
   "admin.config.category.general": "Загальне",
   "admin.config.category.share": "Завантаження",
@@ -319,7 +319,7 @@ export default {
   "admin.config.general.show-home-page": "Показувати домашню сторінку",
   "admin.config.general.show-home-page.description": "Показувати домашню сторінку чи ні",
   "admin.config.general.session-duration": "Тривалість сеансу",
-  "admin.config.general.session-duration.description": "Time after which a user must log in again (default: 3 months).",
+  "admin.config.general.session-duration.description": "Час, після якого користувач повинен увійти в систему знову (за замовчуванням: 3 місяці).",
   "admin.config.general.logo": "Логотип",
   "admin.config.general.logo.description": "Змініть свій логотип, завантаживши нове зображення. Зображення має бути PNG і повинно мати формат 1:1.",
   "admin.config.general.logo.placeholder": "Виберіть зображення",
@@ -364,7 +364,7 @@ export default {
   "admin.config.smtp.port": "Порт",
   "admin.config.smtp.port.description": "Порт SMTP сервера",
   "admin.config.smtp.email": "Електронна пошта",
-  "admin.config.smtp.email.description": "Email address from which the emails get sent",
+  "admin.config.smtp.email.description": "Адреса ел. пошти, з якої надсилаються листи",
   "admin.config.smtp.username": "Логін",
   "admin.config.smtp.username.description": "Ім'я користувача SMTP-сервера",
   "admin.config.smtp.password": "Пароль",

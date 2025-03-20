@@ -357,7 +357,7 @@ export default {
   "admin.config.share.chunk-size.description": "Adjust the chunk size for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks make uploads faster for stable connections.",
   "admin.config.share.auto-open-share-modal": "Auto open create share modal",
   "admin.config.share.auto-open-share-modal.description": "The share creation modal automatically appears when a user selects files, eliminating the need to manually click the button.",
-  "admin.config.smtp.enabled": "Enable",
+  "admin.config.smtp.enabled": "",
   "admin.config.smtp.enabled.description": "Of SMTP is ingeschakeld. Stel dit alleen in op true als u de host hebt ingevoerd, poort, e-mail, gebruiker en wachtwoord van uw SMTP-server.",
   "admin.config.smtp.host": "Host",
   "admin.config.smtp.host.description": "Host van de SMTP-server",
