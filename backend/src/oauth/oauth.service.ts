@@ -197,12 +197,13 @@ export class OAuthService {
   }
 
   private async updateIsAdmin(userId: string, isAdmin?: boolean) {
+    if (!isAdmin) return;
     await this.prisma.user.update({
       where: {
         id: userId,
       },
       data: {
-        isAdmin: isAdmin === true,
+        isAdmin: isAdmin,
       },
     });
   }
