@@ -1,3 +1,10 @@
+## [1.10.4](https://github.com/stonith404/pingvin-share/compare/v1.10.3...v1.10.4) (2025-03-20)
+
+
+### Bug Fixes
+
+* admin role gets reset if signing in with an OIDC provider ([ccb7fdc](https://github.com/stonith404/pingvin-share/commit/ccb7fdca43a2d458243e56a24510fe5325fa7942))
+
 ## [1.10.3](https://github.com/stonith404/pingvin-share/compare/v1.10.2...v1.10.3) (2025-03-10)
 
 
