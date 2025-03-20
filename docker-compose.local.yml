@@ -6,6 +6,7 @@ services:
       - 3001:3000
     environment:
       - TRUST_PROXY=false
+      - CADDY_DISABLED=false
     volumes:
       - "./data:/opt/app/backend/data"
       - "./data/images:/opt/app/frontend/public/img"

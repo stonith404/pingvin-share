@@ -3,11 +3,16 @@
 # Copy default logo to the frontend public folder if it doesn't exist
 cp -rn /tmp/img/* /opt/app/frontend/public/img
 
-# Start Caddy
-if [ "$TRUST_PROXY" = "true" ]; then
-  caddy start --adapter caddyfile --config /opt/app/reverse-proxy/Caddyfile.trust-proxy &
+if [ "$CADDY_DISABLED" != "true" ]; then
+  # Start Caddy
+  echo "Starting Caddy..."
+  if [ "$TRUST_PROXY" = "true" ]; then
+    caddy start --adapter caddyfile --config /opt/app/reverse-proxy/Caddyfile.trust-proxy &
+  else
+    caddy start --adapter caddyfile --config /opt/app/reverse-proxy/Caddyfile &
+  fi
 else
-  caddy start --adapter caddyfile --config /opt/app/reverse-proxy/Caddyfile &
+  echo "Caddy is disabled. Skipping..."
 fi
 
 # Run the frontend server
