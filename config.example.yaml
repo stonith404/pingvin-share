@@ -159,6 +159,12 @@ oauth:
   microsoft-clientId: ""
   #Client secret of the Microsoft OAuth app
   microsoft-clientSecret: ""
+  #Username claim in Microsoft token. Leave it blank if you don’t know what this config is.
+  microsoft-usernameClaim: ""
+  #Role required for general access. Must be present in a user’s roles for them to log in. Leave it blank if you don't know what this config is.
+  microsoft-roleGeneralAccess: ""
+  #Role required for administrative access. Must be present in a user’s roles for them to access the admin panel. Leave it blank if you don't know what this config is.
+  microsoft-roleAdminAccess: ""
   #Whether Discord login is enabled
   discord-enabled: "false"
   #Limit signing in to users in a specific server. Leave it blank to disable.
