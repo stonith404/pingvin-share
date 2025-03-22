@@ -32,6 +32,32 @@ Please follow the [official guide](https://docs.microsoft.com/en-us/azure/active
 
 Redirect URL: `https://<your-domain>/api/oauth/callback/microsoft`
 
+#### Roles configuration
+
+Role can be added to EntraID applications to match role in the app in order to grant admin and/or general access.
+
+In EntraID, go to the app registration previously created do the following :
+
+- Go to "App roles"
+- "Create app role"
+- Enter a display name for the role
+- Tick "Users/Groups" in "Allow member types"
+- Enter a value (it is the actual value of the role)
+- Add a description
+- Enable the role
+
+Then go to Enterprise application :
+
+- Users and groups
+- "Add user/group"
+- Select the users you want to assign the role to
+- Select the role (if there are multiple roles)
+- Click on assign
+
+The token sent by EntraID will now return the "roles" field containing the value of the role linked to the user as value.
+
+You can now choose the wanted role for "General Access" and "Admin Access" (the value of the EntraID role) in the admin panel.
+
 ### Discord
 
 Create an application on [Discord Developer Portal](https://discord.com/developers/applications).
