@@ -46,7 +46,7 @@ const Dropzone = ({
   const t = useTranslate();
 
   const { classes } = useStyles();
-  const openRef = useRef<() => void>();
+  const openRef = useRef<() => void>(null);
   return (
     <div className={classes.wrapper}>
       <MantineDropzone
