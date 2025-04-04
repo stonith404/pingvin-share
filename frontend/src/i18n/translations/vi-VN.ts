@@ -465,6 +465,8 @@ export default {
   "admin.config.s3.key.description": "The key which allows you to access the S3 bucket.",
   "admin.config.s3.secret": "Secret",
   "admin.config.s3.secret.description": "The secret which allows you to access the S3 bucket.",
+  "admin.config.s3.use-checksum": "Use checksum",
+  "admin.config.s3.use-checksum.description": "Turn off for backends that do not support checksum (e.g. B2).",
   "admin.config.category.legal": "Legal",
   "admin.config.legal.enabled": "Enable legal notices",
   "admin.config.legal.enabled.description": "Whether to show a link to imprint and privacy policy in the footer.",
