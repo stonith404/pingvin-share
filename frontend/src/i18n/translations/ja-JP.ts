@@ -465,6 +465,8 @@ export default {
   "admin.config.s3.key.description": "S3バケットにアクセスするためのキー。",
   "admin.config.s3.secret": "秘密",
   "admin.config.s3.secret.description": "S3バケットにアクセスするための秘密。",
+  "admin.config.s3.use-checksum": "Use checksum",
+  "admin.config.s3.use-checksum.description": "Turn off for backends that do not support checksum (e.g. B2).",
   "admin.config.category.legal": "法的事項",
   "admin.config.legal.enabled": "法的通知を有効にする",
   "admin.config.legal.enabled.description": "フッターにインプリントとプライバシーポリシーへのリンクを表示するか。",
