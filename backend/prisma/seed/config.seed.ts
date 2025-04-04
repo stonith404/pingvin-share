@@ -349,6 +349,10 @@ export const configVariables = {
       defaultValue: "",
       obscured: true,
     },
+    useChecksum: {
+      type: "boolean",
+      defaultValue: "true",
+    },
   },
   legal: {
     enabled: {

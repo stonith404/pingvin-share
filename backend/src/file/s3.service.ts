@@ -275,6 +275,8 @@ export class S3FileService {
   }
 
   getS3Instance(): S3Client {
+    const checksumCalculation = this.config.get("s3.useChecksum") === true ? null : "WHEN_REQUIRED";
+
     return new S3Client({
       endpoint: this.config.get("s3.endpoint"),
       region: this.config.get("s3.region"),
@@ -283,6 +285,8 @@ export class S3FileService {
         secretAccessKey: this.config.get("s3.secret"),
       },
       forcePathStyle: true,
+      requestChecksumCalculation: checksumCalculation,
+      responseChecksumValidation: checksumCalculation,
     });
   }
 
