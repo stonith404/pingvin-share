@@ -1,3 +1,11 @@
+## [1.11.0](https://github.com/stonith404/pingvin-share/compare/v1.10.4...v1.11.0) (2025-04-05)
+
+
+### Features
+
+* add env variable to disable caddy ([#797](https://github.com/stonith404/pingvin-share/issues/797)) ([27fca64](https://github.com/stonith404/pingvin-share/commit/27fca64a69067eaa094d1559ca1fee4f064d89a7))
+* **s3:** allow disabling upload checksum ([#804](https://github.com/stonith404/pingvin-share/issues/804)) ([73a76a9](https://github.com/stonith404/pingvin-share/commit/73a76a9d5b9825a3dc396f49d76ddc5c303fce40))
+
 ## [1.10.4](https://github.com/stonith404/pingvin-share/compare/v1.10.3...v1.10.4) (2025-03-20)
 
 
