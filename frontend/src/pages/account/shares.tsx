@@ -1,5 +1,4 @@
 import {
-  ActionIcon,
   Box,
   Button,
   Center,
@@ -120,14 +119,20 @@ const MyShares = () => {
                   <td>
                     <Group position="right">
                       <Link href={`/share/${share.id}/edit`}>
-                        <ActionIcon color="orange" variant="light" size={25}>
-                          <TbEdit />
-                        </ActionIcon>
+                        <Button
+                          color="orange"
+                          variant="light"
+                          size="xs"
+                          leftIcon={<TbEdit />}
+                        >
+                          <FormattedMessage id="common.button.edit" />
+                        </Button>
                       </Link>
-                      <ActionIcon
+                      <Button
                         color="blue"
                         variant="light"
-                        size={25}
+                        size="xs"
+                        leftIcon={<TbInfoCircle />}
                         onClick={() => {
                           showShareInformationsModal(
                             modals,
@@ -136,12 +141,13 @@ const MyShares = () => {
                           );
                         }}
                       >
-                        <TbInfoCircle />
-                      </ActionIcon>
-                      <ActionIcon
+                        <FormattedMessage id="common.button.info" />
+                      </Button>
+                      <Button
                         color="victoria"
                         variant="light"
-                        size={25}
+                        size="xs"
+                        leftIcon={<TbLink />}
                         onClick={() => {
                           if (window.isSecureContext) {
                             clipboard.copy(
@@ -153,12 +159,13 @@ const MyShares = () => {
                           }
                         }}
                       >
-                        <TbLink />
-                      </ActionIcon>
-                      <ActionIcon
+                        <FormattedMessage id="common.button.copy" />
+                      </Button>
+                      <Button
                         color="red"
                         variant="light"
-                        size={25}
+                        size="xs"
+                        leftIcon={<TbTrash />}
                         onClick={() => {
                           modals.openConfirmModal({
                             title: t("account.shares.modal.delete.title", {
@@ -185,8 +192,8 @@ const MyShares = () => {
                           });
                         }}
                       >
-                        <TbTrash />
-                      </ActionIcon>
+                        <FormattedMessage id="common.button.delete" />
+                      </Button>
                     </Group>
                   </td>
                 </tr>

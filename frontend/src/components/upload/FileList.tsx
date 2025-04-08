@@ -1,4 +1,4 @@
-import { ActionIcon, Table } from "@mantine/core";
+import { Button, Table } from "@mantine/core";
 import { TbTrash } from "react-icons/tb";
 import { GrUndo } from "react-icons/gr";
 import { FileListItem } from "../../types/File.type";
@@ -35,27 +35,29 @@ const FileListRow = ({
         <td>{byteToHumanSizeString(+file.size)}</td>
         <td>
           {removable && (
-            <ActionIcon
+            <Button
               color="red"
               variant="light"
-              size={25}
+              size="xs"
+              leftIcon={<TbTrash />}
               onClick={onRemove}
             >
-              <TbTrash />
-            </ActionIcon>
+              <FormattedMessage id="common.button.delete" />
+            </Button>
           )}
           {uploading && (
             <UploadProgressIndicator progress={file.uploadingProgress} />
           )}
           {restorable && (
-            <ActionIcon
+            <Button
               color="primary"
               variant="light"
-              size={25}
+              size="xs"
+              leftIcon={<GrUndo />}
               onClick={onRestore}
             >
-              <GrUndo />
-            </ActionIcon>
+              <FormattedMessage id="common.button.undo" />
+            </Button>
           )}
         </td>
       </tr>

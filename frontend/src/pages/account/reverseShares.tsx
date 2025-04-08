@@ -151,25 +151,37 @@ const MyShares = () => {
                                     {share.id}
                                   </Text>
                                 </Anchor>
-                                <ActionIcon
-                                  color="victoria"
-                                  variant="light"
-                                  size={25}
-                                  onClick={() => {
-                                    if (window.isSecureContext) {
-                                      clipboard.copy(
-                                        `${window.location.origin}/s/${share.id}`,
-                                      );
-                                      toast.success(
-                                        t("common.notify.copied-link"),
-                                      );
-                                    } else {
-                                      showShareLinkModal(modals, share.id);
-                                    }
+                                <Tooltip
+                                  position="bottom"
+                                  multiline
+                                  width={80}
+                                  label={t("common.button.copy-link")}
+                                  events={{
+                                    hover: true,
+                                    focus: false,
+                                    touch: true,
                                   }}
                                 >
-                                  <TbLink />
-                                </ActionIcon>
+                                  <ActionIcon
+                                    color="victoria"
+                                    variant="light"
+                                    size={25}
+                                    onClick={() => {
+                                      if (window.isSecureContext) {
+                                        clipboard.copy(
+                                          `${window.location.origin}/s/${share.id}`,
+                                        );
+                                        toast.success(
+                                          t("common.notify.copied-link"),
+                                        );
+                                      } else {
+                                        showShareLinkModal(modals, share.id);
+                                      }
+                                    }}
+                                  >
+                                    <TbLink />
+                                  </ActionIcon>
+                                </Tooltip>
                               </Group>
                             ))}
                           </Accordion.Panel>
@@ -188,10 +200,11 @@ const MyShares = () => {
                   </td>
                   <td>
                     <Group position="right">
-                      <ActionIcon
+                      <Button
                         color="victoria"
                         variant="light"
-                        size={25}
+                        size="xs"
+                        leftIcon={<TbLink />}
                         onClick={() => {
                           if (window.isSecureContext) {
                             clipboard.copy(
@@ -208,12 +221,13 @@ const MyShares = () => {
                           }
                         }}
                       >
-                        <TbLink />
-                      </ActionIcon>
-                      <ActionIcon
+                        <FormattedMessage id="common.button.copy" />
+                      </Button>
+                      <Button
                         color="red"
                         variant="light"
-                        size={25}
+                        size="xs"
+                        leftIcon={<TbTrash />}
                         onClick={() => {
                           modals.openConfirmModal({
                             title: t(
@@ -242,8 +256,8 @@ const MyShares = () => {
                           });
                         }}
                       >
-                        <TbTrash />
-                      </ActionIcon>
+                        <FormattedMessage id="common.button.delete" />
+                      </Button>
                     </Group>
                   </td>
                 </tr>

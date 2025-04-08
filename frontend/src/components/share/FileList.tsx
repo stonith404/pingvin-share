@@ -1,6 +1,6 @@
 import {
-  ActionIcon,
   Box,
+  Button,
   Group,
   Skeleton,
   Stack,
@@ -116,31 +116,34 @@ const FileList = ({
                   <td>
                     <Group position="right">
                       {shareService.doesFileSupportPreview(file.name) && (
-                        <ActionIcon
+                        <Button
+                          size="xs"
+                          leftIcon={<TbEye />}
                           onClick={() =>
                             showFilePreviewModal(share.id, file, modals)
                           }
-                          size={25}
                         >
-                          <TbEye />
-                        </ActionIcon>
+                          <FormattedMessage id="common.button.preview" />
+                        </Button>
                       )}
                       {!share.hasPassword && (
-                        <ActionIcon
-                          size={25}
+                        <Button
+                          size="xs"
+                          leftIcon={<TbLink />}
                           onClick={() => copyFileLink(file)}
                         >
-                          <TbLink />
-                        </ActionIcon>
+                          <FormattedMessage id="common.button.copy" />
+                        </Button>
                       )}
-                      <ActionIcon
-                        size={25}
+                      <Button
+                        size="xs"
+                        leftIcon={<TbDownload />}
                         onClick={async () => {
                           await shareService.downloadFile(share.id, file.id);
                         }}
                       >
-                        <TbDownload />
-                      </ActionIcon>
+                        <FormattedMessage id="common.button.download" />
+                      </Button>
                     </Group>
                   </td>
                 </tr>
