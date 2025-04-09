@@ -13,7 +13,7 @@ const ActionAvatar = () => {
       <Menu.Target>
         <Button
           variant="default"
-          size="sm"
+          size="xs"
           leftIcon={<TbUserCircle size={18} />}
         >
           <FormattedMessage id="common.button.profile" />

@@ -7,7 +7,7 @@ const NavbarShareMneu = () => {
   return (
     <Menu position="bottom-start" withinPortal>
       <Menu.Target>
-        <Button variant="default" size="sm" leftIcon={<TbLink size={18} />}>
+        <Button variant="default" size="xs" leftIcon={<TbLink size={18} />}>
           <FormattedMessage id="common.button.shares" />
         </Button>
       </Menu.Target>
