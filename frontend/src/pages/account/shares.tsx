@@ -9,6 +9,7 @@ import {
   Table,
   Text,
   Title,
+  Tooltip,
 } from "@mantine/core";
 import { useClipboard } from "@mantine/hooks";
 import { useModals } from "@mantine/modals";
@@ -120,73 +121,121 @@ const MyShares = () => {
                   <td>
                     <Group position="right">
                       <Link href={`/share/${share.id}/edit`}>
-                        <ActionIcon color="orange" variant="light" size={25}>
-                          <TbEdit />
-                        </ActionIcon>
+                        <Tooltip
+                          position="bottom"
+                          multiline
+                          width={45}
+                          label={t("common.button.edit")}
+                          events={{
+                            hover: true,
+                            focus: false,
+                            touch: true,
+                          }}
+                        >
+                          <ActionIcon color="orange" variant="light" size={25}>
+                            <TbEdit />
+                          </ActionIcon>
+                        </Tooltip>
                       </Link>
-                      <ActionIcon
-                        color="blue"
-                        variant="light"
-                        size={25}
-                        onClick={() => {
-                          showShareInformationsModal(
-                            modals,
-                            share,
-                            parseInt(config.get("share.maxSize")),
-                          );
+                      <Tooltip
+                        position="bottom"
+                        multiline
+                        width={45}
+                        label={t("common.button.info")}
+                        events={{
+                          hover: true,
+                          focus: false,
+                          touch: true,
                         }}
                       >
-                        <TbInfoCircle />
-                      </ActionIcon>
-                      <ActionIcon
-                        color="victoria"
-                        variant="light"
-                        size={25}
-                        onClick={() => {
-                          if (window.isSecureContext) {
-                            clipboard.copy(
-                              `${window.location.origin}/s/${share.id}`,
+                        <ActionIcon
+                          color="blue"
+                          variant="light"
+                          size={25}
+                          onClick={() => {
+                            showShareInformationsModal(
+                              modals,
+                              share,
+                              parseInt(config.get("share.maxSize")),
                             );
-                            toast.success(t("common.notify.copied-link"));
-                          } else {
-                            showShareLinkModal(modals, share.id);
-                          }
+                          }}
+                        >
+                          <TbInfoCircle />
+                        </ActionIcon>
+                      </Tooltip>
+                      <Tooltip
+                        position="bottom"
+                        multiline
+                        width={80}
+                        label={t("common.button.copy-link")}
+                        events={{
+                          hover: true,
+                          focus: false,
+                          touch: true,
                         }}
                       >
-                        <TbLink />
-                      </ActionIcon>
-                      <ActionIcon
-                        color="red"
-                        variant="light"
-                        size={25}
-                        onClick={() => {
-                          modals.openConfirmModal({
-                            title: t("account.shares.modal.delete.title", {
-                              share: share.id,
-                            }),
-                            children: (
-                              <Text size="sm">
-                                <FormattedMessage id="account.shares.modal.delete.description" />
-                              </Text>
-                            ),
-                            confirmProps: {
-                              color: "red",
-                            },
-                            labels: {
-                              confirm: t("common.button.delete"),
-                              cancel: t("common.button.cancel"),
-                            },
-                            onConfirm: () => {
-                              shareService.remove(share.id);
-                              setShares(
-                                shares.filter((item) => item.id !== share.id),
+                        <ActionIcon
+                          color="victoria"
+                          variant="light"
+                          size={25}
+                          onClick={() => {
+                            if (window.isSecureContext) {
+                              clipboard.copy(
+                                `${window.location.origin}/s/${share.id}`,
                               );
-                            },
-                          });
+                              toast.success(t("common.notify.copied-link"));
+                            } else {
+                              showShareLinkModal(modals, share.id);
+                            }
+                          }}
+                        >
+                          <TbLink />
+                        </ActionIcon>
+                      </Tooltip>
+                      <Tooltip
+                        position="bottom"
+                        multiline
+                        width={60}
+                        label={t("common.button.delete")}
+                        events={{
+                          hover: true,
+                          focus: false,
+                          touch: true,
                         }}
                       >
-                        <TbTrash />
-                      </ActionIcon>
+                        <ActionIcon
+                          color="red"
+                          variant="light"
+                          size={25}
+                          onClick={() => {
+                            modals.openConfirmModal({
+                              title: t("account.shares.modal.delete.title", {
+                                share: share.id,
+                              }),
+                              children: (
+                                <Text size="sm">
+                                  <FormattedMessage id="account.shares.modal.delete.description" />
+                                </Text>
+                              ),
+                              confirmProps: {
+                                color: "red",
+                              },
+                              labels: {
+                                confirm: t("common.button.delete"),
+                                cancel: t("common.button.cancel"),
+                              },
+                              onConfirm: () => {
+                                shareService.remove(share.id);
+                                setShares(
+                                  shares.filter((item) => item.id !== share.id),
+                                );
+                              },
+                            });
+                          }}
+                        >
+                          <TbTrash />
+                        </ActionIcon>
+                      </Tooltip>
                     </Group>
                   </td>
                 </tr>
