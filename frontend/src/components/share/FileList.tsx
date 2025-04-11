@@ -125,6 +125,8 @@ const FileList = ({
                           events={{ hover: true, focus: false, touch: true }}
                         >
                           <ActionIcon
+                            color="green"
+                            variant="light"
                             size={25}
                             onClick={() =>
                               showFilePreviewModal(share.id, file, modals)
@@ -143,6 +145,8 @@ const FileList = ({
                           events={{ hover: true, focus: false, touch: true }}
                         >
                           <ActionIcon
+                            color="victoria"
+                            variant="light"
                             size={25}
                             onClick={() => copyFileLink(file)}
                           >
@@ -158,6 +162,8 @@ const FileList = ({
                         events={{ hover: true, focus: false, touch: true }}
                       >
                         <ActionIcon
+                          color="blue"
+                          variant="light"
                           size={25}
                           onClick={async () => {
                             await shareService.downloadFile(share.id, file.id);
