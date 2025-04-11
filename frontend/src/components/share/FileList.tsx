@@ -1,11 +1,12 @@
 import {
+  ActionIcon,
   Box,
-  Button,
   Group,
   Skeleton,
   Stack,
   Table,
   TextInput,
+  Tooltip,
 } from "@mantine/core";
 import { useClipboard } from "@mantine/hooks";
 import { useModals } from "@mantine/modals";
@@ -116,34 +117,50 @@ const FileList = ({
                   <td>
                     <Group position="right">
                       {shareService.doesFileSupportPreview(file.name) && (
-                        <Button
-                          size="xs"
-                          leftIcon={<TbEye />}
-                          onClick={() =>
-                            showFilePreviewModal(share.id, file, modals)
-                          }
+                        <Tooltip
+                          position="bottom"
+                          multiline
+                          width={70}
+                          label={t("common.button.preview")}
+                          events={{ hover: true, focus: false, touch: true }}
                         >
-                          <FormattedMessage id="common.button.preview" />
-                        </Button>
+                          <ActionIcon
+                            onClick={() =>
+                              showFilePreviewModal(share.id, file, modals)
+                            }
+                          >
+                            <TbEye />
+                          </ActionIcon>
+                        </Tooltip>
                       )}
                       {!share.hasPassword && (
-                        <Button
-                          size="xs"
-                          leftIcon={<TbLink />}
-                          onClick={() => copyFileLink(file)}
+                        <Tooltip
+                          position="bottom"
+                          multiline
+                          width={80}
+                          label={t("common.button.copy-link")}
+                          events={{ hover: true, focus: false, touch: true }}
                         >
-                          <FormattedMessage id="common.button.copy" />
-                        </Button>
+                          <ActionIcon onClick={() => copyFileLink(file)}>
+                            <TbLink />
+                          </ActionIcon>
+                        </Tooltip>
                       )}
-                      <Button
-                        size="xs"
-                        leftIcon={<TbDownload />}
-                        onClick={async () => {
-                          await shareService.downloadFile(share.id, file.id);
-                        }}
+                      <Tooltip
+                        position="bottom"
+                        multiline
+                        width={85}
+                        label={t("common.button.download")}
+                        events={{ hover: true, focus: false, touch: true }}
                       >
-                        <FormattedMessage id="common.button.download" />
-                      </Button>
+                        <ActionIcon
+                          onClick={async () => {
+                            await shareService.downloadFile(share.id, file.id);
+                          }}
+                        >
+                          <TbDownload />
+                        </ActionIcon>
+                      </Tooltip>
                     </Group>
                   </td>
                 </tr>

@@ -1,10 +1,11 @@
-import { Button, Table } from "@mantine/core";
+import { ActionIcon, Table, Tooltip } from "@mantine/core";
 import { TbTrash } from "react-icons/tb";
 import { GrUndo } from "react-icons/gr";
 import { FileListItem } from "../../types/File.type";
 import { byteToHumanSizeString } from "../../utils/fileSize.util";
 import UploadProgressIndicator from "./UploadProgressIndicator";
 import { FormattedMessage } from "react-intl";
+import useTranslate from "../../hooks/useTranslate.hook";
 
 const FileListRow = ({
   file,
@@ -23,7 +24,7 @@ const FileListRow = ({
       : onRemove && !file.deleted;
     const restorable = onRestore && !uploadable && !!file.deleted; // maybe undefined, force boolean
     const deleted = !uploadable && !!file.deleted;
-
+    const t = useTranslate();
     return (
       <tr
         style={{
@@ -35,29 +36,43 @@ const FileListRow = ({
         <td>{byteToHumanSizeString(+file.size)}</td>
         <td>
           {removable && (
-            <Button
-              color="red"
-              variant="light"
-              size="xs"
-              leftIcon={<TbTrash />}
-              onClick={onRemove}
+            <Tooltip
+              position="bottom"
+              multiline
+              width={60}
+              label={t("common.button.delete")}
+              events={{ hover: true, focus: false, touch: true }}
             >
-              <FormattedMessage id="common.button.delete" />
-            </Button>
+              <ActionIcon
+                color="red"
+                variant="light"
+                size={25}
+                onClick={onRemove}
+              >
+                <TbTrash />
+              </ActionIcon>
+            </Tooltip>
           )}
           {uploading && (
             <UploadProgressIndicator progress={file.uploadingProgress} />
           )}
           {restorable && (
-            <Button
-              color="primary"
-              variant="light"
-              size="xs"
-              leftIcon={<GrUndo />}
-              onClick={onRestore}
+            <Tooltip
+              position="bottom"
+              multiline
+              width={60}
+              label={t("common.button.undo")}
+              events={{ hover: true, focus: false, touch: true }}
             >
-              <FormattedMessage id="common.button.undo" />
-            </Button>
+              <ActionIcon
+                color="red"
+                variant="light"
+                size={25}
+                onClick={onRestore}
+              >
+                <GrUndo />
+              </ActionIcon>
+            </Tooltip>
           )}
         </td>
       </tr>
