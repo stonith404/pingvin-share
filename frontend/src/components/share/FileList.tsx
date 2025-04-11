@@ -125,6 +125,7 @@ const FileList = ({
                           events={{ hover: true, focus: false, touch: true }}
                         >
                           <ActionIcon
+                            size={25}
                             onClick={() =>
                               showFilePreviewModal(share.id, file, modals)
                             }
@@ -141,7 +142,10 @@ const FileList = ({
                           label={t("common.button.copy-link")}
                           events={{ hover: true, focus: false, touch: true }}
                         >
-                          <ActionIcon onClick={() => copyFileLink(file)}>
+                          <ActionIcon
+                            size={25}
+                            onClick={() => copyFileLink(file)}
+                          >
                             <TbLink />
                           </ActionIcon>
                         </Tooltip>
@@ -154,6 +158,7 @@ const FileList = ({
                         events={{ hover: true, focus: false, touch: true }}
                       >
                         <ActionIcon
+                          size={25}
                           onClick={async () => {
                             await shareService.downloadFile(share.id, file.id);
                           }}

@@ -25,6 +25,7 @@ const FileListRow = ({
     const restorable = onRestore && !uploadable && !!file.deleted; // maybe undefined, force boolean
     const deleted = !uploadable && !!file.deleted;
     const t = useTranslate();
+
     return (
       <tr
         style={{
@@ -65,7 +66,7 @@ const FileListRow = ({
               events={{ hover: true, focus: false, touch: true }}
             >
               <ActionIcon
-                color="red"
+                color="primary"
                 variant="light"
                 size={25}
                 onClick={onRestore}
