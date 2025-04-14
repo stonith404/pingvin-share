@@ -465,7 +465,7 @@ export default {
   "admin.config.s3.key.description": "S3 ämbri võti.",
   "admin.config.s3.secret": "Saladus",
   "admin.config.s3.secret.description": "S3 ämbri saladus.",
-  "admin.config.s3.use-checksum": "Use checksum",
+  "admin.config.s3.use-checksum": "Kasuta kontrollsummat",
   "admin.config.s3.use-checksum.description": "Lülita välja, kui tagaliides ei toeta kontrollsummasid (nt B2).",
   "admin.config.category.legal": "Juriidiline",
   "admin.config.legal.enabled": "Luba juriidilised teated",
