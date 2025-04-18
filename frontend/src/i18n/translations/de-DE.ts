@@ -525,7 +525,7 @@ export default {
   "common.error.unknown": "Ein unbekannter Fehler ist aufgetreten",
   "common.error.invalid-email": "Ungültige E-Mail-Adresse",
   "common.error.too-short": "Muss mindestens {length} Zeichen enthalten",
-  "common.error.too-long": "Muss maximal {length} Zeichen enthalten",
+  "common.error.too-long": "Darf maximal {length} Zeichen enthalten",
   "common.error.number-too-small": "Darf mindestens {min} sein",
   "common.error.number-too-large": "Darf höchstens {max} sein",
   "common.error.exact-length": "Muss genau {length} Zeichen lang sein",
