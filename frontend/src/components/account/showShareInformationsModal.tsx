@@ -3,10 +3,10 @@ import { ModalsContextProps } from "@mantine/modals/lib/context";
 import moment from "moment";
 import { FormattedMessage } from "react-intl";
 import { translateOutsideContext } from "../../hooks/useTranslate.hook";
-import { FileMetaData } from "../../types/File.type";
 import { MyShare } from "../../types/share.type";
 import { byteToHumanSizeString } from "../../utils/fileSize.util";
 import CopyTextField from "../upload/CopyTextField";
+import QRCode from "../share/QRCode";
 
 const showShareInformationsModal = (
   modals: ModalsContextProps,
@@ -66,6 +66,7 @@ const showShareInformationsModal = (
         </Text>
         <Divider />
         <CopyTextField link={link} />
+        <QRCode link={link} />
         <Divider />
         <Text size="sm">
           <b>
