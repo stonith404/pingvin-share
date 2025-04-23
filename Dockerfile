@@ -1,25 +1,25 @@
 # Stage 1: Frontend dependencies
-FROM node:20-alpine AS frontend-dependencies
+FROM node:22-alpine AS frontend-dependencies
 WORKDIR /opt/app
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci
 
 # Stage 2: Build frontend
-FROM node:20-alpine AS frontend-builder
+FROM node:22-alpine AS frontend-builder
 WORKDIR /opt/app
 COPY ./frontend .
 COPY --from=frontend-dependencies /opt/app/node_modules ./node_modules
 RUN npm run build
 
 # Stage 3: Backend dependencies
-FROM node:20-alpine AS backend-dependencies
+FROM node:22-alpine AS backend-dependencies
 RUN apk add --no-cache python3
 WORKDIR /opt/app
 COPY backend/package.json backend/package-lock.json ./
 RUN npm ci
 
 # Stage 4: Build backend
-FROM node:20-alpine AS backend-builder
+FROM node:22-alpine AS backend-builder
 RUN apk add openssl
 
 WORKDIR /opt/app
@@ -29,7 +29,7 @@ RUN npx prisma generate
 RUN npm run build && npm prune --production
 
 # Stage 5: Final image
-FROM node:20-alpine AS runner
+FROM node:22-alpine AS runner
 ENV NODE_ENV=docker
 
 # Delete default node user
@@ -59,7 +59,7 @@ COPY ./scripts/docker ./scripts/docker
 
 EXPOSE 3000
 
-HEALTHCHECK --interval=10s --timeout=3s CMD curl -f http://localhost:3000/api/health || exit 1
+HEALTHCHECK --interval=10s --timeout=3s CMD /bin/sh -c '(if [[ "$CADDY_DISABLED" = "true" ]]; then curl -fs http://localhost:${BACKEND_PORT:-8080}/api/health; else curl -fs http://localhost:3000/api/health; fi) || exit 1'
 
 ENTRYPOINT ["sh", "./scripts/docker/create-user.sh"]
 CMD ["sh", "./scripts/docker/entrypoint.sh"]

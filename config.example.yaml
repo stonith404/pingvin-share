@@ -10,7 +10,7 @@ general:
   secureCookies: "false"
   #Whether to show the home page
   showHomePage: "true"
-  #Time in hours after which a user must log in again (default: 3 months).
+  #Time after which a user must log in again (default: 3 months).
   sessionDuration: 3 months
 share:
   #Whether registration is allowed
@@ -103,7 +103,7 @@ smtp:
   host: ""
   #Port of the SMTP server
   port: "0"
-  #Email address from wich the emails get sent
+  #Email address from which the emails get sent
   email: ""
   #Username of the SMTP server
   username: ""
@@ -204,6 +204,8 @@ s3:
   key: ""
   #The secret which allows you to access the S3 bucket.
   secret: ""
+  #Turn off for backends that do not support checksum (e.g. B2).
+  useChecksum: "true"
 legal:
   #Whether to show a link to imprint and privacy policy in the footer.
   enabled: "false"
