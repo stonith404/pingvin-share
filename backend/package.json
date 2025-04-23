@@ -78,7 +78,7 @@
     "eslint": "^9.24.0",
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-prettier": "^5.2.6",
-    "newman": "^6.2.0",
+    "newman": "^6.2.1",
     "prettier": "^3.5.3",
     "prisma": "^6.6.0",
     "source-map-support": "^0.5.21",
