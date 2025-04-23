@@ -10,6 +10,7 @@ on:
 
 jobs:
   system-tests:
+    timeout-minutes: 15
     runs-on: ubuntu-latest
     container: node:18
     steps:
