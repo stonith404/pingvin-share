@@ -92,8 +92,6 @@ const FileList = <T extends FileListItem = FileListItem>({
   files: T[];
   setFiles: (files: T[]) => void;
 }) => {
-  const t = useTranslate();
-
   const remove = (index: number) => {
     const file = files[index];
 
@@ -131,18 +129,15 @@ const FileList = <T extends FileListItem = FileListItem>({
   const uploadableFiles = files.filter(
     (file) => "uploadingProgress" in file,
   ) as unknown as FileUpload[];
-  const completedFiles = uploadableFiles.filter(
-    (file) => file.uploadingProgress >= 100,
-  ).length;
+
   const inProgressFiles = uploadableFiles.filter(
     (file) => file.uploadingProgress > 0 && file.uploadingProgress < 100,
   ).length;
+
   const pendingFiles = uploadableFiles.filter(
     (file) => file.uploadingProgress === 0,
   ).length;
-  const failedFiles = uploadableFiles.filter(
-    (file) => file.uploadingProgress === -1,
-  ).length;
+
   const remainingFiles = inProgressFiles + pendingFiles;
 
   // Calculate overall estimated time
