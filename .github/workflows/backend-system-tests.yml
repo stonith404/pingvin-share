@@ -12,7 +12,7 @@ jobs:
   system-tests:
     timeout-minutes: 15
     runs-on: ubuntu-latest
-    container: node:18
+    container: node:22
     steps:
       - uses: actions/checkout@v3
       - name: Install Dependencies
