@@ -11,5 +11,9 @@
   },
   "devDependencies": {
     "conventional-changelog-cli": "^3.0.0"
+  },
+  "prettier": {
+    "singleQuote": false,
+    "trailingComma": "all"
   }
 }

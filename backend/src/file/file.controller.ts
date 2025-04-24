@@ -9,6 +9,7 @@ import {
   Res,
   StreamableFile,
   UseGuards,
+  UseFilters,
 } from "@nestjs/common";
 import { SkipThrottle } from "@nestjs/throttler";
 import * as contentDisposition from "content-disposition";
@@ -18,6 +19,7 @@ import { ShareOwnerGuard } from "src/share/guard/shareOwner.guard";
 import { FileService } from "./file.service";
 import { FileSecurityGuard } from "./guard/fileSecurity.guard";
 import * as mime from "mime-types";
+import { StreamResponseFilter } from "./filter/stream-response.filter";
 
 @Controller("shares/:shareId/files")
 export class FileController {
@@ -50,11 +52,12 @@ export class FileController {
 
   @Get("zip")
   @UseGuards(FileSecurityGuard)
+  @UseFilters(StreamResponseFilter)
   async getZip(
     @Res({ passthrough: true }) res: Response,
     @Param("shareId") shareId: string,
   ) {
-    const zipStream = this.fileService.getZip(shareId);
+    const zipStream = await this.fileService.getZip(shareId);
 
     res.set({
       "Content-Type": "application/zip",

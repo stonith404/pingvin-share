@@ -366,6 +366,8 @@ export default {
   // /share/[id]
   "share.title": "Share {shareId}",
   "share.description": "Look what I've shared with you!",
+  "share.fileCount":
+    "{count, plural, =1 {# file} other {# files}} · {size} (zip file may be smaller due to compression)",
   "share.error.visitor-limit-exceeded.title": "Visitor limit exceeded",
   "share.error.visitor-limit-exceeded.description":
     "The visitor limit from this share has been exceeded.",
@@ -408,14 +410,15 @@ export default {
   // /imprint
   "imprint.title": "Imprint",
   // END /imprint
-  
+
   // /privacy
   "privacy.title": "Privacy Policy",
   // END /privacy
 
   // /admin/config
   "admin.config.config-file-warning.title": "Configuration file present",
-  "admin.config.config-file-warning.description": "As you have a configured Pingvin Share with a configuration file, you can't change the configuration through the UI.",
+  "admin.config.config-file-warning.description":
+    "As you have a configured Pingvin Share with a configuration file, you can't change the configuration through the UI.",
 
   "admin.config.title": "Configuration",
   "admin.config.category.general": "General",
@@ -642,7 +645,8 @@ export default {
 
   "admin.config.category.s3": "S3",
   "admin.config.s3.enabled": "Enabled",
-  "admin.config.s3.enabled.description": "Whether S3 should be used to store the shared files instead of the local file system.",
+  "admin.config.s3.enabled.description":
+    "Whether S3 should be used to store the shared files instead of the local file system.",
   "admin.config.s3.endpoint": "Endpoint",
   "admin.config.s3.endpoint.description": "The URL of the S3 bucket.",
   "admin.config.s3.region": "Region",
@@ -650,25 +654,34 @@ export default {
   "admin.config.s3.bucket-name": "Bucket name",
   "admin.config.s3.bucket-name.description": "The name of the S3 bucket.",
   "admin.config.s3.bucket-path": "Path",
-  "admin.config.s3.bucket-path.description": "The default path which should be used to store the files in the S3 bucket.",
+  "admin.config.s3.bucket-path.description":
+    "The default path which should be used to store the files in the S3 bucket.",
   "admin.config.s3.key": "Key",
-  "admin.config.s3.key.description": "The key which allows you to access the S3 bucket.",
+  "admin.config.s3.key.description":
+    "The key which allows you to access the S3 bucket.",
   "admin.config.s3.secret": "Secret",
-  "admin.config.s3.secret.description": "The secret which allows you to access the S3 bucket.",
+  "admin.config.s3.secret.description":
+    "The secret which allows you to access the S3 bucket.",
   "admin.config.s3.use-checksum": "Use checksum",
-  "admin.config.s3.use-checksum.description": "Turn off for backends that do not support checksum (e.g. B2).",
+  "admin.config.s3.use-checksum.description":
+    "Turn off for backends that do not support checksum (e.g. B2).",
 
   "admin.config.category.legal": "Legal",
   "admin.config.legal.enabled": "Enable legal notices",
-  "admin.config.legal.enabled.description": "Whether to show a link to imprint and privacy policy in the footer.",
+  "admin.config.legal.enabled.description":
+    "Whether to show a link to imprint and privacy policy in the footer.",
   "admin.config.legal.imprint-text": "Imprint text",
-  "admin.config.legal.imprint-text.description": "The text which should be shown in the imprint. Supports Markdown. Leave blank to link to an external imprint page.",
+  "admin.config.legal.imprint-text.description":
+    "The text which should be shown in the imprint. Supports Markdown. Leave blank to link to an external imprint page.",
   "admin.config.legal.imprint-url": "Imprint URL",
-  "admin.config.legal.imprint-url.description": "If you already have an imprint page you can link it here instead of using the text field.",
+  "admin.config.legal.imprint-url.description":
+    "If you already have an imprint page you can link it here instead of using the text field.",
   "admin.config.legal.privacy-policy-text": "Privacy policy text",
-  "admin.config.legal.privacy-policy-text.description": "The text which should be shown in the privacy policy. Supports Markdown. Leave blank to link to an external privacy policy page.",
+  "admin.config.legal.privacy-policy-text.description":
+    "The text which should be shown in the privacy policy. Supports Markdown. Leave blank to link to an external privacy policy page.",
   "admin.config.legal.privacy-policy-url": "Privacy policy URL",
-  "admin.config.legal.privacy-policy-url.description": "If you already have a privacy policy page you can link it here instead of using the text field.",
+  "admin.config.legal.privacy-policy-url.description":
+    "If you already have a privacy policy page you can link it here instead of using the text field.",
 
   // 404
   "404.description": "Oops this page doesn't exist.",
