@@ -107,7 +107,7 @@ export const configVariables = {
     resetPasswordMessage: {
       type: "text",
       defaultValue:
-        "Hey!\n\nYou requested a password reset. Click this link to reset your password: {url}\nThe link expires in a hour.\n\nPingvin Share 🐧",
+        "Hey!\n\nYou requested a password reset. Click this link to reset your password: {url}\nThe link expires in an hour.\n\nPingvin Share 🐧",
     },
     inviteSubject: {
       type: "string",
