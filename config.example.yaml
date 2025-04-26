@@ -45,7 +45,7 @@ email:
     Hey!
 
 
-    {creator} ({creatorEmail}) shared some files with you, view or download the
+    {creator} ({creatorEmail}) shared some files with you. You can view or download the
     files with this link: {shareUrl}
 
 
