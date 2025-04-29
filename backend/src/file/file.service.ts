@@ -2,8 +2,11 @@ import { Injectable } from "@nestjs/common";
 import { LocalFileService } from "./local.service";
 import { S3FileService } from "./s3.service";
 import { ConfigService } from "src/config/config.service";
-import { Readable } from "stream";
+import { PassThrough, Readable } from "stream";
 import { PrismaService } from "../prisma/prisma.service";
+import * as archiver from "archiver";
+import * as fs from "fs";
+import { SHARE_DIRECTORY } from "src/constants";
 
 @Injectable()
 export class FileService {
@@ -59,9 +62,24 @@ export class FileService {
     return storageService.deleteAllFiles(shareId);
   }
 
-  getZip(shareId: string) {
-    const storageService = this.getStorageService();
-    return storageService.getZip(shareId) as Readable;
+  async getZip(shareId: string) {
+    const passThrough = new PassThrough();
+    const path = `${SHARE_DIRECTORY}/${shareId}`;
+
+    const files = await this.prisma.file.findMany({ where: { shareId } });
+    const archive = archiver("zip", {
+      zlib: { level: this.configService.get("share.zipCompressionLevel") },
+    });
+
+    for (const file of files) {
+      archive.append(fs.createReadStream(`${path}/${file.id}`), {
+        name: file.name,
+      });
+    }
+
+    archive.pipe(passThrough);
+    archive.finalize();
+    return passThrough as Readable;
   }
 
   private async streamToUint8Array(stream: Readable): Promise<Uint8Array> {

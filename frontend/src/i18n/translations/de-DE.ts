@@ -282,7 +282,6 @@ export default {
   "share.modal.password": "Passwort",
   "share.modal.error.invalid-password": "Ungültiges Passwort",
   "share.button.download-all": "Alles herunterladen",
-  "share.notify.download-all-preparing": "Die Freigabe wird vorbereitet. Bitte versuche es in ein paar Minuten erneut.",
   "share.modal.file-link": "Dateilink",
   "share.table.name": "Name",
   "share.table.size": "Größe",
