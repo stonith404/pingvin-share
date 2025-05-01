@@ -45,7 +45,7 @@ email:
     Hey!
 
 
-    {creator} ({creatorEmail}) shared some files with you, view or download the
+    {creator} ({creatorEmail}) shared some files with you. You can view or download the
     files with this link: {shareUrl}
 
 
@@ -75,7 +75,7 @@ email:
     You requested a password reset. Click this link to reset your password:
     {url}
 
-    The link expires in a hour.
+    The link expires in an hour.
 
 
     Pingvin Share 🐧

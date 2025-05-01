@@ -89,7 +89,7 @@ export const configVariables = {
     shareRecipientsMessage: {
       type: "text",
       defaultValue:
-        "Hey!\n\n{creator} ({creatorEmail}) shared some files with you, view or download the files with this link: {shareUrl}\n\nThe share will expire {expires}.\n\nNote: {desc}\n\nShared securely with Pingvin Share 🐧",
+        "Hey!\n\n{creator} ({creatorEmail}) shared some files with you. You can view or download the files with this link: {shareUrl}\n\nThe share will expire {expires}.\n\nNote: {desc}\n\nShared securely with Pingvin Share 🐧",
     },
     reverseShareSubject: {
       type: "string",
@@ -107,7 +107,7 @@ export const configVariables = {
     resetPasswordMessage: {
       type: "text",
       defaultValue:
-        "Hey!\n\nYou requested a password reset. Click this link to reset your password: {url}\nThe link expires in a hour.\n\nPingvin Share 🐧",
+        "Hey!\n\nYou requested a password reset. Click this link to reset your password: {url}\nThe link expires in an hour.\n\nPingvin Share 🐧",
     },
     inviteSubject: {
       type: "string",
