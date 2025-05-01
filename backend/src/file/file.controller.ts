@@ -9,7 +9,6 @@ import {
   Res,
   StreamableFile,
   UseGuards,
-  UseFilters,
 } from "@nestjs/common";
 import { SkipThrottle } from "@nestjs/throttler";
 import * as contentDisposition from "content-disposition";
