@@ -270,6 +270,7 @@ export default {
   // /share/[id]
   "share.title": "Διαμοιρασμός {shareId}",
   "share.description": "Σας προωθώ αρχεία προς κοινοποίηση.",
+  "share.fileCount": "{count, plural, =1 {# file} other {# files}} · {size} (zip file may be smaller due to compression)",
   "share.error.visitor-limit-exceeded.title": "Υπέρβαση ορίου επισκέπτη",
   "share.error.visitor-limit-exceeded.description": "Ξεπεράστηκε το όριο επισκεπτών σε αυτή την κοινοποίηση.",
   "share.error.removed.title": "Κοινοποίηση αφαιρέθηκε",
