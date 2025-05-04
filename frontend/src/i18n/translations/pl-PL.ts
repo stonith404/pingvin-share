@@ -58,7 +58,7 @@ export default {
   // /auth/reset-password
   "resetPassword.title": "Nie pamiętasz hasła?",
   "resetPassword.description": "Wprowadź swój e-mail, aby zresetować swoje hasło.",
-  "resetPassword.notify.success": "A message with a link to reset your password has been sent if the provided email exists.",
+  "resetPassword.notify.success": "Jeśli podany adres e-mail istnieje, wiadomość z linkiem umożliwiającym zresetowanie hasła została wysłana.",
   "resetPassword.button.back": "Powrót do strony logowania",
   "resetPassword.text.resetPassword": "Resetuj hasło",
   "resetPassword.text.enterNewPassword": "Wprowadź nowe hasło",
@@ -129,7 +129,7 @@ export default {
   "account.shares.table.expiry-never": "Never",
   "account.shares.modal.share-informations": "Informacje udziału",
   "account.shares.modal.share-link": "Udostępnij link",
-  "account.shares.modal.delete.title": "Delete share: {share}",
+  "account.shares.modal.delete.title": "Usuń udostępnianie: {share}",
   "account.shares.modal.delete.description": "Czy na pewno chcesz usunąć to udostępnianie?",
   // END /account/shares
   // /account/reverseShares
@@ -156,7 +156,7 @@ export default {
   "account.reverseShares.modal.send-email": "Send email notifications",
   "account.reverseShares.modal.send-email.description": "Sends you an email notification when a share is created with this reverse share link.",
   "account.reverseShares.modal.simplified": "Tryb uproszczony",
-  "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will only be able to customize the name and description of the share.",
+  "account.reverseShares.modal.simplified.description": "",
   "account.reverseShares.modal.public-access": "Dostęp publiczny",
   "account.reverseShares.modal.public-access.description": "Make the shares created with this reverse share public. If disabled, only you and the share creator will have access to view it.",
   "account.reverseShares.modal.max-use.label": "Limit użyć",
