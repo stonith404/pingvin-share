@@ -54,7 +54,7 @@ export class FileController {
     @Res({ passthrough: true }) res: Response,
     @Param("shareId") shareId: string,
   ) {
-    const zipStream = this.fileService.getZip(shareId);
+    const zipStream = await this.fileService.getZip(shareId);
 
     res.set({
       "Content-Type": "application/zip",

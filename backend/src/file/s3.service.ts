@@ -25,6 +25,7 @@ import * as mime from "mime-types";
 import { File } from "./file.service";
 import { Readable } from "stream";
 import { validate as isValidUUID } from "uuid";
+import * as archiver from "archiver";
 
 @Injectable()
 export class S3FileService {
@@ -275,7 +276,8 @@ export class S3FileService {
   }
 
   getS3Instance(): S3Client {
-    const checksumCalculation = this.config.get("s3.useChecksum") === true ? null : "WHEN_REQUIRED";
+    const checksumCalculation =
+      this.config.get("s3.useChecksum") === true ? null : "WHEN_REQUIRED";
 
     return new S3Client({
       endpoint: this.config.get("s3.endpoint"),
@@ -290,10 +292,95 @@ export class S3FileService {
     });
   }
 
-  getZip() {
-    throw new BadRequestException(
-      "ZIP download is not supported with S3 storage",
-    );
+  getZip(shareId: string) {
+    return new Promise<Readable>(async (resolve, reject) => {
+      const s3Instance = this.getS3Instance();
+      const bucketName = this.config.get("s3.bucketName");
+      const compressionLevel = this.config.get("share.zipCompressionLevel");
+
+      const prefix = `${this.getS3Path()}${shareId}/`;
+
+      try {
+        const listResponse = await s3Instance.send(
+          new ListObjectsV2Command({
+            Bucket: bucketName,
+            Prefix: prefix,
+          }),
+        );
+
+        if (!listResponse.Contents || listResponse.Contents.length === 0) {
+          throw new NotFoundException(`No files found for share ${shareId}`);
+        }
+
+        const archive = archiver("zip", {
+          zlib: { level: parseInt(compressionLevel) },
+        });
+
+        archive.on("error", (err) => {
+          this.logger.error("Archive error", err);
+          reject(new InternalServerErrorException("Error creating ZIP file"));
+        });
+
+        const fileKeys = listResponse.Contents.filter(
+          (object) => object.Key && object.Key !== prefix,
+        ).map((object) => object.Key as string);
+
+        if (fileKeys.length === 0) {
+          throw new NotFoundException(
+            `No valid files found for share ${shareId}`,
+          );
+        }
+
+        let filesAdded = 0;
+
+        const processNextFile = async (index: number) => {
+          if (index >= fileKeys.length) {
+            archive.finalize();
+            return;
+          }
+
+          const key = fileKeys[index];
+          const fileName = key.replace(prefix, "");
+
+          try {
+            const response = await s3Instance.send(
+              new GetObjectCommand({
+                Bucket: bucketName,
+                Key: key,
+              }),
+            );
+
+            if (response.Body instanceof Readable) {
+              const fileStream = response.Body;
+
+              fileStream.on("end", () => {
+                filesAdded++;
+                processNextFile(index + 1);
+              });
+
+              fileStream.on("error", (err) => {
+                this.logger.error(`Error streaming file ${fileName}`, err);
+                processNextFile(index + 1);
+              });
+
+              archive.append(fileStream, { name: fileName });
+            } else {
+              processNextFile(index + 1);
+            }
+          } catch (error) {
+            this.logger.error(`Error processing file ${fileName}`, error);
+            processNextFile(index + 1);
+          }
+        };
+
+        resolve(archive);
+        processNextFile(0);
+      } catch (error) {
+        this.logger.error("Error creating ZIP file", error);
+
+        reject(new InternalServerErrorException("Error creating ZIP file"));
+      }
+    });
   }
 
   getS3Path(): string {

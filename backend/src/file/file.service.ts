@@ -59,9 +59,9 @@ export class FileService {
     return storageService.deleteAllFiles(shareId);
   }
 
-  getZip(shareId: string) {
+  async getZip(shareId: string): Promise<Readable> {
     const storageService = this.getStorageService();
-    return storageService.getZip(shareId) as Readable;
+    return await storageService.getZip(shareId);
   }
 
   private async streamToUint8Array(stream: Readable): Promise<Uint8Array> {

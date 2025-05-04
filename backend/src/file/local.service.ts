@@ -14,6 +14,7 @@ import { ConfigService } from "src/config/config.service";
 import { PrismaService } from "src/prisma/prisma.service";
 import { validate as isValidUUID } from "uuid";
 import { SHARE_DIRECTORY } from "../constants";
+import { Readable } from "stream";
 
 @Injectable()
 export class LocalFileService {
@@ -155,7 +156,19 @@ export class LocalFileService {
     });
   }
 
-  getZip(shareId: string) {
-    return createReadStream(`${SHARE_DIRECTORY}/${shareId}/archive.zip`);
+  async getZip(shareId: string): Promise<Readable> {
+    return new Promise((resolve, reject) => {
+      const zipStream = createReadStream(
+        `${SHARE_DIRECTORY}/${shareId}/archive.zip`,
+      );
+
+      zipStream.on("error", (err) => {
+        reject(new InternalServerErrorException(err));
+      });
+
+      zipStream.on("open", () => {
+        resolve(zipStream);
+      });
+    });
   }
 }
