@@ -270,6 +270,7 @@ export default {
   // /share/[id]
   "share.title": "Загрузка {shareId}",
   "share.description": "Посмотрите, чем я поделился с вами!",
+  "share.fileCount": "{count, plural, =1 {# file} other {# files}} · {size} (zip file may be smaller due to compression)",
   "share.error.visitor-limit-exceeded.title": "Превышен лимит посетителей",
   "share.error.visitor-limit-exceeded.description": "Превышен лимит посетителей.",
   "share.error.removed.title": "Загрузка удалена",
