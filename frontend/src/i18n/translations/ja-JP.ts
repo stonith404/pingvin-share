@@ -270,6 +270,7 @@ export default {
   // /share/[id]
   "share.title": "「{shareId}」が共有されました",
   "share.description": "あなたと共有したファイルをご確認ください！",
+  "share.fileCount": "{count, plural, =1 {# file} other {# files}} · {size} (zip file may be smaller due to compression)",
   "share.error.visitor-limit-exceeded.title": "訪問者の上限を超えました",
   "share.error.visitor-limit-exceeded.description": "この共有からの訪問者の回数が制限を超えています。",
   "share.error.removed.title": "共有が削除されました",
