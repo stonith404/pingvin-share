@@ -30,7 +30,8 @@ export class ConfigService extends EventEmitter {
     super();
   }
 
-  async onModuleInit() {
+  // Initialize gets called by the ConfigModule
+  async initialize() {
     await this.loadYamlConfig();
 
     if (this.yamlConfig) {
@@ -49,12 +50,13 @@ export class ConfigService extends EventEmitter {
     }
     try {
       this.yamlConfig = yamlParse(configFile);
+
       if (this.yamlConfig) {
         for (const configVariable of this.configVariables) {
           const category = this.yamlConfig[configVariable.category];
           if (!category) continue;
-
           configVariable.value = category[configVariable.name];
+          this.emit("update", configVariable.name, configVariable.value);
         }
       }
     } catch (e) {

@@ -20,12 +20,12 @@ import { UserModule } from "./user/user.module";
 
 @Module({
   imports: [
+    ConfigModule,
     AuthModule,
     ShareModule,
     FileModule,
     EmailModule,
     PrismaModule,
-    ConfigModule,
     JobsModule,
     UserModule,
     ThrottlerModule.forRoot([

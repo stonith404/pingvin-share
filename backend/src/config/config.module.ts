@@ -1,4 +1,5 @@
 import { Global, Module } from "@nestjs/common";
+import { Config } from "@prisma/client";
 import { EmailModule } from "src/email/email.module";
 import { PrismaService } from "src/prisma/prisma.service";
 import { ConfigController } from "./config.controller";
@@ -16,7 +17,15 @@ import { LogoService } from "./logo.service";
       },
       inject: [PrismaService],
     },
-    ConfigService,
+    {
+      provide: ConfigService,
+      useFactory: async (prisma: PrismaService, configVariables: Config[]) => {
+        const configService = new ConfigService(configVariables, prisma);
+        await configService.initialize();
+        return configService;
+      },
+      inject: [PrismaService, "CONFIG_VARIABLES"],
+    },
     LogoService,
   ],
   controllers: [ConfigController],
