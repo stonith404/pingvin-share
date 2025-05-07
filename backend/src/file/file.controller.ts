@@ -78,7 +78,7 @@ export class FileController {
       "Content-Type":
         mime?.lookup?.(file.metaData.name) || "application/octet-stream",
       "Content-Length": file.metaData.size,
-      "Content-Security-Policy": "script-src 'none'",
+      "Content-Security-Policy": "sandbox",
     };
 
     if (download === "true") {
