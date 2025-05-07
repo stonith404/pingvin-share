@@ -270,6 +270,7 @@ export default {
   // /share/[id]
   "share.title": "Share {shareId}",
   "share.description": "Kijk eens wat ik met je heb gedeeld!",
+  "share.fileCount": "{count, plural, =1 {# file} other {# files}} · {size} (zip file may be smaller due to compression)",
   "share.error.visitor-limit-exceeded.title": "Bezoekerslimiet overschreden",
   "share.error.visitor-limit-exceeded.description": "De bezoekerslimiet van deze share is overschreden.",
   "share.error.removed.title": "Share was verwijderd",

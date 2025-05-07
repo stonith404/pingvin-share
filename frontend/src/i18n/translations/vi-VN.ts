@@ -270,6 +270,7 @@ export default {
   // /share/[id]
   "share.title": "Share {shareId}",
   "share.description": "Look what I've shared with you!",
+  "share.fileCount": "{count, plural, =1 {# file} other {# files}} · {size} (zip file may be smaller due to compression)",
   "share.error.visitor-limit-exceeded.title": "Visitor limit exceeded",
   "share.error.visitor-limit-exceeded.description": "The visitor limit from this share has been exceeded.",
   "share.error.removed.title": "Share removed",

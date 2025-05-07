@@ -270,6 +270,7 @@ export default {
   // /share/[id]
   "share.title": "Deli {shareId}",
   "share.description": "Poglej kaj sem delil s taboj!",
+  "share.fileCount": "{count, plural, =1 {# file} other {# files}} · {size} (zip file may be smaller due to compression)",
   "share.error.visitor-limit-exceeded.title": "Število ogledov je prekoračena",
   "share.error.visitor-limit-exceeded.description": "Število ogledov za to delitev je bila prekoračena.",
   "share.error.removed.title": "Delitev je odstranjena",

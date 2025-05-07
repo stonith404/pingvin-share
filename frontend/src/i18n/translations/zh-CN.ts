@@ -270,6 +270,7 @@ export default {
   // /share/[id]
   "share.title": "共享 {shareId}",
   "share.description": "瞧瞧我给你共享了些什么！",
+  "share.fileCount": "{count, plural, =1 {# file} other {# files}} · {size} (zip file may be smaller due to compression)",
   "share.error.visitor-limit-exceeded.title": "访问次数达到上限",
   "share.error.visitor-limit-exceeded.description": "访问次数达到上限",
   "share.error.removed.title": "共享已删除",

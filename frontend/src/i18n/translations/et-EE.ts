@@ -270,6 +270,7 @@ export default {
   // /share/[id]
   "share.title": "Jagamine {shareId}",
   "share.description": "Vaata, mida ma sinuga jagasin!",
+  "share.fileCount": "{count, plural, =1 {# file} other {# files}} · {size} (zip file may be smaller due to compression)",
   "share.error.visitor-limit-exceeded.title": "Külastajate limiit ületatud",
   "share.error.visitor-limit-exceeded.description": "Selle jagamise külastajate limiit on ületatud.",
   "share.error.removed.title": "Jagamine eemaldatud",

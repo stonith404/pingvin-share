@@ -270,6 +270,7 @@ export default {
   // /share/[id]
   "share.title": "Sdílení {shareId}",
   "share.description": "Podívejte se, co jsem s vámi sdílel!",
+  "share.fileCount": "{count, plural, =1 {# file} other {# files}} · {size} (zip file may be smaller due to compression)",
   "share.error.visitor-limit-exceeded.title": "Limit návštěvníků překročen",
   "share.error.visitor-limit-exceeded.description": "Limit návštěvníků tohoto sdílení byl překročen.",
   "share.error.removed.title": "Sdílení bylo odstraněno",

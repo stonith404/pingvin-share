@@ -270,6 +270,7 @@ export default {
   // /share/[id]
   "share.title": "{shareId} Paylaşımı",
   "share.description": "Sizinle paylaştıklarımı bir göz atın!",
+  "share.fileCount": "{count, plural, =1 {# dosya} other {# dosya}} · {size} (sıkıştırma nedeniyle zip dosyası daha küçük olabilir)",
   "share.error.visitor-limit-exceeded.title": "Ziyaretçi limiti aşıldı",
   "share.error.visitor-limit-exceeded.description": "Bu paylaşımın ziyaretçi limiti aşıldı.",
   "share.error.removed.title": "Paylaşım kaldırıldı",

@@ -270,6 +270,7 @@ export default {
   // /share/[id]
   "share.title": "Jaa {shareId}",
   "share.description": "Katso, mitä olen jakanut kanssasi!",
+  "share.fileCount": "{count, plural, =1 {# file} other {# files}} · {size} (zip file may be smaller due to compression)",
   "share.error.visitor-limit-exceeded.title": "Vierailijoiden raja ylitetty",
   "share.error.visitor-limit-exceeded.description": "Tämän jaon kävijäraja on ylittynyt.",
   "share.error.removed.title": "Jako poistettu",

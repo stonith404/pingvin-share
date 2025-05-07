@@ -270,6 +270,7 @@ export default {
   // /share/[id]
   "share.title": "Compartilhar {shareId}",
   "share.description": "Veja o que eu compartilhei com você!",
+  "share.fileCount": "{count, plural, =1 {# file} other {# files}} · {size} (zip file may be smaller due to compression)",
   "share.error.visitor-limit-exceeded.title": "Limite de visitantes excedido",
   "share.error.visitor-limit-exceeded.description": "O limite de visitantes deste compartilhamento foi excedido.",
   "share.error.removed.title": "Compartilhamento removido",

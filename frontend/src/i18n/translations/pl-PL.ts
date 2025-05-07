@@ -270,6 +270,7 @@ export default {
   // /share/[id]
   "share.title": "Udostępnij {shareId}",
   "share.description": "Spójrz, co ci udostępniłem!",
+  "share.fileCount": "{count, plural, =1 {# file} other {# files}} · {size} (zip file may be smaller due to compression)",
   "share.error.visitor-limit-exceeded.title": "Przekroczono limit odwiedzających",
   "share.error.visitor-limit-exceeded.description": "Limit odwiedzających dla tego udziału został przekroczony.",
   "share.error.removed.title": "Udostępnianie usunięte",
