@@ -270,6 +270,7 @@ export default {
   // /share/[id]
   "share.title": "Del {shareId}",
   "share.description": "Se hvad jeg har delt med dig!",
+  "share.fileCount": "{count, plural, =1 {# file} other {# files}} · {size} (zip file may be smaller due to compression)",
   "share.error.visitor-limit-exceeded.title": "Grænsen for besøgende overskredet",
   "share.error.visitor-limit-exceeded.description": "Besøgsgrænsen for denne deling er blevet overskredet.",
   "share.error.removed.title": "Deling fjernet",

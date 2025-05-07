@@ -270,6 +270,7 @@ export default {
   // /share/[id]
   "share.title": "Дељење {shareId}",
   "share.description": "Погледајте шта сам поделио са вама!",
+  "share.fileCount": "{count, plural, =1 {# file} other {# files}} · {size} (zip file may be smaller due to compression)",
   "share.error.visitor-limit-exceeded.title": "Прекорачено је ограничење посетилаца",
   "share.error.visitor-limit-exceeded.description": "Ограничење посетилаца из овог дељења је премашено.",
   "share.error.removed.title": "Дељење је уклоњено",

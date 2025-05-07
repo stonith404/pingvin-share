@@ -270,6 +270,7 @@ export default {
   // /share/[id]
   "share.title": "المشاركة {shareId}",
   "share.description": "انظر ما الذي شاركته معك!",
+  "share.fileCount": "{count, plural, =1 {# file} other {# files}} · {size} (zip file may be smaller due to compression)",
   "share.error.visitor-limit-exceeded.title": "تم تجاوز حد المشاهدات",
   "share.error.visitor-limit-exceeded.description": "تم تجاوز الحد الأقصى لزوار هذه المشاركة.",
   "share.error.removed.title": "تمت إزالة المشاركة",

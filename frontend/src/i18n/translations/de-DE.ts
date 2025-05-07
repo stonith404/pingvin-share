@@ -270,6 +270,7 @@ export default {
   // /share/[id]
   "share.title": "Freigabe {shareId}",
   "share.description": "Schau, was ich mit dir geteilt habe!",
+  "share.fileCount": "{count, plural, =1 {# file} other {# files}} · {size} (zip file may be smaller due to compression)",
   "share.error.visitor-limit-exceeded.title": "Besucher Limit erreicht",
   "share.error.visitor-limit-exceeded.description": "Die maximale Besucheranzahl für diese Freigabe ist überschritten.",
   "share.error.removed.title": "Freigabe entfernt",

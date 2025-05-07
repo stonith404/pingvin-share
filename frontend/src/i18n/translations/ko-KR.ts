@@ -270,6 +270,7 @@ export default {
   // /share/[id]
   "share.title": "공유 {shareId}",
   "share.description": "내가 당신과 공유한 것을 보세요!",
+  "share.fileCount": "{count, plural, =1 {# file} other {# files}} · {size} (zip file may be smaller due to compression)",
   "share.error.visitor-limit-exceeded.title": "방문자 한도 초과",
   "share.error.visitor-limit-exceeded.description": "이 공유의 방문자 한도를 초과했습니다.",
   "share.error.removed.title": "공유가 삭제됨",
