@@ -7,11 +7,11 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { modals } from "@mantine/modals";
+import Markdown, { MarkdownToJSX } from "markdown-to-jsx";
 import Link from "next/link";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import api from "../../services/api.service";
-import Markdown from "markdown-to-jsx";
 
 const FilePreviewContext = React.createContext<{
   shareId: string;
@@ -132,7 +132,8 @@ const TextPreview = () => {
       .then((res) => setText(res.data ?? "Preview couldn't be fetched."));
   }, [shareId, fileId]);
 
-  const options = {
+  const options: MarkdownToJSX.Options = {
+    disableParsingRawHTML: true,
     overrides: {
       pre: {
         props: {
