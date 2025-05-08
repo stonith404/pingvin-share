@@ -151,25 +151,37 @@ const MyShares = () => {
                                     {share.id}
                                   </Text>
                                 </Anchor>
-                                <ActionIcon
-                                  color="victoria"
-                                  variant="light"
-                                  size={25}
-                                  onClick={() => {
-                                    if (window.isSecureContext) {
-                                      clipboard.copy(
-                                        `${window.location.origin}/s/${share.id}`,
-                                      );
-                                      toast.success(
-                                        t("common.notify.copied-link"),
-                                      );
-                                    } else {
-                                      showShareLinkModal(modals, share.id);
-                                    }
+                                <Tooltip
+                                  position="bottom"
+                                  multiline
+                                  width={80}
+                                  label={t("common.button.copy-link")}
+                                  events={{
+                                    hover: true,
+                                    focus: false,
+                                    touch: true,
                                   }}
                                 >
-                                  <TbLink />
-                                </ActionIcon>
+                                  <ActionIcon
+                                    color="victoria"
+                                    variant="light"
+                                    size={25}
+                                    onClick={() => {
+                                      if (window.isSecureContext) {
+                                        clipboard.copy(
+                                          `${window.location.origin}/s/${share.id}`,
+                                        );
+                                        toast.success(
+                                          t("common.notify.copied-link"),
+                                        );
+                                      } else {
+                                        showShareLinkModal(modals, share.id);
+                                      }
+                                    }}
+                                  >
+                                    <TbLink />
+                                  </ActionIcon>
+                                </Tooltip>
                               </Group>
                             ))}
                           </Accordion.Panel>
@@ -188,62 +200,80 @@ const MyShares = () => {
                   </td>
                   <td>
                     <Group position="right">
-                      <ActionIcon
-                        color="victoria"
-                        variant="light"
-                        size={25}
-                        onClick={() => {
-                          if (window.isSecureContext) {
-                            clipboard.copy(
-                              `${window.location.origin}/upload/${
-                                reverseShare.token
-                              }`,
-                            );
-                            toast.success(t("common.notify.copied-link"));
-                          } else {
-                            showReverseShareLinkModal(
-                              modals,
-                              reverseShare.token,
-                            );
-                          }
-                        }}
+                      <Tooltip
+                        position="bottom"
+                        multiline
+                        width={80}
+                        label={t("common.button.copy-link")}
+                        events={{ hover: true, focus: false, touch: true }}
                       >
-                        <TbLink />
-                      </ActionIcon>
-                      <ActionIcon
-                        color="red"
-                        variant="light"
-                        size={25}
-                        onClick={() => {
-                          modals.openConfirmModal({
-                            title: t(
-                              "account.reverseShares.modal.delete.title",
-                            ),
-                            children: (
-                              <Text size="sm">
-                                <FormattedMessage id="account.reverseShares.modal.delete.description" />
-                              </Text>
-                            ),
-                            confirmProps: {
-                              color: "red",
-                            },
-                            labels: {
-                              confirm: t("common.button.delete"),
-                              cancel: t("common.button.cancel"),
-                            },
-                            onConfirm: () => {
-                              shareService.removeReverseShare(reverseShare.id);
-                              setReverseShares(
-                                reverseShares.filter(
-                                  (item) => item.id !== reverseShare.id,
-                                ),
+                        <ActionIcon
+                          color="victoria"
+                          variant="light"
+                          size={25}
+                          onClick={() => {
+                            if (window.isSecureContext) {
+                              clipboard.copy(
+                                `${window.location.origin}/upload/${
+                                  reverseShare.token
+                                }`,
                               );
-                            },
-                          });
-                        }}
+                              toast.success(t("common.notify.copied-link"));
+                            } else {
+                              showReverseShareLinkModal(
+                                modals,
+                                reverseShare.token,
+                              );
+                            }
+                          }}
+                        >
+                          <TbLink />
+                        </ActionIcon>
+                      </Tooltip>
+                      <Tooltip
+                        position="bottom"
+                        multiline
+                        width={60}
+                        label={t("common.button.delete")}
+                        events={{ hover: true, focus: false, touch: true }}
                       >
-                        <TbTrash />
-                      </ActionIcon>
+                        <ActionIcon
+                          color="red"
+                          variant="light"
+                          size={25}
+                          onClick={() => {
+                            modals.openConfirmModal({
+                              title: t(
+                                "account.reverseShares.modal.delete.title",
+                              ),
+                              children: (
+                                <Text size="sm">
+                                  <FormattedMessage id="account.reverseShares.modal.delete.description" />
+                                </Text>
+                              ),
+                              confirmProps: {
+                                color: "red",
+                              },
+                              labels: {
+                                confirm: t("common.button.delete"),
+                                cancel: t("common.button.cancel"),
+                              },
+                              onConfirm: () => {
+                                shareService.removeReverseShare(
+                                  reverseShare.id,
+                                );
+                                setReverseShares(
+                                  reverseShares.filter(
+                                    (item) => item.id !== reverseShare.id,
+                                  ),
+                                );
+                              },
+                            });
+                          }}
+                        >
+                          <TbTrash />
+                        </ActionIcon>
+                      </Tooltip>
                     </Group>
                   </td>
                 </tr>
