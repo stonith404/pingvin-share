@@ -412,7 +412,7 @@ const prisma = new PrismaClient({
     db: {
       url:
         process.env.DATABASE_URL ||
-        "file:../data/pingvin-share.db?connection_limit=1",
+        "file:../../data/pingvin-share.db?connection_limit=1",
     },
   },
 });
