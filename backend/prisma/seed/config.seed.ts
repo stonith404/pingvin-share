@@ -76,6 +76,24 @@ export const configVariables = {
       secret: false,
     },
   },
+  cache: {
+    ttl: {
+      type: "number",
+      defaultValue: "60",
+    },
+    maxItems: {
+      type: "number",
+      defaultValue: "1000"
+    },
+    "redis-enabled": {
+      type: "boolean",
+      defaultValue: "false"
+    },
+    "redis-url": {
+      type: "string",
+      defaultValue: "redis://pingvin-redis:6379",
+    }
+  },
   email: {
     enableShareEmailRecipients: {
       type: "boolean",
