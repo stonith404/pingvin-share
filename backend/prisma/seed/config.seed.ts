@@ -76,6 +76,25 @@ export const configVariables = {
       secret: false,
     },
   },
+  cache: {
+    "redis-enabled": {
+      type: "boolean",
+      defaultValue: "false",
+    },
+    "redis-url": {
+      type: "string",
+      defaultValue: "redis://pingvin-redis:6379",
+      secret: true,
+    },
+    ttl: {
+      type: "number",
+      defaultValue: "60",
+    },
+    maxItems: {
+      type: "number",
+      defaultValue: "1000",
+    },
+  },
   email: {
     enableShareEmailRecipients: {
       type: "boolean",
@@ -419,11 +438,11 @@ const prisma = new PrismaClient({
 
 async function seedConfigVariables() {
   for (const [category, configVariablesOfCategory] of Object.entries(
-    configVariables
+    configVariables,
   )) {
     let order = 0;
     for (const [name, properties] of Object.entries(
-      configVariablesOfCategory
+      configVariablesOfCategory,
     )) {
       const existingConfigVariable = await prisma.config.findUnique({
         where: { name_category: { name, category } },
@@ -469,7 +488,7 @@ async function migrateConfigVariables() {
       // Update the config variable if it exists in the seed
     } else {
       const variableOrder = Object.keys(
-        configVariables[existingConfigVariable.category]
+        configVariables[existingConfigVariable.category],
       ).indexOf(existingConfigVariable.name);
       await prisma.config.update({
         where: {
