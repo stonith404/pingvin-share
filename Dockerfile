@@ -19,17 +19,18 @@ RUN npm run build
 # Stage 3: Backend dependencies
 FROM base AS backend-dependencies
 RUN apk add --no-cache python3
-WORKDIR /opt/app
 COPY backend/package.json backend/package-lock.json ./
 RUN npm ci
 
 # Stage 4: Build backend
 FROM base AS backend-builder
+ARG DB_DATASOURCE=sqlite
+
 RUN apk add openssl
 
 COPY ./backend .
 COPY --from=backend-dependencies /opt/app/node_modules ./node_modules
-RUN npx prisma generate
+RUN npx prisma generate --schema=prisma/${DB_DATASOURCE}/schema/
 RUN npm run build && npm prune --production
 
 # Stage 5: Final image
