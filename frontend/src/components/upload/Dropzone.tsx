@@ -38,8 +38,8 @@ const useStyles = createStyles((theme) => ({
     border: '1px dashed',
     borderWidth: 1,
     borderColor: theme.colorScheme === "dark"
-    ? '#373A40'
-    : '#ced4da',
+    ? theme.colors.dark[3]
+    : theme.colors.gray[3],
     borderRadius: 10,
     backgroundColor: theme.colorScheme === "dark"
     ? theme.colors.dark[4]
@@ -48,6 +48,7 @@ const useStyles = createStyles((theme) => ({
     textAlign: 'center',
     padding: 20,
   }
+
 }));
 
 const Dropzone = ({
