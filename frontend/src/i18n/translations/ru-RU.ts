@@ -279,7 +279,7 @@ export default {
   "share.error.access-denied.title": "Приватное доступ",
   "share.error.access-denied.description": "У текущей учетной записи нет разрешения на доступ к этому ресурсу",
   "share.modal.password.title": "Требуется пароль",
-  "share.modal.password.description": "Please enter the password to access this share.",
+  "share.modal.password.description": "Пожалуйста, введите пароль для доступа к этому ресурсу.",
   "share.modal.password": "Пароль",
   "share.modal.error.invalid-password": "Неверный пароль",
   "share.button.download-all": "Скачать все",
