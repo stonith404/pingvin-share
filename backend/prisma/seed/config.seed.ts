@@ -380,6 +380,11 @@ export const configVariables = {
       defaultValue: "",
       secret: false,
     },
+    companySharingPolicy: {
+      type: "text",
+      defaultValue: "",
+      secret: false,
+    },
   },
 } satisfies ConfigVariables;
 

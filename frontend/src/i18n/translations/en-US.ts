@@ -682,6 +682,9 @@ export default {
   "admin.config.legal.privacy-policy-url": "Privacy policy URL",
   "admin.config.legal.privacy-policy-url.description":
     "If you already have a privacy policy page you can link it here instead of using the text field.",
+  "admin.config.legal.company-sharing-policy": "Sharing policy ",
+  "admin.config.legal.company-sharing-policy.description": 
+    "A notice to be displayed to users on the upload page. This is to remind users what should and shouldn't be shared externally.",
 
   // 404
   "404.description": "Oops this page doesn't exist.",
