@@ -13,18 +13,20 @@ import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 import {
   TbAt,
+  TbBinaryTree,
+  TbBucket,
   TbMail,
+  TbScale,
+  TbServerBolt,
+  TbSettings,
   TbShare,
   TbSocial,
-  TbBucket,
-  TbBinaryTree,
-  TbSettings,
-  TbScale,
 } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
 
 const categories = [
   { name: "General", icon: <TbSettings /> },
+  { name: "Cache", icon: <TbServerBolt /> },
   { name: "Email", icon: <TbMail /> },
   { name: "Share", icon: <TbShare /> },
   { name: "SMTP", icon: <TbAt /> },
