@@ -1,5 +1,7 @@
 import { LogLevel } from "@nestjs/common";
 
+export const CONFIG_FILE = process.env.CONFIG_FILE || "../config.yaml";
+
 export const DATA_DIRECTORY = process.env.DATA_DIRECTORY || "./data";
 export const SHARE_DIRECTORY = `${DATA_DIRECTORY}/uploads/shares`;
 export const DATABASE_URL =
