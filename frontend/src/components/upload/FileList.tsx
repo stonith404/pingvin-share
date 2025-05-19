@@ -1,10 +1,20 @@
-import { ActionIcon, Table } from "@mantine/core";
+import {
+  ActionIcon,
+  Badge,
+  Box,
+  Group,
+  Table,
+  Text,
+  Tooltip,
+} from "@mantine/core";
 import { TbTrash } from "react-icons/tb";
 import { GrUndo } from "react-icons/gr";
-import { FileListItem } from "../../types/File.type";
+import { FileListItem, FileUpload } from "../../types/File.type";
 import { byteToHumanSizeString } from "../../utils/fileSize.util";
 import UploadProgressIndicator from "./UploadProgressIndicator";
 import { FormattedMessage } from "react-intl";
+import useTranslate from "../../hooks/useTranslate.hook";
+import { formatTimeRemaining } from "../../utils/time.util";
 
 const FileListRow = ({
   file,
@@ -15,6 +25,7 @@ const FileListRow = ({
   onRemove?: () => void;
   onRestore?: () => void;
 }) => {
+  const t = useTranslate();
   {
     const uploadable = "uploadingProgress" in file;
     const uploading = uploadable && file.uploadingProgress !== 0;
@@ -33,6 +44,17 @@ const FileListRow = ({
       >
         <td>{file.name}</td>
         <td>{byteToHumanSizeString(+file.size)}</td>
+        <td>
+          {uploading &&
+            uploadable &&
+            file.estimatedTimeRemaining !== undefined && (
+              <Tooltip label={t("upload.filelist.time-remaining")}>
+                <Text size="xs" color="dimmed" mr={8}>
+                  {formatTimeRemaining(file.estimatedTimeRemaining)}
+                </Text>
+              </Tooltip>
+            )}
+        </td>
         <td>
           {removable && (
             <ActionIcon
@@ -103,21 +125,77 @@ const FileList = <T extends FileListItem = FileListItem>({
     />
   ));
 
+  // Calculate upload statistics
+  const uploadableFiles = files.filter(
+    (file) => "uploadingProgress" in file,
+  ) as unknown as FileUpload[];
+
+  const inProgressFiles = uploadableFiles.filter(
+    (file) => file.uploadingProgress > 0 && file.uploadingProgress < 100,
+  ).length;
+
+  const pendingFiles = uploadableFiles.filter(
+    (file) => file.uploadingProgress === 0,
+  ).length;
+
+  const remainingFiles = inProgressFiles + pendingFiles;
+
+  // Calculate overall estimated time
+  let maxEstimatedTime = 0;
+  if (inProgressFiles > 0) {
+    for (const file of uploadableFiles) {
+      if (
+        file.estimatedTimeRemaining &&
+        file.estimatedTimeRemaining > maxEstimatedTime
+      ) {
+        maxEstimatedTime = file.estimatedTimeRemaining;
+      }
+    }
+  }
+
   return (
-    <Table>
-      <thead>
-        <tr>
-          <th>
-            <FormattedMessage id="upload.filelist.name" />
-          </th>
-          <th>
-            <FormattedMessage id="upload.filelist.size" />
-          </th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>{rows}</tbody>
-    </Table>
+    <>
+      {uploadableFiles.length > 0 && remainingFiles > 0 && (
+        <Box mb={16}>
+          <Group position="apart">
+            <Text size="sm">
+              <FormattedMessage
+                id="upload.filelist.remaining-files"
+                values={{
+                  count: remainingFiles,
+                  total: uploadableFiles.length,
+                }}
+              />
+            </Text>
+            {maxEstimatedTime > 0 && (
+              <Badge color="blue" variant="light">
+                <FormattedMessage
+                  id="upload.filelist.estimated-time"
+                  values={{ time: formatTimeRemaining(maxEstimatedTime) }}
+                />
+              </Badge>
+            )}
+          </Group>
+        </Box>
+      )}
+      <Table>
+        <thead>
+          <tr>
+            <th>
+              <FormattedMessage id="upload.filelist.name" />
+            </th>
+            <th>
+              <FormattedMessage id="upload.filelist.size" />
+            </th>
+            <th>
+              <FormattedMessage id="upload.filelist.time" />
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>{rows}</tbody>
+      </Table>
+    </>
   );
 };
 

@@ -1,4 +1,8 @@
-export type FileUpload = File & { uploadingProgress: number };
+export type FileUpload = File & {
+  uploadingProgress: number;
+  uploadStartTime?: number;
+  estimatedTimeRemaining?: number;
+};
 
 export type FileUploadResponse = { id: string; name: string };
 
