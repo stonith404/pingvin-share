@@ -423,6 +423,7 @@ export default {
   "admin.config.title": "Configuration",
   "admin.config.category.general": "General",
   "admin.config.category.share": "Share",
+  "admin.config.category.cache": "Cache",
   "admin.config.category.email": "Email",
   "admin.config.category.smtp": "SMTP",
   "admin.config.category.oauth": "Social Login",
@@ -445,6 +446,19 @@ export default {
   "admin.config.general.logo.description":
     "Change your logo by uploading a new image. The image must be a PNG and should have the format 1:1.",
   "admin.config.general.logo.placeholder": "Pick image",
+
+  "admin.config.cache.ttl": "TTL",
+  "admin.config.cache.ttl.description":
+    "Time in second to keep information inside the cache.",
+  "admin.config.cache.max-items": "Maximum items",
+  "admin.config.cache.max-items.description":
+    "Maximum number of items inside the cache.",
+  "admin.config.cache.redis-enabled": "Redis enabled",
+  "admin.config.cache.redis-enabled.description":
+    "Normally Pingvin Share caches information in memory. If you run multiple instances of Pingvin Share, you need to enable Redis caching to share the cache between the instances.",
+  "admin.config.cache.redis-url": "Redis URL",
+  "admin.config.cache.redis-url.description":
+    "Url to connect to the Redis instance used for caching.",
 
   "admin.config.email.enable-share-email-recipients":
     "Enable email recipient sharing",
