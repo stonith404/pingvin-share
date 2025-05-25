@@ -16,9 +16,9 @@ You can change the settings in the UI (`/admin/config`)
 
 You can set the configuration via a YAML file. If you choose this way, you won't be able to change the settings in the UI.
 
-If you use Docker you can create a `config.yml` file based on the [`config.example.yaml`](https://github.com/stonith404/pingvin-share/blob/main/config.yaml) and mount it to `/opt/app/config.yaml` in the container.
+If you use Docker you can create a `config.yml` file based on the [`config.example.yaml`](https://github.com/stonith404/pingvin-share/blob/main/config.example.yaml) and mount it to `/opt/app/config.yaml` in the container.
 
-If you run Pingvin Share without Docker, you can create a `config.yml` file based on the [`config.example.yaml`](https://github.com/stonith404/pingvin-share/blob/main/config.yaml) in the root directory of the project.
+If you run Pingvin Share without Docker, you can create a `config.yml` file based on the [`config.example.yaml`](https://github.com/stonith404/pingvin-share/blob/main/config.example.yaml) in the root directory of the project.
 
 ---
 
