@@ -23,12 +23,21 @@ share:
   shareIdLength: "8"
   #Maximum share size
   maxSize: "1000000000"
-  #Adjust the level to balance between file size and compression speed. Valid values range from 0 to 9, with 0 being no compression and 9 being maximum compression. 
+  #Adjust the level to balance between file size and compression speed. Valid values range from 0 to 9, with 0 being no compression and 9 being maximum compression.
   zipCompressionLevel: "9"
   #Adjust the chunk size for your uploads to balance efficiency and reliability according to your internet connection. Smaller chunks can enhance success rates for unstable connections, while larger chunks make uploads faster for stable connections.
   chunkSize: "10000000"
   #The share creation modal automatically appears when a user selects files, eliminating the need to manually click the button.
   autoOpenShareModal: "false"
+cache:
+  #Normally Pingvin Share caches information in memory. If you run multiple instances of Pingvin Share, you need to enable Redis caching to share the cache between the instances.
+  redis-enabled: "false"
+  #Url to connect to the Redis instance used for caching.
+  redis-url: redis://pingvin-redis:6379
+  #Time in second to keep information inside the cache.
+  ttl: "60"
+  #Maximum number of items inside the cache.
+  maxItems: "1000"
 email:
   #Whether to allow email sharing with recipients. Only enable this if SMTP is activated.
   enableShareEmailRecipients: "false"
