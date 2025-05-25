@@ -4,10 +4,10 @@
   "scripts": {
     "build": "nest build",
     "dev": "cross-env NODE_ENV=development nest start --watch",
-    "prod": "prisma migrate deploy && prisma db seed && node dist/src/main",
+    "prod": "prisma migrate deploy --schema=prisma/sqlite/schema/ && prisma db seed --schema=prisma/sqlite/schema/ && node dist/src/main",
     "lint": "eslint 'src/**/*.ts'",
     "format": "prettier --end-of-line=auto --write 'src/**/*.ts'",
-    "test:system": "prisma migrate reset -f && nest start & wait-on http://localhost:8080/api/configs && newman run ./test/newman-system-tests.json"
+    "test:system": "prisma migrate reset -f --schema=prisma/sqlite/schema/ && nest start & wait-on http://localhost:8080/api/configs && newman run ./test/newman-system-tests.json"
   },
   "prisma": {
     "seed": "ts-node prisma/seed/config.seed.ts"

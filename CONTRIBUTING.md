@@ -73,8 +73,8 @@ The backend is built with [Nest.js](https://nestjs.com) and uses Typescript.
 
 1. Open the `backend` folder
 2. Install the dependencies with `npm install`
-3. Push the database schema to the database by running `npx prisma db push`
-4. Seed the database with `npx prisma db seed`
+3. Push the database schema to the database by running `npx prisma db push --schema=prisma/sqlite/schema/`
+4. Seed the database with `npx prisma db seed --schema=prisma/sqlite/schema/`
 5. Start the backend with `npm run dev`
 
 ### Frontend
