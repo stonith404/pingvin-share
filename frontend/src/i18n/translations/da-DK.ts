@@ -158,7 +158,7 @@ export default {
   "account.reverseShares.modal.simplified": "Simple mode",
   "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will only be able to customize the name and description of the share.",
   "account.reverseShares.modal.public-access": "Offentlig adgang",
-  "account.reverseShares.modal.public-access.description": "Make the shares created with this reverse share public. If disabled, only you and the share creator will have access to view it.",
+  "account.reverseShares.modal.public-access.description": "Lav filerne i denne omvendte deling offentlige. Hvis deaktiveret kan kun dig og delingens ejer have adgang til filerne.",
   "account.reverseShares.modal.max-use.label": "Maksimal anvendelser",
   "account.reverseShares.modal.max-use.description": "Det maksimale antal gange, denne URL kan bruges til at oprette en deling.",
   "account.reverseShare.never-expires": "Denne omvendte deling udløber aldrig.",
@@ -207,9 +207,9 @@ export default {
   // /admin/shares
   "admin.shares.title": "Share management",
   "admin.shares.table.id": "Share ID",
-  "admin.shares.table.username": "Creator",
+  "admin.shares.table.username": "Ejer",
   "admin.shares.table.visitors": "Besøgende",
-  "admin.shares.table.expires": "Expires on",
+  "admin.shares.table.expires": "Udløber",
   "admin.shares.edit.delete.title": "Delete share: {id}",
   "admin.shares.edit.delete.description": "Do you really want to delete this share?",
   // END /admin/shares
