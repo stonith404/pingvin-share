@@ -16,9 +16,9 @@ You can change the settings in the UI (`/admin/config`)
 
 You can set the configuration via a YAML file. If you choose this way, you won't be able to change the settings in the UI.
 
-If you use Docker you can create a `config.yml` file based on the [`config.example.yaml`](https://github.com/stonith404/pingvin-share/blob/main/config.yaml) and mount it to `/opt/app/config.yaml` in the container.
+If you use Docker you can create a `config.yml` file based on the [`config.example.yaml`](https://github.com/stonith404/pingvin-share/blob/main/config.example.yaml) and mount it to `/opt/app/config.yaml` in the container.
 
-If you run Pingvin Share without Docker, you can create a `config.yml` file based on the [`config.example.yaml`](https://github.com/stonith404/pingvin-share/blob/main/config.yaml) in the root directory of the project.
+If you run Pingvin Share without Docker, you can create a `config.yml` file based on the [`config.example.yaml`](https://github.com/stonith404/pingvin-share/blob/main/config.example.yaml) in the root directory of the project.
 
 ---
 
@@ -33,7 +33,7 @@ For installation specific configuration, you can use environment variables. The 
 | `BACKEND_PORT`   | `8080`                                             | The port on which the backend listens.                                                                   |
 | `DATABASE_URL`   | `file:../data/pingvin-share.db?connection_limit=1` | The URL of the SQLite database.                                                                          |
 | `DATA_DIRECTORY` | `./data`                                           | The directory where data is stored.                                                                      |
-| `CONFIG_FILE`    | `../config.yaml`                                   | Path to the configuration file                                                                      |
+| `CONFIG_FILE`    | `../config.yaml`                                   | Path to the configuration file                                                                           |
 | `CLAMAV_HOST`    | `127.0.0.1` or `clamav` when running with Docker   | The IP address of the ClamAV server. See the [ClamAV docs](integrations.md#clamav) for more information. |
 | `CLAMAV_PORT`    | `3310`                                             | The port number of the ClamAV server.                                                                    |
 
@@ -50,6 +50,6 @@ Environment variables that are only available when running Pingvin Share with Do
 
 | Variable          | Default Value | Description                                                                                                                                                                                                                                                                                                                                                                   |
 | ----------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `TRUST_PROXY`      | `false` | Whether Pingvin Share is behind a reverse proxy. If set to `true`, the `X-Forwarded-For` header is trusted. |
-| `CADDY_DISABLED`   | `false` | Configures if Pingvin Share is starting built-in Caddy. If set to `true`, Caddy will not be started. If disabled, you must configure your reverse proxy to correctly map all paths. Refer to the [official Caddyfile](https://github.com/stonith404/pingvin-share/blob/main/reverse-proxy/Caddyfile) for guidance. |
-| `PUID` and `PGID`  | `1000`  | The user and group ID of the user who should run Pingvin Share inside the Docker container and owns the files that are mounted with the volume. You can get the `PUID` and `GUID` of your user on your host machine by using the command `id`. For more information see [this article](https://docs.linuxserver.io/general/understanding-puid-and-pgid/#using-the-variables). |
+| `TRUST_PROXY`     | `false`       | Whether Pingvin Share is behind a reverse proxy. If set to `true`, the `X-Forwarded-For` header is trusted.                                                                                                                                                                                                                                                                   |
+| `CADDY_DISABLED`  | `false`       | Configures if Pingvin Share is starting built-in Caddy. If set to `true`, Caddy will not be started. If disabled, you must configure your reverse proxy to correctly map all paths. Refer to the [official Caddyfile](https://github.com/stonith404/pingvin-share/blob/main/reverse-proxy/Caddyfile) for guidance.                                                            |
+| `PUID` and `PGID` | `1000`        | The user and group ID of the user who should run Pingvin Share inside the Docker container and owns the files that are mounted with the volume. You can get the `PUID` and `GUID` of your user on your host machine by using the command `id`. For more information see [this article](https://docs.linuxserver.io/general/understanding-puid-and-pgid/#using-the-variables). |
