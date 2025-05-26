@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Container,
+  Divider,
   Group,
   Stack,
   Text,
@@ -152,46 +153,193 @@ export default function AppShellDemo() {
                 <Title mb="md" order={3}>
                   {t("admin.config.category." + categoryId)}
                 </Title>
-                {configVariables.map((configVariable) => (
-                  <Group key={configVariable.key} position="apart">
-                    <Stack
-                      style={{ maxWidth: isMobile ? "100%" : "40%" }}
-                      spacing={0}
+                {categoryId === "oauth" ? (
+                  <>
+                    {/* General OAuth Settings */}
+                    <Box
+                      mb="xl"
+                      sx={{
+                        padding: "1rem",
+                      }}
                     >
-                      <Title order={6}>
-                        <FormattedMessage
-                          id={`admin.config.${camelToKebab(
-                            configVariable.key,
-                          )}`}
-                        />
-                      </Title>
-
-                      <Text
-                        sx={{
-                          whiteSpace: "pre-line",
-                        }}
-                        color="dimmed"
-                        size="sm"
-                        mb="xs"
-                      >
-                        <FormattedMessage
-                          id={`admin.config.${camelToKebab(
-                            configVariable.key,
-                          )}.description`}
-                          values={{ br: <br /> }}
-                        />
-                      </Text>
-                    </Stack>
-                    <Stack></Stack>
-                    <Box style={{ width: isMobile ? "100%" : "50%" }}>
-                      <AdminConfigInput
-                        key={configVariable.key}
-                        configVariable={configVariable}
-                        updateConfigVariable={updateConfigVariable}
+                      <Divider
+                        my="xs"
+                        label={
+                          <Title order={4}>
+                            {t("admin.config.group.general")}
+                          </Title>
+                        }
                       />
+                      <Text color="dimmed" size="sm" mb="md">
+                        {t("admin.config.group.general.description")}
+                      </Text>
+                      {configVariables
+                        .filter(
+                          (config) =>
+                            config.key.startsWith("oauth.") &&
+                            ![
+                              "github",
+                              "google",
+                              "microsoft",
+                              "discord",
+                              "oidc",
+                            ].some((provider) => config.key.includes(provider)),
+                        )
+                        .map((configVariable) => (
+                          <Group key={configVariable.key} position="apart">
+                            <Stack
+                              style={{ maxWidth: isMobile ? "100%" : "40%" }}
+                              spacing={0}
+                            >
+                              <Title order={6}>
+                                <FormattedMessage
+                                  id={`admin.config.${camelToKebab(
+                                    configVariable.key,
+                                  )}`}
+                                />
+                              </Title>
+
+                              <Text
+                                sx={{
+                                  whiteSpace: "pre-line",
+                                }}
+                                color="dimmed"
+                                size="sm"
+                                mb="xs"
+                              >
+                                <FormattedMessage
+                                  id={`admin.config.${camelToKebab(
+                                    configVariable.key,
+                                  )}.description`}
+                                  values={{ br: <br /> }}
+                                />
+                              </Text>
+                            </Stack>
+                            <Stack></Stack>
+                            <Box style={{ width: isMobile ? "100%" : "50%" }}>
+                              <AdminConfigInput
+                                key={configVariable.key}
+                                configVariable={configVariable}
+                                updateConfigVariable={updateConfigVariable}
+                              />
+                            </Box>
+                          </Group>
+                        ))}
                     </Box>
-                  </Group>
-                ))}
+
+                    {/* OAuth Providers */}
+                    {["github", "google", "microsoft", "discord", "oidc"].map(
+                      (provider) => (
+                        <Box
+                          key={provider}
+                          mb="xl"
+                          sx={{
+                            padding: "1rem",
+                          }}
+                        >
+                          <Divider
+                            my="xs"
+                            label={
+                              <Title order={4}>
+                                {provider.charAt(0).toUpperCase() +
+                                  provider.slice(1)}
+                              </Title>
+                            }
+                          />
+                          {configVariables
+                            .filter((config) =>
+                              config.key.startsWith(`oauth.${provider}`),
+                            )
+                            .map((configVariable) => (
+                              <Group key={configVariable.key} position="apart">
+                                <Stack
+                                  style={{
+                                    maxWidth: isMobile ? "100%" : "40%",
+                                  }}
+                                  spacing={0}
+                                >
+                                  <Title order={6}>
+                                    <FormattedMessage
+                                      id={`admin.config.${camelToKebab(
+                                        configVariable.key,
+                                      )}`}
+                                    />
+                                  </Title>
+
+                                  <Text
+                                    sx={{
+                                      whiteSpace: "pre-line",
+                                    }}
+                                    color="dimmed"
+                                    size="sm"
+                                    mb="xs"
+                                  >
+                                    <FormattedMessage
+                                      id={`admin.config.${camelToKebab(
+                                        configVariable.key,
+                                      )}.description`}
+                                      values={{ br: <br /> }}
+                                    />
+                                  </Text>
+                                </Stack>
+                                <Stack></Stack>
+                                <Box
+                                  style={{ width: isMobile ? "100%" : "50%" }}
+                                >
+                                  <AdminConfigInput
+                                    key={configVariable.key}
+                                    configVariable={configVariable}
+                                    updateConfigVariable={updateConfigVariable}
+                                  />
+                                </Box>
+                              </Group>
+                            ))}
+                        </Box>
+                      ),
+                    )}
+                  </>
+                ) : (
+                  configVariables.map((configVariable) => (
+                    <Group key={configVariable.key} position="apart">
+                      <Stack
+                        style={{ maxWidth: isMobile ? "100%" : "40%" }}
+                        spacing={0}
+                      >
+                        <Title order={6}>
+                          <FormattedMessage
+                            id={`admin.config.${camelToKebab(
+                              configVariable.key,
+                            )}`}
+                          />
+                        </Title>
+
+                        <Text
+                          sx={{
+                            whiteSpace: "pre-line",
+                          }}
+                          color="dimmed"
+                          size="sm"
+                          mb="xs"
+                        >
+                          <FormattedMessage
+                            id={`admin.config.${camelToKebab(
+                              configVariable.key,
+                            )}.description`}
+                            values={{ br: <br /> }}
+                          />
+                        </Text>
+                      </Stack>
+                      <Stack></Stack>
+                      <Box style={{ width: isMobile ? "100%" : "50%" }}>
+                        <AdminConfigInput
+                          key={configVariable.key}
+                          configVariable={configVariable}
+                          updateConfigVariable={updateConfigVariable}
+                        />
+                      </Box>
+                    </Group>
+                  ))
+                )}
                 {categoryId == "general" && (
                   <LogoConfigInput logo={logo} setLogo={setLogo} />
                 )}
