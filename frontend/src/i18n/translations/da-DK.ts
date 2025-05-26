@@ -263,7 +263,7 @@ export default {
   "upload.modal.accordion.security.max-views.placeholder": "Ingen begrænsning",
   // showCompletedUploadModal.tsx
   "upload.modal.completed.never-expires": "Denne deling vil aldrig udløbe.",
-  "upload.modal.completed.expires-on": "Denne omvendte deling udløber den {expiration}.",
+  "upload.modal.completed.expires-on": "Denne deling udløber den {expiration}.",
   "upload.modal.completed.share-ready": "Delingen er klar",
   "upload.modal.completed.notified-reverse-share-creator": "We have notified the creator of the reverse share. You can also manually share this link with them through other means.",
   // END /upload
