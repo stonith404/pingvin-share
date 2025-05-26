@@ -729,6 +729,15 @@ export default {
   "error.param.provider_oidc": "OpenID Connect",
 
   // Common translations
+  "common.button.info": "Info",
+  "common.button.undo": "Undo",
+  "common.button.download": "Download",
+  "common.button.copy": "Copy",
+  "common.button.copy-link": "Copy link",
+  "common.button.preview": "Preview",
+  "common.button.edit": "Edit",
+  "common.button.profile": "Profile",
+  "common.button.shares": "Shares",
   "common.button.save": "Save",
   "common.button.create": "Create",
   "common.button.submit": "Submit",
