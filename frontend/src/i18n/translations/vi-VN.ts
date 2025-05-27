@@ -134,7 +134,7 @@ export default {
   // END /account/shares
   // /account/reverseShares
   "account.reverseShares.title": "Reverse shares",
-  "account.reverseShares.description": "A reverse share allows you to generate a unique URL that allows external users to create a share.",
+  "account.reverseShares.description": "Chia sẻ ngược cho phép bạn tạo một liên kết duy nhất để người ngoài có thể tải tệp lên cho bạn.",
   "account.reverseShares.title.empty": "It's empty here 👀",
   "account.reverseShares.description.empty": "You don't have any reverse shares.",
   // showCreateReverseShareModal.tsx
