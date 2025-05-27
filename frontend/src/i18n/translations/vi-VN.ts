@@ -158,7 +158,7 @@ export default {
   "account.reverseShares.modal.simplified": "Chế độ đơn giản",
   "account.reverseShares.modal.simplified.description": "Make it easy for the person uploading the file to share it with you. They will only be able to customize the name and description of the share.",
   "account.reverseShares.modal.public-access": "Public access",
-  "account.reverseShares.modal.public-access.description": "Make the shares created with this reverse share public. If disabled, only you and the share creator will have access to view it.",
+  "account.reverseShares.modal.public-access.description": "Cho phép bất kỳ ai cũng có thể xem các tệp được gửi qua liên kết chia sẻ ngược này. Nếu tắt, chỉ bạn với người gửi mới có thể xem được.",
   "account.reverseShares.modal.max-use.label": "Max uses",
   "account.reverseShares.modal.max-use.description": "The maximum amount of times this URL can be used to create a share.",
   "account.reverseShare.never-expires": "This reverse share will never expire.",
