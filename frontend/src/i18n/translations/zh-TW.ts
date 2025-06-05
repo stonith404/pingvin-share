@@ -3,7 +3,7 @@ export default {
   "navbar.upload": "上傳",
   "navbar.signin": "登入",
   "navbar.home": "首頁",
-  "navbar.signup": "登入",
+  "navbar.signup": "註冊",
   "navbar.links.shares": "我的分享",
   "navbar.links.reverse": "檔案請求",
   "navbar.avatar.account": "帳號設定",
