@@ -308,7 +308,7 @@ export default {
   "admin.config.title": "配置管理",
   "admin.config.category.general": "通用",
   "admin.config.category.share": "分享",
-  "admin.config.category.cache": "Cache",
+  "admin.config.category.cache": "快取",
   "admin.config.category.email": "Email",
   "admin.config.category.smtp": "SMTP",
   "admin.config.category.oauth": "第三方登入",
