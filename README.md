@@ -1,3 +1,11 @@
+> ## ⚠️ Project Archived
+>
+> After much consideration, I've chosen to focus my limited time and energy on my other project, [Pocket ID](https://github.com/pocket-id/pocket-id). As a solo developer, I've found it difficult to actively maintain multiple open source projects with the care and attention they deserve.
+>
+> If you're interested in continuing this work through a fork, I'd be happy to link to it here in the README.
+>
+> Thanks to all the contributors and users who have supported Pingvin Share over the years :)
+
 # <div align="center"><img  src="https://user-images.githubusercontent.com/58886915/166198400-c2134044-1198-4647-a8b6-da9c4a204c68.svg" width="40"/> </br>Pingvin Share</div>
 
 [![](https://dcbadge.limes.pink/api/server/wHRQ9nFRcK)](https://discord.gg/wHRQ9nFRcK) [![](https://img.shields.io/badge/Crowdin-2E3340.svg?style=for-the-badge&logo=Crowdin&logoColor=white)](https://crowdin.com/project/pingvin-share) [![](https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#white)](https://github.com/sponsors/stonith404)
@@ -44,9 +52,3 @@ For more installation options and advanced configurations, please refer to the [
 ## 🖤 Contribute
 
 We would love it if you want to help make Pingvin Share better! You can either [help to translate](https://stonith404.github.io/pingvin-share/help-out/translate) Pingvin Share or [contribute to the codebase](https://stonith404.github.io/pingvin-share/help-out/contribute).
-
-## ❤️ Sponsors
-
-Thank you for supporting Pingvin Share 🙏
-
-- [@COMPLEXWASTAKEN](https://github.com/COMPLEXWASTAKEN)
