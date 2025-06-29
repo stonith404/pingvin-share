@@ -1,6 +1,13 @@
 import { Loader, RingProgress } from "@mantine/core";
 import { TbCircleCheck } from "react-icons/tb";
-const UploadProgressIndicator = ({ progress }: { progress: number }) => {
+
+type UploadProgressIndicatorProps = {
+  progress: number;
+};
+
+const UploadProgressIndicator = ({
+  progress,
+}: UploadProgressIndicatorProps) => {
   if (progress > 0 && progress < 100) {
     return (
       <RingProgress
