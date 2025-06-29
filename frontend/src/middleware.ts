@@ -74,6 +74,11 @@ export async function middleware(request: NextRequest) {
     ) {
       routes.disabled.routes.push("/privacy");
     }
+    if (
+      !getConfig("legal.companySharingPolicy")
+    ) {
+      routes.disabled.routes.push("/sharing_policy");
+    }
   }
 
   // prettier-ignore
