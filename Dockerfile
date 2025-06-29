@@ -1,35 +1,40 @@
-# Stage 1: Frontend dependencies
-FROM node:22-alpine AS frontend-dependencies
+ARG NODE_VERSION="22"
+ARG ALPINE_VERSION=""
+
+# Preamble: define base image used by all stages
+FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS base
 WORKDIR /opt/app
+
+# Stage 1: Frontend dependencies
+FROM base AS frontend-dependencies
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci
 
 # Stage 2: Build frontend
-FROM node:22-alpine AS frontend-builder
-WORKDIR /opt/app
+FROM base AS frontend-builder
 COPY ./frontend .
 COPY --from=frontend-dependencies /opt/app/node_modules ./node_modules
 RUN npm run build
 
 # Stage 3: Backend dependencies
-FROM node:22-alpine AS backend-dependencies
+FROM base AS backend-dependencies
 RUN apk add --no-cache python3
-WORKDIR /opt/app
 COPY backend/package.json backend/package-lock.json ./
 RUN npm ci
 
 # Stage 4: Build backend
-FROM node:22-alpine AS backend-builder
+FROM base AS backend-builder
+ARG DB_DATASOURCE=sqlite
+
 RUN apk add openssl
 
-WORKDIR /opt/app
 COPY ./backend .
 COPY --from=backend-dependencies /opt/app/node_modules ./node_modules
-RUN npx prisma generate
+RUN npx prisma generate --schema=prisma/${DB_DATASOURCE}/schema/
 RUN npm run build && npm prune --production
 
 # Stage 5: Final image
-FROM node:22-alpine AS runner
+FROM base AS runner
 ENV NODE_ENV=docker
 
 # Delete default node user
@@ -39,20 +44,16 @@ RUN apk update --no-cache \
     && apk upgrade --no-cache \
     && apk add --no-cache curl caddy su-exec openssl
 
-WORKDIR /opt/app/frontend
-COPY --from=frontend-builder /opt/app/public ./public
-COPY --from=frontend-builder /opt/app/.next/standalone ./
-COPY --from=frontend-builder /opt/app/.next/static ./.next/static
+COPY --from=frontend-builder /opt/app/public ./frontend/public
+COPY --from=frontend-builder /opt/app/.next/standalone ./frontend/
+COPY --from=frontend-builder /opt/app/.next/static ./frontend/.next/static
 COPY --from=frontend-builder /opt/app/public/img /tmp/img
 
-WORKDIR /opt/app/backend
-COPY --from=backend-builder /opt/app/node_modules ./node_modules
-COPY --from=backend-builder /opt/app/dist ./dist
-COPY --from=backend-builder /opt/app/prisma ./prisma
-COPY --from=backend-builder /opt/app/package.json ./
-COPY --from=backend-builder /opt/app/tsconfig.json ./
-
-WORKDIR /opt/app
+COPY --from=backend-builder /opt/app/node_modules ./backend/node_modules
+COPY --from=backend-builder /opt/app/dist ./backend/dist
+COPY --from=backend-builder /opt/app/prisma ./backend/prisma
+COPY --from=backend-builder /opt/app/package.json ./backend/
+COPY --from=backend-builder /opt/app/tsconfig.json ./backend/
 
 COPY ./reverse-proxy  /opt/app/reverse-proxy
 COPY ./scripts/docker ./scripts/docker
