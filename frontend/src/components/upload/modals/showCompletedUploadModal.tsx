@@ -9,6 +9,7 @@ import useTranslate, {
 } from "../../../hooks/useTranslate.hook";
 import { CompletedShare } from "../../../types/share.type";
 import CopyTextField from "../CopyTextField";
+import QRCode from "../../share/QRCode";
 
 const showCompletedUploadModal = (
   modals: ModalsContextProps,
@@ -36,6 +37,7 @@ const Body = ({ share }: { share: CompletedShare }) => {
   return (
     <Stack align="stretch">
       <CopyTextField link={link} />
+      <QRCode link={link} />
       {share.notifyReverseShareCreator === true && (
         <Text
           size="sm"
