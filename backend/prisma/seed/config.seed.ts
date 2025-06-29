@@ -274,6 +274,18 @@ export const configVariables = {
       defaultValue: "",
       obscured: true,
     },
+    "microsoft-usernameClaim": {
+      type: "string",
+      defaultValue: "",
+    },
+    "microsoft-roleGeneralAccess": {
+      type: "string",
+      defaultValue: "",
+    },
+    "microsoft-roleAdminAccess": {
+      type: "string",
+      defaultValue: "",
+    },
     "discord-enabled": {
       type: "boolean",
       defaultValue: "false",
