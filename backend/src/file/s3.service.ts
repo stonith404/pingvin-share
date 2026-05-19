@@ -56,13 +56,24 @@ export class S3FileService {
       throw new BadRequestException("Invalid file ID format");
     }
 
+    if (!shareId || shareId.includes("/")) {
+      throw new BadRequestException("Invalid share ID format");
+    }
+
+    if (!file.name || file.name.includes("..")) {
+      throw new BadRequestException("Invalid file name");
+    }
+
     const buffer = Buffer.from(data, "base64");
     const key = `${this.getS3Path()}${shareId}/${file.name}`;
     const bucketName = this.config.get("s3.bucketName");
     const s3Instance = this.getS3Instance();
 
+    this.logger.debug(
+      `Processing chunk ${chunk.index + 1}/${chunk.total} for file "${key}"`,
+    );
+
     try {
-      // Initialize multipart upload if it's the first chunk
       if (chunk.index === 0) {
         const multipartInitResponse = await s3Instance.send(
           new CreateMultipartUploadCommand({
@@ -76,15 +87,18 @@ export class S3FileService {
           throw new Error("Failed to initialize multipart upload.");
         }
 
-        // Store the uploadId and parts list in memory
         this.multipartUploads[file.id] = {
           uploadId,
           parts: [],
         };
+
+        this.logger.debug(
+          `Initialized multipart upload for "${key}" with uploadId "${uploadId}"`,
+        );
       }
 
-      // Get the ongoing multipart upload
       const multipartUpload = this.multipartUploads[file.id];
+
       if (!multipartUpload) {
         throw new InternalServerErrorException(
           "Multipart upload session not found.",
@@ -93,7 +107,6 @@ export class S3FileService {
 
       const uploadId = multipartUpload.uploadId;
 
-      // Upload the current chunk
       const partNumber = chunk.index + 1; // Part numbers start from 1
 
       const uploadPartResponse: UploadPartCommandOutput = await s3Instance.send(
@@ -106,13 +119,13 @@ export class S3FileService {
         }),
       );
 
-      // Store the ETag and PartNumber for later completion
       multipartUpload.parts.push({
         ETag: uploadPartResponse.ETag,
         PartNumber: partNumber,
       });
 
-      // Complete the multipart upload if it's the last chunk
+      this.logger.debug(`Uploaded part ${partNumber} for "${key}"`);
+
       if (chunk.index === chunk.total - 1) {
         await s3Instance.send(
           new CompleteMultipartUploadCommand({
@@ -125,12 +138,13 @@ export class S3FileService {
           }),
         );
 
-        // Remove the completed upload from memory
+        this.logger.debug(`Completed multipart upload for "${key}"`);
+
         delete this.multipartUploads[file.id];
       }
     } catch (error) {
-      // Abort the multipart upload if it fails
       const multipartUpload = this.multipartUploads[file.id];
+
       if (multipartUpload) {
         try {
           await s3Instance.send(
@@ -140,27 +154,60 @@ export class S3FileService {
               UploadId: multipartUpload.uploadId,
             }),
           );
+
+          this.logger.debug(`Aborted multipart upload for "${key}"`);
         } catch (abortError) {
-          console.error("Error aborting multipart upload:", abortError);
+          this.logger.error("Error aborting multipart upload", {
+            abortError,
+            key,
+          });
         }
         delete this.multipartUploads[file.id];
       }
-      this.logger.error(error);
-      throw new Error("Multipart upload failed. The upload has been aborted.");
+
+      this.logger.error("Error in multipart upload", {
+        error,
+        fileId: file.id,
+        fileName: file.name,
+        shareId,
+        key,
+        chunkIndex: chunk.index,
+        bucket: bucketName,
+      });
+      throw new InternalServerErrorException(
+        "Multipart upload failed. The upload has been aborted.",
+      );
     }
 
     const isLastChunk = chunk.index == chunk.total - 1;
-    if (isLastChunk) {
-      const fileSize: number = await this.getFileSize(shareId, file.name);
 
-      await this.prisma.file.create({
-        data: {
-          id: file.id,
-          name: file.name,
-          size: fileSize.toString(),
-          share: { connect: { id: shareId } },
-        },
-      });
+    if (isLastChunk) {
+      try {
+        const fileSize: number = await this.getFileSize(shareId, file.name);
+
+        await this.prisma.file.create({
+          data: {
+            id: file.id,
+            name: file.name,
+            size: fileSize.toString(),
+            share: { connect: { id: shareId } },
+          },
+        });
+
+        this.logger.debug(
+          `Created database record for file "${file.name}" with ID "${file.id}"`,
+        );
+      } catch (error) {
+        this.logger.error("Error creating file record", {
+          error,
+          fileId: file.id,
+          fileName: file.name,
+          shareId,
+        });
+        throw new InternalServerErrorException(
+          "Failed to create file record in database",
+        );
+      }
     }
 
     return file;
@@ -202,18 +249,43 @@ export class S3FileService {
 
     if (!fileMetaData) throw new NotFoundException("File not found");
 
+    if (!shareId || shareId.includes("/")) {
+      throw new BadRequestException("Invalid share ID format");
+    }
+
+    if (!fileMetaData.name || fileMetaData.name.includes("..")) {
+      throw new BadRequestException("Invalid file name");
+    }
+
     const key = `${this.getS3Path()}${shareId}/${fileMetaData.name}`;
+    const bucketName = this.config.get("s3.bucketName");
     const s3Instance = this.getS3Instance();
+
+    this.logger.debug(
+      `Attempting to delete file "${key}" from bucket "${bucketName}"`,
+    );
 
     try {
       await s3Instance.send(
         new DeleteObjectCommand({
-          Bucket: this.config.get("s3.bucketName"),
+          Bucket: bucketName,
           Key: key,
         }),
       );
+
+      this.logger.debug(
+        `Successfully deleted file "${key}" from bucket "${bucketName}"`,
+      );
     } catch (error) {
-      throw new Error("Could not delete file from S3");
+      this.logger.error("Error deleting file from S3", {
+        error,
+        shareId,
+        fileId,
+        fileName: fileMetaData.name,
+        key,
+        bucket: bucketName,
+      });
+      throw new InternalServerErrorException("Could not delete file from S3");
     }
 
     await this.prisma.file.delete({ where: { id: fileId } });
@@ -221,57 +293,121 @@ export class S3FileService {
 
   async deleteAllFiles(shareId: string) {
     const prefix = `${this.getS3Path()}${shareId}/`;
+    const bucketName = this.config.get("s3.bucketName");
     const s3Instance = this.getS3Instance();
 
+    this.logger.debug(
+      `Attempting to delete files with prefix "${prefix}" from bucket "${bucketName}"`,
+    );
+
     try {
-      // List all objects under the given prefix
+      if (!shareId || shareId.includes("/")) {
+        throw new BadRequestException("Invalid share ID format");
+      }
+
       const listResponse = await s3Instance.send(
         new ListObjectsV2Command({
-          Bucket: this.config.get("s3.bucketName"),
+          Bucket: bucketName,
           Prefix: prefix,
         }),
       );
 
+      this.logger.debug(
+        `ListObjectsV2Command response: Found ${listResponse.Contents?.length || 0} objects`,
+        { prefix, keyCount: listResponse.KeyCount },
+      );
+
       if (!listResponse.Contents || listResponse.Contents.length === 0) {
-        throw new Error(`No files found for share ${shareId}`);
+        this.logger.warn(
+          `No files found for share ${shareId} with prefix "${prefix}"`,
+        );
+
+        try {
+          const rootListResponse = await s3Instance.send(
+            new ListObjectsV2Command({
+              Bucket: bucketName,
+              Delimiter: "/",
+            }),
+          );
+
+          this.logger.debug(`Root level folders in bucket:`, {
+            prefixes: rootListResponse.CommonPrefixes?.map((p) => p.Prefix),
+            objects: rootListResponse.Contents?.map((c) => c.Key),
+          });
+        } catch (rootListError) {
+          this.logger.error(`Error listing root level folders`, {
+            error: rootListError,
+          });
+        }
+
+        return;
       }
 
-      // Extract the keys of the files to be deleted
       const objectsToDelete = listResponse.Contents.map((file) => ({
         Key: file.Key!,
       }));
 
-      // Delete all files in a single request (up to 1000 objects at once)
+      this.logger.debug(`Deleting ${objectsToDelete.length} objects`, {
+        firstFew: objectsToDelete.slice(0, 3).map((o) => o.Key),
+      });
+
       await s3Instance.send(
         new DeleteObjectsCommand({
-          Bucket: this.config.get("s3.bucketName"),
+          Bucket: bucketName,
           Delete: {
             Objects: objectsToDelete,
           },
         }),
       );
+
+      this.logger.debug(
+        `Successfully deleted ${objectsToDelete.length} files for share ${shareId}`,
+      );
     } catch (error) {
-      throw new Error("Could not delete all files from S3");
+      this.logger.error("Error deleting all files from S3", {
+        error,
+        shareId,
+        prefix,
+        bucket: bucketName,
+      });
+
+      throw new InternalServerErrorException(
+        "Could not delete all files from S3",
+      );
     }
   }
 
   async getFileSize(shareId: string, fileName: string): Promise<number> {
+    if (!shareId || shareId.includes("/")) {
+      throw new BadRequestException("Invalid share ID format");
+    }
+
+    if (!fileName || fileName.includes("..")) {
+      throw new BadRequestException("Invalid file name");
+    }
+
     const key = `${this.getS3Path()}${shareId}/${fileName}`;
+    const bucketName = this.config.get("s3.bucketName");
     const s3Instance = this.getS3Instance();
 
     try {
-      // Get metadata of the file using HeadObjectCommand
       const headObjectResponse = await s3Instance.send(
         new HeadObjectCommand({
-          Bucket: this.config.get("s3.bucketName"),
+          Bucket: bucketName,
           Key: key,
         }),
       );
 
-      // Return ContentLength which is the file size in bytes
       return headObjectResponse.ContentLength ?? 0;
     } catch (error) {
-      throw new Error("Could not retrieve file size");
+      this.logger.error("Error getting file size", {
+        error,
+        shareId,
+        fileName,
+        key,
+        bucket: bucketName,
+      });
+      throw new InternalServerErrorException("Could not retrieve file size");
     }
   }
 
@@ -385,6 +521,10 @@ export class S3FileService {
 
   getS3Path(): string {
     const configS3Path = this.config.get("s3.bucketPath");
-    return configS3Path ? `${configS3Path}/` : "";
+
+    if (!configS3Path) return "";
+
+    const cleanPath = configS3Path.replace(/^\/+|\/+$/g, "");
+    return cleanPath ? `${cleanPath}/` : "";
   }
 }
