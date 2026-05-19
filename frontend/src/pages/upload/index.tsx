@@ -73,7 +73,21 @@ const Upload = ({
           setFiles((files) =>
             files.map((file, callbackIndex) => {
               if (fileIndex == callbackIndex) {
+                if (progress === 1 && !file.uploadStartTime) {
+                  file.uploadStartTime = Date.now();
+                }
+
                 file.uploadingProgress = progress;
+
+                if (progress > 0 && progress < 100) {
+                  const elapsedMs =
+                    Date.now() - (file.uploadStartTime || Date.now());
+                  const estimatedTotalMs = (elapsedMs / progress) * 100;
+                  const remainingMs = estimatedTotalMs - elapsedMs;
+                  file.estimatedTimeRemaining = Math.max(0, remainingMs);
+                } else if (progress >= 100) {
+                  file.estimatedTimeRemaining = 0;
+                }
               }
               return file;
             }),

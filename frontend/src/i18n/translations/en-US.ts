@@ -308,6 +308,10 @@ export default {
   // FileList.tsx
   "upload.filelist.name": "Name",
   "upload.filelist.size": "Size",
+  "upload.filelist.time": "Time remaining",
+  "upload.filelist.time-remaining": "Estimated time remaining",
+  "upload.filelist.remaining-files": "{count} of {total} files remaining",
+  "upload.filelist.estimated-time": "About {time} left",
 
   // showCreateUploadModal.tsx
   "upload.modal.title": "Create Share",
@@ -596,7 +600,7 @@ export default {
     "Discovery URI of the OpenID Connect OAuth app",
   "admin.config.oauth.oidc-sign-out": "Sign out from OpenID Connect",
   "admin.config.oauth.oidc-sign-out.description":
-    "Whether the “Sign out” button will sign out from the OpenID Connect provider",
+    "Whether the 'Sign out' button will sign out from the OpenID Connect provider",
   "admin.config.oauth.oidc-scope": "OpenID Connect scope",
   "admin.config.oauth.oidc-scope.description":
     "Scopes which should be requested from the OpenID Connect provider.",
@@ -611,12 +615,12 @@ export default {
   "admin.config.oauth.oidc-role-general-access":
     "OpenID Connect role for general access",
   "admin.config.oauth.oidc-role-general-access.description":
-    "Role required for general access. Must be present in a user’s roles for them to log in. " +
+    "Role required for general access. Must be present in a user's roles for them to log in. " +
     "Leave it blank if you don't know what this config is.",
   "admin.config.oauth.oidc-role-admin-access":
     "OpenID Connect role for admin access",
   "admin.config.oauth.oidc-role-admin-access.description":
-    "Role required for administrative access. Must be present in a user’s roles for them to access the admin panel. " +
+    "Role required for administrative access. Must be present in a user's roles for them to access the admin panel. " +
     "Leave it blank if you don't know what this config is.",
   "admin.config.oauth.oidc-client-id": "OpenID Connect Client ID",
   "admin.config.oauth.oidc-client-id.description":
