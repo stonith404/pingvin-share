@@ -43,7 +43,7 @@ jobs:
           username: ${{ github.repository_owner }}
           password:  ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push
+      - name: Build and push sqlite
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -51,5 +51,17 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build and push postgresql
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: postgresql-${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: "DB_DATASOURCE=postgresql"
           cache-from: type=gha
           cache-to: type=gha,mode=max

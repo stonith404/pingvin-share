@@ -26,7 +26,8 @@ yarn-error.log*
 
 # env file
 .env
-!/backend/prisma/.env
+!/backend/prisma/sqlite/.env
+!/backend/prisma/postgresql/.env
 
 # vercel
 .vercel
